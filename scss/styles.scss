@@ -1,0 +1,26 @@
+
+  // PROCESS
+  // 0. CSS reset
+  // 1. Set basic variables & media query ranges
+  // 2. Style large blocks with bg colors for layout
+  // 3. Get general layout elements (block) sized for all media queries
+  // 4. Modify general layout elements with &
+  // 5. Secondary features grid (S --> L)
+  // 6. Typography & Image Sizes
+  // 7. Refactor the SCSS to make it dryer & simpler.
+  // 8. Set variables for common values.
+
+  // 0. RESETS & FRAMEWORKS
+  @import "partials/reset";
+
+  // VARIABLES & MIXINS
+
+
+  // Mixins
+
+  // MEDIA QUERY RANGES
+
+  // GENERAL STYLES
+  ion-nav-bar{
+    color: $dark;
+  }
