@@ -29,81 +29,40 @@ router.get('/:id', function(req, res){
   });
 });
 
-router.post('/start', function(req, res){
+router.post('/end', function(req, res){
   route.create({
-    startTime : moment().format(),
-    status : 'started',
-    routeCoordinates : {
-      0 : req.body.currentCoordinate
-    }
+    startTime : req.body.route.startTime,
+    endTime : req.body.route.endTime,
+    duration: req.body.route.duration,
+    distance : req.body.route.distance,
+    routeCoordinates : req.body.route.coordinates,
   })
   .then(function(data) {
     res.send({
       success : true,
-      message : "New route created"
+      message : "New route added"
     });
   });
 });
 
-// FOR CONTINUOUSLY UPDATING; NOT FOR ENDING THE BIKE ROUTE
-router.put('/:id', function(req, res){
-  route.findOne({
-    where : {
-      id : req.params.id
-    }
-  })
+router.delete('/:id/delete', function(req,res){
+  route.findById(req.params.id)
   .then(function(data){
     if(!data){
       res.send({
         success : false,
-        message : 'Route could not be found'
+        message : "Route does not exist"
       });
     } else {
-      data.dataValues.status = req.body.status;
-      data.dataValues.routeCoordinates[Object.keys(data.dataValues.routeCoordinates).length] = req.body.currentCoordinate;
-      console.log(data.dataValues);
-      route.update(data.dataValues, {
+      route.destroy({
         where : {
           id : req.params.id
         }
       })
-      .then(function(data){
+      .then(function(){
         res.send({
           success : true,
-          message : 'Modified route'
-        });
-      });
-    }
-  });
-});
-
-router.put('/:id/end', function(req,res){
-  route.findOne({
-    where : {
-      id : req.params.id
-    }
-  })
-  .then(function(data){
-    if(!data){
-      res.send({
-        success : false,
-        message : 'Route could not be found'
-      });
-    } else {
-      var now = moment().format();
-      data.dataValues.status = 'ended';
-      data.dataValues.endTime = now;
-      data.dataValues.duration = (moment(data.dataValues.startTime).diff(now)).format('hh:mm:ss');
-      console.log(data.dataValues.duration);
-      route.update(data.dataValues, {
-        where : {
-            id : req.params.id
-        }
-      })
-      .then(function(data) {
-        res.send( {
-          success : true,
-          message : "Ended route"
+          message : "Route deleted"
         });
       });
     }
