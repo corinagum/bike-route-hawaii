@@ -1,4 +1,16 @@
 {
   "name": "bike-route-hawaii",
+<<<<<<< HEAD
   "app_id": "5dcc65b2"
+=======
+  "app_id": "",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+>>>>>>> development
 }

@@ -1,49 +1,30 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+For example, you might change some of the default colors:
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
 
-  // PROCESS
-  // 0. CSS reset
-  // 1. Set basic variables & media query ranges
-  // 2. Style large blocks with bg colors for layout
-  // 3. Get general layout elements (block) sized for all media queries
-  // 4. Modify general layout elements with &
-  // 5. Secondary features grid (S --> L)
-  // 6. Typography & Image Sizes
-  // 7. Refactor the SCSS to make it dryer & simpler.
-  // 8. Set variables for common values.
-
-  // 0. RESETS & FRAMEWORKS
-  @import "partials/reset";
-  // Include all of Ionic
-  @import "www/lib/ionic/scss/ionic";
-
-
-
-  // VARIABLES & MIXINS
-  /*
-  To customize the look and feel of Ionic, you can override the variables
-  in ionic's _variables.scss file.
-
-  For example, you might change some of the default colors:
-
-  $light:                           #fff !default;
-  $stable:                          #f8f8f8 !default;
-  $positive:                        #387ef5 !default;
-  $calm:                            #11c1f3 !default;
-  $balanced:                        #33cd5f !default;
-  $energized:                       #ffc900 !default;
-  $assertive:                       #ef473a !default;
-  $royal:                           #886aea !default;
-  $dark:                            #444 !default;
-  */
-
-  // The path for our ionicons font files, relative to the built CSS in www/css
-  $ionicons-font-path: "../lib/ionic/fonts" !default;
-
-
-  // Mixins
-
-  // MEDIA QUERY RANGES
-
-  // GENERAL STYLES
-  ion-nav-bar{
-    background: $dark;
-  }
+#map {
+  width: 100%;
+  height: 100%;
+}
+.scroll {
+  height: 100%;
+}
+#footer-bar {
+  width: 50%;
+  background-color: $calm;
+}
