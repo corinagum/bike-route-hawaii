@@ -23,7 +23,7 @@ components/
 tmp
 temp
 dist
-
+!www/lib/ionic-platform-web-client/dist
 .idea
 
 .versions
