@@ -6,7 +6,7 @@ node_modules
 *.tmp.*
 log.txt
 example/cordova/iOS/www/js/framework
-
+config/config.json
 example/cordova/iOS/www/js/framework
 .sass-cache/
 framework.sublime-project
