@@ -2,7 +2,7 @@ var express             = require('express');
 var session             = require('express-session');
 var app                 = express();
 var bodyParser          = require('body-parser');
-var db                  = require('./models');
+var db                  = require('./../models');
 var User                = db.User;
 var Task                = db.Task;
 
