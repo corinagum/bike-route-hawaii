@@ -31,7 +31,7 @@ angular.module('starter.controllers', [])
 .controller('MapCtrl', function($scope, $ionicLoading, $compile) {
 
     //to set default view map
-    var map = L.map('map').setView([21.315640, -157.858110], 6);
+    var map = L.map('map').setView([21.315640, -157.858110], 12);
 
       L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
           attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
