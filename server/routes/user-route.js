@@ -1,11 +1,11 @@
-var express = require('express');
-var router = express.Router();
+var express             = require('express');
+var router              = express.Router();
 var session             = require('express-session');
 var bodyParser          = require('body-parser');
-var db                  = require('./../models');
+var db                  = require('./../../models');
 var user                = db.user;
 
-router.use(bodyParser.json());
+// router.use(bodyParser.json());
 
 router.get('/:id', function(req, res) {
   user.findOne({
@@ -111,3 +111,5 @@ router.delete('/:id', function(req, res){
       }
     });
 });
+
+module.exports = router;
