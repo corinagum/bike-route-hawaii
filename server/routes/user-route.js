@@ -83,3 +83,31 @@ router.put('/:id', function(req, res){
     });
   });
 });
+
+router.delete('/:id', function(req, res){
+  user.findOne({
+    where : {
+      id : req.params.id
+    }
+  })
+    .then(function(user) {
+      if(!user) {
+        res.send({
+          success : false,
+          message : 'User could not be found'
+        });
+      } else {
+        user.destroy({
+          where : {
+            id : req.params.id
+          }
+        })
+        .then(function() {
+          res.send({
+            success : true,
+            message : "User was successfully deleted"
+          });
+        });
+      }
+    });
+});
