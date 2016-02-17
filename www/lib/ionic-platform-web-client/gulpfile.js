@@ -11,7 +11,7 @@ var gulp = require('gulp'),
   eslint = require('gulp-eslint'),
   replace = require('gulp-replace'),
   uglify = require('gulp-uglify'),
-  rename = require('gulp-rename')
+  rename = require('gulp-rename'),
   del = require('del');
 
 gulp.task('version', ['minify'], function() {
