@@ -28,7 +28,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('MapCtrl', function($scope, $ionicLoading, $compile) {
+.controller('MapCtrl', ['RouteService', 'UserService', '$scope', '$ionicLoading', '$compile', function(RouteService, UserService, $scope, $ionicLoading, $compile) {
 
     //to set default view map
     var map = L.map('map').setView([21.315640, -157.858110], 12);
@@ -96,4 +96,8 @@ angular.module('starter.controllers', [])
       // zoom the map to the polyline
       map.fitBounds(polyline.getBounds());
    };
-  });
+
+   $scope.endRoute = function(route){
+    RouteService.addRoute(route);
+   };
+  }]);
