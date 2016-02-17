@@ -1,4 +1,4 @@
-<ion-view view-title="Bike Hawaii">
+<!-- <ion-view view-title="Bike Hawaii">
   <ion-content class="padding">
     <h2>Welcome to Ionic</h2>
     <p>
@@ -13,5 +13,30 @@
     <p>
       For help sending push notifications, join the <a href="https://apps.ionic.io/signup" target="_blank">Ionic Platform</a> and check out <a href="http://docs.ionic.io/docs/push-overview" target="_blank">Ionic Push</a>. We also have other services available.
     </p>
+  </ion-content>
+</ion-view>
+ -->
+
+<ion-view view-title="Bike Hawaii: Tracker">
+     <div ng-controller="MapCtrl">
+      <ion-header-bar class="bar-calm">
+        <h1 class="title"> Ride Routes </h1>
+      </ion-header-bar>
+      <ion-content>
+        <ion-tabs class="has-header">
+          <ion-tabs title="Distance"></ion-tabs>
+          <ion-tabs title="Pace"></ion-tabs>
+          <ion-tabs title="Time"></ion-tabs>
+        </ion-tabs>
+        <div id="map" data-tap-disabled="true">
+
+        </div>
+      </ion-content>
+      <ion-footer-bar id="footer-bar">
+          <div><a ng-click="centerOnMe()" class="button button-icon icon ion-location">&nbsp;&nbsp;Where am I?</a>
+          </div>
+      </ion-footer-bar>
+    </div>
+
   </ion-content>
 </ion-view>
