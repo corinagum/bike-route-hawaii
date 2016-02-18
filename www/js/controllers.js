@@ -28,10 +28,10 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('MapCtrl', function($scope, $ionicLoading, $compile) {
+.controller('MapCtrl', ['RouteService', 'UserService', '$scope', '$ionicLoading', '$compile', function(RouteService, UserService, $scope, $ionicLoading, $compile) {
 
     //to set default view map
-    var map = L.map('map').setView([21.315640, -157.858110], 6);
+    var map = L.map('map').setView([21.315640, -157.858110], 12);
 
       L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
           attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
@@ -47,9 +47,9 @@ angular.module('starter.controllers', [])
 
     //to locate user's location
     $scope.centerOnMe = function() {
-       if (!$scope.map) {
+      if (!$scope.map) {
          return;
-       }
+      }
 
        $scope.loading = $ionicLoading.show({
          content: 'Getting current location...',
@@ -58,42 +58,83 @@ angular.module('starter.controllers', [])
 
        map.locate({
          setView: true,
-         maxZoom: 16
+         maxZoom: 16,
+         watch: true
        });
+
+       $scope.coordinates = [];
 
        function onLocationFound(data) {
          var radius = data.accuracy / 2;
          console.log("fullData", data);
-         console.log("long", data.longitude);
-         console.log("lat", data.latitude);
+
+
          L.marker(data.latlng).addTo(map)
            .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
          L.circle(data.latlng, radius).addTo(map);
          $ionicLoading.hide();
-       }
+      }
 
-       map.on('locationfound', onLocationFound);
+      map.on('locationfound', onLocationFound);
 
-        var polylinePoints = [
-          new L.LatLng(21.315640, -157.858110),
-          new L.LatLng(21.315652, -157.858112),
-          new L.LatLng(21.315646, -157.858116),
-          new L.LatLng(21.315669, -157.858119),
-          new L.LatLng(21.315685, -157.858125),
-        ];
 
-        var polylineOptions = {
-          color: 'blue',
-          weight: 6,
-          opacity: 0.9
-        };
 
-      var polyline = new L.Polyline(polylinePoints, polylineOptions);
+      /////////// testing tracker
 
-      map.addLayer(polyline);
+      function setGeolocation() {
+    var geolocation = window.navigator.geolocation.getCurrentPosition(
+        function ( position ) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            accuracy = position.coords.accuracy;
+            console.log('lat: ' + latitude + ', '+ 'lng: ' + longitude + ', '+ 'accuracy: ' + accuracy);
+        },
+        function () { /*error*/ }, {
+            maximumAge: 250,
+            enableHighAccuracy: true
+        }
+    );}
+
+      setInterval(function(){
+        setGeolocation();
+        // locate({setView: false});
+        // console.log("New Location");
+        // console.log(map.locate({setView: false}));
+      }, 6000);
+
+
+//// testing tracker
+
+        // var polylinePoints = [
+        //   new L.LatLng(21.315640, -157.858110),
+        //   new L.LatLng(21.315652, -157.858112),
+        //   new L.LatLng(21.315646, -157.858116),
+        //   new L.LatLng(21.315669, -157.858119),
+        //   new L.LatLng(21.315685, -157.858125),
+        // ];
+
+      //   var polylineOptions = {
+      //     color: 'red',
+      //     weight: 6,
+      //     opacity: 0.9
+      //   };
+
+      // var polyline = new L.Polyline(polylinePoints, polylineOptions);
+
+      // map.addLayer(polyline);
 
       // zoom the map to the polyline
-      map.fitBounds(polyline.getBounds());
+      // map.fitBounds(polyline.getBounds());
    };
-  });
+
+   $scope.trackUserRoute = function(){
+    console.log(map.locate({setView: false}));
+    console.log('this fired');
+
+   };
+
+   $scope.endRoute = function(route){
+    RouteService.addRoute(route);
+   };
+  }]);

@@ -12,6 +12,7 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+    <script src="js/fb.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
@@ -23,7 +24,7 @@
     <script src="js/services.js"></script>
   </head>
   <body ng-app="starter">
-    <div ng-controller="MapCtrl">
+<!--     <div ng-controller="MapCtrl">
       <ion-header-bar class="bar-calm">
         <h1 class="title"> Ride Routes </h1>
       </ion-header-bar>
@@ -38,20 +39,21 @@
         </div>
       </ion-content>
       <ion-footer-bar id="footer-bar">
-          <div><a ng-click="centerOnMe()" class="button button-icon icon ion-location">&nbsp;&nbsp;Where am I?</a>
+          <div><a ng-click="centerOnMe(); endRoute(mockData)" class="button button-icon icon ion-location">&nbsp;&nbsp;Where am I?</a>
           </div>
       </ion-footer-bar>
-    </div>
-    <!-- <ion-nav-bar class="bar-balanced">
+    </div> -->
+    <ion-nav-bar class="bar-balanced">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>
 
-      The views will be rendered in the <ion-nav-view> directive below
+<!--       The views will be rendered in the <ion-nav-view> directive below
       Templates are in the /templates folder (but you could also
-      have templates inline in this html file if you'd like).
+      have templates inline in this html file if you'd like). -->
 
-    <ion-nav-view></ion-nav-view> -->
+    <ion-nav-view></ion-nav-view>
+
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
   </body>
 </html>

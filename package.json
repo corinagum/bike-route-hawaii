@@ -13,6 +13,8 @@
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^2.0.4",
     "moment": "^2.11.2",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.0",
     "pg": "^4.4.6",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.19.2",
