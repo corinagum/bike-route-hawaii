@@ -43,6 +43,13 @@ angular.module('starter.controllers', [])
 
     }).addTo(map);
 
+      var stationLayer = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
+        .on('ready', function(){
+
+        })
+        .addTo(map);
+
+
     $scope.map = map;
 
     //to locate user's location
