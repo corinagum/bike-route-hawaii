@@ -31,10 +31,11 @@ passport.use(new FacebookStrategy({
    passReqToCallback : true
  },
  function(req, accessToken, refreshToken, profile, cb) {
-   user.findOrCreate(
-    { where : {facebookId: profile.id }
-    })
-    .spread( function (err, user) {
+   user.findOne({ where : {facebookId: profile.id }})
+    .then(function (user) {
+      if(!user){
+        return cb("err");
+      }
      return cb(err, user);
    });
  }
