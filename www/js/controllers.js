@@ -30,16 +30,6 @@ angular.module('starter.controllers', [])
 
 .controller('MapCtrl', ['RouteService', 'UserService', '$scope', '$ionicLoading', '$compile', function(RouteService, UserService, $scope, $ionicLoading, $compile) {
 
-    // navigator.geolocation.getCurrentPosition(success, error);
-
-    // function success(){
-    //   console.log('got location');
-    // }
-
-    // function error(){
-    //   console.log('error');
-    // }
-
     //to set default view map
     var map = L.map('map').setView([21.315640, -157.858110], 12);
 
@@ -88,10 +78,33 @@ angular.module('starter.controllers', [])
 
       map.on('locationfound', onLocationFound);
 
+
+
+      /////////// testing tracker
+
+      function setGeolocation() {
+    var geolocation = window.navigator.geolocation.getCurrentPosition(
+        function ( position ) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            accuracy = position.coords.accuracy;
+            console.log('lat: ' + latitude + ', '+ 'lng: ' + longitude + ', '+ 'accuracy: ' + accuracy);
+        },
+        function () { /*error*/ }, {
+            maximumAge: 250,
+            enableHighAccuracy: true
+        }
+    );}
+
       setInterval(function(){
+        setGeolocation();
+        // locate({setView: false});
         // console.log("New Location");
         // console.log(map.locate({setView: false}));
       }, 6000);
+
+
+//// testing tracker
 
         // var polylinePoints = [
         //   new L.LatLng(21.315640, -157.858110),
