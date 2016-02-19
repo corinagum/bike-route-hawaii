@@ -33,7 +33,7 @@ angular.module('starter.controllers', [])
     //to set default view map
     var map = L.map('map').locate({
       setView : true,
-      maxZoom: 20
+      maxZoom : 16
     });
 
     var defaultTile = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -89,37 +89,31 @@ angular.module('starter.controllers', [])
          return;
       }
 
-       $scope.loading = $ionicLoading.show({
-         content: 'Getting current location...',
-         showBackdrop: false
-       });
+      $scope.loading = $ionicLoading.show({
+        content: 'Getting current location...',
+        showBackdrop: false
+      });
 
-       map.locate({
-         setView: true,
-         maxZoom: 16,
-         watch: true
-       });
+      map.locate({
+        setView: true,
+        maxZoom: 16,
+        watch: true
+      });
 
-       $scope.coordinates = [];
+      $scope.coordinates = [];
 
-       var latView;
-       var longView;
+      function onLocationFound(data) {
+        var radius = data.accuracy / 2;
+        console.log("fullData", data);
 
-       function onLocationFound(data) {
-         var radius = data.accuracy / 2;
-         console.log("fullData", data);
-         latView = data.latitude;
-         longView = data.longitude;
+        L.marker(data.latlng).addTo(map)
+          .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
-         L.marker(data.latlng).addTo(map)
-           .bindPopup("You are within " + radius + " meters from this point").openPopup();
-
-         L.circle(data.latlng, radius).addTo(map);
-         $ionicLoading.hide();
+        L.circle(data.latlng, radius).addTo(map);
+        $ionicLoading.hide();
       }
 
       map.on('locationfound', onLocationFound);
-      // .setView([ latView, longView], 12);
 
       /////////// testing tracker
 
