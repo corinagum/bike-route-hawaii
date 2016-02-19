@@ -46,9 +46,14 @@ angular.module('starter.controllers', [])
       var stationLayer = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
         .on('ready', function(){
           map.fitBounds(stationLayer.getBounds());
-          stationLayer.eachLayer(function(layer){
-            console.log(layer);
-            layer.bindPopup(layer.feature.properties.name);
+          stationLayer.eachLayer(function(station){
+            station.setIcon(L.ExtraMarkers.icon({
+            icon: 'fa-bicycle',
+            markerColor: 'green-light',
+            shape: 'circle',
+            prefix: 'fa'
+          })),
+            station.bindPopup(station.feature.properties.name);
           });
         })
         .addTo(map);
