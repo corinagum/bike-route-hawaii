@@ -33,8 +33,8 @@ angular.module('starter.controllers', [])
     //to set default view map
     var map = L.map('map').setView([21.315640, -157.858110], 12);
 
-      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 
     }).addTo(map);
 
@@ -42,11 +42,24 @@ angular.module('starter.controllers', [])
         .on('ready', function(){
           map.fitBounds(stationLayer.getBounds());
           stationLayer.eachLayer(function(layer){
-            console.log(layer);
+            var stationLat = layer._latlng.lng;
+            var stationLng = layer._latlng.lat;
+            var lngLatStation = L.marker([stationLat, stationLng]);
+            console.log("BEFOREstaionLATITUDE", lngLatStation);
+
+            var stationGroup = L.layerGroup([lngLatStation]);
+            console.log("statationdsf", stationGroup);
             layer.bindPopup(layer.feature.properties.name);
-          });
-        })
-        .addTo(map);
+
+            //properties for control layers
+
+        });
+      });
+            var overlayStation = {
+              "Stations": stationLayer
+            };
+            L.control.layers(overlayStation).addTo(map);
+
 
 
     $scope.map = map;
