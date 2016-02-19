@@ -72,7 +72,8 @@ angular.module('starter.controllers', [])
     .addTo(map);
 
     var overlayStations = {
-      "Stations": stationLayer
+      "View Stations": stationLayer,
+      "View History" : historyLayer
     };
     L.control.layers(null, overlayStations).addTo(map);
 
