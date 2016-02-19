@@ -49,47 +49,52 @@ angular.module('starter.services', [])
   };
 })
 
-.service("RouteService", ['$http', function ($http) {
-  // START CRUD OPERATIONS \\
-// GET
-    this.getRoutes = function(id) {
-      return $http.get('/' + id);
-    };
-// POST
-    this.addRoute = function(route) {
-      return $http.post('/routes/end', {
-        route: route
-      });
-    };
-
-// DELETE
-    this.deleteRoute = function(id) {
-      return $http.delete('/' + id +'/delete');
-    };
-  }])
-  .service("UserService", ['$http', function($http){
-
-// LOGIN
-    this.login = function(auth) {
-      return $http.post('/login', {
-        auth : auth
-      });
-    };
-// REGISTER
-    this.signUp = function(register) {
-      return $http.post('/register', {
-        register : register
-      });
-    };
-// LOGOUT
-    this.logout = function(){
-      return $http.get('/logout');
-    };
-
-//AUTHORIZATION STATUS
-    this.authStatus = function(){
-      return $http.get('/authStatus');
-    };
+.service("PointService", ['$http', function($http) {
 
 }]);
+
+// CURRENTLY UNNEEDED DUE TO PIVOT
+// .service("RouteService", ['$http', function ($http) {
+//   // START CRUD OPERATIONS \\
+// // GET
+//     this.getRoutes = function(id) {
+//       return $http.get('/' + id);
+//     };
+// // POST
+//     this.addRoute = function(route) {
+//       return $http.post('/routes/end', {
+//         route: route
+//       });
+//     };
+
+// // DELETE
+//     this.deleteRoute = function(id) {
+//       return $http.delete('/' + id +'/delete');
+//     };
+//   }])
+//   .service("UserService", ['$http', function($http){
+
+// // LOGIN
+//     this.login = function(auth) {
+//       return $http.post('/login', {
+//         auth : auth
+//       });
+//     };
+// // REGISTER
+//     this.signUp = function(register) {
+//       return $http.post('/register', {
+//         register : register
+//       });
+//     };
+// // LOGOUT
+//     this.logout = function(){
+//       return $http.get('/logout');
+//     };
+
+// //AUTHORIZATION STATUS
+//     this.authStatus = function(){
+//       return $http.get('/authStatus');
+//     };
+
+// }]);
 
