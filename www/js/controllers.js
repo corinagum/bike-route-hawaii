@@ -31,7 +31,10 @@ angular.module('starter.controllers', [])
 .controller('MapCtrl', ['RouteService', 'UserService', '$scope', '$ionicLoading', '$compile', function(RouteService, UserService, $scope, $ionicLoading, $compile) {
 
     //to set default view map
-    var map = L.map('map').setView([21.315640, -157.858110], 12);
+    var map = L.map('map').locate({
+      setView : true,
+      maxZoom : 16
+    });
 
     var defaultTile = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
@@ -72,8 +75,8 @@ angular.module('starter.controllers', [])
     .addTo(map);
 
     var overlayStations = {
-      "View Stations": stationLayer,
-      "View History" : historyLayer
+      "Bike Stations": stationLayer,
+      "Sites" : historyLayer
     };
     L.control.layers(null, overlayStations).addTo(map);
 
@@ -86,56 +89,54 @@ angular.module('starter.controllers', [])
          return;
       }
 
-       $scope.loading = $ionicLoading.show({
-         content: 'Getting current location...',
-         showBackdrop: false
-       });
+      $scope.loading = $ionicLoading.show({
+        content: 'Getting current location...',
+        showBackdrop: false
+      });
 
-       map.locate({
-         setView: true,
-         maxZoom: 16,
-         watch: true
-       });
+      map.locate({
+        setView: true,
+        maxZoom: 16,
+        watch: true
+      });
 
-       $scope.coordinates = [];
+      $scope.coordinates = [];
 
-       function onLocationFound(data) {
-         var radius = data.accuracy / 2;
-         console.log("fullData", data);
+      function onLocationFound(data) {
+        var radius = data.accuracy / 2;
+        console.log("fullData", data);
 
-         L.marker(data.latlng).addTo(map)
-           .bindPopup("You are within " + radius + " meters from this point").openPopup();
+        L.marker(data.latlng).addTo(map)
+          .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
-         L.circle(data.latlng, radius).addTo(map);
-         $ionicLoading.hide();
+        L.circle(data.latlng, radius).addTo(map);
+        $ionicLoading.hide();
       }
 
       map.on('locationfound', onLocationFound);
 
-
-
       /////////// testing tracker
 
-      function setGeolocation() {
-    var geolocation = window.navigator.geolocation.getCurrentPosition(
-        function ( position ) {
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
-            accuracy = position.coords.accuracy;
-            console.log('lat: ' + latitude + ', '+ 'lng: ' + longitude + ', '+ 'accuracy: ' + accuracy);
-        },
-        function () { /*error*/ }, {
-            maximumAge: 250,
-            enableHighAccuracy: true
-        }
-    );}
+    //   function setGeolocation() {
+    // var geolocation = window.navigator.geolocation.getCurrentPosition(
+    //     function ( position ) {
+    //         latitude = position.coords.latitude;
+    //         longitude = position.coords.longitude;
+    //         accuracy = position.coords.accuracy;
+    //         console.log('lat: ' + latitude + ', '+ 'lng: ' + longitude + ', '+ 'accuracy: ' + accuracy);
+    //     },
+    //     function () { /*error*/ }, {
+    //         maximumAge: 250,
+    //         enableHighAccuracy: true
+    //     }
+    // );}
 
-      setInterval(function(){
-        setGeolocation();
-        // locate({setView: false});
-        // console.log("New Location");
-        // console.log(map.locate({setView: false}));
-      }, 6000);
+    //   setInterval(function(){
+    //     setGeolocation();
+    //     // locate({setView: false});
+    //     // console.log("New Location");
+    //     // console.log(map.locate({setView: false}));
+    //   }, 6000);
    };
 
    $scope.trackUserRoute = function(){
