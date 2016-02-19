@@ -12,6 +12,7 @@ router.get('/', function(req,res){
   });
 });
 
+// POST a new anything point
 router.post('/', function(req,res){
   Point.create({
     type : req.body.type,
