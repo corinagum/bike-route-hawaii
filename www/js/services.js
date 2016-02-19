@@ -49,6 +49,29 @@ angular.module('starter.services', [])
   };
 })
 
+.service("PointService", ['$http', function($http) {
+
+  this.getPoint = function() {
+    return $http.get('/api');
+  };
+
+  this.addPoint = function(point) {
+    return $http.post('/api', {
+      point : point
+    });
+  };
+
+  this.editPoint = function(point) {
+    return $http.put('api', {
+      point : point
+    });
+  };
+
+  this.deletePoint = function(point) {
+    return $http.delete('/api' + point.id);
+  };
+}])
+
 .service("RouteService", ['$http', function ($http) {
   // START CRUD OPERATIONS \\
 // GET
