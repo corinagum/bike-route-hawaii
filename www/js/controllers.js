@@ -113,30 +113,6 @@ angular.module('starter.controllers', [])
         // console.log("New Location");
         // console.log(map.locate({setView: false}));
       }, 6000);
-
-
-//// testing tracker
-
-        // var polylinePoints = [
-        //   new L.LatLng(21.315640, -157.858110),
-        //   new L.LatLng(21.315652, -157.858112),
-        //   new L.LatLng(21.315646, -157.858116),
-        //   new L.LatLng(21.315669, -157.858119),
-        //   new L.LatLng(21.315685, -157.858125),
-        // ];
-
-      //   var polylineOptions = {
-      //     color: 'red',
-      //     weight: 6,
-      //     opacity: 0.9
-      //   };
-
-      // var polyline = new L.Polyline(polylinePoints, polylineOptions);
-
-      // map.addLayer(polyline);
-
-      // zoom the map to the polyline
-      // map.fitBounds(polyline.getBounds());
    };
 
    $scope.trackUserRoute = function(){
