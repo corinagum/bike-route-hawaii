@@ -43,21 +43,38 @@ angular.module('starter.controllers', [])
 
     }).addTo(map);
 
-      var stationLayer = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
-        .on('ready', function(){
-          map.fitBounds(stationLayer.getBounds());
-          stationLayer.eachLayer(function(station){
-            station.setIcon(L.ExtraMarkers.icon({
-            icon: 'fa-bicycle',
-            markerColor: 'green-light',
-            shape: 'circle',
-            prefix: 'fa'
-          })),
-            station.bindPopup(station.feature.properties.name);
-          });
-        })
-        .addTo(map);
+// DISPLAY BIKESHARE STATION MARKERS
+  var stationLayer = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
+    .on('ready', function(){
+      map.fitBounds(stationLayer.getBounds());
+      stationLayer.eachLayer(function(station){
+        station.setIcon(L.ExtraMarkers.icon({
+        icon: 'fa-bicycle',
+        markerColor: 'green-light',
+        shape: 'circle',
+        prefix: 'fa'
+      }));
+        station.bindPopup(station.feature.properties.name);
+      });
+    })
+    .addTo(map);
 
+// DISPLAY HISTORY SAMPLE
+  var historyLayer = omnivore.kml('./assets/Images_of_Old_Hawaii-Sample.kml')
+    .on('ready', function(){
+      map.fitBounds(historyLayer.getBounds());
+      historyLayer.eachLayer(function(history){
+        console.log(history.feature.properties);
+        history.setIcon(L.ExtraMarkers.icon({
+          icon: 'fa-camera',
+          markerColor: 'yellow',
+          shape : 'star',
+          prefix : 'fa'
+        }));
+        history.bindPopup(history.feature.properties.name);
+      });
+    })
+    .addTo(map);
 
     $scope.map = map;
 
