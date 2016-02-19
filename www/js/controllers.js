@@ -101,7 +101,6 @@ angular.module('starter.controllers', [])
          var radius = data.accuracy / 2;
          console.log("fullData", data);
 
-
          L.marker(data.latlng).addTo(map)
            .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
