@@ -3,8 +3,7 @@ var session             = require('express-session');
 var app                 = express();
 var bodyParser          = require('body-parser');
 var db                  = require('./../models/');
-var user                = db.user;
-var route               = db.route;
+var Point               = db.Point;
 var passport            = require('passport');
 var FacebookStrategy    = require('passport-facebook').Strategy;
 var SECRET              = require('./../config/secret.js');
@@ -48,6 +47,8 @@ app.get('/auth/facebook/callback',
     res.redirect('/');
   });
 
+
+app.use('/api/points', require('./routes/point-route.js'));
 app.use('/users', require('./routes/user-route.js'));
 app.use('/routes', require('./routes/routes-route.js'));
 
