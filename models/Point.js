@@ -8,6 +8,8 @@ module.exports = function(sequelize, DataTypes) {
     site_id: DataTypes.STRING,
     street : DataTypes.STRING,
     side : DataTypes.STRING,
+    lat : DataTypes.FLOAT,
+    long : DataTypes.FLOAT,
     geolink : DataTypes.STRING,
     photolink : DataTypes.STRING
   // }, {
