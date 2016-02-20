@@ -6,34 +6,6 @@ module.exports = {
     "geometry": {
       "type": "Point",
       "coordinates": [
-        -157.818276,
-        21.260938,
-        0
-      ]
-    },
-    "properties": {
-      "name": "Paki and Kalakaua",
-      "description": [
-        "Paki and Kalakaua    ",
-        "       ",
-        "   FID   0    ",
-        "   Long_   -157.81827587802    ",
-        "   Lat   21.2609380183713    ",
-        "   Site_ID   0027_011    ",
-        "   Name   Paki and Kalakaua    ",
-        "   Type_   On-Street in Place of Parking    ",
-        "   Street   Paki Avenue    ",
-        "   Side   W    ",
-        "   Info   Station located on the gravel shoulder on the west side of Paki Avenue to the north of the intersection with Kalakaua.    ",
-        "   Streetview   https://www.google.com/maps/@21.2607781,-157.8181971,3a,75y,331.63h,59.46t/data=!3m6!1e1!3m4!1s5GecKEKkbvn9xE21RYW_tw!2e0!7i13312!8i6656"
-      ]
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [
         -157.819084,
         21.259989,
         0
@@ -41,14 +13,18 @@ module.exports = {
     },
     "properties": {
       "name": "Waikīkī Historic Homes Walking Tour",
-      "description": [
-        "Images of Old Hawai'i",
-        "A Waikīkī historic home walking tour from the Historic Hawaiʻi Foundation is a self-guided itinerary, suitable for individual travelers, and focuses on sites of historic or cultural significance that are either open to the public or visible from the public way.",
-        "The Historic Homes in Waikīkī Walking Tour takes 45-minutes or more. The tour starts at the War Memorial Natatorium, then head towards Diamond Head to the Tahitienne apartment.  The traveler then weaves in between the Honolulu Tudor/ French Norman Cottages and other charming historic residential homes. At the end of the tour, the traveler will finish off with the Mediterranean inspired La Pietra School for girls.    Click Here for More Images and Information (http://wp.me/p5GnMi-aG)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2014 Ho'okuleana LLC"
-      ]
+      "type" : "OldHawaiiImage",
+      "description" : "A Waikīkī historic home walking tour from the Historic Hawaiʻi Foundation is a self-guided itinerary, suitable for individual travelers, and focuses on sites of historic or cultural significance that are either open to the public or visible from the public way.",
+      "info" : "The Historic Homes in Waikīkī Walking Tour takes 45-minutes or more. The tour starts at the War Memorial Natatorium, then head towards Diamond Head to the Tahitienne apartment.  The traveler then weaves in between the Honolulu Tudor/ French Norman Cottages and other charming historic residential homes. At the end of the tour, the traveler will finish off with the Mediterranean inspired La Pietra School for girls.    Click Here for More Images and Information (http://wp.me/p5GnMi-aG)",
+      "fid" : null,
+      "site_id": null,
+      "street" : "Coconut Ave",
+      "side" : null,
+      "lat" : 21.259989,
+      "long" : -157.819084,
+      "geolink" : "https://www.google.com/maps/place/21%C2%B015'36.0%22N+157%C2%B049'08.7%22W/@21.259994,-157.8212727,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0",
+      "sitelink" : "http://wp.me/p5GnMi-aG",
+      "photolink" : "http://hookuleana.com/wp-content/uploads/2014/05/Historic_Homes_of_Waikiki-map-400.jpg"
     }
   },
   {
@@ -63,15 +39,17 @@ module.exports = {
     },
     "properties": {
       "name": "La Pietra",
-      "description": [
-        "Images of Old Hawai'i",
-        "Papaʻenaʻena heiau was situated on the side of Lēʻahi, Diamond Head.  It was referred to by early writers as \"Lēʻahi heiau.\"  During the Mahele this site was given by the Kingdom of Hawaiʻi to the future King Lunalilo.  After the king's death this site was sold to James Campbell, in 1883.  Later, Walter F. Dillingham bought the land from Campbell.",
-        "With the help of famed Chicago architect, David Adler, Dillingham built a home similar to the Villa La Pietra they admired in Tuscany while on their honeymoon.   The building is a composite of villa, the facade facing the Waianae Mountains and the town is copied from the Villa Cambreia, the facade facing the Koʻolau Mountains is a replica of the de Medici villa in Florence. Today, the site is campus for Hawaiʻi School for Girls.  Click for more images and description (http://wp.me/p5GnMi-ks)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2012 Ho'okuleana LLC"
-      ]
-    }
+      "type" : "OldHawaiiImage",
+      "description" : "Papaʻenaʻena heiau was situated on the side of Lēʻahi, Diamond Head.  It was referred to by early writers as \"Lēʻahi heiau.\"  During the Mahele this site was given by the Kingdom of Hawaiʻi to the future King Lunalilo.  After the king's death this site was sold to James Campbell, in 1883.  Later, Walter F. Dillingham bought the land from Campbell.",
+      "info" : "With the help of famed Chicago architect, David Adler, Dillingham built a home similar to the Villa La Pietra they admired in Tuscany while on their honeymoon.   The building is a composite of villa, the facade facing the Waianae Mountains and the town is copied from the Villa Cambreia, the facade facing the Koʻolau Mountains is a replica of the de Medici villa in Florence. Today, the site is campus for Hawaiʻi School for Girls.  Click for more images and description (http://wp.me/p5GnMi-ks)",
+      "fid" : null,
+      "site_id" : null,
+      "street" : "La Pietra Cir",
+      "lat"  : 21.261276,
+      "long" : -157.815686,
+      "geolink" : "https://www.google.com/maps/place/21%C2%B015'40.6%22N+157%C2%B048'56.5%22W/@21.261281,-157.8178747,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0",
+      "sitelink" : "http://imagesofoldhawaii.com/la-pietra/",
+      "photolink" : "http://i2.wp.com/imagesofoldhawaii.com/wp-content/uploads/La_Pietra.jpg?zoom=2&resize=320%2C172"}
   },
   {
     "type": "Feature",
@@ -85,42 +63,17 @@ module.exports = {
     },
     "properties": {
       "name": "Kapiʻolani Park Fountain",
-      "description": [
-        "Images of Old Hawai'i",
-        "In 1919, in commemoration of the coronation of Emperor Yoshihito (and a sign of good Japanese-Hawaiian relations,) Japanese in Hawaiʻi offered to construct a modified duplicate of the fountain in Hibiya Park Tokyo in Kapiʻolani Park.  The official presentation of the “Phoenix Fountain” was conducted by Consul General Moroi who announced the fountain was a “testimonial of friendship and equality of the Japanese residing in the Hawaiian Islands.”",
-        "Unfortunately, such friendship and trust did not prevail over the years, the victim of racial turmoil generated by World War II.  Following the racial animosity generated by World War II, in 1943, the Phoenix Fountain was destroyed and turned to scrap.  A basic fountain was built.  Later, in the 1960s, the city constructed a fountain in honor of Louise Dillingham, who served many years as a member of the former City Parks Board (reportedly, the Walter and Louise Dillingham Foundation gave the fountain to the city in 1966.)    Click Here for More Images and Information (http://wp.me/p5GnMi-io)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2012 Ho'okuleana LLC"
-      ]
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [
-        -157.817499,
-        21.265247000000002,
-        0
-      ]
-    },
-    "properties": {
-      "name": "Paki and Noela",
-      "description": [
-        "Paki and Noela    ",
-        "       ",
-        "   FID   1    ",
-        "   Long_   -157.817499256875    ",
-        "   Lat   21.2652469871021    ",
-        "   Site_ID   0049_011    ",
-        "   Name   Paki and Noela    ",
-        "   Type_   On-Street in Place of Parking    ",
-        "   Street   Kalakaua    ",
-        "   Side   W    ",
-        "   Info   Station located on the gravel shoulder on the west side of Paki Avenue to the north of the intersection with Noela Street.    ",
-        "   Streetview   https://www.google.com/maps/@21.265241,-157.8174214,3a,75y,272.58h,71.79t/data=!3m6!1e1!3m4!1sxi8ZUOc5rGDwWQzlyMAyAg!2e0!7i13312!8i6656"
-      ]
+      "type" : "OldHawaiiImage",
+      "description" : "In 1919, in commemoration of the coronation of Emperor Yoshihito (and a sign of good Japanese-Hawaiian relations,) Japanese in Hawaiʻi offered to construct a modified duplicate of the fountain in Hibiya Park Tokyo in Kapiʻolani Park.  The official presentation of the “Phoenix Fountain” was conducted by Consul General Moroi who announced the fountain was a “testimonial of friendship and equality of the Japanese residing in the Hawaiian Islands.”",
+      "info" : "Unfortunately, such friendship and trust did not prevail over the years, the victim of racial turmoil generated by World War II.  Following the racial animosity generated by World War II, in 1943, the Phoenix Fountain was destroyed and turned to scrap.  A basic fountain was built.  Later, in the 1960s, the city constructed a fountain in honor of Louise Dillingham, who served many years as a member of the former City Parks Board (reportedly, the Walter and Louise Dillingham Foundation gave the fountain to the city in 1966.)",
+      "fid" : null,
+      "site_id" : null,
+      "street" : "Kalakaua Ave",
+      "lat"  : 21.261491,
+      "long" : -157.819881,
+      "geolink" : "https://www.google.com/maps/place/21%C2%B015'41.4%22N+157%C2%B049'11.6%22W/@21.261496,-157.8220697,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0",
+      "sitelink" : "http://wp.me/p5GnMi-io)",
+      "photolink" : "http://hookuleana.com/wp-content/uploads/2013/01/Kapiolani_Park-Phoenix-Dillingham_Fountain-over_the_years-kapiolani_park-a_history-400.jpg"
     }
   },
   {
@@ -135,14 +88,17 @@ module.exports = {
     },
     "properties": {
       "name": "Kapi‘olani Park",
-      "description": [
-        "Images of Old Hawai'i",
-        "Kapi‘olani Park was dedicated on June 11, 1877 and named by King Kalākaua to honor his wife, Queen Kapi‘olani.  It was the first public park in the Hawaiian Islands.  The park was dedicated as \"a place of innocent refreshment for all who wish to leave the dust of the town street.\"  This area now includes Kapiʻolani Park, Waikīkī Zoo, Waikīkī Shell, Waikīkī War Memorial Natatorium and Waikīkī Aquarium.",
-        "Characterized from the beginning as \"swamp land in a desert,\" Kapiʻolani Park became a park specifically because it wasn't considered suitable for anything else, and because of its peculiar climate - it's one of the few places on Oahu where rain almost never falls.  An important part of the initial park was its oval horse race track.  King Kalākaua reportedly liked gambling on horse racing and in 1872 he helped form The Hawaiian Jockey Club (this organized the sport according to the rules that governed races elsewhere.)  Click for more images and description (http://wp.me/p5GnMi-l4)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2012 Ho'okuleana LLC"
-      ]
+      "type" : "OldHawaiiImage",
+      "description" : "Kapi‘olani Park was dedicated on June 11, 1877 and named by King Kalākaua to honor his wife, Queen Kapi‘olani.  It was the first public park in the Hawaiian Islands.  The park was dedicated as \"a place of innocent refreshment for all who wish to leave the dust of the town street.\"  This area now includes Kapiʻolani Park, Waikīkī Zoo, Waikīkī Shell, Waikīkī War Memorial Natatorium and Waikīkī Aquarium.",
+      "info" : "Characterized from the beginning as \"swamp land in a desert,\" Kapiʻolani Park became a park specifically because it wasn't considered suitable for anything else, and because of its peculiar climate - it's one of the few places on Oahu where rain almost never falls.  An important part of the initial park was its oval horse race track.  King Kalākaua reportedly liked gambling on horse racing and in 1872 he helped form The Hawaiian Jockey Club (this organized the sport according to the rules that governed races elsewhere.)",
+      "fid" : null,
+      "site_id" : null,
+      "street" : null,
+      "lat"  : 21.267047,
+      "long" : -157.8187,
+      "geolink" : null,
+      "sitelink" :   "http://wp.me/p5GnMi-l4)",
+      "photolink" : "http://hookuleana.com/wp-content/uploads/2012/09/Kapiolani_Park-1900-400.jpg"
     }
   },
   {
@@ -157,15 +113,18 @@ module.exports = {
     },
     "properties": {
       "name": "Kapi‘olani Park – It Was a Real Estate Deal",
-      "description": [
-        "Images of Old Hawai'i",
-        "Although the park was initially touted to create \"a tract of land in the vicinity of Honolulu as a place of public resort,\" where \"agricultural and stock exhibitions, and healthful exercise, recreations and amusements\" could occur, its literal purpose was far from it.  On the dedication day in 1876, King Kalākaua and James Makee (Kapiʻolani Park Association’s first president) stressed the public space, which they said was needed for a modern city to be civilized, to allow \"families, children, and quiet people\" to find \"refreshment and recreation\" in the \"kindly influences of nature,\" and to be a \"place of innocent refreshment.\"",
-        "However, when Kapiʻolani Park was first conceived, the motivation wasn’t about creating a public place.   Kapiʻolani Park began as a development project, run by the Kapiʻolani Park Association.  The association was founded with a two-fold purpose: (1) building residences for its stockholders along the ocean at Waikiki and on the slopes of Diamond Head and (2) laying out a first-class horse-racing track as a focal point of this new suburb.  200 shares were sold at $50 each. (King Kalākaua was a shareholder.)  Every owner received the right to lease a beachfront house lot in the park, and as a result a number of residences were built along the park's shores and around the race track during the 1880s.   Click Here for More Images and Information (http://wp.me/p5GnMi-jD)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2012 Ho'okuleana LLC"
-      ]
-    }
+      "type" : "OldHawaiiImage",
+      "description" : "Although the park was initially touted to create \"a tract of land in the vicinity of Honolulu as a place of public resort,\" where \"agricultural and stock exhibitions, and healthful exercise, recreations and amusements\" could occur, its literal purpose was far from it.  On the dedication day in 1876, King Kalākaua and James Makee (Kapiʻolani Park Association’s first president) stressed the public space, which they said was needed for a modern city to be civilized, to allow \"families, children, and quiet people\" to find \"refreshment and recreation\" in the \"kindly influences of nature,\" and to be a \"place of innocent refreshment.\"",
+      "info" : "However, when Kapiʻolani Park was first conceived, the motivation wasn’t about creating a public place.   Kapiʻolani Park began as a development project, run by the Kapiʻolani Park Association.  The association was founded with a two-fold purpose: (1) building residences for its stockholders along the ocean at Waikiki and on the slopes of Diamond Head and (2) laying out a first-class horse-racing track as a focal point of this new suburb.  200 shares were sold at $50 each. (King Kalākaua was a shareholder.)  Every owner received the right to lease a beachfront house lot in the park, and as a result a number of residences were built along the park's shores and around the race track during the 1880s.",
+      "fid" : null,
+      "site_id" : null,
+      "street" : "Kalakaua Ave",
+      "lat"  :  21.267957,
+      "long" : -157.8223632,
+      "geolink" : "https://www.google.com/maps/place/21%C2%B016'04.7%22N+157%C2%B049'20.5%22W/@21.267962,-157.8245519,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0",
+      "sitelink" : "http://wp.me/p5GnMi-jD)",
+      "photolink" : "http://hookuleana.com/wp-content/uploads/2012/11/AlfredMitchellHouseright-foreground-IrwinHousecenter-background-400.jpg"
+      }
   },
   {
     "type": "Feature",
@@ -179,14 +138,17 @@ module.exports = {
     },
     "properties": {
       "name": "Cricket in Hawaiʻi",
-      "description": [
-        "Images of Old Hawai'i",
-        "Cricket has an unclear origin, but it probably was developed in medieval England before 1400 – by the end of the 18th century, it became the national sport in England.  Cricket has a long and illustrious history in Hawaiʻi dating back to the mid-nineteenth century.  It is believed that the game was first played in Hawaii by Scottish engineers working at sugar companies in Oʻahu, the Big Island and Maui.",
-        "Established in 1893, Honolulu Cricket Club is the oldest sporting club in the Pacific (according to Guinness World Records) and the second oldest cricket club West of the Appalachian Mountains.  One of the first enthusiast cricket supporters in Hawaiʻi was Alexander Liholiho (1834-1863), King Kamehameha IV.  Reportedly, English cricket was one of the King's favorite games.     Click Here for More Images and Information (http://wp.me/p5GnMi-jf)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2012 Ho'okuleana LLC"
-      ]
+      "type" : "OldHawaiiImage",
+      "description" : "Cricket has an unclear origin, but it probably was developed in medieval England before 1400 – by the end of the 18th century, it became the national sport in England.  Cricket has a long and illustrious history in Hawaiʻi dating back to the mid-nineteenth century.  It is believed that the game was first played in Hawaii by Scottish engineers working at sugar companies in Oʻahu, the Big Island and Maui.",
+      "info" : "Established in 1893, Honolulu Cricket Club is the oldest sporting club in the Pacific (according to Guinness World Records) and the second oldest cricket club West of the Appalachian Mountains.  One of the first enthusiast cricket supporters in Hawaiʻi was Alexander Liholiho (1834-1863), King Kamehameha IV.  Reportedly, English cricket was one of the King's favorite games.",
+      "fid" : null,
+      "site_id" : null,
+      "street" : null,
+      "lat"  : 21.266609,
+      "long" : -157.81857,
+      "geolink" : "https://www.google.com/maps/place/21%C2%B015'59.8%22N+157%C2%B049'06.8%22W/@21.266614,-157.8207587,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0",
+      "sitelink" : "http://wp.me/p5GnMi-jf)",
+      "photolink" : "http://hookuleana.com/wp-content/uploads/2012/12/HCC_at_wicket_in_early_1980s-honolulucricketclub-org-400.jpg"
     }
   },
   {
@@ -201,42 +163,17 @@ module.exports = {
     },
     "properties": {
       "name": "Camp McKinley",
-      "description": [
-        "Images of Old Hawai'i",
-        "The Spanish-American War was a conflict in 1898 between Spain and the United States, effectively the result of American intervention in the ongoing Cuban War of Independence.  Back then, Spain had interests in the Pacific, particularly in the Guam and Philippines.  Although the main issue was Cuban independence, the ten-week war was fought in both the Caribbean and the Pacific.",
-        "Meanwhile, Hawaiʻi, had gained strategic importance because of its geographical position in the Pacific.  Honolulu served as a stopover point for the forces heading to the Philippines.  On August 12, 1898, the United States ratified the Hawaiʻi treaty of annexation.  At the time, there was no assigned garrison here until August 15, 1898, when the 1st New York Volunteer Infantry regiment and the 3rd Battalion, 2nd US Volunteer Engineers landed in Honolulu for garrison duty at Camp McKinley.  Click for more images and description (http://wp.me/p5GnMi-ld)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2012 Ho'okuleana LLC"
-      ]
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [
-        -157.821581,
-        21.266997,
-        0
-      ]
-    },
-    "properties": {
-      "name": "Kapiolani Park 2",
-      "description": [
-        "Kapiolani Park 2    ",
-        "       ",
-        "   FID   2    ",
-        "   Long_   -157.821581273879    ",
-        "   Lat   21.2669968048231    ",
-        "   Site_ID   0071_001    ",
-        "   Name   Kapiolani Park 2    ",
-        "   Type_   On-Street in Parking Restricted Area    ",
-        "   Street   Kalakaua    ",
-        "   Side   W    ",
-        "   Info   On street in the no parking area prior to the crosswalk - approximately 30' long    ",
-        "   Streetview   https://www.google.com/maps/@21.267147,-157.821534,3a,75y,206.97h,64.01t/data=!3m4!1e1!3m2!1stb669RSRhQS7Mco9fbmqvA!2e0"
-      ]
+      "type" : "OldHawaiiImage",
+      "description" : "The Spanish-American War was a conflict in 1898 between Spain and the United States, effectively the result of American intervention in the ongoing Cuban War of Independence.  Back then, Spain had interests in the Pacific, particularly in the Guam and Philippines.  Although the main issue was Cuban independence, the ten-week war was fought in both the Caribbean and the Pacific.",
+      "info" : "Meanwhile, Hawaiʻi, had gained strategic importance because of its geographical position in the Pacific.  Honolulu served as a stopover point for the forces heading to the Philippines.  On August 12, 1898, the United States ratified the Hawaiʻi treaty of annexation.  At the time, there was no assigned garrison here until August 15, 1898, when the 1st New York Volunteer Infantry regiment and the 3rd Battalion, 2nd US Volunteer Engineers landed in Honolulu for garrison duty at Camp McKinley.",
+      "fid" : null,
+      "site_id" : null,
+      "street" : null,
+      "lat"  : 21.265805,
+      "long" : -157.818757,
+      "geolink" : "https://www.google.com/maps/place/21%C2%B015'56.9%22N+157%C2%B049'07.5%22W/@21.26581,-157.8209457,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0",
+      "sitelink" : "http://wp.me/p5GnMi-ld)",
+      "photolink" : "http://hookuleana.com/wp-content/uploads/2012/09/Camp_McKinley-CoastDefenseJournal-400.jpg"
     }
   },
   {
@@ -251,14 +188,17 @@ module.exports = {
     },
     "properties": {
       "name": "Sport of Kings, the King of Sports",
-      "description": [
-        "Images of Old Hawai'i",
-        "June 21, 1803 marked an important day in Hawaiʻi horse history when the Lelia Byrd, an American ship under Captain William Shaler, arrived at Kealakekua Bay with two mares and a stallion on board – they were gifts for King Kamehameha I.  Later, King Kamehameha V, held a celebration on his birthday, December 11, 1871, to honor Kamehameha I; “a public celebration was held with horse-riding and other sports.”  The date later moved to June 11, because of the better weather, and celebrated chiefly by horse races in Kapiʻolani Park, but the races eventually gave way to today’s parades of floats and pāʻū riders (that date became Kamehameha Day.)",
-        "Later, King Kalākaua dedicated Kapiʻolani Park to allow \"families, children, and quiet people\" to find \"refreshment and recreation\" in the \"kindly influences of nature,\" and to be a \"place of innocent refreshment.\"  An important part of the initial park was its oval horse race track.  In the late-1800s and early-1900s there was a horse racing track (Koko O Na Moku Horse Racing Track) at Kāʻanapali Beach;  in 1939, the Oʻahu Jockey Club built the Kailua Race Track, on the Windward side.  Hilo had a track at the Hoʻolulu Park; Parker Ranch in Waimea on the Big Island opened its race track in about 1947.    Click Here for More Images and Information (http://wp.me/p5GnMi-ei)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2012 Ho'okuleana LLC"
-      ]
+      "type" : "OldHawaiiImage",
+      "description" : "June 21, 1803 marked an important day in Hawaiʻi horse history when the Lelia Byrd, an American ship under Captain William Shaler, arrived at Kealakekua Bay with two mares and a stallion on board – they were gifts for King Kamehameha I.  Later, King Kamehameha V, held a celebration on his birthday, December 11, 1871, to honor Kamehameha I; “a public celebration was held with horse-riding and other sports.”  The date later moved to June 11, because of the better weather, and celebrated chiefly by horse races in Kapiʻolani Park, but the races eventually gave way to today’s parades of floats and pāʻū riders (that date became Kamehameha Day.)",
+      "info" : "Later, King Kalākaua dedicated Kapiʻolani Park to allow \"families, children, and quiet people\" to find \"refreshment and recreation\" in the \"kindly influences of nature,\" and to be a \"place of innocent refreshment.\"  An important part of the initial park was its oval horse race track.  In the late-1800s and early-1900s there was a horse racing track (Koko O Na Moku Horse Racing Track) at Kāʻanapali Beach;  in 1939, the Oʻahu Jockey Club built the Kailua Race Track, on the Windward side.  Hilo had a track at the Hoʻolulu Park; Parker Ranch in Waimea on the Big Island opened its race track in about 1947.",
+      "fid" : null,
+      "site_id" : null,
+      "street" : "Kalakaua Ave",
+      "lat"  : 21.26644,
+      "long" : -157.821094,
+      "geolink" : "https://www.google.com/maps/place/21%C2%B015'59.2%22N+157%C2%B049'15.9%22W/@21.266445,-157.8232827,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0",
+      "sitelink" : "http://wp.me/p5GnMi-ei)",
+      "photolink" : "http://hookuleana.com/wp-content/uploads/2012/09/Camp_McKinley-CoastDefenseJournal-400.jpg"
     }
   },
   {
@@ -273,14 +213,17 @@ module.exports = {
     },
     "properties": {
       "name": "Waikīkī Aquarium",
-      "description": [
-        "Images of Old Hawai'i",
-        "The Waikīkī Aquarium opened on March 19, 1904; it is the third oldest aquarium in the United States.  Its adjacent neighbor on Waikīkī Beach is the Natatorium War Memorial.  Then known as the Honolulu Aquarium, it was established as a commercial venture by the Honolulu Rapid Transit and Land Company, who wished to \"show the world the riches of Hawaii's reefs\".",
-        "It was also a practical objective of using the Aquarium as a means of enticing passengers to ride to the end of the new trolley line in Kapi‘olani Park, where the Aquarium was located.  (The trolley terminus was across Kalākaua Avenue from the Aquarium, near the current tennis courts.)  Many in the community hoped that the Honolulu Aquarium would help develop a flagging tourism industry with the Aquarium serving as a “point of interest.”  Click for more images and description (http://wp.me/p5GnMi-lk)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2012 Ho'okuleana LLC"
-      ]
+      "type" : "OldHawaiiImage",
+      "description" : "The Waikīkī Aquarium opened on March 19, 1904; it is the third oldest aquarium in the United States.  Its adjacent neighbor on Waikīkī Beach is the Natatorium War Memorial.  Then known as the Honolulu Aquarium, it was established as a commercial venture by the Honolulu Rapid Transit and Land Company, who wished to \"show the world the riches of Hawaii's reefs\".",
+      "info" : "It was also a practical objective of using the Aquarium as a means of enticing passengers to ride to the end of the new trolley line in Kapi‘olani Park, where the Aquarium was located.  (The trolley terminus was across Kalākaua Avenue from the Aquarium, near the current tennis courts.)  Many in the community hoped that the Honolulu Aquarium would help develop a flagging tourism industry with the Aquarium serving as a “point of interest.”",
+      "fid" : null,
+      "site_id" : null,
+      "street" : "Kalakaua Ave",
+      "lat"  : 21.265588,
+      "long" : -157.821893,
+      "geolink" : "https://www.google.com/maps/place/21%C2%B015'56.1%22N+157%C2%B049'18.8%22W/@21.265593,-157.8240817,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0",
+      "sitelink" : "http://wp.me/p5GnMi-lk)",
+      "photolink" : "http://hookuleana.com/wp-content/uploads/2012/10/Waikiki_Aquarium-1921-400.jpg"
     }
   },
   {
@@ -295,42 +238,17 @@ module.exports = {
     },
     "properties": {
       "name": "At The End Of The Line",
-      "description": [
-        "Images of Old Hawai'i",
-        "Repeatedly evidenced in the early years of rail across the continent, railroads looked to expand their passenger business by operating hotels at the ends of the lines.  A hotel would typically be in place by the time the railroad service began.  Likewise, an ocean liner, while it served as a moving hotel, needed to make sure people had places to stay where the cruise ships stopped.  Simply look at the early history of trains and ships, the pattern is apparent.  Several in Hawai‘i followed this example in the planning of their transportation systems.",
-        "Here’s a summary of a few hotels and attractions associated with Hawaiʻi’s transportation providers:   OR&L – Haleiwa Hotel; Matson – Moana Hotel; Matson – Royal Hawaiian Hotel; Matson – Princess Kaʻiulani and Hotels weren’t the only end-of-the-line attraction: Honolulu Rapid Transit and Land Company – Waikīkī Aquarium.    Click for more images and description (http://wp.me/p5GnMi-hL)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2012 Ho'okuleana LLC"
-      ]
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [
-        -157.820723,
-        21.263365,
-        0
-      ]
-    },
-    "properties": {
-      "name": "Kapiolani Park 3",
-      "description": [
-        "Kapiolani Park 3    ",
-        "       ",
-        "   FID   3    ",
-        "   Long_   -157.820723398723    ",
-        "   Lat   21.2633648442472    ",
-        "   Site_ID   0048_011    ",
-        "   Name   Kapiolani Park 3    ",
-        "   Type_   On-Street in Parking Restricted Area    ",
-        "   Street   Kalakaua    ",
-        "   Side   W    ",
-        "   Info   On street in the no parking area outside the Aquarium, near the bus stop - check the clearance to the hydrant    ",
-        "   Streetview   https://www.google.com/maps/@21.2635934,-157.8206799,3a,75y,209.23h,64.26t/data=!3m6!1e1!3m4!1sr1lKzGRlE7BGRWNyT67gzA!2e0!7i13312!8i6656!6m1!1e1"
-      ]
+      "type" : "OldHawaiiImage",
+      "description" : "Repeatedly evidenced in the early years of rail across the continent, railroads looked to expand their passenger business by operating hotels at the ends of the lines.  A hotel would typically be in place by the time the railroad service began.  Likewise, an ocean liner, while it served as a moving hotel, needed to make sure people had places to stay where the cruise ships stopped.  Simply look at the early history of trains and ships, the pattern is apparent.  Several in Hawai‘i followed this example in the planning of their transportation systems.",
+      "info" : "Here’s a summary of a few hotels and attractions associated with Hawaiʻi’s transportation providers:   OR&L – Haleiwa Hotel; Matson – Moana Hotel; Matson – Royal Hawaiian Hotel; Matson – Princess Kaʻiulani and Hotels weren’t the only end-of-the-line attraction: Honolulu Rapid Transit and Land Company – Waikīkī Aquarium.",
+      "fid" : null,
+      "site_id" : null,
+      "street" : "Kalakaua Ave",
+      "lat"  : 21.265876000000002,
+      "long" : -157.821314,
+      "geolink" : "https://www.google.com/maps/place/21%C2%B015'57.1%22N+157%C2%B049'16.7%22W/@21.265881,-157.8235027,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0",
+      "sitelink" : "http://wp.me/p5GnMi-hL",
+      "photolink" : "http://hookuleana.com/wp-content/uploads/2013/03/Honolulu_Aquarium-400.jpg"
     }
   },
   {
@@ -345,14 +263,17 @@ module.exports = {
     },
     "properties": {
       "name": "Waikīkī Natatorium War Memorial",
-      "description": [
-        "Images of Old Hawai'i",
-        "In 1921, the Territorial Legislature authorized the construction of a memorial dedicated to the men and women of Hawai‘i who served in World War I, on the former Irwin property – it is known as the Waikīkī Natatorium War Memorial. The Natatorium was completed in the summer of 1927, the first \"living\" war memorial in the United States and as a symbol of the way of life those who served fought to defend (it included a 100 X 40 meter saltwater swimming pool, built to honor 102 who died and the nearly 10,000 others who served in WWI from Hawai‘i.)",
-        "Olympic Gold Medalist and icon of modern surfing, Duke Kahanamoku swam the first ceremonial swim at its opening on August 24, 1927, his birthday.  An AAU National championship swimming meet, with swimmers from Japan and South America participating (including Johnny Weissmuller and Clarence \"Buster\" Crabbe,) capped the opening activities. Owned by the State but operated under an executive order to the City, the Natatorium was closed in 1979 due to thirty years of neglect.    Click Here for More Images and Information (http://wp.me/p5GnMi-eU)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2012 Ho'okuleana LLC"
-      ]
+      "type" : "OldHawaiiImage",
+      "description" : "In 1921, the Territorial Legislature authorized the construction of a memorial dedicated to the men and women of Hawai‘i who served in World War I, on the former Irwin property – it is known as the Waikīkī Natatorium War Memorial. The Natatorium was completed in the summer of 1927, the first \"living\" war memorial in the United States and as a symbol of the way of life those who served fought to defend (it included a 100 X 40 meter saltwater swimming pool, built to honor 102 who died and the nearly 10,000 others who served in WWI from Hawai‘i.)",
+      "info" : "Olympic Gold Medalist and icon of modern surfing, Duke Kahanamoku swam the first ceremonial swim at its opening on August 24, 1927, his birthday.  An AAU National championship swimming meet, with swimmers from Japan and South America participating (including Johnny Weissmuller and Clarence \"Buster\" Crabbe,) capped the opening activities. Owned by the State but operated under an executive order to the City, the Natatorium was closed in 1979 due to thirty years of neglect.",
+      "fid" : null,
+      "site_id" : null,
+      "street" : "Kalakaua Ave",
+      "lat"  : 21.264451,
+      "long" : -157.822385,
+      "geolink" : "https://www.google.com/maps/place/21%C2%B015'52.0%22N+157%C2%B049'20.6%22W/@21.264456,-157.8245737,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0",
+      "sitelink" : "http://wp.me/p5GnMi-eU",
+      "photolink" : "http://hookuleana.com/wp-content/uploads/2013/08/Natatorium-vicbecky-1954-400.jpg"
     }
   },
   {
@@ -367,31 +288,17 @@ module.exports = {
     },
     "properties": {
       "name": "William G Irwin",
-      "description": [
-        "Images of Old Hawai'i",
-        "William G Irwin was born in England in 1843; he was the son of James and Mary Irwin.  After the discovery of gold in 1849, the family then came to Hawaiʻi.  Irwin attended Punahou School and as a young man was employed at different times by Aldrich, Walker & Co.; Lewers & Dickson; and Walker, Allen & Co.",
-        "In 1880, he and Claus Spreckels formed the firm WG Irwin & Co; for many years it was the leading sugar agency in the kingdom and the one originally used by the West Maui Sugar Association.  In 1885, Irwin and Spreckels opened the bank of Claus Spreckels & Co., later incorporated under the name of Bank of Honolulu, Ltd., that later merged with the Bank of Bishop & Co.  A close friend of King Kalākaua, Irwin was decorated by the King and was a member of the Privy Council of Hawaiʻi in 1887.  In 1896, the Legislature of the Republic of Hawaiʻi put Kapiʻolani Park and its management under the Honolulu Park Commission; William G Irwin was the first chair of the commission.  His Waikīkī home site was acquired for the Waikīkī Natatorium War Memorial.    Click Here for More Images and Information (http://wp.me/p5GnMi-fM)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2012 Ho'okuleana LLC"
-      ]
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [
-        -157.821698,
-        21.264384,
-        0
-      ]
-    },
-    "properties": {
-      "name": "William G Irwin House",
-      "description": [
-        "© 2015 Ho'okuleana LLC (http://www.hookuleana.com)"
-      ]
+      "type" : "OldHawaiiImage",
+      "description" : "William G Irwin was born in England in 1843; he was the son of James and Mary Irwin.  After the discovery of gold in 1849, the family then came to Hawaiʻi.  Irwin attended Punahou School and as a young man was employed at different times by Aldrich, Walker & Co.; Lewers & Dickson; and Walker, Allen & Co.",
+      "info" : "In 1880, he and Claus Spreckels formed the firm WG Irwin & Co; for many years it was the leading sugar agency in the kingdom and the one originally used by the West Maui Sugar Association.  In 1885, Irwin and Spreckels opened the bank of Claus Spreckels & Co., later incorporated under the name of Bank of Honolulu, Ltd., that later merged with the Bank of Bishop & Co.  A close friend of King Kalākaua, Irwin was decorated by the King and was a member of the Privy Council of Hawaiʻi in 1887.  In 1896, the Legislature of the Republic of Hawaiʻi put Kapiʻolani Park and its management under the Honolulu Park Commission; William G Irwin was the first chair of the commission.  His Waikīkī home site was acquired for the Waikīkī Natatorium War Memorial.",
+      "fid" : null,
+      "site_id" : null,
+      "street" : "Kalakaua Ave",
+      "lat"  : 21.264651,
+      "long" : -157.821483,
+      "geolink" : "https://www.google.com/maps/place/21%C2%B015'52.7%22N+157%C2%B049'17.3%22W/@21.264656,-157.8236717,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0",
+      "sitelink" : "http://wp.me/p5GnMi-fM",
+      "photolink" : "http://hookuleana.com/wp-content/uploads/2013/07/Irwin_House-Waikiki-HJH-400.jpg"
     }
   },
   {
@@ -406,31 +313,17 @@ module.exports = {
     },
     "properties": {
       "name": "Kodak Hula Show",
-      "description": [
-        "Images of Old Hawai'i",
-        "Intent on selling film, in 1937, Fritz Herman, then-vice president and manager of Kodak Hawaiʻi, founded the Kodak Hula Show. This allowed visitors to take pictures of hula shows outdoors in the daylight (rather than at the too-dark venues of the nighttime lūʻau.)  In addition, Herman wanted dancers to wear ti-leaf skirts and pose in natural settings, rather than the typical nighttime indoor wardrobe of cellophane skirts and paper lei. ",
-        "The first show, on the lawn behind the beach at San Souci, featured five dancers, four musicians and an audience of 100. The popular shows later expanded to 20 female and six male performers, 15 musicians, two chanters and audiences of 3,000 each week.  For many tourists, their only exposure to Hawaiian dance was the Kodak Hula Show.  And, it was free.  After months of looking for a suitable sponsor to assume the operation of the Hula Show, the show was officially closed on September 26, 2002.  An estimated 20-million people had seen the show from 1937-2002.     Click Here for More Images and Information (http://wp.me/p5GnMi-8B)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2014 Ho'okuleana LLC"
-      ]
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [
-        -157.821232,
-        21.26364,
-        0
-      ]
-    },
-    "properties": {
-      "name": "Kodak Hula Show",
-      "description": [
-        "© 2014 Ho'okuleana LLC (http://www.hookuleana.com)"
-      ]
+      "type" : "OldHawaiiImage",
+      "description" : "Intent on selling film, in 1937, Fritz Herman, then-vice president and manager of Kodak Hawaiʻi, founded the Kodak Hula Show. This allowed visitors to take pictures of hula shows outdoors in the daylight (rather than at the too-dark venues of the nighttime lūʻau.)  In addition, Herman wanted dancers to wear ti-leaf skirts and pose in natural settings, rather than the typical nighttime indoor wardrobe of cellophane skirts and paper lei. ",
+      "info" : "The first show, on the lawn behind the beach at San Souci, featured five dancers, four musicians and an audience of 100. The popular shows later expanded to 20 female and six male performers, 15 musicians, two chanters and audiences of 3,000 each week.  For many tourists, their only exposure to Hawaiian dance was the Kodak Hula Show.  And, it was free.  After months of looking for a suitable sponsor to assume the operation of the Hula Show, the show was officially closed on September 26, 2002.  An estimated 20-million people had seen the show from 1937-2002.",
+      "fid" : null,
+      "site_id" : null,
+      "street" : "Kalakaua Ave",
+      "lat"  : 21.263659,
+      "long" : -157.821407,
+      "geolink" : "https://www.google.com/maps/place/21%C2%B015'49.2%22N+157%C2%B049'17.1%22W/@21.263664,-157.8235957,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0",
+      "sitelink" : "http://wp.me/p5GnMi-8B",
+      "photolink" : "http://hookuleana.com/wp-content/uploads/2014/09/Kodak_Hula_Show-BM-1937-400.jpg"
     }
   },
   {
@@ -445,15 +338,18 @@ module.exports = {
     },
     "properties": {
       "name": "Robert Louis Stevenson",
-      "description": [
-        "Images of Old Hawai'i",
-        "Starting in 1888, Robert Lewis Stevenson (born in Edinburgh Scotland on November 13th 1850,) the famous author of popular works such as 'Treasure Island' and 'Strange Case of Dr Jekyll and Mr Hyde,' began a tour of the South Pacific, visiting Tahiti and the Marquesas.  For nearly ten years his health had been declining; he was told by his doctor to travel there because the climate was good for his bad health.",
-        "In 1889, he arrived in Honolulu and spent the first six months of that year in the Hawaiian Islands (he later settled and lived in Samoa.)  Stevenson visited Kalaupapa (shortly after Damien’s death) and later wrote of the good work of Father Damien (now Saint Damien.)  He also travelled to Kona on the Big Island (the setting for most of his short story “The Bottle Imp.”)  On Oʻahu, Stevenson was introduced to the King Kalākaua and others in the royal family by fellow Scotsman, Archibald Cleghorn.  Stevenson established a fast friendship with the royal family and spent a lot of time with his good friend King Kalākaua.    Click Here for More Images and Information (http://wp.me/p5GnMi-ip)",
-        "Visit our website (http://www.hookuleana.com)",
-        "",
-        "© 2012 Ho'okuleana LLC"
-      ]
+      "type" : "OldHawaiiImage",
+      "description" : "Starting in 1888, Robert Lewis Stevenson (born in Edinburgh Scotland on November 13th 1850,) the famous author of popular works such as 'Treasure Island' and 'Strange Case of Dr Jekyll and Mr Hyde,' began a tour of the South Pacific, visiting Tahiti and the Marquesas.  For nearly ten years his health had been declining; he was told by his doctor to travel there because the climate was good for his bad health.",
+      "info" : "In 1889, he arrived in Honolulu and spent the first six months of that year in the Hawaiian Islands (he later settled and lived in Samoa.)  Stevenson visited Kalaupapa (shortly after Damien’s death) and later wrote of the good work of Father Damien (now Saint Damien.)  He also travelled to Kona on the Big Island (the setting for most of his short story “The Bottle Imp.”)  On Oʻahu, Stevenson was introduced to the King Kalākaua and others in the royal family by fellow Scotsman, Archibald Cleghorn.  Stevenson established a fast friendship with the royal family and spent a lot of time with his good friend King Kalākaua.",
+      "fid" : null,
+      "site_id" : null,
+      "street" : "Kalakaua Ave",
+      "lat"  : 21.26354,
+      "long" : -157.821354,
+      "geolink" : null,
+      "sitelink" : "http://wp.me/p5GnMi-ip)",
+      "photolink" : "http://hookuleana.com/wp-content/uploads/2013/01/Kalakaua-King-of-Hawaii-1836-1891-with-Robert-Louis-Stevenson-1850-1894-HSA-PP-96-14-001-1889-400.jpg"
     }
   }
 ]
-}
+};
