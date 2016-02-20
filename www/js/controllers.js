@@ -1,4 +1,4 @@
-
+/////// HELLO ////////
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
@@ -30,8 +30,69 @@ angular.module('starter.controllers', [])
 
 .controller('MapCtrl', ['RouteService', 'UserService', '$scope', '$ionicLoading', '$compile', function(RouteService, UserService, $scope, $ionicLoading, $compile) {
 
-    //to set default view map
-    var map = L.map('map').setView([21.315640, -157.858110], 12);
+    var map = L.map('map', {
+      zoomControl: false
+    }).locate({
+      setView : true,
+      maxZoom : 14
+    });
+    // NEW ZOOM MENU
+    // ********** {} **********
+    L.Control.ZoomMin = L.Control.Zoom.extend({
+      options: {
+        position: "topleft",
+        zoomInText: "+",
+        zoomInTitle: "Zoom in",
+        zoomOutText: "-",
+        zoomOutTitle: "Zoom out",
+        zoomFindMe: "<i class='fa fa-map-marker'></i>",
+        zoomFindMeTitle: "Find me"
+      },
+
+      onAdd: function (map) {
+        var zoomName = "leaflet-control-zoom",
+        container = L.DomUtil.create("div", zoomName + " leaflet-bar"),
+        options = this.options;
+
+        this._map = map;
+
+        this._zoomInButton = this._createButton(options.zoomInText, options.zoomInTitle,
+         zoomName + '-in', container, this._zoomIn, this);
+
+        this._zoomOutButton = this._createButton(options.zoomOutText, options.zoomOutTitle,
+         zoomName + '-out', container, this._zoomOut, this);
+
+        this._zoomFindMeButton = this._createButton(options.zoomFindMe, options.zoomFindMeTitle,
+         zoomName + '-me', container, this._zoomMe, this);
+
+        this._updateDisabled();
+        map.on('zoomend zoomlevelschange', this._updateDisabled, this);
+
+        return container;
+      },
+
+      _zoomMe: function () {
+        $scope.centerOnMe();
+      },
+
+      _updateDisabled: function () {
+        var map = this._map,
+        className = "leaflet-disabled";
+
+        L.DomUtil.removeClass(this._zoomInButton, className);
+        L.DomUtil.removeClass(this._zoomOutButton, className);
+        L.DomUtil.removeClass(this._zoomFindMeButton, className);
+
+        if (map._zoom === map.getMinZoom()) {
+          L.DomUtil.addClass(this._zoomOutButton, className);
+        }
+
+        if (map._zoom === map.getMaxZoom()) {
+          L.DomUtil.addClass(this._zoomInButton, className);
+        }
+      }
+    });
+
 
 
     // MAP TILES
