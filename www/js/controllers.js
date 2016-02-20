@@ -1,4 +1,4 @@
-
+/////// HELLO ////////
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
@@ -38,6 +38,7 @@ angular.module('starter.controllers', [])
       maxZoom : 14
     });
     // NEW ZOOM MENU
+    ********** {} **********
     L.Control.ZoomMin = L.Control.Zoom.extend({
       options: {
         position: "topleft",
