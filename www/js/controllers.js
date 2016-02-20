@@ -33,31 +33,36 @@ angular.module('starter.controllers', [])
     //to set default view map
     var map = L.map('map').setView([21.315640, -157.858110], 12);
 
-      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
-          // waypoints: [
-          //     L.latLng(57.74, 11.94),
-          //     L.latLng(57.6792, 11.949)
-          // ],
-          // routeWhileDragging: true
 
+    // MAP TILES
+    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+    });
+    var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+    });
+    var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
     }).addTo(map);
+    map.addControl(new L.Control.ZoomMin());
 
 // DISPLAY BIKESHARE STATION MARKERS
   var stationLayer = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
-    .on('ready', function(){
-      map.fitBounds(stationLayer.getBounds());
-      stationLayer.eachLayer(function(station){
-        station.setIcon(L.ExtraMarkers.icon({
-        icon: 'fa-bicycle',
-        markerColor: 'green-light',
-        shape: 'circle',
-        prefix: 'fa'
-      }));
-        station.bindPopup(station.feature.properties.name);
-      });
-    })
-    .addTo(map);
+        .on('ready', function(layers){
+          // map.fitBounds(stationLayer.getBounds());
+          stationLayer.eachLayer(function(station){
+            station.setIcon(L.ExtraMarkers.icon({
+              icon: 'fa-bicycle',
+              markerColor: 'green-light',
+              shape: 'circle',
+              prefix: 'fa'
+            }));
+            station.bindPopup(station.feature.properties.name);
+          });
+        }).addTo(map);
 
 // DISPLAY HISTORY SAMPLE
   var historyLayer = omnivore.kml('./assets/Images_of_Old_Hawaii-Sample.kml')
@@ -71,14 +76,76 @@ angular.module('starter.controllers', [])
           shape : 'star',
           prefix : 'fa'
         }));
-        history.bindPopup(history.feature.properties.name);
+        history.bindPopup({
+          NAME : history.feature.properties.name
+        });
       });
+<<<<<<< HEAD
     })
     .addTo(map);
+=======
+    });
+
+    var RADIUS = 600;
+
+    var filterCircle = L.circle(L.latLng(40, -75), RADIUS, {
+        opacity: 1,
+        weight: 1,
+        fillOpacity: 0.4
+    }).addTo(map);
+
+    //OUR MOCK "USER LOCATION"
+    var userPoint = new L.marker([21.30816692233928,-157.81598567962646], {
+      draggable : true
+    }).addTo(map)
+      .on('dragend', function(event) {
+        console.log("consoleLoggingLATTTTYYYY", userPoint.getLatLng());
+      });
+
+      //TO VISUALIZE 600 MILE RADIUS OF USER'S LOCATION
+      L.circle([userPoint.getLatLng().lat, userPoint.getLatLng().lng], 600, {
+        color: 'red',
+        weight: 3,
+        fillColor: '#f03',
+        fillOpacity: 0.2
+      }).addTo(map);
+
+      //GLOBAL FUNCTION TO LOAD EVERY STATION MARKER
+      // function addAllStations () {
+      //   var listStations = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
+      //   .on('ready', function(layers){
+      //     // map.fitBounds(listStations.getBounds());
+      //     listStations.eachLayer(function(station){
+      //       station.setIcon(L.ExtraMarkers.icon({
+      //         icon: 'fa-bicycle',
+      //         markerColor: 'green-light',
+      //         shape: 'circle',
+      //         prefix: 'fa'
+      //       }));
+      //       station.bindPopup(station.feature.properties.name);
+      //     });
+      //   });
+      //   return listStations;
+      // }
+
+    // USER'S VIEW OPTIONS
+    var tileOptions = {
+      "Street" : googleStreets,
+      "Satellite" : googleSat,
+      "Hybrid" : googleHybrid
+    };
+    var overlayStations = {
+      "Bike Stations": stationLayer,
+      "Sites" : historyLayer
+    };
+
+    //THIS CREATES THE LAYER ICON PROVIDED BY LEAFLET
+    L.control.layers(tileOptions, overlayStations).addTo(map);
+>>>>>>> 3a2e69a4e8c0e544035c2da67345dd570caf4e0c
 
     $scope.map = map;
 
-    //to locate user's location
+    //TO LOCATE USER'S LOCATION
     $scope.centerOnMe = function() {
       if (!$scope.map) {
          return;
@@ -137,8 +204,8 @@ angular.module('starter.controllers', [])
    };
 
    $scope.trackUserRoute = function(){
-    console.log(map.locate({setView: false}));
-    console.log('this fired');
+    // console.log(map.locate({setView: false}));
+    // console.log('this fired');
 
    };
 
