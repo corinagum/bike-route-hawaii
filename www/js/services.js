@@ -70,6 +70,10 @@ angular.module('starter.services', [])
   this.deletePoint = function(point) {
     return $http.delete('/api' + point.id);
   };
+
+  this.getPointsInRadius = function(radius, lat, long) {
+    return $http.get('/api/points/within/' + radius + '/' + lat + '/' + long);
+  };
 }])
 
 

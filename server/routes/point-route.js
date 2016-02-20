@@ -12,21 +12,20 @@ router.get('/', function(req,res){
   });
 });
 
-// POST a new anything point
 router.post('/', function(req,res){
   Point.create({
-    type : req.body.type,
-    name : req.body.name,
-    description  : req.body.description,
-    info :req.body.info,
-    fid :req.body.fid,
-    site_id:req.body.site_id,
-    street :req.body.street,
-    side :req.body.side,
-    lat : req.body.lat,
-    long : req.body.long,
-    geolink :req.body.geolink,
-    photolink :req.body.photolink
+    type : req.body.point.type,
+    name : req.body.point.name,
+    description  : req.body.point.description,
+    info :req.body.point.info,
+    fid :req.body.point.fid,
+    site_id:req.body.point.site_id,
+    street :req.body.point.street,
+    side :req.body.point.side,
+    lat : req.body.point.lat,
+    long : req.body.point.long,
+    geolink :req.body.point.geolink,
+    photolink :req.body.point.photolink
   })
   .then(function(point){
     res.send({
@@ -38,16 +37,16 @@ router.post('/', function(req,res){
 
 router.put('/:id', function(req,res){
   Point.update({
-    type : req.body.type,
-    name : req.body.name,
-    description  : req.body.description,
-    info :req.body.info,
-    fid :req.body.fid,
-    site_id:req.body.site_id,
-    street :req.body.street,
-    side :req.body.side,
-    geolink :req.body.geolink,
-    photolink :req.body.photolink
+    type : req.body.point.type,
+    name : req.body.point.name,
+    description  : req.body.point.description,
+    info :req.body.point.info,
+    fid :req.body.point.fid,
+    site_id:req.body.point.site_id,
+    street :req.body.point.street,
+    side :req.body.point.side,
+    geolink :req.body.point.geolink,
+    photolink :req.body.point.photolink
   }, {
     where : {id : req.params.id}
   })
@@ -71,13 +70,39 @@ router.delete('/:id', function(req, res){
 
 router.get('/within/:meters/:lat/:long', function(req, res){
   db.sequelize.query('SELECT *, earth_distance(ll_to_earth( ' + req.params.lat +
-    ',' + req.params.long + '  ), ll_to_earth(lat,long)) as distance_from_current_location FROM "Points" WHERE earth_box(ll_to_earth(' +
-    req.params.lat +',' + req.params.long + '), ' + 'earth_distance(ll_to_earth( ' + req.params.lat +
-    ',' + req.params.long + '  ), ll_to_earth(lat,long))' + ') @> ll_to_earth(lat, long);')
-  .spread(function(results, metadata){
+    ',' + req.params.long + '  ), ll_to_earth(lat,long)) as distance_from_current_location FROM "Points" WHERE (earth_box(ll_to_earth(' +
+    req.params.lat +',' + req.params.long + '), ' + req.params.meters + ') @> ll_to_earth(lat, long)) ORDER BY distance_from_current_location ASC;')
+  .spread(function(data, metadata){
+    var geoJSONHistory = {
+      "type" : "FeatureCollection",
+      "features" : []
+    };
+    var geoJSONBikeShare = {
+      "type" : "FeatureCollection",
+      "features" : []
+    };
+    for(var i=0; i<data.length; i++){
+      var point = {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ data[i].long, data[i].lat, 0]
+        },
+        "properties" : data[i]
+      };
+      if(data[i].type === "OldHawaiiImage"){
+        geoJSONHistory.features.push(point);
+      }
+      if(data[i].type === "BikeShare"){
+        geoJSONBikeShare.features.push(point);
+      }
+
+    }
     res.send({
       success : true,
-      results : results
+      numberOfResults : data.length,
+      geoJSONHistory : geoJSONHistory,
+      geoJSONBikeShare : geoJSONBikeShare
     });
   });
 });
