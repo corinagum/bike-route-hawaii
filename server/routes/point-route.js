@@ -14,18 +14,18 @@ router.get('/', function(req,res){
 
 router.post('/', function(req,res){
   Point.create({
-    type : req.body.type,
-    name : req.body.name,
-    description  : req.body.description,
-    info :req.body.info,
-    fid :req.body.fid,
-    site_id:req.body.site_id,
-    street :req.body.street,
-    side :req.body.side,
-    lat : req.body.lat,
-    long : req.body.long,
-    geolink :req.body.geolink,
-    photolink :req.body.photolink
+    type : req.body.point.type,
+    name : req.body.point.name,
+    description  : req.body.point.description,
+    info :req.body.point.info,
+    fid :req.body.point.fid,
+    site_id:req.body.point.site_id,
+    street :req.body.point.street,
+    side :req.body.point.side,
+    lat : req.body.point.lat,
+    long : req.body.point.long,
+    geolink :req.body.point.geolink,
+    photolink :req.body.point.photolink
   })
   .then(function(point){
     res.send({
@@ -37,16 +37,16 @@ router.post('/', function(req,res){
 
 router.put('/:id', function(req,res){
   Point.update({
-    type : req.body.type,
-    name : req.body.name,
-    description  : req.body.description,
-    info :req.body.info,
-    fid :req.body.fid,
-    site_id:req.body.site_id,
-    street :req.body.street,
-    side :req.body.side,
-    geolink :req.body.geolink,
-    photolink :req.body.photolink
+    type : req.body.point.type,
+    name : req.body.point.name,
+    description  : req.body.point.description,
+    info :req.body.point.info,
+    fid :req.body.point.fid,
+    site_id:req.body.point.site_id,
+    street :req.body.point.street,
+    side :req.body.point.side,
+    geolink :req.body.point.geolink,
+    photolink :req.body.point.photolink
   }, {
     where : {id : req.params.id}
   })

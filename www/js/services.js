@@ -91,5 +91,60 @@ angular.module('starter.services', [])
       return $http.get('/authStatus');
     };
 
+}])
+
+.service("PointService", ['$http', function ($http) {
+  // START CRUD OPERATIONS \\
+// GET
+    this.getPoints = function() {
+      return $http.get('/api/points');
+    };
+// POST
+    this.addPoint = function(Point) {
+      return $http.post('/api/points', {
+        point: point
+      });
+    };
+// PUT
+    this.updatePoint = function(point) {
+      return $http.put(('/api/points' + point.id), {
+        point : point
+      });
+    };
+
+// DELETE
+    this.deletePoint = function(id) {
+      return $http.delete('/api/points' + id);
+    };
+
+    this.getPointsInRadius = function(radius, lat, long){
+      return $http.get('/api/points/' + radius + '/' + lat + '/' + long);
+    };
+  }])
+
+.service("UserService", ['$http', function($http){
+
+// LOGIN
+    this.login = function(auth) {
+      return $http.post('/login', {
+        auth : auth
+      });
+    };
+// REGISTER
+    this.signUp = function(register) {
+      return $http.post('/register', {
+        register : register
+      });
+    };
+// LOGOUT
+    this.logout = function(){
+      return $http.get('/logout');
+    };
+
+//AUTHORIZATION STATUS
+    this.authStatus = function(){
+      return $http.get('/authStatus');
+    };
+
 }]);
 
