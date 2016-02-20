@@ -1,5 +1,6 @@
-'use strict';
-
+// 'use strict';
+var db                  = require('./../models');
+var Point               = db.Point;
 module.exports = {
   up: function (queryInterface, Sequelize) {
     /*
@@ -12,7 +13,12 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    var bikeShares = require('./../www/assets/bikeShare.js');
+    var bikeShares = require('./../www/assets/bikeShare.js').features;
+    var toInsert = [];
+    for(var i=0; i<bikeShares.length; i++){
+      toInsert.push(bikeShares[i].properties);
+    }
+    return Point.bulkCreate(toInsert);
   },
 
   down: function (queryInterface, Sequelize) {
@@ -23,5 +29,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('Person', null, {});
     */
+    return queryInterface.bulkDelete('Point', null, {});
   }
 };

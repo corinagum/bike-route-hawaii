@@ -11,6 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     lat : DataTypes.FLOAT,
     long : DataTypes.FLOAT,
     geolink : DataTypes.STRING,
+    sitelink : DataTypes.STRING,
     photolink : DataTypes.STRING
   // }, {
   //   classMethods: {
