@@ -45,21 +45,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.gallery', {
+      url: '/gallery',
       views: {
-        'tab-chats': {
+        'tab-gallery': {
           templateUrl: 'templates/tab-gallery.html',
           controller: 'GalleryCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.gallery-detail', {
+      url: '/gallery/:galleryId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-gallery': {
+          templateUrl: 'templates/gallery-detail.html',
+          controller: 'GalleryDetailCtrl'
         }
       }
     })
