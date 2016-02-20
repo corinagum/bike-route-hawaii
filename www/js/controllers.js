@@ -62,7 +62,7 @@ angular.module('starter.controllers', [])
     .on('ready', function(){
       map.fitBounds(historyLayer.getBounds());
       historyLayer.eachLayer(function(history){
-        console.log(history.feature.properties);
+        // console.log(history.feature.properties);
         history.setIcon(L.ExtraMarkers.icon({
           icon: 'fa-camera',
           markerColor: 'yellow',
@@ -104,7 +104,7 @@ angular.module('starter.controllers', [])
 
       function onLocationFound(data) {
         var radius = data.accuracy / 2;
-        console.log("fullData", data);
+        // console.log("fullData", data);
 
         L.marker(data.latlng).addTo(map)
           .bindPopup("You are within " + radius + " meters from this point").openPopup();
