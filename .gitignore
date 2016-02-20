@@ -1,4 +1,4 @@
-.DS_Store
+ga.DS_Store
 node_modules
 *.sw[mnpcod]
 *.log
@@ -26,7 +26,7 @@ temp
 dist
 
 .idea
-platforms/
+platforms/*
 .versions
 www.zip
 # Coverage directory used by tools like istanbul
