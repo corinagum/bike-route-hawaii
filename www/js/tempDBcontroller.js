@@ -22,4 +22,18 @@ angular.module('starter.controller', [])
         });
     };
 
+<<<<<<< HEAD
+=======
+    var geoJSONHistory;
+    var geoJSONBikeShare;
+
+    $scope.getPointsInRadius = function(radius, lat, long){
+      PointService.getPointsInRadius(radius, lat, long)
+        .then(function(data){
+          geoJSONHistory = data.geoJSONHistory;
+          geoJSONBikeShare = data.geoJSONBikeShare;
+        });
+    };
+
+>>>>>>> development
   }]);

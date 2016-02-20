@@ -70,13 +70,39 @@ router.delete('/:id', function(req, res){
 
 router.get('/within/:meters/:lat/:long', function(req, res){
   db.sequelize.query('SELECT *, earth_distance(ll_to_earth( ' + req.params.lat +
-    ',' + req.params.long + '  ), ll_to_earth(lat,long)) as distance_from_current_location FROM "Points" WHERE earth_box(ll_to_earth(' +
-    req.params.lat +',' + req.params.long + '), ' + 'earth_distance(ll_to_earth( ' + req.params.lat +
-    ',' + req.params.long + '  ), ll_to_earth(lat,long))' + ') @> ll_to_earth(lat, long);')
-  .spread(function(results, metadata){
+    ',' + req.params.long + '  ), ll_to_earth(lat,long)) as distance_from_current_location FROM "Points" WHERE (earth_box(ll_to_earth(' +
+    req.params.lat +',' + req.params.long + '), ' + req.params.meters + ') @> ll_to_earth(lat, long)) ORDER BY distance_from_current_location ASC;')
+  .spread(function(data, metadata){
+    var geoJSONHistory = {
+      "type" : "FeatureCollection",
+      "features" : []
+    };
+    var geoJSONBikeShare = {
+      "type" : "FeatureCollection",
+      "features" : []
+    };
+    for(var i=0; i<data.length; i++){
+      var point = {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ data[i].long, data[i].lat, 0]
+        },
+        "properties" : data[i]
+      };
+      if(data[i].type === "OldHawaiiImage"){
+        geoJSONHistory.features.push(point);
+      }
+      if(data[i].type === "BikeShare"){
+        geoJSONBikeShare.features.push(point);
+      }
+
+    }
     res.send({
       success : true,
-      results : results
+      numberOfResults : data.length,
+      geoJSONHistory : geoJSONHistory,
+      geoJSONBikeShare : geoJSONBikeShare
     });
   });
 });
