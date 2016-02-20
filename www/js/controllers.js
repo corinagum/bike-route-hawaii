@@ -101,19 +101,21 @@ angular.module('starter.controllers', [])
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
     }).addTo(map);
     map.addControl(new L.Control.ZoomMin());
+
 // DISPLAY BIKESHARE STATION MARKERS
   var stationLayer = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
-    .on('ready', function(){
+    .on('ready', function(layers){
       map.fitBounds(stationLayer.getBounds());
       stationLayer.eachLayer(function(station){
         station.setIcon(L.ExtraMarkers.icon({
-        icon: 'fa-bicycle',
-        markerColor: 'green-light',
-        shape: 'circle',
-        prefix: 'fa'
-      }));
+          icon: 'fa-bicycle',
+          markerColor: 'green-light',
+          shape: 'circle',
+          prefix: 'fa'
+        }));
         station.bindPopup(station.feature.properties.name);
       });
+
     }).addTo(map);
 
 // DISPLAY HISTORY SAMPLE
@@ -140,15 +142,26 @@ angular.module('starter.controllers', [])
     }).addTo(map)
       .on('dragend', function(event) {
 
-        var filterCircle = L.circle(L.latLng(userPoint.getLatLng()), RADIUS, {
-            opacity: 1,
-            weight: 1,
-            fillOpacity: 0.4,
-            clickable: false
-        }).addTo(map);
+      omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
+          .on('ready', function(layers){
+            map.fitBounds(stationLayer.getBounds());
+            stationLayer.eachLayer(function(station){
+              station.setIcon(L.ExtraMarkers.icon({
+                icon: 'fa-bicycle',
+                markerColor: 'green-light',
+                shape: 'circle',
+                prefix: 'fa'
+              }));
+              station.bindPopup(station.feature.properties.name);
+              console.log("STATIONLAYER", station._latlng);
+            });
+          });
       console.log("consoleLoggingLATTTTYYYY", userPoint.getLatLng());
       });
 
+      function addAllStations () {
+
+      }
     var overlayStations = {
       "Bike Stations": stationLayer,
       "Sites" : historyLayer
