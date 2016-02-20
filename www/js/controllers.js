@@ -127,9 +127,27 @@ angular.module('starter.controllers', [])
           shape : 'star',
           prefix : 'fa'
         }));
-        history.bindPopup(history.feature.properties.name);
+        history.bindPopup({
+          NAME : history.feature.properties.name
+        });
       });
     });
+    var RADIUS = 600;
+
+    //set a marker just for user's lnglat
+    var userPoint = new L.marker([21.30816692233928,-157.81598567962646], {
+      draggable : true
+    }).addTo(map)
+      .on('dragend', function(event) {
+
+        var filterCircle = L.circle(L.latLng(userPoint.getLatLng()), RADIUS, {
+            opacity: 1,
+            weight: 1,
+            fillOpacity: 0.4,
+            clickable: false
+        }).addTo(map);
+      console.log("consoleLoggingLATTTTYYYY", userPoint.getLatLng());
+      });
 
     var overlayStations = {
       "Bike Stations": stationLayer,
