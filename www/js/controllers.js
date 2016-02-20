@@ -31,16 +31,77 @@ angular.module('starter.controllers', [])
 .controller('MapCtrl', ['RouteService', 'UserService', '$scope', '$ionicLoading', '$compile', function(RouteService, UserService, $scope, $ionicLoading, $compile) {
 
     //to set default view map
-    var map = L.map('map').locate({
+    var map = L.map('map', {
+      zoomControl: false
+    }).locate({
       setView : true,
       maxZoom : 14
+    });
+    // NEW ZOOM MENU
+    L.Control.ZoomMin = L.Control.Zoom.extend({
+      options: {
+        position: "topleft",
+        zoomInText: "+",
+        zoomInTitle: "Zoom in",
+        zoomOutText: "-",
+        zoomOutTitle: "Zoom out",
+        zoomFindMe: "<i class='fa fa-map-marker'></i>",
+        zoomFindMeTitle: "Find me"
+      },
+
+      onAdd: function (map) {
+        var zoomName = "leaflet-control-zoom",
+        container = L.DomUtil.create("div", zoomName + " leaflet-bar"),
+        options = this.options;
+
+        this._map = map;
+
+        this._zoomInButton = this._createButton(options.zoomInText, options.zoomInTitle,
+         zoomName + '-in', container, this._zoomIn, this);
+
+        this._zoomOutButton = this._createButton(options.zoomOutText, options.zoomOutTitle,
+         zoomName + '-out', container, this._zoomOut, this);
+
+        this._zoomFindMeButton = this._createButton(options.zoomFindMe, options.zoomFindMeTitle,
+         zoomName + '-me', container, this._zoomMe, this);
+
+        this._updateDisabled();
+        map.on('zoomend zoomlevelschange', this._updateDisabled, this);
+
+        return container;
+      },
+
+      _zoomMe: function () {
+        $scope.centerOnMe();
+      },
+
+      _updateDisabled: function () {
+        var map = this._map,
+        className = "leaflet-disabled";
+
+        L.DomUtil.removeClass(this._zoomInButton, className);
+        L.DomUtil.removeClass(this._zoomOutButton, className);
+        L.DomUtil.removeClass(this._zoomFindMeButton, className);
+
+        if (map._zoom === map.getMinZoom()) {
+          L.DomUtil.addClass(this._zoomOutButton, className);
+        }
+
+        if (map._zoom === map.getMaxZoom()) {
+          L.DomUtil.addClass(this._zoomInButton, className);
+        }
+
+        if (map._zoom === map.getMinZoom()) {
+          L.DomUtil.addClass(this._zoomFindMeButton, className);
+        }
+      }
     });
 
     var defaultTile = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 
     }).addTo(map);
-
+    map.addControl(new L.Control.ZoomMin());
 // DISPLAY BIKESHARE STATION MARKERS
   var stationLayer = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
     .on('ready', function(){
@@ -61,7 +122,6 @@ angular.module('starter.controllers', [])
     .on('ready', function(){
       map.fitBounds(historyLayer.getBounds());
       historyLayer.eachLayer(function(history){
-        // console.log(history.feature.properties);
         history.setIcon(L.ExtraMarkers.icon({
           icon: 'fa-camera',
           markerColor: 'yellow',
@@ -102,7 +162,6 @@ angular.module('starter.controllers', [])
 
       function onLocationFound(data) {
         var radius = data.accuracy / 2;
-        // console.log("fullData", data);
 
         L.marker(data.latlng).addTo(map)
           .bindPopup("You are within " + radius + " meters from this point").openPopup();
