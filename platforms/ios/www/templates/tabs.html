@@ -5,7 +5,7 @@
       </ion-nav-back-button>
 
       <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        <button class="button button-icon ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>
@@ -15,7 +15,12 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
-<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+<!-- <ion-content class="has-header">
+  <div class="topButtons">
+    <button class="icon ion-social-twitter button button-positive"></button>
+  </div> -->
+
+  <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
   <ion-tab title="Gallery View" icon-off="ion-grid" icon-on="ion-grid" href="#/tab/gallery">
     <ion-nav-view name="tab-gallery"></ion-nav-view>
@@ -25,11 +30,12 @@ navigation history that also transitions its views in and out.
     <ion-nav-view name="tab-home"></ion-nav-view>
   </ion-tab>
 
-</ion-tabs>
+  </ion-tabs>
+<!-- </ion-content> -->
 
 <!-- left side menu -->
 
-<ion-nav-buttons side="left">
+<ion-nav-buttons side="right">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
