@@ -27,10 +27,37 @@ router.post('/', function(req,res){
     geolink :req.body.point.geolink,
     photolink :req.body.point.photolink
   })
-  .then(function(point){
+  .then(function(data){
+    var geoJSONHistory = {
+      "type" : "FeatureCollection",
+      "features" : []
+    };
+    var geoJSONBikeShare = {
+      "type" : "FeatureCollection",
+      "features" : []
+    };
+    for(var i=0; i<data.length; i++){
+      var point = {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ data[i].long, data[i].lat, 0]
+        },
+        "properties" : data[i]
+      };
+      if(data[i].type === "OldHawaiiImage"){
+        geoJSONHistory.features.push(point);
+      }
+      if(data[i].type === "BikeShare"){
+        geoJSONBikeShare.features.push(point);
+      }
+
+    }
     res.send({
-      success: true,
-      message : "Created new point"
+      success : true,
+      numberOfResults : data.length,
+      geoJSONHistory : geoJSONHistory,
+      geoJSONBikeShare : geoJSONBikeShare
     });
   });
 });
