@@ -97,13 +97,18 @@ angular.module('starter.controllers', [])
       }
     });
 
+    // MAP TILES
     var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
         maxZoom: 20,
         subdomains:['mt0','mt1','mt2','mt3']
     });
-
-    var defaultTile = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+    var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+    });
+    var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
     }).addTo(map);
     map.addControl(new L.Control.ZoomMin());
 
@@ -126,19 +131,19 @@ angular.module('starter.controllers', [])
         });
       });
     });
+
     var RADIUS = 600;
 
-    //set a marker just for user's lnglat
+    //OUR MOCK "USER LOCATION"
     var userPoint = new L.marker([21.30816692233928,-157.81598567962646], {
       draggable : true
     }).addTo(map)
       .on('dragend', function(event) {
         addAllStations();
-
-      console.log("consoleLoggingLATTTTYYYY", userPoint.getLatLng());
+          console.log("consoleLoggingLATTTTYYYY", userPoint.getLatLng());
       });
 
-      //global function to view every station marker
+      //GLOBAL FUNCTION TO LOAD EVERY STATION MARKER
       function addAllStations () {
         var listStations = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
         .on('ready', function(layers){
@@ -155,20 +160,24 @@ angular.module('starter.controllers', [])
         });
         return listStations;
       }
-    var tileOptions = {
-      "Street" : defaultTile,
-      "Satellite" : googleSat
-    };
 
+    // USER'S VIEW OPTIONS
+    var tileOptions = {
+      "Street" : googleStreets,
+      "Satellite" : googleSat,
+      "Hybrid" : googleHybrid
+    };
     var overlayStations = {
       "Bike Stations": stationLayer,
       "Sites" : historyLayer
     };
+
+    //THIS CREATES THE LAYER ICON PROVIDED BY LEAFLET
     L.control.layers(tileOptions, overlayStations).addTo(map);
 
     $scope.map = map;
 
-    //to locate user's location
+    //TO LOCATE USER'S LOCATION
     $scope.centerOnMe = function() {
       if (!$scope.map) {
          return;
