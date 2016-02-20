@@ -80,10 +80,6 @@ angular.module('starter.controllers', [])
           NAME : history.feature.properties.name
         });
       });
-<<<<<<< HEAD
-    })
-    .addTo(map);
-=======
     });
 
     var RADIUS = 600;
@@ -141,7 +137,6 @@ angular.module('starter.controllers', [])
 
     //THIS CREATES THE LAYER ICON PROVIDED BY LEAFLET
     L.control.layers(tileOptions, overlayStations).addTo(map);
->>>>>>> 3a2e69a4e8c0e544035c2da67345dd570caf4e0c
 
     $scope.map = map;
 
