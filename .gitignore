@@ -28,6 +28,6 @@ dist
 .idea
 platforms/
 .versions
-
+www.zip
 # Coverage directory used by tools like istanbul
 coverage/
