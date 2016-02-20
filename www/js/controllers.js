@@ -33,12 +33,13 @@ angular.module('starter.controllers', [])
     //to set default view map
     var map = L.map('map').locate({
       setView : true,
-      maxZoom : 16
+      maxZoom: 20
+    }, function(){
+      console.log("consoleLogging");
     });
 
     var defaultTile = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
-
     }).addTo(map);
 
 // DISPLAY BIKESHARE STATION MARKERS
@@ -54,15 +55,14 @@ angular.module('starter.controllers', [])
       }));
         station.bindPopup(station.feature.properties.name);
       });
-    })
-    .addTo(map);
+    });
 
 // DISPLAY HISTORY SAMPLE
   var historyLayer = omnivore.kml('./assets/Images_of_Old_Hawaii-Sample.kml')
     .on('ready', function(){
       map.fitBounds(historyLayer.getBounds());
       historyLayer.eachLayer(function(history){
-        console.log(history.feature.properties);
+        // console.log(history.feature.properties);
         history.setIcon(L.ExtraMarkers.icon({
           icon: 'fa-camera',
           markerColor: 'yellow',
@@ -71,8 +71,7 @@ angular.module('starter.controllers', [])
         }));
         history.bindPopup(history.feature.properties.name);
       });
-    })
-    .addTo(map);
+    });
 
     var overlayStations = {
       "Bike Stations": stationLayer,
@@ -104,7 +103,7 @@ angular.module('starter.controllers', [])
 
       function onLocationFound(data) {
         var radius = data.accuracy / 2;
-        console.log("fullData", data);
+        // console.log("fullData", data);
 
         L.marker(data.latlng).addTo(map)
           .bindPopup("You are within " + radius + " meters from this point").openPopup();
@@ -140,8 +139,8 @@ angular.module('starter.controllers', [])
    };
 
    $scope.trackUserRoute = function(){
-    console.log(map.locate({setView: false}));
-    console.log('this fired');
+    // console.log(map.locate({setView: false}));
+    // console.log('this fired');
 
    };
 
