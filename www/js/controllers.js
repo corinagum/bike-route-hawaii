@@ -115,28 +115,6 @@ angular.module('starter.controllers', [])
 
       map.on('locationfound', onLocationFound);
 
-      /////////// testing tracker
-
-    //   function setGeolocation() {
-    // var geolocation = window.navigator.geolocation.getCurrentPosition(
-    //     function ( position ) {
-    //         latitude = position.coords.latitude;
-    //         longitude = position.coords.longitude;
-    //         accuracy = position.coords.accuracy;
-    //         console.log('lat: ' + latitude + ', '+ 'lng: ' + longitude + ', '+ 'accuracy: ' + accuracy);
-    //     },
-    //     function () { /*error*/ }, {
-    //         maximumAge: 250,
-    //         enableHighAccuracy: true
-    //     }
-    // );}
-
-    //   setInterval(function(){
-    //     setGeolocation();
-    //     // locate({setView: false});
-    //     // console.log("New Location");
-    //     // console.log(map.locate({setView: false}));
-    //   }, 6000);
    };
 
    $scope.trackUserRoute = function(){
