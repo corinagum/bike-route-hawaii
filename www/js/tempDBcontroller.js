@@ -22,6 +22,8 @@ angular.module('starter.controller', [])
         });
     };
 
+<<<<<<< HEAD
+=======
     var geoJSONHistory;
     var geoJSONBikeShare;
 
@@ -33,4 +35,5 @@ angular.module('starter.controller', [])
         });
     };
 
+>>>>>>> development
   }]);
