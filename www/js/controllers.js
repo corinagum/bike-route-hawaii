@@ -38,7 +38,6 @@ angular.module('starter.controllers', [])
 
     var defaultTile = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
-
     }).addTo(map);
 
 // DISPLAY BIKESHARE STATION MARKERS
@@ -78,7 +77,6 @@ angular.module('starter.controllers', [])
     };
     L.control.layers(null, overlayStations).addTo(map);
 
-
     $scope.map = map;
 
     //to locate user's location
@@ -116,8 +114,8 @@ angular.module('starter.controllers', [])
    };
 
    $scope.trackUserRoute = function(){
-    console.log(map.locate({setView: false}));
-    console.log('this fired');
+    // console.log(map.locate({setView: false}));
+    // console.log('this fired');
 
    };
 
