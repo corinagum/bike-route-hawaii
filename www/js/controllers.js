@@ -113,7 +113,19 @@ angular.module('starter.controllers', [])
     map.addControl(new L.Control.ZoomMin());
 
 // DISPLAY BIKESHARE STATION MARKERS
-  var stationLayer = addAllStations().addTo(map);
+  var stationLayer = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
+        .on('ready', function(layers){
+          // map.fitBounds(stationLayer.getBounds());
+          stationLayer.eachLayer(function(station){
+            station.setIcon(L.ExtraMarkers.icon({
+              icon: 'fa-bicycle',
+              markerColor: 'green-light',
+              shape: 'circle',
+              prefix: 'fa'
+            }));
+            station.bindPopup(station.feature.properties.name);
+          });
+        }).addTo(map);
 
 // DISPLAY HISTORY SAMPLE
   var historyLayer = omnivore.kml('./assets/Images_of_Old_Hawaii-Sample.kml')
@@ -134,32 +146,45 @@ angular.module('starter.controllers', [])
 
     var RADIUS = 600;
 
+    var filterCircle = L.circle(L.latLng(40, -75), RADIUS, {
+        opacity: 1,
+        weight: 1,
+        fillOpacity: 0.4
+    }).addTo(map);
+
     //OUR MOCK "USER LOCATION"
     var userPoint = new L.marker([21.30816692233928,-157.81598567962646], {
       draggable : true
     }).addTo(map)
       .on('dragend', function(event) {
-        addAllStations();
-          console.log("consoleLoggingLATTTTYYYY", userPoint.getLatLng());
+        console.log("consoleLoggingLATTTTYYYY", userPoint.getLatLng());
       });
 
+      //TO VISUALIZE 600 MILE RADIUS OF USER'S LOCATION
+      L.circle([userPoint.getLatLng().lat, userPoint.getLatLng().lng], 600, {
+        color: 'red',
+        weight: 3,
+        fillColor: '#f03',
+        fillOpacity: 0.2
+      }).addTo(map);
+
       //GLOBAL FUNCTION TO LOAD EVERY STATION MARKER
-      function addAllStations () {
-        var listStations = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
-        .on('ready', function(layers){
-          // map.fitBounds(listStations.getBounds());
-          listStations.eachLayer(function(station){
-            station.setIcon(L.ExtraMarkers.icon({
-              icon: 'fa-bicycle',
-              markerColor: 'green-light',
-              shape: 'circle',
-              prefix: 'fa'
-            }));
-            station.bindPopup(station.feature.properties.name);
-          });
-        });
-        return listStations;
-      }
+      // function addAllStations () {
+      //   var listStations = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
+      //   .on('ready', function(layers){
+      //     // map.fitBounds(listStations.getBounds());
+      //     listStations.eachLayer(function(station){
+      //       station.setIcon(L.ExtraMarkers.icon({
+      //         icon: 'fa-bicycle',
+      //         markerColor: 'green-light',
+      //         shape: 'circle',
+      //         prefix: 'fa'
+      //       }));
+      //       station.bindPopup(station.feature.properties.name);
+      //     });
+      //   });
+      //   return listStations;
+      // }
 
     // USER'S VIEW OPTIONS
     var tileOptions = {
