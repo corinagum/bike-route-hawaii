@@ -33,9 +33,7 @@ angular.module('starter.controllers', [])
     //to set default view map
     var map = L.map('map').locate({
       setView : true,
-      maxZoom: 20
-    }, function(){
-      console.log("consoleLogging");
+      maxZoom : 14
     });
 
     var defaultTile = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -55,7 +53,7 @@ angular.module('starter.controllers', [])
       }));
         station.bindPopup(station.feature.properties.name);
       });
-    });
+    }).addTo(map);
 
 // DISPLAY HISTORY SAMPLE
   var historyLayer = omnivore.kml('./assets/Images_of_Old_Hawaii-Sample.kml')
@@ -78,7 +76,6 @@ angular.module('starter.controllers', [])
       "Sites" : historyLayer
     };
     L.control.layers(null, overlayStations).addTo(map);
-
 
     $scope.map = map;
 
