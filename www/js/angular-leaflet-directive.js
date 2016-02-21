@@ -5164,6 +5164,7 @@ angular.module('leaflet-directive')
   var errorHeader = leafletHelpers.errorHeader;
 
   var EventsHelper = function(rootBroadcastName, lObjectType) {
+    console.log('okay');
     this.rootBroadcastName = rootBroadcastName;
     $log.debug('LeafletEventsHelpersFactory: lObjectType: ' + lObjectType + 'rootBroadcastName: ' + rootBroadcastName);
 
@@ -5467,13 +5468,14 @@ angular.module('leaflet-directive')
   };
 
   var _genDispatchMapEvent = function(scope, eventName, logic, maybeMapId) {
-    if (maybeMapId)
+    if (maybeMapId){
       maybeMapId = maybeMapId + '.';
+    }
+
     return function(e) {
       // Put together broadcast name
       var broadcastName = 'leafletDirectiveMap.' + maybeMapId + eventName;
       $log.debug(broadcastName);
-
       // Safely broadcast the event
       fire(scope, broadcastName, logic, e, e.target, scope);
     };
