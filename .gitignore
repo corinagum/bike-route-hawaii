@@ -24,7 +24,7 @@ components/
 tmp
 temp
 dist
-
+platforms/
 .idea
 .versions
 www.zip
