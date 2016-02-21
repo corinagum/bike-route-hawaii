@@ -28,7 +28,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('MapCtrl', ['RouteService', 'UserService', '$scope', '$ionicLoading', '$compile', function(RouteService, UserService, $scope, $ionicLoading, $compile) {
+.controller('MapCtrl', ['RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', function(RouteService, UserService, PointService, $scope, $ionicLoading, $compile) {
 
     var map = L.map('map', {
       zoomControl: false
@@ -55,15 +55,48 @@ angular.module('starter.controllers', [])
       });
 
       $scope.coordinates = [];
+      $scope.radiusBikeShareLayer = null;
+      $scope.radiusHistoryLayer = null;
+
 
       function onLocationFound(data) {
         var radius = data.accuracy / 2;
 
-        L.marker(data.latlng).addTo(map)
+        L.marker(data.latlng)
+          .addTo(map)
           .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
         L.circle(data.latlng, radius).addTo(map);
         $ionicLoading.hide();
+
+        // TRYING TO SEND API REQUEST USING LATLNG FROM LOCATIONFOUND - NICK
+        console.log(data.latlng);
+        PointService.getPointsInRadius(1800,21.27081933812041,-157.81002044677734)
+          .then(function(data){
+            console.log(data.data.geoJSONBikeShare);
+            $scope.radiusBikeShareLayer = L.geoJson(data.data.geoJSONBikeShare, {
+              onEachFeature: function (feature, layer){
+                layer.bindPopup(feature.properties.description);
+                layer.setIcon(L.ExtraMarkers.icon({
+                  icon: 'fa-bicycle',
+                  markerColor: 'green-light',
+                  shape: 'circle',
+                  prefix: 'fa'
+                }));
+              }
+            }).addTo(map);
+            $scope.radiusHistoryLayer = L.geoJson(data.data.geoJSONHistory, {
+              onEachFeature: function (feature, layer){
+                layer.bindPopup(feature.properties.description);
+                layer.setIcon(L.ExtraMarkers.icon({
+                  icon: 'fa-camera',
+                  markerColor: 'yellow',
+                  shape : 'star',
+                  prefix : 'fa'
+                }));
+              }
+            }).addTo(map);
+          });
       }
 
       map.on('locationfound', onLocationFound);
@@ -105,6 +138,7 @@ angular.module('starter.controllers', [])
 
       _zoomMe: function () {
         $scope.centerOnMe();
+
       },
 
       _updateDisabled: function () {
@@ -143,45 +177,45 @@ angular.module('starter.controllers', [])
     map.addControl(new L.Control.ZoomMin());
 
 // DISPLAY BIKESHARE STATION MARKERS
-  var stationLayer = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
-        .on('ready', function(layers){
-          // map.fitBounds(stationLayer.getBounds());
-          stationLayer.eachLayer(function(station){
-            station.setIcon(L.ExtraMarkers.icon({
-              icon: 'fa-bicycle',
-              markerColor: 'green-light',
-              shape: 'circle',
-              prefix: 'fa'
-            }));
-            station.bindPopup(station.feature.properties.name);
-          });
-        }).addTo(map);
+  // var stationLayer = omnivore.kml('./assets/HI_Bikeshare_Priority_Stations.kml')
+  //       .on('ready', function(layers){
+  //         // map.fitBounds(stationLayer.getBounds());
+  //         stationLayer.eachLayer(function(station){
+  //           station.setIcon(L.ExtraMarkers.icon({
+  //             icon: 'fa-bicycle',
+  //             markerColor: 'green-light',
+  //             shape: 'circle',
+  //             prefix: 'fa'
+  //           }));
+  //           station.bindPopup(station.feature.properties.name);
+  //         });
+  //       }).addTo(map);
 
 // DISPLAY HISTORY SAMPLE
-  var historyLayer = omnivore.kml('./assets/Images_of_Old_Hawaii-Sample.kml')
-    .on('ready', function(){
-      map.fitBounds(historyLayer.getBounds());
-      historyLayer.eachLayer(function(history){
-        console.log(history.feature.properties);
-        history.setIcon(L.ExtraMarkers.icon({
-          icon: 'fa-camera',
-          markerColor: 'yellow',
-          shape : 'star',
-          prefix : 'fa'
-        }));
-        history.bindPopup({
-          NAME : history.feature.properties.name
-        });
-      });
-    });
+  // var historyLayer = omnivore.kml('./assets/Images_of_Old_Hawaii-Sample.kml')
+  //   .on('ready', function(){
+  //     map.fitBounds(historyLayer.getBounds());
+  //     historyLayer.eachLayer(function(history){
+  //       console.log(history.feature.properties);
+  //       history.setIcon(L.ExtraMarkers.icon({
+          // icon: 'fa-camera',
+          // markerColor: 'yellow',
+          // shape : 'star',
+          // prefix : 'fa'
+  //       }));
+  //       history.bindPopup({
+  //         NAME : history.feature.properties.name
+  //       });
+  //     });
+  //   });
 
-    var RADIUS = 600;
+  //   var RADIUS = 600;
 
-    var filterCircle = L.circle(L.latLng(40, -75), RADIUS, {
-        opacity: 1,
-        weight: 1,
-        fillOpacity: 0.4
-    }).addTo(map);
+  //   var filterCircle = L.circle(L.latLng(40, -75), RADIUS, {
+  //       opacity: 1,
+  //       weight: 1,
+  //       fillOpacity: 0.4
+  //   }).addTo(map);
 
     //OUR MOCK "USER LOCATION"
     var userPoint = new L.marker([21.30816692233928,-157.81598567962646], {
@@ -224,8 +258,9 @@ angular.module('starter.controllers', [])
       "Hybrid" : googleHybrid
     };
     var overlayStations = {
-      "Bike Stations": stationLayer,
-      "Sites" : historyLayer
+      // "Bike Stations": stationLayer,
+      // "Sites" : historyLayer
+      // "Radius" : $scope.radiusLayer
     };
 
     //THIS CREATES THE LAYER ICON PROVIDED BY LEAFLET

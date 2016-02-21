@@ -9,5 +9,11 @@
   "watchPatterns": [
     "www/**/*",
     "!www/lib/**/*"
+  ],
+  "proxies" : [
+    {
+      "path": "/",
+      "proxyUrl": "http://localhost:4000/"
+    }
   ]
 }
