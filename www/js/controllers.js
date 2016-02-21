@@ -131,15 +131,15 @@ angular.module('starter.controllers', [])
     });
 
     // MAP TILES
-    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}&key=AIzaSyCRYOhp0pZYVBkGDHeBfvFVLFQik7I4cs0',{
         maxZoom: 20,
         subdomains:['mt0','mt1','mt2','mt3']
-    });
-    var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+    }).addTo(map);
+    var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}&key=AIzaSyCRYOhp0pZYVBkGDHeBfvFVLFQik7I4cs0',{
         maxZoom: 20,
         subdomains:['mt0','mt1','mt2','mt3']
-    });
-    var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+    }).addTo(map);
+    var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&key=AIzaSyCRYOhp0pZYVBkGDHeBfvFVLFQik7I4cs0',{
         maxZoom: 20,
         subdomains:['mt0','mt1','mt2','mt3']
     }).addTo(map);

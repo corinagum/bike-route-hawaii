@@ -13,6 +13,7 @@
   <access origin="http://*.leafletjs.com" />
   <access origin="http://*.bootstrapcdn.com" />
   <access origin="http://*.mapbox.com" />
+  <access origin="https://ssl.gstatic.com" />
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
