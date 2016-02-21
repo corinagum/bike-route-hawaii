@@ -190,7 +190,6 @@ angular.module('starter.controllers', [])
       draggable : true
     }).addTo(map)
       .on('dragend', function(event) {
-        console.log("consoleLoggingLATTTTYYYY", userPoint.getLatLng());
       });
 
       //TO VISUALIZE 600 MILE RADIUS OF USER'S LOCATION
@@ -236,8 +235,7 @@ angular.module('starter.controllers', [])
     $scope.map = map;
 
    $scope.trackUserRoute = function(){
-    // console.log(map.locate({setView: false}));
-    // console.log('this fired');
+
 
    };
 
