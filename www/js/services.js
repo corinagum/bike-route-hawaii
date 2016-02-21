@@ -52,17 +52,17 @@ angular.module('starter.services', [])
 .service("PointService", ['$http', function($http) {
 
   this.getPoint = function() {
-    return $http.get('/api');
+    return $http.get('/api/points');
   };
 
   this.addPoint = function(point) {
-    return $http.post('/api', {
+    return $http.post('/api/points', {
       point : point
     });
   };
 
   this.editPoint = function(point) {
-    return $http.put('api', {
+    return $http.put('/api/points', {
       point : point
     });
   };
@@ -75,7 +75,6 @@ angular.module('starter.services', [])
     return $http.get('/api/points/within/' + radius + '/' + lat + '/' + long);
   };
 }])
-
 
 // CURRENTLY UNNEEDED DUE TO PIVOT
 .service("RouteService", ['$http', function ($http) {
@@ -122,34 +121,6 @@ angular.module('starter.services', [])
 
 }])
 
-.service("PointService", ['$http', function ($http) {
-  // START CRUD OPERATIONS \\
-// GET
-    this.getPoints = function() {
-      return $http.get('/api/points');
-    };
-// POST
-    this.addPoint = function(Point) {
-      return $http.post('/api/points', {
-        point: point
-      });
-    };
-// PUT
-    this.updatePoint = function(point) {
-      return $http.put(('/api/points' + point.id), {
-        point : point
-      });
-    };
-
-// DELETE
-    this.deletePoint = function(id) {
-      return $http.delete('/api/points' + id);
-    };
-
-    this.getPointsInRadius = function(radius, lat, long){
-      return $http.get('/api/points/' + radius + '/' + lat + '/' + long);
-    };
-  }])
 
 .service("UserService", ['$http', function($http){
 

@@ -28,64 +28,8 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('MapCtrl', ['RouteService', 'UserService', '$scope', '$ionicLoading', '$compile', function(RouteService, UserService, $scope, $ionicLoading, $compile) {
+.controller('MapCtrl', ['RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', function(RouteService, UserService, PointService, $scope, $ionicLoading, $compile) {
 
-//     // NEW ZOOM MENU
-    // L.Control.ZoomMin = L.Control.Zoom.extend({
-    //   options: {
-    //     position: "topleft",
-    //     zoomInText: "+",
-    //     zoomInTitle: "Zoom in",
-    //     zoomOutText: "-",
-    //     zoomOutTitle: "Zoom out",
-    //     zoomFindMe: "<i class='fa fa-map-marker'></i>",
-    //     zoomFindMeTitle: "Find me"
-    //   },
-    //   onAdd: function (map) {
-    //     var zoomName = "leaflet-control-zoom",
-    //     container = L.DomUtil.create("div", zoomName + " leaflet-bar"),
-    //     options = this.options;
-
-    //     this._map = map;
-
-    //     this._zoomInButton = this._createButton(options.zoomInText, options.zoomInTitle,
-    //      zoomName + '-in', container, this._zoomIn, this);
-
-    //     this._zoomOutButton = this._createButton(options.zoomOutText, options.zoomOutTitle,
-    //      zoomName + '-out', container, this._zoomOut, this);
-
-    //     this._zoomFindMeButton = this._createButton(options.zoomFindMe, options.zoomFindMeTitle,
-    //      zoomName + '-me', container, this._zoomMe, this);
-
-    //     this._updateDisabled();
-    //     map.on('zoomend zoomlevelschange', this._updateDisabled, this);
-
-    //     return container;
-    //   },
-    //   _zoomMe: function () {
-    //     $scope.centerOnMe();
-    //   },
-    //   _updateDisabled: function () {
-    //     var map = this._map,
-    //     className = "leaflet-disabled";
-
-    //     L.DomUtil.removeClass(this._zoomInButton, className);
-    //     L.DomUtil.removeClass(this._zoomOutButton, className);
-    //     L.DomUtil.removeClass(this._zoomFindMeButton, className);
-
-    //     if (map._zoom === map.getMinZoom()) {
-    //       L.DomUtil.addClass(this._zoomOutButton, className);
-    //     }
-
-    //     if (map._zoom === map.getMaxZoom()) {
-    //       L.DomUtil.addClass(this._zoomInButton, className);
-    //     }
-
-    //     if (map._zoom === map.getMinZoom()) {
-    //       L.DomUtil.addClass(this._zoomFindMeButton, className);
-    //     }
-    //   }
-    // });
   angular.extend($scope, {
      honolulu: {
          lat: 21.3,
@@ -118,5 +62,99 @@ angular.module('starter.controllers', [])
       console.log(leafEvent);
   });
 
-}]);
+      $scope.radiusBikeShareLayer = null;
+      $scope.radiusHistoryLayer = null;
 
+        // TRYING TO SEND API REQUEST USING LATLNG FROM LOCATIONFOUND - NICK
+        // PointService.getPointsInRadius(1800,21.27081933812041,-157.81002044677734)
+        //   .then(function(data){
+        //     $scope.radiusBikeShareLayer = L.geoJson(data.data.geoJSONBikeShare, {
+        //     onEachFeature: function (feature, layer){
+        //       layer.bindPopup(feature.properties.description);
+        //       layer.setIcon(L.ExtraMarkers.icon({
+        //         icon: 'fa-bicycle',
+        //         markerColor: 'green-light',
+        //         shape: 'circle',
+        //         prefix: 'fa'
+        //         }));
+        //       }
+        //     }).addTo(map);
+        //     $scope.radiusHistoryLayer = L.geoJson(data.data.geoJSONHistory, {
+        //       onEachFeature: function (feature, layer){
+        //         layer.bindPopup(feature.properties.description);
+        //         layer.setIcon(L.ExtraMarkers.icon({
+        //           icon: 'fa-camera',
+        //           markerColor: 'yellow',
+        //           shape : 'star',
+        //           prefix : 'fa'
+        //         }));
+        //       }
+        //     }).addTo(map);
+        //   });
+
+    // NEW ZOOM MENU
+    // L.Control.ZoomMin = L.Control.Zoom.extend({
+    //   options: {
+    //     position: "topleft",
+    //     zoomInText: "+",
+    //     zoomInTitle: "Zoom in",
+    //     zoomOutText: "-",
+    //     zoomOutTitle: "Zoom out",
+    //     zoomFindMe: "<i class='fa fa-map-marker'></i>",
+    //     zoomFindMeTitle: "Find me"
+    //   },
+
+    //   onAdd: function (map) {
+    //     var zoomName = "leaflet-control-zoom",
+    //     container = L.DomUtil.create("div", zoomName + " leaflet-bar"),
+    //     options = this.options;
+
+    //     this._map = map;
+
+    //     this._zoomInButton = this._createButton(options.zoomInText, options.zoomInTitle,
+    //      zoomName + '-in', container, this._zoomIn, this);
+
+    //     this._zoomOutButton = this._createButton(options.zoomOutText, options.zoomOutTitle,
+    //      zoomName + '-out', container, this._zoomOut, this);
+
+    //     this._zoomFindMeButton = this._createButton(options.zoomFindMe, options.zoomFindMeTitle,
+    //      zoomName + '-me', container, this._zoomMe, this);
+
+    //     this._updateDisabled();
+    //     map.on('zoomend zoomlevelschange', this._updateDisabled, this);
+
+    //     return container;
+    //   },
+
+    //   _zoomMe: function () {
+    //     $scope.centerOnMe();
+
+    //   },
+
+    //   _updateDisabled: function () {
+    //     var map = this._map,
+    //     className = "leaflet-disabled";
+
+    //     L.DomUtil.removeClass(this._zoomInButton, className);
+    //     L.DomUtil.removeClass(this._zoomOutButton, className);
+    //     L.DomUtil.removeClass(this._zoomFindMeButton, className);
+
+    //     if (map._zoom === map.getMinZoom()) {
+    //       L.DomUtil.addClass(this._zoomOutButton, className);
+    //     }
+
+    //     if (map._zoom === map.getMaxZoom()) {
+    //       L.DomUtil.addClass(this._zoomInButton, className);
+    //     }
+    //   }
+    // });
+
+
+
+    // USER'S VIEW OPTIONS
+    // var tileOptions = {
+    //   "Street" : googleStreets,
+    //   "Satellite" : googleSat,
+    //   "Hybrid" : googleHybrid
+    // };
+  }]);
