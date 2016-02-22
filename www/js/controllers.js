@@ -28,7 +28,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('MapCtrl', ['RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', function(RouteService, UserService, PointService, $scope, $ionicLoading, $compile) {
+.controller('MapCtrl', ['RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', function(RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData) {
 
   angular.extend($scope, {
      honolulu: {
@@ -53,13 +53,21 @@ angular.module('starter.controllers', [])
      },
      defaults: {
          scrollWheelZoom: false
+     },
+     center : {
+      autoDiscover : true
      }
   });
 
-
+  $scope.testCenter = function(){
+    leafletData.getMap().then(function(map){
+      map.locate();
+    });
+  };
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
       console.log(leafEvent);
+      $scope.center.autoDiscover = false;
   });
 
       $scope.radiusBikeShareLayer = null;

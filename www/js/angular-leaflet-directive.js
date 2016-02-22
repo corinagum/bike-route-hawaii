@@ -5164,7 +5164,6 @@ angular.module('leaflet-directive')
   var errorHeader = leafletHelpers.errorHeader;
 
   var EventsHelper = function(rootBroadcastName, lObjectType) {
-    console.log('okay');
     this.rootBroadcastName = rootBroadcastName;
     $log.debug('LeafletEventsHelpersFactory: lObjectType: ' + lObjectType + 'rootBroadcastName: ' + rootBroadcastName);
 
