@@ -59,7 +59,7 @@ angular.module('starter.controllers', [])
      }
   });
 
-  $scope.testCenter = function(){
+  $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
       map.locate();
     });
