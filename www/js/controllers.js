@@ -57,12 +57,16 @@ angular.module('starter.controllers', ['ngCordova'])
         });
       });
     } else {
-      console.log("cordova");
       $cordovaGeolocation
-          .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
+          .getCurrentPosition({timeout : 1000, enableHighAccuracy : true})
           .then(function (position) {
-            var lat  = position.coords.latitude;
-            var long = position.coords.longitude;
+            console.log("cordova");
+            if(map.panTo) {
+              map.panTo({
+                lat : position.coords.latitude,
+                lng : position.coords.longitude
+              });
+            }
             angular.extend($scope, {
                markers : {
                 userMarker : {
@@ -73,7 +77,7 @@ angular.module('starter.controllers', ['ngCordova'])
               }
             });
           }, function(err) {
-            // error
+            console.log(err);
           });
     }
   }
@@ -122,6 +126,8 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
+      console.log('map', map);
+      console.log(map.panTo);
       updateUserLocMarker(map);
     });
   };
