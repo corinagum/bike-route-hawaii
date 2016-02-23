@@ -28,7 +28,7 @@ angular.module('starter.controllers', ['ngCordova'])
   };
 })
 
-.controller('MapCtrl', ['RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function(RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
+.controller('MapCtrl', ['$http','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
      markers : {}
@@ -59,35 +59,33 @@ angular.module('starter.controllers', ['ngCordova'])
       });
     } else {
       $cordovaGeolocation
-          .getCurrentPosition({timeout : 1000, enableHighAccuracy : true})
-          .then(function (position) {
-            $ionicLoading.hide();
-
-            if(map.panTo) {
-              map.panTo({
-                lat : position.coords.latitude,
-                lng : position.coords.longitude
-              });
-            }
-            angular.extend($scope, {
-               markers : {
-                userMarker : {
-                  lat : position.coords.latitude,
-                  lng : position.coords.longitude,
-                  message : 'You are here'
-                }
-              }
+        .getCurrentPosition({timeout : 1000, enableHighAccuracy : true})
+        .then(function (position) {
+          if(map.panTo) {
+            map.panTo({
+              lat : position.coords.latitude,
+              lng : position.coords.longitude
             });
-          }, function(err) {
-            console.log(err);
+          }
+          angular.extend($scope, {
+             markers : {
+              userMarker : {
+                lat : position.coords.latitude,
+                lng : position.coords.longitude,
+                message : 'You are here'
+              }
+            }
           });
+        }, function(err) {
+          console.log(err);
+        });
     }
   }
   angular.extend($scope, {
     honolulu: {
       lat: 21.3,
-        ng: -157.8,
-        zoom: 13
+      ng: -157.8,
+      zoom: 13
     },
     events: {
       map : {
@@ -99,10 +97,10 @@ angular.module('starter.controllers', ['ngCordova'])
       baselayers: {
         osm: {
           name: 'OpenStreetMap',
-            url: 'https://{s}.tiles.mapbox.com/v3/examples.map-i875mjb7/{z}/{x}/{y}.png',
-              type: 'xyz'
-            }
+          url: 'https://{s}.tiles.mapbox.com/v3/examples.map-i875mjb7/{z}/{x}/{y}.png',
+          type: 'xyz'
         }
+      }
     },
     defaults: {
       scrollWheelZoom: false
@@ -141,7 +139,8 @@ angular.module('starter.controllers', ['ngCordova'])
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
       lng : leafEvent.longitude,
-      message : 'You are here'
+      message : 'You are here',
+      zoom : 13
     };
 
     PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
@@ -169,7 +168,7 @@ angular.module('starter.controllers', ['ngCordova'])
   //SPINNER ONLOAD ANIMATION
   $scope.show = function() {
     $ionicLoading.show({
-      template: '<p>Loading...</p><ion-spinner></ion-spinner>'
+      template: '<p>Loading please wait suckaaas!...</p><ion-spinner></ion-spinner>'
     });
   };
   $scope.hide = function(){
@@ -177,6 +176,7 @@ angular.module('starter.controllers', ['ngCordova'])
   };
 
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
+
       var leafEvent = args.leafletEvent;
       $scope.center.autoDiscover = false;
 
