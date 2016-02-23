@@ -60,7 +60,7 @@ angular.module('starter.controllers', ['ngCordova'])
       });
     } else {
       $cordovaGeolocation
-        .getCurrentPosition({timeout : 1000, enableHighAccuracy : true})
+        .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
         .then(function (position) {
           $scope.show($ionicLoading);
           if(map.panTo) {
