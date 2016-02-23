@@ -38,7 +38,6 @@ angular.module('starter.controllers', ['ngCordova'])
   function updateUserLocMarker (map) {
 
     if(!isCordovaApp) {
-      // DO WE NEED TO ADD A TIMEOUT? SEE LINE 62
       navigator.geolocation.getCurrentPosition(function(position){
       $ionicLoading.hide();
 
@@ -48,15 +47,16 @@ angular.module('starter.controllers', ['ngCordova'])
             lng : position.coords.longitude
           });
         }
-        angular.extend($scope, {
-          markers : {
-            userMarker : {
-              lat : position.coords.latitude,
-              lng : position.coords.longitude,
-              message : 'You are here'
-            }
-          }
-        });
+        $scope.markers.userMarker = {
+          lat : position.coords.latitude,
+          lng : position.coords.longitude,
+          message : 'You are here'
+        };
+      }, function(err){
+        console.log(err);
+      }, {
+        timeout : 10000,
+        enableHighAccuracy : true
       });
     } else {
       $cordovaGeolocation
@@ -69,15 +69,11 @@ angular.module('starter.controllers', ['ngCordova'])
               lng : position.coords.longitude
             });
           }
-          angular.extend($scope, {
-             markers : {
-              userMarker : {
-                lat : position.coords.latitude,
-                lng : position.coords.longitude,
-                message : 'You are here'
-              }
-            }
-          });
+          $scope.markers.userMarker = {
+          lat : position.coords.latitude,
+          lng : position.coords.longitude,
+          message : 'You are here'
+        };
         }, function(err) {
           console.log(err);
         });
@@ -117,7 +113,7 @@ angular.module('starter.controllers', ['ngCordova'])
       prefix: 'fa',
       shape: 'circle'
     },
-    HistoryIcon: {
+    historyIcon: {
       type: 'extraMarker',
       icon: 'fa-camera',
       markerColor: 'yellow',
@@ -153,7 +149,7 @@ angular.module('starter.controllers', ['ngCordova'])
           };
         }
         for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
-          var historyNum = 'history' + i;
+          var historyNum = 'history' + j;
           $scope.markers[historyNum] = {
             lat : data.data.geoJSONHistory.features[j].properties.lat,
             lng : data.data.geoJSONHistory.features[j].properties.long,
@@ -167,7 +163,7 @@ angular.module('starter.controllers', ['ngCordova'])
   //SPINNER ONLOAD ANIMATION
   $scope.show = function() {
     $ionicLoading.show({
-      template: '<p>Loading...</p><ion-spinner icon="spiral"></ion-spinner>'
+      template: '<p>Loading, please wait...</p><ion-spinner icon="spiral"></ion-spinner>'
     });
   };
   $scope.hide = function(){
@@ -175,7 +171,6 @@ angular.module('starter.controllers', ['ngCordova'])
   };
 
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
-    console.log("consoleLogging");
       var leafEvent = args.leafletEvent;
       $scope.center.autoDiscover = false;
 
