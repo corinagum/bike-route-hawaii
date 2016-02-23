@@ -31,10 +31,14 @@ angular.module('starter.controllers', ['ngCordova'])
 .controller('MapCtrl', ['RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function(RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   console.log(isCordovaApp);
+  angular.extend($scope, {
+     markers : {}
+  });
   document.addEventListener("deviceready", updateUserLocMarker, false);
   function updateUserLocMarker (map) {
 
     if(!isCordovaApp) {
+      console.log("not cordova");
       navigator.geolocation.getCurrentPosition(function(position){
         if(map) {
           map.panTo({
@@ -53,6 +57,7 @@ angular.module('starter.controllers', ['ngCordova'])
         });
       });
     } else {
+      console.log("cordova");
       $cordovaGeolocation
           .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
           .then(function (position) {
@@ -125,7 +130,12 @@ angular.module('starter.controllers', ['ngCordova'])
     var leafEvent = args.leafletEvent;
     console.log('locationfound', leafEvent);
     $scope.center.autoDiscover = false;
-    console.log('Honolulu', $scope.honolulu);
+    $scope.markers.userMarker = {
+      lat : leafEvent.latitude,
+      lng : leafEvent.longitude,
+      message : 'You are here'
+    };
+
     PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){

@@ -1,7 +1,6 @@
 {
   "name": "bike-route-hawaii",
-  "app_id": "5dcc65b2",
-
+  "app_id": "afd95df1",
   "gulpStartupTasks": [
     "sass",
     "watch"
@@ -10,10 +9,10 @@
     "www/**/*",
     "!www/lib/**/*"
   ],
-  "proxies" : [
+  "proxies": [
     {
-      "path" : "/",
-      "proxyUrl" : "http://localhost:4000/"
+      "path" : "/api/points",
+      "proxyUrl" : "http://localhost:4000/api/points"
     }
   ]
 }
