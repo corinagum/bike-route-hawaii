@@ -28,7 +28,7 @@ angular.module('starter.controllers', ['ngCordova'])
   };
 })
 
-.controller('MapCtrl', ['RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function(RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
+.controller('MapCtrl', ['$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
      markers : {}
@@ -137,7 +137,7 @@ angular.module('starter.controllers', ['ngCordova'])
       message : 'You are here'
     };
 
-    PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
+    PointService.getPointsInRadius(18000, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
           var bikeNum = 'bike' + i;
@@ -162,4 +162,35 @@ angular.module('starter.controllers', ['ngCordova'])
       var leafEvent = args.leafletEvent;
       $scope.center.autoDiscover = false;
   });
+
+//////// BEGINNIG of MODAL ////////
+
+$ionicModal.fromTemplateUrl('filter-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
+  //////// END of MODAL ////////
+
+
+
   }]);
