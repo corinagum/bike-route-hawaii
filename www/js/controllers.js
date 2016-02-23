@@ -83,7 +83,7 @@ angular.module('starter.controllers', ['ngCordova'])
     },
     events: {
       map : {
-        enable : ['click', 'locationfound'],
+        enable : ['click', 'locationfound', 'dblclick', 'dragend', 'moveend', 'zoomend'],
         logic : 'broadcast'
       }
     },
@@ -134,7 +134,7 @@ angular.module('starter.controllers', ['ngCordova'])
       message : 'You are here'
     };
 
-    PointService.getPointsInRadius(18000, leafEvent.latitude, leafEvent.longitude)
+    PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
           var bikeNum = 'bike' + i;
@@ -167,11 +167,33 @@ angular.module('starter.controllers', ['ngCordova'])
   };
 
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
-    console.log("consoleLogging");
       var leafEvent = args.leafletEvent;
       $scope.center.autoDiscover = false;
-
   });
+
+  // $scope.$on('leafletDirectiveMap.map.moveend', function(event, args){
+  //     var leafEvent = args.leafletEvent;
+  //     $scope.center.autoDiscover = false;
+  //     console.log('move event', event);
+  //     console.log('move args', args);
+  // });
+
+  $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
+    var leafEvent = args.leafletEvent;
+    $scope.center.autoDiscover = false;
+    leafletData.getMap().then(function(map){
+      // $scope.show($ionicLoading);
+      console.log(map.getBounds());
+      map.getBounds();
+    });
+  });
+
+  // $scope.$on('leafletDirectiveMap.map.zoomend', function(event, args){
+  //     var leafEvent = args.leafletEvent;
+  //     $scope.center.autoDiscover = false;
+  //     console.log('zoom event', event);
+  //     console.log('zoom args', args);
+  // });
 
   //////// BEGINNIG of MODAL ////////
 
