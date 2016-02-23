@@ -152,41 +152,4 @@ angular.module('starter.controllers', ['ngCordova'])
       console.log(leafEvent);
       $scope.center.autoDiscover = false;
   });
-
-      $scope.radiusBikeShareLayer = null;
-      $scope.radiusHistoryLayer = null;
-
-        // TRYING TO SEND API REQUEST USING LATLNG FROM LOCATIONFOUND - NICK
-        // PointService.getPointsInRadius(1800,21.27081933812041,-157.81002044677734)
-        //   .then(function(data){
-        //     $scope.radiusBikeShareLayer = L.geoJson(data.data.geoJSONBikeShare, {
-        //     onEachFeature: function (feature, layer){
-        //       layer.bindPopup(feature.properties.description);
-        //       layer.setIcon(L.ExtraMarkers.icon({
-        //         icon: 'fa-bicycle',
-        //         markerColor: 'green-light',
-        //         shape: 'circle',
-        //         prefix: 'fa'
-        //         }));
-        //       }
-        //     }).addTo(map);
-        //     $scope.radiusHistoryLayer = L.geoJson(data.data.geoJSONHistory, {
-        //       onEachFeature: function (feature, layer){
-        //         layer.bindPopup(feature.properties.description);
-        //         layer.setIcon(L.ExtraMarkers.icon({
-        //           icon: 'fa-camera',
-        //           markerColor: 'yellow',
-        //           shape : 'star',
-        //           prefix : 'fa'
-        //         }));
-        //       }
-        //     }).addTo(map);
-        //   });
-
-    // USER'S VIEW OPTIONS
-    // var tileOptions = {
-    //   "Street" : googleStreets,
-    //   "Satellite" : googleSat,
-    //   "Hybrid" : googleHybrid
-    // };
   }]);
