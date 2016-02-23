@@ -128,6 +128,8 @@ angular.module('starter.controllers', ['ngCordova'])
     });
   };
 
+  $scope.radius = 1610;
+
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
@@ -138,7 +140,7 @@ angular.module('starter.controllers', ['ngCordova'])
       message : 'You are here'
     };
 
-    PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
+    PointService.getPointsInRadius($scope.radius, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
           var bikeNum = 'bike' + i;
