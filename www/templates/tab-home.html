@@ -1,14 +1,9 @@
 <ion-view view-title="Bike Hawaii">
-      <ion-content>
-<!-- <<<<<<< HEAD
-          <button class="button icon ion-gear-a test123"></button>
-          <leaflet lf-center="center" center="honolulu" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls"></leaflet>
-======= -->
-        <!-- <div id="map" data-tap-disabled="true"></div> -->
+
+      <ion-content data-tap-disabled="true">
+
         <leaflet lf-center="center" center="honolulu" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson = "geojson"></leaflet>
-<!-- >>>>>>> e81a894f86cb820e98281f80e54b92a78891e964 -->
       </ion-content>
-      <!-- <ion-content> -->
         <ion-footer-bar id="footer-bar">
           <div><a ng-click="findCenter()" class="button button-icon icon ion-location">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
           <div><a ng-click="openModal()" class="button button-icon icon ion-ios-game-controller-b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
@@ -17,58 +12,57 @@
         </ion-footer-bar>
       </ion-content>
 
-<!-- </ion-view> -->
+<!-- pop-up modal -->
 
-<script id="filter-modal.html" type="text/ng-template">
-  <div class="modal">
-    <ion-header-bar>
-      <h1 class="title">Filters</h1>
-    </ion-header-bar>
-    <ion-content>
-      <div class="list">
+      <script id="filter-modal.html" type="text/ng-template">
+        <div class="modal">
+          <ion-header-bar>
+            <h1 class="title">Filters</h1>
+          </ion-header-bar>
+          <ion-content>
+            <div class="list">
+              <div class="item item-divider">Pin Types</div>
+                <a class="item item-icon-left" href="#">
+                <i class="icon ion-android-bicycle"></i>
+                  Bike Share Stations
+                </a>
 
-          <div class="item item-divider">Pin Types</div>
-            <a class="item item-icon-left" href="#">
-            <i class="icon ion-android-bicycle"></i>
-              Bike Share Stations
-            </a>
+                <a class="item item-icon-left" href="#">
+                <i class="icon ion-image"></i>
+                  Landmarks
+                </a>
 
-            <a class="item item-icon-left" href="#">
-            <i class="icon ion-image"></i>
-              Landmarks
-            </a>
+                <a class="item item-icon-left" href="#">
+                <i class="icon ion-chevron-up"></i>
+                  Public Bike Racks
+                </a>
+              </div>
 
-            <a class="item item-icon-left" href="#">
-            <i class="icon ion-chevron-up"></i>
-              Public Bike Racks
-            </a>
-          </div>
+              <div class="item item-divider">Radius</div>
+                <a class="item item-icon-left" href="#">
+                <i class="icon"></i>
+                  1 Mile
+                </a>
 
-          <div class="item item-divider">Radius</div>
-            <a class="item item-icon-left" href="#">
-            <i class="icon"></i>
-              1 Mile
-            </a>
+                <a class="item item-icon-left" href="#">
+                <i class="icon"></i>
+                  10 Miles
+                </a>
 
-            <a class="item item-icon-left" href="#">
-            <i class="icon"></i>
-              10 Miles
-            </a>
+                <a class="item item-icon-left" href="#">
+                <i class="icon"></i>
+                  All
+                </a>
+              </div>
+            <div>
+            <button class="button button-full button-energized" ng-click="closeModal()">Done</button>
+            </div>
 
-            <a class="item item-icon-left" href="#">
-            <i class="icon"></i>
-              All
-            </a>
-          </div>
-      <div>
-      <button class="button button-full button-energized" ng-click="closeModal()">Done</button>
-      </div>
+            </div>
 
-      </div>
-
-      <button class="button button-full button-energized" ng-click="closeModal()">Done</button>
-    </ion-content>
-  </div>
-</script>
+            <button class="button button-full button-energized" ng-click="closeModal()">Done</button>
+          </ion-content>
+        </div>
+      </script>
 
 </ion-view>

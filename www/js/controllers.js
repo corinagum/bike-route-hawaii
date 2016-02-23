@@ -28,7 +28,8 @@ angular.module('starter.controllers', ['ngCordova'])
   };
 })
 
-.controller('MapCtrl', ['$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
+.controller('MapCtrl', ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
+
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
      markers : {}
@@ -39,6 +40,8 @@ angular.module('starter.controllers', ['ngCordova'])
     if(!isCordovaApp) {
       // DO WE NEED TO ADD A TIMEOUT? SEE LINE 62
       navigator.geolocation.getCurrentPosition(function(position){
+      $ionicLoading.hide();
+
         if(map) {
           map.panTo({
             lat : position.coords.latitude,
@@ -46,7 +49,7 @@ angular.module('starter.controllers', ['ngCordova'])
           });
         }
         angular.extend($scope, {
-           markers : {
+          markers : {
             userMarker : {
               lat : position.coords.latitude,
               lng : position.coords.longitude,
@@ -57,78 +60,80 @@ angular.module('starter.controllers', ['ngCordova'])
       });
     } else {
       $cordovaGeolocation
-          .getCurrentPosition({timeout : 1000, enableHighAccuracy : true})
-          .then(function (position) {
-            if(map.panTo) {
-              map.panTo({
-                lat : position.coords.latitude,
-                lng : position.coords.longitude
-              });
-            }
-            angular.extend($scope, {
-               markers : {
-                userMarker : {
-                  lat : position.coords.latitude,
-                  lng : position.coords.longitude,
-                  message : 'You are here'
-                }
-              }
+        .getCurrentPosition({timeout : 1000, enableHighAccuracy : true})
+        .then(function (position) {
+          $scope.show($ionicLoading);
+          if(map.panTo) {
+            map.panTo({
+              lat : position.coords.latitude,
+              lng : position.coords.longitude
             });
-          }, function(err) {
-            console.log(err);
+          }
+          angular.extend($scope, {
+             markers : {
+              userMarker : {
+                lat : position.coords.latitude,
+                lng : position.coords.longitude,
+                message : 'You are here'
+              }
+            }
           });
+        }, function(err) {
+          console.log(err);
+        });
     }
   }
   angular.extend($scope, {
-     honolulu: {
-         lat: 21.3,
-         lng: -157.8,
-         zoom: 13
-     },
-     events: {
+    honolulu: {
+      lat: 21.3,
+      ng: -157.8,
+      zoom: 13
+    },
+    events: {
       map : {
         enable : ['click', 'locationfound'],
         logic : 'broadcast'
       }
-     },
-     layers: {
-         baselayers: {
-             osm: {
-                 name: 'OpenStreetMap',
-                 url: 'https://{s}.tiles.mapbox.com/v3/examples.map-i875mjb7/{z}/{x}/{y}.png',
-                 type: 'xyz'
-             }
-         }
-     },
-     defaults: {
-         scrollWheelZoom: false
-     },
-     center : {
-      autoDiscover : true
-     },
-     bikeShareIcon: {
-       type: 'extraMarker',
-       icon: 'fa-bicycle',
-       markerColor: 'green-light',
-       prefix: 'fa',
-       shape: 'circle'
-     },
-     HistoryIcon: {
-       type: 'extraMarker',
-       icon: 'fa-camera',
-       markerColor: 'yellow',
-       shape : 'star',
-       prefix : 'fa'
+    },
+    layers: {
+      baselayers: {
+        osm: {
+          name: 'OpenStreetMap',
+          url: 'https://{s}.tiles.mapbox.com/v3/examples.map-i875mjb7/{z}/{x}/{y}.png',
+          type: 'xyz'
+        }
       }
+    },
+    defaults: {
+      scrollWheelZoom: false
+    },
+    center : {
+      autoDiscover : true
+    },
+    bikeShareIcon: {
+      type: 'extraMarker',
+      icon: 'fa-bicycle',
+      markerColor: 'green-light',
+      prefix: 'fa',
+      shape: 'circle'
+    },
+    HistoryIcon: {
+      type: 'extraMarker',
+      icon: 'fa-camera',
+      markerColor: 'yellow',
+      shape : 'star',
+      prefix : 'fa'
+    }
   });
-
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
+    $scope.show($ionicLoading);
       updateUserLocMarker(map);
     });
   };
 
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
+    $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
     $scope.center.autoDiscover = false;
     $scope.markers.userMarker = {
@@ -156,41 +161,54 @@ angular.module('starter.controllers', ['ngCordova'])
           };
         }
       });
+
   });
+
+  //SPINNER ONLOAD ANIMATION
+  $scope.show = function() {
+    $ionicLoading.show({
+      template: '<p>Loading please wait suckaaas!...</p><ion-spinner icon="spiral"></ion-spinner>'
+    });
+  };
+  $scope.hide = function(){
+    $ionicLoading.hide();
+  };
 
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
+    console.log("consoleLogging");
       var leafEvent = args.leafletEvent;
       $scope.center.autoDiscover = false;
+
   });
 
-//////// BEGINNIG of MODAL ////////
+  //////// BEGINNIG of MODAL ////////
 
-$ionicModal.fromTemplateUrl('filter-modal.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-  $scope.openModal = function() {
-    $scope.modal.show();
-  };
-  $scope.closeModal = function() {
-    $scope.modal.hide();
-  };
-  //Cleanup the modal when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
-  // Execute action on hide modal
-  $scope.$on('modal.hidden', function() {
-    // Execute action
-  });
-  // Execute action on remove modal
-  $scope.$on('modal.removed', function() {
-    // Execute action
-  });
-  //////// END of MODAL ////////
+  $ionicModal.fromTemplateUrl('filter-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    $scope.openModal = function() {
+      $scope.modal.show();
+    };
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
 
+    //////// END of MODAL ////////
 
 
   }]);

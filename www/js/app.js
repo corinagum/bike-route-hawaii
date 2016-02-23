@@ -1,6 +1,14 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'leaflet-directive'])
 
-.run(function($ionicPlatform) {
+.run(function($rootScope, $ionicLoading, $ionicPlatform) {
+    $rootScope.$on('loading:show', function() {
+      $ionicLoading.show({template: 'Hi There!'});
+    });
+
+    $rootScope.$on('loading:hide', function() {
+      $ionicLoading.hide();
+    });
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -18,6 +26,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
 
+  //GLOBALLY CREATING INTERCEPTORS WHILE WINDOW LOADS
+  $httpProvider.interceptors.push(function ($rootScope) {
+    return {
+      request : function(config) {
+        $rootScope.$broadcast('loading:show');
+        return config;
+      },
+      response: function(response) {
+        $rootScope.$broadcast('loading:hide');
+        return response;
+      }
+    };
+  });
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
