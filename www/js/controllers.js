@@ -31,10 +31,14 @@ angular.module('starter.controllers', ['ngCordova'])
 .controller('MapCtrl', ['RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function(RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   console.log(isCordovaApp);
+  angular.extend($scope, {
+     markers : {}
+  });
   document.addEventListener("deviceready", updateUserLocMarker, false);
   function updateUserLocMarker (map) {
 
     if(!isCordovaApp) {
+      console.log("not cordova");
       navigator.geolocation.getCurrentPosition(function(position){
         if(map) {
           map.panTo({
@@ -53,6 +57,7 @@ angular.module('starter.controllers', ['ngCordova'])
         });
       });
     } else {
+      console.log("cordova");
       $cordovaGeolocation
           .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
           .then(function (position) {
@@ -80,7 +85,7 @@ angular.module('starter.controllers', ['ngCordova'])
      },
      events: {
       map : {
-        enable : ['click'],
+        enable : ['click', 'locationfound'],
         logic : 'broadcast'
       }
      },
@@ -98,7 +103,21 @@ angular.module('starter.controllers', ['ngCordova'])
      },
      center : {
       autoDiscover : true
-     }
+     },
+     bikeShareIcon: {
+       type: 'extraMarker',
+       icon: 'fa-bicycle',
+       markerColor: 'green-light',
+       prefix: 'fa',
+       shape: 'circle'
+     },
+     HistoryIcon: {
+       type: 'extraMarker',
+       icon: 'fa-camera',
+       markerColor: 'yellow',
+       shape : 'star',
+       prefix : 'fa'
+      }
   });
 
   $scope.findCenter = function(){
@@ -106,46 +125,41 @@ angular.module('starter.controllers', ['ngCordova'])
       updateUserLocMarker(map);
     });
   };
+
+  $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
+    var leafEvent = args.leafletEvent;
+    console.log('locationfound', leafEvent);
+    $scope.center.autoDiscover = false;
+    $scope.markers.userMarker = {
+      lat : leafEvent.latitude,
+      lng : leafEvent.longitude,
+      message : 'You are here'
+    };
+
+    PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
+      .then(function(data){
+        for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+          var bikeNum = 'bike' + i;
+          $scope.markers[bikeNum] = {
+            lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+            lng : data.data.geoJSONBikeShare.features[i].properties.long,
+            icon: $scope.bikeShareIcon
+          };
+        }
+        for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+          var historyNum = 'history' + i;
+          $scope.markers[historyNum] = {
+            lat : data.data.geoJSONHistory.features[j].properties.lat,
+            lng : data.data.geoJSONHistory.features[j].properties.long,
+            icon: $scope.historyIcon
+          };
+        }
+      });
+  });
+
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
       console.log(leafEvent);
       $scope.center.autoDiscover = false;
   });
-
-      $scope.radiusBikeShareLayer = null;
-      $scope.radiusHistoryLayer = null;
-
-        // TRYING TO SEND API REQUEST USING LATLNG FROM LOCATIONFOUND - NICK
-        // PointService.getPointsInRadius(1800,21.27081933812041,-157.81002044677734)
-        //   .then(function(data){
-        //     $scope.radiusBikeShareLayer = L.geoJson(data.data.geoJSONBikeShare, {
-        //     onEachFeature: function (feature, layer){
-        //       layer.bindPopup(feature.properties.description);
-        //       layer.setIcon(L.ExtraMarkers.icon({
-        //         icon: 'fa-bicycle',
-        //         markerColor: 'green-light',
-        //         shape: 'circle',
-        //         prefix: 'fa'
-        //         }));
-        //       }
-        //     }).addTo(map);
-        //     $scope.radiusHistoryLayer = L.geoJson(data.data.geoJSONHistory, {
-        //       onEachFeature: function (feature, layer){
-        //         layer.bindPopup(feature.properties.description);
-        //         layer.setIcon(L.ExtraMarkers.icon({
-        //           icon: 'fa-camera',
-        //           markerColor: 'yellow',
-        //           shape : 'star',
-        //           prefix : 'fa'
-        //         }));
-        //       }
-        //     }).addTo(map);
-        //   });
-
-    // USER'S VIEW OPTIONS
-    // var tileOptions = {
-    //   "Street" : googleStreets,
-    //   "Satellite" : googleSat,
-    //   "Hybrid" : googleHybrid
-    // };
   }]);

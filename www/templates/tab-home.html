@@ -1,9 +1,14 @@
 <ion-view view-title="Bike Hawaii">
       <ion-content>
+<!-- <<<<<<< HEAD
           <button class="button icon ion-gear-a test123"></button>
           <leaflet lf-center="center" center="honolulu" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls"></leaflet>
+======= -->
+        <!-- <div id="map" data-tap-disabled="true"></div> -->
+        <leaflet lf-center="center" center="honolulu" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson = "geojson"></leaflet>
+<!-- >>>>>>> e81a894f86cb820e98281f80e54b92a78891e964 -->
       </ion-content>
-
+      <!-- <ion-content> -->
         <ion-footer-bar id="footer-bar">
           <div><a ng-click="findCenter()" class="button button-icon icon ion-location">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
           <div><a ng-click="" class="button button-icon icon ion-ios-game-controller-b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
