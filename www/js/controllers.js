@@ -30,6 +30,27 @@ angular.module('starter.controllers', [])
 
 .controller('MapCtrl', ['RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', function(RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData) {
 
+
+  function updateUserLocMarker (map) {
+    navigator.geolocation.getCurrentPosition(function(position){
+      if(map) {
+        map.panTo({
+          lat : position.coords.latitude,
+          lng : position.coords.longitude
+        });
+      }
+      angular.extend($scope, {
+         markers : {
+          userMarker : {
+            lat : position.coords.latitude,
+            lng : position.coords.longitude,
+            message : 'You are here'
+          }
+        }
+      });
+    });
+  }
+  updateUserLocMarker();
   angular.extend($scope, {
      honolulu: {
          lat: 21.3,
@@ -61,7 +82,7 @@ angular.module('starter.controllers', [])
 
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
-      map.locate();
+      updateUserLocMarker(map);
     });
   };
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
@@ -99,65 +120,6 @@ angular.module('starter.controllers', [])
         //       }
         //     }).addTo(map);
         //   });
-
-    // NEW ZOOM MENU
-    // L.Control.ZoomMin = L.Control.Zoom.extend({
-    //   options: {
-    //     position: "topleft",
-    //     zoomInText: "+",
-    //     zoomInTitle: "Zoom in",
-    //     zoomOutText: "-",
-    //     zoomOutTitle: "Zoom out",
-    //     zoomFindMe: "<i class='fa fa-map-marker'></i>",
-    //     zoomFindMeTitle: "Find me"
-    //   },
-
-    //   onAdd: function (map) {
-    //     var zoomName = "leaflet-control-zoom",
-    //     container = L.DomUtil.create("div", zoomName + " leaflet-bar"),
-    //     options = this.options;
-
-    //     this._map = map;
-
-    //     this._zoomInButton = this._createButton(options.zoomInText, options.zoomInTitle,
-    //      zoomName + '-in', container, this._zoomIn, this);
-
-    //     this._zoomOutButton = this._createButton(options.zoomOutText, options.zoomOutTitle,
-    //      zoomName + '-out', container, this._zoomOut, this);
-
-    //     this._zoomFindMeButton = this._createButton(options.zoomFindMe, options.zoomFindMeTitle,
-    //      zoomName + '-me', container, this._zoomMe, this);
-
-    //     this._updateDisabled();
-    //     map.on('zoomend zoomlevelschange', this._updateDisabled, this);
-
-    //     return container;
-    //   },
-
-    //   _zoomMe: function () {
-    //     $scope.centerOnMe();
-
-    //   },
-
-    //   _updateDisabled: function () {
-    //     var map = this._map,
-    //     className = "leaflet-disabled";
-
-    //     L.DomUtil.removeClass(this._zoomInButton, className);
-    //     L.DomUtil.removeClass(this._zoomOutButton, className);
-    //     L.DomUtil.removeClass(this._zoomFindMeButton, className);
-
-    //     if (map._zoom === map.getMinZoom()) {
-    //       L.DomUtil.addClass(this._zoomOutButton, className);
-    //     }
-
-    //     if (map._zoom === map.getMaxZoom()) {
-    //       L.DomUtil.addClass(this._zoomInButton, className);
-    //     }
-    //   }
-    // });
-
-
 
     // USER'S VIEW OPTIONS
     // var tileOptions = {
