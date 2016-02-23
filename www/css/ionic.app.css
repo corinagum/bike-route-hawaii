@@ -9755,3 +9755,13 @@ a.button {
   z-index: 3; }
   .view-filter button {
     border-style: solid; }
+
+.buttonStyle {
+  border-left: 1px solid white; }
+
+#radiusDiv {
+  padding-top: 7px;
+  padding-bottom: 7px; }
+
+#mapViewDiv {
+  padding-top: 10px; }
