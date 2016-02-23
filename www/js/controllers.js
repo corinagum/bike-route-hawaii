@@ -61,6 +61,7 @@ angular.module('starter.controllers', ['ngCordova'])
       $cordovaGeolocation
         .getCurrentPosition({timeout : 1000, enableHighAccuracy : true})
         .then(function (position) {
+          $scope.show($ionicLoading);
           if(map.panTo) {
             map.panTo({
               lat : position.coords.latitude,
@@ -124,23 +125,20 @@ angular.module('starter.controllers', ['ngCordova'])
     }
   });
   $scope.findCenter = function(){
-    console.log("FIND CENTERRRRR");
-    $scope.show($ionicLoading);
     leafletData.getMap().then(function(map){
+    $scope.show($ionicLoading);
       updateUserLocMarker(map);
     });
   };
 
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
-    console.log("locationFOUND");
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
     $scope.center.autoDiscover = false;
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
       lng : leafEvent.longitude,
-      message : 'You are here',
-      zoom : 13
+      message : 'You are here'
     };
 
     PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
@@ -168,7 +166,7 @@ angular.module('starter.controllers', ['ngCordova'])
   //SPINNER ONLOAD ANIMATION
   $scope.show = function() {
     $ionicLoading.show({
-      template: '<p>Loading please wait suckaaas!...</p><ion-spinner></ion-spinner>'
+      template: '<p>Loading please wait suckaaas!...</p><ion-spinner icon="spiral"></ion-spinner>'
     });
   };
   $scope.hide = function(){
@@ -176,7 +174,7 @@ angular.module('starter.controllers', ['ngCordova'])
   };
 
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
-
+    console.log("consoleLogging");
       var leafEvent = args.leafletEvent;
       $scope.center.autoDiscover = false;
 
