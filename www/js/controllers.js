@@ -59,7 +59,7 @@ angular.module('starter.controllers', [])
      },
      events: {
       map : {
-        enable : ['click'],
+        enable : ['click', 'locationfound'],
         logic : 'broadcast'
       }
      },
@@ -77,7 +77,21 @@ angular.module('starter.controllers', [])
      },
      center : {
       autoDiscover : true
-     }
+     },
+     bikeShareIcon: {
+       type: 'extraMarker',
+       icon: 'fa-bicycle',
+       markerColor: 'green-light',
+       prefix: 'fa',
+       shape: 'circle'
+     },
+     HistoryIcon: {
+       type: 'extraMarker',
+       icon: 'fa-camera',
+       markerColor: 'yellow',
+       shape : 'star',
+       prefix : 'fa'
+      }
   });
 
   $scope.findCenter = function(){
@@ -85,6 +99,33 @@ angular.module('starter.controllers', [])
       updateUserLocMarker(map);
     });
   };
+
+  $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
+    var leafEvent = args.leafletEvent;
+    console.log('locationfound', leafEvent);
+    $scope.center.autoDiscover = false;
+    console.log('Honolulu', $scope.honolulu);
+    PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
+      .then(function(data){
+        for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+          var bikeNum = 'bike' + i;
+          $scope.markers[bikeNum] = {
+            lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+            lng : data.data.geoJSONBikeShare.features[i].properties.long,
+            icon: $scope.bikeShareIcon
+          };
+        }
+        for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+          var historyNum = 'history' + i;
+          $scope.markers[historyNum] = {
+            lat : data.data.geoJSONHistory.features[j].properties.lat,
+            lng : data.data.geoJSONHistory.features[j].properties.long,
+            icon: $scope.historyIcon
+          };
+        }
+      });
+  });
+
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
       console.log(leafEvent);
