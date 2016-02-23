@@ -1,5 +1,5 @@
 
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngCordova'])
 
 .controller('DashCtrl', function($scope) {})
 
@@ -28,29 +28,50 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('MapCtrl', ['RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', function(RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData) {
-
-
+.controller('MapCtrl', ['RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function(RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
+  var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
+  console.log(isCordovaApp);
+  document.addEventListener("deviceready", updateUserLocMarker, false);
   function updateUserLocMarker (map) {
-    navigator.geolocation.getCurrentPosition(function(position){
-      if(map) {
-        map.panTo({
-          lat : position.coords.latitude,
-          lng : position.coords.longitude
-        });
-      }
-      angular.extend($scope, {
-         markers : {
-          userMarker : {
+
+    if(!isCordovaApp) {
+      navigator.geolocation.getCurrentPosition(function(position){
+        if(map) {
+          map.panTo({
             lat : position.coords.latitude,
-            lng : position.coords.longitude,
-            message : 'You are here'
-          }
+            lng : position.coords.longitude
+          });
         }
+        angular.extend($scope, {
+           markers : {
+            userMarker : {
+              lat : position.coords.latitude,
+              lng : position.coords.longitude,
+              message : 'You are here'
+            }
+          }
+        });
       });
-    });
+    } else {
+      $cordovaGeolocation
+          .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
+          .then(function (position) {
+            var lat  = position.coords.latitude;
+            var long = position.coords.longitude;
+            angular.extend($scope, {
+               markers : {
+                userMarker : {
+                  lat : position.coords.latitude,
+                  lng : position.coords.longitude,
+                  message : 'You are here'
+                }
+              }
+            });
+          }, function(err) {
+            // error
+          });
+    }
   }
-  updateUserLocMarker();
   angular.extend($scope, {
      honolulu: {
          lat: 21.3,
