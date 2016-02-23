@@ -39,6 +39,8 @@ angular.module('starter.controllers', ['ngCordova'])
     if(!isCordovaApp) {
       // DO WE NEED TO ADD A TIMEOUT? SEE LINE 62
       navigator.geolocation.getCurrentPosition(function(position){
+      $ionicLoading.hide();
+
         if(map) {
           map.panTo({
             lat : position.coords.latitude,
@@ -46,7 +48,7 @@ angular.module('starter.controllers', ['ngCordova'])
           });
         }
         angular.extend($scope, {
-           markers : {
+          markers : {
             userMarker : {
               lat : position.coords.latitude,
               lng : position.coords.longitude,
@@ -59,6 +61,8 @@ angular.module('starter.controllers', ['ngCordova'])
       $cordovaGeolocation
           .getCurrentPosition({timeout : 1000, enableHighAccuracy : true})
           .then(function (position) {
+            $ionicLoading.hide();
+
             if(map.panTo) {
               map.panTo({
                 lat : position.coords.latitude,
@@ -80,49 +84,49 @@ angular.module('starter.controllers', ['ngCordova'])
     }
   }
   angular.extend($scope, {
-     honolulu: {
-         lat: 21.3,
-         lng: -157.8,
-         zoom: 13
-     },
-     events: {
+    honolulu: {
+      lat: 21.3,
+        ng: -157.8,
+        zoom: 13
+    },
+    events: {
       map : {
         enable : ['click', 'locationfound'],
         logic : 'broadcast'
       }
-     },
-     layers: {
-         baselayers: {
-             osm: {
-                 name: 'OpenStreetMap',
-                 url: 'https://{s}.tiles.mapbox.com/v3/examples.map-i875mjb7/{z}/{x}/{y}.png',
-                 type: 'xyz'
-             }
-         }
-     },
-     defaults: {
-         scrollWheelZoom: false
-     },
-     center : {
+    },
+    layers: {
+      baselayers: {
+        osm: {
+          name: 'OpenStreetMap',
+            url: 'https://{s}.tiles.mapbox.com/v3/examples.map-i875mjb7/{z}/{x}/{y}.png',
+              type: 'xyz'
+            }
+        }
+    },
+    defaults: {
+      scrollWheelZoom: false
+    },
+    center : {
       autoDiscover : true
-     },
-     bikeShareIcon: {
-       type: 'extraMarker',
-       icon: 'fa-bicycle',
-       markerColor: 'green-light',
-       prefix: 'fa',
-       shape: 'circle'
-     },
-     HistoryIcon: {
-       type: 'extraMarker',
-       icon: 'fa-camera',
-       markerColor: 'yellow',
-       shape : 'star',
-       prefix : 'fa'
-      }
+    },
+    bikeShareIcon: {
+      type: 'extraMarker',
+      icon: 'fa-bicycle',
+      markerColor: 'green-light',
+      prefix: 'fa',
+      shape: 'circle'
+    },
+    HistoryIcon: {
+      type: 'extraMarker',
+      icon: 'fa-camera',
+      markerColor: 'yellow',
+      shape : 'star',
+      prefix : 'fa'
+    }
   });
-
   $scope.findCenter = function(){
+    console.log("FIND CENTERRRRR");
     $scope.show($ionicLoading);
     leafletData.getMap().then(function(map){
       updateUserLocMarker(map);
@@ -130,8 +134,9 @@ angular.module('starter.controllers', ['ngCordova'])
   };
 
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
+    console.log("locationFOUND");
+    $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
-    $scope.hide($ionicLoading);
     $scope.center.autoDiscover = false;
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
@@ -158,6 +163,7 @@ angular.module('starter.controllers', ['ngCordova'])
           };
         }
       });
+
   });
 
   //SPINNER ONLOAD ANIMATION
@@ -166,7 +172,6 @@ angular.module('starter.controllers', ['ngCordova'])
       template: '<p>Loading...</p><ion-spinner></ion-spinner>'
     });
   };
-
   $scope.hide = function(){
     $ionicLoading.hide();
   };
@@ -174,5 +179,6 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
       $scope.center.autoDiscover = false;
+
   });
   }]);
