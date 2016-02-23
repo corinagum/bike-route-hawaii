@@ -9738,7 +9738,20 @@ a.button {
 
 #footer-bar {
   width: 100%;
-  background-color: #ffc900; }
+  background-color: #444; }
   #footer-bar div {
     width: 25%;
     text-align: center; }
+
+.view-filter {
+  background-color: #33cd5f;
+  height: 46px;
+  width: 46px;
+  border-radius: 23px;
+  text-align: center;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 3; }
+  .view-filter button {
+    border-style: solid; }

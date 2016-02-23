@@ -2,13 +2,17 @@
 
       <ion-content data-tap-disabled="true">
 
+        <div class="view-filter">
+          <button ng-click="openModal()" class="button button-icon icon ion-gear-a placeholder-icon"></button>
+        </div>
+
         <leaflet lf-center="center" center="honolulu" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson = "geojson"></leaflet>
       </ion-content>
         <ion-footer-bar id="footer-bar">
-          <div><button ng-click="findCenter()" class="button button-icon icon ion-location bottom-button"></button></div>
-          <div><button ng-click="openModal()" class="button button-icon icon ion-android-bicycle bottom-button"></button></div>
-          <div><button ng-click="" class="button button-icon icon ion-image bottom-button"></button></div>
-          <div><button ng-click="" class="button button-icon icon ion-chevron-up bottom-button"></button></div>
+          <div><button ng-click="findCenter()" class="button button-icon icon ion-location"></button></div>
+          <div><button ng-click="" class="button button-icon icon ion-android-bicycle"></button></div>
+          <div><button ng-click="" class="button button-icon icon ion-image"></button></div>
+          <div><button ng-click="" class="button button-icon icon ion-chevron-up"></button></div>
         </ion-footer-bar>
       </ion-content>
 
@@ -36,24 +40,26 @@
                 <i class="icon ion-chevron-up"></i>
                   Public Bike Racks
                 </a>
-              <!-- </div> -->
-
+              <!-- RADIUS SELECT ITEMS -->
               <div class="item item-divider">Radius</div>
-                <a class="item item-icon-left" href="#">
-                <i class="icon"></i>
-                  1 Mile
-                </a>
+                <div>
+                  <ion-item class="text-center">
+                    <button class="button">1 mile</button>
+                    <button class="button">10 miles</button>
+                    <button class="button">25 miles</button>
+                    <button class="button">All</button>
+                  </ion-item>
+                </div>
+              <!-- MAP VIEW SELECT ITEMS -->
+              <div class="item item-divider">Map Views</div>
+                <div>
+                  <ion-item class="text-center">
+                    <button class="button"> Satelite</button>
+                    <button class="button"> Hybrid</button>
+                    <button class="button"> Street</button>
+                  </ion-item>
+                </div>
 
-                <a class="item item-icon-left" href="#">
-                <i class="icon"></i>
-                  10 Miles
-                </a>
-
-                <a class="item item-icon-left" href="#">
-                <i class="icon"></i>
-                  All
-                </a>
-              <!-- </div> -->
             <div>
               <button class="button button-full button-energized" ng-click="closeModal()">Done</button>
             </div>
