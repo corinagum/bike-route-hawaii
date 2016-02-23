@@ -30,7 +30,6 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('MapCtrl', ['RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function(RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
-  console.log(isCordovaApp);
   angular.extend($scope, {
      markers : {}
   });
@@ -38,7 +37,7 @@ angular.module('starter.controllers', ['ngCordova'])
   function updateUserLocMarker (map) {
 
     if(!isCordovaApp) {
-      console.log("not cordova");
+      // DO WE NEED TO ADD A TIMEOUT? SEE LINE 62
       navigator.geolocation.getCurrentPosition(function(position){
         if(map) {
           map.panTo({
@@ -60,7 +59,6 @@ angular.module('starter.controllers', ['ngCordova'])
       $cordovaGeolocation
           .getCurrentPosition({timeout : 1000, enableHighAccuracy : true})
           .then(function (position) {
-            console.log("cordova");
             if(map.panTo) {
               map.panTo({
                 lat : position.coords.latitude,
@@ -126,15 +124,12 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
-      console.log('map', map);
-      console.log(map.panTo);
       updateUserLocMarker(map);
     });
   };
 
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     var leafEvent = args.leafletEvent;
-    console.log('locationfound', leafEvent);
     $scope.center.autoDiscover = false;
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
@@ -165,7 +160,6 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
-      console.log(leafEvent);
       $scope.center.autoDiscover = false;
   });
   }]);
