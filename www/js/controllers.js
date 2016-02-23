@@ -123,6 +123,7 @@ angular.module('starter.controllers', ['ngCordova'])
   });
 
   $scope.findCenter = function(){
+    $scope.show($ionicLoading);
     leafletData.getMap().then(function(map){
       updateUserLocMarker(map);
     });
@@ -130,6 +131,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     var leafEvent = args.leafletEvent;
+    $scope.hide($ionicLoading);
     $scope.center.autoDiscover = false;
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
@@ -157,6 +159,17 @@ angular.module('starter.controllers', ['ngCordova'])
         }
       });
   });
+
+  //SPINNER ONLOAD ANIMATION
+  $scope.show = function() {
+    $ionicLoading.show({
+      template: '<p>Loading...</p><ion-spinner></ion-spinner>'
+    });
+  };
+
+  $scope.hide = function(){
+    $ionicLoading.hide();
+  };
 
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
