@@ -47,15 +47,11 @@ angular.module('starter.controllers', ['ngCordova'])
             lng : position.coords.longitude
           });
         }
-        angular.extend($scope, {
-          markers : {
-            userMarker : {
-              lat : position.coords.latitude,
-              lng : position.coords.longitude,
-              message : 'You are here'
-            }
-          }
-        });
+        $scope.markers.userMarker = {
+          lat : position.coords.latitude,
+          lng : position.coords.longitude,
+          message : 'You are here'
+        };
       }, function(err){
         console.log(err);
       }, {
@@ -73,15 +69,11 @@ angular.module('starter.controllers', ['ngCordova'])
               lng : position.coords.longitude
             });
           }
-          angular.extend($scope, {
-             markers : {
-              userMarker : {
-                lat : position.coords.latitude,
-                lng : position.coords.longitude,
-                message : 'You are here'
-              }
-            }
-          });
+          $scope.markers.userMarker = {
+          lat : position.coords.latitude,
+          lng : position.coords.longitude,
+          message : 'You are here'
+        };
         }, function(err) {
           console.log(err);
         });
@@ -121,7 +113,7 @@ angular.module('starter.controllers', ['ngCordova'])
       prefix: 'fa',
       shape: 'circle'
     },
-    HistoryIcon: {
+    historyIcon: {
       type: 'extraMarker',
       icon: 'fa-camera',
       markerColor: 'yellow',
@@ -157,7 +149,7 @@ angular.module('starter.controllers', ['ngCordova'])
           };
         }
         for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
-          var historyNum = 'history' + i;
+          var historyNum = 'history' + j;
           $scope.markers[historyNum] = {
             lat : data.data.geoJSONHistory.features[j].properties.lat,
             lng : data.data.geoJSONHistory.features[j].properties.long,
