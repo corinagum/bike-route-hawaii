@@ -167,7 +167,7 @@ angular.module('starter.controllers', ['ngCordova'])
   //SPINNER ONLOAD ANIMATION
   $scope.show = function() {
     $ionicLoading.show({
-      template: '<p>Loading please wait suckaaas!...</p><ion-spinner icon="spiral"></ion-spinner>'
+      template: '<p>Loading...</p><ion-spinner icon="spiral"></ion-spinner>'
     });
   };
   $scope.hide = function(){
