@@ -1,1 +1,9 @@
 /* Empty. Add your own CSS if you like */
+
+.test123 {
+  background-color: red;
+  color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

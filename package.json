@@ -38,7 +38,10 @@
     "ionic-plugin-keyboard",
     "cordova-plugin-whitelist"
   ],
-  "cordovaPlatforms": [],
+  "cordovaPlatforms": [
+    "ios",
+    "android"
+  ],
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
