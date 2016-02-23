@@ -72,7 +72,7 @@ angular.module('starter.services', [])
   };
 
   this.getPointsInRadius = function(radius, lat, long) {
-    return $http.get('/api/points/within/' + radius + '/' + lat + '/' + long);
+    return $http.get('http://localhost:4000/api/points/within/' + radius + '/' + lat + '/' + long);
   };
 }])
 
