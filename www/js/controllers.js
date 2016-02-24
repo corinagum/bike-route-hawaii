@@ -62,7 +62,7 @@ angular.module('starter.controllers', ['ngCordova'])
       $cordovaGeolocation
         .getCurrentPosition({timeout : 30000, enableHighAccuracy : true})
         .then(function (position) {
-          $scope.hide();
+          $scope.show($ionicLoading);
           if(map.panTo) {
             map.panTo({
               lat : position.coords.latitude,
@@ -137,7 +137,7 @@ angular.module('starter.controllers', ['ngCordova'])
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
       lng : leafEvent.longitude,
-      message : 'You are here'
+      message : 'You are here &nbsp&nbsp<i class="fa fa-chevron-right"></i>'
     };
 
     PointService.getPointsInRadius($scope.radius, leafEvent.latitude, leafEvent.longitude)
