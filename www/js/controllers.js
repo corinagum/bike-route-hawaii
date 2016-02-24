@@ -141,7 +141,8 @@ angular.module('starter.controllers', ['ngCordova'])
           $scope.markers[bikeNum] = {
             lat : data.data.geoJSONBikeShare.features[i].properties.lat,
             lng : data.data.geoJSONBikeShare.features[i].properties.long,
-            icon: $scope.bikeShareIcon
+            icon: $scope.bikeShareIcon,
+            properties : data.data.geoJSONBikeShare.features[i].properties
           };
         }
         for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
@@ -149,11 +150,45 @@ angular.module('starter.controllers', ['ngCordova'])
           $scope.markers[historyNum] = {
             lat : data.data.geoJSONHistory.features[j].properties.lat,
             lng : data.data.geoJSONHistory.features[j].properties.long,
-            icon: $scope.historyIcon
+            icon: $scope.historyIcon,
+            properties : data.data.geoJSONHistory.features[j].properties
           };
         }
       });
 
+  });
+
+  $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
+    $scope.center.autoDiscover = false;
+    $scope.markers = {
+      userMarker : $scope.markers.userMarker
+    };
+    leafletData.getMap().then(function(map){
+      // $scope.show($ionicLoading);
+      console.log(map.getBounds());
+      var bounds = map.getBounds();
+      PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
+        .then(function(data){
+          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+            var bikeNum = 'bike' + i;
+            $scope.markers[bikeNum] = {
+              lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+              lng : data.data.geoJSONBikeShare.features[i].properties.long,
+              icon: $scope.bikeShareIcon,
+              properties : data.data.geoJSONBikeShare.features[i].properties
+            };
+          }
+          for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+            var historyNum = 'history' + j;
+            $scope.markers[historyNum] = {
+              lat : data.data.geoJSONHistory.features[j].properties.lat,
+              lng : data.data.geoJSONHistory.features[j].properties.long,
+              icon: $scope.historyIcon,
+              properties : data.data.geoJSONHistory.features[j].properties
+            };
+          }
+        });
+    });
   });
 
   //SPINNER ONLOAD ANIMATION
@@ -168,32 +203,20 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
+      console.log(leafEvent);
+      console.log(args);
       $scope.center.autoDiscover = false;
   });
 
-  // $scope.$on('leafletDirectiveMap.map.moveend', function(event, args){
-  //     var leafEvent = args.leafletEvent;
-  //     $scope.center.autoDiscover = false;
-  //     console.log('move event', event);
-  //     console.log('move args', args);
-  // });
+  $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
+      var leafEvent = args.leafletEvent;
+      var marker = args.markerName;
 
-  $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
-    var leafEvent = args.leafletEvent;
-    $scope.center.autoDiscover = false;
-    leafletData.getMap().then(function(map){
-      // $scope.show($ionicLoading);
-      console.log(map.getBounds());
-      map.getBounds();
-    });
+      console.log($scope.markers[args.markerName]);
+      console.log($scope.markers);
+      $scope.center.autoDiscover = false;
   });
 
-  // $scope.$on('leafletDirectiveMap.map.zoomend', function(event, args){
-  //     var leafEvent = args.leafletEvent;
-  //     $scope.center.autoDiscover = false;
-  //     console.log('zoom event', event);
-  //     console.log('zoom args', args);
-  // });
 
   //////// BEGINNIG of MODAL ////////
 
