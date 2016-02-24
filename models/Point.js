@@ -12,7 +12,10 @@ module.exports = function(sequelize, DataTypes) {
     long : DataTypes.FLOAT,
     geolink : DataTypes.STRING,
     sitelink : DataTypes.STRING,
-    photolink : DataTypes.STRING
+    photolink : DataTypes.STRING,
+    upDownVote : DataTypes.INTEGER,
+    votesCounter : DataTypes.INTEGER,
+    crime : DataTypes.INTEGER
   // }, {
   //   classMethods: {
   //     associate: function(models) {

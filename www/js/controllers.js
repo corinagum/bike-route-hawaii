@@ -87,7 +87,7 @@ angular.module('starter.controllers', ['ngCordova'])
     },
     events: {
       map : {
-        enable : ['click', 'locationfound'],
+        enable : ['click', 'locationfound', 'dblclick', 'dragend', 'moveend', 'zoomend'],
         logic : 'broadcast'
       }
     },
@@ -137,7 +137,7 @@ angular.module('starter.controllers', ['ngCordova'])
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
       lng : leafEvent.longitude,
-      message : 'You are here'
+      message : 'You are here<br /><button>More <i class="fa fa-chevron-right"></i></button>'
     };
 
     PointService.getPointsInRadius($scope.radius, leafEvent.latitude, leafEvent.longitude)
@@ -147,7 +147,8 @@ angular.module('starter.controllers', ['ngCordova'])
           $scope.markers[bikeNum] = {
             lat : data.data.geoJSONBikeShare.features[i].properties.lat,
             lng : data.data.geoJSONBikeShare.features[i].properties.long,
-            icon: $scope.bikeShareIcon
+            icon: $scope.bikeShareIcon,
+            properties : data.data.geoJSONBikeShare.features[i].properties
           };
         }
         for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
@@ -155,11 +156,44 @@ angular.module('starter.controllers', ['ngCordova'])
           $scope.markers[historyNum] = {
             lat : data.data.geoJSONHistory.features[j].properties.lat,
             lng : data.data.geoJSONHistory.features[j].properties.long,
-            icon: $scope.historyIcon
+            icon: $scope.historyIcon,
+            properties : data.data.geoJSONHistory.features[j].properties
           };
         }
       });
 
+  });
+
+  $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
+    $scope.center.autoDiscover = false;
+    $scope.markers = {
+      userMarker : $scope.markers.userMarker
+    };
+    leafletData.getMap().then(function(map){
+      // $scope.show($ionicLoading);
+      var bounds = map.getBounds();
+      PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
+        .then(function(data){
+          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+            var bikeNum = 'bike' + i;
+            $scope.markers[bikeNum] = {
+              lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+              lng : data.data.geoJSONBikeShare.features[i].properties.long,
+              icon: $scope.bikeShareIcon,
+              properties : data.data.geoJSONBikeShare.features[i].properties
+            };
+          }
+          for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+            var historyNum = 'history' + j;
+            $scope.markers[historyNum] = {
+              lat : data.data.geoJSONHistory.features[j].properties.lat,
+              lng : data.data.geoJSONHistory.features[j].properties.long,
+              icon: $scope.historyIcon,
+              properties : data.data.geoJSONHistory.features[j].properties
+            };
+          }
+        });
+    });
   });
 
   //SPINNER ONLOAD ANIMATION
@@ -175,8 +209,15 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
       $scope.center.autoDiscover = false;
-
   });
+
+  $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
+      var leafEvent = args.leafletEvent;
+      var marker = args.markerName;
+
+      $scope.center.autoDiscover = false;
+  });
+
 
   //////// BEGINNIG of MODAL ////////
 

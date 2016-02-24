@@ -25,7 +25,7 @@
           </ion-header-bar>
           <ion-content>
             <div class="list">
-              <div class="item item-divider">Pin Types</div>
+              <div class="item">Pin Types
                 <a class="item item-icon-left" href="#">
                 <i class="icon ion-android-bicycle"></i>
                   Bike Share Stations
@@ -40,24 +40,27 @@
                 <i class="icon ion-chevron-up"></i>
                   Public Bike Racks
                 </a>
+                </div>
               <!-- RADIUS SELECT ITEMS -->
-              <div class="item item-divider">Radius</div>
-                <div>
-                  <ion-item class="text-center">
-                    <button class="button">1 mile</button>
-                    <button class="button">10 miles</button>
-                    <button class="button">25 miles</button>
-                    <button class="button">All</button>
-                  </ion-item>
+              <div class="item">Radius
+                <div id="radiusDiv" class="button-bar">
+                  <!-- <ion-item class="text-center"> -->
+                    <button class="button">1 mi</button>
+                    <button class="button buttonStyle">5 mi</button>
+                    <button class="button buttonStyle">10 mi</button>
+                    <button class="button buttonStyle">All</button>
+                  <!-- </ion-item> -->
+                </div>
                 </div>
               <!-- MAP VIEW SELECT ITEMS -->
-              <div class="item item-divider">Map Views</div>
-                <div>
-                  <ion-item class="text-center">
-                    <button class="button"> Satelite</button>
-                    <button class="button"> Hybrid</button>
-                    <button class="button"> Street</button>
-                  </ion-item>
+              <div class="item">Map Views
+                <div id="mapViewDiv" class="button-bar">
+                  <!-- <ion-item class="text-center"> -->
+                    <button class="button button-large buttonStyle"> Satelite</button>
+                    <button class="button button-large buttonStyle"> Hybrid</button>
+                    <button class="button button-large buttonStyle"> Street</button>
+                  <!-- </ion-item> -->
+                </div>
                 </div>
 
             <div>
