@@ -151,7 +151,6 @@ angular.module('starter.controllers', ['ngCordova'])
 
     PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
-      console.log("in getPointsInRadius");
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
 
           //TO SEND DATA INFO INTO ARRAY
@@ -185,21 +184,21 @@ angular.module('starter.controllers', ['ngCordova'])
     leafletData.getMap().then(function(map){
       // $scope.show($ionicLoading);
       var bounds = map.getBounds();
-      console.log(map.getCenter());
       PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
         .then(function(data){
-          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="testClick(data);"> data.data.geoJSONBikeShare.features[i].properties.name&nbsp;&nbsp;<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+
+          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="testClick(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
           var popupElement = angular.element(document).find('#popup');
           popupElement = $compile(popupElement);
           var content = popupElement($scope);
-
-          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
             var bikeNum = 'bike' + i;
             $scope.markers[bikeNum] = {
               lat : data.data.geoJSONBikeShare.features[i].properties.lat,
               lng : data.data.geoJSONBikeShare.features[i].properties.long,
               icon: $scope.bikeShareIcon,
-              message : content,
+              message : pointsDetail,
+              compileMessage : true,
               getMessageScope: function(){ return $scope; },
               properties : data.data.geoJSONBikeShare.features[i].properties
             };
@@ -241,10 +240,11 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
       var marker = args.markerName;
+      $scope.currentMarkerProperties = args.leafletObject.options.properties;
   });
 
-  $scope.testClick = function(data) {
-    console.log(data); // properties arrives as object
+  $scope.testClick = function(thisMarker) {
+
   };
   //////// BEGINNIG of MODAL ////////
 
