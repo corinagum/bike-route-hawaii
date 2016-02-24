@@ -25,24 +25,24 @@
           </ion-header-bar>
           <ion-content>
             <div class="list">
+
+            <div class="list">
               <div class="item">Pin Types
                 <div class="pinViews">
-                  <a class="item item-icon-left" ng-click="setShowStations()">
-                  <i class="icon ion-android-bicycle"></i>
+                  <a class="item item-icon-left" ng-click="setShowStations()" ng-class="{'btn2': showStations, 'btn1': !showStations}">
+                  <i class="icon ion-android-bicycle" ng-class="testcolor"></i>
                     Bike Share Stations
                   </a>
 
-                  <a class="item item-icon-left" ng-click="setShowLandmarks()">
+                  <a class="item item-icon-left" ng-click="setShowLandmarks()" ng-class="{'btn2': showLandmarks, 'btn1': !showLandmarks}">
                   <i class="icon ion-image"></i>
                     Landmarks
                   </a>
 
-                  <a class="item item-icon-left" ng-click="setShowBikeRacks()">
+                  <a class="item item-icon-left" ng-click="setShowBikeRacks()" ng-class="{'btn2': showBikeRacks, 'btn1': !showBikeRacks}">
                   <i class="icon ion-chevron-up"></i>
                     Public Bike Racks
                   </a>
-                </div>
-              </div>
               <!-- RADIUS SELECT ITEMS -->
               <div class="item">Radius
                 <div id="radiusDiv" class="button-bar">
