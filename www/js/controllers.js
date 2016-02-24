@@ -55,7 +55,7 @@ angular.module('starter.controllers', ['ngCordova'])
       }, function(err){
         console.log(err);
       }, {
-        timeout : 10000,
+        timeout : 5000,
         enableHighAccuracy : true
       });
     } else {
@@ -135,7 +135,7 @@ angular.module('starter.controllers', ['ngCordova'])
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
       lng : leafEvent.longitude,
-      message : 'You are here'
+      message : 'You are here<br /><button>More <i class="fa fa-chevron-right"></i></button>'
     };
 
     PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
@@ -169,7 +169,6 @@ angular.module('starter.controllers', ['ngCordova'])
     };
     leafletData.getMap().then(function(map){
       // $scope.show($ionicLoading);
-      console.log(map.getBounds());
       var bounds = map.getBounds();
       PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
         .then(function(data){
@@ -207,8 +206,6 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
-      console.log(leafEvent);
-      console.log(args);
       $scope.center.autoDiscover = false;
   });
 
@@ -216,8 +213,6 @@ angular.module('starter.controllers', ['ngCordova'])
       var leafEvent = args.leafletEvent;
       var marker = args.markerName;
 
-      console.log($scope.markers[args.markerName]);
-      console.log($scope.markers);
       $scope.center.autoDiscover = false;
   });
 
