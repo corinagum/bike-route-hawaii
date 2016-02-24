@@ -139,7 +139,7 @@ angular.module('starter.controllers', ['ngCordova'])
       message : 'You are here'
     };
 
-    PointService.getPointsInRadius(18000, leafEvent.latitude, leafEvent.longitude)
+    PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
           var bikeNum = 'bike' + i;
