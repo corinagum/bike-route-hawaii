@@ -61,7 +61,8 @@ angular.module('starter.controllers', ['ngCordova'])
       $cordovaGeolocation
         .getCurrentPosition({timeout : 30000, enableHighAccuracy : true})
         .then(function (position) {
-          $scope.show($ionicLoading);
+          $ionicLoading.hide();
+
           if(map.panTo) {
             map.panTo({
               lat : position.coords.latitude,
@@ -150,14 +151,28 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.myLocation = {};
 
-  $scope.radius = 805;
+  $scope.radius = 1610;
+  $scope.radiusHalf = false;
+  $scope.radiusMile = true;
+  $scope.radiusTwoMile = false;
+  $scope.radiusAll = false;
 
   $scope.setRadius = function(rad){
     $scope.radius = rad;
+    if ( rad === 805) {  $scope.radiusHalf = true; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
+    if ( rad === 1610) {  $scope.radiusHalf = false; $scope.radiusMile = true; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
+    if ( rad === 3220) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = true; $scope.radiusAll = false; }
+    if ( rad === 50000) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = true; }
   };
 
   $scope.setPinsWithinRadius = function(){
     $scope.markers = {};
+
+    $scope.markers.userMarker = {
+      lat : $scope.myLocation.myLat,
+      lng : $scope.myLocation.myLong,
+      message : 'You are here'
+    };
 
     PointService.getPointsInRadius($scope.radius, $scope.myLocation.myLat, $scope.myLocation.myLong)
       .then(function(data){
@@ -195,11 +210,38 @@ angular.module('starter.controllers', ['ngCordova'])
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
       lng : leafEvent.longitude,
-      message : 'You are here &nbsp&nbsp<i class="fa fa-chevron-right"></i>'
+      message : 'You are here'
     };
 
     PointService.getPointsInRadius(50000, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
+    //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
+    $scope.bikesharePoints = [];
+
+    PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
+      .then(function(data){
+        for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+
+          //TO SEND DATA INFO INTO ARRAY
+          var bksData = data.data.geoJSONBikeShare.features[i].properties.name;
+          $scope.bikesharePoints.push({title:bksData});
+
+          var bikeNum = 'bike' + i;
+          $scope.markers[bikeNum] = {
+            lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+            lng : data.data.geoJSONBikeShare.features[i].properties.long,
+            icon: $scope.bikeShareIcon
+          };
+        }
+        for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+          var historyNum = 'history' + j;
+          $scope.markers[historyNum] = {
+            lat : data.data.geoJSONHistory.features[j].properties.lat,
+            lng : data.data.geoJSONHistory.features[j].properties.long,
+            icon: $scope.historyIcon
+          };
+        }
+      });
 
         $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude };
         $scope.allPoints = data;
@@ -228,6 +270,12 @@ angular.module('starter.controllers', ['ngCordova'])
 
       });
   });
+  //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
+  $scope.pinTypes = [
+      { text: "Bike Share", checked: true },
+      { text: "Landmark", checked: false },
+      { text: "Bike Rack", checked: false }
+    ];
 
   //////// SPINNER ONLOAD ANIMATION ////////
   $scope.show = function() {
@@ -248,16 +296,28 @@ angular.module('starter.controllers', ['ngCordova'])
   //////// BEGINNIG of MODAL ////////
 
   $ionicModal.fromTemplateUrl('filter-modal.html', {
+      id: '1',
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
       $scope.modal = modal;
     });
-    $scope.openModal = function() {
-      $scope.modal.show();
+
+  $ionicModal.fromTemplateUrl('bikeShareList.html', {
+      id: '2',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal2 = modal;
+    });
+
+    $scope.openModal = function(index) {
+      if (index == 1) $scope.modal.show();
+      else $scope.modal2.show();
     };
-    $scope.closeModal = function() {
-      $scope.modal.hide();
+    $scope.closeModal = function(index) {
+      if (index == 1) $scope.modal.hide();
+      else $scope.modal2.hide();
     };
     //Cleanup the modal when we're done with it!
     $scope.$on('$destroy', function() {

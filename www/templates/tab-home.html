@@ -3,14 +3,14 @@
       <ion-content data-tap-disabled="true">
 
         <div class="view-filter">
-          <button ng-click="openModal()" class="button button-icon icon ion-gear-a placeholder-icon"></button>
+          <button ng-click="openModal(1)" class="button button-icon icon ion-gear-a placeholder-icon"></button>
         </div>
 
         <leaflet lf-center="center" center="honolulu" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson = "geojson"></leaflet>
       </ion-content>
         <ion-footer-bar id="footer-bar">
           <div><button ng-click="findCenter()" class="button button-icon icon ion-location"></button></div>
-          <div><button ng-click="" class="button button-icon icon ion-android-bicycle"></button></div>
+          <div><button ng-click="openModal(2)" class="button button-icon icon ion-android-bicycle"></button></div>
           <div><button ng-click="" class="button button-icon icon ion-image"></button></div>
           <div><button ng-click="" class="button button-icon icon ion-chevron-up"></button></div>
         </ion-footer-bar>
@@ -19,55 +19,98 @@
 <!-- pop-up modal -->
 
       <script id="filter-modal.html" type="text/ng-template">
-        <div class="modal">
+        <div class="modal filter-modal">
           <ion-header-bar>
             <h1 class="title">Filters</h1>
           </ion-header-bar>
           <ion-content>
+
+<!-- ======= -->
+<!-- ======= -->
+<!-- ======= -->
+
             <div class="list">
               <div class="item">Pin Types
                 <div class="pinViews">
-                  <a class="item item-icon-left" ng-click="setShowStations()">
-                  <i class="icon ion-android-bicycle"></i>
+                  <a class="item item-icon-left" ng-click="setShowStations()" ng-class="{'btn2': showStations, 'btn1': !showStations}">
+                  <i class="icon ion-android-bicycle" ng-class="testcolor"></i>
                     Bike Share Stations
                   </a>
 
-                  <a class="item item-icon-left" ng-click="setShowLandmarks()">
+                  <a class="item item-icon-left" ng-click="setShowLandmarks()" ng-class="{'btn2': showLandmarks, 'btn1': !showLandmarks}">
                   <i class="icon ion-image"></i>
                     Landmarks
                   </a>
 
-                  <a class="item item-icon-left" ng-click="setShowBikeRacks()">
+                  <a class="item item-icon-left" ng-click="setShowBikeRacks()" ng-class="{'btn2': showBikeRacks, 'btn1': !showBikeRacks}">
                   <i class="icon ion-chevron-up"></i>
                     Public Bike Racks
                   </a>
+
+<!-- ======= -->
+<!-- ======= -->
+<!-- ======= -->
+
+<!--
+            <div class="item">Pin Types
+              <div class="pinViews">
+                <div class="list">
+                  <ion-checkbox ng-repeat="item in pinTypes"
+                                ng-model="item.checked"
+                                ng-checked="item.checked">
+                    {{ item.text }}
+                  </ion-checkbox>
                 </div>
               </div>
+            </div> -->
               <!-- RADIUS SELECT ITEMS -->
+<!-- <<<<<<< HEAD -->
               <div class="item">Radius
                 <div id="radiusDiv" class="button-bar">
-                  <!-- <ion-item class="text-center"> -->
-                    <button class="button" ng-click="setRadius(805)">0.5 mi</button>
-                    <button class="button buttonStyle" ng-click="setRadius(1610)">1 mi</button>
-                    <button class="button buttonStyle" ng-click="setRadius(3220)">2 mi</button>
-                    <button class="button buttonStyle" ng-click="setRadius(50000)">All</button>
-                  <!-- </ion-item> -->
+                    <button class="button buttonStyle" ng-click="setRadius(805)" ng-class="{'btn2': radiusHalf, 'btn1': !radiusHalf}">0.5 mi</button>
+                    <button class="button buttonStyle" ng-click="setRadius(1610)" ng-class="{'btn2': radiusMile, 'btn1': !radiusMile}">1 mi</button>
+                    <button class="button buttonStyle" ng-click="setRadius(3220)" ng-class="{'btn2': radiusTwoMile, 'btn1': !radiusTwoMile}">2 mi</button>
+                    <button class="button buttonStyle" ng-click="setRadius(50000)" ng-class="{'btn2': radiusAll, 'btn1': !radiusAll}">All</button>
                 </div>
               </div>
-              <!-- MAP VIEW SELECT ITEMS -->
-<!--               <div class="item">Map Views
-                <div id="mapView" class="button-bar">
-                    <button class="button button-large buttonStyle"> Satelite</button>
-                    <button class="button button-large buttonStyle"> Hybrid</button>
-                    <button class="button button-large buttonStyle"> Street</button>
-                </div>
-              </div> -->
-            <div>
-              <button class="button button-full button-energized" ng-click="setPinsWithinRadius(); closeModal()">Done</button>
-            </div>
 
+            <div>
+              <button class="button button-full button-energized" ng-click="setPinsWithinRadius(); closeModal(1)">Done</button>
+            </div>
+<!-- ======= -->
+<!-- ======= -->
+<!-- ======= -->
+<!--               <div class="item item-input item-select">
+                <div id="radiusDiv" class="input-label">Radius: mile(s)</div>
+                  <select>
+                    <option class="button">0.5</option>
+                    <option class="button buttonStyle">1</option>
+                    <option class="button buttonStyle">2</option>
+                    <option class="button buttonStyle">All</option>
+                  </select>
+                </div>
+            <div>
+              <button class="button button-full button-energized" ng-click="closeModal(1)">Done</button>
+            </div> -->
+<!-- ======= -->
+<!-- ======= -->
+<!-- ======= -->
           </ion-content>
-        </div>
+        <!-- </div> -->
       </script>
 
+      <script id="bikeShareList.html" type="text/ng-template">
+        <div class="modal">
+          <ion-header-bar>
+            <h1 class="title">Bike Share</h1>
+              <ion-nav-button side="right">
+                <button class="button button-energized" ng-click="closeModal(2)">Close</button>
+                </ion-nav-button>
+              </ion-header-bar>
+            <ion-content>
+              <ion-item ng-repeat="item in bikesharePoints">
+                {{ item.title }}
+              </ion-item>
+            </ion-content>
+      </script>
 </ion-view>

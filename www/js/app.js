@@ -27,18 +27,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
 
   //GLOBALLY CREATING INTERCEPTORS WHILE WINDOW LOADS
-  $httpProvider.interceptors.push(function ($rootScope) {
-    return {
-      request : function(config) {
-        $rootScope.$broadcast('loading:show');
-        return config;
-      },
-      response: function(response) {
-        $rootScope.$broadcast('loading:hide');
-        return response;
-      }
-    };
-  });
+  // $httpProvider.interceptors.push(function ($rootScope) {
+  //   return {
+  //     request : function(config) {
+  //       $rootScope.$broadcast('loading:show');
+  //       return config;
+  //     },
+  //     response: function(response) {
+  //       $rootScope.$broadcast('loading:hide');
+  //       return response;
+  //     }
+  //   };
+  // });
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.

@@ -9756,6 +9756,12 @@ a.button {
   .view-filter button {
     border-style: solid; }
 
+.filter-modal {
+  border: 0px; }
+  .filter-modal div {
+    background-color: #444;
+    border: 0px; }
+
 .buttonStyle {
   border-left: 1px solid white; }
 
@@ -9768,3 +9774,9 @@ a.button {
 
 .pinViews {
   padding-top: 10px; }
+
+.btn1 {
+  background-color: #f8f8f8; }
+
+.btn2 {
+  background-color: #76CE95; }

@@ -34,6 +34,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
       width: 25%;
       text-align: center;
     }
+
 }
 
 .view-filter {
@@ -56,8 +57,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   //attempt to change icon colors
 }
 
-.modal {
-  //modal styles
+.filter-modal {
+  // background-color: $dark;
+  border: 0px;
+
+  div {
+    background-color: $dark;
+  border: 0px;
+
+  }
 }
 
 //BUTTONS IN FILTERS
@@ -76,4 +84,16 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .pinViews {
   padding-top: 10px;
+}
+
+.btn1 {
+  // color: red;
+  background-color: $stable;
+  // display: none;
+}
+
+.btn2 {
+  // color: red;
+  background-color: $balanced;
+  // display: none;
 }
