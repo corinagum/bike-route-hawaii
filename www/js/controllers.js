@@ -55,14 +55,14 @@ angular.module('starter.controllers', ['ngCordova'])
       }, function(err){
         console.log(err);
       }, {
-        timeout : 10000,
+        timeout : 30000,
         enableHighAccuracy : true
       });
     } else {
       $cordovaGeolocation
-        .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
+        .getCurrentPosition({timeout : 30000, enableHighAccuracy : true})
         .then(function (position) {
-          $scope.show($ionicLoading);
+          $scope.hide();
           if(map.panTo) {
             map.panTo({
               lat : position.coords.latitude,
