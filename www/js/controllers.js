@@ -62,7 +62,7 @@ angular.module('starter.controllers', ['ngCordova'])
       $cordovaGeolocation
         .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
         .then(function (position) {
-          $ionicLoading.hide();
+          $scope.show($ionicLoading);
           if(map.panTo) {
             map.panTo({
               lat : position.coords.latitude,
