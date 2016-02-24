@@ -82,7 +82,7 @@ angular.module('starter.controllers', ['ngCordova'])
   angular.extend($scope, {
     honolulu: {
       lat: 21.3,
-      ng: -157.8,
+      lng: -157.8,
       zoom: 13
     },
     events: {
@@ -135,7 +135,7 @@ angular.module('starter.controllers', ['ngCordova'])
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
       lng : leafEvent.longitude,
-      message : 'You are here &nbsp&nbsp<i class="fa fa-chevron-right"></i>'
+      message : 'You are here'
     };
 
     PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
@@ -172,12 +172,19 @@ angular.module('starter.controllers', ['ngCordova'])
       var bounds = map.getBounds();
       PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
         .then(function(data){
+          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="testClick(data);"> data.data.geoJSONBikeShare.features[i].properties.name&nbsp;&nbsp;<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+          var popupElement = angular.element(document).find('#popup');
+          popupElement = $compile(popupElement);
+          var content = popupElement($scope);
+
           for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
             var bikeNum = 'bike' + i;
             $scope.markers[bikeNum] = {
               lat : data.data.geoJSONBikeShare.features[i].properties.lat,
               lng : data.data.geoJSONBikeShare.features[i].properties.long,
               icon: $scope.bikeShareIcon,
+              message : content,
+              getMessageScope: function(){ return $scope; },
               properties : data.data.geoJSONBikeShare.features[i].properties
             };
           }
@@ -216,6 +223,9 @@ angular.module('starter.controllers', ['ngCordova'])
       $scope.center.autoDiscover = false;
   });
 
+  $scope.testClick = function(data) {
+    console.log(data); // properties arrives as object
+  };
 
   //////// BEGINNIG of MODAL ////////
 
