@@ -92,7 +92,7 @@ angular.module('starter.controllers', ['ngCordova'])
     },
     events: {
       map : {
-        enable : ['click', 'locationfound'],
+        enable : ['click', 'locationfound', 'dragend'],
         logic : 'broadcast'
       }
     },
