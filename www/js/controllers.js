@@ -131,6 +131,7 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
     $scope.show($ionicLoading);
+      map.locate();
       updateUserLocMarker(map);
     });
   };
