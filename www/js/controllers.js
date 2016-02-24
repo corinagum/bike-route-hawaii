@@ -135,7 +135,7 @@ angular.module('starter.controllers', ['ngCordova'])
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
       lng : leafEvent.longitude,
-      message : 'You are here<br /><button>More <i class="fa fa-chevron-right"></i></button>'
+      message : 'You are here &nbsp&nbsp<i class="fa fa-chevron-right"></i>'
     };
 
     PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
