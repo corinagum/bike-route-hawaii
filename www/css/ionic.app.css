@@ -9756,6 +9756,12 @@ a.button {
   .view-filter button {
     border-style: solid; }
 
+.bshLogo {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin-right: 20px; }
+
 .buttonStyle {
   border-left: 1px solid white; }
 

@@ -1,9 +1,9 @@
 
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('DashCtrl', function($scope) {})
+// .controller('DashCtrl', function($scope) {})
 
-.controller('GalleryCtrl', function($scope, Chats) {
+// .controller('GalleryCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -12,21 +12,21 @@ angular.module('starter.controllers', ['ngCordova'])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
+//   $scope.chats = Chats.all();
+//   $scope.remove = function(chat) {
+//     Chats.remove(chat);
+//   };
+// })
 
-.controller('GalleryDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.galleryId);
-})
+// .controller('GalleryDetailCtrl', function($scope, $stateParams, Chats) {
+//   $scope.chat = Chats.get($stateParams.galleryId);
+// })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-})
+// .controller('AccountCtrl', function($scope) {
+//   $scope.settings = {
+//     enableFriends: true
+//   };
+// })
 
 .controller('MapCtrl', ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
 
@@ -122,6 +122,7 @@ angular.module('starter.controllers', ['ngCordova'])
       prefix : 'fa'
     }
   });
+
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
     $scope.show($ionicLoading);
@@ -171,6 +172,12 @@ angular.module('starter.controllers', ['ngCordova'])
       });
 
   });
+  // $scope.Routing.control({
+  //   waypoints: [
+  //     $scope.latLng(),
+  //     $scope.latLng()
+  //   ],
+  // });
 
   //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
   $scope.pinTypes = [
