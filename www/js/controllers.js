@@ -38,7 +38,6 @@ angular.module('starter.controllers', ['ngCordova'])
   function updateUserLocMarker (map) {
 
     if(!isCordovaApp) {
-      // DO WE NEED TO ADD A TIMEOUT? SEE LINE 62
       navigator.geolocation.getCurrentPosition(function(position){
       $ionicLoading.hide();
 
@@ -53,10 +52,15 @@ angular.module('starter.controllers', ['ngCordova'])
           lng : position.coords.longitude,
           message : 'You are here'
         };
+      }, function(err){
+        console.log(err);
+      }, {
+        timeout : 10000,
+        enableHighAccuracy : true
       });
     } else {
       $cordovaGeolocation
-        .getCurrentPosition({timeout : 1000, enableHighAccuracy : true})
+        .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
         .then(function (position) {
           $scope.show($ionicLoading);
           if(map.panTo) {
@@ -194,7 +198,7 @@ angular.module('starter.controllers', ['ngCordova'])
   //SPINNER ONLOAD ANIMATION
   $scope.show = function() {
     $ionicLoading.show({
-      template: '<p>Loading please wait suckaaas!...</p><ion-spinner icon="spiral"></ion-spinner>'
+      template: '<p>Loading, please wait...</p><ion-spinner icon="spiral"></ion-spinner>'
     });
   };
   $scope.hide = function(){

@@ -21,46 +21,56 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   width: 100%;
   height: 100%;
 }
+
 .scroll {
   height: 100%;
 }
+
 #footer-bar {
   width: 100%;
-  background-color: $balanced;
-  z-index:99;
+  background-color: $dark;
 
+    div {
+      width: 25%;
+      text-align: center;
+    }
 }
 
-.test123 {
+.view-filter {
+  background-color: $balanced;
+  height: 46px;
+  width: 46px;
+  border-radius: 23px;
+  text-align: center;
   position: fixed;
   top: 10px;
   right: 10px;
-  z-index:98;
+  z-index:3;
+
+  button {
+    border-style: solid;
+  }
 }
 
-.map-div {
-  background-color: red;
-  height: 100%;
-  width: 100%;
+.placeholder-icon {
+  //attempt to change icon colors
 }
 
-#footer-div {
-  height: 50%;
-  width: 100%;
-  background-color: orange;
-  z-index:99;
-  bottom: 0px;
+.modal {
+  //modal styles
 }
 
-#main {
-  background-color: blue;
-  height: 100vh;
+//BUTTONS IN FILTERS
+.buttonStyle {
+  border-left: 1px solid white;
 }
 
-.leaflet-control-attribution {
-  // display: none;
+#radiusDiv {
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
-.leaflet-control {
-  // display: none;
+#mapViewDiv {
+  padding-top: 10px;
 }
+
