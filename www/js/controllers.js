@@ -27,9 +27,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('MapCtrl', ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
 
-  $scope.bikeShareMarkers =[];
-  $scope.landmarkMarkers =[];
-  $scope.bikeRackMarkers =[];
+  $scope.allPoints = {};
 
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
@@ -130,16 +128,62 @@ angular.module('starter.controllers', ['ngCordova'])
     });
   };
 
+  // Filter which markers to show
+
+  $scope.showStations = true;
+  $scope.showLandmarks = false;
+  $scope.showBikeRacks = false;
+
+  $scope.setShowStations = function(){
+    $scope.showStations = !$scope.showStations;
+  };
+
+  $scope.setShowLandmarks = function(){
+    $scope.showLandmarks = !$scope.showLandmarks;
+  };
+
+  $scope.setShowBikeRacks = function(){
+    $scope.showBikeRacks = !$scope.showBikeRacks;
+  };
+
   // Functions to set and filter by radius //
 
-  $scope.radius = 1610;
+  $scope.myLocation = {};
+
+  $scope.radius = 805;
 
   $scope.setRadius = function(rad){
     $scope.radius = rad;
-    console.log(rad);
-    console.log($scope.radius, "is $scope.radius");
-    $scope.markers.clearLayers();
-    updateUserLocMarker();
+  };
+
+  $scope.setPinsWithinRadius = function(){
+    $scope.markers = {};
+
+    PointService.getPointsInRadius($scope.radius, $scope.myLocation.myLat, $scope.myLocation.myLong)
+      .then(function(data){
+
+        if ($scope.showStations){
+          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+            var bikeNum = 'bike' + i;
+            $scope.markers[bikeNum] = {
+              lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+              lng : data.data.geoJSONBikeShare.features[i].properties.long,
+              icon: $scope.bikeShareIcon
+            };
+          }
+        }
+
+        if ($scope.showLandmarks){
+          for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+            var historyNum = 'history' + j;
+            $scope.markers[historyNum] = {
+              lat : data.data.geoJSONHistory.features[j].properties.lat,
+              lng : data.data.geoJSONHistory.features[j].properties.long,
+              icon: $scope.historyIcon
+            };
+          }
+        }
+      });
   };
 
   //
@@ -154,32 +198,38 @@ angular.module('starter.controllers', ['ngCordova'])
       message : 'You are here &nbsp&nbsp<i class="fa fa-chevron-right"></i>'
     };
 
-    PointService.getPointsInRadius($scope.radius, leafEvent.latitude, leafEvent.longitude)
+    PointService.getPointsInRadius(50000, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
 
-        $scope.allPoints = data.data;
-        console.log($scope.allPoints);
+        $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude };
+        $scope.allPoints = data;
 
-        for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
-          var bikeNum = 'bike' + i;
-          $scope.markers[bikeNum] = {
-            lat : data.data.geoJSONBikeShare.features[i].properties.lat,
-            lng : data.data.geoJSONBikeShare.features[i].properties.long,
-            icon: $scope.bikeShareIcon
-          };
+        if ($scope.showStations){
+          for(var i = 0; i < $scope.allPoints.data.geoJSONBikeShare.features.length; i++){
+            var bikeNum = 'bike' + i;
+            $scope.markers[bikeNum] = {
+              lat : $scope.allPoints.data.geoJSONBikeShare.features[i].properties.lat,
+              lng : $scope.allPoints.data.geoJSONBikeShare.features[i].properties.long,
+              icon: $scope.bikeShareIcon
+            };
+          }
         }
-        for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
-          var historyNum = 'history' + j;
-          $scope.markers[historyNum] = {
-            lat : data.data.geoJSONHistory.features[j].properties.lat,
-            lng : data.data.geoJSONHistory.features[j].properties.long,
-            icon: $scope.historyIcon
-          };
+
+        if ($scope.showLandmarks){
+          for(var j = 0; j < $scope.allPoints.data.geoJSONHistory.features.length; j++){
+            var historyNum = 'history' + j;
+            $scope.markers[historyNum] = {
+              lat : $scope.allPoints.data.geoJSONHistory.features[j].properties.lat,
+              lng : $scope.allPoints.data.geoJSONHistory.features[j].properties.long,
+              icon: $scope.historyIcon
+            };
+          }
         }
+
       });
   });
 
-  //SPINNER ONLOAD ANIMATION
+  //////// SPINNER ONLOAD ANIMATION ////////
   $scope.show = function() {
     $ionicLoading.show({
       template: '<p>Loading, please wait...</p><ion-spinner icon="spiral"></ion-spinner>'
