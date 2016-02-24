@@ -32,9 +32,12 @@ angular.module('starter.controllers', ['ngCordova'])
 
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
-     markers : {}
+     markers : {
+     }
   });
+
   document.addEventListener("deviceready", updateUserLocMarker, false);
+
   function updateUserLocMarker (map) {
 
     if(!isCordovaApp) {
@@ -55,14 +58,15 @@ angular.module('starter.controllers', ['ngCordova'])
       }, function(err){
         console.log(err);
       }, {
-        timeout : 5000,
+        timeout : 10000,
         enableHighAccuracy : true
       });
     } else {
       $cordovaGeolocation
         .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
         .then(function (position) {
-          $scope.show($ionicLoading);
+          $ionicLoading.hide();
+
           if(map.panTo) {
             map.panTo({
               lat : position.coords.latitude,
@@ -79,15 +83,16 @@ angular.module('starter.controllers', ['ngCordova'])
         });
     }
   }
+
   angular.extend($scope, {
     honolulu: {
-      lat: 21.3,
-      lng: -157.8,
+      lat: 21.3008900859581,
+      lng: -157.8398036956787,
       zoom: 13
     },
     events: {
       map : {
-        enable : ['click', 'locationfound', 'dblclick', 'dragend', 'moveend', 'zoomend'],
+        enable : ['click', 'locationfound'],
         logic : 'broadcast'
       }
     },
@@ -104,7 +109,9 @@ angular.module('starter.controllers', ['ngCordova'])
       scrollWheelZoom: false
     },
     center : {
-      autoDiscover : true
+      lat: 21.3008900859581,
+      lng: -157.8398036956787,
+      zoom: 13
     },
     bikeShareIcon: {
       type: 'extraMarker',
@@ -121,6 +128,7 @@ angular.module('starter.controllers', ['ngCordova'])
       prefix : 'fa'
     }
   });
+
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
     $scope.show($ionicLoading);
@@ -131,22 +139,29 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
-    $scope.center.autoDiscover = false;
+    $scope.center.autoDiscover = true;
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
       lng : leafEvent.longitude,
       message : 'You are here'
     };
+    //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
+    $scope.bikesharePoints = [];
 
     PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
+      console.log("in getPointsInRadius");
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+
+          //TO SEND DATA INFO INTO ARRAY
+          var bksData = data.data.geoJSONBikeShare.features[i].properties.name;
+          $scope.bikesharePoints.push({title:bksData});
+
           var bikeNum = 'bike' + i;
           $scope.markers[bikeNum] = {
             lat : data.data.geoJSONBikeShare.features[i].properties.lat,
             lng : data.data.geoJSONBikeShare.features[i].properties.long,
-            icon: $scope.bikeShareIcon,
-            properties : data.data.geoJSONBikeShare.features[i].properties
+            icon: $scope.bikeShareIcon
           };
         }
         for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
@@ -154,8 +169,7 @@ angular.module('starter.controllers', ['ngCordova'])
           $scope.markers[historyNum] = {
             lat : data.data.geoJSONHistory.features[j].properties.lat,
             lng : data.data.geoJSONHistory.features[j].properties.long,
-            icon: $scope.historyIcon,
-            properties : data.data.geoJSONHistory.features[j].properties
+            icon: $scope.historyIcon
           };
         }
       });
@@ -163,13 +177,14 @@ angular.module('starter.controllers', ['ngCordova'])
   });
 
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
-    $scope.center.autoDiscover = false;
-    $scope.markers = {
-      userMarker : $scope.markers.userMarker
-    };
+    // $scope.center.autoDiscover = false;
+    // $scope.markers = {
+    //   userMarker : $scope.markers.userMarker
+    // };
     leafletData.getMap().then(function(map){
       // $scope.show($ionicLoading);
       var bounds = map.getBounds();
+      console.log(map.getCenter());
       PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
         .then(function(data){
           var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="testClick(data);"> data.data.geoJSONBikeShare.features[i].properties.name&nbsp;&nbsp;<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
@@ -201,6 +216,13 @@ angular.module('starter.controllers', ['ngCordova'])
     });
   });
 
+  //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
+  $scope.pinTypes = [
+      { text: "Bike Share", checked: true },
+      { text: "Landmark", checked: false },
+      { text: "Bike Rack", checked: false }
+    ];
+
   //SPINNER ONLOAD ANIMATION
   $scope.show = function() {
     $ionicLoading.show({
@@ -213,33 +235,41 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
-      $scope.center.autoDiscover = false;
   });
 
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
       var marker = args.markerName;
-
-      $scope.center.autoDiscover = false;
   });
 
   $scope.testClick = function(data) {
     console.log(data); // properties arrives as object
   };
-
   //////// BEGINNIG of MODAL ////////
 
   $ionicModal.fromTemplateUrl('filter-modal.html', {
+      id: '1',
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
       $scope.modal = modal;
     });
-    $scope.openModal = function() {
-      $scope.modal.show();
+
+  $ionicModal.fromTemplateUrl('bikeShareList.html', {
+      id: '2',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal2 = modal;
+    });
+
+    $scope.openModal = function(index) {
+      if (index == 1) $scope.modal.show();
+      else $scope.modal2.show();
     };
-    $scope.closeModal = function() {
-      $scope.modal.hide();
+    $scope.closeModal = function(index) {
+      if (index == 1) $scope.modal.hide();
+      else $scope.modal2.hide();
     };
     //Cleanup the modal when we're done with it!
     $scope.$on('$destroy', function() {
