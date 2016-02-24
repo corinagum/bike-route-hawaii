@@ -6,6 +6,8 @@
     "ionic-platform-web-client": "^0.2.1"
   },
   "dependencies": {
-    "ngCordova": "^0.1.24-alpha"
+    "ngCordova": "^0.1.24-alpha",
+    "ui-leaflet": "^1.0.0",
+    "angular-simple-logger": "^0.1.7"
   }
 }

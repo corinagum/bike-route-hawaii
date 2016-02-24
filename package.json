@@ -4,6 +4,7 @@
   "description": "An Ionic project",
   "dependencies": {
     "angular-moment": "^0.10.3",
+    "angular-simple-logger": "^0.1.7",
     "bower": "^1.7.7",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
@@ -19,7 +20,8 @@
     "pg": "^4.4.6",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.19.2",
-    "sequelize-cli": "^2.3.1"
+    "sequelize-cli": "^2.3.1",
+    "ui-leaflet": "^1.0.0"
   },
   "devDependencies": {
     "bower": "^1.7.7",

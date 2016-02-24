@@ -1,13 +1,15 @@
 
 angular.module('starter.controllers', ['ngCordova'])
-
-.controller('MapCtrl', ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
+ .controller('MapCtrl', ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
 
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
-     markers : {}
+     markers : {
+     }
   });
+
   document.addEventListener("deviceready", updateUserLocMarker, false);
+
   function updateUserLocMarker (map) {
 
     if(!isCordovaApp) {
@@ -53,15 +55,16 @@ angular.module('starter.controllers', ['ngCordova'])
         });
     }
   }
+
   angular.extend($scope, {
     honolulu: {
-      lat: 21.3,
-      ng: -157.8,
+      lat: 21.3008900859581,
+      lng: -157.8398036956787,
       zoom: 13
     },
     events: {
       map : {
-        enable : ['click', 'locationfound'],
+        enable : ['click', 'locationfound', 'dragend'],
         logic : 'broadcast'
       }
     },
@@ -78,7 +81,9 @@ angular.module('starter.controllers', ['ngCordova'])
       scrollWheelZoom: false
     },
     center : {
-      autoDiscover : true
+      lat: 21.3008900859581,
+      lng: -157.8398036956787,
+      zoom: 13
     },
     bikeShareIcon: {
       type: 'extraMarker',
@@ -99,6 +104,7 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
     $scope.show($ionicLoading);
+      map.locate();
       updateUserLocMarker(map);
     });
   };
@@ -106,18 +112,18 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
-    $scope.center.autoDiscover = false;
+    $scope.center.autoDiscover = true;
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
       lng : leafEvent.longitude,
       message : 'You are here'
     };
-
     //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
     $scope.bikesharePoints = [];
 
     PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
+      console.log("in getPointsInRadius");
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
 
           //TO SEND DATA INFO INTO ARRAY
@@ -152,6 +158,46 @@ angular.module('starter.controllers', ['ngCordova'])
   //   ],
   // });
 
+  $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
+    // $scope.center.autoDiscover = false;
+    // $scope.markers = {
+    //   userMarker : $scope.markers.userMarker
+    // };
+    leafletData.getMap().then(function(map){
+      // $scope.show($ionicLoading);
+      var bounds = map.getBounds();
+      console.log(map.getCenter());
+      PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
+        .then(function(data){
+          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="testClick(data);"> data.data.geoJSONBikeShare.features[i].properties.name&nbsp;&nbsp;<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+          var popupElement = angular.element(document).find('#popup');
+          popupElement = $compile(popupElement);
+          var content = popupElement($scope);
+
+          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+            var bikeNum = 'bike' + i;
+            $scope.markers[bikeNum] = {
+              lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+              lng : data.data.geoJSONBikeShare.features[i].properties.long,
+              icon: $scope.bikeShareIcon,
+              message : content,
+              getMessageScope: function(){ return $scope; },
+              properties : data.data.geoJSONBikeShare.features[i].properties
+            };
+          }
+          for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+            var historyNum = 'history' + j;
+            $scope.markers[historyNum] = {
+              lat : data.data.geoJSONHistory.features[j].properties.lat,
+              lng : data.data.geoJSONHistory.features[j].properties.long,
+              icon: $scope.historyIcon,
+              properties : data.data.geoJSONHistory.features[j].properties
+            };
+          }
+        });
+    });
+  });
+
   //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
   $scope.pinTypes = [
       { text: "Bike Share", checked: true },
@@ -171,10 +217,16 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
-      $scope.center.autoDiscover = false;
-
   });
 
+  $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
+      var leafEvent = args.leafletEvent;
+      var marker = args.markerName;
+  });
+
+  $scope.testClick = function(data) {
+    console.log(data); // properties arrives as object
+  };
   //////// BEGINNIG of MODAL ////////
 
   $ionicModal.fromTemplateUrl('filter-modal.html', {
