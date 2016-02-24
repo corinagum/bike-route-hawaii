@@ -1,39 +1,13 @@
-
-angular.module('starter.controllers', ['ngCordova'])
-
-.controller('DashCtrl', function($scope) {})
-
-.controller('GalleryCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  $scope.chats = Chats.all();
-})
-
-.controller('GalleryDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.galleryId);
-})
-
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-})
-
-.controller('MapCtrl', ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
-
-  $scope.allPoints = {};
+ angular.module('starter.controllers', ['ngCordova']) .controller('MapCtrl', ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
 
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
-     markers : {}
+     markers : {
+     }
   });
+
   document.addEventListener("deviceready", updateUserLocMarker, false);
+
   function updateUserLocMarker (map) {
 
     if(!isCordovaApp) {
@@ -54,12 +28,12 @@ angular.module('starter.controllers', ['ngCordova'])
       }, function(err){
         console.log(err);
       }, {
-        timeout : 30000,
+        timeout : 10000,
         enableHighAccuracy : true
       });
     } else {
       $cordovaGeolocation
-        .getCurrentPosition({timeout : 30000, enableHighAccuracy : true})
+        .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
         .then(function (position) {
           $ionicLoading.hide();
 
@@ -79,15 +53,16 @@ angular.module('starter.controllers', ['ngCordova'])
         });
     }
   }
+
   angular.extend($scope, {
     honolulu: {
-      lat: 21.3,
-      ng: -157.8,
+      lat: 21.3008900859581,
+      lng: -157.8398036956787,
       zoom: 13
     },
     events: {
       map : {
-        enable : ['click', 'locationfound'],
+        enable : ['click', 'locationfound', 'dragend'],
         logic : 'broadcast'
       }
     },
@@ -104,7 +79,9 @@ angular.module('starter.controllers', ['ngCordova'])
       scrollWheelZoom: false
     },
     center : {
-      autoDiscover : true
+      lat: 21.3008900859581,
+      lng: -157.8398036956787,
+      zoom: 13
     },
     bikeShareIcon: {
       type: 'extraMarker',
@@ -125,106 +102,34 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
     $scope.show($ionicLoading);
+      map.locate();
       updateUserLocMarker(map);
     });
   };
 
-  // Filter which markers to show
-
-  $scope.showStations = true;
-  $scope.showLandmarks = false;
-  $scope.showBikeRacks = false;
-
-  $scope.setShowStations = function(){
-    $scope.showStations = !$scope.showStations;
-  };
-
-  $scope.setShowLandmarks = function(){
-    $scope.showLandmarks = !$scope.showLandmarks;
-  };
-
-  $scope.setShowBikeRacks = function(){
-    $scope.showBikeRacks = !$scope.showBikeRacks;
-  };
-
-  // Functions to set and filter by radius //
-
-  $scope.myLocation = {};
-
-  $scope.radius = 1610;
-  $scope.radiusHalf = false;
-  $scope.radiusMile = true;
-  $scope.radiusTwoMile = false;
-  $scope.radiusAll = false;
-
-  $scope.setRadius = function(rad){
-    $scope.radius = rad;
-    if ( rad === 805) {  $scope.radiusHalf = true; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
-    if ( rad === 1610) {  $scope.radiusHalf = false; $scope.radiusMile = true; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
-    if ( rad === 3220) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = true; $scope.radiusAll = false; }
-    if ( rad === 50000) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = true; }
-  };
-
-  $scope.setPinsWithinRadius = function(){
-    $scope.markers = {};
-
-    $scope.markers.userMarker = {
-      lat : $scope.myLocation.myLat,
-      lng : $scope.myLocation.myLong,
-      message : 'You are here'
-    };
-
-    PointService.getPointsInRadius($scope.radius, $scope.myLocation.myLat, $scope.myLocation.myLong)
-      .then(function(data){
-
-        if ($scope.showStations){
-          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
-            var bikeNum = 'bike' + i;
-            $scope.markers[bikeNum] = {
-              lat : data.data.geoJSONBikeShare.features[i].properties.lat,
-              lng : data.data.geoJSONBikeShare.features[i].properties.long,
-              icon: $scope.bikeShareIcon
-            };
-          }
-        }
-
-        if ($scope.showLandmarks){
-          for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
-            var historyNum = 'history' + j;
-            $scope.markers[historyNum] = {
-              lat : data.data.geoJSONHistory.features[j].properties.lat,
-              lng : data.data.geoJSONHistory.features[j].properties.long,
-              icon: $scope.historyIcon
-            };
-          }
-        }
-      });
-  };
-
-  //
-
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
-    $scope.center.autoDiscover = false;
+    $scope.center.autoDiscover = true;
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
       lng : leafEvent.longitude,
       message : 'You are here'
     };
-
-    PointService.getPointsInRadius(50000, leafEvent.latitude, leafEvent.longitude)
-      .then(function(data){
     //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
     $scope.bikesharePoints = [];
 
     PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
+      console.log("in getPointsInRadius");
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
 
           //TO SEND DATA INFO INTO ARRAY
-          var bksData = data.data.geoJSONBikeShare.features[i].properties.name;
-          $scope.bikesharePoints.push({title:bksData});
+          var bksData = data.data.geoJSONBikeShare.features[i].properties;
+          $scope.bikesharePoints.push({
+            title:bksData.name,
+            dist: Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100
+          });
 
           var bikeNum = 'bike' + i;
           $scope.markers[bikeNum] = {
@@ -243,33 +148,54 @@ angular.module('starter.controllers', ['ngCordova'])
         }
       });
 
-        $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude };
-        $scope.allPoints = data;
+  });
+  // $scope.Routing.control({
+  //   waypoints: [
+  //     $scope.latLng(),
+  //     $scope.latLng()
+  //   ],
+  // });
 
-        if ($scope.showStations){
-          for(var i = 0; i < $scope.allPoints.data.geoJSONBikeShare.features.length; i++){
+  $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
+    // $scope.center.autoDiscover = false;
+    // $scope.markers = {
+    //   userMarker : $scope.markers.userMarker
+    // };
+    leafletData.getMap().then(function(map){
+      // $scope.show($ionicLoading);
+      var bounds = map.getBounds();
+      console.log(map.getCenter());
+      PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
+        .then(function(data){
+          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="testClick(data);"> data.data.geoJSONBikeShare.features[i].properties.name&nbsp;&nbsp;<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+          var popupElement = angular.element(document).find('#popup');
+          popupElement = $compile(popupElement);
+          var content = popupElement($scope);
+
+          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
             var bikeNum = 'bike' + i;
             $scope.markers[bikeNum] = {
-              lat : $scope.allPoints.data.geoJSONBikeShare.features[i].properties.lat,
-              lng : $scope.allPoints.data.geoJSONBikeShare.features[i].properties.long,
-              icon: $scope.bikeShareIcon
+              lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+              lng : data.data.geoJSONBikeShare.features[i].properties.long,
+              icon: $scope.bikeShareIcon,
+              message : content,
+              getMessageScope: function(){ return $scope; },
+              properties : data.data.geoJSONBikeShare.features[i].properties
             };
           }
-        }
-
-        if ($scope.showLandmarks){
-          for(var j = 0; j < $scope.allPoints.data.geoJSONHistory.features.length; j++){
+          for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
             var historyNum = 'history' + j;
             $scope.markers[historyNum] = {
-              lat : $scope.allPoints.data.geoJSONHistory.features[j].properties.lat,
-              lng : $scope.allPoints.data.geoJSONHistory.features[j].properties.long,
-              icon: $scope.historyIcon
+              lat : data.data.geoJSONHistory.features[j].properties.lat,
+              lng : data.data.geoJSONHistory.features[j].properties.long,
+              icon: $scope.historyIcon,
+              properties : data.data.geoJSONHistory.features[j].properties
             };
           }
-        }
-
-      });
+        });
+    });
   });
+
   //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
   $scope.pinTypes = [
       { text: "Bike Share", checked: true },
@@ -277,7 +203,7 @@ angular.module('starter.controllers', ['ngCordova'])
       { text: "Bike Rack", checked: false }
     ];
 
-  //////// SPINNER ONLOAD ANIMATION ////////
+  //SPINNER ONLOAD ANIMATION
   $scope.show = function() {
     $ionicLoading.show({
       template: '<p>Loading, please wait...</p><ion-spinner icon="spiral"></ion-spinner>'
@@ -289,10 +215,16 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
-      $scope.center.autoDiscover = false;
-
   });
 
+  $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
+      var leafEvent = args.leafletEvent;
+      var marker = args.markerName;
+  });
+
+  $scope.testClick = function(data) {
+    console.log(data); // properties arrives as object
+  };
   //////// BEGINNIG of MODAL ////////
 
   $ionicModal.fromTemplateUrl('filter-modal.html', {
