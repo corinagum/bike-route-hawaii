@@ -60,23 +60,14 @@
         <div class="modal">
           <ion-header-bar>
             <h1 class="title">Bike Share</h1>
-            <div>
-              <button class="button button-energized padding" side="right" ng-click="closeModal(2)">Close</button>
-            </div>
-          </ion-header-bar>
+              <ion-nav-button side="right">
+                <button class="button button-energized" ng-click="closeModal(2)">Close</button>
+                </ion-nav-button>
+              </ion-header-bar>
             <ion-content>
-              <!-- <div class="list"> -->
-                <ion-item ng-repeat="item in bikesharePoints">
-                  {{ item.title }}
-                </ion-item>
-              <!-- <div class="item item-divider">
-                Header 2
-              </div>
-              <div class="item item-text-wrap">
-                Hello from Modal 2
-              </div> -->
-
-              <!-- </div> -->
-          </ion-content>
+              <ion-item ng-repeat="item in bikesharePoints">
+                {{ item.title }}
+              </ion-item>
+            </ion-content>
       </script>
 </ion-view>
