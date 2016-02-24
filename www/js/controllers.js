@@ -170,6 +170,12 @@ angular.module('starter.controllers', ['ngCordova'])
     PointService.getPointsInRadius($scope.radius, $scope.myLocation.myLat, $scope.myLocation.myLong)
       .then(function(data){
 
+        $scope.markers.userMarker = {
+          lat : $scope.myLocation.myLat,
+          lng : $scope.myLocation.myLong,
+          // message : 'You are here'
+        };
+
         if ($scope.showStations){
           for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
             var bikeNum = 'bike' + i;
@@ -206,7 +212,7 @@ angular.module('starter.controllers', ['ngCordova'])
       message : 'You are here &nbsp&nbsp<i class="fa fa-chevron-right"></i>'
     };
 
-    PointService.getPointsInRadius(50000, leafEvent.latitude, leafEvent.longitude)
+    PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
 
         $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude };
