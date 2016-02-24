@@ -150,10 +150,18 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.myLocation = {};
 
-  $scope.radius = 805;
+  $scope.radius = 1610;
+  $scope.radiusHalf = false;
+  $scope.radiusMile = true;
+  $scope.radiusTwoMile = false;
+  $scope.radiusAll = false;
 
   $scope.setRadius = function(rad){
     $scope.radius = rad;
+    if ( rad === 805) {  $scope.radiusHalf = true; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
+    if ( rad === 1610) {  $scope.radiusHalf = false; $scope.radiusMile = true; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
+    if ( rad === 3220) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = true; $scope.radiusAll = false; }
+    if ( rad === 50000) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = true; }
   };
 
   $scope.setPinsWithinRadius = function(){
