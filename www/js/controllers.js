@@ -13,9 +13,6 @@ angular.module('starter.controllers', ['ngCordova'])
   //});
 
   $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
 })
 
 .controller('GalleryDetailCtrl', function($scope, $stateParams, Chats) {
@@ -29,6 +26,10 @@ angular.module('starter.controllers', ['ngCordova'])
 })
 
 .controller('MapCtrl', ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
+
+  $scope.bikeShareMarkers =[];
+  $scope.landmarkMarkers =[];
+  $scope.bikeRackMarkers =[];
 
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
@@ -121,6 +122,7 @@ angular.module('starter.controllers', ['ngCordova'])
       prefix : 'fa'
     }
   });
+
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
     $scope.show($ionicLoading);
@@ -128,7 +130,19 @@ angular.module('starter.controllers', ['ngCordova'])
     });
   };
 
+  // Functions to set and filter by radius //
+
   $scope.radius = 1610;
+
+  $scope.setRadius = function(rad){
+    $scope.radius = rad;
+    console.log(rad);
+    console.log($scope.radius, "is $scope.radius");
+    $scope.markers.clearLayers();
+    updateUserLocMarker();
+  };
+
+  //
 
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
@@ -142,6 +156,10 @@ angular.module('starter.controllers', ['ngCordova'])
 
     PointService.getPointsInRadius($scope.radius, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
+
+        $scope.allPoints = data.data;
+        console.log($scope.allPoints);
+
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
           var bikeNum = 'bike' + i;
           $scope.markers[bikeNum] = {
@@ -159,7 +177,6 @@ angular.module('starter.controllers', ['ngCordova'])
           };
         }
       });
-
   });
 
   //SPINNER ONLOAD ANIMATION
