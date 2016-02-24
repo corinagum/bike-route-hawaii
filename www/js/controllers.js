@@ -147,8 +147,11 @@ angular.module('starter.controllers', ['ngCordova'])
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
 
           //TO SEND DATA INFO INTO ARRAY
-          var bksData = data.data.geoJSONBikeShare.features[i].properties.name;
-          $scope.bikesharePoints.push({title:bksData});
+          var bksData = data.data.geoJSONBikeShare.features[i].properties;
+          $scope.bikesharePoints.push({
+            title:bksData.name,
+            dist: Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100
+          });
 
           var bikeNum = 'bike' + i;
           $scope.markers[bikeNum] = {
