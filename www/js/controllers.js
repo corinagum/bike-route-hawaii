@@ -187,12 +187,19 @@ angular.module('starter.controllers', ['ngCordova'])
       console.log(map.getCenter());
       PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
         .then(function(data){
+          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="testClick(data);"> data.data.geoJSONBikeShare.features[i].properties.name&nbsp;&nbsp;<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+          var popupElement = angular.element(document).find('#popup');
+          popupElement = $compile(popupElement);
+          var content = popupElement($scope);
+
           for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
             var bikeNum = 'bike' + i;
             $scope.markers[bikeNum] = {
               lat : data.data.geoJSONBikeShare.features[i].properties.lat,
               lng : data.data.geoJSONBikeShare.features[i].properties.long,
               icon: $scope.bikeShareIcon,
+              message : content,
+              getMessageScope: function(){ return $scope; },
               properties : data.data.geoJSONBikeShare.features[i].properties
             };
           }
@@ -235,6 +242,9 @@ angular.module('starter.controllers', ['ngCordova'])
       var marker = args.markerName;
   });
 
+  $scope.testClick = function(data) {
+    console.log(data); // properties arrives as object
+  };
   //////// BEGINNIG of MODAL ////////
 
   $ionicModal.fromTemplateUrl('filter-modal.html', {
