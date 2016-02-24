@@ -3,14 +3,14 @@
       <ion-content data-tap-disabled="true">
 
         <div class="view-filter">
-          <button ng-click="openModal()" class="button button-icon icon ion-gear-a placeholder-icon"></button>
+          <button ng-click="openModal(1)" class="button button-icon icon ion-gear-a placeholder-icon"></button>
         </div>
 
         <leaflet lf-center="center" center="honolulu" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson = "geojson"></leaflet>
       </ion-content>
         <ion-footer-bar id="footer-bar">
           <div><button ng-click="findCenter()" class="button button-icon icon ion-location"></button></div>
-          <div><button ng-click="" class="button button-icon icon ion-android-bicycle"></button></div>
+          <div><button ng-click="openModal(2)" class="button button-icon icon ion-android-bicycle"></button></div>
           <div><button ng-click="" class="button button-icon icon ion-image"></button></div>
           <div><button ng-click="" class="button button-icon icon ion-chevron-up"></button></div>
         </ion-footer-bar>
@@ -24,25 +24,18 @@
             <h1 class="title">Filters</h1>
           </ion-header-bar>
           <ion-content>
-            <div class="list">
-              <div class="item">Pin Types
-                <div class="pinViews">
-                  <ion-checkbox href="#">
-                  <i class="icon ion-android-bicycle"></i>
-                    Bike Share Stations
-                  </ion-checkbox>
 
-                  <ion-checkbox href="#">
-                  <i class="icon ion-image"></i>
-                    Landmark
-                  </ion-checkbox>
-
-                  <ion-checkbox href="#">
-                  <i class="icon ion-chevron-up"></i>
-                    Public Bike Racks
+            <div class="item">Pin Types
+              <div class="pinViews">
+                <div class="list">
+                  <ion-checkbox ng-repeat="item in pinTypes"
+                                ng-model="item.checked"
+                                ng-checked="item.checked">
+                    {{ item.text }}
                   </ion-checkbox>
                 </div>
               </div>
+            </div>
               <!-- RADIUS SELECT ITEMS -->
               <div class="item item-input item-select">
                 <div id="radiusDiv" class="input-label">Radius: mile(s)</div>
@@ -56,22 +49,34 @@
                   </select>
                 </div>
 
-              <!-- MAP VIEW SELECT ITEMS -->
-         <!--      <div class="item">Map Views
-                <div id="mapView" class="button-bar">
-                  <!-- <ion-item class="text-center"> -->
-                   <!--  <button class="button button-large buttonStyle"> Satelite</button>
-                    <button class="button button-large buttonStyle"> Hybrid</button>
-                    <button class="button button-large buttonStyle"> Street</button>
-                  <!-- </ion-item> -->
-              <!--   </div>
-              </div> -->
             <div>
-              <button class="button button-full button-energized" ng-click="closeModal()">Done</button>
+              <button class="button button-full button-energized" ng-click="closeModal(1)">Done</button>
             </div>
-
           </ion-content>
         </div>
       </script>
 
+      <script id="bikeShareList.html" type="text/ng-template">
+        <div class="modal">
+          <ion-header-bar>
+            <h1 class="title">Bike Share</h1>
+            <div>
+              <button class="button button-energized padding" side="right" ng-click="closeModal(2)">Close</button>
+            </div>
+          </ion-header-bar>
+            <ion-content>
+              <!-- <div class="list"> -->
+                <ion-item ng-repeat="item in bikesharePoints">
+                  {{ item.title }}
+                </ion-item>
+              <!-- <div class="item item-divider">
+                Header 2
+              </div>
+              <div class="item item-text-wrap">
+                Hello from Modal 2
+              </div> -->
+
+              <!-- </div> -->
+          </ion-content>
+      </script>
 </ion-view>

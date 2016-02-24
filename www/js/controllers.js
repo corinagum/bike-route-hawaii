@@ -139,9 +139,17 @@ angular.module('starter.controllers', ['ngCordova'])
       message : 'You are here'
     };
 
+    //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
+    $scope.bikesharePoints = [];
+
     PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+
+          //TO SEND DATA INFO INTO ARRAY
+          var bksData = data.data.geoJSONBikeShare.features[i].properties.name;
+          $scope.bikesharePoints.push({title:bksData});
+
           var bikeNum = 'bike' + i;
           $scope.markers[bikeNum] = {
             lat : data.data.geoJSONBikeShare.features[i].properties.lat,
@@ -160,6 +168,13 @@ angular.module('starter.controllers', ['ngCordova'])
       });
 
   });
+
+  //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
+  $scope.pinTypes = [
+      { text: "Bike Share", checked: true },
+      { text: "Landmark", checked: false },
+      { text: "Bike Rack", checked: false }
+    ];
 
   //SPINNER ONLOAD ANIMATION
   $scope.show = function() {
@@ -180,16 +195,28 @@ angular.module('starter.controllers', ['ngCordova'])
   //////// BEGINNIG of MODAL ////////
 
   $ionicModal.fromTemplateUrl('filter-modal.html', {
+      id: '1',
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
       $scope.modal = modal;
     });
-    $scope.openModal = function() {
-      $scope.modal.show();
+
+  $ionicModal.fromTemplateUrl('bikeShareList.html', {
+      id: '2',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal2 = modal;
+    });
+
+    $scope.openModal = function(index) {
+      if (index == 1) $scope.modal.show();
+      else $scope.modal2.show();
     };
-    $scope.closeModal = function() {
-      $scope.modal.hide();
+    $scope.closeModal = function(index) {
+      if (index == 1) $scope.modal.hide();
+      else $scope.modal2.hide();
     };
     //Cleanup the modal when we're done with it!
     $scope.$on('$destroy', function() {
