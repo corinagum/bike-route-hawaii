@@ -1,9 +1,11 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'leaflet-directive'])
+
+
+angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($rootScope, $ionicLoading, $ionicPlatform) {
-    $rootScope.$on('loading:show', function() {
-      $ionicLoading.show({template: 'Hi There!'});
-    });
+    // $rootScope.$on('loading:show', function() {
+    //   $ionicLoading.show({template: 'Hi There!'});
+    // });
 
     $rootScope.$on('loading:hide', function() {
       $ionicLoading.hide();

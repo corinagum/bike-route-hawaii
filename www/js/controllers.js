@@ -32,9 +32,12 @@ angular.module('starter.controllers', ['ngCordova'])
 
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
-     markers : {}
+     markers : {
+     }
   });
+
   document.addEventListener("deviceready", updateUserLocMarker, false);
+
   function updateUserLocMarker (map) {
 
     if(!isCordovaApp) {
@@ -79,10 +82,11 @@ angular.module('starter.controllers', ['ngCordova'])
         });
     }
   }
+
   angular.extend($scope, {
     honolulu: {
-      lat: 21.3,
-      ng: -157.8,
+      lat: 21.3008900859581,
+      lng: -157.8398036956787,
       zoom: 13
     },
     events: {
@@ -104,7 +108,9 @@ angular.module('starter.controllers', ['ngCordova'])
       scrollWheelZoom: false
     },
     center : {
-      autoDiscover : true
+      lat: 21.3008900859581,
+      lng: -157.8398036956787,
+      zoom: 13
     },
     bikeShareIcon: {
       type: 'extraMarker',
@@ -121,6 +127,7 @@ angular.module('starter.controllers', ['ngCordova'])
       prefix : 'fa'
     }
   });
+
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
     $scope.show($ionicLoading);
@@ -131,15 +138,15 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
-    $scope.center.autoDiscover = false;
+    $scope.center.autoDiscover = true;
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
       lng : leafEvent.longitude,
       message : 'You are here &nbsp&nbsp<i class="fa fa-chevron-right"></i>'
     };
-
     PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
+      console.log("in getPointsInRadius");
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
           var bikeNum = 'bike' + i;
           $scope.markers[bikeNum] = {
@@ -163,13 +170,14 @@ angular.module('starter.controllers', ['ngCordova'])
   });
 
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
-    $scope.center.autoDiscover = false;
-    $scope.markers = {
-      userMarker : $scope.markers.userMarker
-    };
+    // $scope.center.autoDiscover = false;
+    // $scope.markers = {
+    //   userMarker : $scope.markers.userMarker
+    // };
     leafletData.getMap().then(function(map){
       // $scope.show($ionicLoading);
       var bounds = map.getBounds();
+      console.log(map.getCenter());
       PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
         .then(function(data){
           for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
@@ -206,14 +214,14 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.$on('leafletDirectiveMap.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
-      $scope.center.autoDiscover = false;
+      // $scope.center.autoDiscover = false;
   });
 
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
       var marker = args.markerName;
 
-      $scope.center.autoDiscover = false;
+      // $scope.center.autoDiscover = false;
   });
 
 
