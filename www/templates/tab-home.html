@@ -27,43 +27,45 @@
             <div class="list">
               <div class="item">Pin Types
                 <div class="pinViews">
-                  <ion-radio ng-model="choice" href="#">
+                  <ion-checkbox href="#">
                   <i class="icon ion-android-bicycle"></i>
                     Bike Share Stations
-                  </ion-radio ng-model="choice">
+                  </ion-checkbox>
 
-                  <ion-radio ng-model="choice" href="#">
+                  <ion-checkbox href="#">
                   <i class="icon ion-image"></i>
                     Landmark
-                  </ion-radio ng-model="choice">
+                  </ion-checkbox>
 
-                  <ion-radio ng-model="choice" href="#">
+                  <ion-checkbox href="#">
                   <i class="icon ion-chevron-up"></i>
                     Public Bike Racks
-                  </ion-radio ng-model="choice">
+                  </ion-checkbox>
                 </div>
               </div>
               <!-- RADIUS SELECT ITEMS -->
-              <div class="item">Radius: mile(s)
-                <div id="radiusDiv" class="button-bar">
+              <div class="item item-input item-select">
+                <div id="radiusDiv" class="input-label">Radius: mile(s)</div>
                   <!-- <ion-item class="text-center"> -->
-                    <button class="button">0.5</button>
-                    <button class="button buttonStyle">1</button>
-                    <button class="button buttonStyle">2</button>
-                    <button class="button buttonStyle">All</button>
+                  <select>
+                    <option class="button">0.5</option>
+                    <option class="button buttonStyle">1</option>
+                    <option class="button buttonStyle">2</option>
+                    <option class="button buttonStyle">All</option>
                   <!-- </ion-item> -->
+                  </select>
                 </div>
-              </div>
+
               <!-- MAP VIEW SELECT ITEMS -->
-              <div class="item">Map Views
+         <!--      <div class="item">Map Views
                 <div id="mapView" class="button-bar">
                   <!-- <ion-item class="text-center"> -->
-                    <button class="button button-large buttonStyle"> Satelite</button>
+                   <!--  <button class="button button-large buttonStyle"> Satelite</button>
                     <button class="button button-large buttonStyle"> Hybrid</button>
                     <button class="button button-large buttonStyle"> Street</button>
                   <!-- </ion-item> -->
-                </div>
-              </div>
+              <!--   </div>
+              </div> -->
             <div>
               <button class="button button-full button-energized" ng-click="closeModal()">Done</button>
             </div>
