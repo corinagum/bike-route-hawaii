@@ -10,7 +10,6 @@
   document.addEventListener("deviceready", updateUserLocMarker, false);
 
   function updateUserLocMarker (map) {
-
     if(!isCordovaApp) {
       navigator.geolocation.getCurrentPosition(function(position){
       $ionicLoading.hide();
@@ -108,6 +107,80 @@
     });
   };
 
+  // Filter which markers to show
+
+  $scope.showStations = true;
+  $scope.showLandmarks = false;
+  $scope.showBikeRacks = false;
+
+  $scope.setShowStations = function(){
+    $scope.showStations = !$scope.showStations;
+  };
+
+  $scope.setShowLandmarks = function(){
+    $scope.showLandmarks = !$scope.showLandmarks;
+  };
+
+  $scope.setShowBikeRacks = function(){
+    $scope.showBikeRacks = !$scope.showBikeRacks;
+  };
+
+  // Functions to set and filter by radius //
+
+  $scope.myLocation = {};
+
+  $scope.radius = 1610;
+  $scope.radiusHalf = false;
+  $scope.radiusMile = true;
+  $scope.radiusTwoMile = false;
+  $scope.radiusAll = false;
+
+  $scope.setRadius = function(rad){
+    $scope.radius = rad;
+    if ( rad === 805) {  $scope.radiusHalf = true; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
+    if ( rad === 1610) {  $scope.radiusHalf = false; $scope.radiusMile = true; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
+    if ( rad === 3220) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = true; $scope.radiusAll = false; }
+    if ( rad === 50000) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = true; }
+  };
+
+  $scope.setPinsWithinRadius = function(){
+    $scope.markers = {};
+
+    PointService.getPointsInRadius($scope.radius, $scope.myLocation.myLat, $scope.myLocation.myLong)
+      .then(function(data){
+
+        $scope.markers.userMarker = {
+          lat : $scope.myLocation.myLat,
+          lng : $scope.myLocation.myLong,
+          // message : 'You are here'
+        };
+
+        if ($scope.showStations){
+          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+            var bikeNum = 'bike' + i;
+            $scope.markers[bikeNum] = {
+              lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+              lng : data.data.geoJSONBikeShare.features[i].properties.long,
+              icon: $scope.bikeShareIcon
+            };
+          }
+        }
+
+        if ($scope.showLandmarks){
+          for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+            var historyNum = 'history' + j;
+            $scope.markers[historyNum] = {
+              lat : data.data.geoJSONHistory.features[j].properties.lat,
+              lng : data.data.geoJSONHistory.features[j].properties.long,
+              icon: $scope.historyIcon
+            };
+          }
+        }
+      });
+  };
+
+  //
+
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
@@ -120,9 +193,13 @@
     //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
     $scope.bikesharePoints = [];
 
-    PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
+
+    PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
-      console.log("in getPointsInRadius");
+      // console.log("in getPointsInRadius");
+
+      $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
+
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
 
           //TO SEND DATA INFO INTO ARRAY
@@ -150,12 +227,7 @@
       });
 
   });
-  // $scope.Routing.control({
-  //   waypoints: [
-  //     $scope.latLng(),
-  //     $scope.latLng()
-  //   ],
-  // });
+
 
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
     // $scope.center.autoDiscover = false;
@@ -207,7 +279,7 @@
   //SPINNER ONLOAD ANIMATION
   $scope.show = function() {
     $ionicLoading.show({
-      template: '<p>Loading, please wait...</p><ion-spinner icon="spiral"></ion-spinner>'
+      template: '<p>Loading, please wait...</p><ion-spinner icon="spiral"></ion-spinner> <ion-spinner icon="spiral"></ion-spinner>'
     });
   };
   $scope.hide = function(){

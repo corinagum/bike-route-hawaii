@@ -25,9 +25,7 @@
           </ion-header-bar>
           <ion-content>
 
-<!-- ======= -->
-<!-- ======= -->
-<!-- ======= -->
+            <div class="list">
 
             <div class="list">
               <div class="item">Pin Types
@@ -47,24 +45,6 @@
                     Public Bike Racks
                   </a>
 
-<!-- ======= -->
-<!-- ======= -->
-<!-- ======= -->
-
-<!--
-            <div class="item">Pin Types
-              <div class="pinViews">
-                <div class="list">
-                  <ion-checkbox ng-repeat="item in pinTypes"
-                                ng-model="item.checked"
-                                ng-checked="item.checked">
-                    {{ item.text }}
-                  </ion-checkbox>
-                </div>
-              </div>
-            </div> -->
-              <!-- RADIUS SELECT ITEMS -->
-<!-- <<<<<<< HEAD -->
               <div class="item">Radius
                 <div id="radiusDiv" class="button-bar">
                     <button class="button buttonStyle" ng-click="setRadius(805)" ng-class="{'btn2': radiusHalf, 'btn1': !radiusHalf}">0.5 mi</button>
@@ -77,24 +57,7 @@
             <div>
               <button class="button button-full button-energized" ng-click="setPinsWithinRadius(); closeModal(1)">Done</button>
             </div>
-<!-- ======= -->
-<!-- ======= -->
-<!-- ======= -->
-<!--               <div class="item item-input item-select">
-                <div id="radiusDiv" class="input-label">Radius: mile(s)</div>
-                  <select>
-                    <option class="button">0.5</option>
-                    <option class="button buttonStyle">1</option>
-                    <option class="button buttonStyle">2</option>
-                    <option class="button buttonStyle">All</option>
-                  </select>
-                </div>
-            <div>
-              <button class="button button-full button-energized" ng-click="closeModal(1)">Done</button>
-            </div> -->
-<!-- ======= -->
-<!-- ======= -->
-<!-- ======= -->
+
           </ion-content>
         <!-- </div> -->
       </script>
