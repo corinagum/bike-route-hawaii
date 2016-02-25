@@ -19,54 +19,62 @@
 <!-- pop-up modal -->
 
       <script id="filter-modal.html" type="text/ng-template">
-        <div class="modal">
+        <div class="modal filter-modal">
           <ion-header-bar>
             <h1 class="title">Filters</h1>
           </ion-header-bar>
           <ion-content>
 
-            <div class="item">Pin Types
-              <div class="pinViews">
-                <div class="list">
-                  <ion-checkbox ng-repeat="item in pinTypes"
-                                ng-model="item.checked"
-                                ng-checked="item.checked">
-                    {{ item.text }}
-                  </ion-checkbox>
+            <div class="list">
+
+            <div class="list">
+              <div class="item">Pin Types
+                <div class="pinViews">
+                  <a class="item item-icon-left" ng-click="setShowStations()" ng-class="{'btn2': showStations, 'btn1': !showStations}">
+                  <i class="icon ion-android-bicycle" ng-class="testcolor"></i>
+                    Bike Share Stations
+                  </a>
+
+                  <a class="item item-icon-left" ng-click="setShowLandmarks()" ng-class="{'btn2': showLandmarks, 'btn1': !showLandmarks}">
+                  <i class="icon ion-image"></i>
+                    Landmarks
+                  </a>
+
+                  <a class="item item-icon-left" ng-click="setShowBikeRacks()" ng-class="{'btn2': showBikeRacks, 'btn1': !showBikeRacks}">
+                  <i class="icon ion-chevron-up"></i>
+                    Public Bike Racks
+                  </a>
+
+              <div class="item">Radius
+                <div id="radiusDiv" class="button-bar">
+                    <button class="button buttonStyle" ng-click="setRadius(805)" ng-class="{'btn2': radiusHalf, 'btn1': !radiusHalf}">0.5 mi</button>
+                    <button class="button buttonStyle" ng-click="setRadius(1610)" ng-class="{'btn2': radiusMile, 'btn1': !radiusMile}">1 mi</button>
+                    <button class="button buttonStyle" ng-click="setRadius(3220)" ng-class="{'btn2': radiusTwoMile, 'btn1': !radiusTwoMile}">2 mi</button>
+                    <button class="button buttonStyle" ng-click="setRadius(50000)" ng-class="{'btn2': radiusAll, 'btn1': !radiusAll}">All</button>
                 </div>
               </div>
-            </div>
-              <!-- RADIUS SELECT ITEMS -->
-              <div class="item item-input item-select">
-                <div id="radiusDiv" class="input-label">Radius: mile(s)</div>
-                  <!-- <ion-item class="text-center"> -->
-                  <select>
-                    <option class="button">0.5</option>
-                    <option class="button buttonStyle">1</option>
-                    <option class="button buttonStyle">2</option>
-                    <option class="button buttonStyle">All</option>
-                  <!-- </ion-item> -->
-                  </select>
-                </div>
 
             <div>
-              <button class="button button-full button-energized" ng-click="closeModal(1)">Done</button>
+              <button class="button button-full button-energized" ng-click="setPinsWithinRadius(); closeModal(1)">Done</button>
             </div>
+
           </ion-content>
-        </div>
+        <!-- </div> -->
       </script>
 
       <script id="bikeShareList.html" type="text/ng-template">
         <div class="modal">
-          <ion-header-bar>
-            <h1 class="title">Bike Share</h1>
-              <ion-nav-button side="right">
-                <button class="button button-energized" ng-click="closeModal(2)">Close</button>
-                </ion-nav-button>
-              </ion-header-bar>
+          <ion-header-bar class="bar bar-header">
+            <h1 class="title" >Bike Share</h1>
+            <button class="button icon ion-arrow-down-b" ng-click="closeModal(2)"></button>
+          </ion-header-bar>
             <ion-content>
-              <ion-item ng-repeat="item in bikesharePoints">
-                {{ item.title }}
+              <ion-item ng-repeat="item in bikesharePoints" ng-click="getRoutes()">
+                <img class="bshLogo" src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg">
+                <div class="padding">
+                  <h2>{{ item.title }}</h2>
+                  <p>{{ item.dist }} miles</p>
+                </div>
               </ion-item>
             </ion-content>
       </script>
