@@ -181,8 +181,6 @@
       });
   };
 
-  //
-
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
@@ -192,19 +190,23 @@
       lng : leafEvent.longitude,
       message : 'You are here'
     };
+
     //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
     $scope.bikesharePoints = [];
-    var dstnLatLng = {};
 
-    PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
+    PointService.getPointsInRadius(10000, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
-
       $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
 
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
 
+
           //TO SEND DATA INFO INTO ARRAY
           var bksData = data.data.geoJSONBikeShare.features[i].properties;
+          var markLat = bksData.lat;
+          var markLong = bksData.long;
+          // console.log("markLong", markLong );
+          // console.log("name", bksData);
 
             // console.log("baksData", bksData);
           $scope.bikesharePoints.push({
@@ -214,10 +216,13 @@
             long: bksData.long
           });
 
+          //COUNT OF STATION WITHIN USER'S RADIUS
+          $scope.stationCount = $scope.bikesharePoints.length;
+
           var bikeNum = 'bike' + i;
           $scope.markers[bikeNum] = {
-            lat : data.data.geoJSONBikeShare.features[i].properties.lat,
-            lng : data.data.geoJSONBikeShare.features[i].properties.long,
+            lat : bksData.lat,
+            lng : bksData.long,
             icon: $scope.bikeShareIcon
           };
         }
@@ -235,9 +240,11 @@
           leafletData.getMap()
             .then(function(map){
               L.Routing.control({
-                waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( 21.276738003138448, -157.81094312667847)]
+                waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( markLat, markLong)],
+                routeWhileDragging: true
               }).addTo(map);
               $scope.closeModal(2);
+              console.log("consoleLogging", markLong);
           });
         };
       });

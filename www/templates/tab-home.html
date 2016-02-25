@@ -65,16 +65,20 @@
       <script id="bikeShareList.html" type="text/ng-template">
         <div class="modal">
           <ion-header-bar class="bar bar-header">
-            <h1 class="title" >Bike Share</h1>
+            <h1 class="title" >{{stationCount}} Bike Share</h1>
             <button class="button icon ion-arrow-down-b" ng-click="closeModal(2)"></button>
           </ion-header-bar>
             <ion-content>
               <ion-item ng-repeat="item in bikesharePoints">
                 <img class="bshLogo" src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg">
                 <div class="padding">
+                  <button class="button icon ion-navigate naviBtn" ng-click="getDirections()"></button>
                   <h2>{{ item.title }}</h2>
                   <p>{{ item.dist }} miles</p>
-                  <button class="naviBtn" ng-click="getDirections()">Take me here</button>
+                  <p>{{ item.lat }}</p>
+                  <p>{{ item.long }}</p>
+                </div>
+                <div>
                 </div>
               </ion-item>
             </ion-content>

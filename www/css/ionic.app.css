@@ -9768,6 +9768,9 @@ a.button {
   height: 70px;
   margin-right: 20px; }
 
+.naviBtn {
+  float: right; }
+
 .buttonStyle {
   border-left: 1px solid white; }
 
