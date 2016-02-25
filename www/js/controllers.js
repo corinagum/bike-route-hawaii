@@ -111,7 +111,8 @@ angular.module('starter.controllers', ['ngCordova'])
     center : {
       lat: 21.3008900859581,
       lng: -157.8398036956787,
-      zoom: 13
+      zoom: 13,
+      // autoDiscover:true
     },
     bikeShareIcon: {
       type: 'extraMarker',
