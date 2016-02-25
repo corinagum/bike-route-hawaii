@@ -72,7 +72,7 @@
               <ion-item ng-repeat="item in bikesharePoints">
                 <img class="bshLogo" src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg">
                 <div class="padding">
-                  <button class="button icon ion-navigate naviBtn" ng-click="getDirections()"></button>
+                  <button class="button icon ion-navigate naviBtn" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></button>
                   <h2>{{ item.title }}</h2>
                   <p>{{ item.dist }} miles</p>
                   <p>{{ item.lat }}</p>

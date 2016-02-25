@@ -205,7 +205,7 @@
           var bksData = data.data.geoJSONBikeShare.features[i].properties;
           var markLat = bksData.lat;
           var markLong = bksData.long;
-          // console.log("markLong", markLong );
+          console.log("markLong", markLong );
           // console.log("name", bksData);
 
             // console.log("baksData", bksData);
@@ -225,6 +225,26 @@
             lng : bksData.long,
             icon: $scope.bikeShareIcon
           };
+
+          //GET DIRECTION FROM USER TO POINT
+          $scope.getDirections = function(desLat, desLong){
+            console.log("destination", desLat);
+            leafletData.getMap()
+              .then(function(map){
+                L.Routing.control({
+                  waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( desLat, desLong)],
+                  routeWhileDragging: true
+                }).addTo(map);
+                $scope.closeModal(2);
+                markers.clearLayers();
+
+            })
+              .then(function(map){
+                L.Routing.itinerary({
+
+                });
+              });
+          };
         }
         for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
           var historyNum = 'history' + j;
@@ -235,21 +255,15 @@
           };
         }
 
-        //GET DIRECTION FROM USER TO POINT
-        $scope.getDirections = function(){
-          leafletData.getMap()
-            .then(function(map){
-              L.Routing.control({
-                waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( markLat, markLong)],
-                routeWhileDragging: true
-              }).addTo(map);
-              $scope.closeModal(2);
-              console.log("consoleLogging", markLong);
-          });
-        };
       });
 
   });
+
+  $scope.removeRouting = function() {
+      leafletData.getMap().then(function(map) {
+          map.removeControl($scope.routingControl);
+      });
+  };
 
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
     // $scope.center.autoDiscover = false;
