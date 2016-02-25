@@ -81,38 +81,32 @@
 
       <script id="bikeMarkerDetail.html" type="text/ng-template">
         <div class="modal">
-          <ion-header-bar>
+          <ion-header-bar class="bar bar-header">
             <h1 class="title">Location Details</h1>
-              <ion-nav-button side="right">
-                <button class="button button-energized" ng-click="closeModal(3)">Close</button>
-                </ion-nav-button>
-              </ion-header-bar>
+            <button class="button icon ion-arrow-down-b" ng-click="closeModal(3)"></button>
+          </ion-header-bar>
             <ion-content>
-                <ul>
-                  <li btn btn-default btn-sm>
-                    <ion-item >
-                      <i class="fa fa-thumbs-o-up fa-fw"></i> Upvote this Location
-                    </ion-item>
-                  </li>
-                  <li>
-                    <ion-item>
-                      <i class="fa fa-thumbs-o-down fa-fw"></i> Downvote this Location
-                    </ion-item>
-                  </li>
-                  <li>
-                    <ion-item>
-                      <i class="fa fa-exclamation-triangle fa-fw"></i> +1 Safety Incident
-                    </ion-item>
-                 </li>
-                  <li>
-                    <ion-item>
-                      <i class="fa fa-star-o fa-fw"></i> Add to Favorites
-                    </ion-item>
-                 </li>
-                </ul>
-            <ul>
-              <li>{{currentMarkerProperties.name}}</li>
-            </ul>
+              <img src="{{currentMarkerProperties.photoLink}}" />
+                <ion-item>
+                  <i class="locationMenu fa fa-star-o fa-fw"></i>
+                    <h2>Add to Favorites</h2>
+                </ion-item>
+
+                <ion-item>
+                  <i class="locationMenu fa fa-thumbs-o-up fa-fw"></i>
+                    <h2>Vote on Location</h2><i class=" locationMenu fa fa-thumbs-o-down fa-fw"></i>
+                    <p>+/- {{currentMarkerProperties.upDownVote}} of {{currentMarkerProperties.votesCounter}}</p>
+                </ion-item>
+
+                <ion-item>
+                  <i class="locationMenu fa fa-exclamation-triangle fa-fw"></i>
+                    <h2 class="floatingDetail">+1 Safety Incident</h2><p class="floatingDetail">&nbsp;&nbsp;&nbsp;{{currentMarkerProperties.safetyCounter}} Incidents</p>
+                </ion-item>
+              <p>Site ID: {{currentMarkerProperties.site_id}} on {{currentMarkerProperties.info}}</p>
+              <p>{{currentMarkerProperties.description}}</p>
+              <p>{{currentMarkerProperties.side}}</p>
+              <p><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
+              <p><a href="{{currentMarkerProperties.sitelink}}">Site</a></p>
             </ion-content>
       </script>
 </ion-view>
