@@ -166,6 +166,7 @@
               icon: $scope.bikeShareIcon
             };
           }
+
         }
 
         if ($scope.showLandmarks){
@@ -191,24 +192,21 @@
       message : 'You are here'
     };
 
-    //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
-    $scope.bikesharePoints = [];
 
-    PointService.getPointsInRadius(10000, leafEvent.latitude, leafEvent.longitude)
+    PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
       $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
 
-        for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+      //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
+      $scope.bikesharePoints = [];
 
+        for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
 
           //TO SEND DATA INFO INTO ARRAY
           var bksData = data.data.geoJSONBikeShare.features[i].properties;
           var markLat = bksData.lat;
           var markLong = bksData.long;
-          console.log("markLong", markLong );
-          // console.log("name", bksData);
 
-            // console.log("baksData", bksData);
           $scope.bikesharePoints.push({
             title: bksData.name,
             dist: Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100,
@@ -228,7 +226,7 @@
 
           //GET DIRECTION FROM USER TO POINT
           $scope.getDirections = function(desLat, desLong){
-            console.log("destination", desLat);
+            $scope.markers = {};
             leafletData.getMap()
               .then(function(map){
                 L.Routing.control({
@@ -236,9 +234,7 @@
                   routeWhileDragging: true
                 }).addTo(map);
                 $scope.closeModal(2);
-                markers.clearLayers();
-
-            })
+              })
               .then(function(map){
                 L.Routing.itinerary({
 
