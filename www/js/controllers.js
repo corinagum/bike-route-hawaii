@@ -103,18 +103,15 @@
 
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
-    $scope.show($ionicLoading);
+      L.Routing.control({
+        waypoints: [L.latLng( 21.29241331670117, -157.83201456069946), L.latLng( 21.276738003138448, -157.81094312667847)]
+      }).addTo(map);
+      $scope.show($ionicLoading);
       map.locate();
       updateUserLocMarker(map);
     });
   };
 
-  $scope.getRoutes = function(){
-    console.log("GET ROUTES");
-    L.Routing.control({
-      waypoints: [L.latLng( 57.74, 11.94), L.latLng( 57.6792, 11.949)]
-    });
-  };
   // Filter which markers to show
 
   $scope.showStations = true;
@@ -201,6 +198,9 @@
     //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
     $scope.bikesharePoints = [];
 
+    L.Routing.control({
+      waypoints: [L.latLng( 57.74, 11.94), L.latLng( 57.6792, 11.949)]
+    });
 
     PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
@@ -236,12 +236,12 @@
 
   });
 
-
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
     // $scope.center.autoDiscover = false;
     // $scope.markers = {
     //   userMarker : $scope.markers.userMarker
     // };
+    console.log("consoleLogging", leafletData.getMap());
     leafletData.getMap().then(function(map){
       // $scope.show($ionicLoading);
       var bounds = map.getBounds();
