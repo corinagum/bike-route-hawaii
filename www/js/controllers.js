@@ -1,34 +1,7 @@
+ angular.module('starter.controllers', ['ngCordova'])
 
-angular.module('starter.controllers', ['ngCordova'])
-
-.controller('DashCtrl', function($scope) {})
-
-.controller('GalleryCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
-
-.controller('GalleryDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.galleryId);
-})
-
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-})
-
-.controller('MapCtrl', ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
+ .controller('MapCtrl',
+  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
 
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
@@ -39,7 +12,6 @@ angular.module('starter.controllers', ['ngCordova'])
   document.addEventListener("deviceready", updateUserLocMarker, false);
 
   function updateUserLocMarker (map) {
-
     if(!isCordovaApp) {
       navigator.geolocation.getCurrentPosition(function(position){
       $ionicLoading.hide();
@@ -137,6 +109,86 @@ angular.module('starter.controllers', ['ngCordova'])
     });
   };
 
+  $scope.getRoutes = function(){
+    console.log("GET ROUTES");
+    L.Routing.control({
+      waypoints: [L.latLng( 57.74, 11.94), L.latLng( 57.6792, 11.949)]
+    });
+  };
+  // Filter which markers to show
+
+  $scope.showStations = true;
+  $scope.showLandmarks = false;
+  $scope.showBikeRacks = false;
+
+  $scope.setShowStations = function(){
+    $scope.showStations = !$scope.showStations;
+  };
+
+  $scope.setShowLandmarks = function(){
+    $scope.showLandmarks = !$scope.showLandmarks;
+  };
+
+  $scope.setShowBikeRacks = function(){
+    $scope.showBikeRacks = !$scope.showBikeRacks;
+  };
+
+  // Functions to set and filter by radius //
+
+  $scope.myLocation = {};
+
+  $scope.radius = 1610;
+  $scope.radiusHalf = false;
+  $scope.radiusMile = true;
+  $scope.radiusTwoMile = false;
+  $scope.radiusAll = false;
+
+  $scope.setRadius = function(rad){
+    $scope.radius = rad;
+    if ( rad === 805) {  $scope.radiusHalf = true; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
+    if ( rad === 1610) {  $scope.radiusHalf = false; $scope.radiusMile = true; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
+    if ( rad === 3220) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = true; $scope.radiusAll = false; }
+    if ( rad === 50000) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = true; }
+  };
+
+  $scope.setPinsWithinRadius = function(){
+    $scope.markers = {};
+
+    PointService.getPointsInRadius($scope.radius, $scope.myLocation.myLat, $scope.myLocation.myLong)
+      .then(function(data){
+
+        $scope.markers.userMarker = {
+          lat : $scope.myLocation.myLat,
+          lng : $scope.myLocation.myLong,
+          // message : 'You are here'
+        };
+
+        if ($scope.showStations){
+          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+            var bikeNum = 'bike' + i;
+            $scope.markers[bikeNum] = {
+              lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+              lng : data.data.geoJSONBikeShare.features[i].properties.long,
+              icon: $scope.bikeShareIcon
+            };
+          }
+        }
+
+        if ($scope.showLandmarks){
+          for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+            var historyNum = 'history' + j;
+            $scope.markers[historyNum] = {
+              lat : data.data.geoJSONHistory.features[j].properties.lat,
+              lng : data.data.geoJSONHistory.features[j].properties.long,
+              icon: $scope.historyIcon
+            };
+          }
+        }
+      });
+  };
+
+  //
+
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
@@ -149,13 +201,18 @@ angular.module('starter.controllers', ['ngCordova'])
     //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
     $scope.bikesharePoints = [];
 
-    PointService.getPointsInRadius(1800, leafEvent.latitude, leafEvent.longitude)
+
+    PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
+      $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
 
           //TO SEND DATA INFO INTO ARRAY
-          var bksData = data.data.geoJSONBikeShare.features[i].properties.name;
-          $scope.bikesharePoints.push({title:bksData});
+          var bksData = data.data.geoJSONBikeShare.features[i].properties;
+          $scope.bikesharePoints.push({
+            title:bksData.name,
+            dist: Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100
+          });
 
           var bikeNum = 'bike' + i;
           $scope.markers[bikeNum] = {
@@ -175,6 +232,7 @@ angular.module('starter.controllers', ['ngCordova'])
       });
 
   });
+
 
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
     // $scope.center.autoDiscover = false;
@@ -226,7 +284,7 @@ angular.module('starter.controllers', ['ngCordova'])
   //SPINNER ONLOAD ANIMATION
   $scope.show = function() {
     $ionicLoading.show({
-      template: '<p>Loading, please wait...</p><ion-spinner icon="spiral"></ion-spinner>'
+      template: '<p>Loading, please wait...</p><ion-spinner icon="spiral"></ion-spinner> <ion-spinner icon="spiral"></ion-spinner>'
     });
   };
   $scope.hide = function(){
