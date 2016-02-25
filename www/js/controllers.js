@@ -103,9 +103,6 @@
 
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
-      L.Routing.control({
-        waypoints: [L.latLng( 21.29241331670117, -157.83201456069946), L.latLng( 21.276738003138448, -157.81094312667847)]
-      }).addTo(map);
       $scope.show($ionicLoading);
       map.locate();
       updateUserLocMarker(map);
@@ -197,14 +194,10 @@
     };
     //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
     $scope.bikesharePoints = [];
-
-    L.Routing.control({
-      waypoints: [L.latLng( 57.74, 11.94), L.latLng( 57.6792, 11.949)]
-    });
+    var dstnLatLng = {};
 
     PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
-      // console.log("in getPointsInRadius");
 
       $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
 
@@ -212,9 +205,13 @@
 
           //TO SEND DATA INFO INTO ARRAY
           var bksData = data.data.geoJSONBikeShare.features[i].properties;
+
+            // console.log("baksData", bksData);
           $scope.bikesharePoints.push({
-            title:bksData.name,
-            dist: Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100
+            title: bksData.name,
+            dist: Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100,
+            lat: bksData.lat,
+            long: bksData.long
           });
 
           var bikeNum = 'bike' + i;
@@ -232,6 +229,17 @@
             icon: $scope.historyIcon
           };
         }
+
+        //GET DIRECTION FROM USER TO POINT
+        $scope.getDirections = function(){
+          leafletData.getMap()
+            .then(function(map){
+              L.Routing.control({
+                waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( 21.276738003138448, -157.81094312667847)]
+              }).addTo(map);
+              $scope.closeModal(2);
+          });
+        };
       });
 
   });
