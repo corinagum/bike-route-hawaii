@@ -188,7 +188,7 @@ angular.module('starter.controllers', ['ngCordova'])
         .then(function(data){
 
           for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
-          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="testClick(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3)"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
           var popupElement = angular.element(document).find('#popup');
           popupElement = $compile(popupElement);
           var content = popupElement($scope);
@@ -243,9 +243,7 @@ angular.module('starter.controllers', ['ngCordova'])
       $scope.currentMarkerProperties = args.leafletObject.options.properties;
   });
 
-  $scope.testClick = function(thisMarker) {
 
-  };
   //////// BEGINNIG of MODAL ////////
 
   $ionicModal.fromTemplateUrl('filter-modal.html', {
@@ -253,38 +251,58 @@ angular.module('starter.controllers', ['ngCordova'])
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
-      $scope.modal = modal;
+      $scope.modal1 = modal;
     });
 
   $ionicModal.fromTemplateUrl('bikeShareList.html', {
-      id: '2',
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.modal2 = modal;
-    });
+    id: '2',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal2 = modal;
+  });
 
-    $scope.openModal = function(index) {
-      if (index == 1) $scope.modal.show();
-      else $scope.modal2.show();
-    };
-    $scope.closeModal = function(index) {
-      if (index == 1) $scope.modal.hide();
-      else $scope.modal2.hide();
-    };
-    //Cleanup the modal when we're done with it!
-    $scope.$on('$destroy', function() {
-      $scope.modal.remove();
-    });
-    // Execute action on hide modal
-    $scope.$on('modal.hidden', function() {
-      // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('modal.removed', function() {
-      // Execute action
-    });
+  // Modal for Marker Info
+  $ionicModal.fromTemplateUrl('bikeMarkerDetail.html', {
+    id: '3',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal3 = modal;
+  });
 
+  $scope.openModal = function(index) {
+    switch (index) {
+      case 1 : $scope.modal1.show();
+                break;
+      case 2 : $scope.modal2.show();
+                break;
+      case 3 : $scope.modal3.show();
+    }
+  };
+
+   $scope.closeModal = function(index) {
+    switch (index) {
+      case 1 : $scope.modal1.hide();
+                break;
+      case 2 : $scope.modal2.hide();
+                break;
+      case 3 : $scope.modal3.hide();
+    }
+  };
+
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
     //////// END of MODAL ////////
 
 
