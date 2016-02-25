@@ -73,6 +73,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   height: 70px;
   margin-right: 20px;
 }
+
+.locationMenu {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+.floatingDetail {
+  float : left;
+  display : inline;
+}
 //BUTTONS IN FILTERS
 .buttonStyle {
   border-left: 1px solid white;

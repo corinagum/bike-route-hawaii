@@ -12,7 +12,7 @@
           <div><button ng-click="findCenter()" class="button button-icon icon ion-location"></button></div>
           <div><button ng-click="openModal(2)" class="button button-icon icon ion-android-bicycle"></button></div>
           <div><button ng-click="" class="button button-icon icon ion-image"></button></div>
-          <div><button ng-click="" class="button button-icon icon ion-chevron-up"></button></div>
+          <div><button class="button button-icon icon ion-chevron-up"></button></div>
         </ion-footer-bar>
       </ion-content>
 
@@ -76,6 +76,37 @@
                   <p>{{ item.dist }} miles</p>
                 </div>
               </ion-item>
+            </ion-content>
+      </script>
+
+      <script id="bikeMarkerDetail.html" type="text/ng-template">
+        <div class="modal">
+          <ion-header-bar class="bar bar-header">
+            <h1 class="title">Location Details</h1>
+            <button class="button icon ion-arrow-down-b" ng-click="closeModal(3)"></button>
+          </ion-header-bar>
+            <ion-content>
+              <img src="{{currentMarkerProperties.photoLink}}" />
+                <ion-item>
+                  <i class="locationMenu fa fa-star-o fa-fw"></i>
+                    <h2>Add to Favorites</h2>
+                </ion-item>
+
+                <ion-item>
+                  <i class="locationMenu fa fa-thumbs-o-up fa-fw"></i>
+                    <h2>Vote on Location</h2><i class=" locationMenu fa fa-thumbs-o-down fa-fw"></i>
+                    <p>+/- {{currentMarkerProperties.upDownVote}} of {{currentMarkerProperties.votesCounter}}</p>
+                </ion-item>
+
+                <ion-item>
+                  <i class="locationMenu fa fa-exclamation-triangle fa-fw"></i>
+                    <h2 class="floatingDetail">+1 Safety Incident</h2><p class="floatingDetail">&nbsp;&nbsp;&nbsp;{{currentMarkerProperties.safetyCounter}} Incidents</p>
+                </ion-item>
+              <p>Site ID: {{currentMarkerProperties.site_id}} on {{currentMarkerProperties.info}}</p>
+              <p>{{currentMarkerProperties.description}}</p>
+              <p>{{currentMarkerProperties.side}}</p>
+              <p><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
+              <p><a href="{{currentMarkerProperties.sitelink}}">Site</a></p>
             </ion-content>
       </script>
 </ion-view>
