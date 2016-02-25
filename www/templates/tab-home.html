@@ -69,7 +69,7 @@
             <button class="button icon ion-arrow-down-b" ng-click="closeModal(2)"></button>
           </ion-header-bar>
             <ion-content>
-              <ion-item ng-repeat="item in bikesharePoints" ng-click="">
+              <ion-item ng-repeat="item in bikesharePoints" ng-click="getRoutes()">
                 <img class="bshLogo" src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg">
                 <div class="padding">
                   <h2>{{ item.title }}</h2>

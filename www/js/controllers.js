@@ -1,4 +1,6 @@
- angular.module('starter.controllers', ['ngCordova']) .controller('MapCtrl',
+ angular.module('starter.controllers', ['ngCordova'])
+
+ .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
 
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
@@ -107,6 +109,12 @@
     });
   };
 
+  $scope.getRoutes = function(){
+    console.log("GET ROUTES");
+    L.Routing.control({
+      waypoints: [L.latLng( 57.74, 11.94), L.latLng( 57.6792, 11.949)]
+    });
+  };
   // Filter which markers to show
 
   $scope.showStations = true;
