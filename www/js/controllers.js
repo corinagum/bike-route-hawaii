@@ -229,17 +229,20 @@
             $scope.markers = {};
             leafletData.getMap()
               .then(function(map){
-                L.Routing.control({
+                $scope.routingControl = L.Routing.control({
                   waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( desLat, desLong)],
                   routeWhileDragging: true
                 }).addTo(map);
                 $scope.closeModal(2);
-              })
-              .then(function(map){
-                L.Routing.itinerary({
-
-                });
               });
+          };
+
+          //TO REMOVE CURRENT ROUTES
+          $scope.removeRouting = function() {
+            leafletData.getMap()
+            .then(function(map) {
+              map.removeControl($scope.routingControl);
+            });
           };
         }
         for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
@@ -254,12 +257,6 @@
       });
 
   });
-
-  $scope.removeRouting = function() {
-      leafletData.getMap().then(function(map) {
-          map.removeControl($scope.routingControl);
-      });
-  };
 
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
     // $scope.center.autoDiscover = false;
