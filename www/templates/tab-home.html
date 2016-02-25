@@ -81,8 +81,8 @@
               </ion-header-bar>
             <ion-content>
                 <ul>
-                  <li>
-                    <ion-item>
+                  <li btn btn-default btn-sm>
+                    <ion-item >
                       <i class="fa fa-thumbs-o-up fa-fw"></i> Upvote this Location
                     </ion-item>
                   </li>
@@ -101,9 +101,10 @@
                       <i class="fa fa-star-o fa-fw"></i> Add to Favorites
                     </ion-item>
                  </li>
-
-
                 </ul>
+            <ul>
+              <li>{{currentMarkerProperties.name}}</li>
+            </ul>
             </ion-content>
       </script>
 </ion-view>
