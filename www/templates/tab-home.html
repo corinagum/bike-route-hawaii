@@ -69,11 +69,12 @@
             <button class="button icon ion-arrow-down-b" ng-click="closeModal(2)"></button>
           </ion-header-bar>
             <ion-content>
-              <ion-item ng-repeat="item in bikesharePoints" ng-click="getRoutes()">
+              <ion-item ng-repeat="item in bikesharePoints">
                 <img class="bshLogo" src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg">
                 <div class="padding">
                   <h2>{{ item.title }}</h2>
                   <p>{{ item.dist }} miles</p>
+                  <button class="naviBtn" ng-click="getDirections()">Take me here</button>
                 </div>
               </ion-item>
             </ion-content>
