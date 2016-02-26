@@ -263,11 +263,18 @@
             };
           }
           for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+            var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3)"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var historyPopupElement = angular.element(document).find('#popup');
+            historyPopupElement = $compile(historyPopupElement);
+            var historyContent = historyPopupElement($scope);
             var historyNum = 'history' + j;
             $scope.markers[historyNum] = {
               lat : data.data.geoJSONHistory.features[j].properties.lat,
               lng : data.data.geoJSONHistory.features[j].properties.long,
               icon: $scope.historyIcon,
+              message : historyPointsDetail,
+              compileMessage : true,
+              getMessageScope: function(){ return $scope; },
               properties : data.data.geoJSONHistory.features[j].properties
             };
           }
@@ -322,7 +329,7 @@
   });
 
   // Modal for Marker Info
-  $ionicModal.fromTemplateUrl('bikeMarkerDetail.html', {
+  $ionicModal.fromTemplateUrl('markerDetail.html', {
     id: '3',
     scope: $scope,
     animation: 'slide-in-up'

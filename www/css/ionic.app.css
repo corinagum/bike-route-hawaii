@@ -9778,6 +9778,10 @@ a.button {
   float: left;
   display: inline; }
 
+.locationDetails {
+  margin: 15px;
+  font-size: 1em; }
+
 .buttonStyle {
   border-left: 1px solid white; }
 
