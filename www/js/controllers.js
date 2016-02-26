@@ -174,7 +174,6 @@
               icon: $scope.bikeShareIcon
             };
           }
-
         }
 
         if ($scope.showLandmarks){
@@ -200,7 +199,6 @@
       message : 'You are here'
     };
 
-
     PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
       $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
@@ -217,9 +215,9 @@
 
           $scope.bikesharePoints.push({
             title: bksData.name,
-            dist: Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100,
-            lat: bksData.lat,
-            long: bksData.long
+            dist : Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100,
+            lat  : bksData.lat,
+            long : bksData.long
           });
 
           //COUNT OF STATION WITHIN USER'S RADIUS
@@ -231,9 +229,8 @@
             lng : bksData.long,
             icon: $scope.bikeShareIcon
           };
-
-
         }
+
         //GET DIRECTION FROM USER TO POINT
         $scope.getDirections = function(desLat, desLong){
           $scope.removeRouting();
@@ -243,9 +240,7 @@
             .then(function(map){
               $scope.routingControl = L.Routing.control({
                 waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( desLat, desLong)],
-                routeWhileDragging: true
-              }).addTo(map);
-              $scope.closeModal(2);
+                routeWhileDragging: true }).addTo(map); $scope.closeModal(2);
               routeOnMap = true;
             });
         };
@@ -262,7 +257,7 @@
             });
         };
 
-        //TO REMOVE CURRENT ROUTES
+        //TO REMOVE CURRENT ROUTES THAT'S DISPLAYED ON MAP
         $scope.removeRouting = function() {
           leafletData.getMap()
           .then(function(map) {
@@ -271,17 +266,31 @@
           });
         };
 
+        //PROPERTIES FOR LANDMARK IN TAB-HOME.HTML MODAL
+        $scope.landmarkPoints = [];
+
         for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+
           var historyNum = 'history' + j;
           $scope.markers[historyNum] = {
             lat : data.data.geoJSONHistory.features[j].properties.lat,
             lng : data.data.geoJSONHistory.features[j].properties.long,
             icon: $scope.historyIcon
           };
+
+          //TO SEND DATA INFO INTO ARRAY
+          var landmarkData = data.data.geoJSONHistory.features[j].properties;
+          var landLat  = landmarkData.lat;
+          var landLong = landmarkData.long;
+
+          $scope.landmarkPoints.push({
+            title: landmarkData.name,
+            dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
+            photo  : landmarkData.photolink,
+            long : landmarkData.long
+          });
         }
-
       });
-
   });
 
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
@@ -296,11 +305,12 @@
         .then(function(data){
 
           for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
-          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3)"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-          var popupElement = angular.element(document).find('#popup');
-          popupElement = $compile(popupElement);
-          var content = popupElement($scope);
+            var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3)"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var popupElement = angular.element(document).find('#popup');
+            popupElement = $compile(popupElement);
+            var content = popupElement($scope);
             var bikeNum = 'bike' + i;
+
             $scope.markers[bikeNum] = {
               lat : data.data.geoJSONBikeShare.features[i].properties.lat,
               lng : data.data.geoJSONBikeShare.features[i].properties.long,
@@ -317,6 +327,7 @@
             historyPopupElement = $compile(historyPopupElement);
             var historyContent = historyPopupElement($scope);
             var historyNum = 'history' + j;
+
             $scope.markers[historyNum] = {
               lat : data.data.geoJSONHistory.features[j].properties.lat,
               lng : data.data.geoJSONHistory.features[j].properties.long,
@@ -360,18 +371,17 @@
 
 
   //////// BEGINNIG of MODAL ////////
-
   $ionicModal.fromTemplateUrl('filter-modal.html', {
-      id: '1',
-      scope: $scope,
+      id       : '1',
+      scope    : $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
       $scope.modal1 = modal;
     });
 
   $ionicModal.fromTemplateUrl('bikeShareList.html', {
-    id: '2',
-    scope: $scope,
+    id       : '2',
+    scope    : $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
     $scope.modal2 = modal;
@@ -379,11 +389,20 @@
 
   // Modal for Marker Info
   $ionicModal.fromTemplateUrl('markerDetail.html', {
-    id: '3',
-    scope: $scope,
+    id       : '3',
+    scope    : $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
     $scope.modal3 = modal;
+  });
+
+  // MODAL FOR LANDMARK LISTS
+  $ionicModal.fromTemplateUrl('landmarkList.html', {
+    id: '4',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal4 = modal;
   });
 
   $scope.openModal = function(index) {
@@ -393,6 +412,8 @@
       case 2 : $scope.modal2.show();
                 break;
       case 3 : $scope.modal3.show();
+                break;
+      case 4 : $scope.modal4.show();
     }
   };
 
@@ -403,6 +424,8 @@
       case 2 : $scope.modal2.hide();
                 break;
       case 3 : $scope.modal3.hide();
+                break;
+      case 4 : $scope.modal4.hide();
     }
   };
 
