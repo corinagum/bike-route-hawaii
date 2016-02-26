@@ -80,12 +80,15 @@
       </script>
 
        <script id="markerDetail.html" type="text/ng-template">
-        <div class="modal">
+        <div class="modal" ng-model="currentMarkerProperties">
           <ion-header-bar class="bar bar-header">
             <h1 class="title">Location Details</h1>
             <button class="button icon ion-arrow-down-b" ng-click="closeModal(3)"></button>
           </ion-header-bar>
             <ion-content>
+                <ion-item>
+                  <div><p ng-if="currentMarkerProperties.photolink"> <img class="detailsPhoto"ng-src="{{currentMarkerProperties.photolink}}" /> </p></div>
+                </ion-item>
                 <ion-item>
                   <i class="locationMenu fa fa-star-o fa-fw"></i>
                     <h2>Add to Favorites</h2>
@@ -100,12 +103,10 @@
                   <i class="locationMenu fa fa-exclamation-triangle fa-fw"></i>
                     <h2 class="floatingDetail">+1 Safety Incident</h2><p class="floatingDetail">&nbsp;&nbsp;&nbsp;{{currentMarkerProperties.safetyCounter}} Incidents</p>
                 </ion-item>
-                <div class="locationDetails" ng-model="currentMarkerProperties">
-                  <p ng-if="currentMarkerProperties.photolink"> <img src="{{currentMarkerProperties.photolink}}" /> </p>
-                  <p>Site ID: {{currentMarkerProperties.site_id}} on {{currentMarkerProperties.info}}</p>
-                  <p>{{currentMarkerProperties.description}}</p>
-                  <p>{{currentMarkerProperties.side}}</p>
-                  <p><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
+                <div class="locationDetails">
+                  <p ng-if="currentMarkerProperties.site_id">Site ID: {{currentMarkerProperties.site_id}} on <span ng-if="currentMarkerProperties.photolink">{{currentMarkerProperties.info}}</span></p>
+                  <p ng-if="currentMarkerProperties.description">{{currentMarkerProperties.description}}</p>
+                  <p ng-if="currentMarkerProperties.geolink"><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
                   <!-- <p><a target="_blank" href="{{currentMarkerProperties.sitelink}}">Site</a></p> -->
                 </div>
             </ion-content>

@@ -9782,6 +9782,10 @@ a.button {
   margin: 15px;
   font-size: 1em; }
 
+.detailsPhoto {
+  max-width: 90vw;
+  text-align: center; }
+
 .buttonStyle {
   border-left: 1px solid white; }
 
