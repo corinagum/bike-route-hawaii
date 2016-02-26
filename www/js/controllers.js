@@ -102,12 +102,18 @@
     }
   });
 
+  var routeOnMap = false;
+
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
       $scope.show($ionicLoading);
       map.locate();
       updateUserLocMarker(map);
-      $scope.removeRouting();
+
+      if( routeOnMap === true ) {
+        $scope.removeRouting();
+        routeOnMap = false;
+      }
     });
   };
 
@@ -240,6 +246,7 @@
                 routeWhileDragging: true
               }).addTo(map);
               $scope.closeModal(2);
+              routeOnMap = true;
             });
         };
 
@@ -260,7 +267,7 @@
           leafletData.getMap()
           .then(function(map) {
             map.removeControl($scope.routingControl);
-            routingOnMap = false;
+            routeOnMap = false;
           });
         };
 
