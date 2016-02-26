@@ -260,7 +260,6 @@
           leafletData.getMap()
           .then(function(map) {
             map.removeControl($scope.routingControl);
-            routingOnMap = false;
           });
         };
 
