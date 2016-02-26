@@ -102,20 +102,21 @@
     }
   });
 
+  var routeOnMap = false;
+
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
-    $scope.show($ionicLoading);
+      $scope.show($ionicLoading);
       map.locate();
       updateUserLocMarker(map);
+
+      if( routeOnMap === true ) {
+        $scope.removeRouting();
+        routeOnMap = false;
+      }
     });
   };
 
-  $scope.getRoutes = function(){
-    console.log("GET ROUTES");
-    L.Routing.control({
-      waypoints: [L.latLng( 57.74, 11.94), L.latLng( 57.6792, 11.949)]
-    });
-  };
   // Filter which markers to show
 
   $scope.showStations = true;
@@ -173,6 +174,7 @@
               icon: $scope.bikeShareIcon
             };
           }
+
         }
 
         if ($scope.showLandmarks){
@@ -188,8 +190,6 @@
       });
   };
 
-  //
-
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
@@ -199,29 +199,78 @@
       lng : leafEvent.longitude,
       message : 'You are here'
     };
-    //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
-    $scope.bikesharePoints = [];
 
 
     PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
       $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
+
+      //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
+      $scope.bikesharePoints = [];
+
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
 
           //TO SEND DATA INFO INTO ARRAY
           var bksData = data.data.geoJSONBikeShare.features[i].properties;
+          var markLat = bksData.lat;
+          var markLong = bksData.long;
+
           $scope.bikesharePoints.push({
-            title:bksData.name,
-            dist: Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100
+            title: bksData.name,
+            dist: Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100,
+            lat: bksData.lat,
+            long: bksData.long
           });
+
+          //COUNT OF STATION WITHIN USER'S RADIUS
+          $scope.stationCount = $scope.bikesharePoints.length;
 
           var bikeNum = 'bike' + i;
           $scope.markers[bikeNum] = {
-            lat : data.data.geoJSONBikeShare.features[i].properties.lat,
-            lng : data.data.geoJSONBikeShare.features[i].properties.long,
+            lat : bksData.lat,
+            lng : bksData.long,
             icon: $scope.bikeShareIcon
           };
+
+
         }
+        //GET DIRECTION FROM USER TO POINT
+        $scope.getDirections = function(desLat, desLong){
+          $scope.removeRouting();
+
+          $scope.markers = {};
+          leafletData.getMap()
+            .then(function(map){
+              $scope.routingControl = L.Routing.control({
+                waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( desLat, desLong)],
+                routeWhileDragging: true
+              }).addTo(map);
+              $scope.closeModal(2);
+              routeOnMap = true;
+            });
+        };
+
+        $scope.updateRoute = function (fromLat, fromLng, toLat, toLng) {
+          $scope.markers = {};
+          leafletData.getMap()
+            .then(function(map){
+              $scope.routingControl.getPlan().setWaypoints([
+                  L.latLng(fromLat, fromLng),
+                  L.latLng(toLat, toLng)
+              ]);
+              $scope.closeModal(2);
+            });
+        };
+
+        //TO REMOVE CURRENT ROUTES
+        $scope.removeRouting = function() {
+          leafletData.getMap()
+          .then(function(map) {
+            map.removeControl($scope.routingControl);
+            routeOnMap = false;
+          });
+        };
+
         for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
           var historyNum = 'history' + j;
           $scope.markers[historyNum] = {
@@ -230,10 +279,10 @@
             icon: $scope.historyIcon
           };
         }
+
       });
 
   });
-
 
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
     // $scope.center.autoDiscover = false;
@@ -248,10 +297,8 @@
 
           for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
           var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3)"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-          var popupElement = angular.element(document).find('#popup');
-          popupElement = $compile(popupElement);
-          var content = popupElement($scope);
             var bikeNum = 'bike' + i;
+
             $scope.markers[bikeNum] = {
               lat : data.data.geoJSONBikeShare.features[i].properties.lat,
               lng : data.data.geoJSONBikeShare.features[i].properties.long,
@@ -264,9 +311,7 @@
           }
           for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
             var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3)"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-            var historyPopupElement = angular.element(document).find('#popup');
-            historyPopupElement = $compile(historyPopupElement);
-            var historyContent = historyPopupElement($scope);
+
             var historyNum = 'history' + j;
             $scope.markers[historyNum] = {
               lat : data.data.geoJSONHistory.features[j].properties.lat,
