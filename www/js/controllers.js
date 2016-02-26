@@ -198,13 +198,10 @@
     PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
       $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
-<<<<<<< HEAD
 
       //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
       $scope.bikesharePoints = [];
 
-=======
->>>>>>> 77baf6a4d59e667f1f76c7c92aeb1e2039d9d2a6
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
 
           //TO SEND DATA INFO INTO ARRAY
