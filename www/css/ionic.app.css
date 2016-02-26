@@ -9771,6 +9771,24 @@ a.button {
 .naviBtn {
   float: right; }
 
+.locationMenu {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 20px; }
+
+.floatingDetail {
+  float: left;
+  display: inline; }
+
+.locationDetails {
+  margin: 15px;
+  font-size: 1em; }
+
+.detailsPhoto {
+  max-width: 90vw;
+  text-align: center; }
+
 .buttonStyle {
   border-left: 1px solid white; }
 

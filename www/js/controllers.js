@@ -83,7 +83,8 @@
     center : {
       lat: 21.3008900859581,
       lng: -157.8398036956787,
-      zoom: 13
+      zoom: 13,
+      // autoDiscover:true
     },
     bikeShareIcon: {
       type: 'extraMarker',
@@ -197,10 +198,13 @@
     PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
       $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
+<<<<<<< HEAD
 
       //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
       $scope.bikesharePoints = [];
 
+=======
+>>>>>>> 77baf6a4d59e667f1f76c7c92aeb1e2039d9d2a6
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
 
           //TO SEND DATA INFO INTO ARRAY
@@ -285,31 +289,38 @@
     leafletData.getMap().then(function(map){
       // $scope.show($ionicLoading);
       var bounds = map.getBounds();
-      console.log(map.getCenter());
       PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
         .then(function(data){
-          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="testClick(data);"> data.data.geoJSONBikeShare.features[i].properties.name&nbsp;&nbsp;<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+
+          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3)"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
           var popupElement = angular.element(document).find('#popup');
           popupElement = $compile(popupElement);
           var content = popupElement($scope);
-
-          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
             var bikeNum = 'bike' + i;
             $scope.markers[bikeNum] = {
               lat : data.data.geoJSONBikeShare.features[i].properties.lat,
               lng : data.data.geoJSONBikeShare.features[i].properties.long,
               icon: $scope.bikeShareIcon,
-              message : content,
+              message : pointsDetail,
+              compileMessage : true,
               getMessageScope: function(){ return $scope; },
               properties : data.data.geoJSONBikeShare.features[i].properties
             };
           }
           for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+            var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3)"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var historyPopupElement = angular.element(document).find('#popup');
+            historyPopupElement = $compile(historyPopupElement);
+            var historyContent = historyPopupElement($scope);
             var historyNum = 'history' + j;
             $scope.markers[historyNum] = {
               lat : data.data.geoJSONHistory.features[j].properties.lat,
               lng : data.data.geoJSONHistory.features[j].properties.long,
               icon: $scope.historyIcon,
+              message : historyPointsDetail,
+              compileMessage : true,
+              getMessageScope: function(){ return $scope; },
               properties : data.data.geoJSONHistory.features[j].properties
             };
           }
@@ -341,11 +352,10 @@
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
       var leafEvent = args.leafletEvent;
       var marker = args.markerName;
+      $scope.currentMarkerProperties = args.leafletObject.options.properties;
   });
 
-  $scope.testClick = function(data) {
-    console.log(data); // properties arrives as object
-  };
+
   //////// BEGINNIG of MODAL ////////
 
   $ionicModal.fromTemplateUrl('filter-modal.html', {
@@ -353,38 +363,58 @@
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
-      $scope.modal = modal;
+      $scope.modal1 = modal;
     });
 
   $ionicModal.fromTemplateUrl('bikeShareList.html', {
-      id: '2',
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.modal2 = modal;
-    });
+    id: '2',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal2 = modal;
+  });
 
-    $scope.openModal = function(index) {
-      if (index == 1) $scope.modal.show();
-      else $scope.modal2.show();
-    };
-    $scope.closeModal = function(index) {
-      if (index == 1) $scope.modal.hide();
-      else $scope.modal2.hide();
-    };
-    //Cleanup the modal when we're done with it!
-    $scope.$on('$destroy', function() {
-      $scope.modal.remove();
-    });
-    // Execute action on hide modal
-    $scope.$on('modal.hidden', function() {
-      // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('modal.removed', function() {
-      // Execute action
-    });
+  // Modal for Marker Info
+  $ionicModal.fromTemplateUrl('markerDetail.html', {
+    id: '3',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal3 = modal;
+  });
 
+  $scope.openModal = function(index) {
+    switch (index) {
+      case 1 : $scope.modal1.show();
+                break;
+      case 2 : $scope.modal2.show();
+                break;
+      case 3 : $scope.modal3.show();
+    }
+  };
+
+   $scope.closeModal = function(index) {
+    switch (index) {
+      case 1 : $scope.modal1.hide();
+                break;
+      case 2 : $scope.modal2.hide();
+                break;
+      case 3 : $scope.modal3.hide();
+    }
+  };
+
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
     //////// END of MODAL ////////
 
 
