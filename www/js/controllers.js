@@ -282,7 +282,6 @@
     // $scope.markers = {
     //   userMarker : $scope.markers.userMarker
     // };
-    console.log("consoleLogging", leafletData.getMap());
     leafletData.getMap().then(function(map){
       // $scope.show($ionicLoading);
       var bounds = map.getBounds();
