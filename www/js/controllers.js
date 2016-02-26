@@ -41,13 +41,19 @@
 
           if(map.panTo) {
             map.panTo({
-              lat : position.coords.latitude,
-              lng : position.coords.longitude
+              // lat : position.coords.latitude,
+              // lng : position.coords.longitude
+              // TEST VIEW ON BLUE STARTUPS HQ
+              lat : 21.30926,
+              lng :  -157.8636
             });
           }
           $scope.markers.userMarker = {
-          lat : position.coords.latitude,
-          lng : position.coords.longitude,
+          // lat : position.coords.latitude,
+          // lng : position.coords.longitude,
+          // TEST VIEW ON BLUE STARTUPS HQ
+            lat : 21.30926,
+            lng :  -157.8636,
           message : 'You are here'
         };
         }, function(err) {
@@ -83,7 +89,7 @@
     center : {
       lat: 21.3008900859581,
       lng: -157.8398036956787,
-      zoom: 13,
+      zoom: 14,
       // autoDiscover:true
     },
     bikeShareIcon: {
@@ -201,6 +207,7 @@
 
       //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
       $scope.bikesharePoints = [];
+
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
 
           //TO SEND DATA INFO INTO ARRAY
@@ -281,7 +288,6 @@
     // $scope.markers = {
     //   userMarker : $scope.markers.userMarker
     // };
-    console.log("consoleLogging", leafletData.getMap());
     leafletData.getMap().then(function(map){
       // $scope.show($ionicLoading);
       var bounds = map.getBounds();
