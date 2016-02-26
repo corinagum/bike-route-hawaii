@@ -106,6 +106,7 @@
       $scope.show($ionicLoading);
       map.locate();
       updateUserLocMarker(map);
+      $scope.removeRouting();
     });
   };
 
@@ -224,27 +225,44 @@
             icon: $scope.bikeShareIcon
           };
 
-          //GET DIRECTION FROM USER TO POINT
-          $scope.getDirections = function(desLat, desLong){
-            $scope.markers = {};
-            leafletData.getMap()
-              .then(function(map){
-                $scope.routingControl = L.Routing.control({
-                  waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( desLat, desLong)],
-                  routeWhileDragging: true
-                }).addTo(map);
-                $scope.closeModal(2);
-              });
-          };
 
-          //TO REMOVE CURRENT ROUTES
-          $scope.removeRouting = function() {
-            leafletData.getMap()
-            .then(function(map) {
-              map.removeControl($scope.routingControl);
-            });
-          };
         }
+        //GET DIRECTION FROM USER TO POINT
+        $scope.getDirections = function(desLat, desLong){
+          $scope.removeRouting();
+
+          $scope.markers = {};
+          leafletData.getMap()
+            .then(function(map){
+              $scope.routingControl = L.Routing.control({
+                waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( desLat, desLong)],
+                routeWhileDragging: true
+              }).addTo(map);
+              $scope.closeModal(2);
+            });
+        };
+
+        $scope.updateRoute = function (fromLat, fromLng, toLat, toLng) {
+          $scope.markers = {};
+          leafletData.getMap()
+            .then(function(map){
+              $scope.routingControl.getPlan().setWaypoints([
+                  L.latLng(fromLat, fromLng),
+                  L.latLng(toLat, toLng)
+              ]);
+              $scope.closeModal(2);
+            });
+        };
+
+        //TO REMOVE CURRENT ROUTES
+        $scope.removeRouting = function() {
+          leafletData.getMap()
+          .then(function(map) {
+            map.removeControl($scope.routingControl);
+            routingOnMap = false;
+          });
+        };
+
         for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
           var historyNum = 'history' + j;
           $scope.markers[historyNum] = {
