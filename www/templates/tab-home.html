@@ -65,20 +65,23 @@
       <script id="bikeShareList.html" type="text/ng-template">
         <div class="modal">
           <ion-header-bar class="bar bar-header">
-            <h1 class="title" >{{stationCount}} Bike Share</h1>
+            <h1 class="title" >{{stationCount}} Bike Share near you</h1>
             <button class="button icon ion-arrow-down-b" ng-click="closeModal(2)"></button>
           </ion-header-bar>
             <ion-content>
-              <ion-item ng-repeat="item in bikesharePoints">
-                <img class="bshLogo" src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg">
-                <div class="padding">
-                  <h2>{{ item.title }}</h2>
-                  <h6>{{ item.dist }} miles</h6>
-                  <a class="icon ion-navigate naviBtn" side="right" ng-click="getDirections({{ item.lat }}, {{ item.long }})">&nbspDirections</a>
-                </div>
-                <div>
-                </div>
-              </ion-item>
+              <ion-list show-delete="false" can-swipe="true">
+                <ion-item ng-repeat="item in bikesharePoints" class="eachItem">
+                  <img class="bshLogo" src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg">
+                  <div class="padding">
+                    <i id="swipeRight" class="icon ion-chevron-right"></i>
+                    <h2>{{ item.title }}</h2>
+                    <h4>{{ item.dist }} miles</h4>
+                    <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
+                  </div>
+                  <div>
+                  </div>
+                </ion-item>
+              </ion-list>
             </ion-content>
       </script>
 
@@ -92,11 +95,11 @@
               <ion-item ng-repeat="item in landmarkPoints">
                 <img class="bshLogo" src="{{ item.photo }}">
                 <div class="padding">
-                  <button class="button icon ion-navigate naviBtn" ng-click=""></button>
                   <h2>{{ item.title }}</h2>
                   <h6>{{ item.dist }} miles</h6>
-                  <a class="" ng-click="openModal(3)"> Details </a>
                 </div>
+                  <a class="" ng-click="openModal(3)"> More about this</a>
+                  <a class="icon ion-navigate naviBtn" ng-click="">Get Directions</a>
                 <div>
                 </div>
               </ion-item>

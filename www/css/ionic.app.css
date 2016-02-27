@@ -9766,7 +9766,17 @@ a.button {
   float: left;
   width: 70px;
   height: 70px;
-  margin-right: 20px; }
+  margin-right: 7px; }
+
+.navLinkDiv {
+  margin-top: 5px; }
+
+#swipeRight {
+  float: right;
+  padding-top: 15px; }
+
+.item-complex .item-content {
+  padding: 7px; }
 
 .locationMenu {
   float: left;
