@@ -296,7 +296,7 @@
         .then(function(data){
 
           for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
-          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3)"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var bikeNum = 'bike' + i;
 
             $scope.markers[bikeNum] = {
@@ -310,7 +310,7 @@
             };
           }
           for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
-            var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3)"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
 
             var historyNum = 'history' + j;
             $scope.markers[historyNum] = {
@@ -416,5 +416,41 @@
   });
     //////// END of MODAL ////////
 
+  // Logic for Location Details Modal
+  var favoritesList = [];
+  var indexOfFavorite;
+  var voteUpOrDown = '';
+  var voted = false;
+  var safetyVoted = 0;
 
-  }]);
+  $scope.checkFavorite = function(currentMarker) {
+    return (favoritesList.indexOf($scope.currentMarkerProperties) !== -1);
+  };
+  $scope.addFavorite = function(){
+      if(favoritesList.indexOf($scope.currentMarkerProperties) !== -1) {
+          favoritesList.splice(favoritesList.indexOf($scope.currentMarkerProperties),1);
+      } else {
+        favoritesList.push($scope.currentMarkerProperties);
+      }
+    // change icon color?
+          console.log(favoritesList);
+  };
+
+  $scope.submitVote = function(vote){
+    if(voted) {
+      return console.log('User has already submitted a vote');
+    } else {
+      if(vote === 'Up') {
+        // to server : upDownVote ++, votesCounter ++
+        // change icon color
+        // grey out down icon
+
+      } else {
+        // to server : upDownVote --, votesCounter ++;
+        // change icon color
+        // grey out up icon
+      }
+      voted = true;
+    }
+  };
+}]);

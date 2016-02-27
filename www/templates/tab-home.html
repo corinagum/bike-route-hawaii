@@ -90,17 +90,18 @@
                   <div><p ng-if="currentMarkerProperties.photolink"> <img class="detailsPhoto"ng-src="{{currentMarkerProperties.photolink}}" /> </p></div>
                 </ion-item>
                 <ion-item>
-                  <i class="locationMenu fa fa-star-o fa-fw"></i>
+                  <i ng-click="addFavorite()" class="button button-icon icon locationMenu fa fa-star-o fa-fw"></i>
                     <h2>Add to Favorites</h2>
                 </ion-item>
 
                 <ion-item>
-                  <i class="locationMenu fa fa-thumbs-o-up fa-fw"></i>
-                    <h2>Vote on Location</h2><i class=" locationMenu fa fa-thumbs-o-down fa-fw"></i>
+                    <i class="button button-icon icon locationMenu fa fa-thumbs-o-up fa-fw"></i>
+                  <i class="button button-icon icon locationMenu fa fa-thumbs-o-down fa-fw"></i>
+                    <h2>Vote on Location</h2>
                     <p>+/- {{currentMarkerProperties.upDownVote}} of {{currentMarkerProperties.votesCounter}}</p>
                 </ion-item>
                 <ion-item>
-                  <i class="locationMenu fa fa-exclamation-triangle fa-fw"></i>
+                  <i class="button button-icon icon locationMenu fa fa-exclamation-triangle fa-fw"></i>
                     <h2 class="floatingDetail">+1 Safety Incident</h2><p class="floatingDetail">&nbsp;&nbsp;&nbsp;{{currentMarkerProperties.safetyCounter}} Incidents</p>
                 </ion-item>
                 <div class="locationDetails">
