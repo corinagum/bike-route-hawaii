@@ -63,10 +63,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
   div {
     background-color: $dark;
-  border: 0px;
-
+    border: 0px;
   }
 }
+
 .bshLogo {
   float: left;
   width: 70px;
@@ -80,8 +80,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .eachItem {
-  // padding: 3px;
-  // background-color: pink;
+  margin: 0px 4px 4px 4px;
+  box-shadow: 1px 1px 5px 1px rgba(214,211,214,1);
+}
+
+#swipeWords {
+  margin-left: 210px;
+  color: #9E9E9D;
+  font-style: italic;
+  padding: 5px;
 }
 
 #swipeRight {
