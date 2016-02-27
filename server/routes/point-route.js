@@ -25,7 +25,10 @@ router.post('/', function(req,res){
     lat : req.body.point.lat,
     long : req.body.point.long,
     geolink :req.body.point.geolink,
-    photolink :req.body.point.photolink
+    photolink :req.body.point.photolink,
+    updownSafety: 0,
+    upDownVote : 0,
+    votesCounter : 0
   })
   .then(function(data){
     var geoJSONHistory = {
@@ -73,7 +76,11 @@ router.put('/:id', function(req,res){
     street :req.body.point.street,
     side :req.body.point.side,
     geolink :req.body.point.geolink,
-    photolink :req.body.point.photolink
+    photolink :req.body.point.photolink,
+    upDownSafety : req.body.point.upDownSafety,
+    upDownVote : req.body.point.upDownVote,
+    votesCounter : req.body.point.votesCounter,
+    safetyCounter : req.body.point.votesCounter
   }, {
     where : {id : req.params.id}
   })
