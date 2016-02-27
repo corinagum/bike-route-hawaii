@@ -78,8 +78,6 @@
                     <h4>{{ item.dist }} miles</h4>
                     <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
                   </div>
-                  <div>
-                  </div>
                 </ion-item>
               </ion-list>
             </ion-content>
@@ -92,17 +90,17 @@
             <button class="button icon ion-arrow-down-b" ng-click="closeModal(4)"></button>
           </ion-header-bar>
             <ion-content>
-              <ion-item ng-repeat="item in landmarkPoints">
-                <img class="bshLogo" src="{{ item.photo }}">
-                <div class="padding">
-                  <h2>{{ item.title }}</h2>
-                  <h6>{{ item.dist }} miles</h6>
-                </div>
-                  <a class="" ng-click="openModal(3)"> More about this</a>
-                  <a class="icon ion-navigate naviBtn" ng-click="">Get Directions</a>
-                <div>
-                </div>
-              </ion-item>
+              <ion-list show-delete="false" can-swipe="true">
+                <ion-item ng-repeat="item in landmarkPoints">
+                  <img class="bshLogo" src="{{ item.photo }}">
+                  <div class="padding">
+                    <i id="swipeRight" class="icon ion-chevron-right"></i>
+                    <h2>{{ item.title }}</h2>
+                    <h4>{{ item.dist }} miles</h4>
+                    <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
+                  </div>
+                </ion-item>
+              </ion-list>
             </ion-content>
       </script>
 

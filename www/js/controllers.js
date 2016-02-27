@@ -103,6 +103,7 @@
   });
 
   var routeOnMap = false;
+  var dragOk = true;
 
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
@@ -187,6 +188,7 @@
           }
         }
       });
+      routeOnMap = true;
   };
 
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
@@ -233,14 +235,19 @@
 
       //GET DIRECTION FROM USER TO POINT
       $scope.getDirections = function(desLat, desLong){
-        $scope.removeRouting();
+        if( routeOnMap === true ) {
+          $scope.removeRouting();
+          routeOnMap = false;
+        }
 
         $scope.markers = {};
         leafletData.getMap()
           .then(function(map){
             $scope.routingControl = L.Routing.control({
               waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( desLat, desLong)],
-              routeWhileDragging: true }).addTo(map); $scope.closeModal(2);
+              routeWhileDragging: true }).addTo(map);
+            $scope.closeModal(2);
+            $scope.closeModal(4);
             routeOnMap = true;
           });
       };
@@ -275,6 +282,7 @@
           title: landmarkData.name,
           dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
           photo  : landmarkData.photolink,
+          lat : landmarkData.lat,
           long : landmarkData.long
         });
       }
