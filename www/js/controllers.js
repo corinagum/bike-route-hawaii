@@ -103,7 +103,6 @@
   });
 
   var routeOnMap = false;
-  var dragOk = true;
 
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
