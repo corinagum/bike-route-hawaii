@@ -65,6 +65,7 @@ router.post('/', function(req,res){
 });
 
 router.put('/:id', function(req,res){
+
   Point.update({
     type : req.body.point.type,
     name : req.body.point.name,

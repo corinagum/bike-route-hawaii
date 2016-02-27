@@ -129,12 +129,81 @@
                   <i class="button button-icon icon locationMenu fa fa-exclamation-triangle fa-fw"></i>
                     <h2 class="floatingDetail">+1 Safety Incident</h2><p class="floatingDetail">&nbsp;&nbsp;&nbsp;{{currentMarkerProperties.safetyCounter}} Incidents</p>
                 </ion-item>
+                <ion-item ng-click="openModal(5)">
+                  <i class="locationMenu fa fa-pencil-square-o fa-fw"></i>
+                    <h2 class="floatingDetail">Report/Suggest</h2>
+                </ion-item>
                 <div class="locationDetails">
                   <p ng-if="currentMarkerProperties.site_id">Site ID: {{currentMarkerProperties.site_id}} on <span ng-if="currentMarkerProperties.photolink">{{currentMarkerProperties.info}}</span></p>
                   <p ng-if="currentMarkerProperties.description">{{currentMarkerProperties.description}}</p>
                   <p ng-if="currentMarkerProperties.geolink"><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
                   <!-- <p><a target="_blank" href="{{currentMarkerProperties.sitelink}}">Site</a></p> -->
                 </div>
+            </ion-content>
+      </script>
+
+      <script id="reportDetail.html" type="text/ng-template">
+        <div class="modal" ng-model="currentMarkerProperties">
+          <ion-header-bar class="bar bar-header">
+            <h1 class="title">Report/Suggest</h1>
+            <button class="button icon ion-arrow-down-b" ng-click="closeModal(5)"></button>
+          </ion-header-bar>
+            <ion-content>
+                <ion-item>
+                  <div class="list">
+                    <label class="item item-input item-select">
+                      <div class="input-label">
+                        I'd like to make a:
+                      </div>
+                      <select ng-model="comment.type">
+                        <option>Report</option>
+                        <option selected>Suggestion</option>
+                      </select>
+                  </div>
+                  <div class="list">
+                    <label class="item item-input item-select">
+                      <div class="input-label">
+                        Subject
+                      </div>
+                      <select ng-model="comment.subject">
+                        <option ng-if="comment.type === 'Report'">Found</option>
+                        <option ng-if="comment.type === 'Report'" selected>Missing</option>
+                        <option ng-if="comment.type === 'Report'">Dangerous</option>
+                        <option ng-if="comment.type === 'Report'">Theft</option>
+                        <option ng-if="comment.type === 'Report'">Correction</option>
+                        <option ng-if="comment.type === 'Report'">Other</option>
+                        <option ng-if="comment.type === 'Suggestion'">Rack</option>
+                        <option ng-if="comment.type === 'Suggestion'">BikeShare</option>
+                        <option ng-if="comment.type === 'Suggestion'">OldHawaii</option>
+                        <option ng-if="comment.type === 'Suggestion'">General</option>
+                      </select>
+                  </div>
+                  <div class="list">
+                    <label class="item item-input">
+                    <textarea ng-model='comment.description' name="comment" id="comment" cols="30" rows="10"></textarea>
+                  </div>
+                  <div>
+                    <label class="item item-input">
+                    <input  placeholder="name" type="text" ng-model='comment.name' >
+                  </div>
+                  <div>
+                    <label class="item item-input">
+                    <input  placeholder="email" type="text" ng-model='comment.email' >
+                  </div>
+                  <div class="list">
+                    <label class="item item-input item-select">
+                      <div class="input-label">
+                       Can we contact you about this?
+                      </div>
+                      <select ng-model="comment.contact">
+                        <option>Yes</option>
+                        <option selected>No</option>
+                      </select>
+                  </div>
+                  <ion-item ng-click="postComment(comment)">
+                      <h2 class="floatingDetail">Submit {{comment.type}}</h2>
+                  </ion-item>
+                </ion-item>
             </ion-content>
       </script>
 </ion-view>

@@ -1,7 +1,7 @@
  angular.module('starter.controllers', ['ngCordova'])
 
  .controller('MapCtrl',
-  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
+  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', 'CommentService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, CommentService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
 
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
@@ -338,6 +338,15 @@
   }
 });
 
+  // COMMENT SUBMIT FUNCTION
+  $scope.postComment = function(comment){
+    CommentService.addComment(comment, $scope.currentMarkerProperties.id)
+    .then(function(data){
+
+    });
+    console.log('comment',comment);
+  };
+
   //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
   $scope.pinTypes = [
       { text: "Bike Share", checked: true },
@@ -392,6 +401,7 @@
     $scope.modal3 = modal;
   });
 
+
   // MODAL FOR LANDMARK LISTS
   $ionicModal.fromTemplateUrl('landmarkList.html', {
     id: '4',
@@ -399,6 +409,16 @@
     animation: 'slide-in-up'
   }).then(function(modal) {
     $scope.modal4 = modal;
+  });
+
+
+  // MODAL FOR REPORT/SUGGEST
+   $ionicModal.fromTemplateUrl('reportDetail.html', {
+    id: '5',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal5 = modal;
   });
 
   $scope.openModal = function(index) {
@@ -410,6 +430,8 @@
       case 3 : $scope.modal3.show();
                 break;
       case 4 : $scope.modal4.show();
+                break;
+      case 5 : $scope.modal5.show();
     }
   };
 
@@ -422,6 +444,8 @@
       case 3 : $scope.modal3.hide();
                 break;
       case 4 : $scope.modal4.hide();
+                break;
+      case 5 : $scope.modal5.hide();
     }
   };
 

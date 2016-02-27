@@ -82,6 +82,20 @@ angular.module('starter.services', [])
   };
 }])
 
+.service("CommentService", ['$http', function($http) {
+  this.addComment = function(comment, pointId){
+    comment.PointId = pointId;
+    if(comment.contact === 'Yes'){
+      comment.contact = true;
+    } else {
+      comment.contact = false;
+    }
+    return $http.post('http://localhost:4000/api/comments', {
+      comment : comment
+    });
+  };
+}])
+
 // CURRENTLY UNNEEDED DUE TO PIVOT
 .service("RouteService", ['$http', function ($http) {
   // START CRUD OPERATIONS \\

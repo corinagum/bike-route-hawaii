@@ -15,14 +15,13 @@ module.exports = function(sequelize, DataTypes) {
     photolink : DataTypes.STRING,
     upDownVote : DataTypes.INTEGER,
     votesCounter : DataTypes.INTEGER,
-    safetyCounter : DataTypes.INTEGER,
-    comments : DataTypes.TEXT
-  // }, {
-  //   classMethods: {
-  //     associate: function(models) {
-  //       Point.belongsTo(models.user);
-  //     }
-  //   }
+    safetyCounter : DataTypes.INTEGER
+  }, {
+    classMethods: {
+      associate: function(models) {
+        Point.hasMany(models.Comment);
+      }
+    }
   });
 
   return Point;
