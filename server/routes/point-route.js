@@ -26,7 +26,6 @@ router.post('/', function(req,res){
     long : req.body.point.long,
     geolink :req.body.point.geolink,
     photolink :req.body.point.photolink,
-    updownSafety: 0,
     upDownVote : 0,
     votesCounter : 0
   })
@@ -77,7 +76,6 @@ router.put('/:id', function(req,res){
     side :req.body.point.side,
     geolink :req.body.point.geolink,
     photolink :req.body.point.photolink,
-    upDownSafety : req.body.point.upDownSafety,
     upDownVote : req.body.point.upDownVote,
     votesCounter : req.body.point.votesCounter,
     safetyCounter : req.body.point.votesCounter
