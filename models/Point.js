@@ -15,7 +15,6 @@ module.exports = function(sequelize, DataTypes) {
     photolink : DataTypes.STRING,
     upDownVote : DataTypes.INTEGER,
     votesCounter : DataTypes.INTEGER,
-    upDownSafety : DataTypes.INTEGER,
     safetyCounter : DataTypes.INTEGER,
     comments : DataTypes.TEXT
   // }, {

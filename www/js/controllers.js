@@ -187,7 +187,6 @@
           }
         }
       });
-      routeOnMap = true;
   };
 
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
@@ -202,10 +201,10 @@
 
     PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
-        $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
+      $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
 
       //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
-        $scope.bikesharePoints = [];
+      $scope.bikesharePoints = [];
 
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
 
@@ -232,34 +231,6 @@
         };
       }
 
-      //GET DIRECTION FROM USER TO POINT
-      $scope.getDirections = function(desLat, desLong){
-        if( routeOnMap === true ) {
-          $scope.removeRouting();
-          routeOnMap = false;
-        }
-
-        $scope.markers = {};
-        leafletData.getMap()
-          .then(function(map){
-            $scope.routingControl = L.Routing.control({
-              waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( desLat, desLong)],
-              routeWhileDragging: true }).addTo(map);
-            $scope.closeModal(2);
-            $scope.closeModal(4);
-            routeOnMap = true;
-          });
-      };
-
-      //TO REMOVE CURRENT ROUTES THAT'S DISPLAYED ON MAP
-      $scope.removeRouting = function() {
-        leafletData.getMap()
-        .then(function(map) {
-          map.removeControl($scope.routingControl);
-          routeOnMap = false;
-        });
-      };
-
       //PROPERTIES FOR LANDMARK IN TAB-HOME.HTML MODAL
       $scope.landmarkPoints = [];
 
@@ -285,8 +256,36 @@
           long : landmarkData.long
         });
       }
-    });
-  });
+
+  //GET DIRECTION FROM USER TO POINT
+    $scope.getDirections = function(desLat, desLong){
+      if( routeOnMap === true ) {
+       $scope.removeRouting();
+       routeOnMap = false;
+     }
+
+      $scope.markers = {};
+      leafletData.getMap()
+        .then(function(map){
+          $scope.routingControl = L.Routing.control({
+            waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( desLat, desLong)],
+            routeWhileDragging: true
+          }).addTo(map);
+          $scope.closeModal(2);
+          routeOnMap = true;
+        });
+    };
+
+  //TO REMOVE CURRENT ROUTES THAT'S DISPLAYED ON MAP
+       $scope.removeRouting = function() {
+         leafletData.getMap()
+         .then(function(map) {
+           map.removeControl($scope.routingControl);
+           routeOnMap = false;
+         });
+       };
+     });
+   });
 
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
     // $scope.center.autoDiscover = false;
@@ -294,50 +293,44 @@
     //   userMarker : $scope.markers.userMarker
     // };
     if( routeOnMap === false ) {
-      leafletData.getMap().then(function(map){
+    leafletData.getMap().then(function(map){
+      // $scope.show($ionicLoading);
+      var bounds = map.getBounds();
+      PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
+        .then(function(data){
 
-        var bounds = map.getBounds();
-        PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
-          .then(function(data){
+          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+          var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var bikeNum = 'bike' + i;
 
-            for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
-              var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3)"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-              var popupElement = angular.element(document).find('#popup');
-              popupElement = $compile(popupElement);
-              var content = popupElement($scope);
-              var bikeNum = 'bike' + i;
+            $scope.markers[bikeNum] = {
+              lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+              lng : data.data.geoJSONBikeShare.features[i].properties.long,
+              icon: $scope.bikeShareIcon,
+              message : pointsDetail,
+              compileMessage : true,
+              getMessageScope: function(){ return $scope; },
+              properties : data.data.geoJSONBikeShare.features[i].properties
+            };
+          }
+          for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+            var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
 
-              $scope.markers[bikeNum] = {
-                lat : data.data.geoJSONBikeShare.features[i].properties.lat,
-                lng : data.data.geoJSONBikeShare.features[i].properties.long,
-                icon: $scope.bikeShareIcon,
-                message : pointsDetail,
-                compileMessage : true,
-                getMessageScope: function(){ return $scope; },
-                properties : data.data.geoJSONBikeShare.features[i].properties
-              };
-            }
-            for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
-              var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3)"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-              var historyPopupElement = angular.element(document).find('#popup');
-              historyPopupElement = $compile(historyPopupElement);
-              var historyContent = historyPopupElement($scope);
-              var historyNum = 'history' + j;
-
-              $scope.markers[historyNum] = {
-                lat : data.data.geoJSONHistory.features[j].properties.lat,
-                lng : data.data.geoJSONHistory.features[j].properties.long,
-                icon: $scope.historyIcon,
-                message : historyPointsDetail,
-                compileMessage : true,
-                getMessageScope: function(){ return $scope; },
-                properties : data.data.geoJSONHistory.features[j].properties
-              };
-            }
-          });
-      });
-    }
-  });
+            var historyNum = 'history' + j;
+            $scope.markers[historyNum] = {
+              lat : data.data.geoJSONHistory.features[j].properties.lat,
+              lng : data.data.geoJSONHistory.features[j].properties.long,
+              icon: $scope.historyIcon,
+              message : historyPointsDetail,
+              compileMessage : true,
+              getMessageScope: function(){ return $scope; },
+              properties : data.data.geoJSONHistory.features[j].properties
+            };
+          }
+        });
+    });
+  }
+});
 
   //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
   $scope.pinTypes = [
@@ -440,4 +433,47 @@
   });
     //////// END of MODAL ////////
 
-  }]);
+  // Logic for Location Details Modal
+  var favoritesList = [];
+  var indexOfFavorite;
+  var voteUpOrDown = '';
+  var voted = false;
+  var safetyVoted = 0;
+  $scope.favorited = false;
+
+  $scope.checkFavorite = function(currentMarker) {
+    return (favoritesList.indexOf($scope.currentMarkerProperties) !== -1);
+  };
+  $scope.addFavorite = function(){
+      $scope.favorited = !$scope.favorited;
+      if(favoritesList.indexOf($scope.currentMarkerProperties) !== -1) {
+          favoritesList.splice(favoritesList.indexOf($scope.currentMarkerProperties),1);
+      } else {
+        favoritesList.push($scope.currentMarkerProperties);
+      }
+    // change icon color?
+          console.log(favoritesList);
+  };
+
+  $scope.submitVote = function(vote){
+    if(voted) {
+      return console.log('User has already submitted a vote');
+    } else {
+      if(vote === 'Up') {
+        // change icon color
+        // grey out down icon
+        $scope.currentMarkerProperties.upDownVote++;
+        $scope.currentMarkerProperties.votesCounter++;
+        PointService.editPoint($scope.currentMarkerProperties);
+      } else {
+        // change icon color
+        // grey out up icon
+        $scope.currentMarkerProperties.upDownVote--;
+        $scope.currentMarkerProperties.votesCounter++;
+        PointService.editPoint($scope.currentMarkerProperties);
+      }
+      voted = true;
+    }
+  };
+}]);
+
