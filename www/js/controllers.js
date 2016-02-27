@@ -441,14 +441,17 @@
       return console.log('User has already submitted a vote');
     } else {
       if(vote === 'Up') {
-        // to server : upDownVote ++, votesCounter ++
         // change icon color
         // grey out down icon
-
+        $scope.currentMarkerProperties.upDownVote++;
+        $scope.currentMarkerProperties.votesCounter++;
+        PointService.editPoint($scope.currentMarkerProperties);
       } else {
-        // to server : upDownVote --, votesCounter ++;
         // change icon color
         // grey out up icon
+        $scope.currentMarkerProperties.upDownVote--;
+        $scope.currentMarkerProperties.votesCounter++;
+        PointService.editPoint($scope.currentMarkerProperties);
       }
       voted = true;
     }
