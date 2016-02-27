@@ -92,7 +92,7 @@
             <ion-content>
               <ion-list show-delete="false" can-swipe="true">
                 <ion-item ng-repeat="item in landmarkPoints">
-                  <img class="bshLogo" src="{{ item.photo }}">
+                  <img class="bshLogo" ng-src="{{ item.photo }}">
                   <div class="padding">
                     <i id="swipeRight" class="icon ion-chevron-right"></i>
                     <h2>{{ item.title }}</h2>
