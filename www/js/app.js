@@ -51,7 +51,8 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
   .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html',
+    controller: 'MapCtrl'
   })
 
   // Each tab has its own nav history stack:

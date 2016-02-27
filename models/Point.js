@@ -16,14 +16,13 @@ module.exports = function(sequelize, DataTypes) {
     upDownVote : DataTypes.INTEGER,
     votesCounter : DataTypes.INTEGER,
     upDownSafety : DataTypes.INTEGER,
-    safetyCounter : DataTypes.INTEGER,
-    comments : DataTypes.TEXT
-  // }, {
-  //   classMethods: {
-  //     associate: function(models) {
-  //       Point.belongsTo(models.user);
-  //     }
-  //   }
+    safetyCounter : DataTypes.INTEGER
+  }, {
+    classMethods: {
+      associate: function(models) {
+        Point.hasMany(models.Comment);
+      }
+    }
   });
 
   return Point;

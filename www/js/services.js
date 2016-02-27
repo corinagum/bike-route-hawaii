@@ -62,7 +62,7 @@ angular.module('starter.services', [])
   };
 
   this.editPoint = function(point) {
-    return $http.put('/api/points', {
+    return $http.put('/api/points/' + point.id, {
       point : point
     });
   };
@@ -79,6 +79,20 @@ angular.module('starter.services', [])
   this.getPointsInView = function(NElat, NElong, SWlat, SWlong){
     return $http.get('http://localhost:4000/api/points/bounds/' +
       NElat + '/' + NElong + '/' + SWlat + '/' +SWlong);
+  };
+}])
+
+.service("CommentService", ['$http', function($http) {
+  this.addComment = function(comment, pointId){
+    comment.PointId = pointId;
+    if(comment.contact === 'Yes'){
+      comment.contact = true;
+    } else {
+      comment.contact = false;
+    }
+    return $http.post('http://localhost:4000/api/comments', {
+      comment : comment
+    });
   };
 }])
 

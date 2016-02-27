@@ -63,6 +63,7 @@ router.post('/', function(req,res){
 });
 
 router.put('/:id', function(req,res){
+
   Point.update({
     type : req.body.point.type,
     name : req.body.point.name,
@@ -73,7 +74,7 @@ router.put('/:id', function(req,res){
     street :req.body.point.street,
     side :req.body.point.side,
     geolink :req.body.point.geolink,
-    photolink :req.body.point.photolink
+    photolink :req.body.point.photolink,
   }, {
     where : {id : req.params.id}
   })
