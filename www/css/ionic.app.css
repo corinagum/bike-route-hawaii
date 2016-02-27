@@ -9766,10 +9766,17 @@ a.button {
   float: left;
   width: 70px;
   height: 70px;
-  margin-right: 20px; }
+  margin-right: 7px; }
 
-.naviBtn {
-  float: right; }
+.navLinkDiv {
+  margin-top: 5px; }
+
+#swipeRight {
+  float: right;
+  padding-top: 15px; }
+
+.item-complex .item-content {
+  padding: 7px; }
 
 .locationMenu {
   float: left;
@@ -9807,3 +9814,12 @@ a.button {
 
 .btn2 {
   background-color: #76CE95; }
+
+.greyOut {
+  color: #f8f8f8; }
+
+.fa-star {
+  color: #ffc900; }
+
+.fa-star:hover {
+  color: #ffc900; }

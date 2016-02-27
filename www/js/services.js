@@ -52,23 +52,23 @@ angular.module('starter.services', [])
 .service("PointService", ['$http', function($http) {
 
   this.getPoint = function() {
-    return $http.get('/api/points');
+    return $http.get('http://localhost:4000/api/points');
   };
 
   this.addPoint = function(point) {
-    return $http.post('/api/points', {
+    return $http.post('http://localhost:4000/api/points', {
       point : point
     });
   };
 
   this.editPoint = function(point) {
-    return $http.put('/api/points', {
+    return $http.put('http://localhost:4000/api/points/' + point.id, {
       point : point
     });
   };
 
   this.deletePoint = function(point) {
-    return $http.delete('/api' + point.id);
+    return $http.delete('http://localhost:4000/api' + point.id);
   };
 
   this.getPointsInRadius = function(radius, lat, long) {

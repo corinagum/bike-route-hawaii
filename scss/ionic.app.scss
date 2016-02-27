@@ -71,11 +71,26 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   float: left;
   width: 70px;
   height: 70px;
-  margin-right: 20px;
+  margin-right: 7px;
 }
 
-.naviBtn {
+// BIKE SHARE TABS
+.navLinkDiv {
+  margin-top: 5px;
+}
+
+.eachItem {
+  // padding: 3px;
+  // background-color: pink;
+}
+
+#swipeRight {
   float: right;
+  padding-top: 15px;
+}
+
+.item-complex .item-content {
+  padding: 7px;
 }
 
 .locationMenu {
@@ -128,4 +143,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   // color: red;
   background-color: $balanced;
   // display: none;
+}
+
+.greyOut {
+  color : $stable;
+}
+.fa-star {
+  color:$energized;
+}
+.fa-star:hover {
+  color:$energized;
 }
