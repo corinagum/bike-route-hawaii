@@ -1049,7 +1049,7 @@ angular.module('ui-leaflet').service('leafletHelpers', ["$q", "$log", function (
                     return false;
                 }
             }
-        },          
+        },
         ChinaLayerPlugin: {
             isLoaded: function() {
                 return angular.isDefined(L.tileLayer.chinaProvider);
@@ -1650,7 +1650,7 @@ angular.module('ui-leaflet')
                 }
                 return new L.TileLayer.Provider(provider, params.options);
             }
-        },            
+        },
         china:{
             mustHaveUrl:false,
             createLayer:function(params){
@@ -2098,7 +2098,7 @@ angular.module('ui-leaflet').factory('leafletMapDefaults', ["$q", "leafletHelper
                 server: ' http://nominatim.openstreetmap.org/search'
             },
             crs: L.CRS.EPSG3857,
-            tileLayer: '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            tileLayer: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             tileLayerOptions: {
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             },
@@ -2789,7 +2789,7 @@ angular.module('ui-leaflet').factory('leafletPathsHelpers', ["$rootScope", "leaf
         isNumber = leafletHelpers.isNumber,
         isValidPoint = leafletHelpers.isValidPoint,
         $log = leafletLogger;
-        
+
     var availableOptions = [
         // Path options
         'stroke', 'weight', 'color', 'opacity',
