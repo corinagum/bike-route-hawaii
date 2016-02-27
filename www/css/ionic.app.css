@@ -9804,3 +9804,12 @@ a.button {
 
 .btn2 {
   background-color: #76CE95; }
+
+.greyOut {
+  color: #f8f8f8; }
+
+.fa-star {
+  color: #ffc900; }
+
+.fa-star:hover {
+  color: #ffc900; }

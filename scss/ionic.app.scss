@@ -124,3 +124,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   background-color: $balanced;
   // display: none;
 }
+
+.greyOut {
+  color : $stable;
+}
+.fa-star {
+  color:$energized;
+}
+.fa-star:hover {
+  color:$energized;
+}

@@ -422,11 +422,13 @@
   var voteUpOrDown = '';
   var voted = false;
   var safetyVoted = 0;
+  $scope.favorited = false;
 
   $scope.checkFavorite = function(currentMarker) {
     return (favoritesList.indexOf($scope.currentMarkerProperties) !== -1);
   };
   $scope.addFavorite = function(){
+      $scope.favorited = !$scope.favorited;
       if(favoritesList.indexOf($scope.currentMarkerProperties) !== -1) {
           favoritesList.splice(favoritesList.indexOf($scope.currentMarkerProperties),1);
       } else {
