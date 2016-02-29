@@ -423,6 +423,7 @@
   var voted = false;
   var safetyVoted = 0;
   $scope.favorited = false;
+  $scope.votedUp = false;
 
   $scope.checkFavorite = function(currentMarker) {
     return (favoritesList.indexOf($scope.currentMarkerProperties) !== -1);
@@ -443,6 +444,8 @@
       return console.log('User has already submitted a vote');
     } else {
       if(vote === 'Up') {
+        $scope.votedUp = !$scope.votedUp;
+        console.log($scope.votedUp);
         // change icon color
         // grey out down icon
         $scope.currentMarkerProperties.upDownVote++;
