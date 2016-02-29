@@ -3,6 +3,8 @@
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', 'CommentService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, CommentService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
 
+  $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />';
+
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
      markers : {
