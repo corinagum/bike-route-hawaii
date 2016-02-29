@@ -10,7 +10,7 @@ $balanced:                        #76CE95 !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
-$dark:                            #444 !default;
+$dark:                            #181B1E  !default;
 */
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -26,6 +26,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   height: 100%;
 }
 
+.header-item {
+  padding-top: 7px;
+}
+
 #footer-bar {
   width: 100%;
   background-color: $dark;
@@ -34,11 +38,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
       width: 25%;
       text-align: center;
     }
-
 }
 
 .view-filter {
-  background-color: $balanced;
+  background-color: $stable;
   height: 46px;
   width: 46px;
   border-radius: 23px;
@@ -47,18 +50,27 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   top: 10px;
   right: 10px;
   z-index:3;
-
-  button {
-    border-style: solid;
-  }
+  box-shadow : rgba(0,0,0,.2) 3px 5px 5px;
+  color: $royal;
+  font-size: 40px;
+  line-height: 47px;
+  text-align: center;
 }
 
-.placeholder-icon {
-  //attempt to change icon colors
+.leaflet-bar {
+  a {
+    background-color: $stable;
+    color: $royal;
+  }
+
+}
+
+.bottom-tab-nav-img {
+  height: 30px;
 }
 
 .filter-modal {
-  // background-color: $dark;
+  background-color: $dark;
   border: 0px;
 
   div {
