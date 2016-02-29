@@ -26,9 +26,10 @@
             <img class="title-image bottom-tab-nav-img" src="img/bike-assets/map-icon.svg" />
           </button></div>
 
-          <div><button ng-click="removeRouting()" class="button">
+          <div><button ng-click="openModal(6)" class="button">
             <img class="title-image bottom-tab-nav-img" src="img/bike-assets/bikerack-icon-temp.png" />
           </button></div>
+
 
         </ion-footer-bar>
       </ion-content>
@@ -121,6 +122,27 @@
             </ion-content>
       </script>
 
+      <script id="bikeRackList.html" type="text/ng-template">
+        <div class="modal">
+          <ion-header-bar class="bar bar-header">
+            <h1 class="title" >{{stationCount}} Bike Racks near you</h1>
+            <button class="button icon ion-arrow-down-b" ng-click="closeModal(6)"></button>
+          </ion-header-bar>
+            <ion-content>
+              <ion-list show-delete="false" can-swipe="true">
+                <ion-item ng-repeat="item in bikesharePoints" class="eachItem">
+                  <!-- <img class="bshLogo" src=""> -->
+                  <div class="padding">
+                    <i id="swipeRight" class="icon ion-chevron-right"></i>
+                    <h2>{{ item.title }}</h2>
+                    <h4>{{ item.dist }} miles</h4>
+                    <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
+                  </div>
+                </ion-item>
+              </ion-list>
+            </ion-content>
+      </script>
+
        <script id="markerDetail.html" type="text/ng-template">
         <div class="modal" ng-model="currentMarkerProperties">
           <ion-header-bar class="bar bar-header">
@@ -132,13 +154,13 @@
                   <div><p ng-if="currentMarkerProperties.photolink"> <img class="detailsPhoto"ng-src="{{currentMarkerProperties.photolink}}" /> </p></div>
                 </ion-item>
                 <ion-item>
-                  <i ng-click="addFavorite()" ng-class="{'button button-icon icon locationMenu fa fa-star-o fa-fw':!favorited, 'button button-icon icon locationMenu fa fa-star fa-fw btn-danger':favorited}"></i>
+                  <i ng-click="addFavorite()" ng-class="{'button button-icon icon locationMenu fa fa-star-o fa-fw':!favorited, 'button button-icon icon locationMenu fa fa-star fa-fw':favorited}"></i>
                     <h2>Add to Favorites</h2>
                 </ion-item>
 
                 <ion-item>
-                    <i ng-click="submitVote('Up')" class="button button-icon icon locationMenu fa fa-thumbs-o-up fa-fw"></i>
-                  <i ng-click="submitVote('Down')" class="button button-icon icon locationMenu fa fa-thumbs-o-down fa-fw"></i>
+                    <i ng-click="submitVote('Up')" ng-class="{'button button-icon icon locationMenu fa fa-thumbs-o-up fa-fw':!upped, 'button button-icon icon locationMenu fa fa-thumbs-o-up fa-fw':upped}"></i>
+                    <i ng-click="submitVote('Down')" class="button button-icon icon locationMenu fa fa-thumbs-o-down fa-fw"></i>
                     <h2>Vote on Location</h2>
                     <p>+/- {{currentMarkerProperties.upDownVote}} of {{currentMarkerProperties.votesCounter}}</p>
                 </ion-item>

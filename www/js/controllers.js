@@ -107,6 +107,13 @@
       markerColor: 'yellow',
       shape : 'star',
       prefix : 'fa'
+    },
+    bikeRack: {
+      type: 'extraMarker',
+      icon: 'fa-chevron-circle-up',
+      markerColor: 'red',
+      shape: 'circle',
+      prefix : 'fa'
     }
   });
 
@@ -194,6 +201,17 @@
             };
           }
         }
+
+        if ($scope.showRacks){
+          for(var i = 0; i < data.data.geoJSONBikeRack.features.length; i++){
+            var bikeNum = 'bike' + i;
+            $scope.markers[bikeRackNum] = {
+              lat : data.data.geoJSONBikeRack.features[i].properties.lat,
+              lng : data.data.geoJSONBikeRack.features[i].properties.long,
+              icon: $scope.bikeRackIcon
+            };
+          }
+        }
       });
   };
 
@@ -264,6 +282,32 @@
           long : landmarkData.long
         });
       }
+      //PROPERTIES FOR BIKERACKS
+      $scope.bikeRackPoints = [];
+
+      for(var j = 0; j < data.data.geoJSONBikeRack.features.length; j++){
+
+        var bikeRackNum = 'bikeRack' + j;
+        $scope.markers[bikeRackNum] = {
+          lat : data.data.geoJSONBikeRack.features[j].properties.lat,
+          lng : data.data.geoJSONBikeRack.features[j].properties.long,
+          icon: $scope.bikeRack
+        };
+
+        //TO SEND DATA INFO INTO ARRAY
+        var bikeRackData = data.data.geoJSONBikeRack.features[j].properties;
+        var bikeRackLat  = bikeRackData.lat;
+        var bikeRackLong = bikeRackData.long;
+
+        $scope.bikeRackPoints.push({
+          title: bikeRackData.name,
+          dist : Math.round(((bikeRackData.distance_from_current_location)*0.000621371192) * 100) / 100,
+          description : bikeRackData.description,
+          lat : bikeRackData.lat,
+          long : bikeRackData.long
+        });
+      }
+
 
   //GET DIRECTION FROM USER TO POINT
     $scope.getDirections = function(desLat, desLong){
@@ -333,6 +377,20 @@
               compileMessage : true,
               getMessageScope: function(){ return $scope; },
               properties : data.data.geoJSONHistory.features[j].properties
+            };
+          }
+          for(var i = 0; i < data.data.geoJSONBikeRack.features.length; i++){
+          var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[i].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var bikeRackNum = 'bikeRack' + i;
+
+            $scope.markers[bikeRackNum] = {
+              lat : data.data.geoJSONBikeRack.features[i].properties.lat,
+              lng : data.data.geoJSONBikeRack.features[i].properties.long,
+              icon: $scope.bikeRack,
+              message : pointsRackDetail,
+              compileMessage : true,
+              getMessageScope: function(){ return $scope; },
+              properties : data.data.geoJSONBikeRack.features[i].properties
             };
           }
         });
@@ -423,6 +481,15 @@
     $scope.modal5 = modal;
   });
 
+  // MODAL FOR REPORT/SUGGEST
+   $ionicModal.fromTemplateUrl('bikeRackList.html', {
+    id: '6',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal6 = modal;
+  });
+
   $scope.openModal = function(index) {
     switch (index) {
       case 1 : $scope.modal1.show();
@@ -434,6 +501,8 @@
       case 4 : $scope.modal4.show();
                 break;
       case 5 : $scope.modal5.show();
+                break;
+      case 6 : $scope.modal6.show();
     }
   };
 
@@ -448,6 +517,8 @@
       case 4 : $scope.modal4.hide();
                 break;
       case 5 : $scope.modal5.hide();
+                break;
+      case 6 : $scope.modal6.hide();
     }
   };
 
@@ -472,6 +543,7 @@
   var voted = false;
   var safetyVoted = 0;
   $scope.favorited = false;
+  $scope.votedUp = false;
 
   $scope.checkFavorite = function(currentMarker) {
     return (favoritesList.indexOf($scope.currentMarkerProperties) !== -1);
@@ -492,6 +564,8 @@
       return console.log('User has already submitted a vote');
     } else {
       if(vote === 'Up') {
+        $scope.votedUp = !$scope.votedUp;
+        console.log($scope.votedUp);
         // change icon color
         // grey out down icon
         $scope.currentMarkerProperties.upDownVote++;
