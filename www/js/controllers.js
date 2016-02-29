@@ -270,12 +270,31 @@
             $scope.routingControl = L.Routing.control({
               waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( desLat, desLong)],
               show: false,
-              routeWhileDragging: true }).addTo(map);
+              routeWhileDragging: true,
+              position: 'topleft'}).addTo(map);
             $scope.closeModal(2);
             $scope.closeModal(4);
             routeOnMap = true;
           });
+
+          ionic.DomUtil.ready(function(){
+            // Remove assertive (red) style to use balanced (green)
+            angular.element(document.querySelector('#bar'))
+            // .removeClass('bar-assertive')
+            .addClass('button')
+            .text('Clear Route');
+
+            // Change bar text
+            // angular.element(document.querySelector('#bar'))
+            // .text('Clear Route');
+          });
+
+
+
+
+
       };
+
 
       //TO REMOVE CURRENT ROUTES THAT'S DISPLAYED ON MAP
       $scope.removeRouting = function() {
