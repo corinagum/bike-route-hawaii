@@ -1140,7 +1140,7 @@ module.exports = {
                 "description": "University Ave., DH side, in front of Bale",
                 "Location": "21.2990236,-157.8205944"
             }
-        },`
+        },
         {
             "type": "Feature",
             "geometry": {
