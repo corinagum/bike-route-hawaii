@@ -16,9 +16,6 @@ module.exports = {
      var bikeRacks = require('./../www/assets/bike-rack-locations.js').features;
      var toInsert = [];
      for(var i=0; i<bikeRacks.length; i++){
-      if(bikeRacks[i].properties.Location.split(',').length > 2){
-        console.log(bikeRacks[i]);
-      };
       bikeRacks[i].properties.type = 'bikeRack';
       bikeRacks[i].properties.long = Number(bikeRacks[i].properties.Location.split(',').pop());
       bikeRacks[i].properties.lat = Number(bikeRacks[i].properties.Location.split(',')[0]);

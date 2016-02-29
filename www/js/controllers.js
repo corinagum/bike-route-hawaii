@@ -479,4 +479,45 @@
   });
     //////// END of MODAL ////////
 
-  }]);
+  // Logic for Location Details Modal
+  var favoritesList = [];
+  var indexOfFavorite;
+  var voteUpOrDown = '';
+  var voted = false;
+  var safetyVoted = 0;
+  $scope.favorited = false;
+  $scope.votedUp = false;
+
+  $scope.checkFavorite = function(currentMarker) {
+    return (favoritesList.indexOf($scope.currentMarkerProperties) !== -1);
+  };
+  $scope.addFavorite = function(){
+      $scope.favorited = !$scope.favorited;
+      if(favoritesList.indexOf($scope.currentMarkerProperties) !== -1) {
+          favoritesList.splice(favoritesList.indexOf($scope.currentMarkerProperties),1);
+      } else {
+        favoritesList.push($scope.currentMarkerProperties);
+      }
+
+  };
+
+  $scope.submitVote = function(vote){
+    if(voted) {
+      return console.log('User has already submitted a vote');
+    } else {
+      if(vote === 'Up') {
+        $scope.votedUp = !$scope.votedUp;
+
+        $scope.currentMarkerProperties.upDownVote++;
+        $scope.currentMarkerProperties.votesCounter++;
+        PointService.editPoint($scope.currentMarkerProperties);
+      } else {
+        $scope.currentMarkerProperties.upDownVote--;
+        $scope.currentMarkerProperties.votesCounter++;
+        PointService.editPoint($scope.currentMarkerProperties);
+      }
+      voted = true;
+    }
+  };
+}]);
+
