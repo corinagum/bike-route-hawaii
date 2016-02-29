@@ -12,7 +12,7 @@
           <div><button ng-click="findCenter()" class="button button-icon icon ion-location"></button></div>
           <div><button ng-click="openModal(2)" class="button button-icon icon ion-android-bicycle"></button></div>
           <div><button ng-click="openModal(4)" class="button button-icon icon ion-image"></button></div>
-          <div><button ng-click="removeRouting()" class="button button-icon icon ion-chevron-up"></button></div>
+          <div><button ng-click="openModal(6)" class="button button-icon icon ion-chevron-up"></button></div>
         </ion-footer-bar>
       </ion-content>
 
@@ -93,6 +93,27 @@
               <ion-list show-delete="false" can-swipe="true">
                 <ion-item ng-repeat="item in landmarkPoints">
                   <img class="bshLogo" ng-src="{{ item.photo }}">
+                  <div class="padding">
+                    <i id="swipeRight" class="icon ion-chevron-right"></i>
+                    <h2>{{ item.title }}</h2>
+                    <h4>{{ item.dist }} miles</h4>
+                    <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
+                  </div>
+                </ion-item>
+              </ion-list>
+            </ion-content>
+      </script>
+
+      <script id="bikeRackList.html" type="text/ng-template">
+        <div class="modal">
+          <ion-header-bar class="bar bar-header">
+            <h1 class="title" >{{stationCount}} Bike Racks near you</h1>
+            <button class="button icon ion-arrow-down-b" ng-click="closeModal(6)"></button>
+          </ion-header-bar>
+            <ion-content>
+              <ion-list show-delete="false" can-swipe="true">
+                <ion-item ng-repeat="item in bikesharePoints" class="eachItem">
+                  <!-- <img class="bshLogo" src=""> -->
                   <div class="padding">
                     <i id="swipeRight" class="icon ion-chevron-right"></i>
                     <h2>{{ item.title }}</h2>

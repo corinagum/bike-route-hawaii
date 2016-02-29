@@ -38,6 +38,10 @@ router.post('/', function(req,res){
       "type" : "FeatureCollection",
       "features" : []
     };
+    var geoJSONBikeRack = {
+      "type" : "FeatureCollection",
+      "features" : []
+    };
     for(var i=0; i<data.length; i++){
       var point = {
         "type": "Feature",
@@ -53,13 +57,17 @@ router.post('/', function(req,res){
       if(data[i].type === "BikeShare"){
         geoJSONBikeShare.features.push(point);
       }
+      if(data[i].type === "bikeRack"){
+        geoJSONBikeRack.features.push(point);
+      }
 
     }
     res.send({
       success : true,
       numberOfResults : data.length,
       geoJSONHistory : geoJSONHistory,
-      geoJSONBikeShare : geoJSONBikeShare
+      geoJSONBikeShare : geoJSONBikeShare,
+      geoJSONBikeRack : geoJSONBikeRack
     });
   });
 });
@@ -114,6 +122,10 @@ router.get('/within/:meters/:lat/:long', function(req, res){
       "type" : "FeatureCollection",
       "features" : []
     };
+    var geoJSONBikeRack = {
+      "type" : "FeatureCollection",
+      "features" : []
+    };
     for(var i=0; i<data.length; i++){
       var point = {
         "type": "Feature",
@@ -129,13 +141,17 @@ router.get('/within/:meters/:lat/:long', function(req, res){
       if(data[i].type === "BikeShare"){
         geoJSONBikeShare.features.push(point);
       }
+      if(data[i].type === "bikeRack"){
+        geoJSONBikeRack.features.push(point);
+      }
 
     }
     res.send({
       success : true,
       numberOfResults : data.length,
       geoJSONHistory : geoJSONHistory,
-      geoJSONBikeShare : geoJSONBikeShare
+      geoJSONBikeShare : geoJSONBikeShare,
+      geoJSONBikeRack : geoJSONBikeRack
     });
   });
 });
@@ -161,6 +177,10 @@ router.get('/bounds/:NElat/:NElong/:SWlat/:SWlong', function(req, res){
       "type" : "FeatureCollection",
       "features" : []
     };
+    var geoJSONBikeRack = {
+      "type" : "FeatureCollection",
+      "features" : []
+    };
     for(var i=0; i<data.length; i++){
       var point = {
         "type": "Feature",
@@ -176,13 +196,17 @@ router.get('/bounds/:NElat/:NElong/:SWlat/:SWlong', function(req, res){
       if(data[i].type === "BikeShare"){
         geoJSONBikeShare.features.push(point);
       }
+      if(data[i].type === "bikeRack"){
+        geoJSONBikeRack.features.push(point);
+      }
 
     }
     res.send({
       success : true,
       numberOfResults : data.length,
       geoJSONHistory : geoJSONHistory,
-      geoJSONBikeShare : geoJSONBikeShare
+      geoJSONBikeShare : geoJSONBikeShare,
+      geoJSONBikeRack : geoJSONBikeRack
     });
   });
 });
