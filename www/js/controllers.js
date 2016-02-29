@@ -290,13 +290,7 @@
             // angular.element(document.querySelector('#bar'))
             // .text('Clear Route');
           });
-
-
-
-
-
       };
-
 
       //TO REMOVE CURRENT ROUTES THAT'S DISPLAYED ON MAP
       $scope.removeRouting = function() {
@@ -423,6 +417,22 @@
     $scope.modal4 = modal;
   });
 
+  $ionicModal.fromTemplateUrl('reportDetail.html', {
+    id: '5',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal5 = modal;
+  });
+
+  $ionicModal.fromTemplateUrl('bikeRackList.html', {
+    id: '6',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal6 = modal;
+  });
+
   $scope.openModal = function(index) {
     switch (index) {
       case 1 : $scope.modal1.show();
@@ -432,6 +442,10 @@
       case 3 : $scope.modal3.show();
                 break;
       case 4 : $scope.modal4.show();
+                break;
+      case 5 : $scope.modal4.show();
+                break;
+      case 6 : $scope.modal4.show();
     }
   };
 
@@ -444,6 +458,10 @@
       case 3 : $scope.modal3.hide();
                 break;
       case 4 : $scope.modal4.hide();
+                break;
+      case 5 : $scope.modal4.hide();
+                break;
+      case 6 : $scope.modal4.hide();
     }
   };
 
