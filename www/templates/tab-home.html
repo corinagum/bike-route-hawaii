@@ -115,13 +115,13 @@
                   <div><p ng-if="currentMarkerProperties.photolink"> <img class="detailsPhoto"ng-src="{{currentMarkerProperties.photolink}}" /> </p></div>
                 </ion-item>
                 <ion-item>
-                  <i ng-click="addFavorite()" ng-class="{'button button-icon icon locationMenu fa fa-star-o fa-fw':!favorited, 'button button-icon icon locationMenu fa fa-star fa-fw btn-danger':favorited}"></i>
+                  <i ng-click="addFavorite()" ng-class="{'button button-icon icon locationMenu fa fa-star-o fa-fw':!favorited, 'button button-icon icon locationMenu fa fa-star fa-fw':favorited}"></i>
                     <h2>Add to Favorites</h2>
                 </ion-item>
 
                 <ion-item>
-                    <i ng-click="submitVote('Up')" class="button button-icon icon locationMenu fa fa-thumbs-o-up fa-fw"></i>
-                  <i ng-click="submitVote('Down')" class="button button-icon icon locationMenu fa fa-thumbs-o-down fa-fw"></i>
+                    <i ng-click="submitVote('Up')" ng-class="{'button button-icon icon locationMenu fa fa-thumbs-o-up fa-fw':!upped, 'button button-icon icon locationMenu fa fa-thumbs-o-up fa-fw':upped}"></i>
+                    <i ng-click="submitVote('Down')" class="button button-icon icon locationMenu fa fa-thumbs-o-down fa-fw"></i>
                     <h2>Vote on Location</h2>
                     <p>+/- {{currentMarkerProperties.upDownVote}} of {{currentMarkerProperties.votesCounter}}</p>
                 </ion-item>
