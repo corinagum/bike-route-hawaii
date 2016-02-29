@@ -251,8 +251,8 @@
         $scope.landmarkPoints.push({
           title: landmarkData.name,
           dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
-          photo  : landmarkData.photolink,
-          lat : landmarkData.lat,
+          photo: landmarkData.photolink,
+          lat  : landmarkData.lat,
           long : landmarkData.long
         });
       }

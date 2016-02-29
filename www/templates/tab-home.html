@@ -117,6 +117,12 @@
                 <ion-item>
                   <div><p ng-if="currentMarkerProperties.photolink"> <img class="detailsPhoto"ng-src="{{currentMarkerProperties.photolink}}" /> </p></div>
                 </ion-item>
+                <div class="locationDetails">
+                  <p ng-if="currentMarkerProperties.site_id">Site ID: {{currentMarkerProperties.site_id}} on <span ng-if="currentMarkerProperties.photolink">{{currentMarkerProperties.info}}</span></p>
+                  <p ng-if="currentMarkerProperties.description">{{currentMarkerProperties.description}}</p>
+                  <p ng-if="currentMarkerProperties.geolink"><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
+                  <!-- <p><a target="_blank" href="{{currentMarkerProperties.sitelink}}">Site</a></p> -->
+                </div>
                 <ion-item>
                   <i class="locationMenu fa fa-star-o fa-fw"></i>
                     <h2>Add to Favorites</h2>
@@ -131,12 +137,6 @@
                   <i class="locationMenu fa fa-exclamation-triangle fa-fw"></i>
                     <h2 class="floatingDetail">+1 Safety Incident</h2><p class="floatingDetail">&nbsp;&nbsp;&nbsp;{{currentMarkerProperties.safetyCounter}} Incidents</p>
                 </ion-item>
-                <div class="locationDetails">
-                  <p ng-if="currentMarkerProperties.site_id">Site ID: {{currentMarkerProperties.site_id}} on <span ng-if="currentMarkerProperties.photolink">{{currentMarkerProperties.info}}</span></p>
-                  <p ng-if="currentMarkerProperties.description">{{currentMarkerProperties.description}}</p>
-                  <p ng-if="currentMarkerProperties.geolink"><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
-                  <!-- <p><a target="_blank" href="{{currentMarkerProperties.sitelink}}">Site</a></p> -->
-                </div>
             </ion-content>
       </script>
 </ion-view>
