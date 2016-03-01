@@ -40,6 +40,28 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     }
 }
 
+#locate-before-start{
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0, 0.7);
+  line-height: 450px;
+  text-align: center;
+  margin: auto;
+  // opacity: 0.8;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.showBlocker {
+  display: inline;
+}
+
+.hideBlocker {
+  display: none;
+}
+
 .view-filter {
   background-color: $stable;
   height: 46px;
@@ -55,6 +77,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   font-size: 40px;
   line-height: 47px;
   text-align: center;
+}
+
+.pinViews {
+  text-align: left;
+}
+
+.filter-but-img {
+  padding-right: 20px;
 }
 
 .leaflet-bar {
@@ -136,7 +166,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 //BUTTONS IN FILTERS
 .buttonStyle {
+  background-color:red;
   border-left: 1px solid white;
+  text-align: center;
 }
 
 #radiusDiv {
@@ -153,15 +185,34 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .btn1 {
-  // color: red;
   background-color: $stable;
-  // display: none;
+  height: 50px;
 }
 
 .btn2 {
-  // color: red;
   background-color: $balanced;
-  // display: none;
+  height: 50px;
+}
+
+#radiusDiv {
+  // background-color:red;
+  height: 100px;
+  align: center;
+
+  img {
+    align: center;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  button {
+    // background-color: red;
+    text-align: center;
+    line-height: 100px;
+    height: 100px;
+  }
+
 }
 
 .greyOut {
@@ -172,4 +223,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 .fa-star:hover {
   color:$energized;
+}
+
+.spinner svg {
+  width: 100px;
+  height: 100px;
+  stroke: $balanced;
+  fill: #444;
 }
