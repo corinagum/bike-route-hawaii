@@ -101,6 +101,13 @@
       markerColor: 'yellow',
       shape : 'star',
       prefix : 'fa'
+    },
+    bikeRack: {
+      type: 'extraMarker',
+      icon: 'fa-chevron-circle-up',
+      markerColor: 'red',
+      shape: 'circle',
+      prefix : 'fa'
     }
   });
 
