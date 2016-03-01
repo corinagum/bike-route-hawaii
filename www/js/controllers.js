@@ -85,7 +85,7 @@
     center : {
       lat: 21.3008900859581,
       lng: -157.8398036956787,
-      zoom: 13,
+      zoom: 14,
       // autoDiscover:true
     },
     bikeShareIcon: {
@@ -399,6 +399,8 @@
       };
     });
   });
+
+  $scope.showPointsOnDrag = false;
 
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
 
