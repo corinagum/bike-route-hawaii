@@ -86,7 +86,7 @@
       lat: 21.3008900859581,
       lng: -157.8398036956787,
       zoom: 13,
-      autoDiscover:true
+      // autoDiscover:true
     },
     bikeShareIcon: {
       type: 'extraMarker',
@@ -119,13 +119,13 @@
     leafletData.getMap().then(function(map){
       $scope.show($ionicLoading);
       map.locate();
-      // console.log(map.locate());
       updateUserLocMarker(map);
 
       if( routeOnMap === true ) {
         $scope.removeRouting();
         routeOnMap = false;
       }
+
       $scope.foundLocation = true;
     });
   };
@@ -254,8 +254,9 @@
               };
             }
           }
-      });
 
+      });
+  };
 
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
@@ -267,11 +268,9 @@
       message : 'You are here'
     };
 
-    $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
-
     PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
-        console.log('leaflet dirrective location', $scope.myLocation);
+        $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
 
       //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
         $scope.bikesharePoints = [];
@@ -353,15 +352,9 @@
                 compileMessage : true,
                 getMessageScope: function(){ return $scope; },
                 properties : data.data.geoJSONBikeRack.features[k].properties
-
               };
             }
           }
-      });
-    });
-
-
-
 
       //GET DIRECTION FROM USER TO POINT
       $scope.getDirections = function(desLat, desLong){
@@ -404,12 +397,17 @@
           routeOnMap = false;
         });
       };
-
+    });
+  });
 
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
 
     $ionicLoading.hide();
-
+    var leafEvent = args.leafletEvent;
+    $ionicLoading.hide();
+    $scope.markers = {
+      userMarker : $scope.markers.userMarker
+    };
     if( routeOnMap === false ) {
     leafletData.getMap().then(function(map){
       // $scope.show($ionicLoading);
@@ -507,9 +505,10 @@
       var leafEvent = args.leafletEvent;
       var marker = args.markerName;
       $scope.currentMarkerProperties = args.leafletObject.options.properties;
-      $scope.isFavorited = $scope.checkFavorite($scope.currentMarkerProperties);
-      // $scope.upped = $scope.checkVote($scope.currentMarkerProperties);
-      $scope.isSafetyWarn = $scope.checkSafetyWarn($scope.currentMarkerProperties);
+      if ($scope.currentMarkerProperties !== undefined){
+        $scope.isFavorited = $scope.checkFavorite($scope.currentMarkerProperties);
+        $scope.isSafetyWarn = $scope.checkSafetyWarn($scope.currentMarkerProperties);
+      }
   });
 
   //////// BEGINNIG of MODAL ////////
@@ -612,6 +611,7 @@
   // Logic for Location Details Modal
 
   var favoritesList = null;
+
   if( !JSON.parse(localStorage.getItem('favorites')) ) {
     favoritesList = [];
   } else{
@@ -662,40 +662,51 @@
       $scope.isSafetyWarn = true;
       console.log(localStorage.getItem('safetyWarnings'));
     }
-
-
-  // var upList = null;
-  // if(!JSON.parse(localStorage.getItem('upped')) ) {
-  //   upList = [];
-  // } else {
-  //   upList = JSON.parse(localStorage.getItem('upped'));
-  // }
-
-  // $scope.checkVote = function(currentMarker) {
-  //   if(!currentMarker) {
-  //     currentMarker = $scope.currentMarkerProperties;
-  //   }
-  //   return (upList.indexOf(currentMarker.id) !== -1);
-  // };
-
-  // $scope.submitVote = function(vote){
-  //   if(upList.indexOf($scope.currentMarkerProperties.id !== -1)) {
-  //     upList.splice(favoritesList.indexOf($scope.currentMarkerProperties.id),1);
-  //     localStorage.setItem('upped', JSON.stringify(upList));
-  //     $scope.upped = false;
-  //     $scope.currentMarkerProperties.upDownVote--;
-  //     $scope.currentMarkerProperties.votesCounter++;
-  //     PointService.editPoint($scope.currentMarkerProperties);
-  //   } else {
-  //     upList.push($scope.currentMarkerProperties.id);
-  //     localStorage.setItem('upped', JSON.stringify(upList));
-  //     $scope.upped = true;
-  //     $scope.currentMarkerProperties.upDownVote++;
-  //     $scope.currentMarkerProperties.votesCounter++;
-  //     PointService.editPoint($scope.currentMarkerProperties);
-  //     }
-  //     voted = true;
-  //
   };
+
+
+  ////
+
+
+  var upList = null;
+  if(!JSON.parse(localStorage.getItem('upped')) ) {
+    upList = [];
+  } else {
+    upList = JSON.parse(localStorage.getItem('upped'));
+  }
+
+  $scope.checkVote = function(currentMarker) {
+    if(!currentMarker) {
+      currentMarker = $scope.currentMarkerProperties;
+    }
+    return (upList.indexOf(currentMarker.id) !== -1);
+  };
+
+  $scope.submitVote = function(vote){
+    if(upList.indexOf($scope.currentMarkerProperties.id !== -1)) {
+      upList.splice(favoritesList.indexOf($scope.currentMarkerProperties.id),1);
+      localStorage.setItem('upped', JSON.stringify(upList));
+      $scope.upped = false;
+      $scope.currentMarkerProperties.upDownVote--;
+      $scope.currentMarkerProperties.votesCounter++;
+      PointService.editPoint($scope.currentMarkerProperties);
+    } else {
+      upList.push($scope.currentMarkerProperties.id);
+      localStorage.setItem('upped', JSON.stringify(upList));
+      $scope.upped = true;
+      $scope.currentMarkerProperties.upDownVote++;
+      $scope.currentMarkerProperties.votesCounter++;
+      PointService.editPoint($scope.currentMarkerProperties);
+      }
+      voted = true;
+    };
+
+
+
+
+
+
+
+//////// end of controller
 }]);
 
