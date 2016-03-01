@@ -167,54 +167,87 @@
 
         $scope.bikesharePoints = [];
 
-        if ($scope.showStations){
           for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
             var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var bikeNum = 'bike' + i;
+            var bksData = data.data.geoJSONBikeShare.features[i].properties;
 
-            $scope.markers[bikeNum] = {
-              lat : data.data.geoJSONBikeShare.features[i].properties.lat,
-              lng : data.data.geoJSONBikeShare.features[i].properties.long,
-              icon: $scope.bikeShareIcon,
-              message : pointsDetail,
-              compileMessage : true,
-              getMessageScope: function(){ return $scope; },
-              properties : data.data.geoJSONBikeShare.features[i].properties
-            };
+            $scope.bikesharePoints.push({
+              title: bksData.name,
+              dist : Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100,
+              lat  : bksData.lat,
+              long : bksData.long
+            });
+
+            if ($scope.showStations){
+              $scope.markers[bikeNum] = {
+                lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+                lng : data.data.geoJSONBikeShare.features[i].properties.long,
+                icon: $scope.bikeShareIcon,
+                message : pointsDetail,
+                compileMessage : true,
+                getMessageScope: function(){ return $scope; },
+                properties : data.data.geoJSONBikeShare.features[i].properties
+              };
+            }
           }
-        }
 
-        if ($scope.showLandmarks){
+        $scope.landmarkPoints = [];
+
           for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
             var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var historyNum = 'history' + j;
-            $scope.markers[historyNum] = {
-              lat : data.data.geoJSONHistory.features[j].properties.lat,
-              lng : data.data.geoJSONHistory.features[j].properties.long,
-              icon: $scope.historyIcon,
-              message : historyPointsDetail,
-              compileMessage : true,
-              getMessageScope: function(){ return $scope; },
-              properties : data.data.geoJSONHistory.features[j].properties
-            };
-          }
-        }
+            var landmarkData = data.data.geoJSONHistory.features[j].properties;
 
-        if ($scope.showBikeRacks){
+            $scope.landmarkPoints.push({
+              title: landmarkData.name,
+              dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
+              photo: landmarkData.photolink,
+              lat  : landmarkData.lat,
+              long : landmarkData.long
+            });
+
+            if ($scope.showLandmarks){
+              $scope.markers[historyNum] = {
+                lat : data.data.geoJSONHistory.features[j].properties.lat,
+                lng : data.data.geoJSONHistory.features[j].properties.long,
+                icon: $scope.historyIcon,
+                message : historyPointsDetail,
+                compileMessage : true,
+                getMessageScope: function(){ return $scope; },
+                properties : data.data.geoJSONHistory.features[j].properties
+              };
+            }
+          }
+
+        $scope.bikeRackPoints = [];
+
           for(var i = 0; i < data.data.geoJSONBikeRack.features.length; i++){
             var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[i].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var bikeRackNum = 'bikeRack' + i;
-            $scope.markers[bikeRackNum] = {
-              lat : data.data.geoJSONBikeRack.features[i].properties.lat,
-              lng : data.data.geoJSONBikeRack.features[i].properties.long,
-              icon: $scope.bikeRack,
-              message : pointsRackDetail,
-              compileMessage : true,
-              getMessageScope: function(){ return $scope; },
-              properties : data.data.geoJSONBikeRack.features[i].properties
-            };
+            var bikerackData = data.data.geoJSONHistory.features[j].properties;
+
+            $scope.bikeRackPoints.push({
+              title: bikeRackPoints.name,
+              dist : Math.round(((bikeRackPoints.distance_from_current_location)*0.000621371192) * 100) / 100,
+              photo: bikeRackPoints.photolink,
+              lat  : bikeRackPoints.lat,
+              long : bikeRackPoints.long
+            });
+
+            if ($scope.showBikeRacks){
+              $scope.markers[bikeRackNum] = {
+                lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+                lng : data.data.geoJSONBikeShare.features[i].properties.long,
+                icon: $scope.bikeShareIcon,
+                message : pointsDetail,
+                compileMessage : true,
+                getMessageScope: function(){ return $scope; },
+                properties : data.data.geoJSONBikeShare.features[i].properties
+              };
+            }
           }
-        }
+
       });
   };
 
@@ -235,56 +268,86 @@
       //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
         $scope.bikesharePoints = [];
 
-        for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+            var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var bikeNum = 'bike' + i;
+            var bksData = data.data.geoJSONBikeShare.features[i].properties;
 
-          //TO SEND DATA INFO INTO ARRAY
-          var bksData = data.data.geoJSONBikeShare.features[i].properties;
-          var markLat = bksData.lat;
-          var markLong = bksData.long;
+            $scope.bikesharePoints.push({
+              title: bksData.name,
+              dist : Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100,
+              lat  : bksData.lat,
+              long : bksData.long
+            });
 
-          $scope.bikesharePoints.push({
-            title: bksData.name,
-            dist : Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100,
-            lat  : bksData.lat,
-            long : bksData.long
-          });
+            if ($scope.showStations){
+              $scope.markers[bikeNum] = {
+                lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+                lng : data.data.geoJSONBikeShare.features[i].properties.long,
+                icon: $scope.bikeShareIcon,
+                message : pointsDetail,
+                compileMessage : true,
+                getMessageScope: function(){ return $scope; },
+                properties : data.data.geoJSONBikeShare.features[i].properties
+              };
+            }
+          }
 
-        //COUNT OF STATION WITHIN USER'S RADIUS
-        $scope.stationCount = $scope.bikesharePoints.length;
+        $scope.landmarkPoints = [];
 
-        var bikeNum = 'bike' + i;
-        $scope.markers[bikeNum] = {
-          lat : bksData.lat,
-          lng : bksData.long,
-          icon: $scope.bikeShareIcon
-        };
-      }
+          for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+            var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var historyNum = 'history' + j;
+            var landmarkData = data.data.geoJSONHistory.features[j].properties;
 
-      //PROPERTIES FOR LANDMARK IN TAB-HOME.HTML MODAL
-      $scope.landmarkPoints = [];
+            $scope.landmarkPoints.push({
+              title: landmarkData.name,
+              dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
+              photo: landmarkData.photolink,
+              lat  : landmarkData.lat,
+              long : landmarkData.long
+            });
 
-      for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
+            if ($scope.showLandmarks){
+              $scope.markers[historyNum] = {
+                lat : data.data.geoJSONHistory.features[j].properties.lat,
+                lng : data.data.geoJSONHistory.features[j].properties.long,
+                icon: $scope.historyIcon,
+                message : historyPointsDetail,
+                compileMessage : true,
+                getMessageScope: function(){ return $scope; },
+                properties : data.data.geoJSONHistory.features[j].properties
+              };
+            }
+          }
 
-        var historyNum = 'history' + j;
-        $scope.markers[historyNum] = {
-          lat : data.data.geoJSONHistory.features[j].properties.lat,
-          lng : data.data.geoJSONHistory.features[j].properties.long,
-          icon: $scope.historyIcon
-        };
+        $scope.bikeRackPoints = [];
 
-        //TO SEND DATA INFO INTO ARRAY
-        var landmarkData = data.data.geoJSONHistory.features[j].properties;
-        var landLat  = landmarkData.lat;
-        var landLong = landmarkData.long;
+          for(var i = 0; i < data.data.geoJSONBikeRack.features.length; i++){
+            var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[i].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var bikeRackNum = 'bikeRack' + i;
+            var bikerackData = data.data.geoJSONHistory.features[j].properties;
 
-        $scope.landmarkPoints.push({
-          title: landmarkData.name,
-          dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
-          photo: landmarkData.photolink,
-          lat  : landmarkData.lat,
-          long : landmarkData.long
-        });
-      }
+            $scope.bikeRackPoints.push({
+              title: bikeRackPoints.name,
+              dist : Math.round(((bikeRackPoints.distance_from_current_location)*0.000621371192) * 100) / 100,
+              photo: bikeRackPoints.photolink,
+              lat  : bikeRackPoints.lat,
+              long : bikeRackPoints.long
+            });
+
+            if ($scope.showBikeRacks){
+              $scope.markers[bikeRackNum] = {
+                lat : data.data.geoJSONBikeShare.features[i].properties.lat,
+                lng : data.data.geoJSONBikeShare.features[i].properties.long,
+                icon: $scope.bikeShareIcon,
+                message : pointsDetail,
+                compileMessage : true,
+                getMessageScope: function(){ return $scope; },
+                properties : data.data.geoJSONBikeShare.features[i].properties
+              };
+            }
+          }
 
       //GET DIRECTION FROM USER TO POINT
       $scope.getDirections = function(desLat, desLong){
