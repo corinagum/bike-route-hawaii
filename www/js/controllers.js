@@ -433,6 +433,7 @@
       var leafEvent = args.leafletEvent;
       var marker = args.markerName;
       $scope.currentMarkerProperties = args.leafletObject.options.properties;
+      $scope.isFavorited = $scope.checkFavorite($scope.currentMarkerProperties);
   });
 
   //////// BEGINNIG of MODAL ////////
@@ -545,15 +546,25 @@
   $scope.favorited = false;
   $scope.votedUp = false;
 
+  localStorage.setItem('favorites', favoritesList);
+
   $scope.checkFavorite = function(currentMarker) {
-    return (favoritesList.indexOf($scope.currentMarkerProperties) !== -1);
+    if(!currentMarker) {
+      currentMarker = $scope.currentMarkerProperties;
+    }
+    return (favoritesList.indexOf(currentMarker.id) !== -1);
   };
   $scope.addFavorite = function(){
-      $scope.favorited = !$scope.favorited;
-      if(favoritesList.indexOf($scope.currentMarkerProperties) !== -1) {
-          favoritesList.splice(favoritesList.indexOf($scope.currentMarkerProperties),1);
+      // $scope.favorited = !$scope.currentFavorite;
+      if(favoritesList.indexOf($scope.currentMarkerProperties.id) !== -1) {
+          favoritesList.splice(favoritesList.indexOf($scope.currentMarkerProperties.id),1);
+          localStorage.setItem('favorites', favoritesList);
+          $scope.isFavorited = false;
       } else {
-        favoritesList.push($scope.currentMarkerProperties);
+        favoritesList.push($scope.currentMarkerProperties.id);
+        localStorage.setItem('favorites', favoritesList);
+        $scope.isFavorited = true;
+        console.log(localStorage.getItem('favorites'));
       }
 
   };
@@ -576,5 +587,7 @@
       voted = true;
     }
   };
+
+
 }]);
 
