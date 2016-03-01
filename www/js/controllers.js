@@ -119,13 +119,13 @@
     leafletData.getMap().then(function(map){
       $scope.show($ionicLoading);
       map.locate();
+      // console.log(map.locate());
       updateUserLocMarker(map);
 
       if( routeOnMap === true ) {
         $scope.removeRouting();
         routeOnMap = false;
       }
-
       $scope.foundLocation = true;
     });
   };
@@ -267,9 +267,11 @@
       message : 'You are here'
     };
 
+    $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
+
     PointService.getPointsInRadius(1610, leafEvent.latitude, leafEvent.longitude)
       .then(function(data){
-        $scope.myLocation = { "myLat" : leafEvent.latitude, "myLong" : leafEvent.longitude};
+        console.log('leaflet dirrective location', $scope.myLocation);
 
       //PROPERTIES FOR LIST VIEW IN TAB-HOME.HTML MODAL
         $scope.bikesharePoints = [];
@@ -356,6 +358,10 @@
             }
           }
       });
+    });
+
+
+
 
       //GET DIRECTION FROM USER TO POINT
       $scope.getDirections = function(desLat, desLong){
@@ -398,8 +404,7 @@
           routeOnMap = false;
         });
       };
-    });
-  };
+
 
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
 
