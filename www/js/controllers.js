@@ -456,6 +456,7 @@
       var leafEvent = args.leafletEvent;
       var marker = args.markerName;
       $scope.currentMarkerProperties = args.leafletObject.options.properties;
+      $scope.isFavorited = $scope.checkFavorite($scope.currentMarkerProperties);
   });
 
   //////// BEGINNIG of MODAL ////////
@@ -560,7 +561,13 @@
     //////// END of MODAL ////////
 
   // Logic for Location Details Modal
-  var favoritesList = [];
+
+  var favoritesList = null;
+  if( !JSON.parse(localStorage.getItem('favorites')) ) {
+    favoritesList = [];
+  } else{
+    favoritesList = JSON.parse(localStorage.getItem('favorites'));
+  }
   var indexOfFavorite;
   var voteUpOrDown = '';
   var voted = false;
@@ -569,17 +576,24 @@
   $scope.votedUp = false;
 
   $scope.checkFavorite = function(currentMarker) {
-    return (favoritesList.indexOf($scope.currentMarkerProperties) !== -1);
+    if(!currentMarker) {
+      currentMarker = $scope.currentMarkerProperties;
+    }
+    return (favoritesList.indexOf(currentMarker.id) !== -1);
   };
   $scope.addFavorite = function(){
-      $scope.favorited = !$scope.favorited;
-      if(favoritesList.indexOf($scope.currentMarkerProperties) !== -1) {
-          favoritesList.splice(favoritesList.indexOf($scope.currentMarkerProperties),1);
+      // $scope.favorited = !$scope.currentFavorite;
+      if(favoritesList.indexOf($scope.currentMarkerProperties.id) !== -1) {
+          favoritesList.splice(favoritesList.indexOf($scope.currentMarkerProperties.id),1);
+          localStorage.setItem('favorites', JSON.stringify(favoritesList));
+          $scope.isFavorited = false;
       } else {
-        favoritesList.push($scope.currentMarkerProperties);
+        favoritesList.push($scope.currentMarkerProperties.id);
+        localStorage.setItem('favorites', JSON.stringify(favoritesList));
+        $scope.isFavorited = true;
+        console.log(localStorage.getItem('favorites'));
       }
-    // change icon color?
-          console.log(favoritesList);
+
   };
 
   $scope.submitVote = function(vote){
@@ -588,15 +602,11 @@
     } else {
       if(vote === 'Up') {
         $scope.votedUp = !$scope.votedUp;
-        console.log($scope.votedUp);
-        // change icon color
-        // grey out down icon
+
         $scope.currentMarkerProperties.upDownVote++;
         $scope.currentMarkerProperties.votesCounter++;
         PointService.editPoint($scope.currentMarkerProperties);
       } else {
-        // change icon color
-        // grey out up icon
         $scope.currentMarkerProperties.upDownVote--;
         $scope.currentMarkerProperties.votesCounter++;
         PointService.editPoint($scope.currentMarkerProperties);
@@ -604,5 +614,7 @@
       voted = true;
     }
   };
+
+
 }]);
 
