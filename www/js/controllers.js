@@ -560,8 +560,7 @@
       } else {
         favoritesList.push($scope.currentMarkerProperties);
       }
-    // change icon color?
-          console.log(favoritesList);
+
   };
 
   $scope.submitVote = function(vote){
@@ -570,15 +569,11 @@
     } else {
       if(vote === 'Up') {
         $scope.votedUp = !$scope.votedUp;
-        console.log($scope.votedUp);
-        // change icon color
-        // grey out down icon
+
         $scope.currentMarkerProperties.upDownVote++;
         $scope.currentMarkerProperties.votesCounter++;
         PointService.editPoint($scope.currentMarkerProperties);
       } else {
-        // change icon color
-        // grey out up icon
         $scope.currentMarkerProperties.upDownVote--;
         $scope.currentMarkerProperties.votesCounter++;
         PointService.editPoint($scope.currentMarkerProperties);
