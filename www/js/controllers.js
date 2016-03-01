@@ -167,7 +167,7 @@
   };
 
   $scope.setPinsWithinRadius = function(){
-    $scope.markers = {};
+    $scope.markers = {userMarker: this.markers.userMarker};
 
     PointService.getPointsInRadius($scope.radius, $scope.myLocation.myLat, $scope.myLocation.myLong)
       .then(function(data){
