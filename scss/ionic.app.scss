@@ -215,6 +215,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 }
 
+
+.spinner svg {
+  width: 100px;
+  height: 100px;
+  stroke: $balanced;
+  fill: #444;
+}
 .greyOut {
   color : $stable;
 }
@@ -225,9 +232,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   color:$energized;
 }
 
-.spinner svg {
-  width: 100px;
-  height: 100px;
-  stroke: $balanced;
-  fill: #444;
+.fa-exclamation-circle {
+  color:$assertive;
 }
+.fa-exclamation-circle:hover {
+  color:$assertive;
+}
+
+
