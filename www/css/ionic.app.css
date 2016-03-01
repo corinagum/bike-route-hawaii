@@ -9880,6 +9880,12 @@ a.button {
     line-height: 100px;
     height: 100px; }
 
+.spinner svg {
+  width: 100px;
+  height: 100px;
+  stroke: #76CE95;
+  fill: #444; }
+
 .greyOut {
   color: #f8f8f8; }
 
@@ -9889,8 +9895,8 @@ a.button {
 .fa-star:hover {
   color: #ffc900; }
 
-.spinner svg {
-  width: 100px;
-  height: 100px;
-  stroke: #76CE95;
-  fill: #444; }
+.fa-exclamation-circle {
+  color: #ef473a; }
+
+.fa-exclamation-circle:hover {
+  color: #ef473a; }

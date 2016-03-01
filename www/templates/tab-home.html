@@ -166,6 +166,7 @@
                   <i ng-click="addFavorite(); checkFavorite();" ng-class="{'button button-icon icon locationMenu fa fa-star-o fa-fw':!isFavorited, 'button button-icon icon locationMenu fa fa-star fa-fw':isFavorited}"></i>
                     <h2>Add to Favorites</h2>
                 </ion-item>
+<<<<<<< HEAD
 
                 <ion-item>
                   <i class="locationMenu fa fa-thumbs-o-up fa-fw"></i>
@@ -175,6 +176,17 @@
                 <ion-item>
                   <i class="locationMenu fa fa-exclamation-triangle fa-fw"></i>
                     <h2 class="floatingDetail">+1 Safety Incident</h2><p class="floatingDetail">&nbsp;&nbsp;&nbsp;{{currentMarkerProperties.safetyCounter}} Incidents</p>
+=======
+<!--                 <ion-item>
+                    <i ng-click="submitVote('Up'); checkVote();" ng-class="{'button button-icon icon locationMenu fa fa-thumbs-o-up fa-fw':!votedUp, 'button button-icon icon locationMenu fa fa-thumbs-o-up fa-fw':votedUp}"></i>
+                    <i ng-click="submitVote('Down')" ng-class="button button-icon icon locationMenu fa fa-thumbs-o-down fa-fw"></i>
+                    <h2>Vote on Location</h2>
+                    <p>{{currentMarkerProperties.upDownVote}} of {{currentMarkerProperties.votesCounter}}</p>
+                </ion-item> -->
+                <ion-item>
+                  <i ng-click="addSafetyWarn(); checkSafetyWarn();" ng-class="{'button button-icon icon locationMenu fa fa-circle-o fa-fw':!isSafetyWarn, 'button button-icon icon locationMenu fa fa-exclamation-circle fa-fw':isSafetyWarn}"></i>
+                    <h2>Add Safety Incident</h2>
+>>>>>>> up-down-vote
                 </ion-item>
                 <div class="locationDetails">
                   <p ng-if="currentMarkerProperties.site_id">Site ID: {{currentMarkerProperties.site_id}} on <span ng-if="currentMarkerProperties.photolink">{{currentMarkerProperties.info}}</span></p>

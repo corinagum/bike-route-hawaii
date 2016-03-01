@@ -222,32 +222,19 @@
 
         $scope.bikeRackPoints = [];
 
-          for(var i = 0; i < data.data.geoJSONBikeRack.features.length; i++){
+            for(var i = 0; i < data.data.geoJSONBikeRack.features.length; i++){
             var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[i].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-            var bikeRackNum = 'bikeRack' + i;
-            var bikerackData = data.data.geoJSONHistory.features[j].properties;
-
-            $scope.bikeRackPoints.push({
-              title: bikeRackPoints.name,
-              dist : Math.round(((bikeRackPoints.distance_from_current_location)*0.000621371192) * 100) / 100,
-              photo: bikeRackPoints.photolink,
-              lat  : bikeRackPoints.lat,
-              long : bikeRackPoints.long
-            });
-
-            if ($scope.showBikeRacks){
+              var bikeRackNum = 'bikeRack' + i;
               $scope.markers[bikeRackNum] = {
-                lat : data.data.geoJSONBikeShare.features[i].properties.lat,
-                lng : data.data.geoJSONBikeShare.features[i].properties.long,
-                icon: $scope.bikeShareIcon,
-                message : pointsDetail,
+                lat : data.data.geoJSONBikeRack.features[i].properties.lat,
+                lng : data.data.geoJSONBikeRack.features[i].properties.long,
+                icon: $scope.bikeRack,
+                message : pointsRackDetail,
                 compileMessage : true,
                 getMessageScope: function(){ return $scope; },
-                properties : data.data.geoJSONBikeShare.features[i].properties
+                properties : data.data.geoJSONBikeRack.features[i].properties
               };
             }
-          }
-
       });
   };
 
@@ -323,31 +310,20 @@
 
         $scope.bikeRackPoints = [];
 
-          for(var i = 0; i < data.data.geoJSONBikeRack.features.length; i++){
+            for(var i = 0; i < data.data.geoJSONBikeRack.features.length; i++){
             var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[i].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-            var bikeRackNum = 'bikeRack' + i;
-            var bikerackData = data.data.geoJSONHistory.features[j].properties;
-
-            $scope.bikeRackPoints.push({
-              title: bikeRackPoints.name,
-              dist : Math.round(((bikeRackPoints.distance_from_current_location)*0.000621371192) * 100) / 100,
-              photo: bikeRackPoints.photolink,
-              lat  : bikeRackPoints.lat,
-              long : bikeRackPoints.long
-            });
-
-            if ($scope.showBikeRacks){
+              var bikeRackNum = 'bikeRack' + i;
               $scope.markers[bikeRackNum] = {
-                lat : data.data.geoJSONBikeShare.features[i].properties.lat,
-                lng : data.data.geoJSONBikeShare.features[i].properties.long,
-                icon: $scope.bikeShareIcon,
-                message : pointsDetail,
+                lat : data.data.geoJSONBikeRack.features[i].properties.lat,
+                lng : data.data.geoJSONBikeRack.features[i].properties.long,
+                icon: $scope.bikeRack,
+                message : pointsRackDetail,
                 compileMessage : true,
                 getMessageScope: function(){ return $scope; },
-                properties : data.data.geoJSONBikeShare.features[i].properties
+                properties : data.data.geoJSONBikeRack.features[i].properties
               };
             }
-          }
+      });
 
       //GET DIRECTION FROM USER TO POINT
       $scope.getDirections = function(desLat, desLong){
@@ -391,7 +367,7 @@
         });
       };
     });
-  });
+  }
 
 //   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
 //     // $scope.center.autoDiscover = false;
@@ -457,7 +433,7 @@
 //         });
 //     });
 //   }
-// });
+]);
 
   // COMMENT SUBMIT FUNCTION
   $scope.postComment = function(comment){
@@ -495,6 +471,8 @@
       var marker = args.markerName;
       $scope.currentMarkerProperties = args.leafletObject.options.properties;
       $scope.isFavorited = $scope.checkFavorite($scope.currentMarkerProperties);
+      // $scope.upped = $scope.checkVote($scope.currentMarkerProperties);
+      $scope.isSafetyWarn = $scope.checkSafetyWarn($scope.currentMarkerProperties);
   });
 
   //////// BEGINNIG of MODAL ////////
@@ -602,12 +580,6 @@
   } else{
     favoritesList = JSON.parse(localStorage.getItem('favorites'));
   }
-  var indexOfFavorite;
-  var voteUpOrDown = '';
-  var voted = false;
-  var safetyVoted = 0;
-  $scope.favorited = false;
-  $scope.votedUp = false;
 
   $scope.checkFavorite = function(currentMarker) {
     if(!currentMarker) {
@@ -616,7 +588,6 @@
     return (favoritesList.indexOf(currentMarker.id) !== -1);
   };
   $scope.addFavorite = function(){
-      // $scope.favorited = !$scope.currentFavorite;
       if(favoritesList.indexOf($scope.currentMarkerProperties.id) !== -1) {
           favoritesList.splice(favoritesList.indexOf($scope.currentMarkerProperties.id),1);
           localStorage.setItem('favorites', JSON.stringify(favoritesList));
@@ -627,28 +598,67 @@
         $scope.isFavorited = true;
         console.log(localStorage.getItem('favorites'));
       }
-
   };
 
-  $scope.submitVote = function(vote){
-    if(voted) {
-      return console.log('User has already submitted a vote');
-    } else {
-      if(vote === 'Up') {
-        $scope.votedUp = !$scope.votedUp;
+  var safetyList = null;
+  if(!JSON.parse(localStorage.getItem('safetyWarnings'))) {
+    safetyList = [];
+  } else {
+    safetyList = JSON.parse(localStorage.getItem('safetyWarnings'));
+  }
 
-        $scope.currentMarkerProperties.upDownVote++;
-        $scope.currentMarkerProperties.votesCounter++;
-        PointService.editPoint($scope.currentMarkerProperties);
-      } else {
-        $scope.currentMarkerProperties.upDownVote--;
-        $scope.currentMarkerProperties.votesCounter++;
-        PointService.editPoint($scope.currentMarkerProperties);
-      }
-      voted = true;
+  $scope.checkSafetyWarn = function(currentMarker) {
+    if(!currentMarker) {
+      currentMarker = $scope.currentMarkerProperties;
     }
+    return (safetyList.indexOf(currentMarker.id) !== -1);
   };
 
+  $scope.addSafetyWarn = function(){
+    if(safetyList.indexOf($scope.currentMarkerProperties.id) !== -1) {
+      safetyList.splice(safetyList.indexOf($scope.currentMarkerProperties.id),1);
+      localStorage.setItem('safetyWarnings', JSON.stringify(safetyList));
+      $scope.isSafetyWarn = false;
+    } else {
+      safetyList.push($scope.currentMarkerProperties.id);
+      localStorage.setItem('safetyWarnings', JSON.stringify(safetyList));
+      $scope.isSafetyWarn = true;
+      console.log(localStorage.getItem('safetyWarnings'));
+    }
 
+
+  // var upList = null;
+  // if(!JSON.parse(localStorage.getItem('upped')) ) {
+  //   upList = [];
+  // } else {
+  //   upList = JSON.parse(localStorage.getItem('upped'));
+  // }
+
+  // $scope.checkVote = function(currentMarker) {
+  //   if(!currentMarker) {
+  //     currentMarker = $scope.currentMarkerProperties;
+  //   }
+  //   return (upList.indexOf(currentMarker.id) !== -1);
+  // };
+
+  // $scope.submitVote = function(vote){
+  //   if(upList.indexOf($scope.currentMarkerProperties.id !== -1)) {
+  //     upList.splice(favoritesList.indexOf($scope.currentMarkerProperties.id),1);
+  //     localStorage.setItem('upped', JSON.stringify(upList));
+  //     $scope.upped = false;
+  //     $scope.currentMarkerProperties.upDownVote--;
+  //     $scope.currentMarkerProperties.votesCounter++;
+  //     PointService.editPoint($scope.currentMarkerProperties);
+  //   } else {
+  //     upList.push($scope.currentMarkerProperties.id);
+  //     localStorage.setItem('upped', JSON.stringify(upList));
+  //     $scope.upped = true;
+  //     $scope.currentMarkerProperties.upDownVote++;
+  //     $scope.currentMarkerProperties.votesCounter++;
+  //     PointService.editPoint($scope.currentMarkerProperties);
+  //     }
+  //     voted = true;
+  //
+  };
 }]);
 
