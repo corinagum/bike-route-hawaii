@@ -585,9 +585,9 @@
                 break;
       case 4 : $scope.modal4.show();
                 break;
-      case 5 : $scope.modal4.show();
+      case 5 : $scope.modal5.show();
                 break;
-      case 6 : $scope.modal4.show();
+      case 6 : $scope.modal6.show();
     }
   };
 
@@ -601,9 +601,9 @@
                 break;
       case 4 : $scope.modal4.hide();
                 break;
-      case 5 : $scope.modal4.hide();
+      case 5 : $scope.modal5.hide();
                 break;
-      case 6 : $scope.modal4.hide();
+      case 6 : $scope.modal6.hide();
     }
   };
 
