@@ -476,7 +476,6 @@
     .then(function(data){
 
     });
-    console.log('comment',comment);
   };
 
   //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
@@ -633,7 +632,6 @@
         favoritesList.push($scope.currentMarkerProperties.id);
         localStorage.setItem('favorites', JSON.stringify(favoritesList));
         $scope.isFavorited = true;
-        console.log(localStorage.getItem('favorites'));
       }
   };
 
@@ -660,7 +658,6 @@
       safetyList.push($scope.currentMarkerProperties.id);
       localStorage.setItem('safetyWarnings', JSON.stringify(safetyList));
       $scope.isSafetyWarn = true;
-      console.log(localStorage.getItem('safetyWarnings'));
     }
   };
 
