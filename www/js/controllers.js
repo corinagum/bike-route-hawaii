@@ -538,15 +538,19 @@
     //////// END of MODAL ////////
 
   // Logic for Location Details Modal
-  var favoritesList = [];
+
+  var favoritesList = null;
+  if( !JSON.parse(localStorage.getItem('favorites')) ) {
+    favoritesList = [];
+  } else{
+    favoritesList = JSON.parse(localStorage.getItem('favorites'));
+  }
   var indexOfFavorite;
   var voteUpOrDown = '';
   var voted = false;
   var safetyVoted = 0;
   $scope.favorited = false;
   $scope.votedUp = false;
-
-  localStorage.setItem('favorites', favoritesList);
 
   $scope.checkFavorite = function(currentMarker) {
     if(!currentMarker) {
@@ -558,11 +562,11 @@
       // $scope.favorited = !$scope.currentFavorite;
       if(favoritesList.indexOf($scope.currentMarkerProperties.id) !== -1) {
           favoritesList.splice(favoritesList.indexOf($scope.currentMarkerProperties.id),1);
-          localStorage.setItem('favorites', favoritesList);
+          localStorage.setItem('favorites', JSON.stringify(favoritesList));
           $scope.isFavorited = false;
       } else {
         favoritesList.push($scope.currentMarkerProperties.id);
-        localStorage.setItem('favorites', favoritesList);
+        localStorage.setItem('favorites', JSON.stringify(favoritesList));
         $scope.isFavorited = true;
         console.log(localStorage.getItem('favorites'));
       }
