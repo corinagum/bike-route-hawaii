@@ -9746,6 +9746,24 @@ a.button {
     width: 25%;
     text-align: center; }
 
+#locate-before-start {
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  line-height: 450px;
+  text-align: center;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.showBlocker {
+  display: inline; }
+
+.hideBlocker {
+  display: none; }
+
 .view-filter {
   background-color: #f8f8f8;
   height: 46px;
@@ -9761,6 +9779,12 @@ a.button {
   font-size: 40px;
   line-height: 47px;
   text-align: center; }
+
+.pinViews {
+  text-align: left; }
+
+.filter-but-img {
+  padding-right: 20px; }
 
 .leaflet-bar a {
   background-color: #f8f8f8;
@@ -9784,6 +9808,16 @@ a.button {
 
 .navLinkDiv {
   margin-top: 5px; }
+
+.eachItem {
+  margin: 0px 4px 4px 4px;
+  box-shadow: 1px 1px 5px 1px #d6d3d6; }
+
+#swipeWords {
+  margin-left: 210px;
+  color: #9E9E9D;
+  font-style: italic;
+  padding: 5px; }
 
 #swipeRight {
   float: right;
@@ -9811,7 +9845,9 @@ a.button {
   text-align: center; }
 
 .buttonStyle {
-  border-left: 1px solid white; }
+  background-color: red;
+  border-left: 1px solid white;
+  text-align: center; }
 
 #radiusDiv {
   padding-top: 7px;
@@ -9824,10 +9860,31 @@ a.button {
   padding-top: 10px; }
 
 .btn1 {
-  background-color: #f8f8f8; }
+  background-color: #f8f8f8;
+  height: 50px; }
 
 .btn2 {
-  background-color: #76CE95; }
+  background-color: #76CE95;
+  height: 50px; }
+
+#radiusDiv {
+  height: 100px;
+  align: center; }
+  #radiusDiv img {
+    align: center;
+    max-height: 100%;
+    display: block;
+    margin: auto; }
+  #radiusDiv button {
+    text-align: center;
+    line-height: 100px;
+    height: 100px; }
+
+.spinner svg {
+  width: 100px;
+  height: 100px;
+  stroke: #76CE95;
+  fill: #444; }
 
 .greyOut {
   color: #f8f8f8; }
@@ -9837,3 +9894,9 @@ a.button {
 
 .fa-star:hover {
   color: #ffc900; }
+
+.fa-exclamation-circle {
+  color: #ef473a; }
+
+.fa-exclamation-circle:hover {
+  color: #ef473a; }

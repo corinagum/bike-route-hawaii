@@ -98,7 +98,6 @@ angular.module('starter.services', [])
   };
 }])
 
-// CURRENTLY UNNEEDED DUE TO PIVOT
 .service("RouteService", ['$http', function ($http) {
   // START CRUD OPERATIONS \\
 // GET

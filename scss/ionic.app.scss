@@ -40,6 +40,28 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     }
 }
 
+#locate-before-start{
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0, 0.7);
+  line-height: 450px;
+  text-align: center;
+  margin: auto;
+  // opacity: 0.8;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.showBlocker {
+  display: inline;
+}
+
+.hideBlocker {
+  display: none;
+}
+
 .view-filter {
   background-color: $stable;
   height: 46px;
@@ -55,6 +77,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   font-size: 40px;
   line-height: 47px;
   text-align: center;
+}
+
+.pinViews {
+  text-align: left;
+}
+
+.filter-but-img {
+  padding-right: 20px;
 }
 
 .leaflet-bar {
@@ -74,11 +104,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   border: 0px;
 
   div {
-  background-color: $dark;
-  border: 0px;
-
+    background-color: $dark;
+    border: 0px;
   }
 }
+
 .bshLogo {
   float: left;
   width: 70px;
@@ -92,8 +122,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .eachItem {
-  // padding: 3px;
-  // background-color: pink;
+  margin: 0px 4px 4px 4px;
+  box-shadow: 1px 1px 5px 1px rgba(214,211,214,1);
+}
+
+#swipeWords {
+  margin-left: 210px;
+  color: #9E9E9D;
+  font-style: italic;
+  padding: 5px;
 }
 
 #swipeRight {
@@ -129,7 +166,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 //BUTTONS IN FILTERS
 .buttonStyle {
+  background-color:red;
   border-left: 1px solid white;
+  text-align: center;
 }
 
 #radiusDiv {
@@ -146,17 +185,43 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .btn1 {
-  // color: red;
   background-color: $stable;
-  // display: none;
+  height: 50px;
 }
 
 .btn2 {
-  // color: red;
   background-color: $balanced;
-  // display: none;
+  height: 50px;
 }
 
+#radiusDiv {
+  // background-color:red;
+  height: 100px;
+  align: center;
+
+  img {
+    align: center;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  button {
+    // background-color: red;
+    text-align: center;
+    line-height: 100px;
+    height: 100px;
+  }
+
+}
+
+
+.spinner svg {
+  width: 100px;
+  height: 100px;
+  stroke: $balanced;
+  fill: #444;
+}
 .greyOut {
   color : $stable;
 }
@@ -166,3 +231,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .fa-star:hover {
   color:$energized;
 }
+
+.fa-exclamation-circle {
+  color:$assertive;
+}
+.fa-exclamation-circle:hover {
+  color:$assertive;
+}
+
+
