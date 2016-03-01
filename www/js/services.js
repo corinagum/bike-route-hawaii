@@ -49,8 +49,8 @@ angular.module('starter.services', [])
   };
 })
 
-.service("PointService", ['$http', function($http) {
-
+.service("PointService", ['$http', 'processENV', function($http, processENV) {
+  var domain = ".";
   this.getPoint = function() {
     return $http.get('http://localhost:4000/api/points');
   };
@@ -77,7 +77,9 @@ angular.module('starter.services', [])
   };
 
   this.getPointsInView = function(NElat, NElong, SWlat, SWlong){
-    return $http.get('http://localhost:4000/api/points/bounds/' +
+    // console.log(process.env);
+    console.log(processENV);
+    return $http.get(domain + '/api/points/bounds/' +
       NElat + '/' + NElong + '/' + SWlat + '/' +SWlong);
   };
 }])

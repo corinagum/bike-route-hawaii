@@ -92,7 +92,7 @@
       lat: 21.3008900859581,
       lng: -157.8398036956787,
       zoom: 14,
-      // autoDiscover:true
+      autoDiscover:true
     },
     bikeShareIcon: {
       type: 'extraMarker',
