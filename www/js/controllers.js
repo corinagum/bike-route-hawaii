@@ -62,7 +62,7 @@
     honolulu: {
       lat: 21.3008900859581,
       lng: -157.8398036956787,
-      zoom: 13
+      zoom: 15
     },
     events: {
       map : {
@@ -85,7 +85,7 @@
     center : {
       lat: 21.3008900859581,
       lng: -157.8398036956787,
-      zoom: 13,
+      zoom: 15,
       // autoDiscover:true
     },
     bikeShareIcon: {
