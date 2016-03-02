@@ -6,20 +6,13 @@
   // $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />';
   // Above is commented out until such time that we have icons to use
   // for now, use this:
-  // $scope.navTitle='Ride Hawaii';
+  $scope.navTitle='Ride Hawaii';
 
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
      markers : {
      }
   });
-
-  if (isCordovaApp){
-    // $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />';
-  } else {
-    // $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />';
-    // $scope.navTitle='Ride Hawaii';
-  }
 
   document.addEventListener("deviceready", updateUserLocMarker, false);
 
@@ -132,9 +125,7 @@ function handleErr(error){
       }
     },
     defaults: {
-      scrollWheelZoom: false,
-      doubleClickZoom: false,
-      inertiaMaxSpeed: 150
+      scrollWheelZoom: false
     },
     center : {
       lat: 21.3008900859581,
@@ -704,7 +695,5 @@ function handleErr(error){
     }
   };
 
-
 //////// end of controller
 }]);
-
