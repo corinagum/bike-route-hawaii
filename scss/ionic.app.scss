@@ -162,6 +162,19 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   height: 20px;
   margin-right: 20px;
 }
+
+.item {
+  background-color: $stable;
+  h2 {
+    line-height: 40px;
+    padding-left: 15px;
+  }
+  p {
+    padding-left: 10px;
+  }
+
+}
+
 .floatingDetail {
   float : left;
   display : inline;
@@ -172,7 +185,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   margin : 15px;
   font-size: 1em;
   color: $stable;
-
 }
 
 .detailsPhoto {

@@ -164,7 +164,7 @@
       </ion-header-bar>
         <ion-content>
             <ion-item>
-              <div class="detailsPhoto-div"><p ng-if="currentMarkerProperties.photolink"> <img class="detailsPhoto"ng-src="{{currentMarkerProperties.photolink}}" /> </p></div>
+              <div class="detailsPhoto-div"><div ng-if="currentMarkerProperties.photolink"> <img class="detailsPhoto"ng-src="{{currentMarkerProperties.photolink}}" /> </div></div>
             </ion-item>
             <div class="locationDetails">
               <p ng-if="currentMarkerProperties.site_id">Site ID: {{currentMarkerProperties.site_id}} on <span ng-if="currentMarkerProperties.photolink">{{currentMarkerProperties.info}}</span></p>
@@ -179,6 +179,7 @@
             <ion-item>
               <i ng-click="addSafetyWarn(); checkSafetyWarn();" ng-class="{'button button-icon icon locationMenu fa fa-circle-o fa-fw':!isSafetyWarn, 'button button-icon icon locationMenu fa fa-exclamation-circle fa-fw':isSafetyWarn}"></i>
                 <h2>Add Safety Incident</h2>
+                <p class="floatingDetail">&nbsp;&nbsp;&nbsp;{{currentMarkerProperties.safetyCounter || 0}} Incident(s)</p>
             </ion-item>
             <ion-item ng-click="openModal(5)">
                 <i class="button button-icon icon locationMenu fa fa-pencil-square-o fa-fw"></i>

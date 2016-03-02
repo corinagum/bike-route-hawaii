@@ -9842,6 +9842,14 @@ a.button {
   height: 20px;
   margin-right: 20px; }
 
+.item {
+  background-color: #f8f8f8; }
+  .item h2 {
+    line-height: 40px;
+    padding-left: 15px; }
+  .item p {
+    padding-left: 10px; }
+
 .floatingDetail {
   float: left;
   display: inline; }
