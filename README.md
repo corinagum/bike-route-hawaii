@@ -1,8 +1,8 @@
 Ride Hawaii
 =====================
+### [ridehawaii.us](http://ridehawaii.us)
 
 ## Introduction
-### [ridehawaii.us](http://ridehawaii.us)
 Ride Hawaii was originally created by four students as their final project in Cohort 9 of DevLeague in Honolulu, HI. The goal of this project is to create a geolocation app usable by bikers in the Honolulu area and to provide the following map information:
 * Locations of future Bike Share sites, where bike rentals will be possible.
 * History about nearby sites as a self-created tour.
