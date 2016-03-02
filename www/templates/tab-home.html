@@ -1,250 +1,261 @@
-<!-- <ion-view view-title="Bike Hawaii"> -->
 <ion-view ng-controller="MapCtrl" title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
-<!-- $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />'; -->
-<!-- <ion-header-bar align-title="center" class="bar-positive"> -->
+  <ion-content data-tap-disabled="true">
+    <div class="view-filter filter-button">
+      <i class="icon ion-gear-a custom-icon" ng-click="openModal(1)"></i>
+    </div>
+    <div ng-click="findCenter()">
+      <div id="locate-before-start" ng-class="{'showBlocker': !foundLocation, 'hideBlocker': foundLocation}">
+          tap to find location
+      </div>
+    </div>
 
-      <ion-content data-tap-disabled="true">
+    <leaflet lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
+  </ion-content>
+    <ion-footer-bar id="footer-bar">
+      <div>
+        <button ng-click="findCenter()" class="button">
+          <img class="title-image bottom-tab-nav-img" src="img/bike-assets/map-icon.svg" />
+        </button>
+      </div>
 
-        <div class="view-filter filter-button">
-          <i class="icon ion-gear-a custom-icon" ng-click="openModal(1)"></i>
-          <!-- <button  class="button button-icon icon ion-gear-a placeholder-icon filter-button"></button> -->
-        </div>
+      <div>
+        <button ng-click="openModal(2)" class="button">
+          <img class="title-image bottom-tab-nav-img" src="img/bike-assets/bike-icon.svg" />
+        </button>
+      </div>
 
-        <a ng-click="findCenter()">
-          <div id="locate-before-start" ng-class="{'showBlocker': !foundLocation, 'hideBlocker': foundLocation}">
-              <!-- <img class="title-image bottom-tab-nav-img" src="img/bike-assets/map-icon.svg" /> -->
-              tap to find location
-          </div>
-        </a>
+      <div>
+        <button ng-click="openModal(4)" class="button">
+          <img class="title-image bottom-tab-nav-img" src="img/bike-assets/landmark-icon.svg" />
+        </button>
+      </div>
 
-        <leaflet lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
-      </ion-content>
-        <ion-footer-bar id="footer-bar">
-          <div><button ng-click="findCenter()" class="button">
-            <img class="title-image bottom-tab-nav-img" src="img/bike-assets/map-icon.svg" />
-          </button></div>
+      <div>
+        <button ng-click="openModal(6)" class="button">
+          <img class="title-image bottom-tab-nav-img" src="img/bike-assets/bikerack-icon-temp.png" />
+        </button>
+      </div>
+    </ion-footer-bar>
 
-          <div><button ng-click="openModal(2)" class="button">
-            <img class="title-image bottom-tab-nav-img" src="img/bike-assets/bike-icon.svg" />
-          </button></div>
+<!-- filter modals -->
 
-          <div><button ng-click="openModal(4)" class="button">
-            <img class="title-image bottom-tab-nav-img" src="img/bike-assets/landmark-icon.svg" />
-          </button></div>
+  <script id="filter-modal.html" type="text/ng-template">
+    <div class="modal filter-modal">
+      <ion-header-bar>
+        <h1 class="title">Filters</h1>
+      </ion-header-bar>
+      <ion-content>
+        <div class="list">
+            <div class="pinViews item">
+              <a class="item item-icon-left" ng-click="setShowStations()" ng-class="{'btn2': showStations, 'btn1': !showStations}">
+              <i class="icon" ng-class="testcolor"><img class="title-image filter-but-img" src="img/bike-assets/bike-icon.svg" /> </i>
+                &nbsp;&nbsp;&nbsp; Bike Share Stations
+              </a>
 
-          <div><button ng-click="openModal(6)" class="button">
-            <img class="title-image bottom-tab-nav-img" src="img/bike-assets/bikerack-icon-temp.png" />
-          </button></div>
-        </ion-footer-bar>
-      </ion-content>
+              <a class="item item-icon-left" ng-click="setShowLandmarks()" ng-class="{'btn2': showLandmarks, 'btn1': !showLandmarks}">
+              <i class="icon"><img class="title-image filter-but-img" src="img/bike-assets/landmark-icon.svg" /></i>
+                &nbsp;&nbsp;&nbsp; Landmarks
+              </a>
 
-<!-- pop-up modal -->
+              <a class="item item-icon-left" ng-click="setShowBikeRacks()" ng-class="{'btn2': showBikeRacks, 'btn1': !showBikeRacks}">
+              <i class="icon"><img class="title-image bottom-tab-nav-img" src="img/bike-assets/bikerack-icon-temp.png" /></i>
+                &nbsp;&nbsp;&nbsp; Public Bike Racks
+              </a>
 
-      <script id="filter-modal.html" type="text/ng-template">
-        <div class="modal filter-modal">
-          <ion-header-bar>
-            <h1 class="title">Filters</h1>
-          </ion-header-bar>
-          <ion-content>
-
-            <div class="list">
-
-            <div class="list">
-              <div class="item">Pin Types
-                <div class="pinViews">
-                  <a class="item item-icon-left" ng-click="setShowStations()" ng-class="{'btn2': showStations, 'btn1': !showStations}">
-                  <i class="icon" ng-class="testcolor"><img class="title-image filter-but-img" src="img/bike-assets/bike-icon.svg" /> </i>
-                    &nbsp;&nbsp;&nbsp; Bike Share Stations
-                  </a>
-
-                  <a class="item item-icon-left" ng-click="setShowLandmarks()" ng-class="{'btn2': showLandmarks, 'btn1': !showLandmarks}">
-                  <i class="icon"><img class="title-image filter-but-img" src="img/bike-assets/landmark-icon.svg" /></i>
-                    &nbsp;&nbsp;&nbsp; Landmarks
-                  </a>
-
-                  <a class="item item-icon-left" ng-click="setShowBikeRacks()" ng-class="{'btn2': showBikeRacks, 'btn1': !showBikeRacks}">
-                  <i class="icon"><img class="title-image bottom-tab-nav-img" src="img/bike-assets/bikerack-icon-temp.png" /></i>
-                    &nbsp;&nbsp;&nbsp; Public Bike Racks
-                  </a>
-
-              <div class="item">Radius
-                <div id="radiusDiv" class="button-bar">
-                    <button class="button buttonStyle" ng-click="setRadius(805)" ng-class="{'btn2': radiusHalf, 'btn1': !radiusHalf}">
-                      <img class="title-image radius-button-img" src="img/bike-assets/small-radius.svg" />
-                    </button>
-                    <button class="button buttonStyle" ng-click="setRadius(1610)" ng-class="{'btn2': radiusMile, 'btn1': !radiusMile}"><img class="title-image radius-button-img" src="img/bike-assets/medium-radius.svg" /></button>
-                    <button class="button buttonStyle" ng-click="setRadius(3220)" ng-class="{'btn2': radiusTwoMile, 'btn1': !radiusTwoMile}"><img class="title-image radius-button-img" src="img/bike-assets/large-radius.svg" /></button>
-                    <button class="button buttonStyle" ng-click="setRadius(50000)" ng-class="{'btn2': radiusAll, 'btn1': !radiusAll}">All</button>
-                </div>
+              <br />
+              <a class="item item-icon-left" ng-click="setShowPointsOnDrag()" ng-class="{'btn2': showPointsOnDrag, 'btn1': !showPointsOnDrag}">
+              <i class="icon"><img class="title-image bottom-tab-nav-img" src="img/bike-assets/pin-yellow.png" /></i>
+                &nbsp;&nbsp;&nbsp; Show Points on Drag
+              </a>
+              <br />
+              <div id="radiusDiv" class="button-bar">
+                <button class="button buttonStyle" ng-click="setRadius(805)" ng-class="{'btn2': radiusHalf, 'btn1': !radiusHalf}">
+                    <img class="title-image radius-button-img" src="img/bike-assets/small-radius.svg" />
+                </button>
+                <button class="button buttonStyle" ng-click="setRadius(1610)" ng-class="{'btn2': radiusMile, 'btn1': !radiusMile}">
+                  <img class="title-image radius-button-img" src="img/bike-assets/medium-radius.svg" />
+                </button>
+                <button class="button buttonStyle" ng-click="setRadius(3220)" ng-class="{'btn2': radiusTwoMile, 'btn1': !radiusTwoMile}">
+                  <img class="title-image radius-button-img" src="img/bike-assets/large-radius.svg" />
+                </button>
+                <button class="button buttonStyle" ng-click="setRadius(50000)" ng-class="{'btn2': radiusAll, 'btn1': !radiusAll}">All</button>
               </div>
-
-            <div>
-              <button class="button button-full button-energized" ng-click="setPinsWithinRadius(); closeModal(1)">Done</button>
+            <div class="done">
+              <button class="button buttonStyle button-full button-energized done" ng-click="setPinsWithinRadius(); closeModal(1)">Done</button>
             </div>
-
-          </ion-content>
-        <!-- </div> -->
-      </script>
-
-      <script id="bikeShareList.html" type="text/ng-template">
-        <div class="modal">
-          <ion-header-bar class="bar bar-header">
-            <h1 class="title" >{{stationCount}} Bike Share near you</h1>
-            <button class="button icon ion-arrow-down-b" ng-click="closeModal(2)"></button>
-          </ion-header-bar>
-            <ion-content>
-              <ion-list show-delete="false" can-swipe="true" class="itemInList"><span id="swipeWords">Swipe left for directions</span>
-                <ion-item ng-repeat="item in bikesharePoints" class="eachItem">
-                  <img class="bshLogo" ng-src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg">
-                  <div class="padding">
-                    <i id="swipeRight" class="icon ion-chevron-left"></i>
-                    <h2>{{ item.title }}</h2>
-                    <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.dist }} miles</h4>
-                    <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
-                  </div>
-                </ion-item>
-              </ion-list>
-            </ion-content>
+          </div>
         </div>
-      </script>
+      </ion-content>
+    </div>
+  </script>
 
-      <script id="landmarkList.html" type="text/ng-template">
-        <div class="modal">
-          <ion-header-bar class="bar bar-header">
-            <h1 class="title" >{{stationCount}} Landmarks near you</h1>
-            <button class="button icon ion-arrow-down-b" ng-click="closeModal(4)"></button>
-          </ion-header-bar>
-            <ion-content>
-              <ion-list show-delete="false" can-swipe="true" class="itemInList"><span id="swipeWords">Swipe left for directions</span>
-                <ion-item ng-repeat="item in landmarkPoints" class="eachItem">
-                  <img class="bshLogo" ng-src="{{ item.photolink }}">
-                  <div class="padding">
-                    <i id="swipeRight" class="icon ion-chevron-left"></i>
-                    <h2>{{ item.title }}</h2>
-                    <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.dist }} miles</h4>
-                    <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
-                    <ion-option-button class="button icon ion-ios-book" ng-click="changeCurrentMarker(item); openModal(3); closeModal(4);"></ion-option-button>
-                  </div>
-                </ion-item>
-              </ion-list>
-            </ion-content>
-        </div>
-      </script>
+  <script id="bikeShareList.html" type="text/ng-template">
+    <div class="modal">
+      <ion-header-bar class="bar bar-header">
+        <h1 class="title" >{{stationCount}} Bike Share near you</h1>
+        <button class="button icon ion-arrow-down-b" ng-click="closeModal(2)"></button>
+      </ion-header-bar>
+        <ion-content>
+          <ion-list show-delete="false" can-swipe="true" class="itemInList"><span id="swipeWords">Swipe left for directions</span>
+            <ion-item ng-repeat="item in bikesharePoints" class="eachItem">
+              <img class="bshLogo" ng-src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg">
+              <div class="padding">
+                <i id="swipeRight" class="icon ion-chevron-left"></i>
+                <h2>{{ item.title }}</h2>
+                <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.dist }} miles</h4>
+                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
+              </div>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+    </div>
+  </script>
 
-      <script id="bikeRackList.html" type="text/ng-template">
-        <div class="modal">
-          <ion-header-bar class="bar bar-header">
-            <h1 class="title" >{{stationCount}} Bike Racks near you</h1>
-            <button class="button icon ion-arrow-down-b" ng-click="closeModal(6)"></button>
-          </ion-header-bar>
-            <ion-content>
-              <ion-list show-delete="false" can-swipe="true">
-                <ion-item ng-repeat="item in bikeRackPoints" class="eachItem">
-                  <!-- <img class="bshLogo" src=""> -->
-                  <div class="padding">
-                    <i id="swipeRight" class="icon ion-chevron-right"></i>
-                    <h2>{{ item.description }}</h2>
-                    <h4>{{ item.dist }} miles</h4>
-                    <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
-                  </div>
-                </ion-item>
-              </ion-list>
-            </ion-content>
-      </script>
+  <script id="landmarkList.html" type="text/ng-template">
+    <div class="modal">
+      <ion-header-bar class="bar bar-header">
+        <h1 class="title" >{{stationCount}} Landmarks near you</h1>
+        <button class="button icon ion-arrow-down-b" ng-click="closeModal(4)"></button>
+      </ion-header-bar>
+        <ion-content>
+          <ion-list show-delete="false" can-swipe="true" class="itemInList"><span id="swipeWords">Swipe left for directions</span>
+            <ion-item ng-repeat="item in landmarkPoints" class="eachItem">
+              <img class="bshLogo" ng-src="{{ item.photo }}">
+              <div class="padding">
+                <i id="swipeRight" class="icon ion-chevron-left"></i>
+                <h2>{{ item.title }}</h2>
+                <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.dist }} miles</h4>
+                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
+                <ion-option-button class="button icon ion-ios-book" ng-click="changeCurrentMarker(item); openModal(3); closeModal(4);"></ion-option-button>
+              </div>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+    </div>
+  </script>
 
-       <script id="markerDetail.html" type="text/ng-template">
-        <div class="modal" ng-model="currentMarkerProperties">
-          <ion-header-bar class="bar bar-header">
-            <h1 class="title">Location Details</h1>
-            <button class="button icon ion-arrow-down-b" ng-click="closeModal(3)"></button>
-          </ion-header-bar>
-            <ion-content>
-                <ion-item>
-                  <div><p ng-if="currentMarkerProperties.photolink"> <img class="detailsPhoto"ng-src="{{currentMarkerProperties.photolink}}" /> </p></div>
-                </ion-item>
-                <ion-item>
-                  <i ng-click="addFavorite(); checkFavorite();" ng-class="{'button button-icon icon locationMenu fa fa-star-o fa-fw':!isFavorited, 'button button-icon icon locationMenu fa fa-star fa-fw':isFavorited}"></i>
-                    <h2>Add to Favorites</h2>
-                </ion-item>
-                <ion-item>
-                  <i ng-click="addSafetyWarn(); checkSafetyWarn();" ng-class="{'button button-icon icon locationMenu fa fa-circle-o fa-fw':!isSafetyWarn, 'button button-icon icon locationMenu fa fa-exclamation-circle fa-fw':isSafetyWarn}"></i>
-                    <h2>Add Safety Incident</h2>
-                </ion-item>
-                <ion-item ng-click="openModal(5)">
-                    <i class="locationMenu fa fa-pencil-square-o fa-fw"></i>
-                    <h2 class="floatingDetail">Report/Suggest</h2>
-                 </ion-item>
-                <div class="locationDetails">
-                  <p ng-if="currentMarkerProperties.site_id">Site ID: {{currentMarkerProperties.site_id}} on <span ng-if="currentMarkerProperties.photolink">{{currentMarkerProperties.info}}</span></p>
-                  <p ng-if="currentMarkerProperties.description">{{currentMarkerProperties.description}}</p>
-                  <p ng-if="currentMarkerProperties.geolink"><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
-                  <!-- <p><a target="_blank" href="{{currentMarkerProperties.sitelink}}">Site</a></p> -->
-                </div>
-            </ion-content>
-      </script>
+  <script id="bikeRackList.html" type="text/ng-template">
+    <div class="modal">
+      <ion-header-bar class="bar bar-header">
+        <h1 class="title" >{{stationCount}} Bike Racks near you</h1>
+        <button class="button icon ion-arrow-down-b" ng-click="closeModal(6)"></button>
+      </ion-header-bar>
+        <ion-content>
+          <ion-list show-delete="false" can-swipe="true">
+            <ion-item ng-repeat="item in bikeRackPoints" class="eachItem">
+              <div class="padding">
+                <i id="swipeRight" class="icon ion-chevron-right"></i>
+                <h2>{{ item.description }}</h2>
+                <h4>{{ item.dist }} miles</h4>
+                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
+              </div>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+    </div>
+  </script>
 
-      <script id="reportDetail.html" type="text/ng-template">
-              <div class="modal" ng-model="currentMarkerProperties">
-                <ion-header-bar class="bar bar-header">
-                  <h1 class="title">Report/Suggest</h1>
-                  <button class="button icon ion-arrow-down-b" ng-click="closeModal(5)"></button>
-                </ion-header-bar>
-                  <ion-content>
-                      <ion-item>
-                        <div class="list">
-                          <label class="item item-input item-select">
-                            <div class="input-label">
-                              I'd like to make a:
-                            </div>
-                            <select ng-model="comment.type">
-                              <option>Report</option>
-                              <option selected>Suggestion</option>
-                            </select>
-                        </div>
-                        <div class="list">
-                          <label class="item item-input item-select">
-                            <div class="input-label">
-                              Subject
-                            </div>
-                            <select ng-model="comment.subject">
-                              <option ng-if="comment.type === 'Report'">Found</option>
-                              <option ng-if="comment.type === 'Report'" selected>Missing</option>
-                              <option ng-if="comment.type === 'Report'">Dangerous</option>
-                              <option ng-if="comment.type === 'Report'">Theft</option>
-                              <option ng-if="comment.type === 'Report'">Correction</option>
-                              <option ng-if="comment.type === 'Report'">Other</option>
-                              <option ng-if="comment.type === 'Suggestion'">Rack</option>
-                              <option ng-if="comment.type === 'Suggestion'">BikeShare</option>
-                              <option ng-if="comment.type === 'Suggestion'">OldHawaii</option>
-                              <option ng-if="comment.type === 'Suggestion'">General</option>
-                            </select>
-                        </div>
-                        <div class="list">
-                          <label class="item item-input">
-                          <textarea ng-model='comment.description' name="comment" id="comment" cols="30" rows="10"></textarea>
-                        </div>
-                        <div>
-                          <label class="item item-input">
-                          <input  placeholder="name" type="text" ng-model='comment.name' >
-                        </div>
-                        <div>
-                          <label class="item item-input">
-                          <input  placeholder="email" type="text" ng-model='comment.email' >
-                        </div>
-                        <div class="list">
-                          <label class="item item-input item-select">
-                            <div class="input-label">
-                             Can we contact you about this?
-                            </div>
-                            <select ng-model="comment.contact">
-                              <option>Yes</option>
-                              <option selected>No</option>
-                            </select>
-                        </div>
-                        <ion-item ng-click="postComment(comment)">
-                            <h2 class="floatingDetail">Submit {{comment.type}}</h2>
-                        </ion-item>
-                      </ion-item>
-                  </ion-content>
-            </script>
+   <script id="markerDetail.html" type="text/ng-template">
+    <div class="modal" ng-model="currentMarkerProperties">
+      <ion-header-bar class="bar bar-header">
+        <h1 class="title">Location Details</h1>
+        <button class="button icon ion-arrow-down-b" ng-click="closeModal(3)"></button>
+      </ion-header-bar>
+        <ion-content>
+            <ion-item>
+              <div><p ng-if="currentMarkerProperties.photolink"> <img class="detailsPhoto"ng-src="{{currentMarkerProperties.photolink}}" /> </p></div>
+            </ion-item>
+            <ion-item>
+              <i ng-click="addFavorite(); checkFavorite();" ng-class="{'button button-icon icon locationMenu fa fa-star-o fa-fw':!isFavorited, 'button button-icon icon locationMenu fa fa-star fa-fw':isFavorited}"></i>
+                <h2>Add to Favorites</h2>
+            </ion-item>
+            <ion-item>
+              <i ng-click="addSafetyWarn(); checkSafetyWarn();" ng-class="{'button button-icon icon locationMenu fa fa-circle-o fa-fw':!isSafetyWarn, 'button button-icon icon locationMenu fa fa-exclamation-circle fa-fw':isSafetyWarn}"></i>
+                <h2>Add Safety Incident</h2>
+            </ion-item>
+            <ion-item ng-click="openModal(5)">
+                <i class="button button-icon icon locationMenu fa fa-pencil-square-o fa-fw"></i>
+                <h2 class="floatingDetail">Report/Suggest</h2>
+             </ion-item>
+            <div class="locationDetails">
+              <p ng-if="currentMarkerProperties.site_id">Site ID: {{currentMarkerProperties.site_id}} on <span ng-if="currentMarkerProperties.photolink">{{currentMarkerProperties.info}}</span></p>
+              <p ng-if="currentMarkerProperties.description">{{currentMarkerProperties.description}}</p>
+              <p ng-if="currentMarkerProperties.geolink"><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
+              <!-- <p><a target="_blank" href="{{currentMarkerProperties.sitelink}}">Site</a></p> -->
+            </div>
+        </ion-content>
+    </div>
+  </script>
+
+  <script id="reportDetail.html" type="text/ng-template">
+    <div class="modal" ng-model="currentMarkerProperties">
+      <ion-header-bar class="bar bar-header">
+        <h1 class="title">Report/Suggest</h1>
+        <button class="button icon ion-arrow-down-b" ng-click="closeModal(5)"></button>
+      </ion-header-bar>
+      <ion-content>
+        <ion-item>
+          <div class="list">
+            <label class="item item-input item-select">
+              <div class="input-label">
+                I'd like to make a:
+              </div>
+              <select ng-model="comment.type">
+                <option>Report</option>
+                <option selected>Suggestion</option>
+              </select>
+            </label>
+          </div>
+          <div class="list">
+            <label class="item item-input item-select">
+              <div class="input-label">
+                Subject
+              </div>
+              <select ng-model="comment.subject">
+                <option ng-if="comment.type === 'Report'">Found</option>
+                <option ng-if="comment.type === 'Report'" selected>Missing</option>
+                <option ng-if="comment.type === 'Report'">Dangerous</option>
+                <option ng-if="comment.type === 'Report'">Theft</option>
+                <option ng-if="comment.type === 'Report'">Correction</option>
+                <option ng-if="comment.type === 'Report'">Other</option>
+                <option ng-if="comment.type === 'Suggestion'">Rack</option>
+                <option ng-if="comment.type === 'Suggestion'">BikeShare</option>
+                <option ng-if="comment.type === 'Suggestion'">OldHawaii</option>
+                <option ng-if="comment.type === 'Suggestion'">General</option>
+              </select>
+            </label>
+          </div>
+          <div class="list">
+            <label class="item item-input">
+              <textarea ng-model='comment.description' required name="comment" id="comment" cols="30" rows="10"></textarea>
+            </label>
+          </div>
+          <div>
+            <label class="item item-input">
+              <input  placeholder="Name" type="text" ng-model='comment.name' >
+            </label>
+          </div>
+          <div>
+            <label class="item item-input">
+              <input  placeholder="Email" type="email" ng-model='comment.email' >
+            </label>
+          </div>
+          <div class="list">
+            <label class="item item-input item-select">
+              <div class="input-label">
+                Can we contact you about this?
+              </div>
+              <select ng-model="comment.contact">
+                <option>Yes</option>
+                <option selected>No</option>
+              </select>
+            </label>
+          </div>
+          <ion-item ng-click="postComment(comment)">
+            <h2 class="floatingDetail">Submit {{comment.type}}</h2>
+          </ion-item>
+        </ion-item>
+      </ion-content>
+    </div>
+  </script>
 </ion-view>
