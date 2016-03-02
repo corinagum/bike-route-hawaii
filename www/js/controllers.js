@@ -6,13 +6,20 @@
   // $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />';
   // Above is commented out until such time that we have icons to use
   // for now, use this:
-  $scope.navTitle='Ride Hawaii';
+  // $scope.navTitle='Ride Hawaii';
 
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
      markers : {
      }
   });
+
+  if (isCordovaApp){
+    // $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />';
+  } else {
+    // $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />';
+    // $scope.navTitle='Ride Hawaii';
+  }
 
   document.addEventListener("deviceready", updateUserLocMarker, false);
 
@@ -143,8 +150,7 @@ function handleErr(error){
     },
     historyIcon: {
       type: 'extraMarker',
-      // icon: 'fa-university',
-      iconUrl: '/img/bike-assets/landmark-icon',
+      icon: 'fa-university',
       markerColor: 'yellow',
       shape : 'square',
       prefix : 'fa'

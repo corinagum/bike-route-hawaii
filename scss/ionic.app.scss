@@ -30,6 +30,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   padding-top: 7px;
 }
 
+.title.title-center.header-item {
+  background: url("./../img/bike-assets/nav-logo.svg") center no-repeat;
+
+}
+
 #footer-bar {
   width: 100%;
   background-color: $dark;
@@ -50,7 +55,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   line-height: 450px;
   text-align: center;
   margin: auto;
-  // opacity: 0.8;
   position: absolute;
   top: 0;
   left: 0;
@@ -75,11 +79,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   top: 10px;
   right: 10px;
   z-index:3;
-  box-shadow : rgba(0,0,0,.2) 3px 5px 5px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.65);
   color: $royal;
   font-size: 40px;
   line-height: 47px;
   text-align: center;
+}
+
+.list-modal {
+  background-color: $dark;
 }
 
 .pinViews {
@@ -126,15 +134,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .eachItem {
-  margin: 0px 4px 4px 4px;
-  box-shadow: 1px 1px 5px 1px rgba(214,211,214,1);
+  margin: 10px 15px 10px 15px;
+  box-shadow: 1px 1px 3px 1px rgba(214,211,214,1);
 }
 
 #swipeWords {
-  margin-left: 210px;
+  // margin-left: 210px;
   color: #9E9E9D;
   font-style: italic;
   padding: 5px;
+  width: 100%;
+  text-align: center;
 }
 
 #swipeRight {
@@ -161,11 +171,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
   margin : 15px;
   font-size: 1em;
+  color: $stable;
 
 }
+
 .detailsPhoto {
-  max-width : 90vw;
-  text-align : center;
+  max-width : 100vw;
+  width: 100%;
+}
+
+.detailsPhoto-div{
+  text-align: center;
 }
 
 //BUTTONS IN FILTERS
@@ -194,7 +210,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 #radiusDiv {
-  // background-color:red;
   height: 100px;
   align: center;
   width: 100%;
@@ -214,20 +229,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 }
 
-.nav-div svg{
-  fill: blue;
-  color: blue;
-}
-
-#Bike-Racks-Icon {
-  fill: $balanced;
-}
-
 .done {
-  // width: 100%;
   margin-top: 20px;
-  // position: absolute;
-  // bottom: 0;
 }
 
 .spinner svg {
