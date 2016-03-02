@@ -152,15 +152,15 @@ function handleErr(error){
     },
     historyIcon: {
       type: 'extraMarker',
-      icon: 'fa-camera',
+      icon: 'fa-university',
       markerColor: 'yellow',
-      shape : 'star',
+      shape : 'square',
       prefix : 'fa'
     },
     bikeRack: {
       type: 'extraMarker',
-      icon: 'fa-chevron-circle-up',
-      markerColor: 'red',
+      icon: 'fa-unlock-alt',
+      markerColor: 'black',
       shape: 'circle',
       prefix : 'fa'
     }
