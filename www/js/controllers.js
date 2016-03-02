@@ -3,11 +3,6 @@
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService) {
 
-  // $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />';
-  // Above is commented out until such time that we have icons to use
-  // for now, use this:
-  $scope.navTitle='Ride Hawaii';
-
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
      markers : {
@@ -217,7 +212,7 @@ function handleErr(error){
       .then(function(data){
         $scope.bikesharePoints = [];
         for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
-            var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '</div></div>';
             var bikeNum = 'bike' + i;
             var bksData = data.data.geoJSONBikeShare.features[i].properties;
                 bksData.distanceToFrom = Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100;
@@ -240,7 +235,7 @@ function handleErr(error){
         $scope.landmarkPoints = [];
 
           for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
-            var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONHistory.features[j].properties.name + '</div></div>';
             var historyNum = 'history' + j;
             var landmarkData = data.data.geoJSONHistory.features[j].properties;
                 landmarkData.distanceToFrom = Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100;
@@ -263,7 +258,7 @@ function handleErr(error){
         $scope.bikeRackPoints = [];
 
           for(var k = 0; k < data.data.geoJSONBikeRack.features.length; k++){
-            var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[k].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[k].properties.description + '</div></div>';
             var bikeRackNum = 'bikeRack' + k;
             var bikerackData = data.data.geoJSONBikeRack.features[k].properties;
                 bikerackData.distanceToFrom = Math.round(((bikerackData.distance_from_current_location)*0.000621371192) * 100) / 100;
@@ -304,7 +299,7 @@ function handleErr(error){
         $scope.bikesharePoints = [];
 
           for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
-            var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '</div></div>';
             var bikeNum = 'bike' + i;
             var bksData = data.data.geoJSONBikeShare.features[i].properties;
                 bksData.distanceToFrom = Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100;
@@ -327,7 +322,7 @@ function handleErr(error){
         $scope.landmarkPoints = [];
 
           for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
-            var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONHistory.features[j].properties.name + '</div></div>';
             var historyNum = 'history' + j;
             var landmarkData = data.data.geoJSONHistory.features[j].properties;
                 landmarkData.distanceToFrom = Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100;
@@ -350,7 +345,7 @@ function handleErr(error){
         $scope.bikeRackPoints = [];
 
           for(var k = 0; k < data.data.geoJSONBikeRack.features.length; k++){
-            var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[k].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+            var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[k].properties.description + '</div></div>';
             var bikeRackNum = 'bikeRack' + k;
             var bikerackData = data.data.geoJSONBikeRack.features[k].properties;
                 bikerackData.distanceToFrom = Math.round(((bikerackData.distance_from_current_location)*0.000621371192) * 100) / 100;
@@ -428,7 +423,7 @@ function handleErr(error){
 
             if ($scope.showStations){
               for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
-              var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+              var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '</div></div>';
                 var bikeNum = 'bike' + i;
 
                 $scope.markers[bikeNum] = {
@@ -445,7 +440,7 @@ function handleErr(error){
 
             if ($scope.showLandmarks){
               for(var j = 0; j < data.data.geoJSONHistory.features.length; j++){
-                var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+                var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONHistory.features[j].properties.name + '</div></div>';
 
                 var historyNum = 'history' + j;
                 $scope.markers[historyNum] = {
@@ -462,7 +457,7 @@ function handleErr(error){
 
             if ($scope.showBikeRacks){
               for(var k = 0; k < data.data.geoJSONBikeRack.features.length; k++){
-              var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[k].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+              var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[k].properties.description + '</div></div>';
                 var bikeRackNum = 'bikeRack' + k;
                 $scope.markers[bikeRackNum] = {
                   lat : data.data.geoJSONBikeRack.features[k].properties.lat,

@@ -9809,6 +9809,33 @@ a.button {
     background-color: #181B1E;
     border: 0px; }
 
+.radius-small {
+  background: url("./../img/bike-assets/small-radius.svg") no-repeat;
+  background-position: 50% 40%; }
+
+.radius-medium {
+  background: url("./../img/bike-assets/medium-radius.svg") center no-repeat;
+  background-position: 50% 40%; }
+
+.radius-large {
+  background: url("./../img/bike-assets/large-radius.svg") center no-repeat;
+  background-position: 50% 40%; }
+
+#radiusDiv {
+  height: 100px;
+  align: center;
+  width: 100%; }
+  #radiusDiv img {
+    align: center;
+    max-height: 100%;
+    display: block;
+    margin: auto; }
+  #radiusDiv button {
+    text-align: center;
+    line-height: 170px;
+    height: 100px;
+    font-size: 0.8em; }
+
 .bshLogo {
   float: left;
   width: 70px;
@@ -9842,6 +9869,14 @@ a.button {
   height: 20px;
   margin-right: 20px; }
 
+.item {
+  background-color: #f8f8f8; }
+  .item h2 {
+    line-height: 40px;
+    padding-left: 15px; }
+  .item p {
+    padding-left: 10px; }
+
 .floatingDetail {
   float: left;
   display: inline; }
@@ -9857,6 +9892,13 @@ a.button {
 
 .detailsPhoto-div {
   text-align: center; }
+
+.sendPoint {
+  text-align: center;
+  margin: 1.5em; }
+
+.leaflet-popup-content-wrapper {
+  border-radius: 5px; }
 
 .buttonStyle {
   border-left: 1px solid white;
@@ -9876,20 +9918,6 @@ a.button {
 .btn2 {
   background-color: #76CE95;
   height: 50px; }
-
-#radiusDiv {
-  height: 100px;
-  align: center;
-  width: 100%; }
-  #radiusDiv img {
-    align: center;
-    max-height: 100%;
-    display: block;
-    margin: auto; }
-  #radiusDiv button {
-    text-align: center;
-    line-height: 100px;
-    height: 100px; }
 
 .done {
   margin-top: 20px; }
