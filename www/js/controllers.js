@@ -143,8 +143,7 @@ function handleErr(error){
     },
     historyIcon: {
       type: 'extraMarker',
-      // icon: 'fa-university',
-      iconUrl: '/img/bike-assets/landmark-icon',
+      icon: 'fa-university',
       markerColor: 'yellow',
       shape : 'square',
       prefix : 'fa'
@@ -387,7 +386,9 @@ function handleErr(error){
               waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( desLat, desLong)],
               show: false,
               routeWhileDragging: true,
+              fitSelectedRoutes : true,
               position: 'topleft'}).addTo(map);
+
             $scope.closeModal(2);
             $scope.closeModal(4);
             routeOnMap = true;
