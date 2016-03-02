@@ -9756,7 +9756,8 @@ a.button {
   margin: auto;
   position: absolute;
   top: 0;
-  left: 0; }
+  left: 0;
+  color: #387ef5; }
 
 .showBlocker {
   display: inline; }
