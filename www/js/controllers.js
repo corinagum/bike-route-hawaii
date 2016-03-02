@@ -1,7 +1,7 @@
  angular.module('starter.controllers', ['ngCordova'])
 
  .controller('MapCtrl',
-  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation) {
+  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService) {
 
   $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />';
 
@@ -479,11 +479,11 @@
 
   // COMMENT SUBMIT FUNCTION
   $scope.postComment = function(comment){
+    console.log($scope.currentMarkerProperties);
     CommentService.addComment(comment, $scope.currentMarkerProperties.id)
     .then(function(data){
 
     });
-    console.log('comment',comment);
   };
 
   //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
@@ -640,7 +640,6 @@
         favoritesList.push($scope.currentMarkerProperties.id);
         localStorage.setItem('favorites', JSON.stringify(favoritesList));
         $scope.isFavorited = true;
-        console.log(localStorage.getItem('favorites'));
       }
   };
 
@@ -667,7 +666,6 @@
       safetyList.push($scope.currentMarkerProperties.id);
       localStorage.setItem('safetyWarnings', JSON.stringify(safetyList));
       $scope.isSafetyWarn = true;
-      console.log(localStorage.getItem('safetyWarnings'));
     }
   };
 
