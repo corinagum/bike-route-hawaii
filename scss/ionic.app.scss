@@ -121,6 +121,42 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 }
 
+.radius-small {
+  background: url("./../img/bike-assets/small-radius.svg") no-repeat;
+  background-position: 50% 40%;
+}
+
+.radius-medium {
+  background: url("./../img/bike-assets/medium-radius.svg") center no-repeat;
+  background-position: 50% 40%;
+}
+
+.radius-large {
+  background: url("./../img/bike-assets/large-radius.svg") center no-repeat;
+  background-position: 50% 40%;
+}
+
+#radiusDiv {
+  height: 100px;
+  align: center;
+  width: 100%;
+
+  img {
+    align: center;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  button {
+    text-align: center;
+    line-height: 170px;
+    height: 100px;
+    font-size: 0.8em;
+  }
+
+}
+
 .bshLogo {
   float: left;
   width: 70px;
@@ -192,8 +228,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   width: 100%;
 }
 
-.detailsPhoto-div{
+.detailsPhoto-div {
   text-align: center;
+}
+
+.sendPoint {
+  text-align: center;
+  margin: 1.5em;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 5px;
 }
 
 //BUTTONS IN FILTERS
@@ -219,26 +264,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .btn2 {
   background-color: $balanced;
   height: 50px;
-}
-
-#radiusDiv {
-  height: 100px;
-  align: center;
-  width: 100%;
-
-  img {
-    align: center;
-    max-height: 100%;
-    display: block;
-    margin: auto;
-  }
-
-  button {
-    text-align: center;
-    line-height: 100px;
-    height: 100px;
-  }
-
 }
 
 .done {
