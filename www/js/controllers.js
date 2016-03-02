@@ -220,13 +220,9 @@ function handleErr(error){
             var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var bikeNum = 'bike' + i;
             var bksData = data.data.geoJSONBikeShare.features[i].properties;
+                bksData.distanceToFrom = Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100;
 
-            $scope.bikesharePoints.push({
-              title: bksData.name,
-              dist : Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100,
-              lat  : bksData.lat,
-              long : bksData.long
-            });
+            $scope.bikesharePoints.push(bksData);
 
             if ($scope.showStations){
               $scope.markers[bikeNum] = {
@@ -247,15 +243,9 @@ function handleErr(error){
             var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var historyNum = 'history' + j;
             var landmarkData = data.data.geoJSONHistory.features[j].properties;
+                landmarkData.distanceToFrom = Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100;
 
-            $scope.landmarkPoints.push({
-              title: landmarkData.name,
-              dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
-              photolink: landmarkData.photolink,
-              description: landmarkData.description,
-              lat  : landmarkData.lat,
-              long : landmarkData.long
-            });
+            $scope.landmarkPoints.push(landmarkData);
 
             if ($scope.showLandmarks){
               $scope.markers[historyNum] = {
@@ -276,14 +266,9 @@ function handleErr(error){
             var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[k].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var bikeRackNum = 'bikeRack' + k;
             var bikerackData = data.data.geoJSONBikeRack.features[k].properties;
+                bikerackData.distanceToFrom = Math.round(((bikerackData.distance_from_current_location)*0.000621371192) * 100) / 100;
 
-            $scope.bikeRackPoints.push({
-              title: bikerackData.description,
-              dist : Math.round(((bikerackData.distance_from_current_location)*0.000621371192) * 100) / 100,
-              // photo: bikerackData.photolink,
-              lat  : bikerackData.lat,
-              long : bikerackData.long
-            });
+            $scope.bikeRackPoints.push(bikerackData);
 
             if ($scope.showBikeRacks){
               $scope.markers[bikeRackNum] = {
@@ -297,7 +282,6 @@ function handleErr(error){
               };
             }
           }
-
       });
   };
 
@@ -323,13 +307,9 @@ function handleErr(error){
             var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var bikeNum = 'bike' + i;
             var bksData = data.data.geoJSONBikeShare.features[i].properties;
+                bksData.distanceToFrom = Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100;
 
-            $scope.bikesharePoints.push({
-              title: bksData.name,
-              dist : Math.round(((bksData.distance_from_current_location)*0.000621371192) * 100) / 100,
-              lat  : bksData.lat,
-              long : bksData.long
-            });
+            $scope.bikesharePoints.push(bksData);
 
             if ($scope.showStations){
               $scope.markers[bikeNum] = {
@@ -350,15 +330,9 @@ function handleErr(error){
             var historyPointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONHistory.features[j].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var historyNum = 'history' + j;
             var landmarkData = data.data.geoJSONHistory.features[j].properties;
+                landmarkData.distanceToFrom = Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100;
 
-            $scope.landmarkPoints.push({
-              title: landmarkData.name,
-              dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
-              photolink: landmarkData.photolink,
-              description: landmarkData.description,
-              lat  : landmarkData.lat,
-              long : landmarkData.long
-            });
+            $scope.landmarkPoints.push(landmarkData);
 
             if ($scope.showLandmarks){
               $scope.markers[historyNum] = {
@@ -379,15 +353,9 @@ function handleErr(error){
             var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[k].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var bikeRackNum = 'bikeRack' + k;
             var bikerackData = data.data.geoJSONBikeRack.features[k].properties;
+                bikerackData.distanceToFrom = Math.round(((bikerackData.distance_from_current_location)*0.000621371192) * 100) / 100;
 
-
-            $scope.bikeRackPoints.push({
-              title: bikerackData.description,
-              dist : Math.round(((bikerackData.distance_from_current_location)*0.000621371192) * 100) / 100,
-              // photo: bikeRackPoints.photolink,
-              lat  : bikerackData.lat,
-              long : bikerackData.long
-            });
+            $scope.bikeRackPoints.push(bikerackData);
 
             if ($scope.showBikeRacks){
               $scope.markers[bikeRackNum] = {
@@ -424,9 +392,7 @@ function handleErr(error){
       };
 
       $scope.changeCurrentMarker = function(item){
-        console.log($scope.currentMarkerProperties);
         $scope.currentMarkerProperties = item;
-        console.log($scope.currentMarkerProperties);
       };
       //TO REMOVE CURRENT ROUTES THAT'S DISPLAYED ON MAP
       $scope.removeRouting = function() {
@@ -607,6 +573,14 @@ function handleErr(error){
     $scope.modal6 = modal;
   });
 
+  $ionicModal.fromTemplateUrl('favorites.html', {
+    id: '7',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal7 = modal;
+  });
+
   $scope.openModal = function(index) {
     switch (index) {
       case 1 : $scope.modal1.show();
@@ -620,6 +594,8 @@ function handleErr(error){
       case 5 : $scope.modal5.show();
                 break;
       case 6 : $scope.modal6.show();
+                break;
+      case 7 : $scope.modal7.show();
     }
   };
 
@@ -636,6 +612,8 @@ function handleErr(error){
       case 5 : $scope.modal5.hide();
                 break;
       case 6 : $scope.modal6.hide();
+                break;
+      case 7 : $scope.modal7.hide();
     }
   };
 
@@ -655,28 +633,36 @@ function handleErr(error){
 
   // Logic for Location Details Modal
 
-  var favoritesList = null;
+  $scope.favoritesList = null;
 
   if( !JSON.parse(localStorage.getItem('favorites')) ) {
-    favoritesList = [];
+    $scope.favoritesList = [];
   } else{
-    favoritesList = JSON.parse(localStorage.getItem('favorites'));
+    $scope.favoritesList = JSON.parse(localStorage.getItem('favorites'));
   }
-
   $scope.checkFavorite = function(currentMarker) {
     if(!currentMarker) {
       currentMarker = $scope.currentMarkerProperties;
     }
-    return (favoritesList.indexOf(currentMarker.id) !== -1);
+
+    var faveMarker = $scope.favoritesList.findIndex(function(item){
+      return item.id === currentMarker.id;
+    });
+    return faveMarker > -1;
   };
+
   $scope.addFavorite = function(){
-      if(favoritesList.indexOf($scope.currentMarkerProperties.id) !== -1) {
-          favoritesList.splice(favoritesList.indexOf($scope.currentMarkerProperties.id),1);
-          localStorage.setItem('favorites', JSON.stringify(favoritesList));
+    var faveMarker = $scope.favoritesList.findIndex(function(item){
+      return item.id === $scope.currentMarkerProperties.id;
+    });
+
+      if(faveMarker > -1) {
+          $scope.favoritesList.splice(faveMarker, 1);
+          localStorage.setItem('favorites', JSON.stringify($scope.favoritesList));
           $scope.isFavorited = false;
       } else {
-        favoritesList.push($scope.currentMarkerProperties.id);
-        localStorage.setItem('favorites', JSON.stringify(favoritesList));
+        $scope.favoritesList.push($scope.currentMarkerProperties);
+        localStorage.setItem('favorites', JSON.stringify($scope.favoritesList));
         $scope.isFavorited = true;
       }
   };

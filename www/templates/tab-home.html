@@ -47,6 +47,18 @@
       <ion-content>
         <div class="list">
             <div class="pinViews item">
+              <a class="item item-icon-left" ng-click="openModal(7); closeModal(1)" ng-class="{'btn2': showPointsOnDrag, 'btn1': !showPointsOnDrag}">
+              <i class="icon"><img class="title-image bottom-tab-nav-img" src="img/bike-assets/pin-yellow.png" /></i>
+                &nbsp;&nbsp;&nbsp; My Favorites
+              </a>
+              <br />
+
+              <a class="item item-icon-left" ng-click="setShowPointsOnDrag()" ng-class="{'btn2': showPointsOnDrag, 'btn1': !showPointsOnDrag}">
+              <i class="icon"><img class="title-image bottom-tab-nav-img" src="img/bike-assets/pin-yellow.png" /></i>
+                &nbsp;&nbsp;&nbsp; Show Points on Drag
+              </a>
+              <br />
+
               <a class="item item-icon-left" ng-click="setShowStations()" ng-class="{'btn2': showStations, 'btn1': !showStations}">
               <i class="icon" ng-class="testcolor"><img class="title-image filter-but-img" src="img/bike-assets/bike-icon.svg" /> </i>
                 &nbsp;&nbsp;&nbsp; Bike Share Stations
@@ -60,12 +72,6 @@
               <a class="item item-icon-left" ng-click="setShowBikeRacks()" ng-class="{'btn2': showBikeRacks, 'btn1': !showBikeRacks}">
               <i class="icon"><img class="title-image bottom-tab-nav-img" src="img/bike-assets/bikerack-icon-temp.png" /></i>
                 &nbsp;&nbsp;&nbsp; Public Bike Racks
-              </a>
-
-              <br />
-              <a class="item item-icon-left" ng-click="setShowPointsOnDrag()" ng-class="{'btn2': showPointsOnDrag, 'btn1': !showPointsOnDrag}">
-              <i class="icon"><img class="title-image bottom-tab-nav-img" src="img/bike-assets/pin-yellow.png" /></i>
-                &nbsp;&nbsp;&nbsp; Show Points on Drag
               </a>
               <br />
               <div id="radiusDiv" class="button-bar">
@@ -101,9 +107,10 @@
               <img class="bshLogo" ng-src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg">
               <div class="padding">
                 <i id="swipeRight" class="icon ion-chevron-left"></i>
-                <h2>{{ item.title }}</h2>
-                <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.dist }} miles</h4>
+                <h2>{{ item.name }}</h2>
+                <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</h4>
                 <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
+                <ion-option-button class="button icon ion-information-circled" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(2);"></ion-option-button>
               </div>
             </ion-item>
           </ion-list>
@@ -123,10 +130,10 @@
               <img class="bshLogo" ng-src="{{ item.photolink }}">
               <div class="padding">
                 <i id="swipeRight" class="icon ion-chevron-left"></i>
-                <h2>{{ item.title }}</h2>
-                <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.dist }} miles</h4>
+                <h2>{{ item.name }}</h2>
+                <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</h4>
                 <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
-                <ion-option-button class="button icon ion-ios-book" ng-click="changeCurrentMarker(item); openModal(3); closeModal(4);"></ion-option-button>
+                <ion-option-button class="button icon ion-information-circled" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);"></ion-option-button>
               </div>
             </ion-item>
           </ion-list>
@@ -146,8 +153,31 @@
               <div class="padding">
                 <i id="swipeRight" class="icon ion-chevron-right"></i>
                 <h2>{{ item.description }}</h2>
-                <h4>{{ item.dist }} miles</h4>
-                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
+                <h4>{{ item.distanceToFrom }} miles</h4>
+                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }}); closeModal(6)"></ion-option-button>
+                <ion-option-button class="button icon ion-information-circled" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(6);"></ion-option-button>
+              </div>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+    </div>
+  </script>
+
+  <script id="favorites.html" type="text/ng-template">
+    <div class="modal">
+      <ion-header-bar class="bar bar-header">
+        <h1 class="title" >Favorites</h1>
+        <button class="button icon ion-arrow-down-b" ng-click="closeModal(7)"></button>
+      </ion-header-bar>
+        <ion-content>
+          <ion-list show-delete="false" can-swipe="true">
+            <ion-item ng-repeat="item in favoritesList track by $index" class="eachItem">
+              <div class="padding">
+                <i id="swipeRight" class="icon ion-chevron-left"></i>
+                <h>{{ item.name }}</h1>
+                <p>{{ item.description }}</p>
+                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }}); closeModal(7)"></ion-option-button>
+                <ion-option-button class="button icon ion-information-circled" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(7);"></ion-option-button>
               </div>
             </ion-item>
           </ion-list>
@@ -165,6 +195,12 @@
             <ion-item>
               <div><p ng-if="currentMarkerProperties.photolink"> <img class="detailsPhoto"ng-src="{{currentMarkerProperties.photolink}}" /> </p></div>
             </ion-item>
+            <div class="locationDetails">
+              <p ng-if="currentMarkerProperties.site_id">Site ID: {{currentMarkerProperties.site_id}} on <span ng-if="currentMarkerProperties.photolink">{{currentMarkerProperties.info}}</span></p>
+              <p ng-if="currentMarkerProperties.description">{{currentMarkerProperties.description}}</p>
+              <p ng-if="currentMarkerProperties.geolink"><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
+              <!-- <p><a target="_blank" href="{{currentMarkerProperties.sitelink}}">Site</a></p> -->
+            </div>
             <ion-item>
               <i ng-click="addFavorite(); checkFavorite();" ng-class="{'button button-icon icon locationMenu fa fa-star-o fa-fw':!isFavorited, 'button button-icon icon locationMenu fa fa-star fa-fw':isFavorited}"></i>
                 <h2>Add to Favorites</h2>
@@ -178,12 +214,6 @@
                 <i class="button button-icon icon locationMenu fa fa-pencil-square-o fa-fw"></i>
                 <h2 class="floatingDetail">Report/Suggest</h2>
              </ion-item>
-            <div class="locationDetails">
-              <p ng-if="currentMarkerProperties.site_id">Site ID: {{currentMarkerProperties.site_id}} on <span ng-if="currentMarkerProperties.photolink">{{currentMarkerProperties.info}}</span></p>
-              <p ng-if="currentMarkerProperties.description">{{currentMarkerProperties.description}}</p>
-              <p ng-if="currentMarkerProperties.geolink"><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
-              <!-- <p><a target="_blank" href="{{currentMarkerProperties.sitelink}}">Site</a></p> -->
-            </div>
         </ion-content>
     </div>
   </script>
