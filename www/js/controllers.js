@@ -700,45 +700,14 @@ function handleErr(error){
       safetyList.splice(safetyList.indexOf($scope.currentMarkerProperties.id),1);
       localStorage.setItem('safetyWarnings', JSON.stringify(safetyList));
       $scope.isSafetyWarn = false;
+      $scope.currentMarkerProperties.safetyCounter--;
     } else {
       safetyList.push($scope.currentMarkerProperties.id);
       localStorage.setItem('safetyWarnings', JSON.stringify(safetyList));
       $scope.isSafetyWarn = true;
+      $scope.currentMarkerProperties.safetyCounter++;
     }
   };
-
-  var upList = null;
-  if(!JSON.parse(localStorage.getItem('upped')) ) {
-    upList = [];
-  } else {
-    upList = JSON.parse(localStorage.getItem('upped'));
-  }
-
-  $scope.checkVote = function(currentMarker) {
-    if(!currentMarker) {
-      currentMarker = $scope.currentMarkerProperties;
-    }
-    return (upList.indexOf(currentMarker.id) !== -1);
-  };
-
-  $scope.submitVote = function(vote){
-    if(upList.indexOf($scope.currentMarkerProperties.id !== -1)) {
-      upList.splice(favoritesList.indexOf($scope.currentMarkerProperties.id),1);
-      localStorage.setItem('upped', JSON.stringify(upList));
-      $scope.upped = false;
-      $scope.currentMarkerProperties.upDownVote--;
-      $scope.currentMarkerProperties.votesCounter++;
-      PointService.editPoint($scope.currentMarkerProperties);
-    } else {
-      upList.push($scope.currentMarkerProperties.id);
-      localStorage.setItem('upped', JSON.stringify(upList));
-      $scope.upped = true;
-      $scope.currentMarkerProperties.upDownVote++;
-      $scope.currentMarkerProperties.votesCounter++;
-      PointService.editPoint($scope.currentMarkerProperties);
-      }
-      voted = true;
-    };
 
 //////// end of controller
 }]);

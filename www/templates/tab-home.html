@@ -172,6 +172,7 @@
             <ion-item>
               <i ng-click="addSafetyWarn(); checkSafetyWarn();" ng-class="{'button button-icon icon locationMenu fa fa-circle-o fa-fw':!isSafetyWarn, 'button button-icon icon locationMenu fa fa-exclamation-circle fa-fw':isSafetyWarn}"></i>
                 <h2>Add Safety Incident</h2>
+                <p class="floatingDetail">&nbsp;&nbsp;&nbsp;{{currentMarkerProperties.safetyCounter || 0}} Incident(s)</p>
             </ion-item>
             <ion-item ng-click="openModal(5)">
                 <i class="button button-icon icon locationMenu fa fa-pencil-square-o fa-fw"></i>
