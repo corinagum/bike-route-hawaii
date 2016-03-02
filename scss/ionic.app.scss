@@ -192,8 +192,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   width: 100%;
 }
 
-.detailsPhoto-div{
+.detailsPhoto-div {
   text-align: center;
+}
+
+.sendPoint {
+  text-align: center;
+  margin: 2em;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 5px;
 }
 
 //BUTTONS IN FILTERS

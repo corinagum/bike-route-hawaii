@@ -9866,6 +9866,13 @@ a.button {
 .detailsPhoto-div {
   text-align: center; }
 
+.sendPoint {
+  text-align: center;
+  margin: 2em; }
+
+.leaflet-popup-content-wrapper {
+  border-radius: 5px; }
+
 .buttonStyle {
   border-left: 1px solid white;
   text-align: center; }
