@@ -3,7 +3,10 @@
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService) {
 
-  $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />';
+  // $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />';
+  // Above is commented out until such time that we have icons to use
+  // for now, use this:
+  $scope.navTitle='Ride Hawaii';
 
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
@@ -109,7 +112,6 @@ function handleErr(error){
     events: {
       map : {
         enable : ['click', 'locationfound', 'dragend'],
-        disable : ['touchZoom'],
         logic : 'broadcast'
       }
     },
@@ -123,13 +125,14 @@ function handleErr(error){
       }
     },
     defaults: {
-      scrollWheelZoom: false
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      inertiaMaxSpeed: 150
     },
     center : {
       lat: 21.3008900859581,
       lng: -157.8398036956787,
       zoom: 15,
-      // autoDiscover:true
     },
     bikeShareIcon: {
       type: 'extraMarker',
@@ -140,7 +143,8 @@ function handleErr(error){
     },
     historyIcon: {
       type: 'extraMarker',
-      icon: 'fa-university',
+      // icon: 'fa-university',
+      iconUrl: '/img/bike-assets/landmark-icon',
       markerColor: 'yellow',
       shape : 'square',
       prefix : 'fa'
@@ -517,10 +521,9 @@ function handleErr(error){
 
   // COMMENT SUBMIT FUNCTION
   $scope.postComment = function(comment){
-    console.log($scope.currentMarkerProperties);
     CommentService.addComment(comment, $scope.currentMarkerProperties.id)
     .then(function(data){
-
+      $scope.closeModal(5);
     });
   };
 
@@ -700,49 +703,14 @@ function handleErr(error){
       safetyList.splice(safetyList.indexOf($scope.currentMarkerProperties.id),1);
       localStorage.setItem('safetyWarnings', JSON.stringify(safetyList));
       $scope.isSafetyWarn = false;
+      $scope.currentMarkerProperties.safetyCounter--;
     } else {
       safetyList.push($scope.currentMarkerProperties.id);
       localStorage.setItem('safetyWarnings', JSON.stringify(safetyList));
       $scope.isSafetyWarn = true;
+      $scope.currentMarkerProperties.safetyCounter++;
     }
   };
-
-  var upList = null;
-  if(!JSON.parse(localStorage.getItem('upped')) ) {
-    upList = [];
-  } else {
-    upList = JSON.parse(localStorage.getItem('upped'));
-  }
-
-  $scope.checkVote = function(currentMarker) {
-    if(!currentMarker) {
-      currentMarker = $scope.currentMarkerProperties;
-    }
-    return (upList.indexOf(currentMarker.id) !== -1);
-  };
-
-  $scope.submitVote = function(vote){
-    if(upList.indexOf($scope.currentMarkerProperties.id !== -1)) {
-      upList.splice(favoritesList.indexOf($scope.currentMarkerProperties.id),1);
-      localStorage.setItem('upped', JSON.stringify(upList));
-      $scope.upped = false;
-      $scope.currentMarkerProperties.upDownVote--;
-      $scope.currentMarkerProperties.votesCounter++;
-      PointService.editPoint($scope.currentMarkerProperties);
-    } else {
-      upList.push($scope.currentMarkerProperties.id);
-      localStorage.setItem('upped', JSON.stringify(upList));
-      $scope.upped = true;
-      $scope.currentMarkerProperties.upDownVote++;
-      $scope.currentMarkerProperties.votesCounter++;
-      PointService.editPoint($scope.currentMarkerProperties);
-      }
-      voted = true;
-    };
-
-
-
-
 
 
 //////// end of controller

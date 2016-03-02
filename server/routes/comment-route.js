@@ -6,6 +6,9 @@ var Comment               = db.Comment;
 
 router.post('/',function(req, res){
   Comment.create(req.body.comment);
+  res.send({
+    success : true
+  });
 });
 
 router.get('/',function(req, res){

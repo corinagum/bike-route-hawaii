@@ -184,6 +184,7 @@
             <ion-item>
               <i ng-click="addSafetyWarn(); checkSafetyWarn();" ng-class="{'button button-icon icon locationMenu fa fa-circle-o fa-fw':!isSafetyWarn, 'button button-icon icon locationMenu fa fa-exclamation-circle fa-fw':isSafetyWarn}"></i>
                 <h2>Add Safety Incident</h2>
+                <p class="floatingDetail">&nbsp;&nbsp;&nbsp;{{currentMarkerProperties.safetyCounter || 0}} Incident(s)</p>
             </ion-item>
             <ion-item ng-click="openModal(5)">
                 <i class="button button-icon icon locationMenu fa fa-pencil-square-o fa-fw"></i>
@@ -200,7 +201,7 @@
   </script>
 
   <script id="reportDetail.html" type="text/ng-template">
-    <div class="modal" ng-model="currentMarkerProperties">
+    <div class="modal">
       <ion-header-bar class="bar bar-header">
         <h1 class="title">Report/Suggest</h1>
         <button class="button icon ion-arrow-down-b" ng-click="closeModal(5)"></button>
@@ -221,7 +222,7 @@
           <div class="list">
             <label class="item item-input item-select">
               <div class="input-label">
-                Subject
+                Subject:
               </div>
               <select ng-model="comment.subject">
                 <option ng-if="comment.type === 'Report'">Found</option>
