@@ -171,9 +171,12 @@
           <ion-list show-delete="false" can-swipe="true">
             <ion-item ng-repeat="item in favoritesList" class="eachItem">
               <div class="padding">
-                <i id="swipeRight" class="icon ion-chevron-right"></i>
-                <h2>{{ item.description }}</h2>
-                <h4>{{ item.dist }} miles</h4>
+                <!-- <i id="swipeRight" class="icon ion-chevron-left"></i> -->
+                <h2>{{ item }}</h2>
+
+                <h2>{{ item.name }}</h2>
+                <h4>{{ item.type }}</h4>
+                <h4>{{ item.description }}</h4>
                 <!-- <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button> -->
               </div>
             </ion-item>

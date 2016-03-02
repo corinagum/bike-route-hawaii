@@ -678,15 +678,19 @@ function handleErr(error){
     if(!currentMarker) {
       currentMarker = $scope.currentMarkerProperties;
     }
-    return ($scope.favoritesList.indexOf(currentMarker.id) !== -1);
+    return ($scope.favoritesList.indexOf(currentMarker.name) !== -1);
   };
   $scope.addFavorite = function(){
-      if($scope.favoritesList.indexOf($scope.currentMarkerProperties.id) !== -1) {
-          $scope.favoritesList.splice($scope.favoritesList.indexOf($scope.currentMarkerProperties.id),1);
+      if($scope.favoritesList.indexOf($scope.currentMarkerProperties.name) !== -1) {
+        console.log("consoleLogging", $scope.favoritesList.indexOf($scope.currentMarkerProperties.name));
+          $scope.favoritesList.splice($scope.favoritesList.indexOf($scope.currentMarkerProperties.name),1);
+          console.log("AFTERSPLICE", $scope.favoritesList);
           localStorage.setItem('favorites', JSON.stringify($scope.favoritesList));
           $scope.isFavorited = false;
       } else {
-        $scope.favoritesList.push($scope.currentMarkerProperties.id);
+      console.log("ADDING FAVORITE ELSE");
+
+        $scope.favoritesList.push($scope.currentMarkerProperties.name);
         localStorage.setItem('favorites', JSON.stringify($scope.favoritesList));
         $scope.isFavorited = true;
       }
