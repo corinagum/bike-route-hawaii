@@ -8,4 +8,11 @@ router.post('/',function(req, res){
   Comment.create(req.body.comment);
 });
 
+router.get('/',function(req, res){
+  Comment.findAll()
+    .then(function(data){
+      res.send(data);
+    });
+});
+
 module.exports = router;

@@ -29,9 +29,7 @@
           lng : position.coords.longitude,
           message : 'You are here'
         };
-      }, function(err){
-        console.log(err);
-      }, {
+      }, handleErr, {
         timeout : 10000,
         enableHighAccuracy : true
       });
@@ -52,11 +50,55 @@
           lng : position.coords.longitude,
           message : 'You are here'
         };
-        }, function(err) {
-          console.log(err);
-        });
+        }, handleErr);
     }
   }
+
+function handleErr(error){
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      $ionicLoading.hide();
+      ionic.DomUtil.ready(function(){
+        angular.element(document.querySelector('#locate-before-start'))
+        .text('Ride-Hawaii needs your location to work :)');
+      });
+      $scope.setShowBlocker();
+      break;
+
+    case error.POSITION_UNAVAILABLE:
+      $ionicLoading.hide();
+      ionic.DomUtil.ready(function(){
+        angular.element(document.querySelector('#locate-before-start'))
+        .text('Please enable location services. Position not found.');
+      });
+      $scope.setShowBlocker();
+      break;
+
+    case error.TIMEOUT:
+      $ionicLoading.hide();
+      ionic.DomUtil.ready(function(){
+        angular.element(document.querySelector('#locate-before-start'))
+        .text('Please enable location services');
+      });
+      $scope.setShowBlocker();
+      break;
+
+    case error.UNKNOWN_ERROR:
+      $ionicLoading.hide();
+      ionic.DomUtil.ready(function(){
+        angular.element(document.querySelector('#locate-before-start'))
+        .text('An unknown error occurred.');
+      });
+      $scope.setShowBlocker();
+      break;
+  }
+}
+
+  $scope.setShowBlocker = function(){
+    $scope.foundLocation = false;
+  };
+
+
 
   angular.extend($scope, {
     honolulu: {
@@ -97,15 +139,15 @@
     },
     historyIcon: {
       type: 'extraMarker',
-      icon: 'fa-camera',
+      icon: 'fa-university',
       markerColor: 'yellow',
-      shape : 'star',
+      shape : 'square',
       prefix : 'fa'
     },
     bikeRack: {
       type: 'extraMarker',
-      icon: 'fa-chevron-circle-up',
-      markerColor: 'red',
+      icon: 'fa-unlock-alt',
+      markerColor: 'black',
       shape: 'circle',
       prefix : 'fa'
     }
@@ -145,6 +187,7 @@
   };
 
   $scope.setShowBikeRacks = function(){
+    console.log('changed show bikerack');
     $scope.showBikeRacks = !$scope.showBikeRacks;
   };
 
@@ -168,13 +211,10 @@
 
   $scope.setPinsWithinRadius = function(){
     $scope.markers = {userMarker: this.markers.userMarker};
-
     PointService.getPointsInRadius($scope.radius, $scope.myLocation.myLat, $scope.myLocation.myLong)
       .then(function(data){
-
         $scope.bikesharePoints = [];
-
-          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+        for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
             var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var bikeNum = 'bike' + i;
             var bksData = data.data.geoJSONBikeShare.features[i].properties;
@@ -209,7 +249,8 @@
             $scope.landmarkPoints.push({
               title: landmarkData.name,
               dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
-              photo: landmarkData.photolink,
+              photolink: landmarkData.photolink,
+              description: landmarkData.description,
               lat  : landmarkData.lat,
               long : landmarkData.long
             });
@@ -259,6 +300,7 @@
   };
 
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
+    console.log('called on locationfound');
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
     $scope.center.autoDiscover = true;
@@ -310,7 +352,8 @@
             $scope.landmarkPoints.push({
               title: landmarkData.name,
               dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
-              photo: landmarkData.photolink,
+              photolink: landmarkData.photolink,
+              description: landmarkData.description,
               lat  : landmarkData.lat,
               long : landmarkData.long
             });
@@ -334,6 +377,7 @@
             var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[k].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var bikeRackNum = 'bikeRack' + k;
             var bikerackData = data.data.geoJSONBikeRack.features[k].properties;
+
 
             $scope.bikeRackPoints.push({
               title: bikerackData.description,
@@ -375,20 +419,13 @@
             $scope.closeModal(4);
             routeOnMap = true;
           });
-
-          ionic.DomUtil.ready(function(){
-            // Remove assertive (red) style to use balanced (green)
-            angular.element(document.querySelector('#bar'))
-            // .removeClass('bar-assertive')
-            .addClass('button')
-            .text('Clear Route');
-
-            // Change bar text
-            // angular.element(document.querySelector('#bar'))
-            // .text('Clear Route');
-          });
       };
 
+      $scope.changeCurrentMarker = function(item){
+        console.log($scope.currentMarkerProperties);
+        $scope.currentMarkerProperties = item;
+        console.log($scope.currentMarkerProperties);
+      };
       //TO REMOVE CURRENT ROUTES THAT'S DISPLAYED ON MAP
       $scope.removeRouting = function() {
         leafletData.getMap()
@@ -668,6 +705,47 @@
       $scope.isSafetyWarn = true;
     }
   };
+
+  var upList = null;
+  if(!JSON.parse(localStorage.getItem('upped')) ) {
+    upList = [];
+  } else {
+    upList = JSON.parse(localStorage.getItem('upped'));
+  }
+
+  $scope.checkVote = function(currentMarker) {
+    if(!currentMarker) {
+      currentMarker = $scope.currentMarkerProperties;
+    }
+    return (upList.indexOf(currentMarker.id) !== -1);
+  };
+
+  $scope.submitVote = function(vote){
+    if(upList.indexOf($scope.currentMarkerProperties.id !== -1)) {
+      upList.splice(favoritesList.indexOf($scope.currentMarkerProperties.id),1);
+      localStorage.setItem('upped', JSON.stringify(upList));
+      $scope.upped = false;
+      $scope.currentMarkerProperties.upDownVote--;
+      $scope.currentMarkerProperties.votesCounter++;
+      PointService.editPoint($scope.currentMarkerProperties);
+    } else {
+      upList.push($scope.currentMarkerProperties.id);
+      localStorage.setItem('upped', JSON.stringify(upList));
+      $scope.upped = true;
+      $scope.currentMarkerProperties.upDownVote++;
+      $scope.currentMarkerProperties.votesCounter++;
+      PointService.editPoint($scope.currentMarkerProperties);
+      }
+      voted = true;
+    };
+
+
+
+
+
+
+
+
 
 //////// end of controller
 }]);
