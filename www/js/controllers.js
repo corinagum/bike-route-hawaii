@@ -109,6 +109,7 @@ function handleErr(error){
     events: {
       map : {
         enable : ['click', 'locationfound', 'dragend'],
+        disable : ['touchZoom'],
         logic : 'broadcast'
       }
     },
@@ -738,9 +739,6 @@ function handleErr(error){
       }
       voted = true;
     };
-
-
-
 
 
 

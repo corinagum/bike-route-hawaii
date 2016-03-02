@@ -9741,7 +9741,9 @@ a.button {
 
 #footer-bar {
   width: 100%;
-  background-color: #444; }
+  background-color: #444;
+  z-index: 1002;
+  position: fixed; }
   #footer-bar div {
     width: 25%;
     text-align: center; }
@@ -9877,6 +9879,13 @@ a.button {
     text-align: center;
     line-height: 100px;
     height: 100px; }
+
+.nav-div svg {
+  fill: blue;
+  color: blue; }
+
+#Bike-Racks-Icon {
+  fill: #76CE95; }
 
 .done {
   margin-top: 20px; }
