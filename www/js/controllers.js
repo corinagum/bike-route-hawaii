@@ -29,9 +29,7 @@
           lng : position.coords.longitude,
           message : 'You are here'
         };
-      }, function(err){
-        console.log(err);
-      }, {
+      }, handleErr, {
         timeout : 10000,
         enableHighAccuracy : true
       });
@@ -52,24 +50,68 @@
           lng : position.coords.longitude,
           message : 'You are here'
         };
-        }, function(err) {
-          switch(error.code) {
-            case error.PERMISSION_DENIED:
-              alert("User denied the request for Geolocation.");
-              break;
-            case error.POSITION_UNAVAILABLE:
-              alert("Location information is unavailable.");
-              break;
-            case error.TIMEOUT:
-              alert("The request to get user location timed out.");
-              break;
-            case error.UNKNOWN_ERROR:
-              alert("An unknown error occurred.");
-              break;
-            }
-        });
+        }, handleErr);
     }
   }
+
+function handleErr(error){
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      $ionicLoading.hide();
+      ionic.DomUtil.ready(function(){
+        angular.element(document.querySelector('#locate-before-start'))
+        .text('Ride-Hawaii needs your location to work :)');
+      });
+      $scope.setShowBlocker();
+      break;
+
+    case error.POSITION_UNAVAILABLE:
+      $ionicLoading.hide();
+      ionic.DomUtil.ready(function(){
+        angular.element(document.querySelector('#locate-before-start'))
+        .text('Please enable location services. Position not found.');
+      });
+      $scope.setShowBlocker();
+      break;
+
+    case error.TIMEOUT:
+      $ionicLoading.hide();
+      ionic.DomUtil.ready(function(){
+        angular.element(document.querySelector('#locate-before-start'))
+        .text('Please enable location services');
+      });
+      $scope.setShowBlocker();
+      break;
+
+    case error.UNKNOWN_ERROR:
+      $ionicLoading.hide();
+      ionic.DomUtil.ready(function(){
+        angular.element(document.querySelector('#locate-before-start'))
+        .text('An unknown error occurred.');
+      });
+      $scope.setShowBlocker();
+      break;
+  }
+}
+
+  // ionic.DomUtil.ready(function(){
+  //   // Remove assertive (red) style to use balanced (green)
+  //   angular.element(document.querySelector('#locate-before-start'))
+  //   // .removeClass('bar-assertive')
+  //   // .addClass('button')
+  //   .text('Enable location');
+
+  //   // Change bar text
+  //   // angular.element(document.querySelector('#bar'))
+  //   // .text('Clear Route');
+  // });
+
+
+  $scope.setShowBlocker = function(){
+    $scope.foundLocation = false;
+  };
+
+
 
   angular.extend($scope, {
     honolulu: {
@@ -388,18 +430,6 @@
             $scope.closeModal(4);
             routeOnMap = true;
           });
-
-          ionic.DomUtil.ready(function(){
-            // Remove assertive (red) style to use balanced (green)
-            angular.element(document.querySelector('#bar'))
-            // .removeClass('bar-assertive')
-            .addClass('button')
-            .text('Clear Route');
-
-            // Change bar text
-            // angular.element(document.querySelector('#bar'))
-            // .text('Clear Route');
-          });
       };
 
       //TO REMOVE CURRENT ROUTES THAT'S DISPLAYED ON MAP
@@ -592,9 +622,9 @@
                 break;
       case 4 : $scope.modal4.show();
                 break;
-      case 5 : $scope.modal5.show();
+      case 5 : $scope.modal4.show();
                 break;
-      case 6 : $scope.modal6.show();
+      case 6 : $scope.modal4.show();
     }
   };
 
@@ -608,9 +638,9 @@
                 break;
       case 4 : $scope.modal4.hide();
                 break;
-      case 5 : $scope.modal5.hide();
+      case 5 : $scope.modal4.hide();
                 break;
-      case 6 : $scope.modal6.hide();
+      case 6 : $scope.modal4.hide();
     }
   };
 
@@ -681,6 +711,47 @@
       $scope.isSafetyWarn = true;
     }
   };
+
+  var upList = null;
+  if(!JSON.parse(localStorage.getItem('upped')) ) {
+    upList = [];
+  } else {
+    upList = JSON.parse(localStorage.getItem('upped'));
+  }
+
+  $scope.checkVote = function(currentMarker) {
+    if(!currentMarker) {
+      currentMarker = $scope.currentMarkerProperties;
+    }
+    return (upList.indexOf(currentMarker.id) !== -1);
+  };
+
+  $scope.submitVote = function(vote){
+    if(upList.indexOf($scope.currentMarkerProperties.id !== -1)) {
+      upList.splice(favoritesList.indexOf($scope.currentMarkerProperties.id),1);
+      localStorage.setItem('upped', JSON.stringify(upList));
+      $scope.upped = false;
+      $scope.currentMarkerProperties.upDownVote--;
+      $scope.currentMarkerProperties.votesCounter++;
+      PointService.editPoint($scope.currentMarkerProperties);
+    } else {
+      upList.push($scope.currentMarkerProperties.id);
+      localStorage.setItem('upped', JSON.stringify(upList));
+      $scope.upped = true;
+      $scope.currentMarkerProperties.upDownVote++;
+      $scope.currentMarkerProperties.votesCounter++;
+      PointService.editPoint($scope.currentMarkerProperties);
+      }
+      voted = true;
+    };
+
+
+
+
+
+
+
+
 
 //////// end of controller
 }]);
