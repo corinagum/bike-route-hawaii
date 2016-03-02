@@ -390,9 +390,7 @@ function handleErr(error){
       };
 
       $scope.changeCurrentMarker = function(item){
-        console.log($scope.currentMarkerProperties);
         $scope.currentMarkerProperties = item;
-        console.log($scope.currentMarkerProperties);
       };
       //TO REMOVE CURRENT ROUTES THAT'S DISPLAYED ON MAP
       $scope.removeRouting = function() {

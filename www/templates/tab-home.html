@@ -110,6 +110,7 @@
                 <h2>{{ item.name }}</h2>
                 <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</h4>
                 <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
+                <ion-option-button class="button icon ion-information-circled" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(2);"></ion-option-button>
               </div>
             </ion-item>
           </ion-list>
@@ -132,7 +133,7 @@
                 <h2>{{ item.name }}</h2>
                 <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</h4>
                 <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
-                <ion-option-button class="button icon ion-ios-book" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);"></ion-option-button>
+                <ion-option-button class="button icon ion-information-circled" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);"></ion-option-button>
               </div>
             </ion-item>
           </ion-list>
@@ -153,7 +154,8 @@
                 <i id="swipeRight" class="icon ion-chevron-right"></i>
                 <h2>{{ item.description }}</h2>
                 <h4>{{ item.distanceToFrom }} miles</h4>
-                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
+                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }}); closeModal(6)"></ion-option-button>
+                <ion-option-button class="button icon ion-information-circled" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(6);"></ion-option-button>
               </div>
             </ion-item>
           </ion-list>
@@ -168,16 +170,18 @@
         <button class="button icon ion-arrow-down-b" ng-click="closeModal(7)"></button>
       </ion-header-bar>
         <ion-content>
-          <ion-item ng-repeat="item in favoritesList track by $index" class="eachItem">
-            <div class="padding">
-              <i id="swipeRight" class="icon ion-chevron-left"></i>
-
-              <h2>{{ item.name }}</h2>
-              <h4>{{ item.type }}</h4>
-              <h4>{{ item.description }}</h4>
-              <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
-            </div>
-          </ion-item>
+          <ion-list show-delete="false" can-swipe="true">
+            <ion-item ng-repeat="item in favoritesList track by $index" class="eachItem">
+              <div class="padding">
+                <i id="swipeRight" class="icon ion-chevron-left"></i>
+                <h2>{{ item.name }}</h2>
+                <h4>{{ item.type }}</h4>
+                <h4>{{ item.description }}</h4>
+                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }}); closeModal(7)"></ion-option-button>
+                <ion-option-button class="button icon ion-information-circled" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(7);"></ion-option-button>
+              </div>
+            </ion-item>
+          </ion-list>
         </ion-content>
     </div>
   </script>
