@@ -79,9 +79,9 @@ While this app was created with mobile use in mind, it is accessible using any m
 
 ## Related Resources and Appreciation
 We would like to thank the following people and organizations for providing the data and support utilized to make this app a reality.
-  [BikeShare Hawaii](http://www.bikesharehawaii.org/) for providing the BikeShare location points.
-  [Peter T. Young ](http://hookuleana.com/about-2/peter/) from Hookuleana for providing carefully compiled history locations and information with photos.
-  [Data Hawaii Gov](https://data.hawaii.gov/) for general descriptions of bike rack locations in the city of Honolulu (and a little beyond).
-  Kelli Borgonia of Goma Games for providing design specs and files.
-  DevLeague teachers and staff for guidance, support, and advice.
+   [BikeShare Hawaii](http://www.bikesharehawaii.org/) for providing the BikeShare location points.
+   [Peter T. Young ](http://hookuleana.com/about-2/peter/) from Hookuleana for providing carefully compiled history locations and information with photos.
+   [Data Hawaii Gov](https://data.hawaii.gov/) for general descriptions of bike rack locations in the city of Honolulu (and a little beyond).
+   Kelli Borgonia of Goma Games for providing design specs and files.
+   DevLeague teachers and staff for guidance, support, and advice.
 
