@@ -188,7 +188,7 @@
   </script>
 
   <script id="reportDetail.html" type="text/ng-template">
-    <div class="modal" ng-model="currentMarkerProperties">
+    <div class="modal">
       <ion-header-bar class="bar bar-header">
         <h1 class="title">Report/Suggest</h1>
         <button class="button icon ion-arrow-down-b" ng-click="closeModal(5)"></button>
@@ -209,7 +209,7 @@
           <div class="list">
             <label class="item item-input item-select">
               <div class="input-label">
-                Subject
+                Subject:
               </div>
               <select ng-model="comment.subject">
                 <option ng-if="comment.type === 'Report'">Found</option>

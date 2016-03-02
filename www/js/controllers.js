@@ -3,7 +3,10 @@
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService) {
 
-  $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />';
+  // $scope.navTitle='<img class="title-image" src="img/bike-assets/nav-logo.svg" />';
+  // Above is commented out until such time that we have icons to use
+  // for now, use this:
+  $scope.navTitle='Ride Hawaii';
 
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   angular.extend($scope, {
@@ -141,7 +144,6 @@ function handleErr(error){
       lat: 21.3008900859581,
       lng: -157.8398036956787,
       zoom: 15,
-      // autoDiscover:true
     },
     bikeShareIcon: {
       type: 'extraMarker',
@@ -522,10 +524,9 @@ function handleErr(error){
 
   // COMMENT SUBMIT FUNCTION
   $scope.postComment = function(comment){
-    console.log($scope.currentMarkerProperties);
     CommentService.addComment(comment, $scope.currentMarkerProperties.id)
     .then(function(data){
-
+      $scope.closeModal(5);
     });
   };
 
@@ -744,14 +745,6 @@ function handleErr(error){
       }
       voted = true;
     };
-
-
-
-
-
-
-
-
 
 //////// end of controller
 }]);
