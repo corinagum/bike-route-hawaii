@@ -9794,8 +9794,8 @@ a.button {
   height: 30px; }
 
 .filter-modal {
-  background-color: #444;
-  border: 0px; }
+  border: 0px;
+  height: 100%; }
   .filter-modal div {
     background-color: #444;
     border: 0px; }
@@ -9845,19 +9845,15 @@ a.button {
   text-align: center; }
 
 .buttonStyle {
-  background-color: red;
   border-left: 1px solid white;
   text-align: center; }
-
-#radiusDiv {
-  padding-top: 7px;
-  padding-bottom: 7px; }
 
 #mapViewDiv {
   padding-top: 10px; }
 
 .pinViews {
-  padding-top: 10px; }
+  padding-top: 25px;
+  height: 90vh; }
 
 .btn1 {
   background-color: #f8f8f8;
@@ -9869,7 +9865,8 @@ a.button {
 
 #radiusDiv {
   height: 100px;
-  align: center; }
+  align: center;
+  width: 100%; }
   #radiusDiv img {
     align: center;
     max-height: 100%;
@@ -9879,6 +9876,9 @@ a.button {
     text-align: center;
     line-height: 100px;
     height: 100px; }
+
+.done {
+  margin-top: 20px; }
 
 .spinner svg {
   width: 100px;

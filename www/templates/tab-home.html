@@ -38,7 +38,7 @@
         </ion-footer-bar>
       </ion-content>
 
-<!-- pop-up modal -->
+<!-- filter modal -->
 
       <script id="filter-modal.html" type="text/ng-template">
         <div class="modal filter-modal">
@@ -46,12 +46,9 @@
             <h1 class="title">Filters</h1>
           </ion-header-bar>
           <ion-content>
-
             <div class="list">
-
-            <div class="list">
-              <div class="item">Pin Types
-                <div class="pinViews">
+              <div>
+                <div class="pinViews item">
                   <a class="item item-icon-left" ng-click="setShowStations()" ng-class="{'btn2': showStations, 'btn1': !showStations}">
                   <i class="icon" ng-class="testcolor"><img class="title-image filter-but-img" src="img/bike-assets/bike-icon.svg" /> </i>
                     &nbsp;&nbsp;&nbsp; Bike Share Stations
@@ -67,7 +64,13 @@
                     &nbsp;&nbsp;&nbsp; Public Bike Racks
                   </a>
 
-              <div class="item">Radius
+                  <br />
+                  <a class="item item-icon-left" ng-click="setShowPointsOnDrag()" ng-class="{'btn2': showPointsOnDrag, 'btn1': !showPointsOnDrag}">
+                  <i class="icon"><img class="title-image bottom-tab-nav-img" src="img/bike-assets/pin-yellow.png" /></i>
+                    &nbsp;&nbsp;&nbsp; Show Points on Drag
+                  </a>
+
+              <div class="">Radius
                 <div id="radiusDiv" class="button-bar">
                     <button class="button buttonStyle" ng-click="setRadius(805)" ng-class="{'btn2': radiusHalf, 'btn1': !radiusHalf}">
                       <img class="title-image radius-button-img" src="img/bike-assets/small-radius.svg" />
@@ -78,10 +81,11 @@
                 </div>
               </div>
 
-            <div>
-              <button class="button button-full button-energized" ng-click="setPinsWithinRadius(); closeModal(1)">Done</button>
-            </div>
-
+            <!-- <ion-footer-bar id="footer-bar"> -->
+              <div class="done">
+                <button class="button buttonStyle button-full button-energized done" ng-click="setPinsWithinRadius(); closeModal(1)">Done</button>
+              </div>
+            <!-- </ion-footer-bar> -->
           </ion-content>
         <!-- </div> -->
       </script>
