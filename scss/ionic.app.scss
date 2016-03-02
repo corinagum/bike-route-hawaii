@@ -100,8 +100,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .filter-modal {
-  background-color: $dark;
+  // background-color: $balanced;
   border: 0px;
+  height: 100%;
 
   div {
     background-color: $dark;
@@ -166,14 +167,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 //BUTTONS IN FILTERS
 .buttonStyle {
-  background-color:red;
   border-left: 1px solid white;
   text-align: center;
-}
-
-#radiusDiv {
-  padding-top: 7px;
-  padding-bottom: 7px;
 }
 
 #mapViewDiv {
@@ -181,7 +176,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .pinViews {
-  padding-top: 10px;
+  padding-top: 25px;
+  height: 90vh;
 }
 
 .btn1 {
@@ -198,6 +194,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   // background-color:red;
   height: 100px;
   align: center;
+  width: 100%;
 
   img {
     align: center;
@@ -207,7 +204,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 
   button {
-    // background-color: red;
     text-align: center;
     line-height: 100px;
     height: 100px;
@@ -215,6 +211,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 }
 
+.done {
+  // width: 100%;
+  margin-top: 20px;
+  // position: absolute;
+  // bottom: 0;
+}
 
 .spinner svg {
   width: 100px;
