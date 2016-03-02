@@ -174,9 +174,8 @@
             <ion-item ng-repeat="item in favoritesList track by $index" class="eachItem">
               <div class="padding">
                 <i id="swipeRight" class="icon ion-chevron-left"></i>
-                <h2>{{ item.name }}</h2>
-                <h4>{{ item.type }}</h4>
-                <h4>{{ item.description }}</h4>
+                <h>{{ item.name }}</h1>
+                <p>{{ item.description }}</p>
                 <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }}); closeModal(7)"></ion-option-button>
                 <ion-option-button class="button icon ion-information-circled" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(7);"></ion-option-button>
               </div>
@@ -196,6 +195,12 @@
             <ion-item>
               <div><p ng-if="currentMarkerProperties.photolink"> <img class="detailsPhoto"ng-src="{{currentMarkerProperties.photolink}}" /> </p></div>
             </ion-item>
+            <div class="locationDetails">
+              <p ng-if="currentMarkerProperties.site_id">Site ID: {{currentMarkerProperties.site_id}} on <span ng-if="currentMarkerProperties.photolink">{{currentMarkerProperties.info}}</span></p>
+              <p ng-if="currentMarkerProperties.description">{{currentMarkerProperties.description}}</p>
+              <p ng-if="currentMarkerProperties.geolink"><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
+              <!-- <p><a target="_blank" href="{{currentMarkerProperties.sitelink}}">Site</a></p> -->
+            </div>
             <ion-item>
               <i ng-click="addFavorite(); checkFavorite();" ng-class="{'button button-icon icon locationMenu fa fa-star-o fa-fw':!isFavorited, 'button button-icon icon locationMenu fa fa-star fa-fw':isFavorited}"></i>
                 <h2>Add to Favorites</h2>
@@ -208,12 +213,6 @@
                 <i class="button button-icon icon locationMenu fa fa-pencil-square-o fa-fw"></i>
                 <h2 class="floatingDetail">Report/Suggest</h2>
              </ion-item>
-            <div class="locationDetails">
-              <p ng-if="currentMarkerProperties.site_id">Site ID: {{currentMarkerProperties.site_id}} on <span ng-if="currentMarkerProperties.photolink">{{currentMarkerProperties.info}}</span></p>
-              <p ng-if="currentMarkerProperties.description">{{currentMarkerProperties.description}}</p>
-              <p ng-if="currentMarkerProperties.geolink"><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
-              <!-- <p><a target="_blank" href="{{currentMarkerProperties.sitelink}}">Site</a></p> -->
-            </div>
         </ion-content>
     </div>
   </script>
