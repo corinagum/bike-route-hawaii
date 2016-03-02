@@ -1,6 +1,7 @@
 // 'use strict';
 var db                  = require('./../models');
 var Point               = db.Point;
+
 module.exports = {
   up: function (queryInterface, Sequelize) {
     /*
@@ -20,7 +21,7 @@ module.exports = {
       bikeRacks[i].properties.long = Number(bikeRacks[i].properties.Location.split(',').pop());
       bikeRacks[i].properties.lat = Number(bikeRacks[i].properties.Location.split(',')[0]);
       delete bikeRacks[i].properties.Location;
-       toInsert.push(bikeRacks[i].properties);
+      toInsert.push(bikeRacks[i].properties);
      }
      return Point.bulkCreate(toInsert);
    },

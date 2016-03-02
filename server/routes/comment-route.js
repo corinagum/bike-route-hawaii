@@ -11,4 +11,11 @@ router.post('/',function(req, res){
   });
 });
 
+router.get('/',function(req, res){
+  Comment.findAll()
+    .then(function(data){
+      res.send(data);
+    });
+});
+
 module.exports = router;

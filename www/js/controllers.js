@@ -97,19 +97,6 @@ function handleErr(error){
   }
 }
 
-  // ionic.DomUtil.ready(function(){
-  //   // Remove assertive (red) style to use balanced (green)
-  //   angular.element(document.querySelector('#locate-before-start'))
-  //   // .removeClass('bar-assertive')
-  //   // .addClass('button')
-  //   .text('Enable location');
-
-  //   // Change bar text
-  //   // angular.element(document.querySelector('#bar'))
-  //   // .text('Clear Route');
-  // });
-
-
   $scope.setShowBlocker = function(){
     $scope.foundLocation = false;
   };
@@ -202,6 +189,7 @@ function handleErr(error){
   };
 
   $scope.setShowBikeRacks = function(){
+    console.log('changed show bikerack');
     $scope.showBikeRacks = !$scope.showBikeRacks;
   };
 
@@ -225,13 +213,10 @@ function handleErr(error){
 
   $scope.setPinsWithinRadius = function(){
     $scope.markers = {userMarker: this.markers.userMarker};
-
     PointService.getPointsInRadius($scope.radius, $scope.myLocation.myLat, $scope.myLocation.myLong)
       .then(function(data){
-
         $scope.bikesharePoints = [];
-
-          for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
+        for(var i = 0; i < data.data.geoJSONBikeShare.features.length; i++){
             var pointsDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeShare.features[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var bikeNum = 'bike' + i;
             var bksData = data.data.geoJSONBikeShare.features[i].properties;
@@ -266,7 +251,8 @@ function handleErr(error){
             $scope.landmarkPoints.push({
               title: landmarkData.name,
               dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
-              photo: landmarkData.photolink,
+              photolink: landmarkData.photolink,
+              description: landmarkData.description,
               lat  : landmarkData.lat,
               long : landmarkData.long
             });
@@ -316,6 +302,7 @@ function handleErr(error){
   };
 
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
+    console.log('called on locationfound');
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
     $scope.center.autoDiscover = true;
@@ -367,7 +354,8 @@ function handleErr(error){
             $scope.landmarkPoints.push({
               title: landmarkData.name,
               dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
-              photo: landmarkData.photolink,
+              photolink: landmarkData.photolink,
+              description: landmarkData.description,
               lat  : landmarkData.lat,
               long : landmarkData.long
             });
@@ -391,6 +379,7 @@ function handleErr(error){
             var pointsRackDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + data.data.geoJSONBikeRack.features[k].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
             var bikeRackNum = 'bikeRack' + k;
             var bikerackData = data.data.geoJSONBikeRack.features[k].properties;
+
 
             $scope.bikeRackPoints.push({
               title: bikerackData.description,
@@ -434,6 +423,11 @@ function handleErr(error){
           });
       };
 
+      $scope.changeCurrentMarker = function(item){
+        console.log($scope.currentMarkerProperties);
+        $scope.currentMarkerProperties = item;
+        console.log($scope.currentMarkerProperties);
+      };
       //TO REMOVE CURRENT ROUTES THAT'S DISPLAYED ON MAP
       $scope.removeRouting = function() {
         leafletData.getMap()

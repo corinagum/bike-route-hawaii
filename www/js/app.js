@@ -1,7 +1,31 @@
 
 
 angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controllers', 'starter.services'])
-
+  .constant('processENV', {
+   "development": {
+     "username": "nickcadiente",
+     "password": null,
+     "database": "bike_hawaii",
+     "host": "127.0.0.1",
+     "dialect": "postgres",
+     "domain" : "http://localhost:4000/"
+   },
+   "test": {
+     "username": "postgres",
+     "password": null,
+     "database": "bike_hawaii",
+     "host": "127.0.0.1",
+     "dialect": "postgres"
+   },
+   "production": {
+     "username": "postgres",
+     "password": null,
+     "database": "bike_hawaii",
+     "host": "127.0.0.1",
+     "dialect": "postgres",
+     "domain" : "ridehawaii.com"
+   }
+ })
 .run(function($rootScope, $ionicLoading, $ionicPlatform) {
     // $rootScope.$on('loading:show', function() {
     //   $ionicLoading.show({template: 'Hi There!'});
@@ -26,6 +50,7 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
   });
 })
 
+
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
 
   //GLOBALLY CREATING INTERCEPTORS WHILE WINDOW LOADS
@@ -45,7 +70,7 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
-  $stateProvider
+    $stateProvider
 
   // setup an abstract state for the tabs directive
   .state('tab', {
@@ -95,6 +120,7 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
       }
     }
   });
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/home');

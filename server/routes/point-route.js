@@ -110,6 +110,7 @@ router.delete('/:id', function(req, res){
 });
 
 router.get('/within/:meters/:lat/:long', function(req, res){
+  console.log(process.env);
   db.sequelize.query('SELECT *, earth_distance(ll_to_earth( ' + req.params.lat +
     ',' + req.params.long + '  ), ll_to_earth(lat,long)) as distance_from_current_location FROM "Points" WHERE (earth_box(ll_to_earth(' +
     req.params.lat +',' + req.params.long + '), ' + req.params.meters + ') @> ll_to_earth(lat, long)) ORDER BY distance_from_current_location ASC;')
