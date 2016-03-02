@@ -47,6 +47,18 @@
       <ion-content>
         <div class="list">
             <div class="pinViews item">
+              <a class="item item-icon-left" ng-click="openModal(7); closeModal(1)" ng-class="{'btn2': showPointsOnDrag, 'btn1': !showPointsOnDrag}">
+              <i class="icon"><img class="title-image bottom-tab-nav-img" src="img/bike-assets/pin-yellow.png" /></i>
+                &nbsp;&nbsp;&nbsp; My Favorites
+              </a>
+              <br />
+
+              <a class="item item-icon-left" ng-click="setShowPointsOnDrag()" ng-class="{'btn2': showPointsOnDrag, 'btn1': !showPointsOnDrag}">
+              <i class="icon"><img class="title-image bottom-tab-nav-img" src="img/bike-assets/pin-yellow.png" /></i>
+                &nbsp;&nbsp;&nbsp; Show Points on Drag
+              </a>
+              <br />
+
               <a class="item item-icon-left" ng-click="setShowStations()" ng-class="{'btn2': showStations, 'btn1': !showStations}">
               <i class="icon" ng-class="testcolor"><img class="title-image filter-but-img" src="img/bike-assets/bike-icon.svg" /> </i>
                 &nbsp;&nbsp;&nbsp; Bike Share Stations
@@ -60,12 +72,6 @@
               <a class="item item-icon-left" ng-click="setShowBikeRacks()" ng-class="{'btn2': showBikeRacks, 'btn1': !showBikeRacks}">
               <i class="icon"><img class="title-image bottom-tab-nav-img" src="img/bike-assets/bikerack-icon-temp.png" /></i>
                 &nbsp;&nbsp;&nbsp; Public Bike Racks
-              </a>
-
-              <br />
-              <a class="item item-icon-left" ng-click="setShowPointsOnDrag()" ng-class="{'btn2': showPointsOnDrag, 'btn1': !showPointsOnDrag}">
-              <i class="icon"><img class="title-image bottom-tab-nav-img" src="img/bike-assets/pin-yellow.png" /></i>
-                &nbsp;&nbsp;&nbsp; Show Points on Drag
               </a>
               <br />
               <div id="radiusDiv" class="button-bar">
@@ -139,6 +145,27 @@
       <ion-header-bar class="bar bar-header">
         <h1 class="title" >{{stationCount}} Bike Racks near you</h1>
         <button class="button icon ion-arrow-down-b" ng-click="closeModal(6)"></button>
+      </ion-header-bar>
+        <ion-content>
+          <ion-list show-delete="false" can-swipe="true">
+            <ion-item ng-repeat="item in bikeRackPoints" class="eachItem">
+              <div class="padding">
+                <i id="swipeRight" class="icon ion-chevron-right"></i>
+                <h2>{{ item.description }}</h2>
+                <h4>{{ item.dist }} miles</h4>
+                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
+              </div>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+    </div>
+  </script>
+
+  <script id="favorites.html" type="text/ng-template">
+    <div class="modal">
+      <ion-header-bar class="bar bar-header">
+        <h1 class="title" >Favorites</h1>
+        <button class="button icon ion-arrow-down-b" ng-click="closeModal(7)"></button>
       </ion-header-bar>
         <ion-content>
           <ion-list show-delete="false" can-swipe="true">

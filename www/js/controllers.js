@@ -606,6 +606,14 @@ function handleErr(error){
     $scope.modal6 = modal;
   });
 
+  $ionicModal.fromTemplateUrl('favorites.html', {
+    id: '7',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal7 = modal;
+  });
+
   $scope.openModal = function(index) {
     switch (index) {
       case 1 : $scope.modal1.show();
@@ -619,6 +627,8 @@ function handleErr(error){
       case 5 : $scope.modal5.show();
                 break;
       case 6 : $scope.modal6.show();
+                break;
+      case 7 : $scope.modal7.show();
     }
   };
 
@@ -635,6 +645,8 @@ function handleErr(error){
       case 5 : $scope.modal5.hide();
                 break;
       case 6 : $scope.modal6.hide();
+                break;
+      case 7 : $scope.modal7.hide();
     }
   };
 
