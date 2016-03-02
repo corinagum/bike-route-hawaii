@@ -169,12 +169,12 @@
       </ion-header-bar>
         <ion-content>
           <ion-list show-delete="false" can-swipe="true">
-            <ion-item ng-repeat="item in bikeRackPoints" class="eachItem">
+            <ion-item ng-repeat="item in favoritesList" class="eachItem">
               <div class="padding">
                 <i id="swipeRight" class="icon ion-chevron-right"></i>
                 <h2>{{ item.description }}</h2>
                 <h4>{{ item.dist }} miles</h4>
-                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
+                <!-- <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button> -->
               </div>
             </ion-item>
           </ion-list>

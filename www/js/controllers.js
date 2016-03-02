@@ -666,28 +666,28 @@ function handleErr(error){
 
   // Logic for Location Details Modal
 
-  var favoritesList = null;
+  $scope.favoritesList = null;
 
   if( !JSON.parse(localStorage.getItem('favorites')) ) {
-    favoritesList = [];
+    $scope.favoritesList = [];
   } else{
-    favoritesList = JSON.parse(localStorage.getItem('favorites'));
+    $scope.favoritesList = JSON.parse(localStorage.getItem('favorites'));
   }
-
+  console.log("FAVORITES", $scope.favoritesList);
   $scope.checkFavorite = function(currentMarker) {
     if(!currentMarker) {
       currentMarker = $scope.currentMarkerProperties;
     }
-    return (favoritesList.indexOf(currentMarker.id) !== -1);
+    return ($scope.favoritesList.indexOf(currentMarker.id) !== -1);
   };
   $scope.addFavorite = function(){
-      if(favoritesList.indexOf($scope.currentMarkerProperties.id) !== -1) {
-          favoritesList.splice(favoritesList.indexOf($scope.currentMarkerProperties.id),1);
-          localStorage.setItem('favorites', JSON.stringify(favoritesList));
+      if($scope.favoritesList.indexOf($scope.currentMarkerProperties.id) !== -1) {
+          $scope.favoritesList.splice($scope.favoritesList.indexOf($scope.currentMarkerProperties.id),1);
+          localStorage.setItem('favorites', JSON.stringify($scope.favoritesList));
           $scope.isFavorited = false;
       } else {
-        favoritesList.push($scope.currentMarkerProperties.id);
-        localStorage.setItem('favorites', JSON.stringify(favoritesList));
+        $scope.favoritesList.push($scope.currentMarkerProperties.id);
+        localStorage.setItem('favorites', JSON.stringify($scope.favoritesList));
         $scope.isFavorited = true;
       }
   };
