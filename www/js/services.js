@@ -1,78 +1,36 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-  var chats = [{
-    id: 0,
-    name: 'Paki and Kalakaua',
-    desc: 'Blue bottle slow-carb letterpress, intelligentsia meggings deep v keffiyeh vinyl. Kickstarter helvetica ethical, ennui kogi ramps 90\'s listicle flannel iPhone actually marfa banjo hashtag. Asymmetrical ugh waistcoat, cred green juice photo booth umami meggings. Flannel pinterest dreamcatcher vinyl readymade, tacos scenester austin normcore listicle church-key. Hammock paleo organic four dollar toast. You probably haven\'t heard of them asymmetrical taxidermy, gochujang 90\'s tattooed tofu authentic tousled microdosing iPhone lumbersexual ennui fashion axe gastropub. Pop-up kinfolk brunch, lo-fi ramps squid health goth tilde.',
-    face: 'http://chromecastbg.alexmeub.com/images/240_AF1QipMrVESpBMMxsgHBYtljVZWvhOy1dpmtS-vVCsXX.jpg'
-  }, {
-    id: 1,
-    name: 'Paki and Noela',
-    desc: 'Blue bottle slow-carb letterpress, intelligentsia meggings deep v keffiyeh vinyl. Kickstarter helvetica ethical, ennui kogi ramps 90\'s listicle flannel iPhone actually marfa banjo hashtag. Asymmetrical ugh waistcoat, cred green juice photo booth umami meggings. Flannel pinterest dreamcatcher vinyl readymade, tacos scenester austin normcore listicle church-key. Hammock paleo organic four dollar toast. You probably haven\'t heard of them asymmetrical taxidermy, gochujang 90\'s tattooed tofu authentic tousled microdosing iPhone lumbersexual ennui fashion axe gastropub. Pop-up kinfolk brunch, lo-fi ramps squid health goth tilde.',
-    face: 'http://chromecastbg.alexmeub.com/images/240_AF1QipMAuhpOoerXqmbSvb6MGvZhPAJnkrWmFx3QNe6R.jpg'
-  }, {
-    id: 2,
-    name: 'Kapiolani Park 1',
-    desc: 'Blue bottle slow-carb letterpress, intelligentsia meggings deep v keffiyeh vinyl. Kickstarter helvetica ethical, ennui kogi ramps 90\'s listicle flannel iPhone actually marfa banjo hashtag. Asymmetrical ugh waistcoat, cred green juice photo booth umami meggings. Flannel pinterest dreamcatcher vinyl readymade, tacos scenester austin normcore listicle church-key. Hammock paleo organic four dollar toast. You probably haven\'t heard of them asymmetrical taxidermy, gochujang 90\'s tattooed tofu authentic tousled microdosing iPhone lumbersexual ennui fashion axe gastropub. Pop-up kinfolk brunch, lo-fi ramps squid health goth tilde.',
-    face: 'http://chromecastbg.alexmeub.com/images/240_AF1QipNJ98LLErUYUwfcyu1SjwQX_Wt_3we-Ux3aAytf.jpg'
-  }, {
-    id: 3,
-    name: 'Kapiolani Park 2',
-    desc: 'Blue bottle slow-carb letterpress, intelligentsia meggings deep v keffiyeh vinyl. Kickstarter helvetica ethical, ennui kogi ramps 90\'s listicle flannel iPhone actually marfa banjo hashtag. Asymmetrical ugh waistcoat, cred green juice photo booth umami meggings. Flannel pinterest dreamcatcher vinyl readymade, tacos scenester austin normcore listicle church-key. Hammock paleo organic four dollar toast. You probably haven\'t heard of them asymmetrical taxidermy, gochujang 90\'s tattooed tofu authentic tousled microdosing iPhone lumbersexual ennui fashion axe gastropub. Pop-up kinfolk brunch, lo-fi ramps squid health goth tilde.',
-    face: 'http://chromecastbg.alexmeub.com/images/240_AF1QipNPQtLL5EcPrqxhs07EaSz5ose7xHmmLb9u10BX.jpg'
-  }, {
-    id: 4,
-    name: 'Waikiki Shell',
-    desc: 'Blue bottle slow-carb letterpress, intelligentsia meggings deep v keffiyeh vinyl. Kickstarter helvetica ethical, ennui kogi ramps 90\'s listicle flannel iPhone actually marfa banjo hashtag. Asymmetrical ugh waistcoat, cred green juice photo booth umami meggings. Flannel pinterest dreamcatcher vinyl readymade, tacos scenester austin normcore listicle church-key. Hammock paleo organic four dollar toast. You probably haven\'t heard of them asymmetrical taxidermy, gochujang 90\'s tattooed tofu authentic tousled microdosing iPhone lumbersexual ennui fashion axe gastropub. Pop-up kinfolk brunch, lo-fi ramps squid health goth tilde.',
-    face: 'http://chromecastbg.alexmeub.com/images/240_AF1QipN0X6n39_rePcGsmL_LgxFbthfIyDHjBeMlsmr5.jpg'
-  }];
-
-  return {
-    all: function() {
-      return chats;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
-        }
-      }
-      return null;
-    }
-  };
-})
-
 .service("PointService", ['$http', 'processENV', function($http, processENV) {
-  var domain = ".";
+  var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
+  var domain;
+  if(!isCordovaApp){
+    domain = 'http://localhost:4000';
+  }
+  if(isCordovaApp){
+    domain = '.';
+  }
   this.getPoint = function() {
-    return $http.get('http://localhost:4000/api/points');
+    return $http.get(domain + '/api/points');
   };
 
   this.addPoint = function(point) {
-    return $http.post('http://localhost:4000/api/points', {
+    return $http.post(domain + '/api/points', {
       point : point
     });
   };
 
   this.editPoint = function(point) {
-    return $http.put('http://localhost:4000/api/points/' + point.id, {
+    return $http.put(domain + '/api/points/' + point.id, {
       point : point
     });
   };
 
   this.deletePoint = function(point) {
-    return $http.delete('http://localhost:4000/api' + point.id);
+    return $http.delete(domain + '/api' + point.id);
   };
 
   this.getPointsInRadius = function(radius, lat, long) {
-    return $http.get('http://localhost:4000/api/points/within/' +
+    return $http.get(domain + '/api/points/within/' +
       radius + '/' + lat + '/' + long);
   };
 
@@ -80,7 +38,7 @@ angular.module('starter.services', [])
     // console.log(process.env);
     console.log(processENV);
     return $http.get(domain + '/api/points/bounds/' +
-      NElat + '/' + NElong + '/' + SWlat + '/' +SWlong);
+      NElat + '/' + NElong + '/' + SWlat + '/' +SWlong, {processENV:processENV});
   };
 }])
 

@@ -207,7 +207,8 @@
             $scope.landmarkPoints.push({
               title: landmarkData.name,
               dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
-              photo: landmarkData.photolink,
+              photolink: landmarkData.photolink,
+              description: landmarkData.description,
               lat  : landmarkData.lat,
               long : landmarkData.long
             });
@@ -309,7 +310,8 @@
             $scope.landmarkPoints.push({
               title: landmarkData.name,
               dist : Math.round(((landmarkData.distance_from_current_location)*0.000621371192) * 100) / 100,
-              photo: landmarkData.photolink,
+              photolink: landmarkData.photolink,
+              description: landmarkData.description,
               lat  : landmarkData.lat,
               long : landmarkData.long
             });
@@ -389,6 +391,11 @@
           });
       };
 
+      $scope.changeCurrentMarker = function(item){
+        console.log($scope.currentMarkerProperties);
+        $scope.currentMarkerProperties = item;
+        console.log($scope.currentMarkerProperties);
+      };
       //TO REMOVE CURRENT ROUTES THAT'S DISPLAYED ON MAP
       $scope.removeRouting = function() {
         leafletData.getMap()

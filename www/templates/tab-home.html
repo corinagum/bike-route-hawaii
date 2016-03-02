@@ -117,13 +117,13 @@
             <ion-content>
               <ion-list show-delete="false" can-swipe="true" class="itemInList"><span id="swipeWords">Swipe left for directions</span>
                 <ion-item ng-repeat="item in landmarkPoints" class="eachItem">
-                  <img class="bshLogo" ng-src="{{ item.photo }}">
+                  <img class="bshLogo" ng-src="{{ item.photolink }}">
                   <div class="padding">
                     <i id="swipeRight" class="icon ion-chevron-left"></i>
                     <h2>{{ item.title }}</h2>
                     <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.dist }} miles</h4>
                     <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
-                    <ion-option-button class="button icon ion-ios-book" ng-click="openModal(3)"></ion-option-button>
+                    <ion-option-button class="button icon ion-ios-book" ng-click="changeCurrentMarker(item); openModal(3); closeModal(4);"></ion-option-button>
                   </div>
                 </ion-item>
               </ion-list>
