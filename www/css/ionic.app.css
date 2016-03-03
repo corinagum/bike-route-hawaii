@@ -9949,6 +9949,18 @@ a.button {
   background-color: #76CE95;
   height: 50px; }
 
+.fill-selected {
+  fill: #76CE95; }
+
+.fill-selected2 {
+  fill: #ffc900; }
+
+.fill-selected3 {
+  fill: #181B1E; }
+
+.fill-unselected {
+  fill: #B7B7B7; }
+
 .done {
   margin-top: 20px; }
 

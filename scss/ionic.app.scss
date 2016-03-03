@@ -32,7 +32,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .title.title-center.header-item {
   background: url("./../img/bike-assets/nav-logo.svg") center no-repeat;
-
 }
 
 #footer-bar {
@@ -298,6 +297,22 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .btn2 {
   background-color: $balanced;
   height: 50px;
+}
+
+.fill-selected {
+  fill: $balanced;
+}
+
+.fill-selected2 {
+  fill: $energized;
+}
+
+.fill-selected3 {
+  fill: $dark;
+}
+
+.fill-unselected {
+  fill: #B7B7B7;
 }
 
 .done {
