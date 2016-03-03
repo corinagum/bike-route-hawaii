@@ -184,7 +184,6 @@ function handleErr(error){
   };
 
   $scope.setShowBikeRacks = function(){
-    console.log('changed show bikerack');
     $scope.showBikeRacks = !$scope.showBikeRacks;
   };
 
@@ -204,7 +203,6 @@ function handleErr(error){
     if ( rad === 1610) {  $scope.radiusHalf = false; $scope.radiusMile = true; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
     if ( rad === 3220) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = true; $scope.radiusAll = false; }
     if ( rad === 50000) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = true; }
-    console.log($scope.radiusHalf, $scope.radiusMile, $scope.radiusTwoMile, $scope.radiusAll);
   };
 
   $scope.setPinsWithinRadius = function(){
@@ -282,7 +280,6 @@ function handleErr(error){
   };
 
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
-    console.log('called on locationfound');
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
     $scope.center.autoDiscover = true;
