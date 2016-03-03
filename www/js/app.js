@@ -91,26 +91,15 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
       }
     }
   })
-    .state('tab.gallery-detail', {
-      url: '/gallery/:galleryId',
-      views: {
-        'tab-gallery': {
-          templateUrl: 'templates/gallery-detail.html',
-          controller: 'GalleryDetailCtrl'
-        }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.gallery-detail', {
+    url: '/gallery/:galleryId',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-gallery': {
+        templateUrl: 'templates/gallery-detail.html',
+        controller: 'GalleryDetailCtrl'
       }
     }
   });
-
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/home');
