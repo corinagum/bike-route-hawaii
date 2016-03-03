@@ -1,5 +1,8 @@
 Ride Hawaii
 =====================
+![ridehawaii logo][logo]
+
+[logo]: http://ridehawaii.us/img/bike-assets/SquareIcon.png
 ### [ridehawaii.us](http://ridehawaii.us)
 
 ## Introduction
