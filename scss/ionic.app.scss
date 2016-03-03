@@ -111,7 +111,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .filter-modal {
-  // background-color: $balanced;
   border: 0px;
   height: 100%;
 
@@ -122,18 +121,51 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .radius-small {
+  background-color: $stable;
   background: url("./../img/bike-assets/small-radius.svg") no-repeat;
   background-position: 50% 40%;
 }
 
 .radius-medium {
+  background-color: $stable;
   background: url("./../img/bike-assets/medium-radius.svg") center no-repeat;
   background-position: 50% 40%;
 }
 
 .radius-large {
+  background-color: $stable;
   background: url("./../img/bike-assets/large-radius.svg") center no-repeat;
   background-position: 50% 40%;
+}
+
+.radius-all {
+  background-color: $stable;
+  background: url("./../img/bike-assets/all-light.png") center no-repeat;
+  background-position: 50% 50%;
+}
+
+.radius-small-selected {
+  background-color: $stable;
+  background: url("./../img/bike-assets/small-radius-dark.svg") center no-repeat;
+  background-position: 50% 40%;
+}
+
+.radius-medium-selected {
+  background-color: $stable;
+  background: url("./../img/bike-assets/medium-radius-dark.svg") center no-repeat;
+  background-position: 50% 40%;
+}
+
+.radius-large-selected {
+  background-color: $stable;
+  background: url("./../img/bike-assets/large-radius-dark.svg") center no-repeat;
+  background-position: 50% 40%;
+}
+
+.radius-all-selected {
+  background-color: $stable;
+  background: url("./../img/bike-assets/all.png") center no-repeat;
+  background-position: 50% 50%;
 }
 
 #radiusDiv {
@@ -217,10 +249,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .locationDetails {
-
   margin : 15px;
   font-size: 1em;
-  color: $stable;
+  color: $dark;
 }
 
 .detailsPhoto {
@@ -230,6 +261,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .detailsPhoto-div {
   text-align: center;
+  img {
+    box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+  }
 }
 
 .sendPoint {

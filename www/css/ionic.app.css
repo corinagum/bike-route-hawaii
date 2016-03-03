@@ -9810,16 +9810,44 @@ a.button {
     border: 0px; }
 
 .radius-small {
+  background-color: #f8f8f8;
   background: url("./../img/bike-assets/small-radius.svg") no-repeat;
   background-position: 50% 40%; }
 
 .radius-medium {
+  background-color: #f8f8f8;
   background: url("./../img/bike-assets/medium-radius.svg") center no-repeat;
   background-position: 50% 40%; }
 
 .radius-large {
+  background-color: #f8f8f8;
   background: url("./../img/bike-assets/large-radius.svg") center no-repeat;
   background-position: 50% 40%; }
+
+.radius-all {
+  background-color: #f8f8f8;
+  background: url("./../img/bike-assets/all-light.png") center no-repeat;
+  background-position: 50% 50%; }
+
+.radius-small-selected {
+  background-color: #f8f8f8;
+  background: url("./../img/bike-assets/small-radius-dark.svg") center no-repeat;
+  background-position: 50% 40%; }
+
+.radius-medium-selected {
+  background-color: #f8f8f8;
+  background: url("./../img/bike-assets/medium-radius-dark.svg") center no-repeat;
+  background-position: 50% 40%; }
+
+.radius-large-selected {
+  background-color: #f8f8f8;
+  background: url("./../img/bike-assets/large-radius-dark.svg") center no-repeat;
+  background-position: 50% 40%; }
+
+.radius-all-selected {
+  background-color: #f8f8f8;
+  background: url("./../img/bike-assets/all.png") center no-repeat;
+  background-position: 50% 50%; }
 
 #radiusDiv {
   height: 100px;
@@ -9884,7 +9912,7 @@ a.button {
 .locationDetails {
   margin: 15px;
   font-size: 1em;
-  color: #f8f8f8; }
+  color: #181B1E; }
 
 .detailsPhoto {
   max-width: 100vw;
@@ -9892,6 +9920,8 @@ a.button {
 
 .detailsPhoto-div {
   text-align: center; }
+  .detailsPhoto-div img {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65); }
 
 .sendPoint {
   text-align: center;

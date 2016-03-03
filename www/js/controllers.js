@@ -204,6 +204,7 @@ function handleErr(error){
     if ( rad === 1610) {  $scope.radiusHalf = false; $scope.radiusMile = true; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
     if ( rad === 3220) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = true; $scope.radiusAll = false; }
     if ( rad === 50000) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = true; }
+    console.log($scope.radiusHalf, $scope.radiusMile, $scope.radiusTwoMile, $scope.radiusAll);
   };
 
   $scope.setPinsWithinRadius = function(){
@@ -404,6 +405,12 @@ function handleErr(error){
 
   $scope.setShowPointsOnDrag = function(){
     $scope.showPointsOnDrag = !$scope.showPointsOnDrag;
+  };
+
+  $scope.showFavorites = false;
+
+  $scope.setshowFavorites = function(){
+    $scope.showFavorites = !$scope.showFavorites;
   };
 
   $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){

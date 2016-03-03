@@ -47,7 +47,7 @@
       <ion-content>
         <div class="list">
             <div class="pinViews item">
-              <a class="item item-icon-left" ng-click="openModal(7); closeModal(1)" ng-class="{'btn2': showPointsOnDrag, 'btn1': !showPointsOnDrag}">
+              <a class="item item-icon-left" ng-click="openModal(7); closeModal(1); setShowFavorites()" ng-class="{'btn2': showFavorites, 'btn1': !showFavorites}">
               <i class="icon"><img class="title-image bottom-tab-nav-img" src="img/bike-assets/pin-yellow.png" /></i>
                 &nbsp;&nbsp;&nbsp; My Favorites
               </a>
@@ -60,12 +60,12 @@
               <br />
 
               <a class="item item-icon-left" ng-click="setShowStations()" ng-class="{'btn2': showStations, 'btn1': !showStations}">
-              <i class="icon" ng-class="testcolor"><img class="title-image filter-but-img" src="img/bike-assets/bike-icon.svg" /> </i>
+              <i class="icon" ng-class="testcolor"><img class="title-image filter-but-img" src="img/bike-assets/bike-icon-gray.svg" /> </i>
                 &nbsp;&nbsp;&nbsp; Bike Share Stations
               </a>
 
               <a class="item item-icon-left" ng-click="setShowLandmarks()" ng-class="{'btn2': showLandmarks, 'btn1': !showLandmarks}">
-              <i class="icon"><img class="title-image filter-but-img" src="img/bike-assets/landmark-icon.svg" /></i>
+              <i class="icon"><img class="title-image filter-but-img" src="img/bike-assets/landmark-icon-gray.svg" /></i>
                 &nbsp;&nbsp;&nbsp; Landmarks
               </a>
 
@@ -75,16 +75,16 @@
               </a>
               <br />
               <div id="radiusDiv" class="button-bar">
-                <button class="button buttonStyle radius-small" ng-click="setRadius(805)" ng-class="{'btn2': radiusHalf, 'btn1': !radiusHalf}">
+                <button class="button buttonStyle btn1" ng-click="setRadius(805)" ng-class="{'radius-small-selected': radiusHalf, 'radius-small': !radiusHalf}">
                   0.5mi
                 </button>
-                <button class="button buttonStyle radius-medium" ng-click="setRadius(1610)" ng-class="{'btn2': radiusMile, 'btn1': !radiusMile}">
+                <button class="button buttonStyle btn1" ng-click="setRadius(1610)" ng-class="{'radius-medium-selected': radiusMile, 'radius-medium': !radiusMile}">
                   1mi
                 </button>
-                <button class="button buttonStyle radius-large" ng-click="setRadius(3220)" ng-class="{'btn2': radiusTwoMile, 'btn1': !radiusTwoMile}">
+                <button class="button buttonStyle btn1" ng-click="setRadius(3220)" ng-class="{'radius-large-selected': radiusTwoMile, 'radius-large': !radiusTwoMile}">
                   2mi
                 </button>
-                <button class="button buttonStyle" ng-click="setRadius(50000)" ng-class="{'btn2': radiusAll, 'btn1': !radiusAll}">All</button>
+                <button class="button buttonStyle btn1" ng-click="setRadius(50000)" ng-class="{'radius-all-selected': radiusAll, 'radius-all': !radiusAll}"></button>
               </div>
             <div class="done">
               <button class="button buttonStyle button-full button-energized done" ng-click="setPinsWithinRadius(); closeModal(1)">Done</button>
