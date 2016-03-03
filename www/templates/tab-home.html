@@ -228,10 +228,11 @@
         <ion-content>
           <ion-list show-delete="false" can-swipe="true">
             <ion-item ng-repeat="item in bikeRackPoints" class="eachItem">
+            <img class="bshLogo" ng-src="http://halfbit.com/wp-content/uploads/2014/09/placeholder.png">
               <div class="padding">
-                <i id="swipeRight" class="icon ion-chevron-right"></i>
+                <i id="swipeRight" class="icon ion-chevron-left"></i>
                 <h2>{{ item.description }}</h2>
-                <h4>{{ item.distanceToFrom }} miles</h4>
+                <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</h4>
                 <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }}); closeModal(6)"></ion-option-button>
                 <ion-option-button class="button icon ion-information-circled" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(6);"></ion-option-button>
               </div>

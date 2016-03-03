@@ -91,16 +91,6 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
       }
     }
   })
-
-  .state('tab.gallery', {
-      url: '/gallery',
-      views: {
-        'tab-gallery': {
-          templateUrl: 'templates/tab-gallery.html',
-          controller: 'GalleryCtrl'
-        }
-      }
-    })
     .state('tab.gallery-detail', {
       url: '/gallery/:galleryId',
       views: {
