@@ -9852,7 +9852,9 @@ a.button {
 #radiusDiv {
   height: 100px;
   align: center;
-  width: 100%; }
+  width: 92%;
+  margin: auto;
+  box-shadow: 1px 1px 3px 1px #454e57; }
   #radiusDiv img {
     align: center;
     max-height: 100%;
@@ -9949,6 +9951,34 @@ a.button {
   background-color: #76CE95;
   height: 50px; }
 
+.item-img-div {
+  float: left;
+  line-height: 80px;
+  display: block; }
+  .item-img-div img {
+    display: inline-block; }
+
+.list {
+  background-color: #f8f8f8; }
+  .list a {
+    margin: 0px 15px;
+    box-shadow: 1px 1px 3px 1px #454e57; }
+
+.item-button {
+  float: right;
+  height: 100%;
+  border-left: solid 1px white;
+  background-color: #dfdfdf; }
+
+.item-button-right > .button, .item-button-right .item-content > .button, .item-button-right > .buttons, .item-button-right .item-content > .buttons {
+  top: 0;
+  right: 0;
+  border-radius: 0; }
+
+.item-desc {
+  float: left;
+  max-width: 60%; }
+
 .fill-selected {
   fill: #76CE95; }
 
@@ -9962,7 +9992,9 @@ a.button {
   fill: #B7B7B7; }
 
 .done {
-  margin-top: 20px; }
+  margin: 20px auto;
+  width: 92%;
+  box-shadow: 1px 1px 3px 1px #454e57; }
 
 .spinner svg {
   width: 100px;

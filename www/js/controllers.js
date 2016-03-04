@@ -26,7 +26,7 @@
     },
     defaults: {
       scrollWheelZoom: false,
-      doubleClickZoom: false,
+      // doubleClickZoom: false,
       inertiaMaxSpeed: 150
     },
     center : {
