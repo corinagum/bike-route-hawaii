@@ -170,7 +170,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 #radiusDiv {
   height: 100px;
   align: center;
-  width: 100%;
+  width: 92%;
+  margin: auto;
+  box-shadow: 1px 1px 3px 1px lighten($dark,50%);
 
   img {
     align: center;
@@ -184,6 +186,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     line-height: 170px;
     height: 100px;
     font-size: 0.8em;
+    // border-radius: 10px;
   }
 
 }
@@ -299,6 +302,41 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   height: 50px;
 }
 
+.item-img-div {
+  float: left;
+  line-height: 80px;
+  display: block;
+  img{
+    display: inline-block;
+  }
+}
+
+.list {
+  background-color: $stable;
+  a {
+    margin: 0px 15px;
+    box-shadow: 1px 1px 3px 1px lighten($dark,20%);
+  }
+}
+
+.item-button {
+  float: right;
+  height: 100%;
+  border-left: solid 1px white;
+  background-color: darken($stable, 10%);
+}
+
+.item-button-right > .button, .item-button-right .item-content > .button, .item-button-right > .buttons, .item-button-right .item-content > .buttons {
+  top:0;
+  right:0;
+  border-radius:0;
+}
+
+.item-desc {
+  float: left;
+  max-width: 60%;
+}
+
 .fill-selected {
   fill: $balanced;
 }
@@ -316,7 +354,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .done {
-  margin-top: 20px;
+  margin: 20px auto;
+  width: 92%;
+  box-shadow: 1px 1px 3px 1px lighten($dark,20%);
 }
 
 .spinner svg {

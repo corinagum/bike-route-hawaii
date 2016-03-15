@@ -1,4 +1,4 @@
-<ion-view ng-controller="MapCtrl" title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
+<ion-view ng-controller="MapCtrl" title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style" data-tap-disabled="true">
   <ion-content data-tap-disabled="true">
     <div class="view-filter filter-button">
       <i class="icon ion-gear-a custom-icon" ng-click="openModal(1)"></i>
@@ -46,7 +46,7 @@
       </ion-header-bar>
       <ion-content>
         <div class="list">
-            <div class="pinViews item">
+            <div class="pinViews">
               <a class="item item-icon-left btn1" ng-click="openModal(7); closeModal(1); setShowFavorites()">
               <i class="icon">
                 <svg width="14px" height="19px" viewBox="0 0 14 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
@@ -180,17 +180,16 @@
         <button class="button icon ion-arrow-down-b" ng-click="closeModal(2)"></button>
       </ion-header-bar>
         <ion-content>
-          <ion-list show-delete="false" can-swipe="true" class="itemInList"><span id="swipeWords">Swipe left for directions</span>
-            <ion-item ng-repeat="item in bikesharePoints" class="eachItem">
-              <img class="bshLogo" ng-src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg">
-              <div class="padding">
-                <i id="swipeRight" class="icon ion-chevron-left"></i>
-                <h2>{{ item.name }}</h2>
-                <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</h4>
-                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
-                <ion-option-button class="button icon ion-information-circled" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(2);"></ion-option-button>
-              </div>
-            </ion-item>
+          <ion-list show-delete="false" can-swipe="true" class="itemInList">
+            <br />
+            <div class="list" ng-repeat="item in bikesharePoints" class="eachItem" class="eachItem" >
+              <a class="item item-thumbnail-left item-button-right" href="#">
+                <img class="bshLogo" ng-src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(2);">
+                <h2 ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(2);">{{ item.name }}</h2>
+                <p ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(2);">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</p>
+                <button class="button item-button" ng-click="getDirections({{ item.lat }}, {{ item.long }})"><i class="icon ion-navigate"></i></button>
+              </a>
+            </div>
           </ion-list>
         </ion-content>
     </div>
@@ -203,17 +202,16 @@
         <button class="button icon ion-arrow-down-b" ng-click="closeModal(4)"></button>
       </ion-header-bar>
         <ion-content>
-          <ion-list show-delete="false" can-swipe="true" class="itemInList"><span id="swipeWords">Swipe left for directions</span>
-            <ion-item ng-repeat="item in landmarkPoints" class="eachItem">
-              <img class="bshLogo" ng-src="{{ item.photolink }}">
-              <div class="padding">
-                <i id="swipeRight" class="icon ion-chevron-left"></i>
-                <h2>{{ item.name }}</h2>
-                <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</h4>
-                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }})"></ion-option-button>
-                <ion-option-button class="button icon ion-information-circled" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);"></ion-option-button>
-              </div>
-            </ion-item>
+          <ion-list show-delete="false" can-swipe="true" class="itemInList">
+            <br />
+            <div class="list" ng-repeat="item in landmarkPoints" class="eachItem" >
+              <a class="item item-thumbnail-left item-button-right" href="#">
+                <img class="bshLogo" ng-src="{{ item.photolink }}" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);">
+                <h2 ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);">{{ item.name }}</h2>
+                <p ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</p>
+                <button class="button item-button" ng-click="getDirections({{ item.lat }}, {{ item.long }})"><i class="icon ion-navigate"></i></button>
+              </a>
+            </div>
           </ion-list>
         </ion-content>
     </div>
@@ -227,16 +225,16 @@
       </ion-header-bar>
         <ion-content>
           <ion-list show-delete="false" can-swipe="true">
-            <ion-item ng-repeat="item in bikeRackPoints" class="eachItem">
-            <img class="bshLogo" ng-src="http://halfbit.com/wp-content/uploads/2014/09/placeholder.png">
-              <div class="padding">
-                <i id="swipeRight" class="icon ion-chevron-left"></i>
-                <h2>{{ item.description }}</h2>
-                <h4 class="icon ion-ios-location-outline">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</h4>
-                <ion-option-button class="button icon ion-navigate" ng-click="getDirections({{ item.lat }}, {{ item.long }}); closeModal(6)"></ion-option-button>
-                <ion-option-button class="button icon ion-information-circled" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(6);"></ion-option-button>
-              </div>
-            </ion-item>
+<<<<<<< HEAD
+            <br />
+            <div class="list" ng-repeat="item in bikeRackPoints" class="eachItem">
+              <a class="item item-thumbnail-left item-button-right" href="#">
+                <img class="bshLogo" src="img/bike-assets/bikerack-icon-gray.svg" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(6);">
+                <h2 ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(6);">{{ item.description }}</h2>
+                <p ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(6);">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</p>
+                <button class="button item-button" ng-click="getDirections({{ item.lat }}, {{ item.long }}); closeModal(6)"><i class="icon ion-navigate"></i></button>
+              </a>
+            </div>
           </ion-list>
         </ion-content>
     </div>
