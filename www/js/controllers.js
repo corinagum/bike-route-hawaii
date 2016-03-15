@@ -26,7 +26,8 @@
     },
     defaults: {
       scrollWheelZoom: false,
-      // doubleClickZoom: false,
+      doubleClickZoom: false,
+      touchZoom: false;
       inertiaMaxSpeed: 150
     },
     center : {
@@ -307,7 +308,7 @@
   };
 
   // SWITCH FOR TURNING DRAG ON AND OFF
-  $scope.showPointsOnDrag = false;
+  $scope.showPointsOnDrag = true;
   $scope.setShowPointsOnDrag = function(){
     $scope.showPointsOnDrag = !$scope.showPointsOnDrag;
   };
