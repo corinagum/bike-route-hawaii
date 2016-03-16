@@ -11,7 +11,7 @@
 
     <leaflet lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
   </ion-content>
-    <ion-footer-bar id="footer-bar">
+    <ion-footer-bar id="footer-bar" ng-hide="showReportControl">
       <div>
         <button ng-click="findCenter()" class="button">
           <img class="title-image bottom-tab-nav-img" src="img/bike-assets/map-icon-green.svg" />
@@ -33,6 +33,19 @@
       <div>
         <button ng-click="openModal(6)" class="button">
           <img class="title-image bottom-tab-nav-img" src="img/bike-assets/bikerack-icon-green.svg" />
+        </button>
+      </div>
+    </ion-footer-bar>
+    <ion-footer-bar id="footer-bar" ng-show="showReportControl">
+      <div>
+        <button ng-click="openModal(5)" class="button">
+          Create Point
+        </button>
+      </div>
+
+      <div>
+        <button ng-click="cancelReportPoint()" class="button">
+          Cancel
         </button>
       </div>
     </ion-footer-bar>
@@ -88,6 +101,29 @@
                 </svg>
               </i>
                 &nbsp;&nbsp;&nbsp; Show Points on Drag
+              </a>
+              <br />
+
+              <a class="item item-icon-left btn1" ng-click="closeModal(1);createReportPoint()">
+              <i class="icon">
+                <svg width="14px" height="19px" viewBox="0 0 14 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+                    <title>pin-icon</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs></defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                        <!-- <g id="Bike-Racks-Detail"
+                        ng-class="{'fill-selected': showPointsOnDrag, 'fill-unselected': !showPointsOnDrag}" sketch:type="MSArtboardGroup" transform="translate(-108.000000, -117.000000)"> -->
+                            <g id="Group-3" sketch:type="MSLayerGroup" transform="translate(11.000000, 74.000000)">
+                                <g id="Group-2" transform="translate(97.000000, 43.000000)" sketch:type="MSShapeGroup">
+                                    <path d="M6.7750001,0 C3.03261909,0 0,3.00035719 0,6.7750001 C0,10.549643 6.7750001,18.0989288 6.7750001,18.0989288 C6.7750001,18.0989288 13.5500002,10.5173811 13.5500002,6.7750001 C13.5500002,3.00035719 10.5173811,0 6.7750001,0 L6.7750001,0 Z M6.74273819,8.93654774 C5.45226198,8.93654774 4.41988101,7.90416678 4.41988101,6.61369057 C4.41988101,5.32321436 5.45226198,4.29083339 6.74273819,4.29083339 C8.0332144,4.29083339 9.06559537,5.32321436 9.06559537,6.61369057 C9.06559537,7.90416678 8.0332144,8.93654774 6.74273819,8.93654774 L6.74273819,8.93654774 Z" id="pin-icon"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+              </i>
+                &nbsp;&nbsp;&nbsp; Add Report/Suggestion Point
               </a>
               <br />
 
@@ -358,7 +394,7 @@
               </select>
             </label>
           </div>
-          <ion-item ng-click="postComment(comment)">
+          <ion-item ng-click="postComment(comment); comment">
             <h2 class="floatingDetail">Submit {{comment.type}}</h2>
           </ion-item>
         </ion-item>

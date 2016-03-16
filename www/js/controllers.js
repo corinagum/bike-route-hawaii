@@ -55,6 +55,13 @@
       markerColor: 'black',
       shape: 'circle',
       prefix : 'fa'
+    },
+    reportIcon: {
+      type: 'extraMarker',
+      icon: 'fa-pencil-square-o',
+      markerColor: 'red',
+      shape: 'circle',
+      prefix : 'fa'
     }
   });
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
@@ -248,7 +255,16 @@
 
   // FIND POINTS ACCORDING TO FILTERS
   $scope.setPinsWithinRadius = function(){
-    $scope.markers = {userMarker: this.markers.userMarker};
+    if($scope.markers.hasOwnProperty("reportPoint")){
+        $scope.markers = {
+        userMarker : $scope.markers.userMarker,
+        reportPoint : $scope.markers.reportPoint
+        };
+    } else {
+      $scope.markers = {
+        userMarker : $scope.markers.userMarker
+      };
+    }
     PointService.getPointsInRadius($scope.radius, $scope.markers.userMarker.lat, $scope.markers.userMarker.lng)
       .then(function(data){
         $scope.setMarkersReturned(data);
@@ -324,9 +340,16 @@
       $ionicLoading.hide();
       var leafEvent = args.leafletEvent;
       $ionicLoading.hide();
-      $scope.markers = {
-        userMarker : $scope.markers.userMarker
-      };
+      if($scope.markers.hasOwnProperty("reportPoint")){
+        $scope.markers = {
+        userMarker : $scope.markers.userMarker,
+        reportPoint : $scope.markers.reportPoint
+        };
+      } else {
+        $scope.markers = {
+          userMarker : $scope.markers.userMarker
+        };
+      }
       if( routeOnMap === false ) {
         leafletData.getMap().then(function(map){
           var bounds = map.getBounds();
@@ -339,12 +362,49 @@
     }
   });
 
+  // IF CREATING NEW REPORT/SUGGEST POINT
+  $scope.showReportControl = false;
+
+  // ADD REPORT/SUGGESTION POINT
+  $scope.createReportPoint = function(){
+    $scope.showReportControl = true;
+    var reportPoint = {
+        lat: $scope.center.lat,
+        lng: $scope.center.lng,
+        message: "drag to report/suggest point",
+        draggable: true,
+        icon : $scope.reportIcon
+      };
+    $scope.markers.reportPoint = reportPoint;
+  };
+
+  // CANCEL REPORT POINT
+  $scope.cancelReportPoint = function(){
+    $scope.showReportControl = false;
+    delete $scope.markers.reportPoint;
+  };
+
   // COMMENT SUBMIT FUNCTION
   $scope.postComment = function(comment){
-    CommentService.addComment(comment, $scope.currentMarkerProperties.id)
-    .then(function(data){
-      $scope.closeModal(5);
-    });
+    if($scope.showReportControl){
+      PointService.addPoint({
+        type : "ReportSuggest",
+        lat : $scope.markers.reportPoint.lat,
+        long : $scope.markers.reportPoint.lng
+      })
+      .then(function(data){
+        CommentService.addComment(comment, data.data.newId)
+        .then(function(data){
+          $scope.cancelReportPoint();
+          $scope.closeModal(5);
+        });
+      });
+    } else {
+      CommentService.addComment(comment, $scope.currentMarkerProperties.id)
+      .then(function(data){
+        $scope.closeModal(5);
+      });
+    }
   };
 
   //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML

@@ -30,44 +30,9 @@ router.post('/', function(req,res){
     votesCounter : 0
   })
   .then(function(data){
-    var geoJSONHistory = {
-      "type" : "FeatureCollection",
-      "features" : []
-    };
-    var geoJSONBikeShare = {
-      "type" : "FeatureCollection",
-      "features" : []
-    };
-    var geoJSONBikeRack = {
-      "type" : "FeatureCollection",
-      "features" : []
-    };
-    for(var i=0; i<data.length; i++){
-      var point = {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [ data[i].long, data[i].lat, 0]
-        },
-        "properties" : data[i]
-      };
-      if(data[i].type === "OldHawaiiImage"){
-        geoJSONHistory.features.push(point);
-      }
-      if(data[i].type === "BikeShare"){
-        geoJSONBikeShare.features.push(point);
-      }
-      if(data[i].type === "bikeRack"){
-        geoJSONBikeRack.features.push(point);
-      }
-
-    }
     res.send({
       success : true,
-      numberOfResults : data.length,
-      geoJSONHistory : geoJSONHistory,
-      geoJSONBikeShare : geoJSONBikeShare,
-      geoJSONBikeRack : geoJSONBikeRack
+      newId : data.dataValues.id
     });
   });
 });
