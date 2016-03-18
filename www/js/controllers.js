@@ -66,39 +66,51 @@
     if(!isCordovaApp) {
       navigator.geolocation.getCurrentPosition(function(position){
       $ionicLoading.hide();
-
-        if(map) {
+        if(position.coords.longitude < -158.006744|| position.coords.longitude > -157.640076|| position.coords.latitude > 21.765877 || position.coords.latitude < 21.230502){
           map.panTo({
-            lat : position.coords.latitude,
-            lng : position.coords.longitude
+            lat : 21.3008900859581,
+            lng :  -157.8398036956787
           });
-        }
-        $scope.markers.userMarker = {
-          lat : position.coords.latitude,
-          lng : position.coords.longitude,
-          message : 'You are here'
-        };
-      }, handleErr, {
-        timeout : 10000,
-        enableHighAccuracy : true
-      });
-    } else {
-      $cordovaGeolocation
-        .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
-        .then(function (position) {
-          $ionicLoading.hide();
-
-          if(map.panTo) {
+        } else {
+          if(map) {
             map.panTo({
               lat : position.coords.latitude,
               lng : position.coords.longitude
             });
           }
           $scope.markers.userMarker = {
-          lat : position.coords.latitude,
-          lng : position.coords.longitude,
-          message : 'You are here'
-        };
+            lat : position.coords.latitude,
+            lng : position.coords.longitude,
+            message : 'You are here'
+          };
+        }
+        }, handleErr, {
+          timeout : 10000,
+          enableHighAccuracy : true
+        });
+    } else {
+      $cordovaGeolocation
+        .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
+        .then(function (position) {
+          $ionicLoading.hide();
+          if(position.coords.longitude < -158.006744|| position.coords.longitude > -157.640076|| position.coords.latitude > 21.765877 || position.coords.latitude < 21.230502){
+            map.panTo({
+              lat : 21.3008900859581,
+              lng :  -157.8398036956787
+            });
+          } else {
+            if(map) {
+              map.panTo({
+                lat : position.coords.latitude,
+                lng : position.coords.longitude
+              });
+            }
+            $scope.markers.userMarker = {
+              lat : position.coords.latitude,
+              lng : position.coords.longitude,
+              message : 'You are here'
+            };
+          }
         }, handleErr);
     }
   }
