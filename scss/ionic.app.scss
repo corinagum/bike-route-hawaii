@@ -208,20 +208,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   box-shadow: 1px 1px 3px 1px rgba(214,211,214,1);
 }
 
-#swipeWords {
-  // margin-left: 210px;
-  color: #9E9E9D;
-  font-style: italic;
-  padding: 5px;
-  width: 100%;
-  text-align: center;
-}
-
-#swipeRight {
-  float: right;
-  padding-top: 15px;
-}
-
 .item-complex .item-content {
   padding: 7px;
 }
@@ -313,6 +299,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .list {
   background-color: $stable;
+  background-color: yellow;
   a {
     margin: 0px 15px;
     box-shadow: 1px 1px 3px 1px lighten($dark,20%);
