@@ -1,7 +1,7 @@
 <ion-view ng-controller="MapCtrl" title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
   <ion-content data-tap-disabled="true">
-    <div class="view-filter filter-button">
-      <i class="icon ion-gear-a custom-icon btn-floating btn-large" ng-click="openModal(1)"></i>
+    <div class="view-filter">
+      <i class="icon ion-gear-a custom-icon" ng-click="openModal(1)"></i>
     </div>
     <div ng-click="findCenter()">
       <div id="locate-before-start" ng-class="{'showBlocker': !foundLocation, 'hideBlocker': foundLocation}">
@@ -177,29 +177,31 @@
 
 
   <script id="bikeShareList.html" type="text/ng-template">
-    <div class="modal">
-      <ion-header-bar class="bar bar-header">
-        <h1 class="title" >{{stationCount}} Bike Share near you</h1>
-        <button class="button icon ion-arrow-down-b" ng-click="closeModal(2)"></button>
-      </ion-header-bar>
-        <ion-content>
-        <ul class="collapsible" data-collapsible="accordion" watch>
-            <li>
-              <div class="collapsible-header" ng-click="openAccordian()" ></i>First</div>
-              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-            </li>
-            <li>
-              <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet2.</p></div>
-            </li>
-            <li>
-              <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet3.</p></div>
-            </li>
-          </ul>
-        </ion-content>
-    </div>
-  </script>
+      <div class="modal">
+        <ion-header-bar class="bar bar-header">
+          <h1 class="title" >{{stationCount}} Bike Share near you</h1>
+          <button class="button icon ion-arrow-down-b" ng-click="closeModal(2)"></button>
+        </ion-header-bar>
+
+
+          <ion-content>
+            <ion-list show-delete="false" can-swipe="true" class="itemInList">
+              <br />
+              <div class="list" ng-repeat="item in bikesharePoints" class="eachItem" class="eachItem" >
+                <a class="item item-thumbnail-left item-button-right" href="#">
+                  <img class="bshLogo" ng-src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(2);">
+                  <h2 ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(2);">{{ item.name }}</h2>
+                  <p ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(2);">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</p>
+                  <button class="button item-button" ng-click="getDirections({{ item.lat }}, {{ item.long }})"><i class="icon ion-navigate"></i></button>
+                </a>
+              </div>
+            </ion-list>
+          </ion-content>
+
+
+
+      </div>
+    </script>
 
 
 

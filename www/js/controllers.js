@@ -377,12 +377,6 @@
     }
   });
 
-  $scope.openAccordian = function () {
-    $('.collapsible').collapsible({
-      accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-    });
-  };
-
   //////// BEGINNIG of MODAL ////////
   $ionicModal.fromTemplateUrl('filter-modal.html', {
       id       : '1',
