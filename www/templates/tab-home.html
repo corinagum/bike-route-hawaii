@@ -4,9 +4,9 @@
       <i class="icon ion-gear-a custom-icon" ng-click="openModal(1)"></i>
     </div>
     <div ng-click="findCenter()">
-      <div id="locate-before-start" ng-class="{'showBlocker': !foundLocation, 'hideBlocker': foundLocation}">
+      <!-- <div id="locate-before-start" ng-class="{'showBlocker': !foundLocation, 'hideBlocker': foundLocation}">
           tap to find location
-      </div>
+      </div> -->
     </div>
 
     <leaflet lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
