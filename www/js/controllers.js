@@ -73,39 +73,51 @@
     if(!isCordovaApp) {
       navigator.geolocation.getCurrentPosition(function(position){
       $ionicLoading.hide();
-
-        if(map) {
+        if(position.coords.longitude < -158.006744|| position.coords.longitude > -157.640076|| position.coords.latitude > 21.765877 || position.coords.latitude < 21.230502){
           map.panTo({
-            lat : position.coords.latitude,
-            lng : position.coords.longitude
+            lat : 21.3008900859581,
+            lng :  -157.8398036956787
           });
-        }
-        $scope.markers.userMarker = {
-          lat : position.coords.latitude,
-          lng : position.coords.longitude,
-          message : 'You are here'
-        };
-      }, handleErr, {
-        timeout : 10000,
-        enableHighAccuracy : true
-      });
-    } else {
-      $cordovaGeolocation
-        .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
-        .then(function (position) {
-          $ionicLoading.hide();
-
-          if(map.panTo) {
+        } else {
+          if(map) {
             map.panTo({
               lat : position.coords.latitude,
               lng : position.coords.longitude
             });
           }
           $scope.markers.userMarker = {
-          lat : position.coords.latitude,
-          lng : position.coords.longitude,
-          message : 'You are here'
-        };
+            lat : position.coords.latitude,
+            lng : position.coords.longitude,
+            message : 'You are here'
+          };
+        }
+        }, handleErr, {
+          timeout : 10000,
+          enableHighAccuracy : true
+        });
+    } else {
+      $cordovaGeolocation
+        .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
+        .then(function (position) {
+          $ionicLoading.hide();
+          if(position.coords.longitude < -158.006744|| position.coords.longitude > -157.640076|| position.coords.latitude > 21.765877 || position.coords.latitude < 21.230502){
+            map.panTo({
+              lat : 21.3008900859581,
+              lng :  -157.8398036956787
+            });
+          } else {
+            if(map) {
+              map.panTo({
+                lat : position.coords.latitude,
+                lng : position.coords.longitude
+              });
+            }
+            $scope.markers.userMarker = {
+              lat : position.coords.latitude,
+              lng : position.coords.longitude,
+              message : 'You are here'
+            };
+          }
         }, handleErr);
     }
   }
@@ -245,10 +257,11 @@
   };
 
   // UTILITY FUNCTION FOR SETTING MARKERS WHEN RETURNED FROM API REQUEST
+  $scope.bikesharePoints = [];
+  $scope.landmarkPoints = [];
+  $scope.bikeRackPoints = [];
+
   $scope.setMarkersReturned = function(data){
-    $scope.bikesharePoints = [];
-    $scope.landmarkPoints = [];
-    $scope.bikeRackPoints = [];
     $scope.createMarkers(data.data.geoJSONBikeShare.features, 'bikeShare');
     $scope.createMarkers(data.data.geoJSONHistory.features, 'landmark');
     $scope.createMarkers(data.data.geoJSONBikeRack.features, 'bikeRack');
@@ -287,40 +300,11 @@
         $scope.setMarkersReturned(data);
     });
 
-    //GET DIRECTION FROM USER TO POINT
-    $scope.getDirections = function(desLat, desLong){
-      if( routeOnMap === true ) {
-        $scope.removeRouting();
-        routeOnMap = false;
-      }
-      $scope.markers = {};
-      leafletData.getMap()
-        .then(function(map){
-          $scope.routingControl = L.Routing.control({
-            waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( desLat, desLong)],
-            show: false,
-            routeWhileDragging: true,
-            fitSelectedRoutes : true,
-            position: 'topleft'}).addTo(map);
-          $scope.closeModal(2);
-          $scope.closeModal(4);
-          routeOnMap = true;
-          });
-    };
   });
 
   //CHANGES CURRENT MARKER PROPERTIES BASED ON WHAT ITEM IS CLICKED IN LIST MODAL
   $scope.changeCurrentMarker = function(item){
     $scope.currentMarkerProperties = item;
-  };
-
-  //TO REMOVE CURRENT ROUTE DISPLAYED ON MAP
-  $scope.removeRouting = function() {
-    leafletData.getMap()
-    .then(function(map) {
-      map.removeControl($scope.routingControl);
-      routeOnMap = false;
-    });
   };
 
   // SWITCH FOR TURNING DRAG ON AND OFF
