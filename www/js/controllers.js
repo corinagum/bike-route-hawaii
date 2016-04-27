@@ -70,7 +70,7 @@
   document.addEventListener("deviceready", updateUserLocMarker, false);
 
   function updateUserLocMarker (map) {
-    if(!isCordovaApp) {
+    if(isCordovaApp) {
       navigator.geolocation.getCurrentPosition(function(position){
       $ionicLoading.hide();
         if(position.coords.longitude < -158.006744|| position.coords.longitude > -157.640076|| position.coords.latitude > 21.765877 || position.coords.latitude < 21.230502){
@@ -224,6 +224,7 @@
 
   // LOOPS THROUGH DATA RETURNED TO CHECK ITS TYPE AND IF IT SHOULD BE ASSIGNED A MARKER
   $scope.createMarkers = function(array, name){
+
     for(var i = 0; i < array.length; i++){
       var pointDetail;
       var showMarker;
