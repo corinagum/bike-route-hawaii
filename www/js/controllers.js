@@ -250,10 +250,11 @@
   };
 
   // UTILITY FUNCTION FOR SETTING MARKERS WHEN RETURNED FROM API REQUEST
+  $scope.bikesharePoints = [];
+  $scope.landmarkPoints = [];
+  $scope.bikeRackPoints = [];
+
   $scope.setMarkersReturned = function(data){
-    $scope.bikesharePoints = [];
-    $scope.landmarkPoints = [];
-    $scope.bikeRackPoints = [];
     $scope.createMarkers(data.data.geoJSONBikeShare.features, 'bikeShare');
     $scope.createMarkers(data.data.geoJSONHistory.features, 'landmark');
     $scope.createMarkers(data.data.geoJSONBikeRack.features, 'bikeRack');

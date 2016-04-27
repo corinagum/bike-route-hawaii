@@ -9879,17 +9879,6 @@ a.button {
   margin: 10px 15px 10px 15px;
   box-shadow: 1px 1px 3px 1px #d6d3d6; }
 
-#swipeWords {
-  color: #9E9E9D;
-  font-style: italic;
-  padding: 5px;
-  width: 100%;
-  text-align: center; }
-
-#swipeRight {
-  float: right;
-  padding-top: 15px; }
-
 .item-complex .item-content {
   padding: 7px; }
 
