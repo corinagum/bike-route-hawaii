@@ -217,6 +217,11 @@
     if ( rad === 50000) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = true; }
   };
 
+ // UTILITY FUNCTION FOR SETTING MARKERS WHEN RETURNED FROM API REQUEST
+  $scope.bikesharePoints = [];
+  $scope.landmarkPoints = [];
+  $scope.bikeRackPoints = [];
+
   // LOOPS THROUGH DATA RETURNED TO CHECK ITS TYPE AND IF IT SHOULD BE ASSIGNED A MARKER
   $scope.createMarkers = function(array, name){
     for(var i = 0; i < array.length; i++){
@@ -256,10 +261,7 @@
     }
   };
 
-  // UTILITY FUNCTION FOR SETTING MARKERS WHEN RETURNED FROM API REQUEST
-  $scope.bikesharePoints = [];
-  $scope.landmarkPoints = [];
-  $scope.bikeRackPoints = [];
+
 
   $scope.setMarkersReturned = function(data){
     $scope.createMarkers(data.data.geoJSONBikeShare.features, 'bikeShare');
