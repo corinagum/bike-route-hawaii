@@ -192,7 +192,6 @@
                   <img class="bshLogo" ng-src="https://pbs.twimg.com/profile_images/620747721574514688/IAjDd0oc.jpg" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(2);">
                   <h2 ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(2);">{{ item.name }}</h2>
                   <p ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(2);">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</p>
-                  <button class="button item-button" ng-click="getDirections({{ item.lat }}, {{ item.long }})"><i class="icon ion-navigate"></i></button>
                 </a>
               </div>
             </ion-list>
@@ -221,7 +220,6 @@
                 <img class="bshLogo" ng-src="{{ item.photolink }}" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);">
                 <h2 ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);">{{ item.name }}</h2>
                 <p ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</p>
-                <button class="button item-button" ng-click="getDirections({{ item.lat }}, {{ item.long }})"><i class="icon ion-navigate"></i></button>
               </a>
             </div>
           </ion-list>
@@ -243,7 +241,6 @@
                 <img class="bshLogo" src="img/bike-assets/bikerack-icon-gray.svg" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(6);">
                 <h2 ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(6);">{{ item.description }}</h2>
                 <p ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(6);">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</p>
-                <button class="button item-button" ng-click="getDirections({{ item.lat }}, {{ item.long }}); closeModal(6)"><i class="icon ion-navigate"></i></button>
               </a>
             </div>
           </ion-list>
