@@ -272,40 +272,11 @@
         $scope.setMarkersReturned(data);
     });
 
-    //GET DIRECTION FROM USER TO POINT
-    $scope.getDirections = function(desLat, desLong){
-      if( routeOnMap === true ) {
-        $scope.removeRouting();
-        routeOnMap = false;
-      }
-      $scope.markers = {};
-      leafletData.getMap()
-        .then(function(map){
-          $scope.routingControl = L.Routing.control({
-            waypoints: [L.latLng( leafEvent.latitude, leafEvent.longitude), L.latLng( desLat, desLong)],
-            show: false,
-            routeWhileDragging: true,
-            fitSelectedRoutes : true,
-            position: 'topleft'}).addTo(map);
-          $scope.closeModal(2);
-          $scope.closeModal(4);
-          routeOnMap = true;
-          });
-    };
   });
 
   //CHANGES CURRENT MARKER PROPERTIES BASED ON WHAT ITEM IS CLICKED IN LIST MODAL
   $scope.changeCurrentMarker = function(item){
     $scope.currentMarkerProperties = item;
-  };
-
-  //TO REMOVE CURRENT ROUTE DISPLAYED ON MAP
-  $scope.removeRouting = function() {
-    leafletData.getMap()
-    .then(function(map) {
-      map.removeControl($scope.routingControl);
-      routeOnMap = false;
-    });
   };
 
   // SWITCH FOR TURNING DRAG ON AND OFF
