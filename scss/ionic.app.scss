@@ -46,6 +46,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     }
 }
 
+h1.title {
+  color: $balanced;
+}
+
+.bar-header {
+  background-color: $dark;
+}
 #locate-before-start{
   z-index: 1000;
   height: 100%;

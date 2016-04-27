@@ -9751,6 +9751,12 @@ a.button {
     width: 25%;
     text-align: center; }
 
+h1.title {
+  color: #76CE95; }
+
+.bar-header {
+  background-color: #181B1E; }
+
 #locate-before-start {
   z-index: 1000;
   height: 100%;
