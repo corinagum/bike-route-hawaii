@@ -86,8 +86,14 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
     url: '/home',
     views: {
       'tab-home': {
-        templateUrl: 'templates/tab-home.html',
-        controller: 'MapCtrl'
+        controller: 'MapCtrl',
+        templateUrl: function() {
+          console.log("consoleLogging", !window.cordova);
+          if (!window.cordova) {
+            return 'templates/tab-webView.html';
+          }
+            return 'templates/tab-home.html';
+        }
       }
     }
   })

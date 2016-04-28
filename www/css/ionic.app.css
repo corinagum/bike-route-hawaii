@@ -9752,6 +9752,17 @@ div.title.title-left.header-item {
     width: 100%;
     text-align: center; }
 
+.footerIcons .ng-hide-remove {
+  animation: fading-in 1s ease; }
+
+@keyframes fading-in {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 0.3; }
+  100% {
+    opacity: 1; } }
+
 h1.title {
   color: #76CE95; }
 
@@ -10008,12 +10019,13 @@ h1.title {
 
 .fa-star {
   color: #ffc900; }
-
-.fa-star:hover {
-  color: #ffc900; }
+  .fa-star:hover {
+    color: #ffc900; }
 
 .fa-exclamation-circle {
   color: #ef473a; }
+  .fa-exclamation-circle:hover {
+    color: #ef473a; }
 
-.fa-exclamation-circle:hover {
-  color: #ef473a; }
+.fa-pencil-square-o:before {
+  margin-left: 2.5px; }

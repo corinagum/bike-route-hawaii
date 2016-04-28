@@ -47,6 +47,16 @@ div.title.title-left.header-item {
     }
 }
 
+.footerIcons .ng-hide-remove {
+  animation: fading-in 1s ease;
+}
+
+@keyframes fading-in {
+  0% {opacity: 0;}
+  50% {opacity: 0.3;}
+  100% {opacity: 1;}
+}
+
 
 h1.title {
   color: $balanced;
@@ -370,16 +380,20 @@ h1.title {
 }
 .fa-star {
   color:$energized;
-}
-.fa-star:hover {
-  color:$energized;
+
+  &:hover {
+    color:$energized;
+  }
 }
 
 .fa-exclamation-circle {
   color:$assertive;
-}
-.fa-exclamation-circle:hover {
+
+  &:hover {
   color:$assertive;
+  }
 }
 
-
+.fa-pencil-square-o:before {
+  margin-left: 2.5px;
+}
