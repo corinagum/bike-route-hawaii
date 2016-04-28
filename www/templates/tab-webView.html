@@ -3,28 +3,16 @@
     <!-- <div class="view-filter"> -->
       <!-- <i class="icon ion-gear-a custom-icon" ng-click="openModal(1)"></i> -->
     <!-- </div> -->
-    <div ng-click="findCenter()">
-      <!-- <div id="locate-before-start" ng-class="{'showBlocker': !foundLocation, 'hideBlocker': foundLocation}">
-          tap to find location
-      </div> -->
-    </div>
+
+    <div class="sub-header"> HELLO </div>
 
     <leaflet lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
   </ion-content>
 
     <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
 
-      <!-- <div> -->
-        <!-- <button class="initialLocate" ng-click="findCenter(); locate=false; findMe=true; bike=true; land=true; rack=true;" ng-show="locate">Locate me</button> -->
-      <!-- </div> -->
-      <div>
-        <button ng-click="findCenter(); bike=true; land=true; rack=true;" class="button" ng-show="findMe">
-          <img class="title-image bottom-tab-nav-img" src="img/bike-assets/map-icon-green.svg" />
-        </button>
-      </div>
-
       <div class="footerIcons">
-        <button ng-click="openModal(2)" class="button" ng-show="bike">
+        <bu tton ng-click="openModal(2)" class="button" ng-show="bike">
           <img class="title-image bottom-tab-nav-img" src="img/bike-assets/bike-icon-green.svg" />
         </button>
       </div>
