@@ -9872,9 +9872,9 @@ h1.title {
     height: 100px;
     font-size: 0.8em; }
 
-.button {
+.closeModal {
   background-color: #181B1E;
-  color: #ffc900; }
+  color: #f8f8f8; }
 
 .bshLogo {
   float: left;
