@@ -9872,6 +9872,10 @@ h1.title {
     height: 100px;
     font-size: 0.8em; }
 
+.button {
+  background-color: #181B1E;
+  color: #ffc900; }
+
 .bshLogo {
   float: left;
   width: 70px;
