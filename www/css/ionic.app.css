@@ -9739,9 +9739,7 @@ a.button {
 .header-item {
   padding-top: 7px; }
 
-div.title.title-center.header-item {
-  background: url("./../img/bike-assets/nav-logo.svg") center no-repeat; }
-
+div.title.title-center.header-item,
 div.title.title-left.header-item {
   background: url("./../img/bike-assets/nav-logo.svg") center no-repeat; }
 
@@ -9751,7 +9749,7 @@ div.title.title-left.header-item {
   z-index: 1002;
   position: fixed; }
   #footer-bar div {
-    width: 25%;
+    width: 100%;
     text-align: center; }
 
 h1.title {
@@ -9816,7 +9814,7 @@ h1.title {
   border: 0px;
   height: 100%; }
   .filter-modal div {
-    background-color: #181B1E;
+    background-color: #f8f8f8;
     border: 0px; }
 
 .radius-small {

@@ -30,10 +30,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   padding-top: 7px;
 }
 
-div.title.title-center.header-item {
-  background: url("./../img/bike-assets/nav-logo.svg") center no-repeat;
-}
-
+div.title.title-center.header-item,
 div.title.title-left.header-item {
   background: url("./../img/bike-assets/nav-logo.svg") center no-repeat;
 }
@@ -45,10 +42,11 @@ div.title.title-left.header-item {
   position: fixed;
 
     div {
-      width: 25%;
+      width: 100%;
       text-align: center;
     }
 }
+
 
 h1.title {
   color: $balanced;
@@ -126,7 +124,7 @@ h1.title {
   height: 100%;
 
   div {
-    background-color: $dark;
+    background-color: $stable;
     border: 0px;
   }
 }
