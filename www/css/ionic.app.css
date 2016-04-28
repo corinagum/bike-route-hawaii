@@ -9739,7 +9739,10 @@ a.button {
 .header-item {
   padding-top: 7px; }
 
-.title.title-center.header-item {
+div.title.title-center.header-item {
+  background: url("./../img/bike-assets/nav-logo.svg") center no-repeat; }
+
+div.title.title-left.header-item {
   background: url("./../img/bike-assets/nav-logo.svg") center no-repeat; }
 
 #footer-bar {
@@ -9806,7 +9809,8 @@ h1.title {
   color: #495259; }
 
 .bottom-tab-nav-img {
-  height: 30px; }
+  height: 25px;
+  margin-top: 6px; }
 
 .filter-modal {
   border: 0px;

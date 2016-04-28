@@ -69,6 +69,26 @@
 
   document.addEventListener("deviceready", updateUserLocMarker, false);
 
+//EMAIL COMPOSER
+
+  $scope.sendEmail= function() {
+        if(window.plugins && window.plugins.emailComposer) {
+            window.plugins.emailComposer.showEmailComposerWithCallback(function(result) {
+                console.log("Response -> " + result);
+            },
+            "Feedback for your App", // Subject
+            "",                      // Body
+            ["test@example.com"],    // To
+            null,                    // CC
+            null,                    // BCC
+            false,                   // isHTML
+            null,                    // Attachments
+            null);                   // Attachment Data
+        }
+    };
+//END OF EMAIL COMPOSER
+
+
   function updateUserLocMarker (map) {
     if(isCordovaApp) {
       navigator.geolocation.getCurrentPosition(function(position){

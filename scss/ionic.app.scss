@@ -30,7 +30,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   padding-top: 7px;
 }
 
-.title.title-center.header-item {
+div.title.title-center.header-item {
+  background: url("./../img/bike-assets/nav-logo.svg") center no-repeat;
+}
+
+div.title.title-left.header-item {
   background: url("./../img/bike-assets/nav-logo.svg") center no-repeat;
 }
 
@@ -113,7 +117,8 @@ h1.title {
 }
 
 .bottom-tab-nav-img {
-  height: 30px;
+  height: 25px;
+  margin-top: 6px;
 }
 
 .filter-modal {
