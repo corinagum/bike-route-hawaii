@@ -10044,3 +10044,18 @@ h1.title {
   background-repeat: no-repeat;
   max-width: 100%;
   background-size: cover; }
+
+.platform-browser .sub-nav {
+  background-color: pink; }
+
+.platform-browser .left-part-sub {
+  border: 1px solid blue; }
+
+.platform-browser .fa-envelope-o {
+  color: red; }
+
+.platform-browser .fa-facebook {
+  color: #003366; }
+
+.platform-browser .fa-twitter {
+  color: #55ACEE; }
