@@ -1,28 +1,28 @@
 <ion-view ng-controller="MapCtrl" title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
   <ion-content data-tap-disabled="true">
     <div class="bar bar-subheader">
-      <div>
+      <!-- <div> -->
         <div class="row sub-nav">
-         <div class="col">
-            <div class="row l9 left-part-sub center">
-              <div class="col s1 m3 l3 truncate waves-effect hvr-underline-from-center" id="browser-about">About</div>
+          <div class="col col-40">
+            <div class="row left-part-sub center">
+              <div class="col truncate waves-effect hvr-underline-from-center" id="browser-about">About</div>
 
-              <a class="col s1 m3 l3 truncate waves-effect hvr-underline-from-center" ng-click="findCenter()" >Locate Me</a>
+              <a class="col truncate waves-effect hvr-underline-from-center" ng-click="findCenter()" >Locate Me</a>
 
-              <a class="col s1 m5 l5 truncate waves-effect hvr-underline-from-center" ng-click="createReportPoint()">Suggest a Station</a>
+              <a class="col truncate waves-effect hvr-underline-from-center" ng-click="createReportPoint()">Suggest a Station</a>
 
-              <a href="http://www.bikesharehawaii.org/about/" class="col s1 m5 l5 truncate waves-effect hvr-underline-from-center">Learn More</a>
+              <a href="http://www.bikesharehawaii.org/about/" class="col truncate waves-effect hvr-underline-from-center">Learn More</a>
             </div>
-         </div>
-         <div class="col l3 truncate">
-           <div class="right">
-            <a href=""><i class="fa fa-envelope-o" aria-hidden="true"></i></a>&nbsp&nbsp
-            <a href="https://www.facebook.com/bikesharehawaii/"><i class="fa fa-facebook" aria-hidden="true"></i></a>&nbsp&nbsp
-            <a href="https://twitter.com/search?q=bikeshare%20hawaii&src=typd"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-           </div>
-         </div>
+          </div>
+          <div class="col truncate">
+            <div class="right">
+              <a href=""><i class="fa fa-envelope-o" aria-hidden="true"></i></a>&nbsp&nbsp
+              <a href="https://www.facebook.com/bikesharehawaii/"><i class="fa fa-facebook" aria-hidden="true"></i></a>&nbsp&nbsp
+              <a href="https://twitter.com/search?q=bikeshare%20hawaii&src=typd"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </div>
+          </div>
         </div>
-      </div>
+      <!-- </div> -->
     </div>
 
 
@@ -47,7 +47,7 @@
       </a>
       <a href="#!" class="collection-item active">Nearby Bike Stations</a>
       <a href="#!" class="collection-item">Alvin</a>
-      <a href="#!" class="collection-item">Places
+      <a href="#!" class="collection-item">Places Nearby</a>
     </div>
 
     <!-- <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">

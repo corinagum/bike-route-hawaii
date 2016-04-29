@@ -30,7 +30,7 @@
   }
 
   .waves-effect {
-    padding: 8px;
+    padding: 7.7px;
   }
 
   .fa-envelope-o {
@@ -95,7 +95,9 @@
   .potential-marker {
     display: flex;
   }
+
   .collection {
+    z-index: 5;
     top: 10em;
     left: 84%;
   }

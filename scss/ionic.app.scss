@@ -12,11 +12,18 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #181B1E  !default;
 */
+
+// @import url(https://fonts.googleapis.com/css?family=Quicksand);
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
+a {
+  font-family: 'Quicksand', sans-serif;
+}
 @import "www/lib/ionic/scss/ionic";
 @import "partials/browser-view";
+
 
 #map {
   width: 100%;

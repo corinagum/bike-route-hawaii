@@ -13,6 +13,9 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #181B1E  !default;
 */
+a {
+  font-family: 'Quicksand', sans-serif; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -9746,7 +9749,7 @@ a.button {
   .platform-browser .left-part-sub {
     margin-top: -8px; }
   .platform-browser .waves-effect {
-    padding: 8px; }
+    padding: 7.7px; }
   .platform-browser .fa-envelope-o {
     color: red; }
   .platform-browser .fa-facebook {
@@ -9790,6 +9793,7 @@ a.button {
   .platform-browser .potential-marker {
     display: flex; }
   .platform-browser .collection {
+    z-index: 5;
     top: 10em;
     left: 84%; }
 
