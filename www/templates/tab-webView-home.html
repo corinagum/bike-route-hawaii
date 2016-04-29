@@ -5,17 +5,16 @@
         <div class="row sub-nav">
          <div class="col">
             <div class="row l9 left-part-sub center">
-              <div class="col s1 m3 l3 truncate waves-effect">About</div>
+              <div class="col s1 m3 l3 truncate waves-effect hvr-underline-from-center" id="browser-about">About</div>
 
-              <a class="col s1 m3 l3 truncate waves-effect" ng-click="findCenter()" >Locate Me</a>
+              <a class="col s1 m3 l3 truncate waves-effect hvr-underline-from-center" ng-click="findCenter()" >Locate Me</a>
 
-              <a class="col s1 m5 l5 truncate waves-effect" ng-click="createReportPoint()">Suggest a Station</a>
+              <a class="col s1 m5 l5 truncate waves-effect hvr-underline-from-center" ng-click="createReportPoint()">Suggest a Station</a>
 
-              <a href="http://www.bikesharehawaii.org/about/" class="col s1 m5 l5 truncate waves-effect">Learn More</a>
+              <a href="http://www.bikesharehawaii.org/about/" class="col s1 m5 l5 truncate waves-effect hvr-underline-from-center">Learn More</a>
             </div>
          </div>
          <div class="col l3 truncate">
-            <img src="./../img/bike-assets/greenIconWbike.png" alt="" height="30px">&nbspPotential Bike Stations</>
            <div class="right">
             <a href=""><i class="fa fa-envelope-o" aria-hidden="true"></i></a>&nbsp&nbsp
             <a href="https://www.facebook.com/bikesharehawaii/"><i class="fa fa-facebook" aria-hidden="true"></i></a>&nbsp&nbsp
@@ -26,9 +25,10 @@
       </div>
     </div>
 
-   <!--  <div class="view-filter">
+
+    <div class="view-filter">
       <i class="icon ion-gear-a custom-icon" ng-click="openModal(1)"></i>
-    </div> -->
+    </div>
     <!-- <div ng-click="findCenter()"> -->
       <!-- <div id="locate-before-start" ng-class="{'showBlocker': !foundLocation, 'hideBlocker': foundLocation}">
           tap to find location
@@ -38,12 +38,24 @@
     <leaflet lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
   </ion-content>
 
-    <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
+    <div class="collection">
+      <a href="#!" class="collection-item">
+        <div class="potential-marker">
+          <img src="./../img/bike-assets/greenIconWbike.png" alt="" height="30px">
+          <span>Potential Bike Stations</span>
+        </div>
+      </a>
+      <a href="#!" class="collection-item active">Alvin</a>
+      <a href="#!" class="collection-item">Alvin</a>
+      <a href="#!" class="collection-item">Alvin</a>
+    </div>
+
+    <!-- <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
 
       <!-- <div> -->
         <!-- <button class="initialLocate" ng-click="findCenter(); locate=false; findMe=true; bike=true; land=true; rack=true;" ng-show="locate">Locate me</button> -->
       <!-- </div> -->
-      <div>
+      <!-- <div>
         <button ng-click="findCenter(); bike=true; land=true; rack=true;" class="button" ng-show="findMe">
           <img class="title-image bottom-tab-nav-img" src="img/bike-assets/map-icon-green.svg" />
         </button>
@@ -66,22 +78,22 @@
           <img class="title-image bottom-tab-nav-img" src="img/bike-assets/bikerack-icon-green.svg" />
         </button>
       </div>
-    </ion-footer-bar>
+    </ion-footer-bar> -->
 
 
-    <ion-footer-bar id="footer-bar" ng-show="showReportControl">
+    <div class="row" id="footer-bar2" ng-show="showReportControl">
       <div>
-        <button ng-click="openModal(5)" class="button">
+        <div ng-click="openModal(5)" class="waves-effect waves-light btn-large">
           Create Point
-        </button>
+        </div>
       </div>
 
       <div>
-        <button ng-click="cancelReportPoint()" class="button">
+        <div ng-click="cancelReportPoint()" class="waves-effect waves-light btn-large">
           Cancel
-        </button>
+        </div>
       </div>
-    </ion-footer-bar>
+    </div>
 
 <!-- filter modals -->
 
