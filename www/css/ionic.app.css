@@ -10030,5 +10030,17 @@ h1.title {
 .fa-pencil-square-o:before {
   margin-left: 2.5px; }
 
-.sub-header {
-  height: 8em; }
+.platform-browser div.title.title-center.header-item,
+.platform-browser div.title.title-left.header-item {
+  display: none; }
+
+.platform-browser .leaflet-control {
+  top: 90px; }
+
+.platform-browser .bar.bar-dark {
+  height: 88px;
+  border-bottom: 1.5px solid #FFEE07;
+  background-image: url(".././img/bike-assets/bikeShareHeader.png");
+  background-repeat: no-repeat;
+  max-width: 100%;
+  background-size: cover; }

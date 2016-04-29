@@ -400,6 +400,23 @@ h1.title {
 
 ///////// BROWSER VIEW ///////////
 
-.sub-header {
-  height: 8em;
+.platform-browser {
+
+  div.title.title-center.header-item,
+  div.title.title-left.header-item {
+    display: none;
+  }
+
+  .leaflet-control {
+    top: 90px;
+  }
+
+  .bar.bar-dark {
+    height: 88px;
+    border-bottom: 1.5px solid #FFEE07;
+    background-image: url('.././img/bike-assets/bikeShareHeader.png');
+    background-repeat: no-repeat;
+    max-width: 100%;
+    background-size: cover;
+  }
 }

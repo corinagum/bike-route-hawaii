@@ -76,14 +76,8 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
   .state('tab', {
     url: '/tab',
     abstract: true,
-    controller: 'MapCtrl',
-    templateUrl: function () {
-      console.log("WEB BROWSER", !window.cordova);
-      if (!window.cordova) {
-        return 'templates/tab-webView.html';
-      }
-        return 'templates/tabs.html';
-    }
+    templateUrl: 'templates/tabs.html',
+    controller: 'MapCtrl'
   })
 
   // Each tab has its own nav history stack:
@@ -93,7 +87,13 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
     views: {
       'tab-home': {
         controller: 'MapCtrl',
-        templateUrl:'templates/tab-home.html'
+        templateUrl: function() {
+          console.log("consoleLogging", !window.cordova);
+          if (!window.cordova) {
+            return 'templates/tab-webView-home.html';
+          }
+            return 'templates/tab-home.html';
+        }
       }
     }
   })
