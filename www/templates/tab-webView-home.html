@@ -1,24 +1,19 @@
 <ion-view ng-controller="MapCtrl" title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
   <ion-content data-tap-disabled="true">
     <div class="bar bar-subheader">
-      <!-- <div> -->
-        <div class="row sub-nav">
-          <div class="col col-40">
-            <div class="row left-part-sub center">
-              <div class="col truncate waves-effect hvr-underline-from-center" id="browser-about">About</div>
 
-              <a class="col truncate waves-effect hvr-underline-from-center" ng-click="findCenter()" >Locate Me</a>
 
-              <a class="col truncate waves-effect hvr-underline-from-center" ng-click="createReportPoint()">Suggest a Station</a>
+      <!-- SUB NAVIGATOR -->
+        <div class="sub-nav">
+          <div class="">
+            <div class="left-part-sub padding">
+              <div class="truncate waves-effect hvr-underline-from-center padding" id="browser-about">About</div>
 
-              <a href="http://www.bikesharehawaii.org/about/" class="col truncate waves-effect hvr-underline-from-center">Learn More</a>
-            </div>
-          </div>
-          <div class="col truncate">
-            <div class="right">
-              <a href=""><i class="fa fa-envelope-o" aria-hidden="true"></i></a>&nbsp&nbsp
-              <a href="https://www.facebook.com/bikesharehawaii/"><i class="fa fa-facebook" aria-hidden="true"></i></a>&nbsp&nbsp
-              <a href="https://twitter.com/search?q=bikeshare%20hawaii&src=typd"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              <a class="truncate waves-effect hvr-underline-from-center padding" ng-click="findCenter()" >Locate Me</a>
+
+              <a class="truncate waves-effect hvr-underline-from-center padding" ng-click="createReportPoint()">Suggest a Station</a>
+
+              <a href="http://www.bikesharehawaii.org/about/" class="truncate waves-effect hvr-underline-from-center padding">Learn More</a>
             </div>
           </div>
         </div>
@@ -26,19 +21,14 @@
     </div>
 
 
-    <div class="view-filter">
+    <!-- <div class="view-filter">
       <i class="icon ion-gear-a custom-icon" ng-click="openModal(1)"></i>
-    </div>
-    <!-- <div ng-click="findCenter()"> -->
-      <!-- <div id="locate-before-start" ng-class="{'showBlocker': !foundLocation, 'hideBlocker': foundLocation}">
-          tap to find location
-      </div> -->
-    <!-- </div> -->
+    </div> -->
 
     <leaflet lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
   </ion-content>
 
-    <div class="collection">
+    <!-- <div class="collection">
       <a href="#!" class="collection-item">
         <div class="potential-marker">
           <img src="./../img/bike-assets/greenIconWbike.png" alt="" height="30px">
@@ -48,7 +38,7 @@
       <a href="#!" class="collection-item active">Nearby Bike Stations</a>
       <a href="#!" class="collection-item">Alvin</a>
       <a href="#!" class="collection-item">Places Nearby</a>
-    </div>
+    </div> -->
 
     <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
 
@@ -78,6 +68,13 @@
           <img class="title-image bottom-tab-nav-img" src="img/bike-assets/bikerack-icon-green.svg" />
         </button>
       </div> -->
+      <div class="truncate">
+        <div class="center">
+          <a href=""><i class="fa fa-envelope-o" aria-hidden="true"></i></a>&nbsp&nbsp
+          <a href="https://www.facebook.com/bikesharehawaii/"><i class="fa fa-facebook" aria-hidden="true"></i></a>&nbsp&nbsp
+          <a href="https://twitter.com/search?q=bikeshare%20hawaii&src=typd"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        </div>
+      </div>
     </ion-footer-bar>
 
 
