@@ -593,7 +593,8 @@
 
 
   // BROWSER CONTROLLERS
-  $scope.isCollapsed = false;
+  $scope.isCollapsed = true;
+  $scope.isSuggestCollapsed = true;
 
 
 //////// end of controller

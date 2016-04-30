@@ -9751,7 +9751,7 @@ a.button {
   .platform-browser .left-part-sub {
     margin-top: -8px; }
   .platform-browser .waves-effect {
-    padding: 7.7px; }
+    padding: 16px 9px 9px 9px; }
   .platform-browser .fa-envelope-o {
     color: red; }
   .platform-browser .fa-facebook {
@@ -9759,7 +9759,8 @@ a.button {
   .platform-browser .fa-twitter {
     color: #55ACEE; }
   .platform-browser a {
-    color: #181B1E; }
+    color: #181B1E;
+    text-decoration: none; }
   .platform-browser .hvr-underline-from-center {
     display: inline-block;
     vertical-align: middle;
@@ -9798,17 +9799,11 @@ a.button {
   .platform-browser #footer-bar {
     background-color: #f8f8f8;
     border-top: 1px solid #FFEE07; }
-  .platform-browser #browser-about:hover #about-sub {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 8em;
-    background-color: yellow;
-    z-index: 10;
-    left: 0;
-    top: 5em; }
-  .platform-browser #about-sub {
-    display: none; }
+  .platform-browser .suggestDiv {
+    justify-content: space-around; }
+  .platform-browser .well {
+    margin: auto;
+    width: 70%; }
 
 #map {
   width: 100%;

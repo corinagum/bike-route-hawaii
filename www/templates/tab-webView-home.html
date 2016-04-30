@@ -8,25 +8,48 @@
 
           <div class="center">
 
-            <div class="left-part-sub padding">
+            <div class="left-part-sub">
 
-            <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
-              <hr>
-              <div uib-collapse="isCollapsed">
-                <div class="well well-lg">Some content</div>
-              </div>
+              <div class="truncate waves-effect hvr-underline-from-center padding" id="browser-about" ng-click="isCollapsed = !isCollapsed"><span>About</span></div>
 
-              <div class="truncate waves-effect hvr-underline-from-center padding" id="browser-about"><span>About</span>
+              <a class="truncate waves-effect hvr-underline-from-center padding" ng-click="createReportPoint(); isSuggestCollapsed = false">Suggest a Station</a>
 
-                <div id="about-sub">
-                  <div>Hello world</div>
-                </div>
-              </div>
-              <a class="truncate waves-effect hvr-underline-from-center padding" ng-click="findCenter()" >Locate Me</a>
+              <a class="truncate waves-effect hvr-underline-from-center padding" ng-click="findCenter()">Locate Me</a>
 
-              <a class="truncate waves-effect hvr-underline-from-center padding" ng-click="createReportPoint()">Suggest a Station</a>
 
               <a href="http://www.bikesharehawaii.org/about/" class="truncate waves-effect hvr-underline-from-center padding">Learn More</a>
+            </div>
+
+            <div uib-collapse="isCollapsed">
+              <div class="well">
+                <div>Detailed Intructions</div>
+                <div>Detailed Intructions</div>
+                <div>Detailed Intructions</div>
+                <div>Detailed Intructions</div>
+                <div>Detailed Intructions</div>
+              </div>
+            </div>
+
+            <div uib-collapse="isSuggestCollapsed">
+
+                <div class="well center">
+                    <span>Drag marker to desired location. When you have chosen your spot, click on 'Create Point' to save.</span>
+                    <hr>
+                  <div class="row suggestDiv">
+                    <div>
+                      <button ng-click="openModal(5)" class="button">
+                        Create Point
+                      </button>
+                    </div>
+
+                    <div>
+                      <button ng-click="cancelReportPoint(); isSuggestCollapsed = true" class="button">
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
             </div>
 
           </div>
@@ -105,7 +128,7 @@
 
 
 
-    <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
+    <ion-footer-bar id="footer-bar" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
     <!-- SOCIAL ICONS -->
       <div class="right">
         <div class="">
@@ -118,19 +141,9 @@
     </ion-footer-bar>
 
 
-    <ion-footer-bar id="footer-bar" ng-show="showReportControl">
-      <div>
-        <button ng-click="openModal(5)" class="button">
-          Create Point
-        </button>
-      </div>
+    <!-- <ion-footer-bar id="footer-bar" ng-show="showReportControl">
 
-      <div>
-        <button ng-click="cancelReportPoint()" class="button">
-          Cancel
-        </button>
-      </div>
-    </ion-footer-bar>
+    </ion-footer-bar> -->
 
 
 
