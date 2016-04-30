@@ -24,6 +24,10 @@
     // background-color: pink;
   }
 
+  .bar-subheader {
+    border-bottom: 1px solid #FFEE07;
+  }
+
   .left-part-sub {
     // border: 1px solid blue;
     margin-top: -8px;
@@ -100,6 +104,11 @@
     z-index: 5;
     top: 10em;
     left: 84%;
+  }
+
+  #footer-bar {
+    background-color: $stable;
+    border-top: 1px solid #FFEE07;
   }
 }
 

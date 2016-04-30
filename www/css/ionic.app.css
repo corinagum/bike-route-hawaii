@@ -9746,6 +9746,8 @@ a.button {
     background-repeat: no-repeat;
     max-width: 100%;
     background-size: cover; }
+  .platform-browser .bar-subheader {
+    border-bottom: 1px solid #FFEE07; }
   .platform-browser .left-part-sub {
     margin-top: -8px; }
   .platform-browser .waves-effect {
@@ -9796,6 +9798,9 @@ a.button {
     z-index: 5;
     top: 10em;
     left: 84%; }
+  .platform-browser #footer-bar {
+    background-color: #f8f8f8;
+    border-top: 1px solid #FFEE07; }
 
 #map {
   width: 100%;
