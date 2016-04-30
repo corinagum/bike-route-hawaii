@@ -9799,11 +9799,22 @@ a.button {
   .platform-browser #footer-bar {
     background-color: #f8f8f8;
     border-top: 1px solid #FFEE07; }
+  .platform-browser .formWrapper {
+    overflow: auto;
+    max-height: 40em; }
+  .platform-browser .suggestWrapper {
+    max-width: 30%;
+    height: 5em;
+    position: absolute;
+    right: 20px;
+    top: 5em; }
   .platform-browser .suggestDiv {
     justify-content: space-around; }
   .platform-browser .well {
     margin: auto;
-    width: 70%; }
+    background-color: rgba(255, 255, 255, 0.82); }
+  .platform-browser .modal-backdrop, .platform-browser .modal-backdrop-bg {
+    background-color: rgba(33, 34, 34, 0.4); }
 
 #map {
   width: 100%;

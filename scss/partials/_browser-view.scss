@@ -99,17 +99,30 @@
     border-top: 1px solid #FFEE07;
   }
 
+  .formWrapper {
+    overflow: auto;
+    max-height: 40em;
+  }
+
+  .suggestWrapper {
+    max-width: 30%;
+    height: 5em;
+    position: absolute;
+    right: 20px;
+    top: 5em;
+  }
   .suggestDiv {
     justify-content: space-around;
   }
 
   .well {
     margin: auto;
-    width: 70%;
+    background-color: rgba(255, 255, 255, 0.82);
   }
 
   .modal-backdrop, .modal-backdrop-bg {
-    background-color: rgba(33, 34, 34, 0.1);
+    background-color: rgba(33, 34, 34, 0.4);
+  }
 }
 
 //////// END BROWSER STYLE //////////
