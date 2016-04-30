@@ -1,6 +1,6 @@
 
 
-angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controllers', 'starter.services','ui.bootstrap'])
   .constant('processENV', {
    "development": {
      "username": "nickcadiente",

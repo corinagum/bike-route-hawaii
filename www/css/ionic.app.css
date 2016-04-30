@@ -9798,6 +9798,17 @@ a.button {
   .platform-browser #footer-bar {
     background-color: #f8f8f8;
     border-top: 1px solid #FFEE07; }
+  .platform-browser #browser-about:hover #about-sub {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 8em;
+    background-color: yellow;
+    z-index: 10;
+    left: 0;
+    top: 5em; }
+  .platform-browser #about-sub {
+    display: none; }
 
 #map {
   width: 100%;

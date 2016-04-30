@@ -588,5 +588,13 @@
       $scope.currentMarkerProperties.safetyCounter++;
     }
   };
+
+
+
+
+  // BROWSER CONTROLLERS
+  $scope.isCollapsed = false;
+
+
 //////// end of controller
 }]);
