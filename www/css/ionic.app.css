@@ -9808,7 +9808,9 @@ a.button {
     position: absolute;
     right: 20px;
     top: 5em; }
-  .platform-browser .suggestDiv {
+  .platform-browser .about_list {
+    padding: 2% 6% 2% 6%; }
+  .platform-browser .bottomBtnForm {
     justify-content: space-around; }
   .platform-browser .well {
     margin: auto;

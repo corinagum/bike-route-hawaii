@@ -596,6 +596,5 @@
   $scope.isCollapsed = true;
   $scope.isSuggestCollapsed = true;
 
-
 //////// end of controller
 }]);

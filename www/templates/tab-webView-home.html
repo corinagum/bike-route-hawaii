@@ -21,8 +21,8 @@
             </div>
 
             <div uib-collapse="isCollapsed">
-              <div class="well">
-                <div>Detailed Intructions</div>
+              <div class="well about_list">
+                <div>Contact Us</div>
                 <div>Detailed Intructions</div>
                 <div>Detailed Intructions</div>
                 <div>Detailed Intructions</div>
@@ -33,78 +33,79 @@
             <!-- DROP DOWN CONTENT FOR SUGGEST A POINT -->
             <div uib-collapse="isSuggestCollapsed" class="suggestWrapper">
 
-                <div class="well formWrapper">
-                    <span class="padding">Drag marker to your desired location. Utilize the zoom buttons to get a better view of where you'd like your suggestion to point. When you have chosen your spot, click on 'Create Point' to save.</span>
-                    <hr>
-                      <div class="list">
-                        <label class="item item-input item-select">
-                          <div class="input-label">
-                            I'd like to make a:
-                          </div>
-                          <select ng-model="comment.type">
-                            <option>Report</option>
-                            <option selected>Suggestion</option>
-                          </select>
-                        </label>
+              <div class="well formWrapper">
+                <span class="padding">Drag marker to your desired location. Utilize the zoom buttons to get a better view of where you'd like your suggestion to point. When you have chosen your spot, fill out the form and click 'Submit'-- otherwise click 'Cancel'.</span>
+                <hr>
+                  <div class="list">
+                    <label class="item item-input item-select">
+                      <div class="input-label">
+                        I'd like to make a:
                       </div>
-                      <div class="list">
-                        <label class="item item-input item-select">
-                          <div class="input-label">
-                            Subject:
-                          </div>
-                          <select ng-model="comment.subject">
-                            <option ng-if="comment.type === 'Report'">Found</option>
-                            <option ng-if="comment.type === 'Report'" selected>Missing</option>
-                            <option ng-if="comment.type === 'Report'">Dangerous</option>
-                            <option ng-if="comment.type === 'Report'">Theft</option>
-                            <option ng-if="comment.type === 'Report'">Correction</option>
-                            <option ng-if="comment.type === 'Report'">Other</option>
-                            <option ng-if="comment.type === 'Suggestion'">Rack</option>
-                            <option ng-if="comment.type === 'Suggestion'">BikeShare</option>
-                            <option ng-if="comment.type === 'Suggestion'">OldHawaii</option>
-                            <option ng-if="comment.type === 'Suggestion'">General</option>
-                          </select>
-                        </label>
+                      <select ng-model="comment.type">
+                        <option>Report</option>
+                        <option selected>Suggestion</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="list">
+                    <label class="item item-input item-select">
+                      <div class="input-label">
+                        Subject:
                       </div>
-                      <div class="list">
-                        <label class="item item-input">
-                          <textarea ng-model='comment.description' required name="comment" id="comment" cols="30" rows="10"></textarea>
-                        </label>
+                      <select ng-model="comment.subject">
+                        <option ng-if="comment.type === 'Report'">Found</option>
+                        <option ng-if="comment.type === 'Report'" selected>Missing</option>
+                        <option ng-if="comment.type === 'Report'">Dangerous</option>
+                        <option ng-if="comment.type === 'Report'">Theft</option>
+                        <option ng-if="comment.type === 'Report'">Correction</option>
+                        <option ng-if="comment.type === 'Report'">Other</option>
+                        <option ng-if="comment.type === 'Suggestion'">Rack</option>
+                        <option ng-if="comment.type === 'Suggestion'">BikeShare</option>
+                        <option ng-if="comment.type === 'Suggestion'">OldHawaii</option>
+                        <option ng-if="comment.type === 'Suggestion'">General</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="list">
+                    <label class="item item-input">
+                      <textarea ng-model='comment.description' required name="comment" id="comment" cols="30" rows="10"></textarea>
+                    </label>
+                  </div>
+                  <div>
+                    <label class="item item-input">
+                      <input  placeholder="Name" type="text" ng-model='comment.name' >
+                    </label>
+                  </div>
+                  <div>
+                    <label class="item item-input">
+                      <input  placeholder="Email" type="email" ng-model='comment.email' >
+                    </label>
+                  </div>
+                  <div class="list">
+                    <label class="item item-input item-select">
+                      <div class="input-label">
+                        Can we contact you about this?
                       </div>
-                      <div>
-                        <label class="item item-input">
-                          <input  placeholder="Name" type="text" ng-model='comment.name' >
-                        </label>
-                      </div>
-                      <div>
-                        <label class="item item-input">
-                          <input  placeholder="Email" type="email" ng-model='comment.email' >
-                        </label>
-                      </div>
-                      <div class="list">
-                        <label class="item item-input item-select">
-                          <div class="input-label">
-                            Can we contact you about this?
-                          </div>
-                          <select ng-model="comment.contact">
-                            <option>Yes</option>
-                            <option selected>No</option>
-                          </select>
-                        </label>
-                      </div>
-                      <div ng-click="postComment(comment); comment">
-                        <h2 class="floatingDetail">Submit {{comment.type}}</h2>
-                      </div>
+                      <select ng-model="comment.contact">
+                        <option>Yes</option>
+                        <option selected>No</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="row bottomBtnForm">
+                    <div ng-click="postComment(comment); comment; isSuggestCollapsed = true;">
+                      <h2 class="btn">Submit {{comment.type}}</h2>
+                    </div>
 
-                      <div ng-click="cancelReportPoint(); isSuggestCollapsed = true;">
-                        <h2 class="floatingDetail">Cancel</h2>
-                      </div>
-
+                    <div ng-click="cancelReportPoint(); isSuggestCollapsed = true;">
+                      <h2 class="btn">Cancel</h2>
+                    </div>
+                  </div>
                 </div>
-
             </div>
 
           </div>
+
         </div> <!-- END OF SUB-NAVIGATION -->
     </div>
 
@@ -113,7 +114,9 @@
       <i class="icon ion-gear-a custom-icon" ng-click="openModal(1)"></i>
     </div> -->
 
-    <leaflet lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
+    <leaflet lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson" controls="controls"></leaflet>
+
+
   </ion-content>
 
     <!-- <div class="collection">
