@@ -1,137 +1,137 @@
-///////// BROWSER VIEW ///////////
+// ///////// BROWSER VIEW ///////////
 
-.platform-browser {
+// .platform-browser {
 
-  div.title.title-center.header-item,
-  div.title.title-left.header-item {
-    display: none;
-  }
+//   div.title.title-center.header-item,
+//   div.title.title-left.header-item {
+//     display: none;
+//   }
 
-  .leaflet-control {
-    top: 90px;
-  }
+//   .leaflet-control {
+//     top: 90px;
+//   }
 
-  .bar.bar-dark {
-    height: 88px;
-    border-bottom: 1.5px solid #FFEE07;
-    background-image: url('.././img/bike-assets/bikeShareHeader.png');
-    background-repeat: no-repeat;
-    max-width: 100%;
-    background-size: cover;
-  }
+//   .bar.bar-dark {
+//     height: 88px;
+//     border-bottom: 1.5px solid #FFEE07;
+//     background-image: url('.././img/bike-assets/bikeShareHeader.png');
+//     background-repeat: no-repeat;
+//     max-width: 100%;
+//     background-size: cover;
+//   }
 
-  .bar-subheader {
-    border-bottom: 1px solid #FFEE07;
-  }
+//   .bar-subheader {
+//     border-bottom: 1px solid #FFEE07;
+//   }
 
-  .left-part-sub {
-    // border: 1px solid blue;
-    margin-top: -8px;
-  }
+//   .left-part-sub {
+//     // border: 1px solid blue;
+//     margin-top: -8px;
+//   }
 
-  .waves-effect {
-    padding: 16px 9px 9px 9px;
-  }
+//   .waves-effect {
+//     padding: 16px 9px 9px 9px;
+//   }
 
-  .fa-envelope-o {
-    color: red;
-  }
+//   .fa-envelope-o {
+//     color: red;
+//   }
 
-  .fa-facebook {
-    color: #003366;
-  }
+//   .fa-facebook {
+//     color: #003366;
+//   }
 
-  .fa-twitter {
-    color: #55ACEE;
-  }
+//   .fa-twitter {
+//     color: #55ACEE;
+//   }
 
-  a {
-    color: $dark;
-    text-decoration: none;
-  }
+//   a {
+//     color: $dark;
+//     text-decoration: none;
+//   }
 
-  /* Underline From Center */
-  .hvr-underline-from-center {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -moz-osx-font-smoothing: grayscale;
-    position: relative;
-    overflow: hidden;
-  }
-  .hvr-underline-from-center:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    left: 50%;
-    right: 50%;
-    bottom: 0;
-    background: #7ADEA8;
-    height: 4px;
-    -webkit-transition-property: left, right;
-    transition-property: left, right;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-  }
-  .hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
-    left: 0;
-    right: 0;
-  }
+//   /* Underline From Center */
+//   .hvr-underline-from-center {
+//     display: inline-block;
+//     vertical-align: middle;
+//     -webkit-transform: translateZ(0);
+//     transform: translateZ(0);
+//     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+//     -webkit-backface-visibility: hidden;
+//     backface-visibility: hidden;
+//     -moz-osx-font-smoothing: grayscale;
+//     position: relative;
+//     overflow: hidden;
+//   }
+//   .hvr-underline-from-center:before {
+//     content: "";
+//     position: absolute;
+//     z-index: -1;
+//     left: 50%;
+//     right: 50%;
+//     bottom: 0;
+//     background: #7ADEA8;
+//     height: 4px;
+//     -webkit-transition-property: left, right;
+//     transition-property: left, right;
+//     -webkit-transition-duration: 0.3s;
+//     transition-duration: 0.3s;
+//     -webkit-transition-timing-function: ease-out;
+//     transition-timing-function: ease-out;
+//   }
+//   .hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
+//     left: 0;
+//     right: 0;
+//   }
 
-  .potential-marker {
-    display: flex;
-  }
+//   .potential-marker {
+//     display: flex;
+//   }
 
-  .collection {
-    z-index: 5;
-    top: 10em;
-    left: 84%;
-  }
+//   .collection {
+//     z-index: 5;
+//     top: 10em;
+//     left: 84%;
+//   }
 
-  #footer-bar {
-    background-color: $stable;
-    border-top: 1px solid #FFEE07;
-  }
+//   #footer-bar {
+//     background-color: $stable;
+//     border-top: 1px solid #FFEE07;
+//   }
 
-  .formWrapper {
-    overflow: auto;
-    max-height: 40em;
-  }
+//   .formWrapper {
+//     overflow: auto;
+//     max-height: 40em;
+//   }
 
-  .suggestWrapper {
-    max-width: 30%;
-    height: 5em;
-    position: absolute;
-    right: 20px;
-    top: 5em;
-  }
+//   .suggestWrapper {
+//     max-width: 30%;
+//     height: 5em;
+//     position: absolute;
+//     right: 20px;
+//     top: 5em;
+//   }
 
-  .about_list {
-    padding: 2% 6% 2% 6%;
-  }
+//   .about_list {
+//     padding: 2% 6% 2% 6%;
+//   }
 
-  .bottomBtnForm {
-    justify-content: space-around;
-  }
+//   .bottomBtnForm {
+//     justify-content: space-around;
+//   }
 
-  .well {
-    margin: auto;
-    background-color: rgba(255, 255, 255, 0.82);
-  }
+//   .well {
+//     margin: auto;
+//     background-color: rgba(255, 255, 255, 0.82);
+//   }
 
-  .modal-backdrop, .modal-backdrop-bg {
-    background-color: rgba(33, 34, 34, 0.4);
-  }
+//   .modal-backdrop, .modal-backdrop-bg {
+//     background-color: rgba(33, 34, 34, 0.4);
+//   }
 
-  .view-filter {
-    margin-top: 90px;
-  }
-}
+//   .view-filter {
+//     margin-top: 90px;
+//   }
+// }
 
-//////// END BROWSER STYLE //////////
+// //////// END BROWSER STYLE //////////

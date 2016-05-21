@@ -1,7 +1,7 @@
  angular.module('starter.controllers', ['ngCordova'])
 
  .controller('MapCtrl',
-  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService) {
+  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location) {
 
   angular.extend($scope, {
     honolulu: {
@@ -595,6 +595,26 @@
   // BROWSER CONTROLLERS
   $scope.isCollapsed = true;
   $scope.isSuggestCollapsed = true;
+
+
+
+
+  // LOCATION PATHS
+  $scope.go = function ( path ) {
+      $location.path( path );
+    };
+
+  $scope.goZip = function ( path ) {
+      $location.path( path );
+    };
+
+  $scope.opa_brasil_worldcup = function (msg) {
+    alert(msg);
+  };
+
+  $scope.back = function ( path ) {
+      $location.path( path );
+    };
 
 //////// end of controller
 }]);
