@@ -4,14 +4,14 @@
 <!-- <ion-nav-bar class="mapSiteTopBar"> -->
   <ion-header-bar class="bar bar-header">
     <a href="#/tab/aloha"><</a>
-    <a href="#/tab/feedback">Leave Feedback</a>
+    <i class="" ng-click="openModal(1)">Leave Feedback</i>
   </ion-header-bar>
 <!-- </ion-nav-bar> -->
 
   <ion-content data-tap-disabled="true">
-    <div class="view-filter">
+   <!--  <div class="view-filter">
       <i class="icon ion-gear-a custom-icon" ng-click="openModal(1)"></i>
-    </div>
+    </div> -->
     <div ng-click="findCenter()">
       <!-- <div id="locate-before-start" ng-class="{'showBlocker': !foundLocation, 'hideBlocker': foundLocation}">
           tap to find location
@@ -70,16 +70,15 @@
 
   <script id="filter-modal.html" type="text/ng-template">
     <div class="modal filter-modal">
-      <ion-header-bar>
+      <!-- <ion-header-bar>
         <h1 class="title">Filters</h1>
-      </ion-header-bar>
+      </ion-header-bar> -->
       <ion-content>
         <div class="list">
-            <div class="pinViews">
+            <!-- <div class="pinViews">
               <a class="item item-icon-left btn1" ng-click="openModal(7); closeModal(1); setShowFavorites()">
               <i class="icon">
                 <svg width="30px" height="19px" viewBox="0 0 2 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
                     <title>pin-icon</title>
                     <desc>Created with Sketch.</desc>
                     <defs></defs>
@@ -96,12 +95,11 @@
               </i>
                 &nbsp;&nbsp;&nbsp; My Favorites
               </a>
-              <br />
+              <br /> -->
 
-              <a class="item item-icon-left btn1" ng-click="setShowPointsOnDrag()">
+              <!-- <a class="item item-icon-left btn1" ng-click="setShowPointsOnDrag()">
               <i class="icon">
                 <svg width="30px" height="19px" viewBox="0 0 2 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
                     <title>pin-icon</title>
                     <desc>Created with Sketch.</desc>
                     <defs></defs>
@@ -118,7 +116,7 @@
               </i>
                 &nbsp;&nbsp;&nbsp; Show Points on Drag
               </a>
-              <br />
+              <br /> -->
 
               <a class="item item-icon-left btn1" ng-click="closeModal(1);createReportPoint()">
               <i class="icon">
@@ -143,7 +141,7 @@
               </a>
               <br />
 
-              <a class="item item-icon-left btn1" ng-click="setShowStations()">
+<!-- <a class="item item-icon-left btn1" ng-click="setShowStations()">
               <i class="icon">
                 <svg width="40px" height="28px" viewBox="-10 0 55 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
                   <title>bike-icon</title>
@@ -164,7 +162,6 @@
               <a class="item item-icon-left btn1" ng-click="setShowLandmarks()">
               <i class="icon">
                 <svg width="40px" height="20px" viewBox="-5 0 39 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
                     <title>landmark-icon</title>
                     <desc>Created with Sketch.</desc>
                     <defs></defs>
@@ -186,7 +183,6 @@
               <a class="item item-icon-left btn1" ng-click="setShowBikeRacks()">
               <i class="icon">
                 <svg width="40px" height="30px" viewBox="-7 0 42 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
                     <title>Small-Squiggle</title>
                     <desc>Created with Sketch.</desc>
                     <defs></defs>
@@ -203,8 +199,8 @@
               </i>
                 &nbsp;&nbsp;&nbsp; Public Bike Racks
               </a>
-              <br />
-              <div id="radiusDiv" class="button-bar">
+              <br /> -->
+              <!-- <div id="radiusDiv" class="button-bar">
                 <button class="button buttonStyle btn1" ng-click="setRadius(805)" ng-class="{'radius-small-selected': radiusHalf, 'radius-small': !radiusHalf}">
                   0.5mi
                 </button>
@@ -215,7 +211,7 @@
                   2mi
                 </button>
                 <button class="button buttonStyle btn1" ng-click="setRadius(50000)" ng-class="{'radius-all-selected': radiusAll, 'radius-all': !radiusAll}"></button>
-              </div>
+              </div> -->
             <div class="done">
               <button class="button buttonStyle button-full button-energized done" ng-click="setPinsWithinRadius(); closeModal(1)">Done</button>
             </div>
@@ -428,4 +424,5 @@
       </ion-content>
     </div>
   </script>
+
 </ion-view>

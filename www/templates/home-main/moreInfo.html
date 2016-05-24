@@ -2,7 +2,7 @@
   <ion-view view-title="Home">
     <ion-header-bar class="bar bar-header">
       <a href="#/tab/aloha"><</a>
-      <a href="#/tab/feedback">Leave Feedback</a>
+      <a href="#/feedback/mahalo" ng-click="openModal(8)">Leave Feedback</a>
     </ion-header-bar>
 
     <ion-content class="padding">
@@ -11,4 +11,20 @@
         <a class="button" href="#/tab/facts">Let's Go!</a>
       </p>
     </ion-content>
+
+    <script id="inputFeedbackForm.html" type="text/ng-template">
+       <ion-modal-view class="modalMessage">
+
+         <div class="textModalDiv">
+           <p>You've successfully created a Mixer! Invite those who are attending and get them Mixin!</p>
+
+           <a class="button okayBtn" ng-click=" closeModal(3);" >Okay!</a>
+         </div>
+       </ion-modal-view>
+     </script>
+
+
+
   </ion-view>
+
+

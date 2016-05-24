@@ -9733,6 +9733,23 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.scale-in {
+  transform: scale(1);
+  opacity: 0; }
+
+.scale-in.ng-enter,
+.scale-in > .ng-enter {
+  transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 800ms; }
+
+.scale-in.ng-enter-active,
+.scale-in > .ng-enter-active {
+  transform: scale(1);
+  opacity: 0.8; }
+
+.scale-in.ng-leave,
+.scale-in > .ng-leave {
+  transition: all ease-in-out 250ms; }
+
 #map {
   width: 100%;
   height: 100%; }
@@ -9826,7 +9843,7 @@ h1.title {
 
 .filter-modal {
   border: 0px;
-  height: 100%; }
+  height: 80%; }
   .filter-modal div {
     background-color: #f8f8f8;
     border: 0px; }
@@ -9972,12 +9989,6 @@ h1.title {
   display: block; }
   .item-img-div img {
     display: inline-block; }
-
-.list {
-  background-color: #f8f8f8; }
-  .list a {
-    margin: 0px 15px;
-    box-shadow: 1px 1px 3px 1px #454e57; }
 
 .item-button {
   float: right;

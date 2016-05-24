@@ -118,14 +118,27 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
           }
         }
       })
-      .state('tabs.feedback', {
+      .state('feedback', {
         url: "/feedback",
-        views: {
-          'feedback-tab': {
-            templateUrl: "templates/feedback.html"
-          }
-        }
+        abstract: true,
+        templateUrl: "templates/feedback/fbackForm.html"
       });
+      // .state('feedback.fbForm', {
+      //   url: "/feedback",
+      //   views: {
+      //     'feedback-tab': {
+      //       templateUrl: "templates/feedback.html"
+      //     }
+      //   }
+      // })
+      // .state('feedback.mahaloFb', {
+      //   url: "/mahalo",
+      //   views: {
+      //     'feedback-tab': {
+      //       templateUrl: "templates/feedback/mahaloFeedback.html"
+      //     }
+      //   }
+      // });
 
 
      $urlRouterProvider.otherwise("/tab/home");
