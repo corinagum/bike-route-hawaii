@@ -4,7 +4,7 @@
 <!-- <ion-nav-bar class="mapSiteTopBar"> -->
   <ion-header-bar class="bar bar-header">
     <a href="#/tab/aloha"><</a>
-    <i class="" ng-click="openModal(1)">Leave Feedback</i>
+    <i class="right" ng-click="openModal(1)">Leave Feedback</i>
   </ion-header-bar>
 <!-- </ion-nav-bar> -->
 
@@ -140,6 +140,8 @@
                 &nbsp;&nbsp;&nbsp; Add Report/Suggestion Point
               </a>
               <br />
+              <a href="#" class="item item-icon-left btn1" ng-click="closeModal(1);">
+
 
 <!-- <a class="item item-icon-left btn1" ng-click="setShowStations()">
               <i class="icon">
@@ -226,7 +228,7 @@
 
 
 
-  <script id="bikeShareList.html" type="text/ng-template">
+<!--   <script id="bikeShareList.html" type="text/ng-template">
       <div class="modal">
         <ion-header-bar class="bar bar-header">
           <h1 class="title" >{{stationCount}} Bike Share near you</h1>
@@ -246,17 +248,14 @@
               </div>
             </ion-list>
           </ion-content>
-
-
-
       </div>
-    </script>
+    </script> -->
 
 
 
 
 
-  <script id="landmarkList.html" type="text/ng-template">
+<!--   <script id="landmarkList.html" type="text/ng-template">
     <div class="modal">
       <ion-header-bar class="bar bar-header">
         <h1 class="title" >{{stationCount}} Landmarks near you</h1>
@@ -275,9 +274,9 @@
           </ion-list>
         </ion-content>
     </div>
-  </script>
+  </script> -->
 
-  <script id="bikeRackList.html" type="text/ng-template">
+<!--   <script id="bikeRackList.html" type="text/ng-template">
     <div class="modal">
       <ion-header-bar class="bar bar-header">
         <h1 class="title" >{{stationCount}} Bike Racks near you</h1>
@@ -296,8 +295,8 @@
           </ion-list>
         </ion-content>
     </div>
-  </script>
-
+  </script> -->
+<!--
   <script id="favorites.html" type="text/ng-template">
     <div class="modal">
       <ion-header-bar class="bar bar-header">
@@ -318,9 +317,9 @@
           </ion-list>
         </ion-content>
     </div>
-  </script>
+  </script> -->
 
-   <script id="markerDetail.html" type="text/ng-template">
+<!--    <script id="markerDetail.html" type="text/ng-template">
     <div class="modal" ng-model="currentMarkerProperties">
       <ion-header-bar class="bar bar-header">
         <h1 class="title">Location Details</h1>
@@ -334,7 +333,7 @@
               <p ng-if="currentMarkerProperties.site_id">Site ID: {{currentMarkerProperties.site_id}} on <span ng-if="currentMarkerProperties.photolink">{{currentMarkerProperties.info}}</span></p>
               <p ng-if="currentMarkerProperties.description">{{currentMarkerProperties.description}}</p>
               <p ng-if="currentMarkerProperties.geolink"><a target="_blank" href="{{currentMarkerProperties.geolink}}">Street View</a></p>
-              <!-- <p><a target="_blank" href="{{currentMarkerProperties.sitelink}}">Site</a></p> -->
+              <p><a target="_blank" href="{{currentMarkerProperties.sitelink}}">Site</a></p>
             </div>
             <ion-item>
               <i ng-click="addFavorite(); checkFavorite();" ng-class="{'button button-icon icon locationMenu fa fa-star-o fa-fw':!isFavorited, 'button button-icon icon locationMenu fa fa-star fa-fw':isFavorited}"></i>
@@ -351,9 +350,9 @@
              </ion-item>
         </ion-content>
     </div>
-  </script>
+  </script> -->
 
-  <script id="reportDetail.html" type="text/ng-template">
+<!--   <script id="reportDetail.html" type="text/ng-template">
     <div class="modal">
       <ion-header-bar class="bar bar-header">
         <h1 class="title">Report/Suggest</h1>
@@ -423,6 +422,6 @@
         </ion-item>
       </ion-content>
     </div>
-  </script>
+  </script> -->
 
 </ion-view>

@@ -106,7 +106,8 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         url: "/main",
         views: {
           'home-tab': {
-            templateUrl: "templates/home-main/moreInfo.html"
+            templateUrl: "templates/home-main/moreInfo.html",
+            controller: 'MapCtrl'
           }
         }
       })
