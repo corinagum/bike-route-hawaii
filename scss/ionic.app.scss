@@ -43,11 +43,6 @@ a {
   padding-top: 7px;
 }
 
-div.title.title-center.header-item,
-div.title.title-left.header-item {
-  background: url("./../img/bike-assets/nav-logo.svg") center no-repeat;
-}
-
 #footer-bar {
   width: 100%;
   background-color: $dark;
@@ -76,7 +71,7 @@ h1.title {
 }
 
 .bar-header {
-  background-color: $dark;
+  background-color: $balanced;
 }
 #locate-before-start{
   z-index: 1000;

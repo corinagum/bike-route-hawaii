@@ -94,18 +94,18 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
           }
         }
       })
-      .state('tabs.facts2', {
-        url: "/facts2",
+      .state('tabs.alohaLanding', {
+        url: "/aloha",
         views: {
           'home-tab': {
-            templateUrl: "templates/facts2.html"
+            templateUrl: "templates/alohaLanding.html"
           }
         }
       })
       .state('tabs.main', {
         url: "/main",
         views: {
-          'main-tab': {
+          'home-tab': {
             templateUrl: "templates/home-main/moreInfo.html"
           }
         }
@@ -113,19 +113,19 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
       .state('tabs.mapSite', {
         url: "/mapSite",
         views: {
-          'main-tab': {
+          'home-tab': {
             templateUrl: "templates/tab-home.html"
           }
         }
+      })
+      .state('tabs.feedback', {
+        url: "/feedback",
+        views: {
+          'feedback-tab': {
+            templateUrl: "templates/feedback.html"
+          }
+        }
       });
-      // .state('tabs.contact', {
-      //   url: "/contact",
-      //   views: {
-      //     'contact-tab': {
-      //       templateUrl: "templates/contact.html"
-      //     }
-      //   }
-      // });
 
 
      $urlRouterProvider.otherwise("/tab/home");
