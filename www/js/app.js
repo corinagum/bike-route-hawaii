@@ -101,31 +101,31 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
             templateUrl: "templates/facts2.html"
           }
         }
-      })
-      .state('tabs.about', {
-        url: "/about",
-        views: {
-          'about-tab': {
-            templateUrl: "templates/about.html"
-          }
-        }
-      })
-      .state('tabs.navstack', {
-        url: "/navstack",
-        views: {
-          'about-tab': {
-            templateUrl: "templates/nav-stack.html"
-          }
-        }
-      })
-      .state('tabs.contact', {
-        url: "/contact",
-        views: {
-          'contact-tab': {
-            templateUrl: "templates/contact.html"
-          }
-        }
       });
+      // .state('tabs.about', {
+      //   url: "/about",
+      //   views: {
+      //     'about-tab': {
+      //       templateUrl: "templates/about.html"
+      //     }
+      //   }
+      // })
+      // .state('tabs.navstack', {
+      //   url: "/navstack",
+      //   views: {
+      //     'about-tab': {
+      //       templateUrl: "templates/nav-stack.html"
+      //     }
+      //   }
+      // })
+      // .state('tabs.contact', {
+      //   url: "/contact",
+      //   views: {
+      //     'contact-tab': {
+      //       templateUrl: "templates/contact.html"
+      //     }
+      //   }
+      // });
 
 
      $urlRouterProvider.otherwise("/tab/home");
