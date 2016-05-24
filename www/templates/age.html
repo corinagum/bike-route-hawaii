@@ -1,20 +1,25 @@
 
-  <div>
-    <p>Before we get started, we want to gather some general information.</p>
+  <script type="text/ng-template">
+    <!-- The title of the ion-view will be shown on the navbar -->
+    <ion-view view-title="Home">
+      <ion-content ng-controller="MapCtrl">
+        <!-- The content of the page -->
+        <a href="#/music">Go to music page!</a>
+      </ion-content>
+    </ion-view>
+  </script>
+
+  <!-- <script type="text/ng-template">
+    <div>
+      <p>Before we get started, we want to gather some general information.</p>
       <ul>
         <div>Age</div>
-        <button><a href="/siteMap">Male</a></button>
-        <button><a href="/tab">Female</a></button>
+        <button ng-click="goZip('/zipCode')">18-25</button>
+        <button ng-click="goZip('/zipCode')">26-40</button>
+        <button ng-click="goZip('/zipCode')">41+</button>
+        <button ng-click="back('/tab')">back</button>
       </ul>
     </div>
+  </script> -->
 
 
-    <button ng-click="back('/tab')">
-          back
-        </button>
-        <br />
-        <br />
-         <button ng-click="goZip('/zipCode')">
-          zip
-        </button>
-  </div>

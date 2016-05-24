@@ -70,47 +70,64 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
+
     $stateProvider
+      .state('tabs', {
+        url: "/tab",
+        abstract: true,
+        templateUrl: "templates/tabs.html"
+      })
+      .state('tabs.home', {
+        url: "/home",
+        views: {
+          'home-tab': {
+            templateUrl: "templates/home.html",
+            controller: 'MapCtrl'
+          }
+        }
+      })
+      .state('tabs.facts', {
+        url: "/facts",
+        views: {
+          'home-tab': {
+            templateUrl: "templates/facts.html"
+          }
+        }
+      })
+      .state('tabs.facts2', {
+        url: "/facts2",
+        views: {
+          'home-tab': {
+            templateUrl: "templates/facts2.html"
+          }
+        }
+      })
+      .state('tabs.about', {
+        url: "/about",
+        views: {
+          'about-tab': {
+            templateUrl: "templates/about.html"
+          }
+        }
+      })
+      .state('tabs.navstack', {
+        url: "/navstack",
+        views: {
+          'about-tab': {
+            templateUrl: "templates/nav-stack.html"
+          }
+        }
+      })
+      .state('tabs.contact', {
+        url: "/contact",
+        views: {
+          'contact-tab': {
+            templateUrl: "templates/contact.html"
+          }
+        }
+      });
 
-  // setup an abstract state for the tabs directive
-  .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html',
-    controller: 'MapCtrl'
-  })
-  .state('age', {
-    url: '/age',
-    templateUrl: 'templates/age.html',
-    controller: 'MapCtrl'
-  })
-  .state('zipCode', {
-    url: '/zipCode',
-    templateUrl: 'templates/zipCode.html',
-    controller: 'MapCtrl'
-  })
 
-  // Each tab has its own nav history stack:
-  .state('tab.home', {
-    url: '/home',
-    views: {
-      'tab-home': {
-        controller: 'MapCtrl',
-        templateUrl: 'templates/tab-home.html'
-      }
-    }
-  })
-  .state('tab.gallery-detail', {
-    url: '/gallery/:galleryId',
-    views: {
-      'tab-gallery': {
-        templateUrl: 'templates/gallery-detail.html',
-        controller: 'GalleryDetailCtrl'
-      }
-    }
+     $urlRouterProvider.otherwise("/tab/home");
+
   });
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/home');
-
-});

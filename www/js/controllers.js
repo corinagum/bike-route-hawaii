@@ -520,9 +520,10 @@
   };
 
   //REMOVE MODAL WHEN DESTROYED
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
+  // $scope.$on('$destroy', function() {
+  //   $scope.modal.remove();
+  // });
+
   //////// END of MODAL ////////
 
   // Logic for Location Details Modal
@@ -607,10 +608,6 @@
   $scope.goZip = function ( path ) {
       $location.path( path );
     };
-
-  $scope.opa_brasil_worldcup = function (msg) {
-    alert(msg);
-  };
 
   $scope.back = function ( path ) {
       $location.path( path );
