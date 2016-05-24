@@ -101,23 +101,23 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
             templateUrl: "templates/facts2.html"
           }
         }
+      })
+      .state('tabs.main', {
+        url: "/main",
+        views: {
+          'main-tab': {
+            templateUrl: "templates/home-main/moreInfo.html"
+          }
+        }
+      })
+      .state('tabs.mapSite', {
+        url: "/mapSite",
+        views: {
+          'main-tab': {
+            templateUrl: "templates/tab-home.html"
+          }
+        }
       });
-      // .state('tabs.about', {
-      //   url: "/about",
-      //   views: {
-      //     'about-tab': {
-      //       templateUrl: "templates/about.html"
-      //     }
-      //   }
-      // })
-      // .state('tabs.navstack', {
-      //   url: "/navstack",
-      //   views: {
-      //     'about-tab': {
-      //       templateUrl: "templates/nav-stack.html"
-      //     }
-      //   }
-      // })
       // .state('tabs.contact', {
       //   url: "/contact",
       //   views: {
