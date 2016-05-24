@@ -11,7 +11,7 @@ $balanced:                        #78DEAC !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
-$dark:                            #181B1E  !default;
+$dark:                            #717171  !default;
 
 */
 a {
@@ -9755,7 +9755,7 @@ a.button {
   height: 100%; }
 
 .landingOne {
-  background-color: #76CE95; }
+  background-color: #9cdbb2; }
 
 .scroll {
   height: 100%; }
@@ -9845,7 +9845,7 @@ h1.title {
   border: 0px;
   height: 80%; }
   .filter-modal div {
-    background-color: #f8f8f8;
+    background-color: #181B1E;
     border: 0px; }
 
 .radius-small {

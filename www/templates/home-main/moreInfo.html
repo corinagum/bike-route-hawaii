@@ -1,5 +1,5 @@
 
-  <ion-view ng-controller="MapCtrl" view-title="Home">
+  <ion-view view-title="Home">
     <ion-header-bar class="bar bar-header">
       <a href="#/tab/aloha"><</a>
       <i class="right" ng-click="openModal(1)">Leave Feedback</i>
@@ -8,61 +8,19 @@
     <ion-content class="padding">
     <h5>What is Bikeshare?</h5>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem animi sequi tenetur ab dolorum voluptatem, quidem dignissimos tempora non, sunt vel, ipsum ratione laborum rem adipisci quibusdam deleniti? Veniam, officiis.
-        <a class="button" href="#/tab/facts">Let's Go!</a>
+        <a class="button" href="#/tab/mapSite">View Station Map</a>
       </p>
     </ion-content>
 
-      <script id="filter-modal.html" type="text/ng-template">
+<script id="filter-modal.html" type="text/ng-template">
     <div class="modal filter-modal">
       <!-- <ion-header-bar>
         <h1 class="title">Filters</h1>
       </ion-header-bar> -->
       <ion-content>
         <div class="list">
-            <!-- <div class="pinViews">
-              <a class="item item-icon-left btn1" ng-click="openModal(7); closeModal(1); setShowFavorites()">
-              <i class="icon">
-                <svg width="30px" height="19px" viewBox="0 0 2 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                    <title>pin-icon</title>
-                    <desc>Created with Sketch.</desc>
-                    <defs></defs>
-                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-                        <g id="Bike-Racks-Detail" ng-class="{'fill-selected': showFavorites, 'fill-unselected': !showFavorites}" sketch:type="MSArtboardGroup" transform="translate(-108.000000, -117.000000)">
-                            <g id="Group-3" sketch:type="MSLayerGroup" transform="translate(11.000000, 74.000000)">
-                                <g id="Group-2" transform="translate(97.000000, 43.000000)" sketch:type="MSShapeGroup">
-                                    <path d="M6.7750001,0 C3.03261909,0 0,3.00035719 0,6.7750001 C0,10.549643 6.7750001,18.0989288 6.7750001,18.0989288 C6.7750001,18.0989288 13.5500002,10.5173811 13.5500002,6.7750001 C13.5500002,3.00035719 10.5173811,0 6.7750001,0 L6.7750001,0 Z M6.74273819,8.93654774 C5.45226198,8.93654774 4.41988101,7.90416678 4.41988101,6.61369057 C4.41988101,5.32321436 5.45226198,4.29083339 6.74273819,4.29083339 C8.0332144,4.29083339 9.06559537,5.32321436 9.06559537,6.61369057 C9.06559537,7.90416678 8.0332144,8.93654774 6.74273819,8.93654774 L6.74273819,8.93654774 Z" id="pin-icon"></path>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </svg>
-              </i>
-                &nbsp;&nbsp;&nbsp; My Favorites
-              </a>
-              <br /> -->
 
-              <!-- <a class="item item-icon-left btn1" ng-click="setShowPointsOnDrag()">
-              <i class="icon">
-                <svg width="30px" height="19px" viewBox="0 0 2 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                    <title>pin-icon</title>
-                    <desc>Created with Sketch.</desc>
-                    <defs></defs>
-                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-                        <g id="Bike-Racks-Detail" ng-class="{'fill-selected': showPointsOnDrag, 'fill-unselected': !showPointsOnDrag}" sketch:type="MSArtboardGroup" transform="translate(-108.000000, -117.000000)">
-                            <g id="Group-3" sketch:type="MSLayerGroup" transform="translate(11.000000, 74.000000)">
-                                <g id="Group-2" transform="translate(97.000000, 43.000000)" sketch:type="MSShapeGroup">
-                                    <path d="M6.7750001,0 C3.03261909,0 0,3.00035719 0,6.7750001 C0,10.549643 6.7750001,18.0989288 6.7750001,18.0989288 C6.7750001,18.0989288 13.5500002,10.5173811 13.5500002,6.7750001 C13.5500002,3.00035719 10.5173811,0 6.7750001,0 L6.7750001,0 Z M6.74273819,8.93654774 C5.45226198,8.93654774 4.41988101,7.90416678 4.41988101,6.61369057 C4.41988101,5.32321436 5.45226198,4.29083339 6.74273819,4.29083339 C8.0332144,4.29083339 9.06559537,5.32321436 9.06559537,6.61369057 C9.06559537,7.90416678 8.0332144,8.93654774 6.74273819,8.93654774 L6.74273819,8.93654774 Z" id="pin-icon"></path>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </svg>
-              </i>
-                &nbsp;&nbsp;&nbsp; Show Points on Drag
-              </a>
-              <br /> -->
-
-              <a class="item item-icon-left btn1" ng-click="closeModal(1);createReportPoint()">
+              <a class="" ng-click="closeModal(1);createReportPoint()">
               <i class="icon">
                 <svg width="30px" height="19px" viewBox="0 0 2 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
                     <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
@@ -81,13 +39,16 @@
                     </g>
                 </svg>
               </i>
-                &nbsp;&nbsp;&nbsp; Add Report/Suggestion Point
+              Suggest a Station
               </a>
               <br />
-              <a href="#" class="item item-icon-left btn1" ng-click="closeModal(1);">
+              <a href="#" class="" ng-click="closeModal(1);">Leave a comment</a>
+              <br />
+              <a href="#" class="" ng-click="closeModal(1);">Cancel</a>
 
 
-<!-- <a class="item item-icon-left btn1" ng-click="setShowStations()">
+
+  <!-- <a class="item item-icon-left btn1" ng-click="setShowStations()">
               <i class="icon">
                 <svg width="40px" height="28px" viewBox="-10 0 55 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
                   <title>bike-icon</title>
@@ -158,9 +119,7 @@
                 </button>
                 <button class="button buttonStyle btn1" ng-click="setRadius(50000)" ng-class="{'radius-all-selected': radiusAll, 'radius-all': !radiusAll}"></button>
               </div> -->
-            <div class="done">
-              <button class="button buttonStyle button-full button-energized done" ng-click="setPinsWithinRadius(); closeModal(1)">Done</button>
-            </div>
+
 
           </div>
         </div>

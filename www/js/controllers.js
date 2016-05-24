@@ -226,41 +226,41 @@
   // LOOPS THROUGH DATA RETURNED TO CHECK ITS TYPE AND IF IT SHOULD BE ASSIGNED A MARKER
   $scope.createMarkers = function(array, name){
 
-    for(var i = 0; i < array.length; i++){
-      var pointDetail;
-      var showMarker;
-      var pointIcon;
-      array[i].properties.distanceToFrom = Math.round(((array[i].properties.distance_from_current_location)*0.000621371192) * 100) / 100;
-      if(name === 'bikeShare'){
-      pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + array[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-      $scope.bikesharePoints.push(array[i].properties);
-      showMarker = $scope.showStations;
-      pointIcon = $scope.bikeShareIcon;
-      }
-      if(name === 'landmark'){
-        pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + array[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-        $scope.landmarkPoints.push(array[i].properties);
-        showMarker = $scope.showLandmarks;
-        pointIcon = $scope.historyIcon;
-      }
-      if(name === 'bikeRack'){
-        pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + array[i].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-        $scope.bikeRackPoints.push(array[i].properties);
-        showMarker = $scope.showBikeRacks;
-        pointIcon = $scope.bikeRack;
-      }
-      if (showMarker){
-        $scope.markers[(name + i)] = {
-          lat : array[i].properties.lat,
-          lng : array[i].properties.long,
-          icon: pointIcon,
-          message : pointDetail,
-          compileMessage : true,
-          getMessageScope: function(){ return $scope; },
-          properties : array[i].properties
-        };
-      }
-    }
+    // for(var i = 0; i < array.length; i++){
+    //   var pointDetail;
+    //   var showMarker;
+    //   var pointIcon;
+    //   array[i].properties.distanceToFrom = Math.round(((array[i].properties.distance_from_current_location)*0.000621371192) * 100) / 100;
+    //   if(name === 'bikeShare'){
+    //   pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + array[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+    //   $scope.bikesharePoints.push(array[i].properties);
+    //   showMarker = $scope.showStations;
+    //   pointIcon = $scope.bikeShareIcon;
+    //   }
+    //   if(name === 'landmark'){
+    //     pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + array[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+    //     $scope.landmarkPoints.push(array[i].properties);
+    //     showMarker = $scope.showLandmarks;
+    //     pointIcon = $scope.historyIcon;
+    //   }
+    //   if(name === 'bikeRack'){
+    //     pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + array[i].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+    //     $scope.bikeRackPoints.push(array[i].properties);
+    //     showMarker = $scope.showBikeRacks;
+    //     pointIcon = $scope.bikeRack;
+    //   }
+    //   if (showMarker){
+    //     $scope.markers[(name + i)] = {
+    //       lat : array[i].properties.lat,
+    //       lng : array[i].properties.long,
+    //       icon: pointIcon,
+    //       message : pointDetail,
+    //       compileMessage : true,
+    //       getMessageScope: function(){ return $scope; },
+    //       properties : array[i].properties
+    //     };
+    //   }
+    // }
   };
 
 
@@ -433,55 +433,55 @@
       $scope.modal1 = modal;
     });
 
-  $ionicModal.fromTemplateUrl('bikeShareList.html', {
-    id       : '2',
-    scope    : $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal2 = modal;
-  });
+  // $ionicModal.fromTemplateUrl('bikeShareList.html', {
+  //   id       : '2',
+  //   scope    : $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.modal2 = modal;
+  // });
 
-  // Modal for Marker Info
-  $ionicModal.fromTemplateUrl('markerDetail.html', {
-    id       : '3',
-    scope    : $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal3 = modal;
-  });
+  // // Modal for Marker Info
+  // $ionicModal.fromTemplateUrl('markerDetail.html', {
+  //   id       : '3',
+  //   scope    : $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.modal3 = modal;
+  // });
 
-  // MODAL FOR LANDMARK LISTS
-  $ionicModal.fromTemplateUrl('landmarkList.html', {
-    id: '4',
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal4 = modal;
-  });
+  // // MODAL FOR LANDMARK LISTS
+  // $ionicModal.fromTemplateUrl('landmarkList.html', {
+  //   id: '4',
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.modal4 = modal;
+  // });
 
-  $ionicModal.fromTemplateUrl('reportDetail.html', {
-    id: '5',
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal5 = modal;
-  });
+  // $ionicModal.fromTemplateUrl('reportDetail.html', {
+  //   id: '5',
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.modal5 = modal;
+  // });
 
-  $ionicModal.fromTemplateUrl('bikeRackList.html', {
-    id: '6',
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal6 = modal;
-  });
+  // $ionicModal.fromTemplateUrl('bikeRackList.html', {
+  //   id: '6',
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.modal6 = modal;
+  // });
 
-  $ionicModal.fromTemplateUrl('favorites.html', {
-    id: '7',
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal7 = modal;
-  });
+  // $ionicModal.fromTemplateUrl('favorites.html', {
+  //   id: '7',
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.modal7 = modal;
+  // });
 
   $ionicModal.fromTemplateUrl('inputFeedbackForm.html', {
       id       : '8',

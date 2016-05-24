@@ -10,7 +10,7 @@ $balanced:                        #78DEAC !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
-$dark:                            #181B1E  !default;
+$dark:                            #717171  !default;
 
 */
 
@@ -55,7 +55,7 @@ a {
 }
 
 .landingOne {
-  background-color: $balanced;
+  background-color: lighten($balanced, 10%);
 }
 
 .scroll {
@@ -165,7 +165,7 @@ h1.title {
   height: 80%;
 
   div {
-    background-color: $stable;
+    background-color: $dark;
     border: 0px;
   }
 }

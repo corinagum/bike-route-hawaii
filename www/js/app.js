@@ -75,7 +75,8 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
       .state('tabs', {
         url: "/tab",
         abstract: true,
-        templateUrl: "templates/tabs.html"
+        templateUrl: "templates/tabs.html",
+        controller: 'MapCtrl'
       })
       .state('tabs.home', {
         url: "/home",
@@ -90,7 +91,8 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         url: "/facts",
         views: {
           'home-tab': {
-            templateUrl: "templates/facts.html"
+            templateUrl: "templates/facts.html",
+            controller: 'MapCtrl'
           }
         }
       })
@@ -98,7 +100,8 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         url: "/aloha",
         views: {
           'home-tab': {
-            templateUrl: "templates/alohaLanding.html"
+            templateUrl: "templates/alohaLanding.html",
+            controller: 'MapCtrl'
           }
         }
       })
@@ -115,14 +118,16 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         url: "/mapSite",
         views: {
           'home-tab': {
-            templateUrl: "templates/tab-home.html"
+            templateUrl: "templates/tab-home.html",
+            controller: 'MapCtrl'
           }
         }
       })
       .state('feedback', {
         url: "/feedback",
         abstract: true,
-        templateUrl: "templates/feedback/fbackForm.html"
+        templateUrl: "templates/feedback/fbackForm.html",
+        controller: 'MapCtrl'
       });
       // .state('feedback.fbForm', {
       //   url: "/feedback",
