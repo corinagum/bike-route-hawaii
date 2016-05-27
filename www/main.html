@@ -33,60 +33,54 @@
       </script>
 
       <script id="templates/home.html" type="text/ng-template">
-        <ion-view view-title="Home" class="landingOne">
-          <ion-content class="padding">
-          <h1>Aloha</h1>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi doloremque consequatur, omnis iusto eius, nobis amet quaerat rem odio hic, voluptas exercitationem nostrum. Quae dolore vel, cumque, ipsam incidunt sit.
-              <br>
-              <a class="button" href="#/tab/facts">Let's Go!</a>
-            </p>
+        <ion-view view-title="Home" class="landing">
+          <ion-content>
+          <div class="alohaLandingOne">
+            <p class="contentTitle">Aloha!</p><br>
+            <p class="contentPar"> We wanted to get your <br>feedback about a new <br>commuting program that <br>will affect your community. <br>Your input is important to<br> us as we work on <br>developing program.</p>
+            <br>
+            <a class="button" href="#/tab/facts">Let's Go!</a>
+          </div>
           </ion-content>
         </ion-view>
       </script>
 
       <script id="templates/facts.html" type="text/ng-template">
-        <ion-view view-title="Facts" ng-init="toggleAge=true; gender=false; zipCode=false">
+        <ion-view class="landing" view-title="Facts" ng-init="toggleAge=true; gender=false; zipCode=false">
           <ion-content class="padding">
 
-            <p>Before we get started, we want to gather some general information.</p>
-            <div ng-show="toggleAge">
-            <div>Age</div>
-              <a href="#" ng-click="toggleAge=false; gender=true; zipCode=false">18-25</a>
-              <a href="#" ng-click="toggleAge=false; gender=true; zipCode=false">26-45</a>
-              <a href="#" ng-click="toggleAge=false; gender=true; zipCode=false">46+</a>
-                <a class="button icon ion-home" href="#/tab/home"> Home</a>
-                <a class="button icon icon-right ion-chevron-right" href="#/tab/alohaLanding">More Facts</a>
-              </p>
+            <div class="alohaLandingOne">
+              <p class="contentPar">Before we get started, <br>we want to gather some<br>general information.<br></p>
+              <div ng-show="toggleAge">
+                <div class="genQsBtn btnHeader button">&nbsp&nbsp&nbspAge&nbsp&nbsp&nbsp&nbsp</div>
+                  <a class="genQsBtn button" ng-click="toggleAge=false; gender=true; zipCode=false">18-25</a>
+                  <a class="genQsBtn button" ng-click="toggleAge=false; gender=true; zipCode=false">26-45</a>
+                  <a class="genQsBtn button" ng-click="toggleAge=false; gender=true; zipCode=false">&nbsp46+&nbsp&nbsp</a>
+                </div>
+
+              <div ng-show="gender">
+                <div class="genQsBtn btnHeader">Gender</div>
+                <div class="genQsBtn" ng-click="toggleAge=false; gender=false; zipCode=true">Female</div>
+                <div class="genQsBtn" ng-click="toggleAge=false; gender=false; zipCode=true">Male</div>
+              </div>
+
+              <div ng-show="zipCode">
+                <div class="genQsBtn btnHeader">Zipcode</div>
+                <input class="genQsBtn type="number">
+                <!-- <a href="#/tab/alohaLanding">input field</a> -->
+              </div>
+              </br>
+              <a href="#/tab/aloha">skip</a>
             </div>
-
-            <div ng-show="gender">
-              <div>Gender</div>
-              <a href="#" ng-click="toggleAge=false; gender=false; zipCode=true">Female</a>
-              <a href="#" ng-click="toggleAge=false; gender=false; zipCode=true">Male</a>
-              <a class="button icon ion-home" href="#/tab/home"> Home</a>
-              <a class="button icon icon-right ion-chevron-right" href="#/tab/alohaLanding">More Facts</a>
-              </p>
-            </div>
-
-            <div ng-show="zipCode">
-              <div>Zipcode</div>
-              <a href="#/tab/alohaLanding">input field</a>
-
-                <a class="button icon ion-home" href="#/tab/home"> Home</a>
-                <a class="button icon icon-right ion-chevron-right" href="#/tab/alohaLanding">More Facts</a>
-              </p>
-            </div>
-
-            <a href="#/tab/aloha">skip</a>
 
           </ion-content>
         </ion-view>
       </script>
 
       <script id="templates/alohaLanding.html" type="text/ng-template">
-        <ion-view view-title="Also Factual">
+        <ion-view class="" view-title="Also Factual">
           <ion-content class="padding">
-            <h1>Aloha!</h1>
+            <p class="contentTitle">Aloha!</p>
             <div>
               <a href="#/tab/main">What is Bikeshare?</a>
               <a href="">I know about Bikeshare, just not sure my community needs it.</a>
@@ -100,7 +94,7 @@
       </script>
 
       <script id="templates/about.html" type="text/ng-template">
-        <ion-view view-title="About">
+        <ion-view class="landing" view-title="About">
           <ion-content class="padding">
             <h3>Create hybrid mobile apps with the web technologies you love.</h3>
             <p>Free and open source, Ionic offers a library of mobile-optimized HTML, CSS and JS components for building highly interactive apps.</p>

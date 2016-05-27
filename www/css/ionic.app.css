@@ -14,9 +14,7 @@ $royal:                           #886aea !default;
 $dark:                            #717171  !default;
 
 */
-a {
-  font-family: 'Quicksand', sans-serif; }
-
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -9733,6 +9731,9 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+body, p {
+  color: #fff; }
+
 .scale-in {
   transform: scale(1);
   opacity: 0; }
@@ -9750,12 +9751,41 @@ a.button {
 .scale-in > .ng-leave {
   transition: all ease-in-out 250ms; }
 
+.contentTitle {
+  font-size: 36px; }
+
+.contentPar {
+  font-size: 20px; }
+
+.alohaLandingOne {
+  margin-top: 50%;
+  text-align: center; }
+
+.landing {
+  background-color: #89d5a4;
+  justify-content: center;
+  margin: auto;
+  line-height: 24px; }
+
+.button {
+  color: #76CE95;
+  font-size: 14px;
+  padding: 0px 35px 0px 35px; }
+
+.genQsBtn {
+  background-color: #fff;
+  font-size: 20px;
+  color: #181B1E;
+  margin: 0px 70px 5px 70px;
+  padding: 10px 80px 10px 80px; }
+
+.btnHeader {
+  color: #76CE95;
+  font-size: 14px; }
+
 #map {
   width: 100%;
   height: 100%; }
-
-.landingOne {
-  background-color: #9cdbb2; }
 
 .scroll {
   height: 100%; }
@@ -9787,7 +9817,7 @@ h1.title {
   color: #76CE95; }
 
 .bar-header {
-  background-color: #76CE95; }
+  background-color: #9cdbb2; }
 
 #locate-before-start {
   z-index: 1000;
