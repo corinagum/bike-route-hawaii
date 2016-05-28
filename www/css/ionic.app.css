@@ -11,10 +11,9 @@ $balanced:                        #78DEAC !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
-$dark:                            #717171  !default;
+$dark:                            #626262  !default;
 
 */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -9732,7 +9731,8 @@ a.button {
   transition-duration: 0s; }
 
 body, p {
-  color: #fff; }
+  color: #fff;
+  font-family: 'Open Sans', sans-serif; }
 
 .scale-in {
   transform: scale(1);
@@ -9774,13 +9774,27 @@ body, p {
 
 .genQsBtn {
   background-color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   color: #181B1E;
-  margin: 0px 70px 5px 70px;
-  padding: 10px 80px 10px 80px; }
+  margin-top: 5px;
+  padding: 2% 20% 2% 20%; }
 
 .btnHeader {
   color: #76CE95;
+  font-size: 14px; }
+
+.skipLink {
+  color: #fff; }
+
+input[type="number"] {
+  border: 0;
+  background-color: #fff;
+  width: 40;
+  width: 195px;
+  height: 63px;
+  margin: 9px auto;
+  border-radius: 3px;
+  text-align: center;
   font-size: 14px; }
 
 #map {

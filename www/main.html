@@ -52,25 +52,25 @@
             <div class="alohaLandingOne">
               <p class="contentPar">Before we get started, <br>we want to gather some<br>general information.<br></p>
               <div ng-show="toggleAge">
-                <div class="genQsBtn btnHeader button">&nbsp&nbsp&nbspAge&nbsp&nbsp&nbsp&nbsp</div>
+                <div class="genQsBtn btnHeader button">&nbsp&nbspAge&nbsp&nbsp&nbsp&nbsp</div>
                   <a class="genQsBtn button" ng-click="toggleAge=false; gender=true; zipCode=false">18-25</a>
                   <a class="genQsBtn button" ng-click="toggleAge=false; gender=true; zipCode=false">26-45</a>
                   <a class="genQsBtn button" ng-click="toggleAge=false; gender=true; zipCode=false">&nbsp46+&nbsp&nbsp</a>
                 </div>
 
               <div ng-show="gender">
-                <div class="genQsBtn btnHeader">Gender</div>
-                <div class="genQsBtn" ng-click="toggleAge=false; gender=false; zipCode=true">Female</div>
-                <div class="genQsBtn" ng-click="toggleAge=false; gender=false; zipCode=true">Male</div>
+                <div class="genQsBtn btnHeader button">&nbspGender&nbsp&nbsp</div>
+                <div class="genQsBtn button" ng-click="toggleAge=false; gender=false; zipCode=true">Female</div>
+                <div class="genQsBtn button" ng-click="toggleAge=false; gender=false; zipCode=true">&nbsp&nbspMale&nbsp&nbsp</div>
               </div>
 
               <div ng-show="zipCode">
-                <div class="genQsBtn btnHeader">Zipcode</div>
-                <input class="genQsBtn type="number">
-                <!-- <a href="#/tab/alohaLanding">input field</a> -->
+                <div class="genQsBtn btnHeader button">zip code</div>
+                <input class="genQsBtn" type="number">
+                <a href="#/tab/aloha" class="button">Submit</a>
               </div>
               </br>
-              <a href="#/tab/aloha">skip</a>
+              <a class="skipLink" href="#/tab/aloha">skip</a>
             </div>
 
           </ion-content>
@@ -78,17 +78,19 @@
       </script>
 
       <script id="templates/alohaLanding.html" type="text/ng-template">
-        <ion-view class="" view-title="Also Factual">
+        <ion-view class="landing" view-title="Also Factual">
           <ion-content class="padding">
-            <p class="contentTitle">Aloha!</p>
-            <div>
-              <a href="#/tab/main">What is Bikeshare?</a>
-              <a href="">I know about Bikeshare, just not sure my community needs it.</a>
-              <a href="#/tab/mapSite">Bikeshare is awesome! Are there stations near me?</a>
+            <div class="alohaLandingOne">
+              <p class="">How much do you know </br>about Bikeshare Hawaii program?</p>
+              <div>
+                <a href="#/tab/main">What is Bikeshare?</a>
+                <a href="">I know about Bikeshare, just not sure my community needs it.</a>
+                <a href="#/tab/mapSite">Bikeshare is awesome! Are there stations near me?</a>
+              </div>
+                <a class="button icon ion-home" href="#/tab/home"> Home</a>
+                <a class="button icon ion-chevron-left" href="#/tab/facts"> Scientific Facts</a>
+              </p>
             </div>
-              <a class="button icon ion-home" href="#/tab/home"> Home</a>
-              <a class="button icon ion-chevron-left" href="#/tab/facts"> Scientific Facts</a>
-            </p>
           </ion-content>
         </ion-view>
       </script>

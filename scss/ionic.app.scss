@@ -10,12 +10,11 @@ $balanced:                        #78DEAC !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
-$dark:                            #717171  !default;
+$dark:                            #626262  !default;
 
 */
 
 // @import url(https://fonts.googleapis.com/css?family=Quicksand);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -25,7 +24,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 body, p {
   color: $light;
-  // font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -78,10 +77,10 @@ body, p {
 
 .genQsBtn {
   background-color: $light;
-  font-size: 20px;
+  font-size: 18px;
   color: $dark;
-  margin: 0px 70px 5px 70px;
-  padding: 10px 80px 10px 80px;
+  margin-top: 5px;
+  padding: 2% 20% 2% 20%;
 }
 
 .btnHeader {
@@ -89,10 +88,21 @@ body, p {
   font-size: 14px;
 }
 
+.skipLink {
+  color: $light;
+}
 
-
-
-
+input[type="number"] {
+  border: 0;
+  background-color: $light;
+  width: 40;
+  width: 195px;
+  height: 63px;
+  margin: 9px auto;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 14px;
+}
 
 
 
