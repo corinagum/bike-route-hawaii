@@ -3,7 +3,7 @@ To customize the look and feel of Ionic, you can override the variables
 in ionic's _variables.scss file.
 For example, you might change some of the default colors:
 $light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
+$stable:                          #f5f5f5 !default;
 $positive:                        #387ef5 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #78DEAC !default;
@@ -58,14 +58,12 @@ body, p {
 }
 
 .alohaLandingOne {
-  margin-top: 50%;
   text-align: center;
+  margin: auto;
 }
 
 .landing {
   background-color: lighten($balanced, 5%);
-  justify-content: center;
-  margin: auto;
   line-height: 24px;
 }
 
@@ -76,7 +74,7 @@ body, p {
 }
 
 .genQsBtn {
-  background-color: $light;
+  background-color: $stable;
   font-size: 18px;
   color: $dark;
   margin-top: 5px;
@@ -89,12 +87,12 @@ body, p {
 }
 
 .skipLink {
-  color: $light;
+  color: $dark;
 }
 
 input[type="number"] {
   border: 0;
-  background-color: $light;
+  background-color: $dark;
   width: 40;
   width: 195px;
   height: 63px;
@@ -104,7 +102,19 @@ input[type="number"] {
   font-size: 14px;
 }
 
+.fdbckBtn {
+  position: absolute;
+  right: 5px;
+  border-color: $stable;
+  color: $stable;
+  background-color: transparent;
+}
 
+.backArrow {
+  font-size: 40px;
+  margin-left: 10px;
+  color: $stable;
+}
 
 
 

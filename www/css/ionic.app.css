@@ -4,7 +4,7 @@ To customize the look and feel of Ionic, you can override the variables
 in ionic's _variables.scss file.
 For example, you might change some of the default colors:
 $light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
+$stable:                          #f5f5f5 !default;
 $positive:                        #387ef5 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #78DEAC !default;
@@ -9758,13 +9758,11 @@ body, p {
   font-size: 20px; }
 
 .alohaLandingOne {
-  margin-top: 50%;
-  text-align: center; }
+  text-align: center;
+  margin: auto; }
 
 .landing {
   background-color: #89d5a4;
-  justify-content: center;
-  margin: auto;
   line-height: 24px; }
 
 .button {
@@ -9773,7 +9771,7 @@ body, p {
   padding: 0px 35px 0px 35px; }
 
 .genQsBtn {
-  background-color: #fff;
+  background-color: #f8f8f8;
   font-size: 18px;
   color: #181B1E;
   margin-top: 5px;
@@ -9784,11 +9782,11 @@ body, p {
   font-size: 14px; }
 
 .skipLink {
-  color: #fff; }
+  color: #181B1E; }
 
 input[type="number"] {
   border: 0;
-  background-color: #fff;
+  background-color: #181B1E;
   width: 40;
   width: 195px;
   height: 63px;
@@ -9796,6 +9794,18 @@ input[type="number"] {
   border-radius: 3px;
   text-align: center;
   font-size: 14px; }
+
+.fdbckBtn {
+  position: absolute;
+  right: 5px;
+  border-color: #f8f8f8;
+  color: #f8f8f8;
+  background-color: transparent; }
+
+.backArrow {
+  font-size: 40px;
+  margin-left: 10px;
+  color: #f8f8f8; }
 
 #map {
   width: 100%;

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/leaflet.extra-markers.min.css">
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-    <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -47,33 +46,33 @@
 
       <script id="templates/facts.html" type="text/ng-template">
         <ion-view class="landing" view-title="Facts" ng-init="toggleAge=true; gender=false; zipCode=false">
-          <ion-content class="padding">
+          <div class="container">
+            <ion-content class="alohaLandingOne valign-wrapper">
 
-            <div class="alohaLandingOne">
-              <p class="contentPar">Before we get started, <br>we want to gather some<br>general information.<br></p>
-              <div ng-show="toggleAge">
-                <div class="genQsBtn btnHeader button">&nbsp&nbspAge&nbsp&nbsp&nbsp&nbsp</div>
-                  <a class="genQsBtn button" ng-click="toggleAge=false; gender=true; zipCode=false">18-25</a>
-                  <a class="genQsBtn button" ng-click="toggleAge=false; gender=true; zipCode=false">26-45</a>
-                  <a class="genQsBtn button" ng-click="toggleAge=false; gender=true; zipCode=false">&nbsp46+&nbsp&nbsp</a>
+                <p class="contentPar">Before we get started, <br>we want to gather some<br>general information.<br></p>
+                <div ng-show="toggleAge">
+                  <div class="genQsBtn btnHeader button">&nbsp&nbspAge&nbsp&nbsp&nbsp&nbsp</div></br>
+                    <a class="genQsBtn button" ng-click="toggleAge=false; gender=true; zipCode=false">18-25</a></br>
+                    <a class="genQsBtn button" ng-click="toggleAge=false; gender=true; zipCode=false">26-45</a></br>
+                    <a class="genQsBtn button" ng-click="toggleAge=false; gender=true; zipCode=false">&nbsp46+&nbsp&nbsp</a>
+                  </div>
+
+                <div ng-show="gender">
+                  <div class="genQsBtn btnHeader button">&nbspGender&nbsp&nbsp</div></br>
+                  <div class="genQsBtn button" ng-click="toggleAge=false; gender=false; zipCode=true">Female</div></br>
+                  <div class="genQsBtn button" ng-click="toggleAge=false; gender=false; zipCode=true">&nbsp&nbspMale&nbsp&nbsp</div>
                 </div>
 
-              <div ng-show="gender">
-                <div class="genQsBtn btnHeader button">&nbspGender&nbsp&nbsp</div>
-                <div class="genQsBtn button" ng-click="toggleAge=false; gender=false; zipCode=true">Female</div>
-                <div class="genQsBtn button" ng-click="toggleAge=false; gender=false; zipCode=true">&nbsp&nbspMale&nbsp&nbsp</div>
-              </div>
+                <div ng-show="zipCode">
+                  <div class="genQsBtn btnHeader button">zip code</div></br>
+                  <input class="genQsBtn" type="number">
+                  <a href="#/tab/aloha" class="button">Submit</a>
+                </div>
+                </br>
+                <a class="skipLink" href="#/tab/aloha">skip</a>
 
-              <div ng-show="zipCode">
-                <div class="genQsBtn btnHeader button">zip code</div>
-                <input class="genQsBtn" type="number">
-                <a href="#/tab/aloha" class="button">Submit</a>
-              </div>
-              </br>
-              <a class="skipLink" href="#/tab/aloha">skip</a>
-            </div>
-
-          </ion-content>
+            </ion-content>
+          </div>
         </ion-view>
       </script>
 
@@ -81,7 +80,7 @@
         <ion-view class="landing" view-title="Also Factual">
           <ion-content class="padding">
             <div class="alohaLandingOne">
-              <p class="">How much do you know </br>about Bikeshare Hawaii program?</p>
+              <p class="contentTitle">How much do you know </br>about Bikeshare Hawaii program?</p>
               <div>
                 <a href="#/tab/main">What is Bikeshare?</a>
                 <a href="">I know about Bikeshare, just not sure my community needs it.</a>
