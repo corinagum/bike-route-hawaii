@@ -10,9 +10,10 @@ $balanced:                        #78DEAC !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
-$dark:                            #626262  !default;
-
+$dark:                            #626262 !default;
 */
+
+$typeGrey: #626262;
 
 // @import url(https://fonts.googleapis.com/css?family=Quicksand);
 
@@ -25,6 +26,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 body, p {
   color: $light;
   font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
 }
 
 
@@ -55,11 +57,18 @@ body, p {
 
 .contentPar {
   font-size: 20px;
+  line-height: 20px;
+  padding-bottom: 15px;
 }
 
 .alohaLandingOne {
   text-align: center;
-  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .landing {
@@ -67,39 +76,45 @@ body, p {
   line-height: 24px;
 }
 
+
 .button {
   color: $balanced;
   font-size: 14px;
   padding: 0px 35px 0px 35px;
-}
-
-.genQsBtn {
   background-color: $stable;
-  font-size: 18px;
-  color: $dark;
-  margin-top: 5px;
-  padding: 2% 20% 2% 20%;
 }
 
-.btnHeader {
+.btnDrk {
+  @extend .button;
+  color: $typeGrey;
+  min-width: 230px;
+  min-height: 70px;
+  line-height: 70px;
+  margin-bottom: 8px;
+  font-size: large;
+}
+
+.btnTitle {
   color: $balanced;
   font-size: 14px;
+  font-weight: bold;
 }
 
 .skipLink {
-  color: $dark;
+  color: $typeGrey;
 }
 
 input[type="number"] {
-  border: 0;
-  background-color: $dark;
-  width: 40;
-  width: 195px;
-  height: 63px;
-  margin: 9px auto;
-  border-radius: 3px;
-  text-align: center;
-  font-size: 14px;
+  // border: 0;
+  // background-color: $typeGrey;
+  // width: 40;
+  width: 180px;
+  // height: 63px;
+  // margin: 9px auto;
+  // border-radius: 3px;
+  // text-align: center;
+  // font-size: 14px;
+  @extend .btnDrk;
 }
 
 .fdbckBtn {
@@ -116,6 +131,33 @@ input[type="number"] {
   color: $stable;
 }
 
+#pagination {
+  clear:both;
+  width:45px;
+  margin:25px auto 0;
+  padding:0;
+}
+
+#pagination li {
+  list-style:none;
+  float:left;
+  margin:0 2px;
+}
+
+#pagination li a {
+  display:block;
+  width:10px;
+  height:10px;
+  text-indent:-10000px;
+  background: $stable;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+#pagination li a.active {
+  background: $typeGrey;
+}
 
 
 
