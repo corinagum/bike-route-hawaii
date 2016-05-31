@@ -50,7 +50,7 @@ body, p {
 .scale-in.ng-enter-active,
 .scale-in > .ng-enter-active {
   transform: scale(1);
-  opacity: 0.8;
+  opacity: 0.94;
 }
 
 .scale-in.ng-leave,
@@ -123,6 +123,28 @@ input[type="number"] {
   @extend .btnDrk;
 }
 
+input[type="text"], input[type="email"] {
+  text-align: left;
+  margin-bottom: 5px;
+  background-color: $stable;
+}
+
+[type="radio"]:not(:checked)+label:before, [type="radio"]:not(:checked)+label:after {
+  border: 2px solid $stable;
+}
+
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+  border: 2px solid $balanced;
+}
+
+textarea {
+  background-color: $stable;
+}
+
+.divSize {
+  padding: 5%;
+}
+
 .fdbckBtn {
   @include borderRadius(10px);
   position: absolute;
@@ -156,7 +178,6 @@ input[type="number"] {
   font-weight: bold;
   margin-left: 15px;
   color: $stable;
-  padding-top: -10px;
 }
 
 #pagination {
@@ -187,7 +208,8 @@ input[type="number"] {
 
 .filter-modal {
   border: 0px;
-  height: 80%;
+  height: 70%;
+  margin-top: 60px;
 
   div {
     background-color: $typeGrey;
@@ -200,8 +222,19 @@ input[type="number"] {
   height: initial;
 }
 
+.commentHeader {
+  @extend .btnTitle;
+  color: $stable;
+}
 
+.radioBtn {
+  padding: 0;
+  margin-bottom: 15px;
 
+  p {
+    font-size: 10px;
+  }
+}
 
 
 //=========================================

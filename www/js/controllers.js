@@ -436,7 +436,7 @@
   $ionicModal.fromTemplateUrl('comment-modal.html', {
     id       : '2',
     scope    : $scope,
-    animation: 'slide-in-up'
+    animation: 'scale-in'
   }).then(function(modal) {
     $scope.modal2 = modal;
   });
