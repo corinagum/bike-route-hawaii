@@ -113,8 +113,36 @@ body, p {
   font-weight: bold;
 }
 
+.bslogo {
+  text-align: center;
+  margin-bottom: 10px;
+
+  img {
+    height: auto;
+    width: 40%;
+  }
+}
+
 .skipLink {
   color: $typeGrey;
+}
+
+.secTitle {
+  font-size: 32px;
+  color: $typeGrey;
+  text-align: center;
+}
+
+.secPar {
+  font-size: 13px;
+  line-height: 15px;
+  color: $typeGrey;
+}
+
+.section {
+  padding: 65px 40px 40px 40px;
+  background-color: lighten($typeGrey, 59%);
+  margin: 0;
 }
 
 input[type="number"] {
@@ -236,6 +264,9 @@ textarea {
   }
 }
 
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: $balanced;
+}
 
 //=========================================
 #map {

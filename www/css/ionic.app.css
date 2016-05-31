@@ -9890,8 +9890,30 @@ body, p {
   font-size: 14px;
   font-weight: bold; }
 
+.bslogo {
+  text-align: center;
+  margin-bottom: 10px; }
+  .bslogo img {
+    height: auto;
+    width: 40%; }
+
 .skipLink {
   color: #626262; }
+
+.secTitle {
+  font-size: 32px;
+  color: #626262;
+  text-align: center; }
+
+.secPar {
+  font-size: 13px;
+  line-height: 15px;
+  color: #626262; }
+
+.section {
+  padding: 65px 40px 40px 40px;
+  background-color: #f8f8f8;
+  margin: 0; }
 
 input[type="number"] {
   width: 180px;
@@ -9995,6 +10017,9 @@ textarea {
   margin-bottom: 15px; }
   .radioBtn p {
     font-size: 10px; }
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: #76CE95; }
 
 #map {
   width: 100%;

@@ -1,7 +1,7 @@
  angular.module('starter.controllers', ['ngCordova'])
 
  .controller('MapCtrl',
-  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location) {
+  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory) {
 
   angular.extend($scope, {
     honolulu: {
@@ -612,18 +612,9 @@
 
 ////////////////////////////////////////////////////////////
 
-  // LOCATION PATHS
-  $scope.go = function ( path ) {
-      $location.path( path );
-    };
-
-  $scope.goZip = function ( path ) {
-      $location.path( path );
-    };
-
-  $scope.back = function ( path ) {
-      $location.path( path );
-    };
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
 
   //>>>>>>>>>>>> POPOVER EVENT
 
