@@ -9898,16 +9898,41 @@ input[type="number"] {
   padding: 0; }
 
 .fdbckBtn {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
   position: absolute;
-  right: 5px;
-  border-color: #f8f8f8;
+  right: 20px;
+  top: 13px;
+  border: 2px solid #f8f8f8;
   color: #f8f8f8;
   background-color: transparent; }
 
+.suggestFdbkBtn {
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  border-radius: 12px;
+  font-size: 16px;
+  padding: 12px 30px;
+  border: 2px solid #f8f8f8;
+  color: #f8f8f8;
+  background-color: transparent; }
+
+.addMargin {
+  margin-bottom: 40px; }
+
+.cancelBtn {
+  color: #76CE95;
+  font-weight: 900; }
+
 .backArrow {
-  font-size: 40px;
-  margin-left: 10px;
-  color: #f8f8f8; }
+  font-size: 50px;
+  font-weight: bold;
+  margin-left: 15px;
+  color: #f8f8f8;
+  padding-top: -10px; }
 
 #pagination {
   clear: both;
@@ -9921,21 +9946,34 @@ input[type="number"] {
   margin: 0 2px; }
 
 #pagination li a {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
   display: block;
   width: 10px;
   height: 10px;
   text-indent: -10000px;
-  background: #f8f8f8;
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px; }
+  background: #f8f8f8; }
 
 #pagination li a.active {
   background: #626262; }
 
+.filter-modal {
+  border: 0px;
+  height: 80%; }
+  .filter-modal div {
+    background-color: #626262;
+    border: 0px; }
+
+.bar-header {
+  background-color: #76CE95;
+  height: initial; }
+
 #map {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  margin-top: 15px; }
 
 .scroll {
   height: 100%; }
@@ -9965,9 +10003,6 @@ input[type="number"] {
 
 h1.title {
   color: #76CE95; }
-
-.bar-header {
-  background-color: #9cdbb2; }
 
 #locate-before-start {
   z-index: 1000;
@@ -10020,13 +10055,6 @@ h1.title {
 .bottom-tab-nav-img {
   height: 25px;
   margin-top: 6px; }
-
-.filter-modal {
-  border: 0px;
-  height: 80%; }
-  .filter-modal div {
-    background-color: #181B1E;
-    border: 0px; }
 
 .radius-small {
   background-color: #f8f8f8;
@@ -10196,11 +10224,6 @@ h1.title {
 
 .fill-unselected {
   fill: #B7B7B7; }
-
-.done {
-  margin: 20px auto;
-  width: 92%;
-  box-shadow: 1px 1px 3px 1px #454e57; }
 
 .spinner svg {
   width: 100px;

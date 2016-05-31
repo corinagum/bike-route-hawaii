@@ -433,13 +433,13 @@
       $scope.modal1 = modal;
     });
 
-  // $ionicModal.fromTemplateUrl('bikeShareList.html', {
-  //   id       : '2',
-  //   scope    : $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.modal2 = modal;
-  // });
+  $ionicModal.fromTemplateUrl('comment-modal.html', {
+    id       : '2',
+    scope    : $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal2 = modal;
+  });
 
   // // Modal for Marker Info
   // $ionicModal.fromTemplateUrl('markerDetail.html', {
@@ -483,13 +483,13 @@
   //   $scope.modal7 = modal;
   // });
 
-  $ionicModal.fromTemplateUrl('inputFeedbackForm.html', {
-      id       : '8',
-      scope    : $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.modal8 = modal;
-    });
+  // $ionicModal.fromTemplateUrl('inputFeedbackForm.html', {
+  //     id       : '8',
+  //     scope    : $scope,
+  //     animation: 'slide-in-up'
+  //   }).then(function(modal) {
+  //     $scope.modal8 = modal;
+  //   });
 
   $scope.openModal = function(index) {
     switch (index) {

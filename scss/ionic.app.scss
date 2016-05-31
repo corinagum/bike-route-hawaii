@@ -23,6 +23,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 @import "partials/browser-view";
 
+@mixin borderRadius($radius) {
+ -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+     -ms-border-radius: $radius;
+         border-radius: $radius;
+}
+
 body, p {
   color: $light;
   font-family: 'Open Sans', sans-serif;
@@ -117,17 +124,39 @@ input[type="number"] {
 }
 
 .fdbckBtn {
+  @include borderRadius(10px);
   position: absolute;
-  right: 5px;
-  border-color: $stable;
+  right: 20px;
+  top: 13px;
+  border: 2px solid $stable;
   color: $stable;
   background-color: transparent;
 }
 
-.backArrow {
-  font-size: 40px;
-  margin-left: 10px;
+.suggestFdbkBtn {
+  @include borderRadius(12px);
+  font-size: 16px;
+  padding: 12px 30px;
+  border: 2px solid $stable;
   color: $stable;
+  background-color: transparent;
+}
+
+.addMargin {
+  margin-bottom: 40px;
+}
+
+.cancelBtn {
+  color: $balanced;
+  font-weight: 900;
+}
+
+.backArrow {
+  font-size: 50px;
+  font-weight: bold;
+  margin-left: 15px;
+  color: $stable;
+  padding-top: -10px;
 }
 
 #pagination {
@@ -144,21 +173,32 @@ input[type="number"] {
 }
 
 #pagination li a {
+  @include borderRadius(10px);
   display:block;
   width:10px;
   height:10px;
   text-indent:-10000px;
   background: $stable;
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
 }
 
 #pagination li a.active {
   background: $typeGrey;
 }
 
+.filter-modal {
+  border: 0px;
+  height: 80%;
 
+  div {
+    background-color: $typeGrey;
+    border: 0px;
+  }
+}
+
+.bar-header {
+  background-color: $balanced;
+  height: initial;
+}
 
 
 
@@ -168,6 +208,7 @@ input[type="number"] {
 #map {
   width: 100%;
   height: 100%;
+  margin-top: 15px;
 }
 
 
@@ -206,9 +247,6 @@ h1.title {
   color: $balanced;
 }
 
-.bar-header {
-  background-color: lighten($balanced, 10%);
-}
 #locate-before-start{
   z-index: 1000;
   height: 100%;
@@ -271,16 +309,6 @@ h1.title {
 .bottom-tab-nav-img {
   height: 25px;
   margin-top: 6px;
-}
-
-.filter-modal {
-  border: 0px;
-  height: 80%;
-
-  div {
-    background-color: $dark;
-    border: 0px;
-  }
 }
 
 .radius-small {
@@ -505,12 +533,6 @@ h1.title {
 
 .fill-unselected {
   fill: #B7B7B7;
-}
-
-.done {
-  margin: 20px auto;
-  width: 92%;
-  box-shadow: 1px 1px 3px 1px lighten($dark,20%);
 }
 
 .spinner svg {
