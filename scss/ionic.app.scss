@@ -87,11 +87,17 @@ body, p {
 .btnDrk {
   @extend .button;
   color: $typeGrey;
-  min-width: 230px;
-  min-height: 70px;
-  line-height: 70px;
+  min-width: 300px;
+  min-height: 75px;
+  line-height: 74px;
   margin-bottom: 8px;
   font-size: large;
+}
+
+.homeBtn {
+  @extend .btnDrk;
+  line-height: 20px;
+  padding-top: 17px;
 }
 
 .btnTitle {
@@ -105,15 +111,8 @@ body, p {
 }
 
 input[type="number"] {
-  // border: 0;
-  // background-color: $typeGrey;
-  // width: 40;
   width: 180px;
-  // height: 63px;
-  // margin: 9px auto;
-  // border-radius: 3px;
-  // text-align: center;
-  // font-size: 14px;
+  padding: 0;
   @extend .btnDrk;
 }
 

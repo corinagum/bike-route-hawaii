@@ -79,7 +79,7 @@
 
                 <div ng-show="zipCode">
                   <div class="btnDrk btnTitle">zip code</div></br>
-                  <input class="" type="number">
+                  <input class="btnDrk" type="number"></input></br>
                   <a href="#/tab/aloha" class="button">Submit</a>
 
                   <ol id="pagination">
@@ -98,18 +98,15 @@
       </script>
 
       <script id="templates/alohaLanding.html" type="text/ng-template">
-        <ion-view class="landing" view-title="Also Factual">
+        <ion-view class="landing" view-title="Bikeshare Hawaii">
           <ion-content class="padding">
             <div class="alohaLandingOne">
-              <p class="contentTitle">How much do you know </br>about Bikeshare Hawaii program?</p>
+              <p class="contentPar">How much do you know </br>about Bikeshare Hawaii program?</p>
               <div class="buttonLinks">
-                <a href="#/tab/main"><div class="">What is Bikeshare?</div></a>
-                <a href=""><div class="">I know about Bikeshare, just not sure my community needs it.</div></a>
-                <a href="#/tab/mapSite"><div class="">Bikeshare is awesome! Are there stations near me?</div></a>
+                <a href="#/tab/main"><div class="btnDrk">What is Bikeshare?</div></a></br>
+                <a href=""><div class="homeBtn">I'm not sure my community</br> needs it.</div></a></br>
+                <a href="#/tab/mapSite"><div class="homeBtn">Bikeshare is awesome!</br> Are there stations near me?</div></a></br>
               </div>
-                <a class="button icon ion-home" href="#/tab/home"> Home</a>
-                <a class="button icon ion-chevron-left" href="#/tab/facts"> Scientific Facts</a>
-              </p>
             </div>
           </ion-content>
         </ion-view>
