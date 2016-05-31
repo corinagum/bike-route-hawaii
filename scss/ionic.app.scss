@@ -131,18 +131,30 @@ body, p {
   font-size: 32px;
   color: $typeGrey;
   text-align: center;
+  margin: 20px 0px 10px ;
+  font-weight: 200;
 }
 
-.secPar {
-  font-size: 13px;
-  line-height: 15px;
-  color: $typeGrey;
-}
+// .secPar {
+//   font-size: 13px;
+//   line-height: 15px;
+// }
 
 .section {
-  padding: 65px 40px 40px 40px;
+  padding: 40px 40px 40px 40px;
   background-color: lighten($typeGrey, 59%);
   margin: 0;
+
+  p {
+    color: $typeGrey;
+    font-size: 13px;
+    line-height: 15px;
+  }
+}
+
+.sectionTwo {
+  @extend .section;
+  background-color: $stable;
 }
 
 input[type="number"] {
@@ -206,6 +218,12 @@ textarea {
   font-weight: bold;
   margin-left: 15px;
   color: $stable;
+}
+
+.leadershipTeam {
+  height: 300px;
+  width: 100%;
+  background-color: lighten($typeGrey, 59%);
 }
 
 #pagination {

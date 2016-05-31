@@ -9903,17 +9903,21 @@ body, p {
 .secTitle {
   font-size: 32px;
   color: #626262;
-  text-align: center; }
+  text-align: center;
+  margin: 20px 0px 10px;
+  font-weight: 200; }
 
-.secPar {
-  font-size: 13px;
-  line-height: 15px;
-  color: #626262; }
-
-.section {
-  padding: 65px 40px 40px 40px;
+.section, .sectionTwo {
+  padding: 40px 40px 40px 40px;
   background-color: #f8f8f8;
   margin: 0; }
+  .section p, .sectionTwo p {
+    color: #626262;
+    font-size: 13px;
+    line-height: 15px; }
+
+.sectionTwo {
+  background-color: #f8f8f8; }
 
 input[type="number"] {
   width: 180px;
@@ -9971,6 +9975,11 @@ textarea {
   font-weight: bold;
   margin-left: 15px;
   color: #f8f8f8; }
+
+.leadershipTeam {
+  height: 300px;
+  width: 100%;
+  background-color: #f8f8f8; }
 
 #pagination {
   clear: both;

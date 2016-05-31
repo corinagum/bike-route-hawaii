@@ -49,7 +49,7 @@
           <div class="container">
             <ion-content>
 
-              <div class="alohaLandingOne">
+              <div class="alohaLandingOne hide-on-med-and-up">
                 <p class="contentPar">Before we get started, we<br> want to gather some<br>general information.<br></p>
 
                 <div ng-show="toggleAge">
@@ -100,7 +100,7 @@
       <script id="templates/alohaLanding.html" type="text/ng-template">
         <ion-view class="landing" view-title="Bikeshare Hawaii">
           <ion-content class="padding">
-            <div class="alohaLandingOne">
+            <div class="alohaLandingOne hide-on-med-and-up">
               <p class="contentPar">How much do you know </br>about Bikeshare Hawaii program?</p>
               <div class="buttonLinks">
                 <a href="#/tab/main"><div class="btnDrk">What is Bikeshare?</div></a></br>
@@ -108,6 +108,13 @@
                 <a href="#/tab/mapSite"><div class="homeBtn">Bikeshare is awesome!</br> Are there stations near me?</div></a></br>
               </div>
             </div>
+
+            <div class="alohaLandingOne hide-on-small-only">
+              <img src="img/bike-assets/web-1.png" alt="">
+              <img src="img/bike-assets/web-2.png" alt="">
+              <img src="img/bike-assets/web-3.png" alt="">
+            </div>
+
           </ion-content>
         </ion-view>
       </script>
