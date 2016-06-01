@@ -9907,17 +9907,22 @@ body, p {
   margin: 20px 0px 10px;
   font-weight: 200; }
 
-.section, .sectionTwo {
+.section {
+  background-color: #f8f8f8; }
+
+.sectionTwo, .section {
   padding: 40px 40px 40px 40px;
-  background-color: #f8f8f8;
   margin: 0; }
-  .section p, .sectionTwo p {
+  .sectionTwo p, .section p {
     color: #626262;
     font-size: 13px;
     line-height: 15px; }
 
-.sectionTwo {
-  background-color: #f8f8f8; }
+.panel-body {
+  color: #626262; }
+
+.aboutPar {
+  color: #626262; }
 
 input[type="number"] {
   width: 180px;
@@ -10013,6 +10018,9 @@ textarea {
   .filter-modal div {
     background-color: #626262;
     border: 0px; }
+
+.modal-backdrop {
+  background-color: transparent; }
 
 .bar-header {
   background-color: #76CE95;

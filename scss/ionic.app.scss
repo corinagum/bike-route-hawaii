@@ -135,14 +135,13 @@ body, p {
   font-weight: 200;
 }
 
-// .secPar {
-//   font-size: 13px;
-//   line-height: 15px;
-// }
-
 .section {
-  padding: 40px 40px 40px 40px;
   background-color: lighten($typeGrey, 59%);
+  @extend .sectionTwo;
+}
+
+.sectionTwo {
+  padding: 40px 40px 40px 40px;
   margin: 0;
 
   p {
@@ -152,9 +151,12 @@ body, p {
   }
 }
 
-.sectionTwo {
-  @extend .section;
-  background-color: $stable;
+.panel-body {
+  color: $typeGrey;
+}
+
+.aboutPar {
+  color: $typeGrey;
 }
 
 input[type="number"] {
@@ -261,6 +263,10 @@ textarea {
     background-color: $typeGrey;
     border: 0px;
   }
+}
+
+.modal-backdrop {
+  background-color: transparent;
 }
 
 .bar-header {

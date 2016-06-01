@@ -2,7 +2,7 @@
   <ion-view view-title="Home" class="landingBgClr">
     <ion-header-bar class="bar bar-header">
       <a href="#/tab/aloha"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
-      <button ng-click="openModal(1)" class="button fdbckBtn">
+      <button ng-click="openModal(1)" class="button waves-effect fdbckBtn">
       Leave Feedback
     </button>
     </ion-header-bar>
@@ -20,9 +20,24 @@
         <img class="leadershipTeam" src="" alt="">
       </div>
 
+
       <div class="sectionTwo">
-        <p>Lori McCartney, CEO</p>
-        <p>Ben Trevino, CEO</p>
+        <div class="" ng-click="isCollapsed = !isCollapsed; benCollapsed = true; isCollapsed=false"><p>Lori McCartney, CEO</p>
+          <div uib-collapse="isCollapsed">
+            <div class="aboutPar">
+              <div> Lori McCarney has 35+ years of experience in senior management and has held executive positions in local, national and international markets. She specializes in marketing and has a strong background in business strategy development. McCarney's local experience includes serving as a Senior VP of Coldwell Banker Pacific Properties, Chief Marketing Officer of FlyHawaii Airlines, and Executive VP-Director of Marketing at Bank of Hawaii. Prior to moving to Hawaii, she held executive leadership positions at Wells Fargo, Bank of America and major advertising agencies.  Additionally, McCarney is currently Chair of the Blood Bank of Hawaii Board of Trustees and the Communications Chair for Kapiolani Health Foundation.  She is also an avid cyclist and accomplished Ironman triathlete.</div>
+            </div>
+          </div>
+        <div class="divider"></div>
+
+        </div>
+        <p ng-click="benCollapsed = !benCollapsed; benCollapsed = false; isCollapsed=true">Ben Trevino, CEO</p>
+          <div uib-collapse="benCollapsed">
+            <div class="aboutPar">
+              <div> Ben Trevino is an experienced entrepreneur and technologist. He was a founder of Interisland Terminal, a Honolulu-based non-profit organization with projects including community spaces, the Kaka‘ako Agora, and R&D Bookstore and Cafe. Prior to Bikeshare Hawaii, Trevino was with the University of Hawaii Economic Research Organization (UHERO) where he was the architect of the UHERO Dashboard Project, a community data visualization portal for Hawaii data. He has held previous positions with Pacific Resources for Education and Learning, the Hawaii International Film Festival and Google. He currently serves on the board of Common Cause Hawaii. Trevino holds a BS in Computer Science from Stanford University and an MBA from the Shidler School of Business at University of Hawaii at Manoa. He has been commuting by bike in Hawaii for eight years.
+              </div>
+            </div>
+          </div>
       </div>
 
 
