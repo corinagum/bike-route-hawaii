@@ -131,13 +131,18 @@ body, p {
   font-size: 32px;
   color: $typeGrey;
   text-align: center;
-  margin: 20px 0px 10px ;
+  margin: 20px 0px;
   font-weight: 200;
 }
 
 .section {
-  background-color: lighten($typeGrey, 59%);
   @extend .sectionTwo;
+  background-color: lighten($typeGrey, 59%);
+
+  .secPar {
+    font-size: smaller;
+    line-height: 14px;
+  }
 }
 
 .sectionTwo {
@@ -147,6 +152,28 @@ body, p {
   h4, p {
     color: $typeGrey;
   }
+}
+
+.stepsNum {
+  border: 2px solid $balanced;
+  width: 100px;
+  height: 35px;
+  margin: auto 5px;
+  @include borderRadius(50%);
+
+  h2 {
+    padding: 5px;
+    line-height: 20px;
+    font-size: 20px;
+  }
+}
+
+.paddingLeft {
+  padding: 5px 0px 0px 20px;
+}
+
+.boxRow {
+  display: flex;
 }
 
 .aboutPar {

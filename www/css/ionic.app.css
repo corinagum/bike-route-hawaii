@@ -9904,17 +9904,40 @@ body, p {
   font-size: 32px;
   color: #626262;
   text-align: center;
-  margin: 20px 0px 10px;
+  margin: 20px 0px;
   font-weight: 200; }
 
 .section {
   background-color: #f8f8f8; }
+  .section .secPar {
+    font-size: smaller;
+    line-height: 14px; }
 
 .sectionTwo, .section {
   padding: 40px 40px 40px 40px;
   margin: 0; }
   .sectionTwo h4, .section h4, .sectionTwo p, .section p {
     color: #626262; }
+
+.stepsNum {
+  border: 2px solid #76CE95;
+  width: 100px;
+  height: 35px;
+  margin: auto 5px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%; }
+  .stepsNum h2 {
+    padding: 5px;
+    line-height: 20px;
+    font-size: 20px; }
+
+.paddingLeft {
+  padding: 5px 0px 0px 20px; }
+
+.boxRow {
+  display: flex; }
 
 .aboutPar {
   color: #626262;
