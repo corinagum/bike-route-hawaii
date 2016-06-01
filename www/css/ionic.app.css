@@ -9913,16 +9913,18 @@ body, p {
 .sectionTwo, .section {
   padding: 40px 40px 40px 40px;
   margin: 0; }
-  .sectionTwo p, .section p {
-    color: #626262;
-    font-size: 13px;
-    line-height: 15px; }
-
-.panel-body {
-  color: #626262; }
+  .sectionTwo h4, .section h4, .sectionTwo p, .section p {
+    color: #626262; }
 
 .aboutPar {
-  color: #626262; }
+  color: #626262;
+  font-size: 13px; }
+
+p .leaderName {
+  font-weight: 600; }
+
+.loriPadding {
+  padding-bottom: 0px; }
 
 input[type="number"] {
   width: 180px;

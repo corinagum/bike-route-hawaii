@@ -144,19 +144,22 @@ body, p {
   padding: 40px 40px 40px 40px;
   margin: 0;
 
-  p {
+  h4, p {
     color: $typeGrey;
-    font-size: 13px;
-    line-height: 15px;
   }
-}
-
-.panel-body {
-  color: $typeGrey;
 }
 
 .aboutPar {
   color: $typeGrey;
+  font-size: 13px;
+}
+
+p .leaderName {
+  font-weight: 600;
+}
+
+.loriPadding {
+  padding-bottom: 0px;
 }
 
 input[type="number"] {
