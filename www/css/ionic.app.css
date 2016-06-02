@@ -9897,6 +9897,16 @@ body, p {
     height: auto;
     width: 40%; }
 
+.moreInfoMap {
+  background: #78deac;
+  background: -moz-linear-gradient(-45deg, #78deac 0%, #78deac 50%, #bfe8f9 50%, #96e6bf 50%);
+  background: -webkit-linear-gradient(-45deg, #78deac 0%, #78deac 50%, #bfe8f9 50%, #96e6bf 50%);
+  background: linear-gradient(135deg, #78deac 0%, #78deac 50%, #bfe8f9 50%, #96e6bf 50%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#78deac', endColorstr='#96e6bf',GradientType=1 );
+  padding: 5px 20px; }
+  .moreInfoMap h4 {
+    color: #f8f8f8; }
+
 .skipLink {
   color: #626262; }
 
@@ -10009,7 +10019,12 @@ textarea {
 .leadershipTeam {
   height: 300px;
   width: 100%;
-  background-color: #f8f8f8; }
+  background-color: #626262; }
+
+.mapBg {
+  height: 300px;
+  width: 100%;
+  background-color: #626262; }
 
 #pagination {
   clear: both;
@@ -10059,6 +10074,11 @@ textarea {
   margin-bottom: 15px; }
   .radioBtn p {
     font-size: 10px; }
+
+.viewMapBtn {
+  z-index: 10;
+  position: relative;
+  top: 130px; }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
   background: #76CE95; }
