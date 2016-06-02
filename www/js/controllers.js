@@ -18,10 +18,10 @@
     layers: {
       baselayers: {
         osm: {
-          name: 'OpenStreetMap',
-          url: 'https://{s}.tiles.mapbox.com/v3/examples.map-i875mjb7/{z}/{x}/{y}.png',
+          name: 'Default',
+          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
           type: 'xyz'
-        }
+        },
       }
     },
     defaults: {
@@ -37,11 +37,13 @@
     },
     markers : {},
     bikeShareIcon: {
-      type: 'extraMarker',
-      icon: 'fa-bicycle',
-      markerColor: 'green-light',
-      prefix: 'fa',
-      shape: 'circle'
+      iconUrl: '../img/bike-assets/bike-icon.png',
+      iconSize:     [30, 30],
+      // shadowUrl: 'img/leaf-shadow.png',
+      shadowSize:   [50, 64], // size of the shadow
+      iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+      shadowAnchor: [4, 62],  // the same for the shadow
+      popupAnchor:  [15, 0] // point from which the popup should open relative to the iconAnchor
     },
     historyIcon: {
       type: 'extraMarker',
@@ -62,7 +64,8 @@
       icon: 'fa-pencil-square-o',
       markerColor: 'red',
       shape: 'circle',
-      prefix : 'fa'
+      prefix : 'fa',
+      message: 'Drop the bycicle where you\'d like to see the station'
     }
   });
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
