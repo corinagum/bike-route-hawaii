@@ -9895,7 +9895,17 @@ body, p {
   margin-bottom: 10px; }
   .bslogo img {
     height: auto;
-    width: 40%; }
+    width: 140px; }
+
+.moreInfoMap {
+  background: #78deac;
+  background: -moz-linear-gradient(-45deg, #78deac 0%, #78deac 50%, #bfe8f9 50%, #96e6bf 50%);
+  background: -webkit-linear-gradient(-45deg, #78deac 0%, #78deac 50%, #bfe8f9 50%, #96e6bf 50%);
+  background: linear-gradient(135deg, #78deac 0%, #78deac 50%, #bfe8f9 50%, #96e6bf 50%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#78deac', endColorstr='#96e6bf',GradientType=1 );
+  padding: 5px 20px; }
+  .moreInfoMap h4 {
+    color: #f8f8f8; }
 
 .skipLink {
   color: #626262; }
@@ -9904,20 +9914,64 @@ body, p {
   font-size: 32px;
   color: #626262;
   text-align: center;
-  margin: 20px 0px 10px;
+  margin: 20px 0px;
   font-weight: 200; }
 
-.section, .sectionTwo {
-  padding: 40px 40px 40px 40px;
-  background-color: #f8f8f8;
-  margin: 0; }
-  .section p, .sectionTwo p {
-    color: #626262;
-    font-size: 13px;
-    line-height: 15px; }
-
-.sectionTwo {
+.section {
   background-color: #f8f8f8; }
+  .section .secPar {
+    font-size: smaller;
+    line-height: 14px; }
+
+.sectionTwo, .section {
+  padding: 40px 40px 40px 40px;
+  margin: 0; }
+  .sectionTwo h4, .section h4, .sectionTwo p, .section p {
+    color: #626262; }
+
+.stepsNum {
+  border: 2px solid #76CE95;
+  width: 100px;
+  height: 30px;
+  margin: auto 5px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%; }
+  .stepsNum h2 {
+    padding: 5px;
+    line-height: 15px;
+    font-size: 20px; }
+
+.socialIcons {
+  font-size: 20px;
+  position: absolute;
+  right: 10px; }
+  .socialIcons i {
+    color: #f8f8f8; }
+
+.footerBack {
+  width: 75%; }
+
+.paddingLeft {
+  padding: 5px 0px 0px 20px; }
+
+.boxRow {
+  display: flex; }
+
+.rightIcons {
+  position: absolute;
+  right: 1; }
+
+.aboutPar {
+  color: #626262;
+  font-size: 13px; }
+
+p .leaderName {
+  font-weight: 600; }
+
+.loriPadding {
+  padding-bottom: 0px; }
 
 input[type="number"] {
   width: 180px;
@@ -9926,7 +9980,13 @@ input[type="number"] {
 input[type="text"], input[type="email"] {
   text-align: left;
   margin-bottom: 5px;
-  background-color: #f8f8f8; }
+  background-color: #dfdfdf;
+  font-size: 12px;
+  padding-left: 5px; }
+
+.smallSizeFont {
+  font-size: 12px;
+  color: #a2a2a2; }
 
 [type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after {
   border: 2px solid #f8f8f8; }
@@ -9935,10 +9995,12 @@ input[type="text"], input[type="email"] {
   border: 2px solid #76CE95; }
 
 textarea {
-  background-color: #f8f8f8; }
+  background-color: #dfdfdf;
+  font-size: 12px;
+  padding: 5px; }
 
 .divSize {
-  padding: 5%; }
+  padding: 0 5%; }
 
 .fdbckBtn {
   -webkit-border-radius: 10px;
@@ -9951,6 +10013,15 @@ textarea {
   border: 2px solid #f8f8f8;
   color: #f8f8f8;
   background-color: transparent; }
+
+.submitBtn {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  border: 2px solid #76CE95;
+  background-color: transparent;
+  color: #f8f8f8; }
 
 .suggestFdbkBtn {
   -webkit-border-radius: 12px;
@@ -9977,9 +10048,14 @@ textarea {
   color: #f8f8f8; }
 
 .leadershipTeam {
-  height: 300px;
+  height: auto;
   width: 100%;
-  background-color: #f8f8f8; }
+  background-color: #626262; }
+
+.mapBg {
+  height: 300px;
+  background: url("./../img/bike-assets/mapScreen2.png") no-repeat;
+  background-size: cover; }
 
 #pagination {
   clear: both;
@@ -10014,6 +10090,12 @@ textarea {
     background-color: #626262;
     border: 0px; }
 
+.footerSec {
+  background-color: #76CE95; }
+
+.modal-backdrop {
+  background-color: transparent; }
+
 .bar-header {
   background-color: #76CE95;
   height: initial; }
@@ -10026,6 +10108,11 @@ textarea {
   margin-bottom: 15px; }
   .radioBtn p {
     font-size: 10px; }
+
+.viewMapBtn {
+  z-index: 10;
+  position: relative;
+  top: 130px; }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
   background: #76CE95; }

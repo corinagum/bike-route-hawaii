@@ -618,7 +618,7 @@
 
   // BROWSER CONTROLLERS
   $scope.isCollapsed = true;
-  $scope.isSuggestCollapsed = true;
+  $scope.benCollapsed = true;
 
 
 ////////////////////////////////////////////////////////////
