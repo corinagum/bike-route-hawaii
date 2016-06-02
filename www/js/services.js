@@ -9,8 +9,13 @@ angular.module('starter.services', [])
   if(isCordovaApp){
     domain = '.';
   }
+
   this.getPoint = function() {
     return $http.get(domain + '/api/points');
+  };
+
+  this.getBikeshareStations = function() {
+    return $http.get(domain + '/api/points/bikeshare');
   };
 
   this.addPoint = function(point) {

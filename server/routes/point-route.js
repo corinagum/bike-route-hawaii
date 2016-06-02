@@ -12,6 +12,17 @@ router.get('/', function(req,res){
   });
 });
 
+router.get('/bikeshare', function(req,res){
+  Point.findAll({
+    where : {
+      type : "BikeShare"
+    }
+  })
+  .then(function(data){
+    res.send(data);
+  });
+});
+
 router.post('/', function(req,res){
   Point.create({
     type : req.body.point.type,

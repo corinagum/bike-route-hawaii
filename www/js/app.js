@@ -76,14 +76,13 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         url: "/tab",
         abstract: true,
         templateUrl: "templates/tabs.html",
-        controller: 'MapCtrl'
+
       })
       .state('tabs.home', {
         url: "/home",
         views: {
           'home-tab': {
             templateUrl: "templates/home.html",
-            controller: 'MapCtrl'
           }
         }
       })
@@ -92,7 +91,6 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         views: {
           'home-tab': {
             templateUrl: "templates/facts.html",
-            controller: 'MapCtrl'
           }
         }
       })
@@ -101,7 +99,6 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         views: {
           'home-tab': {
             templateUrl: "templates/alohaLanding.html",
-            controller: 'MapCtrl'
           }
         }
       })
