@@ -384,6 +384,10 @@ textarea {
   background: $balanced;
 }
 
+.leaflet-retina .leaflet-control-layers-toggle {
+  display: none;
+}
+
 //=========================================
 #map {
   width: 100%;

@@ -10117,6 +10117,9 @@ textarea {
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
   background: #76CE95; }
 
+.leaflet-retina .leaflet-control-layers-toggle {
+  display: none; }
+
 #map {
   width: 100%;
   height: 100%;
