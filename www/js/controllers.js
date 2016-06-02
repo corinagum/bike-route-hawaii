@@ -225,7 +225,6 @@
 
   // LOOPS THROUGH DATA RETURNED TO CHECK ITS TYPE AND IF IT SHOULD BE ASSIGNED A MARKER
   $scope.createMarkers = function(array, name){
-    console.log('in createMarkers initial');
     for(var i = 0; i < array.length; i++){
       var pointDetail;
       var showMarker;
@@ -236,7 +235,6 @@
       $scope.bikesharePoints.push(array[i]);
       showMarker = $scope.showStations;
       pointIcon = $scope.bikeShareIcon;
-      console.log('where the fuck am i?');
       // }
       // if(name === 'landmark'){
       //   pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + array[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
@@ -267,7 +265,6 @@
 
 
   $scope.setMarkersReturned = function(data){
-    console.log("in setMarkersReturned");
     $scope.createMarkers(data.data, 'bikeShare');
     // $scope.createMarkers(data.data.geoJSONHistory.features, 'landmark');
     // $scope.createMarkers(data.data.geoJSONBikeRack.features, 'bikeRack');
@@ -326,10 +323,8 @@
   // };
 
   $scope.$on('leafletDirectiveMap.map.load', function(event, args){
-    console.log("in map load");
     PointService.getBikeshareStations()
       .then(function(data){
-        console.log("data in load: ", data);
         $scope.setMarkersReturned(data);
       });
   });
