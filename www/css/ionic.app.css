@@ -9980,7 +9980,13 @@ input[type="number"] {
 input[type="text"], input[type="email"] {
   text-align: left;
   margin-bottom: 5px;
-  background-color: #f8f8f8; }
+  background-color: #dfdfdf;
+  font-size: 12px;
+  padding-left: 5px; }
+
+.smallSizeFont {
+  font-size: 12px;
+  color: #a2a2a2; }
 
 [type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after {
   border: 2px solid #f8f8f8; }
@@ -9989,10 +9995,12 @@ input[type="text"], input[type="email"] {
   border: 2px solid #76CE95; }
 
 textarea {
-  background-color: #f8f8f8; }
+  background-color: #dfdfdf;
+  font-size: 12px;
+  padding: 5px; }
 
 .divSize {
-  padding: 5%; }
+  padding: 0 5%; }
 
 .fdbckBtn {
   -webkit-border-radius: 10px;
@@ -10005,6 +10013,15 @@ textarea {
   border: 2px solid #f8f8f8;
   color: #f8f8f8;
   background-color: transparent; }
+
+.submitBtn {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  border: 2px solid #76CE95;
+  background-color: transparent;
+  color: #f8f8f8; }
 
 .suggestFdbkBtn {
   -webkit-border-radius: 12px;

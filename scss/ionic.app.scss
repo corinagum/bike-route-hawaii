@@ -224,7 +224,18 @@ input[type="number"] {
 input[type="text"], input[type="email"] {
   text-align: left;
   margin-bottom: 5px;
-  background-color: $stable;
+  background-color: darken($stable, 10%);
+  font-size: 12px;
+  padding-left: 5px;
+}
+
+@mixin fontStyling($size, $color) {
+  font-size: $size;
+  color: $color;
+}
+
+.smallSizeFont {
+  @include fontStyling(12px, lighten($typeGrey,25%));
 }
 
 [type="radio"]:not(:checked)+label:before, [type="radio"]:not(:checked)+label:after {
@@ -236,11 +247,13 @@ input[type="text"], input[type="email"] {
 }
 
 textarea {
-  background-color: $stable;
+  background-color: darken($stable, 10%);
+  font-size: 12px;
+  padding: 5px;
 }
 
 .divSize {
-  padding: 5%;
+  padding: 0 5%;
 }
 
 .fdbckBtn {
@@ -251,6 +264,13 @@ textarea {
   border: 2px solid $stable;
   color: $stable;
   background-color: transparent;
+}
+
+.submitBtn {
+  @include borderRadius(10px);
+  border: 2px solid $balanced;
+  background-color: transparent;
+  color: $stable;
 }
 
 .suggestFdbkBtn {
@@ -286,8 +306,6 @@ textarea {
 
 .mapBg {
   height: 300px;
-  // width: 100%;
-
   background: url("./../img/bike-assets/mapScreen2.png")no-repeat;
   background-size: cover;
 }
