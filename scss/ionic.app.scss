@@ -119,7 +119,7 @@ body, p {
 
   img {
     height: auto;
-    width: 40%;
+    width: 140px;
   }
 }
 
@@ -167,15 +167,26 @@ body, p {
 .stepsNum {
   border: 2px solid $balanced;
   width: 100px;
-  height: 35px;
+  height: 30px;
   margin: auto 5px;
   @include borderRadius(50%);
 
   h2 {
     padding: 5px;
-    line-height: 20px;
+    line-height: 15px;
     font-size: 20px;
   }
+}
+
+.socialIcons {
+  font-size: 20px;
+  position: absolute;
+  right: 10px;
+   i {color: $stable;}
+}
+
+.footerBack {
+  width: 75%;
 }
 
 .paddingLeft {
@@ -184,6 +195,11 @@ body, p {
 
 .boxRow {
   display: flex;
+}
+
+.rightIcons {
+  position: absolute;
+  right: 1;
 }
 
 .aboutPar {
@@ -263,7 +279,7 @@ textarea {
 }
 
 .leadershipTeam {
-  height: 300px;
+  height: auto;
   width: 100%;
   background-color: $typeGrey;
 }
@@ -309,6 +325,10 @@ textarea {
     background-color: $typeGrey;
     border: 0px;
   }
+}
+
+.footerSec {
+  background-color: $balanced;
 }
 
 .modal-backdrop {
