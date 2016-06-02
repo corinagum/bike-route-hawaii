@@ -10037,8 +10037,8 @@ textarea {
 
 .mapBg {
   height: 300px;
-  width: 100%;
-  background-color: #626262; }
+  background: url("./../img/bike-assets/mapScreen2.png") no-repeat;
+  background-size: cover; }
 
 #pagination {
   clear: both;
