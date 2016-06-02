@@ -37,11 +37,13 @@
     },
     markers : {},
     bikeShareIcon: {
-      type: 'extraMarker',
-      icon: 'fa-bicycle',
-      markerColor: 'green-light',
-      prefix: 'fa',
-      shape: 'circle'
+      iconUrl: '../img/bike-assets/bike-icon.png',
+      iconSize:     [30, 30]
+      // type: 'extraMarker',
+      // icon: 'fa-bicycle',
+      // markerColor: 'green-light',
+      // prefix: 'fa',
+      // shape: 'circle'
     },
     historyIcon: {
       type: 'extraMarker',
