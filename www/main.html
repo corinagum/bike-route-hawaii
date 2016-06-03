@@ -17,7 +17,7 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
     <script src="js/fb.js"></script>
-    <!-- cordova script (this will be a 404 during development) -->
+        <!-- cordova script (this will be a 404 during development) -->
     <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
 <!-- <script src="cordova.js"></script> -->
 
@@ -41,6 +41,31 @@
             <a class="button" href="#/tab/facts">Let's Go!</a>
           </div>
           </ion-content>
+
+        <!-- HERES THE CODE FOR THE PULL-UP COPY PASTAED FROM AN EXAMPLE HERE: http://arielfaur.github.io/ionic-pullup/  NONE OF THE TWEAKING I'VE DONE MADE IT LOOK LIKE THE EXAMPLE THOUGH... -->
+          <ion-pull-up-footer class="bar-calm">
+                <div class="title" ion-pull-up-trigger>Tap me or drag me</div>
+                <ion-pull-up-handle width="120" height="15" icon-expand="ion-chevron-up" icon-collapse="ion-chevron-down" style="border-radius: 5px 5px 0 0">
+                </ion-pull-up-handle>
+                <ion-pull-up-content scroll="false">
+            <div class="list card">
+              <div class="item item-divider">Recent Updates</div>
+              <div class="item item-body">
+                <div>
+                  There is a fire in <b>sector 3</b>
+                </div>
+              </div>
+            </div>
+            <div class="list card">
+              <div class="item item-divider">Other Updates</div>
+              <div class="item item-body">
+                <div>
+                  There was a fire in <b>sector 13</b>
+                </div>
+              </div>
+            </div </ion-pull-up-content>
+          </ion-pull-up-footer>
+
         </ion-view>
       </script>
 
@@ -143,9 +168,12 @@
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
 
     <!-- your app's js -->
+    <script src="js/ion-pullup.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
+    <script src="js/ion-pullup.js"></script>
+
     <!-- <script src="js/constants.js"></script> -->
   </body>
 </html>
