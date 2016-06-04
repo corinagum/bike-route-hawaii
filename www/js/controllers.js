@@ -234,7 +234,7 @@
       var pointIcon;
       // array[i].properties.distanceToFrom = Math.round(((array[i].properties.distance_from_current_location)*0.000621371192) * 100) / 100;
       // if(name === 'bikeShare'){
-      pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + array[i].name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+      pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(4); checkFavorite(currentMarkerProperties);"> ' + array[i].name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
       $scope.bikesharePoints.push(array[i]);
       showMarker = $scope.showStations;
       pointIcon = $scope.bikeShareIcon;
@@ -459,13 +459,13 @@
   });
 
   // // MODAL FOR LANDMARK LISTS
-  // $ionicModal.fromTemplateUrl('landmarkList.html', {
-  //   id: '4',
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.modal4 = modal;
-  // });
+  $ionicModal.fromTemplateUrl('markerDetail.html', {
+    id: '4',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal4 = modal;
+  });
 
   // $ionicModal.fromTemplateUrl('reportDetail.html', {
   //   id: '5',
@@ -621,6 +621,22 @@
 
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
+  };
+
+
+  $scope.footerExpand = function() {
+    console.log('Footer expanded');
+  };
+  $scope.footerCollapse = function() {
+    console.log('Footer collapsed');
+  };
+
+  $scope.class = "red";
+  $scope.changeClass = function(){
+    if ($scope.class === "red")
+      $scope.class = "blue";
+    else
+      $scope.class = "red";
   };
 
   //>>>>>>>>>>>> POPOVER EVENT

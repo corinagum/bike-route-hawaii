@@ -10039,6 +10039,17 @@ textarea {
 .webViewLandingButton {
   display: flex; }
 
+.wholeModalDiv {
+  position: absolute;
+  top: 188%;
+  height: 100%; }
+
+.red {
+  color: red; }
+
+.blue {
+  top: 70%; }
+
 #map {
   width: 100%;
   height: 100%;

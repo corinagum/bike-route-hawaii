@@ -23,7 +23,7 @@
     <!-- <iframe src="https://www.google.com/maps/d/embed?mid=1ltEWKgn_WgMw9opot3cL5qU8jAc" width="640" height="480"></iframe> -->
     <leaflet layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
 
-    <ion-pull-up-footer class="bar-calm">
+    <!-- <ion-pull-up-footer class="bar-calm" on-expand="footerExpand()">
           <div class="title" ion-pull-up-trigger>Tap me or drag me</div>
           <ion-pull-up-handle width="120" height="15" icon-expand="ion-chevron-up" icon-collapse="ion-chevron-down" style="border-radius: 5px 5px 0 0">
           </ion-pull-up-handle>
@@ -35,17 +35,17 @@
             There is a fire in <b>sector 3</b>
           </div>
         </div>
-      </div>
-      <div class="list card">
+      </div> -->
+ <!--      <div class="list card">
         <div class="item item-divider">Other Updates</div>
         <div class="item item-body">
           <div>
             There was a fire in <b>sector 13</b>
           </div>
         </div>
-      </div>
-      </ion-pull-up-content>
-    </ion-pull-up-footer>
+      </div> -->
+      <!-- </ion-pull-up-content>
+    </ion-pull-up-footer> -->
 
   </ion-content>
 
@@ -267,26 +267,29 @@
 
 
 
-<!--   <script id="landmarkList.html" type="text/ng-template">
-    <div class="modal">
-      <ion-header-bar class="bar bar-header">
+  <script id="markerDetail.html" type="text/ng-template">
+    <div class="modal wholeModalDiv" ng-class="class">
+      <ion-header-bar class="" ng-click="changeClass()">
         <h1 class="title" >{{stationCount}} Landmarks near you</h1>
         <button class="button icon ion-close-round closeModal" ng-click="closeModal(4)"></button>
       </ion-header-bar>
         <ion-content>
-          <ion-list show-delete="false" can-swipe="true" class="itemInList">
-            <br />
-            <div class="list" ng-repeat="item in landmarkPoints" class="eachItem" >
-              <a class="item item-thumbnail-left item-button-right" href="#">
-                <img class="bshLogo" ng-src="{{ item.photolink }}" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);">
-                <h2 ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);">{{ item.name }}</h2>
-                <p ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</p>
-              </a>
-            </div>
-          </ion-list>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aliquid, minus atque numquam! Ea nobis nam sunt veniam totam omnis perferendis recusandae eius architecto esse debitis rerum quisquam iusto, nisi!
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis temporibus rem ipsum itaque quod iste laboriosam repellat aperiam, doloribus hic maiores at deleniti dolorum voluptatum magni ipsa, aliquam necessitatibus similique!
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus vel, aliquid fugiat sunt nulla nobis aut commodi deserunt similique sapiente. Possimus magni, consectetur obcaecati asperiores doloremque qui vel recusandae optio.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus non reprehenderit at vitae nesciunt voluptatibus expedita aspernatur doloribus deserunt, nam est, rerum vel asperiores. Adipisci autem dolorum necessitatibus. Ex, repellat?
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate harum quis ducimus velit provident accusantium, debitis itaque. Cumque voluptatibus odit incidunt, voluptas, laborum voluptatem! Nulla vel dolore, officiis odit officia.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate harum quis ducimus velit provident accusantium, debitis itaque. Cumque voluptatibus odit incidunt, voluptas, laborum voluptatem! Nulla vel dolore, officiis odit officia.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate harum quis ducimus velit provident accusantium, debitis itaque. Cumque voluptatibus odit incidunt, voluptas, laborum voluptatem! Nulla vel dolore, officiis odit officia.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate harum quis ducimus velit provident accusantium, debitis itaque. Cumque voluptatibus odit incidunt, voluptas, laborum voluptatem! Nulla vel dolore, officiis odit officia.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate harum quis ducimus velit provident accusantium, debitis itaque. Cumque voluptatibus odit incidunt, voluptas, laborum voluptatem! Nulla vel dolore, officiis odit officia.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate harum quis ducimus velit provident accusantium, debitis itaque. Cumque voluptatibus odit incidunt, voluptas, laborum voluptatem! Nulla vel dolore, officiis odit officia.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate harum quis ducimus velit provident accusantium, debitis itaque. Cumque voluptatibus odit incidunt, voluptas, laborum voluptatem! Nulla vel dolore, officiis odit officia.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate harum quis ducimus velit provident accusantium, debitis itaque. Cumque voluptatibus odit incidunt, voluptas, laborum voluptatem! Nulla vel dolore, officiis odit officia.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate harum quis ducimus velit provident accusantium, debitis itaque. Cumque voluptatibus odit incidunt, voluptas, laborum voluptatem! Nulla vel dolore, officiis odit officia.
         </ion-content>
     </div>
-  </script> -->
+  </script>
 
 <!--   <script id="bikeRackList.html" type="text/ng-template">
     <div class="modal">
