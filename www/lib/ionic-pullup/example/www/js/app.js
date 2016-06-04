@@ -77,6 +77,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         controller: 'AccountCtrl'
       }
     }
+<<<<<<< HEAD
+=======
+  })
+  
+  .state('page1', {
+    url: '/page1',
+    templateUrl: 'templates/page1.html',
+    controller: 'PageCtrl'
+>>>>>>> 251bcdc5a66c2cd08c24979cbb0625f0cfaf9fb7
   });
 
   // if none of the above states are matched, use this as the fallback

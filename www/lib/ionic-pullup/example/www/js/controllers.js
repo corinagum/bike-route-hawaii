@@ -1,5 +1,6 @@
 angular.module('starter.controllers', [])
 
+<<<<<<< HEAD
 .controller('DashCtrl', function($scope) {
       $scope.footerExpand = function() {
         console.log('Footer expanded');
@@ -7,6 +8,19 @@ angular.module('starter.controllers', [])
       $scope.footerCollapse = function() {
           console.log('Footer collapsed');
       };
+=======
+.controller('DashCtrl', function($scope, $timeout, ionPullUpFooterState) {
+      $scope.onFooterExpand = function() {
+        console.log('Footer expanded');
+      };
+      $scope.onFooterCollapse = function() {
+          console.log('Footer collapsed');
+      };
+
+      $scope.expand = function() {
+        $scope.footerState = ionPullUpFooterState.EXPANDED;  
+      };
+>>>>>>> 251bcdc5a66c2cd08c24979cbb0625f0cfaf9fb7
   })
 
 .controller('ChatsCtrl', function($scope, Chats) {
@@ -32,4 +46,11 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+<<<<<<< HEAD
+=======
+})
+
+.controller('PageCtrl', function($scope) {
+   
+>>>>>>> 251bcdc5a66c2cd08c24979cbb0625f0cfaf9fb7
 });

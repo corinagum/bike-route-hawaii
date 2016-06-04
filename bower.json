@@ -10,6 +10,10 @@
     "ngCordova": "^0.1.24-alpha",
     "ui-leaflet": "^1.0.0",
     "angular-simple-logger": "^0.1.7",
+<<<<<<< HEAD
     "ionic-pullup": "^1.0.3"
+=======
+    "ionic-pullup": "^1.1.0"
+>>>>>>> 251bcdc5a66c2cd08c24979cbb0625f0cfaf9fb7
   }
 }
