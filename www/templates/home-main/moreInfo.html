@@ -3,7 +3,7 @@
     <ion-header-bar class="bar bar-header">
       <a href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
       <!-- <i class="right" ng-click="openModal(1)">Leave Feedback</i> -->
-      <button ng-click="openModal(1)" class="button fdbckBtn waves-effect waves-light">
+      <button ng-click="openModal(1)" class="button fdbckBtn waves-effect">
         Leave Feedback
       </button>
     </ion-header-bar>
@@ -22,42 +22,57 @@
         </p> -->
       </div>
 
-      <div class="section" style="background-color: #fff">
+      <div class="section" style="background-color: #fff" ng-init="one=true;two=false;three=false;four=false;">
         <p class="secTitle">How does it work?</p>
         <div class="stepsDiv">
           <i class="ion-arrow-left-b" style="font-size: 24px; margin: auto; padding-right: 20px;"></i>
+
+
             <!-- <div class="stepsNum center"><h2>1</h2></div> -->
-            <div class="center stepsNum"><img src="../../img/bike-assets/numOne.png" alt=""></div>
+            <div class="center stepsNum" ng-click="one=true;two=false;three=false;four=false;"><img src="../../img/bike-assets/numOne.png" alt=""></div>
             <div class="dots">
               <li><a href="#slide1"></a></li>
               <li><a href="#slide2"></a></li>
               <li><a href="#slide3"></a></li>
             </div>
 
-            <div class="center stepsNum"><img src="../../img/bike-assets/num2.png" alt=""></div>
+            <div class="center stepsNum" ng-click="one=false;two=true;three=false;four=false;"><img src="../../img/bike-assets/num2.png" alt=""></div>
               <div class="dots">
                 <li><a href="#slide1"></a></li>
                 <li><a href="#slide2"></a></li>
                 <li><a href="#slide3"></a></li>
               </div>
 
-            <div class="center stepsNum"><img src="../../img/bike-assets/num3.png" alt=""></div>
+            <div class="center stepsNum" ng-click="one=false;two=false;three=true;four=false;"><img src="../../img/bike-assets/num3.png" alt=""></div>
               <div class="dots">
                 <li><a href="#slide1"></a></li>
                 <li><a href="#slide2"></a></li>
                 <li><a href="#slide3"></a></li>
               </div>
 
-            <div class="center stepsNum"><img src="../../img/bike-assets/num4.png" alt=""></div>
+            <div class="center stepsNum" ng-click="one=false;two=false;three=false;four=true;"><img src="../../img/bike-assets/num4.png" alt=""></div>
 
         <i class="ion-arrow-right-b" style="font-size: 24px; margin: auto; padding-left: 20px;"></i>
         </div>
+        <div style="background: #3FC3E3; height: 130px; width: auto;"></div>
 
-        <div style="background: #626262; height: 130px; width: auto;"></div>
 
-        <div class="boxRow">
-          <div class=""><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur nostrum, ad, asperiores obcaecati amet aliquid id molestias aliquam ipsam quam dolor eveniet veniam</p></div>
+        <div class="boxRow" ng-show="one">
+          <div class=""><p>FIRST Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, laborum, doloribus. Commodi dignissimos laboriosam nulla fugit quis praesentium aperiam, quam dolore! Sed labore cum porro repudiandae consequuntur vitae veniam eligendi.</p></div>
         </div>
+
+        <div class="boxRow" ng-show="two">
+          <div class=""><p>SECOND Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, quam, autem. Temporibus nulla blanditiis consequatur illo repellat ut, soluta, facilis labore nobis tenetur, veniam assumenda quam doloribus sapiente autem facere!</p></div>
+        </div>
+
+        <div class="boxRow" ng-show="three">
+          <div class=""><p>THIRD Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates excepturi repellendus placeat dignissimos adipisci aspernatur laboriosam vitae possimus perspiciatis aliquid consequatur iste officiis, magnam cum vero distinctio ullam, nostrum dolore?</p></div>
+        </div>
+
+        <div class="boxRow" ng-show="four">
+          <div class=""><p>FOURTH< Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat ratione neque debitis ipsam, reprehenderit dolore est. Veritatis nihil, dolorem asperiores libero doloremque culpa praesentium nisi nesciunt, velit ex, ullam, aspernatur./p></div>
+        </div>
+
       </div>
 
       <div class="mapBg">

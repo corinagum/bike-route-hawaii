@@ -1,15 +1,11 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $timeout, ionPullUpFooterState) {
-      $scope.onFooterExpand = function() {
+.controller('DashCtrl', function($scope) {
+      $scope.footerExpand = function() {
         console.log('Footer expanded');
       };
-      $scope.onFooterCollapse = function() {
+      $scope.footerCollapse = function() {
           console.log('Footer collapsed');
-      };
-
-      $scope.expand = function() {
-        $scope.footerState = ionPullUpFooterState.EXPANDED;  
       };
   })
 
@@ -36,8 +32,4 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
-})
-
-.controller('PageCtrl', function($scope) {
-   
 });

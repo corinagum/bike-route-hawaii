@@ -611,12 +611,11 @@
   };
 
 
-
-
-  // BROWSER CONTROLLERS
+  //ICON CHANGE ON-CLICK
   $scope.isCollapsed = true;
   $scope.benCollapsed = true;
 
+  $scope.isClickedOn = true;
 
 ////////////////////////////////////////////////////////////
 

@@ -42,17 +42,17 @@ body, p {
 //MODAL ANIMATION
 .scale-in {
   transform: scale(1);
-  opacity: 0;
+  opacity: 0.8;
 }
 .scale-in.ng-enter,
 .scale-in > .ng-enter {
-  transition: all cubic-bezier(.1, .7, .1, 1) 800ms;
+  transition: all cubic-bezier(.1, .7, .8, .6) 800ms;
 }
 
 .scale-in.ng-enter-active,
 .scale-in > .ng-enter-active {
   transform: scale(1);
-  opacity: 0.94;
+  opacity: 1;
 }
 
 .scale-in.ng-leave,
@@ -156,7 +156,7 @@ body, p {
 
 .section {
   @extend .sectionTwo;
-  background-color: lighten($typeGrey, 55%);
+  background-color: lighten($typeGrey, 58%);
 
   .secPar {
   @include fontType($typeGrey,14px, 20px);
@@ -317,7 +317,7 @@ textarea {
 .mapImage {
   height: 200px;
   width: auto;
-  background-color: $typeGrey;
+  background-color: #3FC3E3;
 }
 
 .mapBg {
@@ -376,19 +376,20 @@ textarea {
   height: initial;
 }
 
+
 .commentHeader {
   @extend .btnTitle;
   color: $stable;
 }
 
-.radioBtn {
-  padding: 0;
-  margin-bottom: 15px;
+// .radioBtn {
+//   padding: 0;
+//   margin-bottom: 15px;
 
-  p {
-    font-size: 10px;
-  }
-}
+//   p {
+//     font-size: 10px;
+//   }
+// }
 
 .viewMapBtn {
   z-index: 10;
@@ -404,7 +405,13 @@ textarea {
   display: none;
 }
 
+.numOne {
+  background: url('./../img/bike-assets/num1_grey.png') center no-repeat;
+}
 
+.webViewLandingButton {
+  display: flex;
+}
 
 
 

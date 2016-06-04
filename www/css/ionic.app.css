@@ -9736,16 +9736,16 @@ body, p {
 
 .scale-in {
   transform: scale(1);
-  opacity: 0; }
+  opacity: 0.8; }
 
 .scale-in.ng-enter,
 .scale-in > .ng-enter {
-  transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 800ms; }
+  transition: all cubic-bezier(0.1, 0.7, 0.8, 0.6) 800ms; }
 
 .scale-in.ng-enter-active,
 .scale-in > .ng-enter-active {
   transform: scale(1);
-  opacity: 0.94; }
+  opacity: 1; }
 
 .scale-in.ng-leave,
 .scale-in > .ng-leave {
@@ -9830,7 +9830,7 @@ body, p {
   font-weight: 200; }
 
 .section {
-  background-color: #eeeeee; }
+  background-color: #f6f6f6; }
   .section .secPar {
     color: #626262;
     font-size: 14px;
@@ -9969,7 +9969,7 @@ textarea {
 .mapImage {
   height: 200px;
   width: auto;
-  background-color: #626262; }
+  background-color: #3FC3E3; }
 
 .mapBg {
   height: 300px;
@@ -10022,12 +10022,6 @@ textarea {
 .commentHeader {
   color: #f8f8f8; }
 
-.radioBtn {
-  padding: 0;
-  margin-bottom: 15px; }
-  .radioBtn p {
-    font-size: 10px; }
-
 .viewMapBtn {
   z-index: 10;
   position: relative;
@@ -10038,6 +10032,12 @@ textarea {
 
 .leaflet-retina .leaflet-control-layers-toggle {
   display: none; }
+
+.numOne {
+  background: url("./../img/bike-assets/num1_grey.png") center no-repeat; }
+
+.webViewLandingButton {
+  display: flex; }
 
 #map {
   width: 100%;
