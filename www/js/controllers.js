@@ -450,14 +450,13 @@
     $scope.modal2 = modal;
   });
 
-  // // Modal for Marker Info
-  // $ionicModal.fromTemplateUrl('markerDetail.html', {
-  //   id       : '3',
-  //   scope    : $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.modal3 = modal;
-  // });
+  $ionicModal.fromTemplateUrl('templates/feedback/mahaloFeedback.html', {
+    id       : '3',
+    scope    : $scope,
+    animation: 'scale-in'
+  }).then(function(modal) {
+    $scope.modal3 = modal;
+  });
 
   // // MODAL FOR LANDMARK LISTS
   // $ionicModal.fromTemplateUrl('landmarkList.html', {

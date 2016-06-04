@@ -5,7 +5,7 @@
   <ion-header-bar class="bar bar-header">
     <a href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
     <!-- <i class="right" ng-click="openModal(1)">Leave Feedback</i> -->
-    <button ng-click="openModal(1)" class="button fdbckBtn">
+    <button ng-click="openModal(1)" class="button fdbckBtn waves-effect">
       Leave Feedback
     </button>
   </ion-header-bar>
@@ -21,7 +21,7 @@
       </div> -->
     </div>
     <!-- <iframe src="https://www.google.com/maps/d/embed?mid=1ltEWKgn_WgMw9opot3cL5qU8jAc" width="640" height="480"></iframe> -->
-    <leaflet layers="layers" lf-center="honolulu" center="honolulu" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
+    <leaflet layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
   </ion-content>
 
     <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">

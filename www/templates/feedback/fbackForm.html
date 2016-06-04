@@ -2,8 +2,7 @@
 
     <ion-header-bar class="bar bar-header">
       <a href="#" ng-click="closeModal(2);""><i class="ion-ios-arrow-thin-left backArrow"></i></a>
-      <!-- <i class="right" ng-click="openModal(1)">Leave Feedback</i> -->
-      <button ng-click="openModal(1)" class="button fdbckBtn">
+      <button ng-click="openModal(1)" class="button fdbckBtn waves-effect waves-light">
         Leave Feedback
       </button>
     </ion-header-bar>
@@ -33,7 +32,7 @@
 
         </form>
 
-        <button ng-click="closeModal(2)" class="submitBtn">submit</button>
+        <button ng-click="closeModal(2);openModal(3)" class="submitBtn">submit</button>
       </div>
     </ion-content>
  </ion-modal-view>

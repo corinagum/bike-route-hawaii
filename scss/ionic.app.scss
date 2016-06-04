@@ -122,6 +122,11 @@ body, p {
   }
 }
 
+.fbLinkBtn {
+  margin: 20px 0px;
+  a {color: $stable;}
+}
+
 .moreInfoMap {
   background: #78deac;
   background: -moz-linear-gradient(-45deg,  #78deac 0%, #78deac 50%, #bfe8f9 50%, #96e6bf 50%);

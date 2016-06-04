@@ -119,13 +119,16 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
             controller: 'MapCtrl'
           }
         }
+      })
+      .state('tabs.benefits', {
+        url: "/benefits",
+        views: {
+          'home-tab': {
+            templateUrl: "templates/home-main/benefits.html",
+            controller: 'MapCtrl'
+          }
+        }
       });
-      // .state('feedback', {
-      //   url: "/feedback",
-      //   abstract: true,
-      //   templateUrl: "templates/feedback/fbackForm.html",
-      //   controller: 'MapCtrl'
-      // })
       // .state('tabs.fbForm', {
       //   url: "/feedback",
       //   views: {
