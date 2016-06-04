@@ -434,7 +434,7 @@
   });
 
   //////// BEGINNIG of MODAL ////////
-  $ionicModal.fromTemplateUrl('filter-modal.html', {
+  $ionicModal.fromTemplateUrl('templates/feedback/fbckBtns.html', {
       id       : '1',
       scope    : $scope,
       animation: 'scale-in'
