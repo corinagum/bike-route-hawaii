@@ -119,21 +119,22 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
             controller: 'MapCtrl'
           }
         }
-      })
-      .state('feedback', {
-        url: "/feedback",
-        abstract: true,
-        templateUrl: "templates/feedback/fbackForm.html",
-        controller: 'MapCtrl'
       });
-      // .state('feedback.fbForm', {
+      // .state('feedback', {
+      //   url: "/feedback",
+      //   abstract: true,
+      //   templateUrl: "templates/feedback/fbackForm.html",
+      //   controller: 'MapCtrl'
+      // })
+      // .state('tabs.fbForm', {
       //   url: "/feedback",
       //   views: {
-      //     'feedback-tab': {
-      //       templateUrl: "templates/feedback.html"
+      //     'home-tab': {
+      //       templateUrl: "templates/feedback/fbackForm.html",
+      //       controller: 'MapCtrl'
       //     }
       //   }
-      // })
+      // });
       // .state('feedback.mahaloFb', {
       //   url: "/mahalo",
       //   views: {

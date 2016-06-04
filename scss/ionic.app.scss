@@ -6,7 +6,7 @@ $light:                           #fff !default;
 $stable:                          #f5f5f5 !default;
 $positive:                        #387ef5 !default;
 $calm:                            #11c1f3 !default;
-$balanced:                        #78DEAC !default;
+$balanced:                        #96E6BF !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
@@ -30,10 +30,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
          border-radius: $radius;
 }
 
+
 body, p {
-  color: $light;
+  color: $typeGrey;
   font-family: 'Open Sans', sans-serif;
-  font-weight: 200;
+  // font-weight: 200;
+  font-size: 12px;
 }
 
 
@@ -79,32 +81,29 @@ body, p {
 }
 
 .landing {
-  background-color: lighten($balanced, 5%);
+  background-color: $stable;
   line-height: 24px;
 }
 
+@mixin buttonStyling($color,$background-color,$padTop,$padRight,$padBottom,$padLeft,$weight,$size){
+  color: $color;
+  background-color: $background-color;
+  padding: $padTop $padRight $padBottom $padLeft;
+  font-weight: $weight;
+  font-size: $size;
+}
 
 .button {
-  color: $balanced;
-  font-size: 14px;
-  padding: 0px 35px 0px 35px;
-  background-color: $stable;
+  @include buttonStyling($stable,$balanced,0px,30px,0px,30px,300,12px);
 }
 
 .btnDrk {
-  @extend .button;
-  color: $typeGrey;
-  min-width: 300px;
-  min-height: 75px;
-  line-height: 74px;
-  margin-bottom: 8px;
-  font-size: large;
-}
-
-.homeBtn {
-  @extend .btnDrk;
+  @include buttonStyling($stable,$balanced,17px,30px,0px,30px,500,12px);
+  min-width: 250px;
+  min-height: 90px;
   line-height: 20px;
-  padding-top: 17px;
+  margin-bottom: 5px;
+  font-size: large;
 }
 
 .btnTitle {
@@ -133,49 +132,52 @@ body, p {
   h4 {color: $stable;}
 }
 
+@mixin fontType($color,$size,$line-height) {
+  color: $color;
+  font-size: $size;
+  line-height: $line-height;
+}
+
 .skipLink {
   color: $typeGrey;
 }
 
 .secTitle {
-  font-size: 32px;
-  color: $typeGrey;
+  @include fontType($typeGrey,32px, 32px);
   text-align: center;
-  margin: 20px 0px;
+  margin: 5px 0px;
   font-weight: 200;
 }
 
 .section {
   @extend .sectionTwo;
-  background-color: lighten($typeGrey, 59%);
+  background-color: lighten($typeGrey, 55%);
 
   .secPar {
-    font-size: smaller;
-    line-height: 14px;
+  @include fontType($typeGrey,14px, 20px);
   }
 }
 
 .sectionTwo {
   padding: 40px 40px 40px 40px;
   margin: 0;
+}
 
-  h4, p {
-    color: $typeGrey;
-  }
+.stepsDiv {
+  justify-content: center;
+  margin: 25px auto;
+  display: flex;
+  max-width: 250px;
+}
+
+.dots {
+  display: flex;
+  margin: auto;
 }
 
 .stepsNum {
-  border: 2px solid $balanced;
-  width: 100px;
-  height: 30px;
-  margin: auto 5px;
-  @include borderRadius(50%);
-
-  h2 {
-    padding: 5px;
-    line-height: 15px;
-    font-size: 20px;
-  }
+  margin: 5px;
+  img { width: 30px; }
 }
 
 .socialIcons {
@@ -204,11 +206,11 @@ body, p {
 
 .aboutPar {
   color: $typeGrey;
-  font-size: 13px;
+  font-size: 14px;
 }
 
-p .leaderName {
-  font-weight: 600;
+.leaderName {
+  font-size: 15px;
 }
 
 .loriPadding {
@@ -257,17 +259,20 @@ textarea {
 }
 
 .fdbckBtn {
-  @include borderRadius(10px);
+  @include borderRadius(7px);
   position: absolute;
   right: 20px;
   top: 13px;
-  border: 2px solid $stable;
-  color: $stable;
-  background-color: transparent;
+  // border: 2px solid $stable;
+  color: $typeGrey;
+  background-color: $stable;
 }
 
 .submitBtn {
-  @include borderRadius(10px);
+  @include borderRadius(7px);
+  padding: 4px 30px;
+  font-size: 15px;
+  margin-top: 15px;
   border: 2px solid $balanced;
   background-color: transparent;
   color: $stable;
@@ -301,6 +306,12 @@ textarea {
 .leadershipTeam {
   height: auto;
   width: 100%;
+  background-color: $typeGrey;
+}
+
+.mapImage {
+  height: 200px;
+  width: auto;
   background-color: $typeGrey;
 }
 
@@ -387,6 +398,15 @@ textarea {
 .leaflet-retina .leaflet-control-layers-toggle {
   display: none;
 }
+
+
+
+
+
+
+
+
+
 
 //=========================================
 #map {
@@ -644,10 +664,10 @@ h1.title {
 }
 
 //BUTTONS IN FILTERS
-.buttonStyle {
-  border-left: 1px solid white;
-  text-align: center;
-}
+//.buttonStyle {
+  //border-left: 1px solid white;
+  //text-align: center;
+//}
 
 #mapViewDiv {
   padding-top: 10px;

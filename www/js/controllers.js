@@ -442,7 +442,7 @@
       $scope.modal1 = modal;
     });
 
-  $ionicModal.fromTemplateUrl('comment-modal.html', {
+  $ionicModal.fromTemplateUrl('templates/feedback/fbackForm.html', {
     id       : '2',
     scope    : $scope,
     animation: 'scale-in'

@@ -1,3 +1,39 @@
-<ion-nav-view name="feedback-tab"></ion-nav-view>
-<ion-nav-view name="main-tab"></ion-nav-view>
+ <ion-modal-view>
 
+    <ion-header-bar class="bar bar-header">
+      <a href="#" ng-click="closeModal(2);""><i class="ion-ios-arrow-thin-left backArrow"></i></a>
+      <!-- <i class="right" ng-click="openModal(1)">Leave Feedback</i> -->
+      <button ng-click="openModal(1)" class="button fdbckBtn">
+        Leave Feedback
+      </button>
+    </ion-header-bar>
+
+    <ion-content style="background-color: #626262;">
+      <div class="alohaLandingOne divSize">
+        <p class="commentHeader">We're happy to hear from you!</p>
+
+        <form action="">
+          <input type="text" name="FirstLastName" placeholder="First and Last name">
+          <input type="email" name="Email" placeholder="Email">
+
+          <p>
+            <input class="with-gap" name="group1" type="radio" id="test1" />
+            <label for="test1" class="smallSizeFont">I support Bikeshare Hawaii.</label>
+          </p>
+          <p>
+            <input class="with-gap" name="group1" type="radio" id="test2" />
+            <label for="test2" class="smallSizeFont">I'm still unconvinced.</label>
+          </p>
+          <p>
+            <input class="with-gap" name="group1" type="radio" id="test3"  />
+            <label for="test3" class="smallSizeFont">I'm undecided</label>
+          </p>
+
+          <textarea class="" rows="5" cols="2" placeholder="Message..."></textarea>
+
+        </form>
+
+        <button ng-click="closeModal(2)" class="submitBtn">submit</button>
+      </div>
+    </ion-content>
+ </ion-modal-view>
