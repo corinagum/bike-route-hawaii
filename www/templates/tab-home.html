@@ -270,16 +270,27 @@
   <script id="markerDetail.html" type="text/ng-template">
     <div class="modal wholeModalDiv" ng-class="class">
       <ion-header-bar class="" ng-click="changeClass()">
-        <h1 class="title" >{{stationClicked}}</h1>
+        <h1 class="title" >{{stationClicked.name}}</h1>
         <button class="button icon ion-close-round closeModal" ng-click="closeModal(4)"></button>
       </ion-header-bar>
         <ion-content>
-          <img src="http://www.rantpets.com/wp-content/uploads/2014/09/3..jpg" alt="">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aliquid, minus atque numquam! Ea nobis nam sunt veniam totam omnis perferendis recusandae eius architecto esse debitis rerum quisquam iusto, nisi!
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis temporibus rem ipsum itaque quod iste laboriosam repellat aperiam, doloribus hic maiores at deleniti dolorum voluptatum magni ipsa, aliquam necessitatibus similique!
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus vel, aliquid fugiat sunt nulla nobis aut commodi deserunt similique sapiente. Possimus magni, consectetur obcaecati asperiores doloremque qui vel recusandae optio.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus non reprehenderit at vitae nesciunt voluptatibus expedita aspernatur doloribus deserunt, nam est, rerum vel asperiores. Adipisci autem dolorum necessitatibus. Ex, repellat?
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate harum quis ducimus velit provident accusantium, debitis itaque. Cumque voluptatibus odit incidunt, voluptas, laborum voluptatem! Nulla vel dolore, officiis odit officia.
+          <img src="http://caffaknitted.typepad.com/.a/6a00e54f8f86dc883401287636e5db970c-800wi" alt="">
+            <div> Location </div>
+            <button> Likes </button>
+            <div>We don't have addresses right now</div>
+            <div>Ride time to:</div>
+            <div>Kaka'ako: {{rideTime('kakaako')}} min</div>
+            <div>Ala Moana: {{rideTime('alamoana')}} min</div>
+            <div>University: {{rideTime('university')}} min</div>
+            <div>Waikiki: {{rideTime('waikiki')}} min</div>
+            <div>What's near this station</div>
+            <div ng-repeat= 'item in closestBBB'>
+              <div>{{item.name}}</div>
+              <div>{{item.address}}</div>
+              <img src="bbblogo" alt="">
+              <img src=item.image alt="">
+              <div>{{item.description}}</div>
+            </div>
         </ion-content>
     </div>
   </script>
