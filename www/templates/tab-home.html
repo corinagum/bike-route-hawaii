@@ -274,7 +274,8 @@
         <button class="button icon ion-close-round closeModal" ng-click="closeModal(4)"></button>
       </ion-header-bar>
         <ion-content>
-          <img src="http://caffaknitted.typepad.com/.a/6a00e54f8f86dc883401287636e5db970c-800wi" alt="">
+          <ion-scroll direction="xy" >
+            <img src="http://caffaknitted.typepad.com/.a/6a00e54f8f86dc883401287636e5db970c-800wi" alt="">
             <div> Location </div>
             <button> Likes </button>
             <div>We don't have addresses right now</div>
@@ -291,6 +292,7 @@
               <img src=item.image alt="">
               <div>{{item.description}}</div>
             </div>
+            </ion-scroll>
         </ion-content>
     </div>
   </script>
