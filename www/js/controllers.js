@@ -336,9 +336,14 @@
     $scope.createMarkers(data.data, 'bikeShare');
   };
 
-  // new L.Control.GeoSearch({
-  //       provider: new L.GeoSearch.Provider.Google()
+  // leafletData.getMap()
+  // .then(function(map){
+  //   new L.Control.GeoSearch({
+  //     provider: new L.GeoSearch.Provider.Google()
   //   }).addTo(map);
+  //   console.log("added");
+  //   L.Control.GeoSearch.onAdd(map);
+  // });
 
   //FIND POINTS IN RADIUS ON LOCATION FOUND
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
@@ -361,6 +366,13 @@
     PointService.getBikeshareStations()
       .then(function(data){
         $scope.setMarkersReturned(data);
+        leafletData.getMap()
+        .then(function(map){
+          new L.Control.GeoSearch({
+            provider: new L.GeoSearch.Provider.Google()
+          }).addTo(map);
+          console.log("added");
+        });
       });
   });
 
