@@ -619,29 +619,19 @@
   $scope.isCollapsed = true;
   $scope.benCollapsed = true;
 
-  $scope.isClickedOn = true;
-
 ////////////////////////////////////////////////////////////
 
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };
 
-
-  $scope.footerExpand = function() {
-    console.log('Footer expanded');
-  };
-  $scope.footerCollapse = function() {
-    console.log('Footer collapsed');
-  };
-
-  $scope.class = "red";
-  $scope.changeClass = function(){
-    if ($scope.class === "red")
-      $scope.class = "blue";
-    else
-      $scope.class = "red";
-  };
+  // $scope.class = "red";
+  // $scope.changeClass = function(){
+  //   if ($scope.class === "red")
+  //     $scope.class = "blue";
+  //   else
+  //     $scope.class = "red";
+  // };
 
   //>>>>>>>>>>>> POPOVER EVENT
 

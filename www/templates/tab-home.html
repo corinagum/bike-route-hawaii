@@ -24,7 +24,7 @@
       </div> -->
     </div>
     <!-- <iframe src="https://www.google.com/maps/d/embed?mid=1ltEWKgn_WgMw9opot3cL5qU8jAc" width="640" height="480"></iframe> -->
-    <leaflet lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
+    <leaflet layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
 
     <!-- <ion-pull-up-footer class="bar-calm" on-expand="footerExpand()">
           <div class="title" ion-pull-up-trigger>Tap me or drag me</div>
@@ -271,13 +271,13 @@
 
 
   <script id="markerDetail.html" type="text/ng-template">
-    <div class="modal wholeModalDiv" ng-class="class">
-      <ion-header-bar class="" ng-click="changeClass()">
+    <div class="modal wholeModalDiv" ng-click="changeClass()" ng-class="class">
+      <ion-header-bar class="" >
         <h1 class="title" >{{stationClicked.name}}</h1>
         <button class="button icon ion-close-round closeModal" ng-click="closeModal(4)"></button>
       </ion-header-bar>
         <ion-content>
-          <ion-scroll direction="xy" >
+          <!-- <ion-scroll direction="xy" > -->
             <img src="http://caffaknitted.typepad.com/.a/6a00e54f8f86dc883401287636e5db970c-800wi" alt="">
             <div> Location </div>
             <button> Likes </button>
@@ -295,7 +295,7 @@
               <img src=item.image alt="">
               <div>{{item.description}}</div>
             </div>
-            </ion-scroll>
+            <!-- </ion-scroll> -->
         </ion-content>
     </div>
   </script>

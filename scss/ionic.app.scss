@@ -267,10 +267,15 @@ textarea {
   @include borderRadius(7px);
   position: absolute;
   right: 20px;
-  top: 13px;
+  top: 8px;
   // border: 2px solid $stable;
   color: $typeGrey;
   background-color: $stable;
+
+}
+
+.ion-ios-arrow-thin-left:before {
+  margin-top: -8px;
 }
 
 .submitBtn {
@@ -373,7 +378,7 @@ textarea {
 
 .bar-header {
   background-color: $balanced;
-  height: initial;
+  height: 8%;
 }
 
 
@@ -394,7 +399,7 @@ textarea {
 .viewMapBtn {
   z-index: 10;
   position: relative;
-  top: 130px;
+  top: 120px;
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
@@ -411,7 +416,7 @@ textarea {
 
 .wholeModalDiv {
   position: absolute;
-  top: 188%;
+  top: 184%;
   height: 100%;
 }
 
@@ -430,7 +435,6 @@ textarea {
 #map {
   width: 100%;
   height: 100%;
-  margin-top: 15px;
 }
 
 
