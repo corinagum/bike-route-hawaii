@@ -10030,9 +10030,6 @@ textarea {
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
   background: #76CE95; }
 
-.leaflet-retina .leaflet-control-layers-toggle {
-  display: none; }
-
 .numOne {
   background: url("./../img/bike-assets/num1_grey.png") center no-repeat; }
 
