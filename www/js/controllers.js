@@ -13,6 +13,10 @@
       map : {
         enable : ['click', 'locationfound', 'dragend', 'load'],
         logic : 'broadcast'
+      },
+      markers : {
+        enable : ['click']
+        // logic : 'emit'
       }
     },
     layers: {
@@ -226,6 +230,8 @@
   $scope.landmarkPoints = [];
   $scope.bikeRackPoints = [];
 
+
+
   // LOOPS THROUGH DATA RETURNED TO CHECK ITS TYPE AND IF IT SHOULD BE ASSIGNED A MARKER
   $scope.createMarkers = function(array, name){
     for(var i = 0; i < array.length; i++){
@@ -234,38 +240,25 @@
       var pointIcon;
       // array[i].properties.distanceToFrom = Math.round(((array[i].properties.distance_from_current_location)*0.000621371192) * 100) / 100;
       // if(name === 'bikeShare'){
-      pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(4); checkFavorite(currentMarkerProperties);"> ' + array[i].name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
+      // pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(4); checkFavorite(currentMarkerProperties);"> ' + array[i].name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
       $scope.bikesharePoints.push(array[i]);
       showMarker = $scope.showStations;
       pointIcon = $scope.bikeShareIcon;
-      // }
-      // if(name === 'landmark'){
-      //   pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + array[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-      //   $scope.landmarkPoints.push(array[i].properties);
-      //   showMarker = $scope.showLandmarks;
-      //   pointIcon = $scope.historyIcon;
-      // }
-      // if(name === 'bikeRack'){
-      //   pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + array[i].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-      //   $scope.bikeRackPoints.push(array[i].properties);
-      //   showMarker = $scope.showBikeRacks;
-      //   pointIcon = $scope.bikeRack;
-      // }
-      if (showMarker){
         $scope.markers[(name + i)] = {
-          lat : array[i].lat,
-          lng : array[i].long,
-          icon: pointIcon,
-          message : pointDetail,
-          compileMessage : true,
-          getMessageScope: function(){ return $scope; },
-          properties : array[i]
+        lat : array[i].lat,
+        lng : array[i].long,
+        icon: pointIcon,
+        // message : pointDetail,
+        // compileMessage : true,
+        // getMessageScope: function(){ return $scope; },
+        properties : array[i],
         };
-      }
     }
   };
 
-
+  $scope.$on('leafletDirectiveMarker.map.click', function(event,args){
+    $scope.openModal(4);
+  });
 
   $scope.setMarkersReturned = function(data){
     $scope.createMarkers(data.data, 'bikeShare');
@@ -290,6 +283,7 @@
   //       $scope.setMarkersReturned(data);
   //     });
   // };
+
 
   //FIND POINTS IN RADIUS ON LOCATION FOUND
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
