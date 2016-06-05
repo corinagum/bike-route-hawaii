@@ -238,9 +238,6 @@
       var pointDetail;
       var showMarker;
       var pointIcon;
-      // array[i].properties.distanceToFrom = Math.round(((array[i].properties.distance_from_current_location)*0.000621371192) * 100) / 100;
-      // if(name === 'bikeShare'){
-      // pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(4); checkFavorite(currentMarkerProperties);"> ' + array[i].name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
       $scope.bikesharePoints.push(array[i]);
       showMarker = $scope.showStations;
       pointIcon = $scope.bikeShareIcon;
@@ -248,42 +245,20 @@
         lat : array[i].lat,
         lng : array[i].long,
         icon: pointIcon,
-        // message : pointDetail,
-        // compileMessage : true,
-        // getMessageScope: function(){ return $scope; },
         properties : array[i],
         };
     }
   };
 
   $scope.$on('leafletDirectiveMarker.map.click', function(event,args){
+    $scope.stationClicked = $scope.markers[args.modelName].properties.name;
+    console.log($scope.markers[args.modelName].properties.site_id);
     $scope.openModal(4);
   });
 
   $scope.setMarkersReturned = function(data){
     $scope.createMarkers(data.data, 'bikeShare');
-    // $scope.createMarkers(data.data.geoJSONHistory.features, 'landmark');
-    // $scope.createMarkers(data.data.geoJSONBikeRack.features, 'bikeRack');
   };
-
-  // FIND POINTS ACCORDING TO FILTERS
-  // $scope.setPinsWithinRadius = function(){
-  //   if($scope.markers.hasOwnProperty("reportPoint")){
-  //       $scope.markers = {
-  //       userMarker : $scope.markers.userMarker,
-  //       reportPoint : $scope.markers.reportPoint
-  //       };
-  //   } else {
-  //     $scope.markers = {
-  //       userMarker : $scope.markers.userMarker
-  //     };
-  //   }
-  //   PointService.getPointsInRadius($scope.radius, $scope.markers.userMarker.lat, $scope.markers.userMarker.lng)
-  //     .then(function(data){
-  //       $scope.setMarkersReturned(data);
-  //     });
-  // };
-
 
   //FIND POINTS IN RADIUS ON LOCATION FOUND
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
@@ -302,57 +277,12 @@
 
   });
 
-  //CHANGES CURRENT MARKER PROPERTIES BASED ON WHAT ITEM IS CLICKED IN LIST MODAL
-  // $scope.changeCurrentMarker = function(item){
-  //   $scope.currentMarkerProperties = item;
-  // };
-
-  // SWITCH FOR TURNING DRAG ON AND OFF
-  // $scope.showPointsOnDrag = true;
-  // $scope.setShowPointsOnDrag = function(){
-  //   $scope.showPointsOnDrag = !$scope.showPointsOnDrag;
-  // };
-
-  // $scope.showFavorites = false;
-
-  // $scope.setshowFavorites = function(){
-  //   $scope.showFavorites = !$scope.showFavorites;
-  // };
-
   $scope.$on('leafletDirectiveMap.map.load', function(event, args){
     PointService.getBikeshareStations()
       .then(function(data){
         $scope.setMarkersReturned(data);
       });
   });
-
-  // SHOW POINTS ON DRAG IF NOT ROUTING AND SHOWPOINTS ON DRAG ENABLED
-  // $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
-  //   if ($scope.showPointsOnDrag){
-  //     $ionicLoading.hide();
-  //     var leafEvent = args.leafletEvent;
-  //     $ionicLoading.hide();
-  //     if($scope.markers.hasOwnProperty("reportPoint")){
-  //       $scope.markers = {
-  //       userMarker : $scope.markers.userMarker,
-  //       reportPoint : $scope.markers.reportPoint
-  //       };
-  //     } else {
-  //       $scope.markers = {
-  //         userMarker : $scope.markers.userMarker
-  //       };
-  //     }
-  //     if( routeOnMap === false ) {
-  //       leafletData.getMap().then(function(map){
-  //         var bounds = map.getBounds();
-  //         PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
-  //           .then(function(data){
-  //             $scope.setMarkersReturned(data);
-  //           });
-  //       });
-  //     }
-  //   }
-  // });
 
   // IF CREATING NEW REPORT/SUGGEST POINT
   $scope.showReportControl = false;
