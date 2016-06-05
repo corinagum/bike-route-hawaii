@@ -250,7 +250,6 @@
     }
   };
 
-  console.log(L.latLng([48.201332, 16.367305]).distanceTo([48.201332, 16.367305]));
   $scope.stationClicked = {
     "id": 391,
     "type": "BikeShare",
@@ -337,9 +336,9 @@
     $scope.createMarkers(data.data, 'bikeShare');
   };
 
-  new L.Control.GeoSearch({
-        provider: new L.GeoSearch.Provider.Google()
-    }).addTo(map);
+  // new L.Control.GeoSearch({
+  //       provider: new L.GeoSearch.Provider.Google()
+  //   }).addTo(map);
 
   //FIND POINTS IN RADIUS ON LOCATION FOUND
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
