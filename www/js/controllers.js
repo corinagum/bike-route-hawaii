@@ -337,6 +337,10 @@
     $scope.createMarkers(data.data, 'bikeShare');
   };
 
+  new L.Control.GeoSearch({
+        provider: new L.GeoSearch.Provider.Google()
+    }).addTo(map);
+
   //FIND POINTS IN RADIUS ON LOCATION FOUND
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
