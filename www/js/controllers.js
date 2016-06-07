@@ -96,9 +96,7 @@
           $scope.markers.userMarker = {
             lat : position.coords.latitude,
             lng : position.coords.longitude,
-            message : 'You are here',
-            marker : reportIcon
-          };
+            message : 'You are here'          };
         }
         }, handleErr, {
           timeout : 10000,
@@ -181,9 +179,14 @@
 
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
+
       $scope.show($ionicLoading);
       map.locate();
-      updateUserLocMarker(map);
+      // function updateUserLocMarker(map) {
+      //   console.log("consoleLoggingfirst", map);
+      // }
+
+      // updateUserLocMarker();
 
       if( routeOnMap === true ) {
         $scope.removeRouting();
@@ -358,6 +361,7 @@
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
     $scope.center.autoDiscover = true;
+<<<<<<< HEAD
     $scope.markers.userMarker = {
       lat : leafEvent.latitude,
       lng : leafEvent.longitude,
@@ -367,6 +371,30 @@
     //   .then(function(data){
     //     $scope.setMarkersReturned(data);
     // });
+=======
+
+    // $scope.markers.userMarker = {
+    //   lat : leafEvent.latitude,
+    //   lng : leafEvent.longitude,
+    //   message : 'You are here'
+    // };
+
+    leafletData.getMap().then(function(map){
+
+    var RedIcon = L.Icon.Default.extend({
+        options: {
+          iconUrl: './../img/bike-assets/userMarker.png'
+        }
+     });
+     var redIcon = new RedIcon();
+      L.marker([leafEvent.latitude, leafEvent.longitude], {icon: redIcon}).addTo(map);
+
+    PointService.getPointsInRadius($scope.radius, $scope.markers.userMarker.lat, $scope.markers.userMarker.lng)
+      .then(function(data){
+        $scope.setMarkersReturned(data);
+    });
+  });
+>>>>>>> 515a8a8c4d73fdbb8e5ed42a86852ceb08827fe8
 
   });
 
