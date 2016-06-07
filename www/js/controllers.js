@@ -227,7 +227,7 @@
   };
 
  // UTILITY FUNCTION FOR SETTING MARKERS WHEN RETURNED FROM API REQUEST
-  var bikesharePoints = [];
+  var bikesharePoints;
 
 
 
@@ -237,7 +237,7 @@
       var pointDetail;
       var showMarker;
       var pointIcon;
-      bikesharePoints.push(array[i]);
+      // bikesharePoints.push(array[i]);
       showMarker = $scope.showStations;
       pointIcon = $scope.bikeShareIcon;
         $scope.markers[(name + i)] = {
@@ -269,6 +269,23 @@
     "safetyCounter": null,
     "createdAt": "2016-02-29T22:11:46.561Z",
     "updatedAt": "2016-02-29T22:11:46.561Z"
+  };
+
+
+ $scope.updateDistanceFromMarker = function(marker, array){
+    array.forEach(function(item){
+      item.distance = L.latLng([marker.lat, marker.lng]).distanceTo([item.lat, item.long]);
+    });
+  };
+
+  function sortByCloset(array){
+    array.sort(function(a,b){
+      return a.distance - b.distance;
+    });
+  }
+
+  $scope.stationWalkTime = function(marker, station){
+    return Math.round(L.latLng([$scope.stationClicked.lat, $scope.stationClicked.lng]).distanceTo($scope.places[place]) * (60/15500));
   };
 
   $scope.rideTime = function(place){
@@ -346,19 +363,18 @@
       lng : leafEvent.longitude,
       message : 'You are here'
     };
-    PointService.getPointsInRadius($scope.radius, $scope.markers.userMarker.lat, $scope.markers.userMarker.lng)
-      .then(function(data){
-        $scope.setMarkersReturned(data);
-    });
+    // PointService.getPointsInRadius($scope.radius, $scope.markers.userMarker.lat, $scope.markers.userMarker.lng)
+    //   .then(function(data){
+    //     $scope.setMarkersReturned(data);
+    // });
 
   });
 
   $scope.$on('leafletDirectiveMap.map.load', function(event, args){
     PointService.getBikeshareStations()
       .then(function(data){
-        console.log(data.data);
-        setMarkersReturned(data.data);
         bikesharePoints = data.data;
+        setMarkersReturned(bikesharePoints);
         leafletData.getMap()
         .then(function(map){
           new L.Control.GeoSearch({
@@ -395,7 +411,7 @@
         draggable: true,
         icon : $scope.reportIcon
       };
-    $scope.markers = {
+    $scope.markers ={
       reportPoint : reportPoint
     };
   };
@@ -403,8 +419,7 @@
   // CANCEL REPORT POINT
   $scope.cancelReportPoint = function(){
     $scope.showReportControl = false;
-    console.log(bikesharePoints);
-    // setMarkersReturned(bikesharePoints);
+    setMarkersReturned(bikesharePoints);
     delete $scope.markers.reportPoint;
   };
 

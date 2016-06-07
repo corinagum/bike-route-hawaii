@@ -281,16 +281,16 @@
             <button> Likes </button>
             <div>We don't have addresses right now</div>
             <div>Ride time to:</div>
-            <div>Kaka'ako: {{rideTime('kakaako')}} min</div>
-            <div>Ala Moana: {{rideTime('alamoana')}} min</div>
-            <div>University: {{rideTime('university')}} min</div>
-            <div>Waikiki: {{rideTime('waikiki')}} min</div>
+            <div>Kaka'ako: {{rideTime('kakaako')}} min.</div>
+            <div>Ala Moana: {{rideTime('alamoana')}} min.</div>
+            <div>University: {{rideTime('university')}} min.</div>
+            <div>Waikiki: {{rideTime('waikiki')}} min.</div>
             <div>What's near this station</div>
             <div ng-repeat= 'item in closestBBB'>
               <div>{{item.name}}</div>
               <div>{{item.address}}</div>
-              <img src="bbblogo" alt="">
-              <img src=item.image alt="">
+              <img src="http://boyerlawfirmblog.com/wp-content/uploads/2011/08/bbb1.jpg" alt="">
+            <img src={{item.image}} alt="">
               <div>{{item.description}}</div>
             </div>
             <!-- </ion-scroll> -->
