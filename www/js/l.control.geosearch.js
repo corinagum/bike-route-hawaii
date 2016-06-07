@@ -3,6 +3,7 @@
  * https://github.com/smeijer/L.GeoSearch
  */
 
+
 L.GeoSearch = {};
 L.GeoSearch.Provider = {};
 
@@ -21,8 +22,10 @@ L.Control.GeoSearch = L.Control.extend({
         position: 'topright',
         showMarker: true,
         showPopup: false,
-        customIcon: false,
-        retainZoomLevel: false,
+        customIcon: L.icon({
+          iconUrl: './../img/bike-assets/userMarker.png',
+        }),
+        retainZoomLevel: true,
         draggable: false
     },
 

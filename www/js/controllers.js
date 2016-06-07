@@ -361,18 +361,6 @@
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
     $scope.center.autoDiscover = true;
-<<<<<<< HEAD
-    $scope.markers.userMarker = {
-      lat : leafEvent.latitude,
-      lng : leafEvent.longitude,
-      message : 'You are here'
-    };
-    // PointService.getPointsInRadius($scope.radius, $scope.markers.userMarker.lat, $scope.markers.userMarker.lng)
-    //   .then(function(data){
-    //     $scope.setMarkersReturned(data);
-    // });
-=======
-
     // $scope.markers.userMarker = {
     //   lat : leafEvent.latitude,
     //   lng : leafEvent.longitude,
@@ -383,18 +371,13 @@
 
     var RedIcon = L.Icon.Default.extend({
         options: {
-          iconUrl: './../img/bike-assets/userMarker.png'
+          iconUrl: './../img/bike-assets/userMarker.png',
+          iconSize:[24, 32],
         }
      });
-     var redIcon = new RedIcon();
+    var redIcon = new RedIcon();
       L.marker([leafEvent.latitude, leafEvent.longitude], {icon: redIcon}).addTo(map);
-
-    PointService.getPointsInRadius($scope.radius, $scope.markers.userMarker.lat, $scope.markers.userMarker.lng)
-      .then(function(data){
-        $scope.setMarkersReturned(data);
     });
-  });
->>>>>>> 515a8a8c4d73fdbb8e5ed42a86852ceb08827fe8
 
   });
 
