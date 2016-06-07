@@ -15,7 +15,7 @@
         logic : 'broadcast'
       },
       markers : {
-        enable : ['click']
+        enable : ['click', 'dragend', 'dragstart']
         // logic : 'emit'
       }
     },
@@ -226,19 +226,17 @@
   };
 
  // UTILITY FUNCTION FOR SETTING MARKERS WHEN RETURNED FROM API REQUEST
-  $scope.bikesharePoints = [];
-  $scope.landmarkPoints = [];
-  $scope.bikeRackPoints = [];
+  var bikesharePoints = [];
 
 
 
   // LOOPS THROUGH DATA RETURNED TO CHECK ITS TYPE AND IF IT SHOULD BE ASSIGNED A MARKER
-  $scope.createMarkers = function(array, name){
+  function createMarkers(array, name){
     for(var i = 0; i < array.length; i++){
       var pointDetail;
       var showMarker;
       var pointIcon;
-      $scope.bikesharePoints.push(array[i]);
+      bikesharePoints.push(array[i]);
       showMarker = $scope.showStations;
       pointIcon = $scope.bikeShareIcon;
         $scope.markers[(name + i)] = {
@@ -248,7 +246,7 @@
         properties : array[i],
         };
     }
-  };
+  }
 
   $scope.stationClicked = {
     "id": 391,
@@ -327,23 +325,15 @@
   }];
 
   $scope.$on('leafletDirectiveMarker.map.click', function(event,args){
-    $scope.stationClicked = $scope.markers[args.modelName].properties;
-    console.log($scope.markers[args.modelName].properties);
-    $scope.openModal(4);
+    if(args.modelName !== 'reportPoint'){
+      $scope.stationClicked = $scope.markers[args.modelName].properties;
+      $scope.openModal(4);
+    }
   });
 
-  $scope.setMarkersReturned = function(data){
-    $scope.createMarkers(data.data, 'bikeShare');
-  };
-
-  // leafletData.getMap()
-  // .then(function(map){
-  //   new L.Control.GeoSearch({
-  //     provider: new L.GeoSearch.Provider.Google()
-  //   }).addTo(map);
-  //   console.log("added");
-  //   L.Control.GeoSearch.onAdd(map);
-  // });
+  function setMarkersReturned(data){
+    createMarkers(data, 'bikeShare');
+  }
 
   //FIND POINTS IN RADIUS ON LOCATION FOUND
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
@@ -365,13 +355,14 @@
   $scope.$on('leafletDirectiveMap.map.load', function(event, args){
     PointService.getBikeshareStations()
       .then(function(data){
-        $scope.setMarkersReturned(data);
+        console.log(data.data);
+        setMarkersReturned(data.data);
+        bikesharePoints = data.data;
         leafletData.getMap()
         .then(function(map){
           new L.Control.GeoSearch({
             provider: new L.GeoSearch.Provider.Google()
           }).addTo(map);
-          console.log("added");
         });
       });
   });
@@ -385,16 +376,21 @@
     var reportPoint = {
         lat: $scope.center.lat,
         lng: $scope.center.lng,
-        message: "drag to report/suggest point",
+        message: "Drop the bicycle where you'd like to see a bike station",
+        focus: true,
         draggable: true,
         icon : $scope.reportIcon
       };
-    $scope.markers.reportPoint = reportPoint;
+    $scope.markers = {
+      reportPoint : reportPoint
+    };
   };
 
   // CANCEL REPORT POINT
   $scope.cancelReportPoint = function(){
     $scope.showReportControl = false;
+    console.log(bikesharePoints);
+    // setMarkersReturned(bikesharePoints);
     delete $scope.markers.reportPoint;
   };
 

@@ -46,7 +46,6 @@ L.Control.GeoSearch = L.Control.extend({
 
     onAdd: function (map) {
         this._container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-geosearch');
-        console.log("in on add");
         // create the link - this will contain one of the icons
         var link = L.DomUtil.create('a', '', this._container);
         link.href = '#';
