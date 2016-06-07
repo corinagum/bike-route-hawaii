@@ -96,7 +96,8 @@
           $scope.markers.userMarker = {
             lat : position.coords.latitude,
             lng : position.coords.longitude,
-            message : 'You are here'
+            message : 'You are here',
+            marker : reportIcon
           };
         }
         }, handleErr, {
@@ -367,6 +368,19 @@
       });
   });
 
+  $scope.init = function () {
+    console.log("consoleLogging");
+    leafletData.getMap()
+    .then(function(map){
+      new L.Control.GeoSearch({
+        provider: new L.GeoSearch.Provider.Google()
+      }).addTo(map);
+      console.log("added");
+    });
+      // check if there is query in url
+      // and fire search in case its value is not empty
+  };
+
   // IF CREATING NEW REPORT/SUGGEST POINT
   $scope.showReportControl = false;
 
@@ -627,20 +641,10 @@
   $scope.isCollapsed = true;
   $scope.benCollapsed = true;
 
-  $scope.isClickedOn = true;
-
 ////////////////////////////////////////////////////////////
 
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
-  };
-
-
-  $scope.footerExpand = function() {
-    console.log('Footer expanded');
-  };
-  $scope.footerCollapse = function() {
-    console.log('Footer collapsed');
   };
 
   $scope.class = "red";
