@@ -376,6 +376,19 @@
       });
   });
 
+  $scope.init = function () {
+    console.log("consoleLogging");
+    leafletData.getMap()
+    .then(function(map){
+      new L.Control.GeoSearch({
+        provider: new L.GeoSearch.Provider.Google()
+      }).addTo(map);
+      console.log("added");
+    });
+      // check if there is query in url
+      // and fire search in case its value is not empty
+  };
+
   // IF CREATING NEW REPORT/SUGGEST POINT
   $scope.showReportControl = false;
 
@@ -637,13 +650,13 @@
     $ionicHistory.goBack();
   };
 
-  // $scope.class = "red";
-  // $scope.changeClass = function(){
-  //   if ($scope.class === "red")
-  //     $scope.class = "blue";
-  //   else
-  //     $scope.class = "red";
-  // };
+  $scope.class = "red";
+  $scope.changeClass = function(){
+    if ($scope.class === "red")
+      $scope.class = "blue";
+    else
+      $scope.class = "red";
+  };
 
   //>>>>>>>>>>>> POPOVER EVENT
 

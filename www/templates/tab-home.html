@@ -1,21 +1,21 @@
 
-<ion-view title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
+<ion-view data-ng-init="init()" title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
 
 <!-- <ion-nav-bar class="mapSiteTopBar"> -->
   <ion-header-bar class="bar bar-header">
     <a href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
     <!-- <i class="right" ng-click="openModal(1)">Leave Feedback</i> -->
 
-    <button ng-click="openModal(1)" class="button fdbckBtn waves-effect">
-      Leave Feedback
-    </button>
+    <div ng-click="openModal(1)" class="button fdbckBtn waves-effect">
+      <span>Leave Feedback</span>
+    </div>
   </ion-header-bar>
 <!-- </ion-nav-bar> -->
 
   <ion-content data-tap-disabled="true">
-   <!--  <div class="view-filter">
-      <i class="icon ion-gear-a custom-icon" ng-click="openModal(1)"></i>
-    </div> -->
+    <div class="getLocationMarker" ng-click="findCenter()">
+      <img src="../img/bike-assets/sMarkerIcon.png" alt="">
+    </div>
     <div ng-click="findCenter()">
       <!-- <div id="locate-before-start" ng-class="{'showBlocker': !foundLocation, 'hideBlocker': foundLocation}">
           tap to find location
@@ -50,7 +50,7 @@
 
   </ion-content>
 
-   <!--  <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
+    <!-- <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
 
       <div>
         <button class="initialLocate" ng-click="findCenter(); locate=false; findMe=true; bike=true; land=true; rack=true;" ng-show="locate">Locate me</button>
@@ -269,13 +269,13 @@
 
 
   <script id="markerDetail.html" type="text/ng-template">
-    <div class="modal wholeModalDiv" ng-click="changeClass()" ng-class="class">
-      <ion-header-bar class="" >
+    <div class="modal wholeModalDiv" ng-class="class">
+      <ion-header-bar ng-click="changeClass()">
         <h1 class="title" >{{stationClicked.name}}</h1>
         <button class="button icon ion-close-round closeModal" ng-click="closeModal(4)"></button>
       </ion-header-bar>
         <ion-content>
-          <!-- <ion-scroll direction="xy" > -->
+          <!-- <ion-scroll direction="y" > -->
             <img src="http://caffaknitted.typepad.com/.a/6a00e54f8f86dc883401287636e5db970c-800wi" alt="">
             <div> Location </div>
             <button> Likes </button>

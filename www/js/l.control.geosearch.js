@@ -18,7 +18,7 @@ L.GeoSearch.Result = function (x, y, label, bounds, details) {
 
 L.Control.GeoSearch = L.Control.extend({
     options: {
-        position: 'topleft',
+        position: 'topright',
         showMarker: true,
         showPopup: false,
         customIcon: false,
@@ -59,7 +59,7 @@ L.Control.GeoSearch = L.Control.extend({
         var form = L.DomUtil.create('form', 'displayNone', this._container);
 
         // create the input, and set its placeholder text
-        var searchbox = L.DomUtil.create('input', null, form);
+        var searchbox = L.DomUtil.create('input', 'searchInput', form);
         searchbox.type = 'text';
         searchbox.placeholder = this._config.searchLabel;
         this._searchbox = searchbox;

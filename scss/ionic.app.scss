@@ -236,6 +236,11 @@ input[type="text"], input[type="email"] {
   padding-left: 5px;
 }
 
+input[type="text"]:focus:not([readonly]) {
+  border-bottom: none;
+  box-shadow: none;
+}
+
 @mixin fontStyling($size, $color) {
   font-size: $size;
   color: $color;
@@ -266,12 +271,19 @@ textarea {
 .fdbckBtn {
   @include borderRadius(7px);
   position: absolute;
+  top: 10px;
   right: 20px;
-  top: 8px;
-  // border: 2px solid $stable;
   color: $typeGrey;
   background-color: $stable;
+  span {font-size: 10px;}
+}
 
+.backArrow {
+  font-size: 45px;
+  line-height: 45px;
+  font-weight: bold;
+  margin-left: 15px;
+  color: $stable;
 }
 
 .ion-ios-arrow-thin-left:before {
@@ -306,12 +318,6 @@ textarea {
   font-weight: 900;
 }
 
-.backArrow {
-  font-size: 50px;
-  font-weight: bold;
-  margin-left: 15px;
-  color: $stable;
-}
 
 .leadershipTeam {
   height: auto;
@@ -378,7 +384,7 @@ textarea {
 
 .bar-header {
   background-color: $balanced;
-  height: 8%;
+  height: initial;
 }
 
 
@@ -406,6 +412,19 @@ textarea {
   background: $balanced;
 }
 
+.leaflet-top {
+  margin-top: 15px;
+}
+
+.leaflet-right .leaflet-control {
+  position: absolute;
+  right: inherit;
+}
+
+.leaflet-control-layers-toggle {
+  display: none;
+}
+
 .numOne {
   background: url('./../img/bike-assets/num1_grey.png') center no-repeat;
 }
@@ -425,11 +444,136 @@ textarea {
 }
 
 .blue{
-  top: 70%;
+  top: 30%;
 }
 
 
+////////// GEOSEARCH MODIFICATION /////////////
 
+.displayNone {
+  display: none;
+}
+
+.leaflet-bar {
+  box-shadow: none;
+}
+
+.leaflet-control-geosearch {
+  position: relative;
+}
+
+.leaflet-control-geosearch a {
+  @include borderRadius(4px);
+  border-bottom: none;
+}
+
+.leaflet-control-geosearch a.glass {
+  float: right;
+  height: 40px;
+  width: 40px;
+  background: url('./../img/bike-assets/searchIcon.png') center no-repeat;
+  background-size: 100% 100%;
+}
+
+.leaflet-control-geosearch a.spinner {
+  background: url('./../img/bike-assets/searchIcon.png') center no-repeat;
+  background-position: 50% 50%;
+}
+
+.leaflet-control-geosearch a.alert {
+  // background-image: url(../img/alert.png);
+  background-size: 64% 64%;
+}
+
+.leaflet-control-geosearch {
+  border: none;
+  box-shadow: none;
+  height: auto;
+  width: 200%;
+
+  a:hover {
+    border-bottom: none;
+  }
+}
+
+.leaflet-control {
+  box-shadow: none;
+  border: none
+}
+
+@keyframes moveOutLeft {
+  0% {
+    width: 30px;
+    opacity: 0;
+}
+  50% {
+    opacity: 0.5
+}
+  100% {
+    width: 220px;
+    opacity: 1;
+  }
+}
+
+
+.leaflet-control-geosearch form {
+  @include borderRadius(20px);
+  border: 2px solid lighten($typeGrey, 45%);
+  position: absolute;
+  top: 1px;
+  right: 2px;
+  // box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
+  z-index: -1;
+  background: #FFF;
+  height: 38px;
+  // padding: 0 6px 0 6px;
+}
+
+.leaflet-touch .leaflet-control-geosearch form {
+  padding: 2px 6px 2px 8px;
+  line-height: 30px;
+}
+
+.leaflet-control-geosearch form input {
+  width: 220px;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 200;
+  margin-left: 12px;
+  background-color: transparent;
+  animation: moveOutLeft 0.4s ease;
+
+}
+
+.leaflet-control-geosearch .message {
+  position: absolute;
+  top: 26px;
+  left: 0px;
+  width: 226px;
+  color: #FFF;
+  background: rgb(40, 40, 40);
+  padding: 4px 0 4px 8px;
+}
+
+.leaflet-touch .leaflet-control-geosearch .message {
+  top: 30px;
+  left: -2px;
+}
+
+.getLocationMarker {
+
+  img {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    z-index:1;
+  }
+}
 
 //=========================================
 #map {
@@ -493,23 +637,6 @@ h1.title {
 
 .hideBlocker {
   display: none;
-}
-
-.view-filter {
-  background-color: $stable;
-  height: 46px;
-  width: 46px;
-  border-radius: 23px;
-  text-align: center;
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index:3;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.65);
-  color: $royal;
-  font-size: 40px;
-  line-height: 47px;
-  text-align: center;
 }
 
 .list-modal {
