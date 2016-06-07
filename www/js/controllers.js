@@ -96,7 +96,8 @@
           $scope.markers.userMarker = {
             lat : position.coords.latitude,
             lng : position.coords.longitude,
-            message : 'You are here'
+            message : 'You are here',
+            marker : reportIcon
           };
         }
         }, handleErr, {
