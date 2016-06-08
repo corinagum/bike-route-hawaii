@@ -9876,15 +9876,18 @@ body, p {
   width: 100%;
   padding: 0px 20px 20px 20px; }
 
-.greyFilter {
-  -webkit-filter: grayscale(1);
-  filter: grayscale(1); }
-
 .borderRight {
   border-right: 1px solid #e2e2e2; }
 
 .marginLeft {
   margin-left: 12px; }
+
+.benefitBlock {
+  border-bottom: 1px solid #e2e2e2; }
+  @media only screen and (min-width: 600px) {
+    .benefitBlock {
+      min-height: 430px;
+      padding: 0 8%; } }
 
 .socialIcons {
   font-size: 20px;

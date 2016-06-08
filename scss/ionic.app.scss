@@ -217,17 +217,20 @@ body, p {
   }
 }
 
-.greyFilter {
-  -webkit-filter: grayscale(1);
-  filter: grayscale(1);
-}
-
 .borderRight {
   border-right: 1px solid lighten($typeGrey, 50%);
 }
 
 .marginLeft {
   margin-left: 12px;
+}
+
+.benefitBlock {
+  border-bottom: 1px solid lighten($typeGrey, 50%);
+  @media #{$large} {
+    min-height: 430px;
+    padding: 0 8%;
+  }
 }
 
 .socialIcons {
