@@ -51,11 +51,13 @@
       popupAnchor:  [15, 0] // point from which the popup should open relative to the iconAnchor
     },
     reportIcon: {
-      type: 'extraMarker',
-      icon: 'fa-pencil-square-o',
-      markerColor: 'red',
-      shape: 'circle',
-      prefix : 'fa',
+      iconUrl: '../img/bike-assets/bike-icon.png',
+      iconSize:     [35, 35],
+      // shadowUrl: 'img/leaf-shadow.png',
+      shadowSize:   [50, 64], // size of the shadow
+      iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+      shadowAnchor: [4, 62],  // the same for the shadow
+      popupAnchor:  [15, 0], // point from which the popup should open relative to the iconAnchor
       message: 'Drop the bycicle where you\'d like to see the station'
     }
   });
@@ -173,7 +175,7 @@
       //   console.log("consoleLoggingfirst", map);
       // }
 
-      // updateUserLocMarker();
+      // updateUserLocMarker(map);
 
       if( routeOnMap === true ) {
         $scope.removeRouting();
@@ -272,7 +274,23 @@
 
   $scope.updateClosestBBB = function(){
     $scope.closestBBB = bbbList.slice(0,5);
-    console.log($scope.closestBBB);
+    console.log('CLOSEST BBB',$scope.closestBBB);
+
+    // leafletData.getMap().then(function(map){
+
+    // var RedIcon = L.Icon.Default.extend({
+    //     options: {
+    //       iconUrl: './../img/bike-assets/userMarker.png',
+    //       iconSize:[24, 32],
+    //       shadowSize:   [42, 32]
+    //     }
+    //  });
+    // var redIcon = new RedIcon();
+    //   L.marker([leafEvent.latitude, leafEvent.longitude], {icon: redIcon}).addTo(map)
+    //   .bindPopup("You are here!").openPopup();
+    // });
+
+
   };
 
 
@@ -301,7 +319,6 @@
       $scope.stationClicked = $scope.markers[args.modelName].properties;
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
-      $scope.openModal(4);
       $scope.showDetailHeader = true;
     }
   });
@@ -320,11 +337,6 @@
     $ionicLoading.hide();
     var leafEvent = args.leafletEvent;
     $scope.center.autoDiscover = true;
-    // $scope.markers.userMarker = {
-    //   lat : leafEvent.latitude,
-    //   lng : leafEvent.longitude,
-    //   message : 'You are here'
-    // };
 
     leafletData.getMap().then(function(map){
 
@@ -333,7 +345,6 @@
           iconUrl: './../img/bike-assets/userMarker.png',
           iconSize:[24, 32],
           shadowSize:   [42, 32]
-
         }
      });
     var redIcon = new RedIcon();
@@ -626,6 +637,7 @@
     else
       $scope.class = "wholeModalDiv";
   };
+
 
   //>>>>>>>>>>>> POPOVER EVENT
 

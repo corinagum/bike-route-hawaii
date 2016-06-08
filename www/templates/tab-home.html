@@ -24,30 +24,6 @@
     <!-- <iframe src="https://www.google.com/maps/d/embed?mid=1ltEWKgn_WgMw9opot3cL5qU8jAc" width="640" height="480"></iframe> -->
     <leaflet layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
 
-    <!-- <ion-pull-up-footer class="bar-calm" on-expand="footerExpand()">
-          <div class="title" ion-pull-up-trigger>Tap me or drag me</div>
-          <ion-pull-up-handle width="120" height="15" icon-expand="ion-chevron-up" icon-collapse="ion-chevron-down" style="border-radius: 5px 5px 0 0">
-          </ion-pull-up-handle>
-          <ion-pull-up-content scroll="false">
-      <div class="list card">
-        <div class="item item-divider">Recent Updates</div>
-        <div class="item item-body">
-          <div>
-            There is a fire in <b>sector 3</b>
-          </div>
-        </div>
-      </div> -->
- <!--      <div class="list card">
-        <div class="item item-divider">Other Updates</div>
-        <div class="item item-body">
-          <div>
-            There was a fire in <b>sector 13</b>
-          </div>
-        </div>
-      </div> -->
-      <!-- </ion-pull-up-content>
-    </ion-pull-up-footer> -->
-
   </ion-content>
 
     <!-- <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
@@ -268,40 +244,68 @@
 
 
 
-      <ion-footer-bar ng-click="changeClass()" class="titleDetailBar" ng-show="showDetailHeader;">
-        <p>{{stationClicked.name}}</p>
-        <button class="button icon ion-close-round closeModal" ng-click="openModal(4); hideDetailHeader();"></button>
+      <ion-footer-bar ng-click="openModal(4); hideDetailHeader();" class="titleDetailBar" ng-show="showDetailHeader;">
+          <div class="center">
+            <p>{{stationClicked.name}}</p>
+          </div>
+            <i class="ion-ios-arrow-up" ng-click="openModal(4); hideDetailHeader();"></i>
       </ion-footer-bar>
-  <script id="markerDetail.html" type="text/ng-template">
-    <div class="modal wholeModalDiv" ng-class="class">
 
-      <ion-header-bar ng-click="changeClass()">
-        <h1 class="title" >{{stationClicked.name}}</h1>
-        <button class="button icon ion-chevron-up closeModal" ng-click="closeModal(4)"></button>
+  <script id="markerDetail.html" type="text/ng-template">
+    <div class="modal wholeModalDiv">
+      <ion-header-bar class="titleDetailBar">
+        <h1 class="d_title" >{{stationClicked.name}}</h1>
+        <i class="ion-ios-arrow-down right" ng-click="closeModal(4); hideDetailHeader();"></i>
       </ion-header-bar>
-        <ion-content>
+        <ion-content class="detailModalBlock">
           <!-- <ion-scroll direction="y" > -->
-            <img class = "stationPhoto" src={{stationClicked.photolink}} alt="">
-            <div> Street </div>
-            <div>{{stationClicked.street}}</div>
-            <button>
-              <img src="" alt="">
-              Likes
-            </button>
-            <div>Ride time to:</div>
-            <div>Downtown: {{rideTime('downtown')}} min.</div>
-            <div>Kaka'ako: {{rideTime('kakaako')}} min.</div>
-            <div>Ala Moana: {{rideTime('alamoana')}} min.</div>
-            <div>University: {{rideTime('university')}} min.</div>
-            <div>Waikiki: {{rideTime('waikiki')}} min.</div>
-            <div>Diamond Head: {{rideTime('diamondhead')}} min.</div>
-            <div>What's near this station</div>
-            <div ng-repeat= 'item in closestBBB'>
-              <div>{{item.name}}</div>
-              <div>{{item.address}}</div>
-              <img class="bbbLogo" src="http://boyerlawfirmblog.com/wp-content/uploads/2011/08/bbb1.jpg" alt="">
-            <img class="bbbPhoto" src={{item.image}} alt="">
-              <div>{{item.description}}</div>
+            <div class="d_image">
+              <img src="http://caffaknitted.typepad.com/.a/6a00e54f8f86dc883401287636e5db970c-800wi" alt="">
+            </div>
+            <div class="likes">
+              <i class="ion-ios-heart-outline fa-2x right">{{ numberOfLikes }}<p>Likes</p></i>
+            </div>
+            <div class="d_title"> <span>Location</span> </div>
+            <div class="d_location">{{stationClicked.street}}</div>
+            <div class="d_title">Ride time to:</div>
+            <div class="row">
+              <div class="d_location col">Downtown: {{rideTime('downtown')}} min.</div>
+              <div class="d_location col">Kaka'ako: {{rideTime('kakaako')}} min.</div>
+              <div class="d_location col">Ala Moana: {{rideTime('alamoana')}} min.</div>
+            </div>
+
+            <div class="row">
+              <div class="d_location col">University: {{rideTime('university')}} min.</div>
+              <div class="d_location col">Waikiki: {{rideTime('waikiki')}} min.</div>
+              <div class="d_location col">Diamond Head: {{rideTime('diamondhead')}} min.</div>
+            </div>
+
+            <div class="d_title">What's near this station</div>
+            <div ng-repeat= 'item in closestBBB' style="padding-top: 13px;">
+              <div class="row">
+                <div class="col">
+                  <div class="nameAndAdd">
+                    <h5>{{item.name}}</h5>
+                   <div class="d_location">
+                     <div>{{item.address}}</div>
+                   </div>
+                  </div>
+                    </br></br><div class="d_location">
+                      <div>{{item.description}}</div>
+                    </div>
+                </div>
+
+                <div class="bbbImage right col">
+                  <img src="http://boyerlawfirmblog.com/wp-content/uploads/2011/08/bbb1.jpg" alt="">
+                </div>
+
+                <div class="col biz_image">
+                  <img src={{item.image}} alt="">
+                </div>
+              </div>
+            <div class="divider"></div>
+
+>>>>>>> veiwportstyle
             </div>
             </ion-scroll>
         </ion-content>

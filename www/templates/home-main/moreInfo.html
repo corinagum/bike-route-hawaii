@@ -26,88 +26,101 @@
         <div class="stepsDiv">
           <i class="ion-arrow-left-b" style="font-size: 24px; margin: auto; padding-right: 20px;"></i>
 
-            <div class="center stepsNum" ng-click="one=true;two=false;three=false;four=false;"><img src="../../img/bike-assets/numOne.png" alt=""></div>
+            <div class="center stepsNum" ng-click="one=true;two=false;three=false;four=false;">
+              <img src="../../img/bike-assets/numOne.png" alt="">
+              <!-- <img ng-show="two" src="../../img/bike-assets/num1_grey.png" alt=""> -->
+            </div>
             <div class="dots">
               <li><a href="#slide1"></a></li>
               <li><a href="#slide2"></a></li>
               <li><a href="#slide3"></a></li>
             </div>
 
-            <div class="center stepsNum" ng-click="one=false;two=true;three=false;four=false;"><img src="../../img/bike-assets/num2.png" alt=""></div>
-              <div class="dots">
-                <li><a href="#slide1"></a></li>
-                <li><a href="#slide2"></a></li>
-                <li><a href="#slide3"></a></li>
-              </div>
-            <div class="center stepsNum" ng-click="one=false;two=false;three=true;four=false;"><img src="../../img/bike-assets/num3.png" alt=""></div>
+            <div class="center stepsNum" ng-click="one=false;two=true;three=false;four=false;">
+              <img src="../../img/bike-assets/num2.png" alt="">
+              <!-- <img ng-show="one" src="../../img/bike-assets/num2_grey.png" alt=""> -->
+            </div>
               <div class="dots">
                 <li><a href="#slide1"></a></li>
                 <li><a href="#slide2"></a></li>
                 <li><a href="#slide3"></a></li>
               </div>
 
-            <div class="center stepsNum" ng-click="one=false;two=false;three=false;four=true;"><img src="../../img/bike-assets/num4.png" alt=""></div>
+            <div class="center stepsNum" ng-click="one=false;two=false;three=true;four=false;">
+              <img src="../../img/bike-assets/num3.png" alt="">
+              <!-- <img ng-show="one" src="../../img/bike-assets/num3_grey.png" alt=""> -->
+            </div>
+              <div class="dots">
+                <li><a href="#slide1"></a></li>
+                <li><a href="#slide2"></a></li>
+                <li><a href="#slide3"></a></li>
+              </div>
+
+            <div class="center stepsNum" ng-click="one=false;two=false;three=false;four=true;">
+              <img src="../../img/bike-assets/num4.png" alt="">
+              <!-- <img ng-show="one" src="../../img/bike-assets/num4_grey.png" alt=""> -->
+            </div>
 
           <i class="ion-arrow-right-b" style="font-size: 24px; margin: auto; padding-left: 20px;"></i>
-          </div>
-          <div class="center">
-            <img style="height: 180px; width: auto;" src="../../img/bike-assets/howItWorks.png" alt="">
         </div>
 
-
-        <div class="boxRow" ng-show="one">
-          <div class="">
-            <h4>Get a bike</h4>
-            <ul>
-              <li>Pay with a credit card or sign up for membership</li>
-              <li>Lelect any available bike</li>
-            </ul>
+          <div class="center graphicBike" style="height: 140px; width: auto;">
+            <img ng-show="one" src="../../img/bike-assets/Get a bike.png" alt="">
+            <img style="margin-top: -25px" ng-show="two" src="../../img/bike-assets/ Get Going.png" alt="">
+            <img ng-show="three" src="../../img/bike-assets/Check in.png" alt="">
+            <img ng-show="four" src="../../img/bike-assets/Go again_.png" alt="">
           </div>
-        </div>
 
-        <div class="boxRow" ng-show="two">
-          <div class="">
-            <h4>Get Going</h4>
-            <ul>
-              <li>Enjoy your ride, be safe</li>
-              <li>Ride for as long as you like. Short rides are the most cost effective for most plans.</li>
-            </ul>
+
+        <div class="howItworksMobile">
+          <div class="boxRow" ng-show="one">
+            <div class="">
+              <h4>Get a bike</h4>
+
+                <p>Pay with a credit card or sign up for membership.</p>
+                <p>Select apny available bike.</p>
+
+            </div>
           </div>
-        </div>
 
-        <div class="boxRow" ng-show="three">
-          <div class="">
-          <h4>Check in</h4>
-            <ul>
-              <li>Return your bike to any other station in the network.</li>
-              <li>when you “dock” bike your bike, you are no longer being being charged for ride time.</li>
-            </ul>
+          <div class="boxRow" ng-show="two">
+            <div class="">
+              <h4>Get Going</h4>
+                <p>Enjoy your ride, be safe.</p>
+                <p>Ride for as long as you like. Short rides are the most cost effective for most plans.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="boxRow" ng-show="four">
-          <div class="">
-            <h4>Go again</h4>
-            <ul>
-              <li>Go for another convenient and fun ride!</li>
-              <li>Most plans include enough time for multiple trips</li>
-            </ul>
+          <div class="boxRow" ng-show="three">
+            <div class="">
+            <h4>Check in</h4>
+                <p>Return your bike to any other station in the network.</p>
+                <p>When you “dock” your bike, you are no longer being being charged for ride time.</p>
+            </div>
+          </div>
+
+          <div class="boxRow" ng-show="four">
+            <div class="">
+              <h4>Go again</h4>
+                <p>Go for another convenient and fun ride!</p>
+                <p>Most plans include enough time for multiple trips.</p>
+            </div>
           </div>
         </div>
 
       </div>
 
       <!-- MEDIUM UP VIEWPORT -->
+      <div class="medUpContainer hide-on-small-only">
 
-      <div class="container medUpContainer">
-
-      <p class="secTitle">How does it work?</p>
+        <h1 class="secTitle">How does it work?</h1>
         <div class="row medUpSteps">
-          <div class="col"><div class="center">
+          <div class="col borderRight">
+          <div class="center">
             <img src="../../img/bike-assets/Get a bike.png" alt="">
-          </div></br>
+          </div>
             <div class="left">
-              <h4>Get a bike</h4>
+              <h5>Get a bike</h5>
               <ul>
                 <li>Pay with a credit card or sign up for membership.</li></br>
                 <li>Select any available bike.</li>
@@ -115,12 +128,12 @@
             </div>
           </div>
 
-          <div class="col">
-          <div class="center" style="margin-top: -13px;">
+          <div class="col borderRight marginLeft">
+          <div class="center" style="margin-top: -10px;">
             <img src="../../img/bike-assets/ Get Going.png" alt="">
-          </div></br>
+          </div>
             <div class="left">
-              <h4>Get Going</h4>
+              <h5>Get Going</h5>
               <ul>
                 <li>Enjoy your ride, be safe.</li></br>
                 <li>Ride for as long as you like. Short rides are the most cost effective for most plans.</li>
@@ -128,11 +141,12 @@
             </div>
           </div>
 
-          <div class="col"><div class="center">
+          <div class="col borderRight marginLeft">
+          <div class="center">
             <img src="../../img/bike-assets/Check in.png" alt="">
-          </div></br>
+          </div>
             <div class="left">
-            <h4>Check in</h4>
+            <h5>Check in</h5>
               <ul>
                 <li>Return your bike to any other station in the network.</li></br>
                 <li>when you “dock” your bike, you are no longer being charged for ride time.</li>
@@ -140,11 +154,12 @@
             </div>
           </div>
 
-          <div class="col"><div class="center">
+          <div class="col marginLeft">
+          <div class="center">
             <img src="../../img/bike-assets/Go again_.png" alt="">
-          </div></br>
+          </div>
             <div class="left">
-              <h4>Go again</h4>
+              <h5>Go again</h5>
               <ul>
                 <li>Go for another convenient and fun ride!</li></br>
                 <li>Most plans include enough time for multiple trips.</li>
@@ -162,13 +177,13 @@
         </div>
       </div>
 
-      <div>
-        <p class="secTitle" style="padding: 10px 0px">Leadership</p>
-        <img class="leadershipTeam" src="../../img/bike-assets/Screen Shot-Leadership.png" alt="">
+      <div class="">
+        <p class="secTitle" style="padding: 25px 0px">Leadership</p>
+        <img class="leadershipTeam hide-on-med-and-up" src="../../img/bike-assets/Screen Shot-Leadership.png" alt="">
       </div>
 
-
-      <div class="sectionTwo">
+      <!-- MOBILE VIEW LEADERSHIP -->
+      <div class="sectionTwo hide-on-med-and-up">
         <div class="loriPadding" ng-click="isCollapsed = !isCollapsed; benCollapsed = true;"><p class="leaderName">Lori McCartney, CEO<i ng-class="{'ion-ios-plus-outline' : isCollapsed, 'ion-ios-close-outline' : !isCollapsed}" class="right"></i></p>
           <div uib-collapse="isCollapsed">
             <div class="aboutPar">
@@ -185,6 +200,23 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- MEDIUM UP VIEW LEADERSHIP-->
+      <div class="row center leadDiv hide-on-small-only">
+        <div class="col">
+          <img src="../../img/bike-assets/leadership_lori.png" alt="">
+          <h5>Lori McCarney, CEO</h5>
+          <p style="text-align: justify;"> Lori McCarney has 35+ years of experience in senior management and has held executive positions in local, national and international markets. She specializes in marketing and has a strong background in business strategy development. McCarney's local experience includes serving as a Senior VP of Coldwell Banker Pacific Properties, Chief Marketing Officer of FlyHawaii Airlines, and Executive VP-Director of Marketing at Bank of Hawaii. Prior to moving to Hawaii, she held executive leadership positions at Wells Fargo, Bank of America and major advertising agencies.  Additionally, McCarney is currently Chair of the Blood Bank of Hawaii Board of Trustees and the Communications Chair for Kapiolani Health Foundation.  She is also an avid cyclist and accomplished Ironman triathlete.</p>
+        </div>
+
+        <div class="col leadDiv">
+          <img src="../../img/bike-assets/leadership_ben.png" alt="">
+          <h5>Ben Trevino, CEO</h5>
+          <p style="text-align: justify;"> Ben Trevino is an experienced entrepreneur and technologist. He was a founder of Interisland Terminal, a Honolulu-based non-profit organization with projects including community spaces, the Kaka‘ako Agora, and R&D Bookstore and Cafe. Prior to Bikeshare Hawaii, Trevino was with the University of Hawaii Economic Research Organization (UHERO) where he was the architect of the UHERO Dashboard Project, a community data visualization portal for Hawaii data. He has held previous positions with Pacific Resources for Education and Learning, the Hawaii International Film Festival and Google. He currently serves on the board of Common Cause Hawaii. Trevino holds a BS in Computer Science from Stanford University and an MBA from the Shidler School of Business at University of Hawaii at Manoa. He has been commuting by bike in Hawaii for eight years.
+          </p>
+        </div>
+
       </div>
 
        <div class="section">
