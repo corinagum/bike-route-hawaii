@@ -170,6 +170,10 @@ body, p {
   }
 }
 
+.howItworksMobile {
+  p {font-size: 14px;}
+}
+
 .medUpContainer {
   padding: 5%;
 }
@@ -177,18 +181,9 @@ body, p {
 .medUpSteps {
   padding-top: 8%;
 
-  h4 {
-    text-align: center;
-  }
-
-  ul, li {
-    font-size: 14px;
-    list-style-type: circle;
-  }
-
-  img {
-    max-width: 80%;
-  }
+  h5 {text-align: center;}
+  ul {line-height: 14px;}
+  img {max-width: 80%;}
 }
 
 .sectionTwo {
@@ -210,8 +205,15 @@ body, p {
 
 .stepsNum {
   margin: 5px;
-  min-width: 40%;
-  // img { max-height: 100%; }
+  img { max-width: 40px; }
+}
+
+.borderRight {
+  border-right: 1px solid lighten($typeGrey, 50%);
+}
+
+.marginLeft {
+  margin-left: 12px;
 }
 
 .socialIcons {
@@ -354,14 +356,19 @@ textarea {
   background-color: $typeGrey;
 }
 
+.leadDiv {
+  padding: 10px 0px 0px 30px;
+  img {
+    max-height: 200px;
+  }
+}
+
 .mapImage {
-  // background: url("./../img/bike-assets/AREA Map.png") center no-repeat;
-  // background-size: cover;
   img {max-width: 100%;}
 }
 
 .mapBg {
-  height: 300px;
+  height: 400px;
   background: url("./../img/bike-assets/mapScreen2.png")no-repeat;
   background-size: cover;
 }
@@ -434,7 +441,7 @@ textarea {
 .viewMapBtn {
   z-index: 10;
   position: relative;
-  top: 120px;
+  top: 170px;
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
