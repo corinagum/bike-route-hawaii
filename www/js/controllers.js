@@ -301,7 +301,7 @@
       $scope.stationClicked = $scope.markers[args.modelName].properties;
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
-      $scope.openModal(4);
+      // $scope.openModal(4);
       $scope.showDetailHeader = true;
     }
   });

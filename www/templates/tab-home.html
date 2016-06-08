@@ -269,37 +269,59 @@
 
 
       <ion-footer-bar ng-click="changeClass()" class="titleDetailBar" ng-show="showDetailHeader;">
-        <p>{{stationClicked.name}}</p>
-        <button class="button icon ion-close-round closeModal" ng-click="openModal(4); hideDetailHeader();"></button>
+          <div class="center">
+            <p>{{stationClicked.name}}</p>
+          </div>
+            <i class="ion-ios-arrow-up" ng-click="openModal(4); hideDetailHeader();"></i>
       </ion-footer-bar>
+
   <script id="markerDetail.html" type="text/ng-template">
-    <div class="modal wholeModalDiv" ng-class="class">
-    <ion-header-bar ng-click="changeClass()" class="titleDetailBar>"
-      <p>{{stationClicked.name}}</p>
-      <button class="button icon ion-close-round closeModal" ng-click="closeModal(4); hideDetailHeader();"></button>
-    </ion-header-bar>
-        <ion-content>
+    <div class="modal wholeModalDiv">
+      <ion-header-bar class="titleDetailBar">
+        <p>{{stationClicked.name}}</p>
+        <i class="ion-ios-arrow-down right" ng-click="closeModal(4); hideDetailHeader();"></i>
+      </ion-header-bar>
+        <ion-content class="detailModalBlock">
           <!-- <ion-scroll direction="y" > -->
-            <img src="http://caffaknitted.typepad.com/.a/6a00e54f8f86dc883401287636e5db970c-800wi" alt="">
-            <div> Street </div>
-            <div>{{stationClicked.street}}</div>
-            <button>
+            <div class="d_image">
+              <img src="http://caffaknitted.typepad.com/.a/6a00e54f8f86dc883401287636e5db970c-800wi" alt="">
+            </div>
+            <button class="right">
               <img src="" alt="">
               Likes
             </button>
-            <div>Ride time to:</div>
-            <div>Downtown: {{rideTime('downtown')}} min.</div>
-            <div>Kaka'ako: {{rideTime('kakaako')}} min.</div>
-            <div>Ala Moana: {{rideTime('alamoana')}} min.</div>
-            <div>University: {{rideTime('university')}} min.</div>
-            <div>Waikiki: {{rideTime('waikiki')}} min.</div>
-            <div>Diamond Head: {{rideTime('diamondhead')}} min.</div>
-            <div>What's near this station</div>
+            <div class="d_title"> <span>Location</span> </div>
+            <div class="d_location">{{stationClicked.street}}</div>
+            <div class="d_title">Ride time to:</div>
+            <div class="row">
+              <div class="d_location col">Downtown: {{rideTime('downtown')}} min.</div>
+              <div class="d_location col">Kaka'ako: {{rideTime('kakaako')}} min.</div>
+              <div class="d_location col">Ala Moana: {{rideTime('alamoana')}} min.</div>
+            </div>
+
+            <div class="row">
+              <div class="d_location col">University: {{rideTime('university')}} min.</div>
+              <div class="d_location col">Waikiki: {{rideTime('waikiki')}} min.</div>
+              <div class="d_location col">Diamond Head: {{rideTime('diamondhead')}} min.</div>
+            </div>
+
+            <div class="d_title">What's near this station</div>
             <div ng-repeat= 'item in closestBBB'>
-              <div>{{item.name}}</div>
-              <div>{{item.address}}</div>
-              <img src="http://boyerlawfirmblog.com/wp-content/uploads/2011/08/bbb1.jpg" alt="">
-            <img src={{item.image}} alt="">
+              <div class="row">
+                <div class="col">
+                  <div class="">
+                    <h5>{{item.name}}</h5>
+                  </div>
+                  <div class="d_location">
+                    <div>{{item.address}}</div>
+                  </div>
+                </div>
+                <div class="bbbImage right col">
+                  <img src="http://boyerlawfirmblog.com/wp-content/uploads/2011/08/bbb1.jpg" alt="">
+                </div>
+              </div>
+
+              <img src={{item.image}} alt="">
               <div>{{item.description}}</div>
             </div>
             </ion-scroll>

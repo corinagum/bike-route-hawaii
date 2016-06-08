@@ -10105,11 +10105,33 @@ textarea {
   position: absolute;
   height: 100%; }
 
-.blue {
-  top: 40%; }
-
 .titleDetailBar {
-  background-color: #e2e2e2; }
+  background-color: #e2e2e2;
+  line-height: 48px;
+  height: 60px; }
+  .titleDetailBar p {
+    font-size: 22px;
+    text-align: center;
+    padding-left: 30px; }
+  .titleDetailBar i {
+    font-size: 34px;
+    position: absolute;
+    right: 30px; }
+
+.detailModalBlock {
+  margin: 30px 86px; }
+  .detailModalBlock img {
+    max-width: 100%; }
+  .detailModalBlock .d_title {
+    padding: 10px 0px;
+    color: #76CE95;
+    font-size: 14px;
+    font-weight: 200; }
+  .detailModalBlock .d_location {
+    font-size: 14px;
+    font-weight: 200; }
+  .detailModalBlock .bbbImage img {
+    height: 36.47px; }
 
 .displayNone {
   display: none; }
