@@ -1,8 +1,9 @@
+
+
  angular.module('starter.controllers', ['ngCordova'])
 
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory) {
-
   angular.extend($scope, {
     honolulu: {
       lat: 21.3008900859581,
@@ -23,7 +24,7 @@
       baselayers: {
         osm: {
           name: 'Default',
-          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
           type: 'xyz'
         },
       }
@@ -48,20 +49,6 @@
       iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
       shadowAnchor: [4, 62],  // the same for the shadow
       popupAnchor:  [15, 0] // point from which the popup should open relative to the iconAnchor
-    },
-    historyIcon: {
-      type: 'extraMarker',
-      icon: 'fa-university',
-      markerColor: 'yellow',
-      shape : 'square',
-      prefix : 'fa'
-    },
-    bikeRack: {
-      type: 'extraMarker',
-      icon: 'fa-unlock-alt',
-      markerColor: 'black',
-      shape: 'circle',
-      prefix : 'fa'
     },
     reportIcon: {
       type: 'extraMarker',
@@ -229,18 +216,12 @@
     if ( rad === 50000) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = true; }
   };
 
- // UTILITY FUNCTION FOR SETTING MARKERS WHEN RETURNED FROM API REQUEST
-  var bikesharePoints;
-
-
-
   // LOOPS THROUGH DATA RETURNED TO CHECK ITS TYPE AND IF IT SHOULD BE ASSIGNED A MARKER
   function createMarkers(array, name){
     for(var i = 0; i < array.length; i++){
       var pointDetail;
       var showMarker;
       var pointIcon;
-      // bikesharePoints.push(array[i]);
       showMarker = $scope.showStations;
       pointIcon = $scope.bikeShareIcon;
         $scope.markers[(name + i)] = {
@@ -253,6 +234,7 @@
   }
 
   $scope.stationClicked = {
+    // default values that will be changed on station click
     "id": 391,
     "type": "BikeShare",
     "name": "Paki and Kalakaua",
@@ -274,21 +256,28 @@
     "updatedAt": "2016-02-29T22:11:46.561Z"
   };
 
-
- $scope.updateDistanceFromMarker = function(marker, array){
-    array.forEach(function(item){
-      item.distance = L.latLng([marker.lat, marker.lng]).distanceTo([item.lat, item.long]);
-    });
-  };
-
-  function sortByCloset(array){
+  function sortByClosest(array){
     array.sort(function(a,b){
       return a.distance - b.distance;
     });
   }
 
+ $scope.updateDistanceFromMarker = function(marker, array){
+    array.forEach(function(item){
+      item.distance = L.latLng([marker.lat, marker.long]).distanceTo([item.lat, item.lng]);
+    });
+    sortByClosest(array);
+    console.log(array);
+  };
+
+  $scope.updateClosestBBB = function(){
+    $scope.closestBBB = bbbList.slice(0,5);
+    console.log($scope.closestBBB);
+  };
+
+
   $scope.stationWalkTime = function(marker, station){
-    return Math.round(L.latLng([$scope.stationClicked.lat, $scope.stationClicked.lng]).distanceTo($scope.places[place]) * (60/15500));
+    return Math.round(L.latLng([$scope.stationClicked.lat, $scope.stationClicked.long]).distanceTo($scope.places[place]) * (60/15500));
   };
 
   $scope.rideTime = function(place){
@@ -299,55 +288,17 @@
     kakaako : [21.296586, -157.860886],
     alamoana : [21.290763, -157.843645],
     university : [21.296760, -157.821071],
-    waikiki : [21.275413, -157.824987]
+    waikiki : [21.275413, -157.824987],
+    downtown : [21.309355, -157.860274],
+    diamondhead: [21.260855, -157.817874]
   };
 
-  $scope.closestBBB = [{
-    name : "Maui Divers Jewelry",
-    address : "1520 Liona St Honolulu, HI 96814",
-    phone : "808-946-7979",
-    category : "Retail",
-    subcat : "Jewelry",
-    website : "mauidivers.com",
-    yelp : "https://www.yelp.com/biz/maui-divers-jewelry-design-center-honolulu-2",
-    bbbAcc: true,
-    image : "https://s3-media1.fl.yelpcdn.com/bphoto/7tT6cpAx2AsesE72NZ72hg/o.jpg",
-    description : "Established in 1958, one of the largest jewelry manufacturers specific to precious corals as well as other fine jewelry.",
-    lat : 21.297763,
-    lng : -157.839826
-  },
-  {
-    name : "The Wedding Ring Shop",
-    address : "1181 Kapiolani Blvd. Honolulu, HI 96814",
-    phone : "808-945-7766",
-    category : "Retail",
-    subcat : "Jewelry",
-    website : "http://www.weddingringshop.com/",
-    yelp : "https://www.yelp.com/biz/the-wedding-ring-shop-honolulu",
-    bbbAcc: true,
-    image : "https://media.licdn.com/media/p/6/005/0a1/0b1/2038030.png",
-    description : "Offers a wide variety of designer engagement & wedding rings.",
-    lat : 21.295238,
-    lng : -157.848196
-  },
-  {
-    name : "Sushi Company",
-    address : "1111 McCully St. Honolulu, HI 96826",
-    phone : "808-947-5411",
-    category : "Food",
-    subcat : "Restaurant",
-    website : null,
-    yelp : "https://www.yelp.com/biz/sushi-company-honolulu-3",
-    bbbAcc: true,
-    image : "https://s3-media3.fl.yelpcdn.com/bphoto/4qQ7o7_AhRaJe2BgnBTO5w/o.jpg",
-    description : "Small sushi bar serving favorites like the fire maki and spicy ahi don.",
-    lat :21.296018,
-    lng : -157.829530
-  }];
 
   $scope.$on('leafletDirectiveMarker.map.click', function(event,args){
     if(args.modelName !== 'reportPoint'){
       $scope.stationClicked = $scope.markers[args.modelName].properties;
+      $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
+      $scope.updateClosestBBB();
       $scope.openModal(4);
     }
   });
@@ -381,18 +332,15 @@
 
   });
 
+  setMarkersReturned(bikesharePoints);
+
   $scope.$on('leafletDirectiveMap.map.load', function(event, args){
-    PointService.getBikeshareStations()
-      .then(function(data){
-        bikesharePoints = data.data;
-        setMarkersReturned(bikesharePoints);
-        leafletData.getMap()
-        .then(function(map){
-          new L.Control.GeoSearch({
-            provider: new L.GeoSearch.Provider.Google()
-          }).addTo(map);
-        });
-      });
+    leafletData.getMap()
+    .then(function(map){
+      new L.Control.GeoSearch({
+        provider: new L.GeoSearch.Provider.Google()
+      }).addTo(map);
+    });
   });
 
   $scope.init = function () {

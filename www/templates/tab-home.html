@@ -277,14 +277,19 @@
         <ion-content>
           <!-- <ion-scroll direction="y" > -->
             <img src="http://caffaknitted.typepad.com/.a/6a00e54f8f86dc883401287636e5db970c-800wi" alt="">
-            <div> Location </div>
-            <button> Likes </button>
-            <div>We don't have addresses right now</div>
+            <div> Street </div>
+            <div>{{stationClicked.street}}</div>
+            <button>
+              <img src="" alt="">
+              Likes
+            </button>
             <div>Ride time to:</div>
+            <div>Downtown: {{rideTime('downtown')}} min.</div>
             <div>Kaka'ako: {{rideTime('kakaako')}} min.</div>
             <div>Ala Moana: {{rideTime('alamoana')}} min.</div>
             <div>University: {{rideTime('university')}} min.</div>
             <div>Waikiki: {{rideTime('waikiki')}} min.</div>
+            <div>Diamond Head: {{rideTime('diamondhead')}} min.</div>
             <div>What's near this station</div>
             <div ng-repeat= 'item in closestBBB'>
               <div>{{item.name}}</div>

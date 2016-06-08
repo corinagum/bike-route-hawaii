@@ -1,5 +1,4 @@
-{
-  bikeshareStations : [
+var bikesharePoints = [
 {
 "id": 391,
 "type": "BikeShare",
@@ -3381,5 +3380,4 @@
 "createdAt": "2016-02-29T22:11:46.561Z",
 "updatedAt": "2016-02-29T22:11:46.561Z"
 }
-]
-}
+];

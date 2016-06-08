@@ -1,5 +1,5 @@
 
-{ bbbList : [
+var bbbList = [
   {
     name : "Cake Works",
     address : "2820 S King St Honolulu, HI 96826",
@@ -16,11 +16,11 @@
   },
   {
     name : "Leonard's Bakery, Limited",
-    address : "933 Kapahulu Ave Honolulu, HI 96816"
-    phone : "808-737-5591"
+    address : "933 Kapahulu Ave Honolulu, HI 96816",
+    phone : "808-737-5591",
     category : "Food",
     subcat : "Bakery",
-    website : "leonardshawaii.com"
+    website : "leonardshawaii.com",
     yelp : "www.yelp.com/biz/leonards-bakery-honolulu",
     bbbAcc: true,
     image : "http://leonardshawaii.com/img/malasadaslide04-575x343.jpg",
@@ -61,7 +61,7 @@
     address : "100 N Beretania St Honolulu, HI 96817",
     phone : "808-540-1000",
     category : "Food",
-    subcat : "Bakery"
+    subcat : "Bakery",
     website : null,
     yelp : "https://www.yelp.com/biz/regal-bakery-cafe-honolulu?osq=regal+food",
     bbbAcc: true,
@@ -86,15 +86,15 @@
   },
   {
     name : "The Baker & Butcher",
-    address : "1111 Bishop St Honolulu, HI 96813"
-    phone : "808-537-4140"
-    category : "Food"
-    subcat : "Restaurant"
+    address : "1111 Bishop St Honolulu, HI 96813",
+    phone : "808-537-4140",
+    category : "Food",
+    subcat : "Restaurant",
     website : "thebakerandbutcher.com",
     yelp : "https://www.yelp.com/biz/the-baker-and-butcher-honolulu",
     bbbAcc: true,
-    image : "https://static.wixstatic.com/media/5d66dd5d7908629b1e04562289f4165c.jpg/v1/fill/w_299,h_226,al_c,q_80,usm_0.66_1.00_0.01/5d66dd5d7908629b1e04562289f4165c.jpg"
-    description : "Restaurant with sandwiches and pastries that are made from scratch, daily with wholesome natural ingredients.  From the breads and meats, to sauces and baked goods.  As locally sourced and sustainable as can be, a delicious value."
+    image : "https://static.wixstatic.com/media/5d66dd5d7908629b1e04562289f4165c.jpg/v1/fill/w_299,h_226,al_c,q_80,usm_0.66_1.00_0.01/5d66dd5d7908629b1e04562289f4165c.jpg",
+    description : "Restaurant with sandwiches and pastries that are made from scratch, daily with wholesome natural ingredients.  From the breads and meats, to sauces and baked goods.  As locally sourced and sustainable as can be, a delicious value.",
     lat : 21.309395,
     lng : -157.859922
   },
@@ -136,7 +136,7 @@
     yelp : "https://www.yelp.com/biz/american-savings-bank-main-branch-honolulu",
     bbbAcc: true,
     image : "http://www.hollywoodlocations.com/wp-content/uploads/2012/05/IMG_1791-copy.jpg",
-    description : "Full-service main bank branch for all your banking needs"
+    description : "Full-service main bank branch for all your banking needs",
     lat : 21.308557,
     lng : -157.860658
   },
@@ -154,9 +154,6 @@
     lat : 21.308673,
     lng : -157.861994
   },
-Central Pacific Bank
-220 S. King Street Honolulu, HI 96813
-808-544-0500
   {
     name : "Central Pacific Bank",
     address : "220 S. King Street Honolulu, HI 96813",
@@ -187,7 +184,7 @@ Central Pacific Bank
   },
   {
     name : "First Hawaiian Bank",
-    address : "999 Bishop St Honolulu, HI 96813"
+    address : "999 Bishop St Honolulu, HI 96813",
     phone : "808-525-6340",
     category : "Bank",
     subcat : "Main",
@@ -237,7 +234,7 @@ Central Pacific Bank
     yelp : "https://www.yelp.com/biz/university-of-hawaii-m%C4%81noa-bookstore-honolulu-2?osq=uh+bookstore",
     bbbAcc: true,
     image : "http://www.uh.edu/af/news/April09/bookstore.jpg",
-    description : "University of Hawaii gear, books, school supplies, and novelties."
+    description : "University of Hawaii gear, books, school supplies, and novelties.",
     lat : 21.298435,
     lng : -157.818878
   },
@@ -279,7 +276,7 @@ Central Pacific Bank
     yelp : "https://www.yelp.com/biz/casablanca-bridal-and-formals-honolulu",
     bbbAcc: true,
     image : "http://www.casablancahawaii.com/images/building.jpg",
-    description : " An established bridal salon for over 23 years, offers an extensive selection of elegant and exclusive bridal and formal wear. From simple and classic styles to contemporary and dramatic designs."
+    description : " An established bridal salon for over 23 years, offers an extensive selection of elegant and exclusive bridal and formal wear. From simple and classic styles to contemporary and dramatic designs.",
     lat : 21.296246,
     lng : -157.827883
   },
@@ -289,7 +286,7 @@ Central Pacific Bank
     phone : "808-955-1764",
     category : "Food",
     subcat : "Restaurant",
-    website : null
+    website : null,
     yelp : "https://www.yelp.com/biz/wailana-coffee-house-honolulu",
     bbbAcc: true,
     image : "https://waikikihappyhour.files.wordpress.com/2013/09/wailana-coffee-house.jpg",
@@ -363,7 +360,7 @@ Central Pacific Bank
     yelp : "https://www.yelp.com/biz/hawaii-federal-credit-union-honolulu",
     bbbAcc: true,
     image : "https://s3-media1.fl.yelpcdn.com/bphoto/Xg6nBBfY4r681Qx0YWZkuw/ls.jpg",
-    description : "Full-service credit union located in Kalihi"
+    description : "Full-service credit union located in Kalihi",
     lat : 21.323898,
     lng : -157.873259
   },
@@ -405,7 +402,7 @@ Central Pacific Bank
     yelp : "https://www.yelp.com/biz/walmart-honolulu-8",
     bbbAcc: true,
     image : "https://lintvkhon.files.wordpress.com/2013/04/macy-1.jpg?w=650",
-    description : "Department Store with just about everything you could need"
+    description : "Department Store with just about everything you could need",
     lat : 21.309773,
     lng : -157.862031
   },
@@ -414,7 +411,7 @@ Central Pacific Bank
     address : "255 Sand Island Access Rd Honolulu, HI 96819",
     phone : "808-845-1778",
     category : "Food",
-    subcat : "Bakery"
+    subcat : "Bakery",
     website : "www.honolulucookie.com",
     yelp : "https://www.yelp.com/biz/honolulu-cookie-company-honolulu-2?osq=honolulu+cookie+company",
     bbbAcc: true,
@@ -426,7 +423,7 @@ Central Pacific Bank
   {
     name : "Spa Pure",
     address : "400 Royal Hawaiian Ave Honolulu, HI 96815",
-    phone : "808-934-7295"
+    phone : "808-934-7295",
     category : "Services",
     subcat : "Spa",
     website : "http://www.spapurewaikiki.com/",
@@ -531,7 +528,7 @@ Central Pacific Bank
     yelp : "https://www.yelp.com/biz/a-happy-pawn-honolulu",
     bbbAcc: true,
     image : "https://s3-media1.fl.yelpcdn.com/bphoto/ZMS4lr19H2RB3RVOROeAkA/ls.jpg",
-    description : "A trustworthy and reliable pawn shop where you can buy and sell."
+    description : "A trustworthy and reliable pawn shop where you can buy and sell.",
     lat : 21.319592,
     lng : -157.865562
   },
@@ -559,7 +556,7 @@ Central Pacific Bank
     yelp : "https://www.yelp.com/biz/sasaki-jewelers-honolulu",
     bbbAcc: true,
     image : "https://s3-media3.fl.yelpcdn.com/bphoto/kTlGCVq7-WqVQP6cpEZDaw/o.jpg",
-    description : "High-end jeweler located in Downtown."
+    description : "High-end jeweler located in Downtown.",
     lat : 21.309324,
     lng : -157.862795
   },
@@ -573,7 +570,7 @@ Central Pacific Bank
     yelp : "https://www.yelp.com/biz/maui-divers-jewelry-design-center-honolulu-2",
     bbbAcc: true,
     image : "https://s3-media1.fl.yelpcdn.com/bphoto/7tT6cpAx2AsesE72NZ72hg/o.jpg",
-    description : "Established in 1958, one of the largest jewelry manufacturers specific to precious corals as well as other fine jewelry."
+    description : "Established in 1958, one of the largest jewelry manufacturers specific to precious corals as well as other fine jewelry.",
     lat : 21.297763,
     lng : -157.839826
   },
@@ -587,7 +584,7 @@ Central Pacific Bank
     yelp : "https://www.yelp.com/biz/the-wedding-ring-shop-honolulu",
     bbbAcc: true,
     image : "https://media.licdn.com/media/p/6/005/0a1/0b1/2038030.png",
-    description : "Offers a wide variety of designer engagement & wedding rings."
+    description : "Offers a wide variety of designer engagement & wedding rings.",
     lat : 21.295238,
     lng : -157.848196
   },
@@ -604,59 +601,59 @@ Central Pacific Bank
     description : "https://s3-media1.fl.yelpcdn.com/bphoto/TLe7foGMgY-3GTwKPTkoBg/o.jpg",
     lat :21.296018,
     lng : -157.829530
-  },
-  {
-    name :
-    address :
-    phone :
-    category :
-    subcat :
-    website :
-    yelp :
-    bbbAcc: true,
-    image :
-    description :
-    lat :
-    lng :
-  },
-  {
-    name :
-    address :
-    phone :
-    category :
-    subcat :
-    website :
-    yelp :
-    bbbAcc: true,
-    image :
-    description :
-    lat :
-    lng :
-  },
-Aisen Shiatsu School, Inc
-1314 S King St Ste 601 Honolulu, HI 96814
-808-596-7354
-Thai Banyan Massage and Spa LLC
-661 Keeaumoku St Ste 106C Honolulu, HI 96814
-808-421-8026
-Body Massage Clinic Waikiki
-2155 Kalakaua Ave Ste 714 Honolulu, HI 96815
-808-926-0233
-The Massage Way, Inc.
-1860 Ala Moana Blvd Ste 116 Honolulu, HI 96815
-808-949-0238
-{
-    name :
-    address :
-    phone :
-    category :
-    subcat :
-    website :
-    yelp :
-    bbbAcc: true,
-    image :
-    description :
-    lat :
-    lng :
-  },
-}
+  }];
+  // {
+  //   name :
+  //   address :
+  //   phone :
+  //   category :
+  //   subcat :
+  //   website :
+  //   yelp :
+  //   bbbAcc: true,
+  //   image :
+  //   description :
+  //   lat :
+  //   lng :
+  // },
+  // {
+  //   name :
+  //   address :
+  //   phone :
+  //   category :
+  //   subcat :
+  //   website :
+  //   yelp :
+  //   bbbAcc: true,
+  //   image :
+  //   description :
+  //   lat :
+  //   lng :
+  // };
+// Aisen Shiatsu School, Inc
+// 1314 S King St Ste 601 Honolulu, HI 96814
+// 808-596-7354
+// Thai Banyan Massage and Spa LLC
+// 661 Keeaumoku St Ste 106C Honolulu, HI 96814
+// 808-421-8026
+// Body Massage Clinic Waikiki
+// 2155 Kalakaua Ave Ste 714 Honolulu, HI 96815
+// 808-926-0233
+// The Massage Way, Inc.
+// 1860 Ala Moana Blvd Ste 116 Honolulu, HI 96815
+// 808-949-0238
+// {
+//     name :
+//     address :
+//     phone :
+//     category :
+//     subcat :
+//     website :
+//     yelp :
+//     bbbAcc: true,
+//     image :
+//     description :
+//     lat :
+//     lng :
+//   },
+// }
