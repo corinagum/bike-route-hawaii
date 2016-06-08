@@ -479,23 +479,58 @@ textarea {
   top: 40%;
 }
 
-// <<<<<<< HEAD
 .titleDetailBar {
   background-color: lighten($typeGrey, 50%);
-// =======
-/////////// STATION DETAIL //////////////////
+  line-height: 48px;
+  height: 60px;
+  p {
+    font-size: 22px;
+    text-align: center;
+    padding-left: 30px;
+  }
 
-.stationPhoto{
-  width : 100%;
+  i {
+    font-size: 34px;
+    position: absolute;
+    right: 30px;
+  }
 }
 
-.bbbLogo{
-  width : 7%;
-}
+.detailModalBlock {
+  margin: 30px 46px;
 
-.bbbPhoto{
-  width : 25%;
-// >>>>>>> 94b98904255ec59577cd332db6402a06267e8b8a
+  .nameAndAdd {
+    line-height: 9px;
+  }
+
+  .d_image {
+    max-height: 100%;
+  }
+
+  .d_title {
+    padding: 10px 0px;
+    color: $balanced;
+    font-size: 14px;
+    font-weight: 200;
+  }
+
+  .d_location {
+    font-size: 14px;
+    font-weight: 200;
+  }
+
+  .bbbImage {
+    position: absolute;
+    left: 320px;
+    img {
+      height: 36.47px;
+    }
+  }
+  .biz_image {
+    position: absolute;
+    left: 347px;
+    img {max-height: 66px;}
+  }
 }
 
 ////////// GEOSEARCH MODIFICATION /////////////

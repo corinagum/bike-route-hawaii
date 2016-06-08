@@ -9837,20 +9837,18 @@ body, p {
     line-height: 20px; }
     @media only screen and (min-width: 600px) {
       .section .secPar {
-        padding: 0 8%; } }
-
-.howItworksMobile p {
-  font-size: 14px; }
+        padding: 0 20%; } }
 
 .medUpContainer {
-  padding: 40px; }
+  padding: 5%; }
 
 .medUpSteps {
-  padding: 4% 8%; }
-  .medUpSteps h5 {
+  padding-top: 8%; }
+  .medUpSteps h4 {
     text-align: center; }
-  .medUpSteps ul {
-    line-height: 14px; }
+  .medUpSteps ul, .medUpSteps li {
+    font-size: 14px;
+    list-style-type: circle; }
   .medUpSteps img {
     max-width: 80%; }
 
@@ -9861,38 +9859,16 @@ body, p {
 .stepsDiv {
   justify-content: center;
   margin: 25px auto;
-  display: flex; }
+  display: flex;
+  max-width: 250px; }
 
 .dots {
   display: flex;
   margin: auto; }
 
 .stepsNum {
-  margin: 5px; }
-  .stepsNum img {
-    max-width: 30px; }
-
-.graphicBike img {
-  max-height: 100%;
-  padding: 0px 20px 20px 20px; }
-
-.borderRight {
-  border-right: 1px solid #e2e2e2; }
-
-.marginLeft {
-  margin-left: 12px; }
-
-.benefitBlock {
-  border-bottom: 1px solid #e2e2e2; }
-  .benefitBlock p {
-    text-align: justify; }
-  @media only screen and (min-width: 600px) {
-    .benefitBlock {
-      min-height: 430px;
-      padding: 0 8%; } }
-
-.benGraphics img {
-  max-height: 120px; }
+  margin: 5px;
+  min-width: 40%; }
 
 .socialIcons {
   font-size: 20px;
@@ -10015,16 +9991,11 @@ textarea {
   width: 100%;
   background-color: #626262; }
 
-.leadDiv {
-  padding: 0% 8%; }
-  .leadDiv img {
-    max-height: 200px; }
-
 .mapImage img {
   max-width: 100%; }
 
 .mapBg {
-  height: 400px;
+  height: 300px;
   background: url("./../img/bike-assets/mapScreen2.png") no-repeat;
   background-size: cover; }
 
@@ -10077,7 +10048,7 @@ textarea {
 .viewMapBtn {
   z-index: 10;
   position: relative;
-  top: 170px; }
+  top: 120px; }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
   background: #76CE95; }
@@ -10098,31 +10069,23 @@ textarea {
 .webViewLandingButton {
   display: flex;
   justify-content: center; }
-  .webViewLandingButton img {
-    width: 85%; }
 
 .wholeModalDiv {
   position: absolute;
   height: 100%; }
 
+.blue {
+  top: 40%; }
+
 .titleDetailBar {
-  background-color: #e2e2e2; }
-
-.stationPhoto {
-  width: 100%; }
-
-.bbbLogo {
-  width: 7%; }
-
-.bbbPhoto {
-  width: 25%;
+  background-color: #e2e2e2;
   line-height: 48px;
   height: 60px; }
-  .bbbPhoto p {
+  .titleDetailBar p {
     font-size: 22px;
     text-align: center;
     padding-left: 30px; }
-  .bbbPhoto i {
+  .titleDetailBar i {
     font-size: 34px;
     position: absolute;
     right: 30px; }
