@@ -24,30 +24,6 @@
     <!-- <iframe src="https://www.google.com/maps/d/embed?mid=1ltEWKgn_WgMw9opot3cL5qU8jAc" width="640" height="480"></iframe> -->
     <leaflet layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
 
-    <!-- <ion-pull-up-footer class="bar-calm" on-expand="footerExpand()">
-          <div class="title" ion-pull-up-trigger>Tap me or drag me</div>
-          <ion-pull-up-handle width="120" height="15" icon-expand="ion-chevron-up" icon-collapse="ion-chevron-down" style="border-radius: 5px 5px 0 0">
-          </ion-pull-up-handle>
-          <ion-pull-up-content scroll="false">
-      <div class="list card">
-        <div class="item item-divider">Recent Updates</div>
-        <div class="item item-body">
-          <div>
-            There is a fire in <b>sector 3</b>
-          </div>
-        </div>
-      </div> -->
- <!--      <div class="list card">
-        <div class="item item-divider">Other Updates</div>
-        <div class="item item-body">
-          <div>
-            There was a fire in <b>sector 13</b>
-          </div>
-        </div>
-      </div> -->
-      <!-- </ion-pull-up-content>
-    </ion-pull-up-footer> -->
-
   </ion-content>
 
     <!-- <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
@@ -268,7 +244,7 @@
 
 
 
-      <ion-footer-bar ng-click="changeClass()" class="titleDetailBar" ng-show="showDetailHeader;">
+      <ion-footer-bar ng-click="openModal(4); hideDetailHeader();" class="titleDetailBar" ng-show="showDetailHeader;">
           <div class="center">
             <p>{{stationClicked.name}}</p>
           </div>
@@ -286,10 +262,9 @@
             <div class="d_image">
               <img src="http://caffaknitted.typepad.com/.a/6a00e54f8f86dc883401287636e5db970c-800wi" alt="">
             </div>
-            <button class="right">
-              <img src="" alt="">
-              Likes
-            </button>
+            <div class="likes">
+              <i class="ion-ios-heart-outline fa-2x right">{{ numberOfLikes }}<p>Likes</p></i>
+            </div>
             <div class="d_title"> <span>Location</span> </div>
             <div class="d_location">{{stationClicked.street}}</div>
             <div class="d_title">Ride time to:</div>
