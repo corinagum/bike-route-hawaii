@@ -530,10 +530,12 @@ textarea {
 .detailModalBlock {
   margin: 30px 86px;
 
-  .d_image {
+  .nameAndAdd {
+    line-height: 9px;
   }
-  img {
-    max-width: 100%;
+
+  .d_image {
+    max-height: 100%;
   }
 
   .d_title {
@@ -549,9 +551,16 @@ textarea {
   }
 
   .bbbImage {
+    position: absolute;
+    left: 320px;
     img {
       height: 36.47px;
     }
+  }
+  .biz_image {
+    position: absolute;
+    left: 347px;
+    img {max-height: 66px;}
   }
 }
 

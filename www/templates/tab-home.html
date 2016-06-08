@@ -306,23 +306,30 @@
             </div>
 
             <div class="d_title">What's near this station</div>
-            <div ng-repeat= 'item in closestBBB'>
+            <div ng-repeat= 'item in closestBBB' style="padding-top: 13px;">
               <div class="row">
                 <div class="col">
-                  <div class="">
+                  <div class="nameAndAdd">
                     <h5>{{item.name}}</h5>
+                   <div class="d_location">
+                     <div>{{item.address}}</div>
+                   </div>
                   </div>
-                  <div class="d_location">
-                    <div>{{item.address}}</div>
-                  </div>
+                    </br></br><div class="d_location">
+                      <div>{{item.description}}</div>
+                    </div>
                 </div>
+
                 <div class="bbbImage right col">
                   <img src="http://boyerlawfirmblog.com/wp-content/uploads/2011/08/bbb1.jpg" alt="">
                 </div>
-              </div>
 
-              <img src={{item.image}} alt="">
-              <div>{{item.description}}</div>
+                <div class="col biz_image">
+                  <img src={{item.image}} alt="">
+                </div>
+              </div>
+            <div class="divider"></div>
+
             </div>
             </ion-scroll>
         </ion-content>

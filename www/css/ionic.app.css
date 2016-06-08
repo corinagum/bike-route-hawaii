@@ -10120,8 +10120,10 @@ textarea {
 
 .detailModalBlock {
   margin: 30px 86px; }
-  .detailModalBlock img {
-    max-width: 100%; }
+  .detailModalBlock .nameAndAdd {
+    line-height: 9px; }
+  .detailModalBlock .d_image {
+    max-height: 100%; }
   .detailModalBlock .d_title {
     padding: 10px 0px;
     color: #76CE95;
@@ -10130,8 +10132,16 @@ textarea {
   .detailModalBlock .d_location {
     font-size: 14px;
     font-weight: 200; }
-  .detailModalBlock .bbbImage img {
-    height: 36.47px; }
+  .detailModalBlock .bbbImage {
+    position: absolute;
+    left: 320px; }
+    .detailModalBlock .bbbImage img {
+      height: 36.47px; }
+  .detailModalBlock .biz_image {
+    position: absolute;
+    left: 347px; }
+    .detailModalBlock .biz_image img {
+      max-height: 66px; }
 
 .displayNone {
   display: none; }
