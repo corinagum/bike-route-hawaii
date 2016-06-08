@@ -272,11 +272,11 @@
     <div class="modal wholeModalDiv" ng-class="class">
       <ion-header-bar ng-click="changeClass()">
         <h1 class="title" >{{stationClicked.name}}</h1>
-        <button class="button icon ion-close-round closeModal" ng-click="closeModal(4)"></button>
+        <button class="button icon ion-chevron-up closeModal" ng-click="closeModal(4)"></button>
       </ion-header-bar>
         <ion-content>
           <!-- <ion-scroll direction="y" > -->
-            <img src={{stationClicked.photolink}} alt="">
+            <img class = "stationPhoto" src={{stationClicked.photolink}} alt="">
             <div> Street </div>
             <div>{{stationClicked.street}}</div>
             <button>
@@ -294,8 +294,8 @@
             <div ng-repeat= 'item in closestBBB'>
               <div>{{item.name}}</div>
               <div>{{item.address}}</div>
-              <img src="http://boyerlawfirmblog.com/wp-content/uploads/2011/08/bbb1.jpg" alt="">
-            <img src={{item.image}} alt="">
+              <img class="bbbLogo" src="http://boyerlawfirmblog.com/wp-content/uploads/2011/08/bbb1.jpg" alt="">
+            <img class="bbbPhoto" src={{item.image}} alt="">
               <div>{{item.description}}</div>
             </div>
             <!-- </ion-scroll> -->

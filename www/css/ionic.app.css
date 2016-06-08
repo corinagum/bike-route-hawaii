@@ -10067,6 +10067,15 @@ textarea {
 .blue {
   top: 30%; }
 
+.stationPhoto {
+  width: 100%; }
+
+.bbbLogo {
+  width: 7%; }
+
+.bbbPhoto {
+  width: 25%; }
+
 .displayNone {
   display: none; }
 
