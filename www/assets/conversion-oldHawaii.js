@@ -14,3 +14,4 @@ var writeThis = convert(toConvert).features;
 fs.writeFile('./www/assets/oldHawaiiData.js', JSON.stringify(writeThis, null, 2), 'utf-8', function(err){
   if(err) throw err;
 });
+
