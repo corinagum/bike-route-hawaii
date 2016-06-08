@@ -627,6 +627,7 @@
       $scope.class = "wholeModalDiv";
   };
 
+
   //>>>>>>>>>>>> POPOVER EVENT
 
   // $ionicPopover.fromTemplateUrl('inputFeedbackForm.html', {

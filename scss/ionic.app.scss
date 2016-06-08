@@ -165,7 +165,7 @@ body, p {
     @include fontType($typeGrey,14px, 20px);
 
     @media #{$large} {
-      padding: 0 20%;
+      padding: 0 8%;
     }
   }
 }
@@ -179,7 +179,7 @@ body, p {
 }
 
 .medUpSteps {
-  padding-top: 8%;
+  padding: 8%;
 
   h5 {text-align: center;}
   ul {line-height: 14px;}
@@ -195,7 +195,7 @@ body, p {
   justify-content: center;
   margin: 25px auto;
   display: flex;
-  max-width: 250px;
+  // max-width: 250px;
 }
 
 .dots {
@@ -205,7 +205,21 @@ body, p {
 
 .stepsNum {
   margin: 5px;
-  img { max-width: 40px; }
+  img {
+    max-width: 30px;
+  }
+}
+
+.graphicBike {
+  img {
+    width: 100%;
+    padding: 0px 20px 20px 20px;
+  }
+}
+
+.greyFilter {
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
 }
 
 .borderRight {
@@ -357,7 +371,7 @@ textarea {
 }
 
 .leadDiv {
-  padding: 10px 0px 0px 30px;
+  padding: 10px 70px 0px 90px;
   img {
     max-height: 200px;
   }
@@ -468,6 +482,7 @@ textarea {
 .webViewLandingButton {
   display: flex;
   justify-content: center;
+  img {width: 85%;}
 }
 
 .wholeModalDiv {

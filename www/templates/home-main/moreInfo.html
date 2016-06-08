@@ -28,7 +28,7 @@
 
             <div class="center stepsNum" ng-click="one=true;two=false;three=false;four=false;">
               <img src="../../img/bike-assets/numOne.png" alt="">
-              <img src="../../img/bike-assets/num1_grey.png" alt="">
+              <!-- <img ng-show="two" src="../../img/bike-assets/num1_grey.png" alt=""> -->
             </div>
             <div class="dots">
               <li><a href="#slide1"></a></li>
@@ -38,6 +38,7 @@
 
             <div class="center stepsNum" ng-click="one=false;two=true;three=false;four=false;">
               <img src="../../img/bike-assets/num2.png" alt="">
+              <!-- <img ng-show="one" src="../../img/bike-assets/num2_grey.png" alt=""> -->
             </div>
               <div class="dots">
                 <li><a href="#slide1"></a></li>
@@ -47,6 +48,7 @@
 
             <div class="center stepsNum" ng-click="one=false;two=false;three=true;four=false;">
               <img src="../../img/bike-assets/num3.png" alt="">
+              <!-- <img ng-show="one" src="../../img/bike-assets/num3_grey.png" alt=""> -->
             </div>
               <div class="dots">
                 <li><a href="#slide1"></a></li>
@@ -56,13 +58,15 @@
 
             <div class="center stepsNum" ng-click="one=false;two=false;three=false;four=true;">
               <img src="../../img/bike-assets/num4.png" alt="">
+              <!-- <img ng-show="one" src="../../img/bike-assets/num4_grey.png" alt=""> -->
             </div>
 
           <i class="ion-arrow-right-b" style="font-size: 24px; margin: auto; padding-left: 20px;"></i>
-          </div>
-          <div class="center" style="height: 180px; width: auto;">
+        </div>
+
+          <div class="center graphicBike" style="height: 180px; width: auto;">
             <img ng-show="one" src="../../img/bike-assets/Get a bike.png" alt="">
-            <img ng-show="two" src="../../img/bike-assets/ Get Going.png" alt="">
+            <img style="margin-top: -25px" ng-show="two" src="../../img/bike-assets/ Get Going.png" alt="">
             <img ng-show="three" src="../../img/bike-assets/Check in.png" alt="">
             <img ng-show="four" src="../../img/bike-assets/Go again_.png" alt="">
           </div>

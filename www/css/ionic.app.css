@@ -9837,7 +9837,7 @@ body, p {
     line-height: 20px; }
     @media only screen and (min-width: 600px) {
       .section .secPar {
-        padding: 0 20%; } }
+        padding: 0 8%; } }
 
 .howItworksMobile p {
   font-size: 14px; }
@@ -9846,7 +9846,7 @@ body, p {
   padding: 5%; }
 
 .medUpSteps {
-  padding-top: 8%; }
+  padding: 8%; }
   .medUpSteps h5 {
     text-align: center; }
   .medUpSteps ul {
@@ -9861,8 +9861,7 @@ body, p {
 .stepsDiv {
   justify-content: center;
   margin: 25px auto;
-  display: flex;
-  max-width: 250px; }
+  display: flex; }
 
 .dots {
   display: flex;
@@ -9871,7 +9870,15 @@ body, p {
 .stepsNum {
   margin: 5px; }
   .stepsNum img {
-    max-width: 40px; }
+    max-width: 30px; }
+
+.graphicBike img {
+  width: 100%;
+  padding: 0px 20px 20px 20px; }
+
+.greyFilter {
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1); }
 
 .borderRight {
   border-right: 1px solid #e2e2e2; }
@@ -10001,7 +10008,7 @@ textarea {
   background-color: #626262; }
 
 .leadDiv {
-  padding: 10px 0px 0px 30px; }
+  padding: 10px 70px 0px 90px; }
   .leadDiv img {
     max-height: 200px; }
 
@@ -10083,6 +10090,8 @@ textarea {
 .webViewLandingButton {
   display: flex;
   justify-content: center; }
+  .webViewLandingButton img {
+    width: 85%; }
 
 .wholeModalDiv {
   position: absolute;
