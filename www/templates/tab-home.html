@@ -1,30 +1,56 @@
 
-<ion-view title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
+<ion-view data-ng-init="init()" title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
 
 <!-- <ion-nav-bar class="mapSiteTopBar"> -->
   <ion-header-bar class="bar bar-header">
     <a href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
     <!-- <i class="right" ng-click="openModal(1)">Leave Feedback</i> -->
-    <button ng-click="openModal(1)" class="button fdbckBtn">
-      Leave Feedback
-    </button>
+
+    <div ng-click="openModal(1)" class="button fdbckBtn waves-effect">
+      <span>Leave Feedback</span>
+    </div>
   </ion-header-bar>
 <!-- </ion-nav-bar> -->
 
   <ion-content data-tap-disabled="true">
-   <!--  <div class="view-filter">
-      <i class="icon ion-gear-a custom-icon" ng-click="openModal(1)"></i>
-    </div> -->
+    <div class="getLocationMarker" ng-click="findCenter()">
+      <img src="../img/bike-assets/sMarkerIcon.png" alt="">
+    </div>
     <div ng-click="findCenter()">
       <!-- <div id="locate-before-start" ng-class="{'showBlocker': !foundLocation, 'hideBlocker': foundLocation}">
           tap to find location
       </div> -->
     </div>
     <!-- <iframe src="https://www.google.com/maps/d/embed?mid=1ltEWKgn_WgMw9opot3cL5qU8jAc" width="640" height="480"></iframe> -->
-    <leaflet lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
+    <leaflet layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
+
+    <!-- <ion-pull-up-footer class="bar-calm" on-expand="footerExpand()">
+          <div class="title" ion-pull-up-trigger>Tap me or drag me</div>
+          <ion-pull-up-handle width="120" height="15" icon-expand="ion-chevron-up" icon-collapse="ion-chevron-down" style="border-radius: 5px 5px 0 0">
+          </ion-pull-up-handle>
+          <ion-pull-up-content scroll="false">
+      <div class="list card">
+        <div class="item item-divider">Recent Updates</div>
+        <div class="item item-body">
+          <div>
+            There is a fire in <b>sector 3</b>
+          </div>
+        </div>
+      </div> -->
+ <!--      <div class="list card">
+        <div class="item item-divider">Other Updates</div>
+        <div class="item item-body">
+          <div>
+            There was a fire in <b>sector 13</b>
+          </div>
+        </div>
+      </div> -->
+      <!-- </ion-pull-up-content>
+    </ion-pull-up-footer> -->
+
   </ion-content>
 
-    <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
+    <!-- <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
 
       <div>
         <button class="initialLocate" ng-click="findCenter(); locate=false; findMe=true; bike=true; land=true; rack=true;" ng-show="locate">Locate me</button>
@@ -52,7 +78,7 @@
           <img class="title-image bottom-tab-nav-img" src="img/bike-assets/bikerack-icon-green.svg" />
         </button>
       </div>
-    </ion-footer-bar>
+    </ion-footer-bar> -->
 
 
     <ion-footer-bar id="footer-bar" ng-show="showReportControl">
@@ -71,13 +97,13 @@
 
 <!-- filter modals -->
 
-  <script id="filter-modal.html" type="text/ng-template">
+<!--   <script id="filter-modal.html" type="text/ng-template">
     <div class="modal filter-modal">
-      <!-- <ion-header-bar>
+      <ion-header-bar>
         <h1 class="title">Filters</h1>
-      </ion-header-bar> -->
+      </ion-header-bar>
       <ion-content>
-        <div class="list alohaLandingOne">
+        <div class="list alohaLandingOne"> -->
             <!-- <div class="pinViews">
               <a class="item item-icon-left btn1" ng-click="openModal(7); closeModal(1); setShowFavorites()">
               <i class="icon">
@@ -122,10 +148,10 @@
               <br /> -->
 
               <!-- <br /> -->
-              <div class="addMargin">
+              <!-- <div class="addMargin">
                 <a href="#" class="suggestFdbkBtn" ng-click="closeModal(1);createReportPoint()">Suggest a Station</a>
               </div>
-              </br>
+              </br> -->
 
       <!-- <a class="item item-icon-left btn1" ng-click="setShowStations()">
               <i class="icon">
@@ -198,7 +224,7 @@
                 </button>
                 <button class="button buttonStyle btn1" ng-click="setRadius(50000)" ng-class="{'radius-all-selected': radiusAll, 'radius-all': !radiusAll}"></button>
               </div> -->
-              <div class="addMargin">
+              <!-- <div class="addMargin">
                 <a href="#" class="suggestFdbkBtn" ng-click="closeModal(1);openModal(2)">Leave a comment</a>
               </div>
             </br>
@@ -212,43 +238,7 @@
 
       </ion-content>
     </div>
-  </script>
-
-  <script id="comment-modal.html" type="text/ng-template">
-    <div class="modal filter-modal">
-      <ion-content>
-        <div class="alohaLandingOne divSize">
-          <p class="commentHeader">We're happy to hear from you!</p>
-
-          <form action="">
-            <input type="text" name="FirstLastName" placeholder="First and Last name"><br>
-            <input type="email" name="Email" placeholder="Email"><br>
-
-          <div class="padding radioBtn">
-            <p>
-              <input class="with-gap" name="group1" type="radio" id="test1" />
-              <label for="test1">I support Bikeshare Hawaii.</label>
-            </p>
-            <p>
-              <input class="with-gap" name="group1" type="radio" id="test2" />
-              <label for="test2">I'm still unconvinced.</label>
-            </p>
-            <p>
-              <input class="with-gap" name="group1" type="radio" id="test3"  />
-              <label for="test3">I'm undecided</label>
-            </p>
-          </div>
-
-            <textarea class="" rows="5" cols="2" placeholder="Message..."></textarea>
-
-          </form>
-
-          <button ng-click="closeModal(2)">submit</button>
-        </div>
-      </ion-content>
-    </div>
-
-  </script>
+  </script> -->
 
 
 <!--   <script id="bikeShareList.html" type="text/ng-template">
@@ -278,26 +268,40 @@
 
 
 
-<!--   <script id="landmarkList.html" type="text/ng-template">
-    <div class="modal">
-      <ion-header-bar class="bar bar-header">
-        <h1 class="title" >{{stationCount}} Landmarks near you</h1>
+  <script id="markerDetail.html" type="text/ng-template">
+    <div class="modal wholeModalDiv" ng-class="class">
+      <ion-header-bar ng-click="changeClass()">
+        <h1 class="title" >{{stationClicked.name}}</h1>
         <button class="button icon ion-close-round closeModal" ng-click="closeModal(4)"></button>
       </ion-header-bar>
         <ion-content>
-          <ion-list show-delete="false" can-swipe="true" class="itemInList">
-            <br />
-            <div class="list" ng-repeat="item in landmarkPoints" class="eachItem" >
-              <a class="item item-thumbnail-left item-button-right" href="#">
-                <img class="bshLogo" ng-src="{{ item.photolink }}" ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);">
-                <h2 ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);">{{ item.name }}</h2>
-                <p ng-click="changeCurrentMarker(item); checkFavorite(currentMarkerProperties); openModal(3);  closeModal(4);">&nbsp;&nbsp;{{ item.distanceToFrom }} miles</p>
-              </a>
+          <!-- <ion-scroll direction="y" > -->
+            <img src="http://caffaknitted.typepad.com/.a/6a00e54f8f86dc883401287636e5db970c-800wi" alt="">
+            <div> Street </div>
+            <div>{{stationClicked.street}}</div>
+            <button>
+              <img src="" alt="">
+              Likes
+            </button>
+            <div>Ride time to:</div>
+            <div>Downtown: {{rideTime('downtown')}} min.</div>
+            <div>Kaka'ako: {{rideTime('kakaako')}} min.</div>
+            <div>Ala Moana: {{rideTime('alamoana')}} min.</div>
+            <div>University: {{rideTime('university')}} min.</div>
+            <div>Waikiki: {{rideTime('waikiki')}} min.</div>
+            <div>Diamond Head: {{rideTime('diamondhead')}} min.</div>
+            <div>What's near this station</div>
+            <div ng-repeat= 'item in closestBBB'>
+              <div>{{item.name}}</div>
+              <div>{{item.address}}</div>
+              <img src="http://boyerlawfirmblog.com/wp-content/uploads/2011/08/bbb1.jpg" alt="">
+            <img src={{item.image}} alt="">
+              <div>{{item.description}}</div>
             </div>
-          </ion-list>
+            <!-- </ion-scroll> -->
         </ion-content>
     </div>
-  </script> -->
+  </script>
 
 <!--   <script id="bikeRackList.html" type="text/ng-template">
     <div class="modal">
@@ -446,5 +450,6 @@
       </ion-content>
     </div>
   </script> -->
+
 
 </ion-view>

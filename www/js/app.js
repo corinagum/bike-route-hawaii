@@ -1,6 +1,6 @@
 
 
-angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controllers', 'starter.services','ui.bootstrap'])
+angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controllers', 'starter.services','ui.bootstrap', 'ionic-pullup'])
   .constant('processENV', {
    "development": {
      "username": "nickcadiente",
@@ -120,20 +120,24 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
           }
         }
       })
-      .state('feedback', {
-        url: "/feedback",
-        abstract: true,
-        templateUrl: "templates/feedback/fbackForm.html",
-        controller: 'MapCtrl'
+      .state('tabs.benefits', {
+        url: "/benefits",
+        views: {
+          'home-tab': {
+            templateUrl: "templates/home-main/benefits.html",
+            controller: 'MapCtrl'
+          }
+        }
       });
-      // .state('feedback.fbForm', {
+      // .state('tabs.fbForm', {
       //   url: "/feedback",
       //   views: {
-      //     'feedback-tab': {
-      //       templateUrl: "templates/feedback.html"
+      //     'home-tab': {
+      //       templateUrl: "templates/feedback/fbackForm.html",
+      //       controller: 'MapCtrl'
       //     }
       //   }
-      // })
+      // });
       // .state('feedback.mahaloFb', {
       //   url: "/mahalo",
       //   views: {

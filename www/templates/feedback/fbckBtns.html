@@ -1,0 +1,29 @@
+<ion-modal-view>
+
+<!--      <ion-header-bar class="bar bar-header hide-on-large-only">
+       <a href="#" ng-click="closeModal(3);""><i class="ion-ios-arrow-thin-left backArrow"></i></a>
+       <button ng-click="openModal(1)" class="button fdbckBtn waves-effect">
+         Leave Feedback
+       </button>
+     </ion-header-bar> -->
+
+   <ion-content style="background-color: #626262;">
+     <div class="list alohaLandingOne" controller="MapCtrl">
+
+       <div class="addMargin">
+         <a href="#/tab/mapSite" class="suggestFdbkBtn" ng-click="closeModal(1);createReportPoint()">Suggest a Station</a>
+       </div>
+       </br>
+       <div class="addMargin">
+         <a href="#" class="suggestFdbkBtn" ng-click="closeModal(1);openModal(2);">Leave a comment</a>
+       </div>
+       </br>
+       <div class="done">
+         <button class="cancelBtn" ng-click="closeModal(1)">Cancel</button>
+       </div>
+
+       </div>
+     </div>
+
+   </ion-content>
+</ion-modal-view>
