@@ -50,6 +50,15 @@
       shadowAnchor: [4, 62],  // the same for the shadow
       popupAnchor:  [15, 0] // point from which the popup should open relative to the iconAnchor
     },
+    bikeShareIconClicked: {
+      iconUrl: '../img/bike-assets/bike-icon-gray.png',
+      iconSize:     [30, 30],
+      // shadowUrl: 'img/leaf-shadow.png',
+      shadowSize:   [50, 64], // size of the shadow
+      iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+      shadowAnchor: [4, 62],  // the same for the shadow
+      popupAnchor:  [15, 0] // point from which the popup should open relative to the iconAnchor
+    },
     reportIcon: {
       iconUrl: '../img/bike-assets/bike-icon.png',
       iconSize:     [35, 35],
@@ -237,6 +246,7 @@
 
   $scope.stationClicked = {
     // default values that will be changed on station click
+    "lastClicked": null,
     "id": 391,
     "type": "BikeShare",
     "name": "Paki and Kalakaua",
@@ -269,12 +279,10 @@
       item.distance = L.latLng([marker.lat, marker.long]).distanceTo([item.lat, item.lng]);
     });
     sortByClosest(array);
-    console.log(array);
   };
 
   $scope.updateClosestBBB = function(){
     $scope.closestBBB = bbbList.slice(0,5);
-    console.log('CLOSEST BBB',$scope.closestBBB);
 
     // leafletData.getMap().then(function(map){
 
@@ -316,7 +324,12 @@
 
   $scope.$on('leafletDirectiveMarker.map.click', function(event,args){
     if(args.modelName !== 'reportPoint'){
+      if($scope.stationClicked.lastClicked){
+        $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
+      }
+      $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
       $scope.stationClicked = $scope.markers[args.modelName].properties;
+      $scope.stationClicked.lastClicked = args.modelName;
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
       $scope.showDetailHeader = true;
