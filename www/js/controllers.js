@@ -274,7 +274,23 @@
 
   $scope.updateClosestBBB = function(){
     $scope.closestBBB = bbbList.slice(0,5);
-    console.log($scope.closestBBB);
+    console.log('CLOSEST BBB',$scope.closestBBB);
+
+    // leafletData.getMap().then(function(map){
+
+    // var RedIcon = L.Icon.Default.extend({
+    //     options: {
+    //       iconUrl: './../img/bike-assets/userMarker.png',
+    //       iconSize:[24, 32],
+    //       shadowSize:   [42, 32]
+    //     }
+    //  });
+    // var redIcon = new RedIcon();
+    //   L.marker([leafEvent.latitude, leafEvent.longitude], {icon: redIcon}).addTo(map)
+    //   .bindPopup("You are here!").openPopup();
+    // });
+
+
   };
 
 
@@ -329,7 +345,6 @@
           iconUrl: './../img/bike-assets/userMarker.png',
           iconSize:[24, 32],
           shadowSize:   [42, 32]
-
         }
      });
     var redIcon = new RedIcon();
