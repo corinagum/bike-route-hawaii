@@ -23,6 +23,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 @import "partials/browser-view";
 
+$medium: "only screen and (min-width:400px)";
+$large: "only screen and (min-width:600px)";
+
 @mixin borderRadius($radius) {
  -webkit-border-radius: $radius;
     -moz-border-radius: $radius;
@@ -159,7 +162,32 @@ body, p {
   background-color: lighten($typeGrey, 58%);
 
   .secPar {
-  @include fontType($typeGrey,14px, 20px);
+    @include fontType($typeGrey,14px, 20px);
+
+    @media #{$large} {
+      padding: 0 20%;
+    }
+  }
+}
+
+.medUpContainer {
+  padding: 5%;
+}
+
+.medUpSteps {
+  padding-top: 8%;
+
+  h4 {
+    text-align: center;
+  }
+
+  ul, li {
+    font-size: 14px;
+    list-style-type: circle;
+  }
+
+  img {
+    max-width: 80%;
   }
 }
 
@@ -182,7 +210,8 @@ body, p {
 
 .stepsNum {
   margin: 5px;
-  img { width: 30px; }
+  min-width: 40%;
+  // img { max-height: 100%; }
 }
 
 .socialIcons {
@@ -326,9 +355,9 @@ textarea {
 }
 
 .mapImage {
-  height: 200px;
-  width: auto;
-  background-color: #3FC3E3;
+  // background: url("./../img/bike-assets/AREA Map.png") center no-repeat;
+  // background-size: cover;
+  img {max-width: 100%;}
 }
 
 .mapBg {
@@ -431,22 +460,28 @@ textarea {
 
 .webViewLandingButton {
   display: flex;
+  justify-content: center;
 }
 
 .wholeModalDiv {
   position: absolute;
-  top: 184%;
+  // bottom: -104em;
   height: 100%;
+
+
 }
 
-.red{
-  color:red;
-}
+// .red{
+//   color:red;
+// }
 
 .blue{
-  top: 30%;
+  top: 40%;
 }
 
+.titleDetailBar {
+  background-color: lighten($typeGrey, 50%);
+}
 
 ////////// GEOSEARCH MODIFICATION /////////////
 
@@ -547,20 +582,20 @@ textarea {
 
 }
 
-.leaflet-control-geosearch .message {
-  position: absolute;
-  top: 26px;
-  left: 0px;
-  width: 226px;
-  color: #FFF;
-  background: rgb(40, 40, 40);
-  padding: 4px 0 4px 8px;
-}
+// .leaflet-control-geosearch .message {
+//   position: absolute;
+//   top: 26px;
+//   left: 0px;
+//   width: 226px;
+//   color: #FFF;
+//   background: rgb(40, 40, 40);
+//   padding: 4px 0 4px 8px;
+// }
 
-.leaflet-touch .leaflet-control-geosearch .message {
-  top: 30px;
-  left: -2px;
-}
+// .leaflet-touch .leaflet-control-geosearch .message {
+//   top: 30px;
+//   left: -2px;
+// }
 
 .getLocationMarker {
 

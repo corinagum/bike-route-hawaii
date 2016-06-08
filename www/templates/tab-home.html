@@ -268,12 +268,16 @@
 
 
 
+      <ion-footer-bar ng-click="changeClass()" class="titleDetailBar" ng-show="showDetailHeader;">
+        <p>{{stationClicked.name}}</p>
+        <button class="button icon ion-close-round closeModal" ng-click="openModal(4); hideDetailHeader();"></button>
+      </ion-footer-bar>
   <script id="markerDetail.html" type="text/ng-template">
     <div class="modal wholeModalDiv" ng-class="class">
-      <ion-header-bar ng-click="changeClass()">
-        <h1 class="title" >{{stationClicked.name}}</h1>
-        <button class="button icon ion-close-round closeModal" ng-click="closeModal(4)"></button>
-      </ion-header-bar>
+    <ion-header-bar ng-click="changeClass()" class="titleDetailBar>"
+      <p>{{stationClicked.name}}</p>
+      <button class="button icon ion-close-round closeModal" ng-click="closeModal(4); hideDetailHeader();"></button>
+    </ion-header-bar>
         <ion-content>
           <!-- <ion-scroll direction="y" > -->
             <img src="http://caffaknitted.typepad.com/.a/6a00e54f8f86dc883401287636e5db970c-800wi" alt="">
@@ -293,9 +297,31 @@
             <img src={{item.image}} alt="">
               <div>{{item.description}}</div>
             </div>
-            <!-- </ion-scroll> -->
+            </ion-scroll>
         </ion-content>
-    </div>
+    <!-- </div> -->
+  </script>
+
+  <script id="menu.html" type="text/ng-template">
+    <ion-side-menus>
+
+      <ion-side-menu-content drag-content="false">
+        <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+          <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+      </ion-side-menu-content>
+
+      <ion-side-menu side="left">
+        <header class="bar bar-header bar-stable">
+          <h1 class="title">BikeShare</h1>
+        </header>
+        <ion-content class="has-header">
+
+        </ion-content>
+      </ion-side-menu>
+    </ion-side-menus>
+
   </script>
 
 <!--   <script id="bikeRackList.html" type="text/ng-template">

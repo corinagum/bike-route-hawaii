@@ -23,7 +23,7 @@
       baselayers: {
         osm: {
           name: 'Default',
-          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
           type: 'xyz'
         },
       }
@@ -345,16 +345,24 @@
     lng : -157.829530
   }];
 
+  $scope.showDetailHeader = false;
+
   $scope.$on('leafletDirectiveMarker.map.click', function(event,args){
     if(args.modelName !== 'reportPoint'){
       $scope.stationClicked = $scope.markers[args.modelName].properties;
-      $scope.openModal(4);
+      // $scope.openModal(4);
+      $scope.showDetailHeader = true;
     }
   });
+
+  $scope.hideDetailHeader = function () {
+    $scope.showDetailHeader = false;
+  };
 
   function setMarkersReturned(data){
     createMarkers(data, 'bikeShare');
   }
+
 
   //FIND POINTS IN RADIUS ON LOCATION FOUND
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
@@ -373,10 +381,13 @@
         options: {
           iconUrl: './../img/bike-assets/userMarker.png',
           iconSize:[24, 32],
+          shadowSize:   [42, 32]
+
         }
      });
     var redIcon = new RedIcon();
-      L.marker([leafEvent.latitude, leafEvent.longitude], {icon: redIcon}).addTo(map);
+      L.marker([leafEvent.latitude, leafEvent.longitude], {icon: redIcon}).addTo(map)
+      .bindPopup("You are here!").openPopup();
     });
 
   });
@@ -394,19 +405,6 @@
         });
       });
   });
-
-  $scope.init = function () {
-    console.log("consoleLogging");
-    leafletData.getMap()
-    .then(function(map){
-      new L.Control.GeoSearch({
-        provider: new L.GeoSearch.Provider.Google()
-      }).addTo(map);
-      console.log("added");
-    });
-      // check if there is query in url
-      // and fire search in case its value is not empty
-  };
 
   // IF CREATING NEW REPORT/SUGGEST POINT
   $scope.showReportControl = false;
@@ -673,12 +671,12 @@
     $ionicHistory.goBack();
   };
 
-  $scope.class = "red";
+  $scope.class = "wholeModalDiv";
   $scope.changeClass = function(){
-    if ($scope.class === "red")
+    if ($scope.class === "wholeModalDiv")
       $scope.class = "blue";
     else
-      $scope.class = "red";
+      $scope.class = "wholeModalDiv";
   };
 
   //>>>>>>>>>>>> POPOVER EVENT

@@ -9835,6 +9835,22 @@ body, p {
     color: #626262;
     font-size: 14px;
     line-height: 20px; }
+    @media only screen and (min-width: 600px) {
+      .section .secPar {
+        padding: 0 20%; } }
+
+.medUpContainer {
+  padding: 5%; }
+
+.medUpSteps {
+  padding-top: 8%; }
+  .medUpSteps h4 {
+    text-align: center; }
+  .medUpSteps ul, .medUpSteps li {
+    font-size: 14px;
+    list-style-type: circle; }
+  .medUpSteps img {
+    max-width: 80%; }
 
 .sectionTwo, .section {
   padding: 40px 40px 40px 40px;
@@ -9851,9 +9867,8 @@ body, p {
   margin: auto; }
 
 .stepsNum {
-  margin: 5px; }
-  .stepsNum img {
-    width: 30px; }
+  margin: 5px;
+  min-width: 40%; }
 
 .socialIcons {
   font-size: 20px;
@@ -9976,10 +9991,8 @@ textarea {
   width: 100%;
   background-color: #626262; }
 
-.mapImage {
-  height: 200px;
-  width: auto;
-  background-color: #3FC3E3; }
+.mapImage img {
+  max-width: 100%; }
 
 .mapBg {
   height: 300px;
@@ -10054,18 +10067,18 @@ textarea {
   background: url("./../img/bike-assets/num1_grey.png") center no-repeat; }
 
 .webViewLandingButton {
-  display: flex; }
+  display: flex;
+  justify-content: center; }
 
 .wholeModalDiv {
   position: absolute;
-  top: 184%;
   height: 100%; }
 
-.red {
-  color: red; }
-
 .blue {
-  top: 30%; }
+  top: 40%; }
+
+.titleDetailBar {
+  background-color: #e2e2e2; }
 
 .displayNone {
   display: none; }
@@ -10147,19 +10160,6 @@ textarea {
   margin-left: 12px;
   background-color: transparent;
   animation: moveOutLeft 0.4s ease; }
-
-.leaflet-control-geosearch .message {
-  position: absolute;
-  top: 26px;
-  left: 0px;
-  width: 226px;
-  color: #FFF;
-  background: #282828;
-  padding: 4px 0 4px 8px; }
-
-.leaflet-touch .leaflet-control-geosearch .message {
-  top: 30px;
-  left: -2px; }
 
 .getLocationMarker img {
   height: 40px;
