@@ -10094,8 +10094,8 @@ textarea {
   margin: 30px 46px; }
   .detailModalBlock .nameAndAdd {
     line-height: 9px; }
-  .detailModalBlock .d_image {
-    max-height: 100%; }
+  .detailModalBlock .stationPhoto {
+    max-height: 300px; }
   .detailModalBlock .d_title {
     padding: 10px 0px;
     color: #76CE95;
