@@ -2,8 +2,9 @@
   <ion-content style="background-color: #626262;">
     <div class="list alohaLandingOne addPadding" controller="MapCtrl">
 
+      <div class="hide-on-med-and-up survSmallTitle"><span>Age</span></div>
       <div class="radioBlock">
-        <div class="topicDiv"><span>Age</span></div>
+        <div class="topicDiv hide-on-small-only"><span>Age</span></div>
         <div class="radioSelections row">
           <div>
             <p>
@@ -27,8 +28,9 @@
 
       </div>
 
+      <div class="hide-on-med-and-up survSmallTitle"><span>Gender</span></div>
       <div class="radioBlock">
-        <div class="topicDiv"><span>Gender</span></div>
+        <div class="topicDiv hide-on-small-only"><span>Gender</span></div>
         <div class="radioSelections row">
          <div>
             <p>
@@ -45,8 +47,9 @@
         </div>
       </div>
 
+      <div class="hide-on-med-and-up survSmallTitle"><span>Zipcode</span></div>
       <div class="radioBlock">
-        <div class="topicDiv"><span>Zipcode</span></div>
+        <div class="topicDiv hide-on-small-only"><span>Zipcode</span></div>
         <div class="radioSelections">
           <div class="zipcodeInput"><input class="zipcodeInput" type="text" placeholder="| Zipcode"></input></div>
         </div>
@@ -56,6 +59,5 @@
         <a href="#/tab/home" class="cancelBtn" ng-click="closeModal(5)">Home</a>
       </div>
     </div>
-
   </ion-content>
 </ion-modal-view>

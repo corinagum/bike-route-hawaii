@@ -9964,7 +9964,7 @@ textarea {
 .divSize {
   padding: 0 5%; }
 
-.fdbckBtn, .surveyBtn {
+.fdbckBtn, .button.surveyBtn {
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
@@ -9974,14 +9974,15 @@ textarea {
   right: 70px;
   color: #626262;
   background-color: #f8f8f8; }
-  .fdbckBtn p, .surveyBtn p {
+  .fdbckBtn p, .button.surveyBtn p {
     font-size: 10px; }
   @media only screen and (min-width: 500px) {
-    .fdbckBtn p, .surveyBtn p {
+    .fdbckBtn p, .button.surveyBtn p {
       font-size: 14px; } }
 
-.surveyBtn {
-  right: 30px; }
+.button.surveyBtn {
+  right: 30px;
+  font-size: x-large; }
 
 .backArrow {
   font-size: 45px;
@@ -10246,7 +10247,16 @@ textarea {
   z-index: 1; }
 
 .addPadding {
-  padding: 0 17%; }
+  padding: 0 13%; }
+  @media only screen and (min-width: 600px) {
+    .addPadding {
+      padding: 0 17%; } }
+
+.survSmallTitle {
+  margin: 14px 0; }
+  .survSmallTitle span {
+    font-weight: 800;
+    color: #f8f8f8; }
 
 .radioBlock {
   display: flex;

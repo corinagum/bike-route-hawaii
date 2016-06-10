@@ -347,9 +347,10 @@ textarea {
   }
 }
 
-.surveyBtn {
+.button.surveyBtn {
   @extend .fdbckBtn;
   right: 30px;
+  font-size: x-large;
 }
 
 .backArrow {
@@ -703,7 +704,19 @@ textarea {
 ///////////////////////////////////////////
 
 .addPadding {
-  padding: 0 17%;
+  padding: 0 13%;
+
+  @media #{$large} {
+    padding: 0 17%;
+  }
+}
+
+.survSmallTitle {
+  margin: 14px 0;
+  span {
+    font-weight: 800;
+    color: $stable;
+  }
 }
 
 .radioBlock {
