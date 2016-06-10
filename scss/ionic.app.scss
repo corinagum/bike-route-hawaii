@@ -745,11 +745,14 @@ textarea {
   }
 
   .zipcodeInput {
+    background-color: transparent;
+    color: #C2C2C2;
+
     input {
       min-height: 40px;
-      // margin: 10px;
+      margin-left: 14px;
+      font-size: 14px;
     }
-    background-color: transparent;
   }
 }
 

@@ -10276,9 +10276,12 @@ textarea {
       min-width: 80.36px;
       margin-right: 12px; }
   .radioBlock .zipcodeInput {
-    background-color: transparent; }
+    background-color: transparent;
+    color: #C2C2C2; }
     .radioBlock .zipcodeInput input {
-      min-height: 40px; }
+      min-height: 40px;
+      margin-left: 14px;
+      font-size: 14px; }
 
 #map {
   width: 100%;
