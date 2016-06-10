@@ -1,30 +1,61 @@
-<ion-modal-view class="landing" view-title="Facts" ng-init="toggleAge=true; gender=false; zipCode=false">
+<ion-modal-view class="landing" view-title="Survey">
   <ion-content style="background-color: #626262;">
-    <div class="list alohaLandingOne" controller="MapCtrl">
+    <div class="list alohaLandingOne addPadding" controller="MapCtrl">
 
       <div class="radioBlock">
         <div class="topicDiv"><span>Age</span></div>
-        <div class="radioSelections">
-          <p><input type="radio" class="with-gap">18-25</p>
-          <p><input type="radio" class="with-gap">26-45</p>
-          <p><input type="radio" class="with-gap">46+</p>
+        <div class="radioSelections row">
+          <div>
+            <p>
+              <input name="group1" type="radio" id="test1" />
+              <label for="test1">18-25</label>
+            </p>
+          </div>
+          <div>
+            <p>
+              <input name="group1" type="radio" id="test2" />
+              <label for="test2">26-45</label>
+            </p>
+          </div>
+          <div>
+            <p>
+              <input name="group1" type="radio" id="test3" />
+              <label for="test3">46+</label>
+            </p>
+          </div>
         </div>
+
       </div>
 
       <div class="radioBlock">
         <div class="topicDiv"><span>Gender</span></div>
-        <div class="radioSelections">
-          <p><input type="radio" class="with-gap">Female</p>
-          <p><input type="radio" class="with-gap">Male</p>
+        <div class="radioSelections row">
+         <div>
+            <p>
+             <input name="group1" type="radio" id="test5" />
+             <label for="test5">Male</label>
+           </p>
+         </div>
+          <div>
+            <p>
+              <input name="group1" type="radio" id="test4" />
+              <label for="test4">Female</label>
+            </p>
+          </div>
         </div>
       </div>
 
       <div class="radioBlock">
         <div class="topicDiv"><span>Zipcode</span></div>
         <div class="radioSelections">
-          <p><input type="number" placeholder="| Zipcode"></p>
+          <div class="zipcodeInput"><input class="zipcodeInput" type="number" placeholder="| Zipcode"></input></div>
         </div>
       </div>
+
+      <div class="done">
+        <a href="#/tab/home" class="cancelBtn" ng-click="closeModal(5)">Home</a>
+      </div>
+    </div>
 
   </ion-content>
 </ion-modal-view>

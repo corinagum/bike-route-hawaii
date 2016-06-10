@@ -10245,6 +10245,41 @@ textarea {
   right: 10px;
   z-index: 1; }
 
+.addPadding {
+  padding: 0 17%; }
+
+.radioBlock {
+  display: flex;
+  background-color: #f8f8f8;
+  max-height: 68px;
+  min-height: 68px;
+  margin-bottom: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px; }
+  .radioBlock span {
+    color: #f8f8f8;
+    line-height: 65px;
+    font-weight: 800; }
+  .radioBlock [type="radio"]:not(:checked) + label:before, .radioBlock [type="radio"]:not(:checked) + label:after {
+    border: 2px solid #76CE95; }
+  .radioBlock [type="radio"]:checked + label:after, .radioBlock [type="radio"].with-gap:checked + label:before, .radioBlock [type="radio"].with-gap:checked + label:after {
+    border: 2px solid #76CE95; }
+  .radioBlock .topicDiv {
+    min-width: 90px;
+    background-color: #a2a2a2;
+    border-radius: 10px 0 0 10px; }
+  .radioBlock .radioSelections {
+    margin: 14px 10px; }
+    .radioBlock .radioSelections label {
+      min-width: 80.36px;
+      margin-right: 12px; }
+  .radioBlock .zipcodeInput {
+    background-color: transparent; }
+    .radioBlock .zipcodeInput input {
+      min-height: 40px; }
+
 #map {
   width: 100%;
   height: 100%; }

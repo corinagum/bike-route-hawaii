@@ -518,8 +518,6 @@ textarea {
   position: absolute;
   // bottom: -104em;
   height: 100%;
-
-
 }
 
 .titleDetailBar {
@@ -701,6 +699,68 @@ textarea {
     z-index:1;
   }
 }
+
+///////////////////////////////////////////
+
+.addPadding {
+  padding: 0 17%;
+}
+
+.radioBlock {
+  display: flex;
+  background-color: $stable;
+  max-height: 68px;
+  min-height: 68px;
+  margin-bottom: 10px;
+  @include borderRadius(10px);
+
+  span {
+    color: $stable;
+    line-height: 65px;
+    font-weight: 800;
+  }
+
+  [type="radio"]:not(:checked)+label:before, [type="radio"]:not(:checked)+label:after {
+    border: 2px solid $balanced;
+  }
+
+  [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+    border: 2px solid $balanced;
+  }
+
+  .topicDiv {
+    min-width: 90px;
+    background-color: lighten($typeGrey, 25%);
+    border-radius: 10px 0 0 10px;
+  }
+
+  .radioSelections {
+    margin: 14px 10px;
+
+    label {
+      min-width: 80.36px;
+      margin-right: 12px;
+    }
+
+  }
+
+  .zipcodeInput {
+    input {
+      min-height: 40px;
+      // margin: 10px;
+    }
+    background-color: transparent;
+  }
+}
+
+
+
+
+
+
+
+
+
 
 //=========================================
 #map {
