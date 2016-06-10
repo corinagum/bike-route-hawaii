@@ -1,50 +1,30 @@
 <ion-modal-view class="landing" view-title="Facts" ng-init="toggleAge=true; gender=false; zipCode=false">
-  <div class="container">
-    <ion-content>
+  <ion-content style="background-color: #626262;">
+    <div class="list alohaLandingOne" controller="MapCtrl">
 
-      <div class="alohaLandingOne hide-on-med-and-up">
-        <p class="contentPar">Before we get started, we<br> want to gather some<br>general information.<br></p>
-
-        <div ng-show="toggleAge">
-          <div class="btnDrk btnTitle">Age</div></br>
-          <a class="btnDrk" ng-click="toggleAge=false; gender=true; zipCode=false">18-25</a></br>
-          <a class="btnDrk" ng-click="toggleAge=false; gender=true; zipCode=false">26-45</a></br>
-          <a class="btnDrk" ng-click="toggleAge=false; gender=true; zipCode=false">&nbsp46+&nbsp&nbsp</a>
-
-          <ol id="pagination">
-            <li><a href="#slide1" class="active"></a></li>
-            <li><a href="#slide2">2</a></li>
-            <li><a href="#slide3">3</a></li>
-          </ol>
+      <div class="radioBlock">
+        <div class="topicDiv"><span>Age</span></div>
+        <div class="radioSelections">
+          <p><input type="radio" class="with-gap">18-25</p>
+          <p><input type="radio" class="with-gap">26-45</p>
+          <p><input type="radio" class="with-gap">46+</p>
         </div>
-
-        <div ng-show="gender">
-          <div class="btnDrk btnTitle">Gender</div></br>
-          <div class="btnDrk" ng-click="toggleAge=false; gender=false; zipCode=true">Female</div></br>
-          <div class="btnDrk" ng-click="toggleAge=false; gender=false; zipCode=true">&nbsp&nbspMale&nbsp&nbsp</div>
-
-          <ol id="pagination">
-            <li><a href="#slide1"></a></li>
-            <li><a href="#slide2" class="active">2</a></li>
-            <li><a href="#slide3">3</a></li>
-          </ol>
-        </div>
-
-        <div ng-show="zipCode">
-          <div class="btnDrk btnTitle">zip code</div></br>
-          <input class="zipField" type="number"></input></br>
-          <a href="#/tab/aloha" class="button">Submit</a>
-
-          <ol id="pagination">
-            <li><a href="#slide1"></a></li>
-            <li><a href="#slide2">2</a></li>
-            <li><a href="#slide3"class="active">3</a></li>
-          </ol>
-        </div>
-        </br>
-        <a class="skipLink" href="#/tab/aloha">skip</a>
       </div>
 
-    </ion-content>
-  </div>
+      <div class="radioBlock">
+        <div class="topicDiv"><span>Gender</span></div>
+        <div class="radioSelections">
+          <p><input type="radio" class="with-gap">Female</p>
+          <p><input type="radio" class="with-gap">Male</p>
+        </div>
+      </div>
+
+      <div class="radioBlock">
+        <div class="topicDiv"><span>Zipcode</span></div>
+        <div class="radioSelections">
+          <p><input type="number" placeholder="| Zipcode"></p>
+        </div>
+      </div>
+
+  </ion-content>
 </ion-modal-view>
