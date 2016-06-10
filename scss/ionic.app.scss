@@ -227,11 +227,22 @@ body, p {
 
 .benefitBlock {
   border-bottom: 1px solid lighten($typeGrey, 50%);
-  p { text-align: justify;}
+  p {
+    text-align: justify;
+    padding: 0 9%;
+    line-height: 18px;
+  }
 
   @media #{$large} {
-    min-height: 430px;
+    min-height: 440px;
     padding: 0 8%;
+  }
+}
+
+@media #{$large} {
+  .bottomRowBorder {
+    border-bottom: none;
+    min-height: 300px;
   }
 }
 

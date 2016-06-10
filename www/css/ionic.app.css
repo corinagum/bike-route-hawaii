@@ -9885,11 +9885,18 @@ body, p {
 .benefitBlock {
   border-bottom: 1px solid #e2e2e2; }
   .benefitBlock p {
-    text-align: justify; }
+    text-align: justify;
+    padding: 0 9%;
+    line-height: 18px; }
   @media only screen and (min-width: 600px) {
     .benefitBlock {
-      min-height: 430px;
+      min-height: 440px;
       padding: 0 8%; } }
+
+@media only screen and (min-width: 600px) {
+  .bottomRowBorder {
+    border-bottom: none;
+    min-height: 300px; } }
 
 .benGraphics img {
   max-height: 120px; }
