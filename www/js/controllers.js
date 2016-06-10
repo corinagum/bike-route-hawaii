@@ -489,13 +489,13 @@
     $scope.modal4 = modal;
   });
 
-  // $ionicModal.fromTemplateUrl('reportDetail.html', {
-  //   id: '5',
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.modal5 = modal;
-  // });
+  $ionicModal.fromTemplateUrl('templates/feedback/surveyForm.html', {
+    id: '5',
+    scope: $scope,
+    animation: 'scale-in'
+  }).then(function(modal) {
+    $scope.modal5 = modal;
+  });
 
   // $ionicModal.fromTemplateUrl('bikeRackList.html', {
   //   id: '6',

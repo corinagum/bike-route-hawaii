@@ -9757,7 +9757,8 @@ body, p {
 .contentPar {
   font-size: 20px;
   line-height: 20px;
-  padding-bottom: 15px; }
+  padding-bottom: 15px;
+  width: 100px; }
 
 .alohaLandingOne {
   text-align: center;
@@ -9833,7 +9834,7 @@ body, p {
   background-color: #f6f6f6; }
   .section .secPar {
     color: #626262;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 20px; }
     @media only screen and (min-width: 600px) {
       .section .secPar {
@@ -9964,18 +9965,24 @@ textarea {
 .divSize {
   padding: 0 5%; }
 
-.fdbckBtn {
+.fdbckBtn, .surveyBtn {
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
   border-radius: 7px;
   position: absolute;
   top: 10px;
-  right: 20px;
+  right: 70px;
   color: #626262;
   background-color: #f8f8f8; }
-  .fdbckBtn span {
+  .fdbckBtn p, .surveyBtn p {
     font-size: 10px; }
+  @media only screen and (min-width: 500px) {
+    .fdbckBtn p, .surveyBtn p {
+      font-size: 14px; } }
+
+.surveyBtn {
+  right: 30px; }
 
 .backArrow {
   font-size: 45px;
