@@ -3,7 +3,7 @@
  angular.module('starter.controllers', ['ngCordova'])
 
  .controller('MapCtrl',
-  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory) {
+  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory','$timeout', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$timeout) {
   angular.extend($scope, {
     honolulu: {
       lat: 21.3008900859581,
@@ -181,7 +181,7 @@
       $scope.show($ionicLoading);
       map.locate();
       // function updateUserLocMarker(map) {
-      //   console.log("consoleLoggingfirst", map);
+        // console.log("consoleLoggingfirst", map);
       // }
 
       // updateUserLocMarker(map);
@@ -383,18 +383,25 @@
 
   // ADD REPORT/SUGGESTION POINT
   $scope.createReportPoint = function(){
-    $scope.showReportControl = true;
-    var reportPoint = {
-        lat: $scope.center.lat,
-        lng: $scope.center.lng,
-        message: "Drop the bicycle where you'd like to see a bike station",
-        focus: true,
-        draggable: true,
-        icon : $scope.reportIcon
+    $scope.show($ionicLoading);
+    $timeout(function() {
+      $scope.showReportControl = true;
+      var reportPoint = {
+          lat: $scope.center.lat,
+          lng: $scope.center.lng,
+          message: "Drop the bicycle where you'd</br> like to see a bike station",
+          focus: true,
+          draggable: true,
+          icon : $scope.reportIcon
+        };
+
+      $scope.markers ={
+        reportPoint : reportPoint
       };
-    $scope.markers ={
-      reportPoint : reportPoint
-    };
+
+       console.log('update with timeout fired');
+      $scope.hide($ionicLoading);
+     }, 3000);
   };
 
   // CANCEL REPORT POINT
@@ -416,13 +423,13 @@
         CommentService.addComment(comment, data.data.newId)
         .then(function(data){
           $scope.cancelReportPoint();
-          $scope.closeModal(5);
+          $scope.closeModal(6);
         });
       });
     } else {
       CommentService.addComment(comment, $scope.currentMarkerProperties.id)
       .then(function(data){
-        $scope.closeModal(5);
+        $scope.closeModal(6);
       });
     }
   };
@@ -497,13 +504,13 @@
     $scope.modal5 = modal;
   });
 
-  // $ionicModal.fromTemplateUrl('bikeRackList.html', {
-  //   id: '6',
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.modal6 = modal;
-  // });
+  $ionicModal.fromTemplateUrl('reportDetail.html', {
+    id: '6',
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal6 = modal;
+  });
 
   // $ionicModal.fromTemplateUrl('favorites.html', {
   //   id: '7',
