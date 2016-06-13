@@ -3,7 +3,24 @@
  angular.module('starter.controllers', ['ngCordova'])
 
  .controller('MapCtrl',
-  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory','$timeout', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$timeout) {
+  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$timeout', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$timeout) {
+
+    console.log("mapctrl in use");
+    $scope.userStart = function(){
+      UserService.create()
+      .then(function(data){
+        $scope.user = data.data.user;
+        console.log("user", $scope.user);
+      });
+    };
+
+    $scope.updatePath = function(){
+      UserService.edit($scope.user)
+      .then(function(data){
+
+      });
+    };
+
   angular.extend($scope, {
     honolulu: {
       lat: 21.3008900859581,
@@ -194,6 +211,7 @@
     });
 
   };
+
 
   //  INITIALIZE FILTERS TO SHOW MARKERS
   $scope.showStations = true;

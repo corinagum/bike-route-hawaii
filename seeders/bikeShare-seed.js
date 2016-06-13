@@ -13,10 +13,10 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    var bikeShares = require('./../www/assets/bikeShare.js').features;
+    var bikeShares = require('./../www/assets/stations.js');
     var toInsert = [];
     for(var i=0; i<bikeShares.length; i++){
-      toInsert.push(bikeShares[i].properties);
+      toInsert.push(bikeShares[i]);
     }
     return Point.bulkCreate(toInsert);
   },

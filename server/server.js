@@ -18,6 +18,7 @@ app.all('/*', function(req, res, next) {
 
 app.use('/api/comments', require('./routes/comment-route.js'));
 app.use('/api/points', require('./routes/point-route.js'));
+app.use('/user', require('./routes/user-route.js'));
 app.use('/routes', require('./routes/routes-route.js'));
 
 var server = app.listen(process.env.PORT || 4000, function() {
