@@ -87,14 +87,6 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
           }
         }
       })
-      .state('tabs.facts', {
-        url: "/facts",
-        views: {
-          'home-tab': {
-            templateUrl: "templates/facts.html",
-          }
-        }
-      })
       .state('tabs.alohaLanding', {
         url: "/aloha",
         views: {
@@ -126,6 +118,15 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         views: {
           'home-tab': {
             templateUrl: "templates/home-main/benefits.html",
+            controller: 'MapCtrl'
+          }
+        }
+      })
+      .state('tabs.leave-comments', {
+        url: "/leave-comments",
+        views: {
+          'home-tab': {
+            templateUrl: "templates/feedback/leave-comments.html",
             controller: 'MapCtrl'
           }
         }

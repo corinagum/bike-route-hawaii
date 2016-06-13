@@ -4,15 +4,16 @@
 <!-- <ion-nav-bar class="mapSiteTopBar"> -->
   <ion-header-bar class="bar bar-header">
     <a href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
-    <!-- <i class="right" ng-click="openModal(1)">Leave Feedback</i> -->
 
-    <div ng-click="openModal(1)" class="button fdbckBtn waves-effect">
+    <div ng-click="openModal(2)" class="button fdbckBtn waves-effect">
       <span>Leave Feedback</span>
     </div>
+    <div class="button suggestBtn waves-effect" ng-click="closeModal(1);createReportPoint()"><span>Suggest a Station</span></div>
+    <a ng-click="openModal(5)"><i class="ion-clipboard button surveyBtn waves-effect"></i></a>
   </ion-header-bar>
 <!-- </ion-nav-bar> -->
 
-  <ion-content data-tap-disabled="true">
+  <ion-content data-tap-disabled="true" class="fade-on-enter">
     <div class="getLocationMarker" ng-click="findCenter()">
       <img src="../img/bike-assets/sMarkerIcon.png" alt="">
     </div>
@@ -21,10 +22,40 @@
           tap to find location
       </div> -->
     </div>
+
     <!-- <iframe src="https://www.google.com/maps/d/embed?mid=1ltEWKgn_WgMw9opot3cL5qU8jAc" width="640" height="480"></iframe> -->
     <leaflet layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
 
+    <div class="centerBox">
+      <div id="footer-bar" class="row" ng-show="showReportControl">
+        <div class="row directions_wrapper">
+            <div class="col">
+              <img src=".././img/bike-assets/numOne.png" alt="">
+              <p>Drag marker.</p>
+            </div>
+            <div class="col">
+              <img src=".././img/bike-assets/num2.png" alt="">
+              <p>Place bike icon where you'd like to see a station.</p>
+            </div>
+            <div class="col">
+              <img src=".././img/bike-assets/num3.png" alt="">
+              <p>Click 'Create Point' or 'Cancel'.</p>
+            </div>
+        <div class="col bothSuggestBtns">
+
+          <div class="eachSuggestbtn valign-wrapper" ng-click="cancelReportPoint()" style="margin-bottom: 4px">
+            <span>Cancel</span>
+          </div>
+          <div class="eachSuggestbtn valign-wrapper" ng-click="openModal(6)" class="suggestButtonsDiv">
+            <span>Create Point</span>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
   </ion-content>
+
+
 
     <!-- <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
 
@@ -55,21 +86,6 @@
         </button>
       </div>
     </ion-footer-bar> -->
-
-
-    <ion-footer-bar id="footer-bar" ng-show="showReportControl">
-      <div>
-        <button ng-click="openModal(5)" class="button">
-          Create Point
-        </button>
-      </div>
-
-      <div>
-        <button ng-click="cancelReportPoint()" class="button">
-          Cancel
-        </button>
-      </div>
-    </ion-footer-bar>
 
 <!-- filter modals -->
 
@@ -244,18 +260,18 @@
 
 
 
-      <ion-footer-bar ng-click="openModal(4); hideDetailHeader();" class="titleDetailBar" ng-show="showDetailHeader;">
+     <!--  <ion-footer-bar ng-click="openModal(4); hideDetailHeader();" class="titleDetailBar" ng-show="showDetailHeader;">
           <div class="center">
             <p>{{stationClicked.name}}</p>
           </div>
             <i class="ion-ios-arrow-up" ng-click="openModal(4); hideDetailHeader();"></i>
-      </ion-footer-bar>
+      </ion-footer-bar> -->
 
   <script id="markerDetail.html" type="text/ng-template">
     <div class="modal wholeModalDiv">
       <ion-header-bar class="titleDetailBar">
         <p class="d_title" >{{stationClicked.name}}</p>
-        <i class="ion-ios-arrow-down right" ng-click="closeModal(4); hideDetailHeader();"></i>
+        <i class="ion-ios-arrow-down right" ng-click="closeModal(4); hideDetailHeader();changeBackIcon();"></i>
       </ion-header-bar>
         <ion-content  class="detailModalBlock">
           <!-- <ion-scroll direction="y" > -->
@@ -408,11 +424,11 @@
     </div>
   </script> -->
 
-<!--   <script id="reportDetail.html" type="text/ng-template">
+  <script id="reportDetail.html" type="text/ng-template">
     <div class="modal">
       <ion-header-bar class="bar bar-header">
         <h1 class="title">Report/Suggest</h1>
-        <button class="button icon ion-arrow-down-b" ng-click="closeModal(5)"></button>
+        <button class="button icon ion-arrow-down-b" ng-click="closeModal(6)"></button>
       </ion-header-bar>
       <ion-content>
         <ion-item>
@@ -478,7 +494,7 @@
         </ion-item>
       </ion-content>
     </div>
-  </script> -->
+  </script>
 
 
 </ion-view>

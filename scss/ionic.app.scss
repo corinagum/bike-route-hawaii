@@ -22,6 +22,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 @import "partials/browser-view";
+@import "partials/keyFrames";
 
 $medium: "only screen and (min-width:500px)";
 $large: "only screen and (min-width:600px)";
@@ -41,8 +42,23 @@ body, p {
   font-size: 12px;
 }
 
-
 //MODAL ANIMATION
+
+.fade-on-enter {
+  opacity:0;  /* make things invisible upon start */
+ -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+ -moz-animation:fadeIn ease-in 1;
+ animation:fadeIn ease-in 1;
+
+ -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+ -moz-animation-fill-mode:forwards;
+ animation-fill-mode:forwards;
+
+ -webkit-animation-duration:1s;
+ -moz-animation-duration:1s;
+ animation-duration:1s;
+}
+
 .scale-in {
   transform: scale(1);
   opacity: 0.8;
@@ -162,7 +178,7 @@ body, p {
   background-color: lighten($typeGrey, 58%);
 
   .secPar {
-    @include fontType($typeGrey,14px, 20px);
+    @include fontType($typeGrey,13px, 20px);
 
     @media #{$large} {
       padding: 0 8%;
@@ -227,11 +243,21 @@ body, p {
 
 .benefitBlock {
   border-bottom: 1px solid lighten($typeGrey, 50%);
-  p { text-align: justify;}
+  p {
+    padding: 0 4%;
+    line-height: 18px;
+  }
 
   @media #{$large} {
-    min-height: 430px;
+    min-height: 440px;
     padding: 0 8%;
+  }
+}
+
+@media #{$large} {
+  .bottomRowBorder {
+    border-bottom: none;
+    min-height: 300px;
   }
 }
 
@@ -288,12 +314,16 @@ input[type="text"], input[type="email"] {
   background-color: darken($stable, 10%);
   font-size: 12px;
   padding-left: 5px;
+
+  @media #{$large} {
+    margin-bottom: 14px;
+  }
 }
 
-input[type="text"]:focus:not([readonly]) {
-  border-bottom: none;
-  box-shadow: none;
-}
+// input[type="text"]:focus:not([readonly]) {
+//   border-bottom: none;
+//   box-shadow: none;
+// }
 
 @mixin fontStyling($size, $color) {
   font-size: $size;
@@ -301,11 +331,12 @@ input[type="text"]:focus:not([readonly]) {
 }
 
 .smallSizeFont {
-  @include fontStyling(12px, lighten($typeGrey,25%));
+  @include fontStyling(12px, lighten($typeGrey,55%));
 }
 
 [type="radio"]:not(:checked)+label:before, [type="radio"]:not(:checked)+label:after {
-  border: 2px solid $stable;
+  border: 3px solid darken($stable, 10%);
+  background-color: $stable;
 }
 
 [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
@@ -319,17 +350,41 @@ textarea {
 }
 
 .divSize {
-  padding: 0 5%;
+    padding: 0 5%;
+
+  @media #{$large} {
+    max-width: 50em;
+    // padding: 0 20%;
+  }
+}
+
+.addBackgroundImg {
+  background: url("./../img/bike-assets/backgroundMapView.png")no-repeat;
 }
 
 .fdbckBtn {
   @include borderRadius(7px);
   position: absolute;
   top: 10px;
-  right: 20px;
+  right: 70px;
   color: $typeGrey;
   background-color: $stable;
-  span {font-size: 10px;}
+  p {font-size: 10px;}
+
+  @media #{$medium} {
+    p {font-size: 14px;}
+  }
+}
+
+.button.suggestBtn {
+  @extend .fdbckBtn;
+  right: 190px;
+}
+
+.button.surveyBtn {
+  @extend .fdbckBtn;
+  right: 15px;
+  font-size: x-large;
 }
 
 .backArrow {
@@ -346,20 +401,19 @@ textarea {
 
 .submitBtn {
   @include borderRadius(7px);
+  @include fontStyling(16px, $stable);
   padding: 4px 30px;
   font-size: 15px;
   margin-top: 15px;
   border: 2px solid $balanced;
   background-color: transparent;
-  color: $stable;
 }
 
 .suggestFdbkBtn {
   @include borderRadius(12px);
-  font-size: 16px;
+  @include fontStyling(16px, $stable);
   padding: 12px 30px;
   border: 2px solid $stable;
-  color: $stable;
   background-color: transparent;
 }
 
@@ -448,8 +502,8 @@ textarea {
 
 
 .commentHeader {
-  @extend .btnTitle;
-  color: $stable;
+  @include fontStyling(18px, $stable);
+  font-weight: 600;
 }
 
 // .radioBtn {
@@ -492,22 +546,26 @@ textarea {
   display: flex;
   justify-content: center;
   img {width: 85%;}
+
 }
+
+.moreInfoBlockBtn {
+  animation: bounceIn 1s;
+}
+
+.mapBlockBtn {
+  img {animation: bounceIn 2s;}
+}
+
+.benefitsBlockBtn {
+  img {animation: bounceIn 3s;}
+}
+
 
 .wholeModalDiv {
   position: absolute;
   // bottom: -104em;
   height: 100%;
-
-
-}
-
-// .red{
-//   color:red;
-// }
-
-.blue{
-  // top: 40%;
 }
 
 .titleDetailBar {
@@ -572,6 +630,7 @@ textarea {
 
 .leaflet-bar {
   box-shadow: none;
+  border-radius: 0;
 }
 
 .leaflet-control-geosearch {
@@ -615,20 +674,6 @@ textarea {
 .leaflet-control {
   box-shadow: none;
   border: none
-}
-
-@keyframes moveOutLeft {
-  0% {
-    width: 30px;
-    opacity: 0;
-}
-  50% {
-    opacity: 0.5
-}
-  100% {
-    width: 220px;
-    opacity: 1;
-  }
 }
 
 .leaflet-control-geosearch form {
@@ -690,12 +735,88 @@ textarea {
   }
 }
 
+///////////////////////////////////////////
+
+.addPadding {
+  padding: 0 10%;
+
+  @media #{$large} {
+    // padding: 0 14%;
+  }
+}
+
+.survSmallTitle {
+  margin: 14px 0;
+  span {
+    font-weight: 800;
+    color: $stable;
+  }
+}
+
+.radioBlock {
+  display: flex;
+  background-color: $stable;
+  max-height: 68px;
+  min-height: 68px;
+  margin-bottom: 10px;
+  @include borderRadius(10px);
+
+  span {
+    color: $stable;
+    line-height: 65px;
+    font-weight: 800;
+  }
+
+  [type="radio"]:not(:checked)+label:before, [type="radio"]:not(:checked)+label:after {
+    border: 2px solid $balanced;
+  }
+
+  [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+    border: 2px solid $balanced;
+  }
+
+  .topicDiv {
+    min-width: 90px;
+    background-color: lighten($typeGrey, 25%);
+    border-radius: 10px 0 0 10px;
+  }
+
+  .radioSelections {
+    margin: 14px 10px;
+
+    label {
+      min-width: 80.36px;
+      margin-right: 12px;
+    }
+
+  }
+
+  .zipcodeInput {
+    background-color: transparent;
+    color: #C2C2C2;
+
+    input {
+      min-height: 40px;
+      margin-left: 14px;
+      font-size: 14px;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
 //=========================================
 #map {
   width: 100%;
   height: 100%;
 }
-
 
 .scroll {
   height: 100%;
@@ -705,16 +826,52 @@ textarea {
   padding-top: 7px;
 }
 
-#footer-bar {
+.centerBox {
   width: 100%;
-  background-color: $dark;
-  z-index: 1002;
-  position: fixed;
+  position: absolute;
+  top: 19px;
+  justify-content: center;
+  text-align: center;
+}
 
-    div {
-      width: 100%;
-      text-align: center;
-    }
+.bikeIconSuggestion {
+}
+
+#footer-bar.row {
+  margin-bottom: 0px;
+  display: flex;
+  margin: auto;
+  width: 87%;
+
+  .row {
+    margin-bottom: 0px;
+  }
+  .directions_wrapper {
+    background-color: rgba($stable, 0.6);
+  }
+
+  img {
+    max-width: 32px;
+  }
+
+  p {
+    line-height: 16px;
+    font-size: 18px;
+  }
+
+  .eachSuggestbtn {
+    @include borderRadius(10px);
+    border: 2px solid $balanced;
+    color: $typeGrey;
+    background-color: $stable;
+    min-width: 110.08px;
+    min-height: 53px;
+  }
+
+  span {
+    font-size: large;
+    margin: auto;
+  }
 }
 
 .footerIcons .ng-hide-remove {

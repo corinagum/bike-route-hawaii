@@ -1,12 +1,12 @@
 
-  <ion-view view-title="Home" class="landingBgClr">
     <ion-header-bar class="bar bar-header">
       <a href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
-      <!-- <i class="right" ng-click="openModal(1)">Leave Feedback</i> -->
-      <div ng-click="openModal(1)" class="button fdbckBtn waves-effect">
+      <a href="#/tab/leave-comments" class="button fdbckBtn waves-effect" nav-transition="none">
         <span>Leave Feedback</span>
-      </div>
+      </a>
+      <a ng-click="openModal(5)"><i class="ion-clipboard button surveyBtn waves-effect"></i></a>
     </ion-header-bar>
+  <ion-view view-title="Home" class="landingBgClr">
 
     <ion-content class="has-header">
       <div class="mapImage">
@@ -207,13 +207,13 @@
         <div class="col">
           <img src="../../img/bike-assets/leadership_lori.png" alt="">
           <h5>Lori McCarney, CEO</h5>
-          <p style="text-align: justify;"> Lori McCarney has 35+ years of experience in senior management and has held executive positions in local, national and international markets. She specializes in marketing and has a strong background in business strategy development. McCarney's local experience includes serving as a Senior VP of Coldwell Banker Pacific Properties, Chief Marketing Officer of FlyHawaii Airlines, and Executive VP-Director of Marketing at Bank of Hawaii. Prior to moving to Hawaii, she held executive leadership positions at Wells Fargo, Bank of America and major advertising agencies.  Additionally, McCarney is currently Chair of the Blood Bank of Hawaii Board of Trustees and the Communications Chair for Kapiolani Health Foundation.  She is also an avid cyclist and accomplished Ironman triathlete.</p>
+          <p style="text-align: justify; padding: 0 5%;"> Lori McCarney has 35+ years of experience in senior management and has held executive positions in local, national and international markets. She specializes in marketing and has a strong background in business strategy development. McCarney's local experience includes serving as a Senior VP of Coldwell Banker Pacific Properties, Chief Marketing Officer of FlyHawaii Airlines, and Executive VP-Director of Marketing at Bank of Hawaii. Prior to moving to Hawaii, she held executive leadership positions at Wells Fargo, Bank of America and major advertising agencies.  Additionally, McCarney is currently Chair of the Blood Bank of Hawaii Board of Trustees and the Communications Chair for Kapiolani Health Foundation.  She is also an avid cyclist and accomplished Ironman triathlete.</p>
         </div>
 
         <div class="col leadDiv">
           <img src="../../img/bike-assets/leadership_ben.png" alt="">
           <h5>Ben Trevino, CEO</h5>
-          <p style="text-align: justify;"> Ben Trevino is an experienced entrepreneur and technologist. He was a founder of Interisland Terminal, a Honolulu-based non-profit organization with projects including community spaces, the Kaka‘ako Agora, and R&D Bookstore and Cafe. Prior to Bikeshare Hawaii, Trevino was with the University of Hawaii Economic Research Organization (UHERO) where he was the architect of the UHERO Dashboard Project, a community data visualization portal for Hawaii data. He has held previous positions with Pacific Resources for Education and Learning, the Hawaii International Film Festival and Google. He currently serves on the board of Common Cause Hawaii. Trevino holds a BS in Computer Science from Stanford University and an MBA from the Shidler School of Business at University of Hawaii at Manoa. He has been commuting by bike in Hawaii for eight years.
+          <p style="text-align: justify; padding: 0 5%;"> Ben Trevino is an experienced entrepreneur and technologist. He was a founder of Interisland Terminal, a Honolulu-based non-profit organization with projects including community spaces, the Kaka‘ako Agora, and R&D Bookstore and Cafe. Prior to Bikeshare Hawaii, Trevino was with the University of Hawaii Economic Research Organization (UHERO) where he was the architect of the UHERO Dashboard Project, a community data visualization portal for Hawaii data. He has held previous positions with Pacific Resources for Education and Learning, the Hawaii International Film Festival and Google. He currently serves on the board of Common Cause Hawaii. Trevino holds a BS in Computer Science from Stanford University and an MBA from the Shidler School of Business at University of Hawaii at Manoa. He has been commuting by bike in Hawaii for eight years.
           </p>
         </div>
 
@@ -224,15 +224,14 @@
          <p class="secPar">Bikeshare Hawaii is a not-for-profit 501(c)3 organization aiming to launch and manage bikeshare in the state of Hawaii. It strives to create a strong public/private partnership in order to launch and maintain bikeshare systems throughout the state. Bikeshare Hawaii is currently supported by Ulupono Initiative, Hawaii Pacific University, the State of Hawaii and the City and County of Honolulu, The Environmental Protection Agency and is actively seeking other partnerships.
          </p>
        </div>
-
     </ion-content>
+    <ion-footer-bar class="footerSec">
+      <div class="padding footerBack">
+        <p style="color: #626262; font-size: 10px;">Bikeshare &copy 2016</p>
+      </div>
+      <div class="padding socialIcons"><a href="https://www.facebook.com/bikesharehawaii/"><i class="ion-social-facebook"></i></a>&nbsp&nbsp <a href="https://www.instagram.com/bikesharehawaii/"><i class="ion-social-instagram"></i></a>&nbsp <a href="https://twitter.com/bikesharehi"><i class="ion-social-twitter"></i></a></div>
+    </ion-footer-bar>
 
-  <ion-footer-bar class="footerSec">
-    <div class="padding footerBack">
-      <p style="color: #626262; font-size: 10px;">Bikeshare &copy 2016</p>
-    </div>
-    <div class="padding socialIcons"><a href="https://www.facebook.com/bikesharehawaii/"><i class="ion-social-facebook"></i></a>&nbsp&nbsp <a href="https://www.instagram.com/bikesharehawaii/"><i class="ion-social-instagram"></i></a>&nbsp <a href="https://twitter.com/bikesharehi"><i class="ion-social-twitter"></i></a></div>
-  </ion-footer-bar>
 
 
   </ion-view>

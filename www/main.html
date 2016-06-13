@@ -26,7 +26,7 @@
   <body ng-app="starter">
 
       <script id="templates/tabs.html" type="text/ng-template">
-            <ion-nav-view name="home-tab"></ion-nav-view>
+            <ion-nav-view name="home-tab" ></ion-nav-view>
             <ion-nav-view name="main-tab"></ion-nav-view>
             <ion-nav-view name="feedback-tab"></ion-nav-view>
       </script>
@@ -36,91 +36,11 @@
           <ion-content>
           <div ng-controller="MapCtrl" class="alohaLandingOne">
             <p class="contentTitle">Aloha!</p><br>
-            <p class="contentPar"> We need your help! We’re planning</br> a brand new transportation program</br> called BIKESHARE. Please help us </br>understand how our program </br>can best serve you.</p>
+            <p class="contentPar"> We need your help! We’re </br>planning a brand new transportation </br>program called BIKESHARE. </br>Please help us understand how </br>our program can best serve you.</p>
             <br>
-            <a ng-click="userStart()" class="button waves-effect waves-light" href="#/tab/aloha">Let's Go!</a>
+            <a ng-click="userStart()" class="button waves-effect waves-light" href="#/tab/aloha" nav-transition="none">Let's Go!</a>
           </div>
           </ion-content>
-
-        <!-- HERES THE CODE FOR THE PULL-UP COPY PASTAED FROM AN EXAMPLE HERE: http://arielfaur.github.io/ionic-pullup/  NONE OF THE TWEAKING I'VE DONE MADE IT LOOK LIKE THE EXAMPLE THOUGH... -->
-          <!-- <ion-pull-up-footer class="bar-calm">
-          <ion-pull-up-footer class="bar-calm">
-                <div class="title" ion-pull-up-trigger>Tap me or drag me</div>
-                <ion-pull-up-handle width="120" height="15" icon-expand="ion-chevron-up" icon-collapse="ion-chevron-down" style="border-radius: 5px 5px 0 0">
-                </ion-pull-up-handle>
-                <ion-pull-up-content scroll="false">
-            <div class="list card">
-              <div class="item item-divider">Recent Updates</div>
-              <div class="item item-body">
-                <div>
-                  There is a fire in <b>sector 3</b>
-                </div>
-              </div>
-            </div>
-            <div class="list card">
-              <div class="item item-divider">Other Updates</div>
-              <div class="item item-body">
-                <div>
-                  There was a fire in <b>sector 13</b>
-                </div>
-              </div>
-            </div> </ion-pull-up-content>
-          </ion-pull-up-footer> -->
-
-
-        </ion-view>
-      </script>
-
-      <script id="templates/facts.html" type="text/ng-template">
-        <ion-view class="landing" view-title="Facts" ng-init="toggleAge=true; gender=false; zipCode=false">
-          <div class="container">
-            <ion-content>
-
-              <div class="alohaLandingOne hide-on-med-and-up">
-                <p class="contentPar">Before we get started, we<br> want to gather some<br>general information.<br></p>
-
-                <div ng-show="toggleAge">
-                  <div class="btnDrk btnTitle">Age</div></br>
-                  <a class="btnDrk" ng-click="toggleAge=false; gender=true; zipCode=false">18-25</a></br>
-                  <a class="btnDrk" ng-click="toggleAge=false; gender=true; zipCode=false">26-45</a></br>
-                  <a class="btnDrk" ng-click="toggleAge=false; gender=true; zipCode=false">&nbsp46+&nbsp&nbsp</a>
-
-                  <ol id="pagination">
-                    <li><a href="#slide1" class="active"></a></li>
-                    <li><a href="#slide2">2</a></li>
-                    <li><a href="#slide3">3</a></li>
-                  </ol>
-                </div>
-
-                <div ng-show="gender">
-                  <div class="btnDrk btnTitle">Gender</div></br>
-                  <div class="btnDrk" ng-click="toggleAge=false; gender=false; zipCode=true">Female</div></br>
-                  <div class="btnDrk" ng-click="toggleAge=false; gender=false; zipCode=true">&nbsp&nbspMale&nbsp&nbsp</div>
-
-                  <ol id="pagination">
-                    <li><a href="#slide1"></a></li>
-                    <li><a href="#slide2" class="active">2</a></li>
-                    <li><a href="#slide3">3</a></li>
-                  </ol>
-                </div>
-
-                <div ng-show="zipCode">
-                  <div class="btnDrk btnTitle">zip code</div></br>
-                  <input class="zipField" type="number"></input></br>
-                  <a href="#/tab/aloha" class="button">Submit</a>
-
-                  <ol id="pagination">
-                    <li><a href="#slide1"></a></li>
-                    <li><a href="#slide2">2</a></li>
-                    <li><a href="#slide3"class="active">3</a></li>
-                  </ol>
-                </div>
-                </br>
-                <a class="skipLink" href="#/tab/aloha">skip</a>
-              </div>
-
-            </ion-content>
-          </div>
         </ion-view>
       </script>
 
@@ -141,9 +61,9 @@
 
             <!-- BROWSER VIEW LANDING INTRO -->
             <div ng-controller="MapCtrl" class="alohaLandingOne hide-on-small-only webViewLandingButton">
-              <a ng-click="updatePath('info')" href="#/tab/main"><img src="img/bike-assets/web-1.png" alt=""></a>
-              <a ng-click="updatePath('benefits')" href="#/tab/benefits"><img src="img/bike-assets/web-2.png" alt=""></a>
-              <a ng-click="updatePath('map')" href="#/tab/mapSite"><img src="img/bike-assets/web-3.png" alt=""></a>
+              <a  ng-click="updatePath('info')" class="moreInfoBlockBtn" href="#/tab/main" nav-transition="none"><img src="img/bike-assets/web-1.png" alt=""></a>
+              <a ng-click="updatePath('map')" class="mapBlockBtn" href="#/tab/mapSite" nav-transition="none"><img src="img/bike-assets/web-3.png" alt=""></a>
+              <a ng-click="updatePath('benefits')" class="benefitsBlockBtn" href="#/tab/benefits" nav-transition="none"><img src="img/bike-assets/web-2.png" alt=""></a>
             </div>
             <!-- </div> -->
           </ion-content>

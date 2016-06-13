@@ -2,13 +2,16 @@
 
   <ion-header-bar class="bar bar-header">
     <a href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
-    <div ng-click="openModal(1)" class="button fdbckBtn waves-effect waves-light">
+    <a href="#/tab/leave-comments" class="button fdbckBtn waves-effect waves-light" nav-transition="none">
       <span>Leave Feedback</span>
-    </div>
+    </a>
+    <a ng-click="openModal(5)"><div class="clipIcon">
+      <i class="ion-clipboard button surveyBtn waves-effect"></i>
+    </div></a>
   </ion-header-bar>
 
   <ion-content class="has-header" style="color: #626262;">
-    <div style="padding: 50px;">
+    <div class="center" style="padding: 50px;">
       <div class="secTitle">Unsure?</div>
       <p class="center" style="font-size: 18px; padding: 20px 0px;">Here are some additional benefits can bring to your community</p>
         <div class="row col">
@@ -38,7 +41,7 @@
       </div>
 
       <div class="row col">
-        <div class="col s12 m4 l4 benefitBlock">
+        <div class="col s12 m4 l4 benefitBlock bottomRowBorder">
           <div class="center benGraphics">
             </br><img src="../../img/bike-assets/HEalth.png" alt="">
           </div>
@@ -47,7 +50,7 @@
         </div>
 
 
-        <div class="col s12 m4 l4 benefitBlock">
+        <div class="col s12 m4 l4 benefitBlock bottomRowBorder">
           <div class="center benGraphics">
             </br><img src="../../img/bike-assets/weather.png" alt="">
           </div>
@@ -56,7 +59,7 @@
         </div>
 
 
-        <div class="col s12 m4 l4 benefitBlock">
+        <div class="col s12 m4 l4 benefitBlock bottomRowBorder">
           <div class="center benGraphics">
             </br><img src="../../img/bike-assets/suggestions.png" alt="">
           </div>
