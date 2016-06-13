@@ -228,8 +228,8 @@ body, p {
 .benefitBlock {
   border-bottom: 1px solid lighten($typeGrey, 50%);
   p {
-    text-align: justify;
-    padding: 0 9%;
+    text-align: center;
+    padding: 0 4%;
     line-height: 18px;
   }
 
@@ -345,6 +345,11 @@ textarea {
   @media #{$medium} {
     p {font-size: 14px;}
   }
+}
+
+.button.suggestBtn {
+  @extend .fdbckBtn;
+  right: 190px;
 }
 
 .button.surveyBtn {
@@ -704,10 +709,10 @@ textarea {
 ///////////////////////////////////////////
 
 .addPadding {
-  padding: 0 13%;
+  padding: 0 10%;
 
   @media #{$large} {
-    padding: 0 17%;
+    // padding: 0 14%;
   }
 }
 

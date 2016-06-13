@@ -45,28 +45,28 @@
       iconUrl: '../img/bike-assets/bike-icon.png',
       iconSize:     [30, 30],
       // shadowUrl: 'img/leaf-shadow.png',
-      shadowSize:   [50, 64], // size of the shadow
-      iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-      shadowAnchor: [4, 62],  // the same for the shadow
-      popupAnchor:  [15, 0] // point from which the popup should open relative to the iconAnchor
+      shadowSize:   [50, 64],
+      iconAnchor:   [0, 0],
+      shadowAnchor: [4, 62],
+      popupAnchor:  [15, 0]
     },
     bikeShareIconClicked: {
       iconUrl: '../img/bike-assets/bike-icon-gray.png',
       iconSize:     [30, 30],
       // shadowUrl: 'img/leaf-shadow.png',
-      shadowSize:   [50, 64], // size of the shadow
-      iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-      shadowAnchor: [4, 62],  // the same for the shadow
-      popupAnchor:  [15, 0] // point from which the popup should open relative to the iconAnchor
+      shadowSize:   [50, 64],
+      iconAnchor:   [0, 0],
+      shadowAnchor: [4, 62],
+      popupAnchor:  [15, 0]
     },
     reportIcon: {
       iconUrl: '../img/bike-assets/bike-icon.png',
       iconSize:     [35, 35],
       // shadowUrl: 'img/leaf-shadow.png',
-      shadowSize:   [50, 64], // size of the shadow
-      iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-      shadowAnchor: [4, 62],  // the same for the shadow
-      popupAnchor:  [15, 0], // point from which the popup should open relative to the iconAnchor
+      shadowSize:   [50, 64],
+      iconAnchor:   [0, 0],
+      shadowAnchor: [4, 62],
+      popupAnchor:  [15, 0],
       message: 'Drop the bycicle where you\'d like to see the station'
     }
   });
@@ -97,7 +97,7 @@
             message : 'You are here'          };
         }
         }, handleErr, {
-          timeout : 10000,
+          timeout : 6000,
           enableHighAccuracy : true
         });
     } else {
@@ -175,24 +175,19 @@
 
   $scope.foundLocation = false;
 
+  function onLocationError(e) {
+      alert(e.message);
+  }
+
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
 
       $scope.show($ionicLoading);
       map.locate();
-      // function updateUserLocMarker(map) {
-        // console.log("consoleLoggingfirst", map);
-      // }
-
-      // updateUserLocMarker(map);
-
-      if( routeOnMap === true ) {
-        $scope.removeRouting();
-        routeOnMap = false;
-      }
-
+      // updateUserLocMarker();
       $scope.foundLocation = true;
     });
+
   };
 
   //  INITIALIZE FILTERS TO SHOW MARKERS
@@ -283,22 +278,6 @@
 
   $scope.updateClosestBBB = function(){
     $scope.closestBBB = bbbList.slice(0,5);
-
-    // leafletData.getMap().then(function(map){
-
-    // var RedIcon = L.Icon.Default.extend({
-    //     options: {
-    //       iconUrl: './../img/bike-assets/userMarker.png',
-    //       iconSize:[24, 32],
-    //       shadowSize:   [42, 32]
-    //     }
-    //  });
-    // var redIcon = new RedIcon();
-    //   L.marker([leafEvent.latitude, leafEvent.longitude], {icon: redIcon}).addTo(map)
-    //   .bindPopup("You are here!").openPopup();
-    // });
-
-
   };
 
 
@@ -322,6 +301,7 @@
 
   $scope.showDetailHeader = false;
 
+
   $scope.$on('leafletDirectiveMarker.map.click', function(event,args){
     if(args.modelName !== 'reportPoint'){
       if($scope.stationClicked.lastClicked){
@@ -332,7 +312,8 @@
       $scope.stationClicked.lastClicked = args.modelName;
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
-      $scope.showDetailHeader = true;
+      $scope.openModal(4);
+      // $scope.showDetailHeader = true;
     }
   });
 

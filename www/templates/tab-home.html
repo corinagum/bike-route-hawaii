@@ -4,11 +4,11 @@
 <!-- <ion-nav-bar class="mapSiteTopBar"> -->
   <ion-header-bar class="bar bar-header">
     <a href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
-    <!-- <i class="right" ng-click="openModal(1)">Leave Feedback</i> -->
 
     <div ng-click="openModal(1)" class="button fdbckBtn waves-effect">
       <span>Leave Feedback</span>
     </div>
+    <div class="button suggestBtn waves-effect" ng-click="closeModal(1);createReportPoint()"><span>Suggest a Station</span></div>
     <a ng-click="openModal(5)"><i class="ion-clipboard button surveyBtn waves-effect"></i></a>
   </ion-header-bar>
 <!-- </ion-nav-bar> -->

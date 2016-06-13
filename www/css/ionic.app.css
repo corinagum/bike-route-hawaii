@@ -9885,8 +9885,8 @@ body, p {
 .benefitBlock {
   border-bottom: 1px solid #e2e2e2; }
   .benefitBlock p {
-    text-align: justify;
-    padding: 0 9%;
+    text-align: center;
+    padding: 0 4%;
     line-height: 18px; }
   @media only screen and (min-width: 600px) {
     .benefitBlock {
@@ -9964,7 +9964,7 @@ textarea {
 .divSize {
   padding: 0 5%; }
 
-.fdbckBtn, .button.surveyBtn {
+.fdbckBtn, .button.suggestBtn, .button.surveyBtn {
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
@@ -9974,11 +9974,14 @@ textarea {
   right: 70px;
   color: #626262;
   background-color: #f8f8f8; }
-  .fdbckBtn p, .button.surveyBtn p {
+  .fdbckBtn p, .button.suggestBtn p, .button.surveyBtn p {
     font-size: 10px; }
   @media only screen and (min-width: 500px) {
-    .fdbckBtn p, .button.surveyBtn p {
+    .fdbckBtn p, .button.suggestBtn p, .button.surveyBtn p {
       font-size: 14px; } }
+
+.button.suggestBtn {
+  right: 190px; }
 
 .button.surveyBtn {
   right: 30px;
@@ -10247,10 +10250,7 @@ textarea {
   z-index: 1; }
 
 .addPadding {
-  padding: 0 13%; }
-  @media only screen and (min-width: 600px) {
-    .addPadding {
-      padding: 0 17%; } }
+  padding: 0 10%; }
 
 .survSmallTitle {
   margin: 14px 0; }
