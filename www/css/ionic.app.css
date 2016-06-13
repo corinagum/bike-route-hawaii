@@ -9729,6 +9729,16 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0; }
+  60% {
+    transform: scale(0.05);
+    opacity: 1; }
+  100% {
+    transform: scale(1); } }
+
 body, p {
   color: #626262;
   font-family: 'Open Sans', sans-serif;
@@ -10118,6 +10128,15 @@ textarea {
   .webViewLandingButton img {
     width: 85%; }
 
+.moreInfoBlockBtn {
+  animation: bounceIn 2s; }
+
+.mapBlockBtn img {
+  animation: bounceIn 3s; }
+
+.benefitsBlockBtn img {
+  animation: bounceIn 4s; }
+
 .wholeModalDiv {
   position: absolute;
   height: 100%; }
@@ -10201,16 +10220,6 @@ textarea {
 .leaflet-control {
   box-shadow: none;
   border: none; }
-
-@keyframes moveOutLeft {
-  0% {
-    width: 30px;
-    opacity: 0; }
-  50% {
-    opacity: 0.5; }
-  100% {
-    width: 220px;
-    opacity: 1; } }
 
 .leaflet-control-geosearch form {
   -webkit-border-radius: 20px;

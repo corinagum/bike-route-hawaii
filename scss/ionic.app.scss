@@ -22,6 +22,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 @import "partials/browser-view";
+@import "partials/keyFrames";
 
 $medium: "only screen and (min-width:500px)";
 $large: "only screen and (min-width:600px)";
@@ -40,7 +41,6 @@ body, p {
   // font-weight: 200;
   font-size: 12px;
 }
-
 
 //MODAL ANIMATION
 .scale-in {
@@ -518,7 +518,21 @@ textarea {
   display: flex;
   justify-content: center;
   img {width: 85%;}
+
 }
+
+.moreInfoBlockBtn {
+  animation: bounceIn 2s;
+}
+
+.mapBlockBtn {
+  img {animation: bounceIn 3s;}
+}
+
+.benefitsBlockBtn {
+  img {animation: bounceIn 4s;}
+}
+
 
 .wholeModalDiv {
   position: absolute;
@@ -631,20 +645,6 @@ textarea {
 .leaflet-control {
   box-shadow: none;
   border: none
-}
-
-@keyframes moveOutLeft {
-  0% {
-    width: 30px;
-    opacity: 0;
-}
-  50% {
-    opacity: 0.5
-}
-  100% {
-    width: 220px;
-    opacity: 1;
-  }
 }
 
 .leaflet-control-geosearch form {
