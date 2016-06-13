@@ -797,16 +797,45 @@ textarea {
   padding-top: 7px;
 }
 
-#footer-bar {
+.centerBox {
   width: 100%;
-  background-color: $balanced;
-  z-index: 1002;
-  position: fixed;
+  // background-color: pink;
+  position: absolute;
+  top: 19px;
+  justify-content: center;
+  text-align: center;
+}
 
-    div {
-      width: 100%;
-      text-align: center;
-    }
+#footer-bar.row {
+  margin-bottom: 0px;
+  display: flex;
+  margin: auto;
+  width: 75%;
+
+  .row {
+    margin-bottom: 0px;
+  }
+  .directions_wrapper {
+    background-color: rgba($stable, 0.6);
+  }
+
+  img {
+    max-width: 32px;
+  }
+
+  p {
+    line-height: 16px;
+    font-size: 18px;
+  }
+  .eachSuggestbtn {
+    min-width: 116.08px;
+    min-height: 53px;
+  }
+
+  span {
+    font-size: large;
+    margin: auto;
+  }
 }
 
 .footerIcons .ng-hide-remove {

@@ -22,10 +22,40 @@
           tap to find location
       </div> -->
     </div>
+
     <!-- <iframe src="https://www.google.com/maps/d/embed?mid=1ltEWKgn_WgMw9opot3cL5qU8jAc" width="640" height="480"></iframe> -->
     <leaflet layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
 
+    <div class="centerBox">
+      <div id="footer-bar" class="row" ng-show="showReportControl">
+        <div class="row directions_wrapper">
+            <div class="col">
+              <img src=".././img/bike-assets/numOne.png" alt="">
+              <p>Drag marker where you'd like to see a bike station.</p>
+            </div>
+            <div class="col">
+              <img src=".././img/bike-assets/num2.png" alt="">
+              <p>Add the address.</p>
+            </div>
+            <div class="col">
+              <img src=".././img/bike-assets/num3.png" alt="">
+              <p>When finish, tap on 'Create Point'.</p>
+            </div>
+        </div>
+        <div class="col" style="background-color: #78DEAC">
+
+          <div class="eachSuggestbtn valign-wrapper" style="border-bottom: 1px solid #626262;" ng-click="cancelReportPoint()">
+            <span>Cancel</span>
+          </div>
+          <div class="eachSuggestbtn valign-wrapper" ng-click="openModal(6)" class="suggestButtonsDiv">
+            <span>Create Point</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </ion-content>
+
+
 
     <!-- <ion-footer-bar id="footer-bar" ng-hide="showReportControl" ng-init="locate=true; findMe=true; bike=false; land=false; rack=false">
 
@@ -56,21 +86,6 @@
         </button>
       </div>
     </ion-footer-bar> -->
-
-
-    <ion-footer-bar id="footer-bar" ng-show="showReportControl">
-      <div>
-        <button ng-click="openModal(6)" class="button">
-          Create Point
-        </button>
-      </div>
-
-      <div>
-        <button ng-click="cancelReportPoint()" class="button">
-          Cancel
-        </button>
-      </div>
-    </ion-footer-bar>
 
 <!-- filter modals -->
 

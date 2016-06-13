@@ -364,13 +364,11 @@
 
   // ADD REPORT/SUGGESTION POINT
   $scope.createReportPoint = function(){
-    $scope.show($ionicLoading);
-    $timeout(function() {
       $scope.showReportControl = true;
       var reportPoint = {
           lat: $scope.center.lat,
           lng: $scope.center.lng,
-          message: "Drop the bicycle where you'd</br> like to see a bike station",
+          // message: "Drop the bicycle where you'd</br> like to see a bike station",
           focus: true,
           draggable: true,
           icon : $scope.reportIcon
@@ -380,9 +378,7 @@
         reportPoint : reportPoint
       };
 
-       console.log('update with timeout fired');
-      $scope.hide($ionicLoading);
-     }, 3000);
+
   };
 
   // CANCEL REPORT POINT
