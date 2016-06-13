@@ -9729,6 +9729,16 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+@-webkit-keyframes bounceIn {
+  0% {
+    -webkit-transform: scale(0.1);
+    opacity: 0; }
+  60% {
+    -webkit-transform: scale(0.05);
+    opacity: 1; }
+  100% {
+    -webkit-transform: scale(1); } }
+
 @keyframes bounceIn {
   0% {
     transform: scale(0.1);
@@ -9738,6 +9748,16 @@ a.button {
     opacity: 1; }
   100% {
     transform: scale(1); } }
+
+@keyframes moveOutLeft {
+  0% {
+    width: 30px;
+    opacity: 0; }
+  50% {
+    opacity: 0.5; }
+  100% {
+    width: 220px;
+    opacity: 1; } }
 
 @keyframes moveOutLeft {
   0% {
@@ -9769,10 +9789,43 @@ a.button {
   -webkit-animation-name: pulse;
   animation-name: pulse; }
 
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 body, p {
   color: #626262;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px; }
+
+.fade-on-enter {
+  opacity: 0;
+  /* make things invisible upon start */
+  -webkit-animation: fadeIn ease-in 1;
+  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation: fadeIn ease-in 1;
+  animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s; }
 
 .scale-in {
   transform: scale(1);
@@ -9925,7 +9978,6 @@ body, p {
 .benefitBlock {
   border-bottom: 1px solid #e2e2e2; }
   .benefitBlock p {
-    text-align: center;
     padding: 0 4%;
     line-height: 18px; }
   @media only screen and (min-width: 600px) {
