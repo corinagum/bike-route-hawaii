@@ -354,7 +354,7 @@ textarea {
 
 .button.surveyBtn {
   @extend .fdbckBtn;
-  right: 30px;
+  right: 15px;
   font-size: x-large;
 }
 
@@ -602,6 +602,7 @@ textarea {
 
 .leaflet-bar {
   box-shadow: none;
+  border-radius: 0;
 }
 
 .leaflet-control-geosearch {
@@ -799,7 +800,6 @@ textarea {
 
 .centerBox {
   width: 100%;
-  // background-color: pink;
   position: absolute;
   top: 19px;
   justify-content: center;
@@ -810,7 +810,7 @@ textarea {
   margin-bottom: 0px;
   display: flex;
   margin: auto;
-  width: 75%;
+  width: 87%;
 
   .row {
     margin-bottom: 0px;
@@ -827,8 +827,13 @@ textarea {
     line-height: 16px;
     font-size: 18px;
   }
+
   .eachSuggestbtn {
-    min-width: 116.08px;
+    @include borderRadius(10px);
+    border: 2px solid $balanced;
+    color: $typeGrey;
+    background-color: $stable;
+    min-width: 110.08px;
     min-height: 53px;
   }
 

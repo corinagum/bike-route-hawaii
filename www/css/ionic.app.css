@@ -10004,7 +10004,7 @@ textarea {
   right: 190px; }
 
 .button.surveyBtn {
-  right: 30px;
+  right: 15px;
   font-size: x-large; }
 
 .backArrow {
@@ -10193,7 +10193,8 @@ textarea {
   display: none; }
 
 .leaflet-bar {
-  box-shadow: none; }
+  box-shadow: none;
+  border-radius: 0; }
 
 .leaflet-control-geosearch {
   position: relative; }
@@ -10333,7 +10334,7 @@ textarea {
   margin-bottom: 0px;
   display: flex;
   margin: auto;
-  width: 75%; }
+  width: 87%; }
   #footer-bar.row .row {
     margin-bottom: 0px; }
   #footer-bar.row .directions_wrapper {
@@ -10344,7 +10345,14 @@ textarea {
     line-height: 16px;
     font-size: 18px; }
   #footer-bar.row .eachSuggestbtn {
-    min-width: 116.08px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    border: 2px solid #76CE95;
+    color: #626262;
+    background-color: #f8f8f8;
+    min-width: 110.08px;
     min-height: 53px; }
   #footer-bar.row span {
     font-size: large;

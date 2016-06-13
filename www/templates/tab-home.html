@@ -31,25 +31,25 @@
         <div class="row directions_wrapper">
             <div class="col">
               <img src=".././img/bike-assets/numOne.png" alt="">
-              <p>Drag marker where you'd like to see a bike station.</p>
+              <p>Drag marker.</p>
             </div>
             <div class="col">
               <img src=".././img/bike-assets/num2.png" alt="">
-              <p>Add the address.</p>
+              <p>Place bike icon where you'd like to see a station.</p>
             </div>
             <div class="col">
               <img src=".././img/bike-assets/num3.png" alt="">
-              <p>When finish, tap on 'Create Point'.</p>
+              <p>Click 'Create Point' or 'Cancel'.</p>
             </div>
-        </div>
-        <div class="col" style="background-color: #78DEAC">
+        <div class="col bothSuggestBtns">
 
-          <div class="eachSuggestbtn valign-wrapper" style="border-bottom: 1px solid #626262;" ng-click="cancelReportPoint()">
+          <div class="eachSuggestbtn valign-wrapper" ng-click="cancelReportPoint()" style="margin-bottom: 4px;">
             <span>Cancel</span>
           </div>
           <div class="eachSuggestbtn valign-wrapper" ng-click="openModal(6)" class="suggestButtonsDiv">
             <span>Create Point</span>
           </div>
+        </div>
         </div>
       </div>
     </div>

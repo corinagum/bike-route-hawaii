@@ -183,7 +183,11 @@
     leafletData.getMap().then(function(map){
 
       $scope.show($ionicLoading);
-      map.locate();
+      map.locate({setView: true})
+      .on('onlocationerror', function(e){
+                 console.log(e);
+                 alert("Location access denied.");
+             });
       // updateUserLocMarker();
       $scope.foundLocation = true;
     });
