@@ -79,56 +79,28 @@ angular.module('starter.services', [])
       return $http.delete('/' + id +'/delete');
     };
   }])
-  .service("UserService", ['$http', function($http){
+  .service("UserService", ['$http', 'processENV', function($http, processENV) {
+    var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
+    var domain;
+    if(!isCordovaApp){
+      domain = 'http://localhost:4000';
+    }
+    if(isCordovaApp){
+      domain = '.';
+    }
 
-// LOGIN
-    this.login = function(auth) {
-      return $http.post('/login', {
-        auth : auth
+// CREATES NEW USER
+    this.create = function(){
+      return $http.post(domain + "/user");
+    };
+
+// UPDATES CURRENT USER
+    this.edit = function(id){
+      return $http.put(domain + "/user/" + id, {
+        user : user
       });
-    };
-// REGISTER
-    this.signUp = function(register) {
-      return $http.post('/register', {
-        register : register
-      });
-    };
-// LOGOUT
-    this.logout = function(){
-      return $http.get('/logout');
-    };
-
-//AUTHORIZATION STATUS
-    this.authStatus = function(){
-      return $http.get('/authStatus');
-    };
-
-}])
-
-
-.service("UserService", ['$http', function($http){
-
-// LOGIN
-    this.login = function(auth) {
-      return $http.post('/login', {
-        auth : auth
-      });
-    };
-// REGISTER
-    this.signUp = function(register) {
-      return $http.post('/register', {
-        register : register
-      });
-    };
-// LOGOUT
-    this.logout = function(){
-      return $http.get('/logout');
-    };
-
-//AUTHORIZATION STATUS
-    this.authStatus = function(){
-      return $http.get('/authStatus');
     };
 
 }]);
+
 
