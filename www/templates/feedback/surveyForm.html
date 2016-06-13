@@ -1,4 +1,9 @@
-<ion-modal-view class="landing" view-title="Survey">
+<ion-view class="landing" view-title="Survey">
+
+<ion-header-bar class="bar bar-header">
+  <a href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
+</ion-header-bar>
+
   <ion-content style="background-color: #626262;">
     <div class="list alohaLandingOne addPadding" controller="MapCtrl">
 
@@ -51,7 +56,7 @@
       <div class="radioBlock">
         <div class="topicDiv hide-on-small-only"><span>Zipcode</span></div>
         <div class="radioSelections">
-          <div class="zipcodeInput"><input autofocus class="zipcodeInput" type="text" placeholder="| Zipcode"></input></div>
+          <div class="zipcodeInput"><input class="zipcodeInput" type="text" placeholder="| Zipcode"></input></div>
         </div>
       </div>
 
@@ -60,4 +65,4 @@
       </div>
     </div>
   </ion-content>
-</ion-modal-view>
+</ion-view>
