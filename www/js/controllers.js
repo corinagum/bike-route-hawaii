@@ -5,19 +5,28 @@
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory) {
 
+
     console.log("mapctrl in use");
     $scope.userStart = function(){
       UserService.create()
       .then(function(data){
-        $scope.user = data.data.user;
-        console.log("user", $scope.user);
+        UserService.updateUser(data.data.user);
+        console.log("user updated to ", UserService.getUser());
       });
     };
 
-    $scope.updatePath = function(){
-      UserService.edit($scope.user)
+    $scope.updatePath = function(path){
+      $scope.user = UserService.getUser();
+      console.log("updatePath user ", UserService.getUser());
+      if($scope.user.paths !== null){
+        $scope.user.paths.push(path);
+      }else{
+        $scope.user.paths = [path];
+      }
+      UserService.edit($scope.user.id)
       .then(function(data){
-
+        console.log("update data", data);
+        UserService.updateUser($scope.user);
       });
     };
 
@@ -96,6 +105,7 @@
     if(isCordovaApp) {
       navigator.geolocation.getCurrentPosition(function(position){
       $ionicLoading.hide();
+        console.log("loc marker is cordova app");
         if(position.coords.longitude < -158.006744|| position.coords.longitude > -157.640076|| position.coords.latitude > 21.765877 || position.coords.latitude < 21.230502){
           map.panTo({
             lat : 21.3008900859581,
@@ -122,6 +132,7 @@
         .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
         .then(function (position) {
           $ionicLoading.hide();
+          console.log("loc marker is not cordova app");
           if(position.coords.longitude < -158.006744|| position.coords.longitude > -157.640076|| position.coords.latitude > 21.765877 || position.coords.latitude < 21.230502){
             map.panTo({
               lat : 21.3008900859581,
@@ -366,6 +377,7 @@
   //FIND POINTS IN RADIUS ON LOCATION FOUND
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
+    console.log("location found", event, args);
     var leafEvent = args.leafletEvent;
     $scope.center.autoDiscover = true;
 

@@ -128,23 +128,24 @@
       <script id="templates/alohaLanding.html" type="text/ng-template">
         <ion-view class="landing" view-title="Bikeshare Hawaii">
           <ion-content class="padding">
-            <div class="alohaLandingOne hide-on-med-and-up">
+            <!-- <div ng-controller="MapCtrl"> -->
+            <div ng-controller="MapCtrl" class="alohaLandingOne hide-on-med-and-up">
               <p class="contentPar">Help us customize your </br>experience by selecting the option </br>that fits you the best.</p>
               <div class="buttonLinks">
-                <a href="#/tab/main"><div class="button btnDrk waves-effect waves-light">I don’t know what </br>bikeshare is and want </br>to learn more</div></a></br>
-                <a href="#/tab/mapSite"><div class="button btnDrk waves-effect waves-light">I’m excited about </br>bikeshare and want to </br>know how I can use it</div></a></br>
-                <a href="#/tab/benefits"><div class="button btnDrk waves-effect waves-light">I'm not sure my </br>community needs </br>Bikeshare Hawaii.</div></a></br>
+                <a ng-click="updatePath('info')" href="#/tab/main"><div class="button btnDrk waves-effect waves-light">I don’t know what </br>bikeshare is and want </br>to learn more</div></a></br>
+                <a ng-click="updatePath('map')" href="#/tab/mapSite"><div class="button btnDrk waves-effect waves-light">I’m excited about </br>bikeshare and want to </br>know how I can use it</div></a></br>
+                <a ng-click="updatePath('benefits')" href="#/tab/benefits"><div class="button btnDrk waves-effect waves-light">I'm not sure my </br>community needs </br>Bikeshare Hawaii.</div></a></br>
               </div>
             </div>
 
 
             <!-- BROWSER VIEW LANDING INTRO -->
-            <div class="alohaLandingOne hide-on-small-only webViewLandingButton">
-              <a href="#/tab/main"><img src="img/bike-assets/web-1.png" alt=""></a>
-              <a href="#/tab/benefits"><img src="img/bike-assets/web-2.png" alt=""></a>
-              <a href="#/tab/mapSite"><img src="img/bike-assets/web-3.png" alt=""></a>
+            <div ng-controller="MapCtrl" class="alohaLandingOne hide-on-small-only webViewLandingButton">
+              <a ng-click="updatePath('info')" href="#/tab/main"><img src="img/bike-assets/web-1.png" alt=""></a>
+              <a ng-click="updatePath('benefits')" href="#/tab/benefits"><img src="img/bike-assets/web-2.png" alt=""></a>
+              <a ng-click="updatePath('map')" href="#/tab/mapSite"><img src="img/bike-assets/web-3.png" alt=""></a>
             </div>
-
+            <!-- </div> -->
           </ion-content>
         </ion-view>
       </script>

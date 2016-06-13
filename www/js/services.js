@@ -89,6 +89,16 @@ angular.module('starter.services', [])
       domain = '.';
     }
 
+    var user = null;
+
+    this.updateUser = function(u){
+      user = u;
+    };
+
+    this.getUser = function(){
+      return user;
+    };
+
 // CREATES NEW USER
     this.create = function(){
       return $http.post(domain + "/user");
