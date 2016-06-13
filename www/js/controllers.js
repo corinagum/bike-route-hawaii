@@ -477,8 +477,12 @@
     }
 
     //CHANGE BACK ICON WHEN MODAL CLOSES
-    $scope.changeBackIcon = function () {
+    function changeBikeIcon() {
       $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
+    }
+
+    $scope.changeBackIcon = function () {
+      $timeout(changeBikeIcon, 2000);
     };
 
   });
