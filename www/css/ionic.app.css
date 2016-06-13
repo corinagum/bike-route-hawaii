@@ -9739,6 +9739,16 @@ a.button {
   100% {
     transform: scale(1); } }
 
+@keyframes moveOutLeft {
+  0% {
+    width: 30px;
+    opacity: 0; }
+  50% {
+    opacity: 0.5; }
+  100% {
+    width: 220px;
+    opacity: 1; } }
+
 body, p {
   color: #626262;
   font-family: 'Open Sans', sans-serif;
@@ -10129,13 +10139,13 @@ textarea {
     width: 85%; }
 
 .moreInfoBlockBtn {
-  animation: bounceIn 2s; }
+  animation: bounceIn 1s; }
 
 .mapBlockBtn img {
-  animation: bounceIn 3s; }
+  animation: bounceIn 2s; }
 
 .benefitsBlockBtn img {
-  animation: bounceIn 4s; }
+  animation: bounceIn 3s; }
 
 .wholeModalDiv {
   position: absolute;
