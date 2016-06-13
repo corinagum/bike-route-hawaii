@@ -26,7 +26,7 @@
   <body ng-app="starter">
 
       <script id="templates/tabs.html" type="text/ng-template">
-            <ion-nav-view name="home-tab"></ion-nav-view>
+            <ion-nav-view name="home-tab" ></ion-nav-view>
             <ion-nav-view name="main-tab"></ion-nav-view>
             <ion-nav-view name="feedback-tab"></ion-nav-view>
       </script>
@@ -38,7 +38,7 @@
             <p class="contentTitle">Aloha!</p><br>
             <p class="contentPar"> We need your help! We’re </br>planning a brand new transportation </br>program called BIKESHARE. </br>Please help us understand how </br>our program can best serve you.</p>
             <br>
-            <a class="button waves-effect waves-light" href="#/tab/aloha">Let's Go!</a>
+            <a class="button waves-effect waves-light" href="#/tab/aloha" nav-transition="none">Let's Go!</a>
           </div>
           </ion-content>
         </ion-view>
@@ -60,9 +60,9 @@
 
             <!-- BROWSER VIEW LANDING INTRO -->
             <div class="alohaLandingOne hide-on-small-only webViewLandingButton">
-              <a href="#/tab/main"><img src="img/bike-assets/web-1.png" alt=""></a>
-              <a href="#/tab/benefits"><img src="img/bike-assets/web-2.png" alt=""></a>
-              <a href="#/tab/mapSite"><img src="img/bike-assets/web-3.png" alt=""></a>
+              <a href="#/tab/main" nav-transition="none"><img src="img/bike-assets/web-1.png" alt=""></a>
+              <a href="#/tab/mapSite" nav-transition="none"><img src="img/bike-assets/web-3.png" alt=""></a>
+              <a href="#/tab/benefits" nav-transition="none"><img src="img/bike-assets/web-2.png" alt=""></a>
             </div>
 
           </ion-content>

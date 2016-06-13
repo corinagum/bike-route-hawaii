@@ -455,7 +455,8 @@
   $ionicModal.fromTemplateUrl('templates/feedback/fbackForm.html', {
     id       : '2',
     scope    : $scope,
-    animation: 'scale-in'
+    animation: 'scale-in',
+    focusFirstInput: true,
   }).then(function(modal) {
     $scope.modal2 = modal;
   });
