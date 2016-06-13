@@ -87,14 +87,14 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
           }
         }
       })
-      .state('tabs.facts', {
-        url: "/facts",
-        views: {
-          'home-tab': {
-            templateUrl: "templates/facts.html",
-          }
-        }
-      })
+      // .state('tabs.facts', {
+      //   url: "/facts",
+      //   views: {
+      //     'home-tab': {
+      //       templateUrl: "templates/facts.html",
+      //     }
+      //   }
+      // })
       .state('tabs.alohaLanding', {
         url: "/aloha",
         views: {

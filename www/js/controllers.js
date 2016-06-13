@@ -475,7 +475,14 @@
       $scope.isFavorited = $scope.checkFavorite($scope.currentMarkerProperties);
       $scope.isSafetyWarn = $scope.checkSafetyWarn($scope.currentMarkerProperties);
     }
+
+    //CHANGE BACK ICON WHEN MODAL CLOSES
+    $scope.changeBackIcon = function () {
+      $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
+    };
+
   });
+
 
   //////// BEGINNIG of MODAL ////////
   $ionicModal.fromTemplateUrl('templates/feedback/fbckBtns.html', {
@@ -503,7 +510,6 @@
     $scope.modal3 = modal;
   });
 
-  // // MODAL FOR LANDMARK LISTS
   $ionicModal.fromTemplateUrl('markerDetail.html', {
     id: '4',
     scope: $scope,
@@ -520,13 +526,13 @@
     $scope.modal5 = modal;
   });
 
-  $ionicModal.fromTemplateUrl('reportDetail.html', {
-    id: '6',
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal6 = modal;
-  });
+  // $ionicModal.fromTemplateUrl('reportDetail.html', {
+  //   id: '6',
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.modal6 = modal;
+  // });
 
   // $ionicModal.fromTemplateUrl('favorites.html', {
   //   id: '7',
