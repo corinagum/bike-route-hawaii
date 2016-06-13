@@ -67,6 +67,7 @@
       iconAnchor:   [0, 0],
       shadowAnchor: [4, 62],
       popupAnchor:  [15, 0],
+      className: 'bikeIconSuggestion',
       message: 'Drop the bycicle where you\'d like to see the station'
     }
   });
@@ -102,7 +103,7 @@
         });
     } else {
       $cordovaGeolocation
-        .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
+        .getCurrentPosition({timeout : 6000, enableHighAccuracy : true})
         .then(function (position) {
           $ionicLoading.hide();
           if(position.coords.longitude < -158.006744|| position.coords.longitude > -157.640076|| position.coords.latitude > 21.765877 || position.coords.latitude < 21.230502){
@@ -185,9 +186,9 @@
       $scope.show($ionicLoading);
       map.locate({setView: true})
       .on('onlocationerror', function(e){
-                 console.log(e);
-                 alert("Location access denied.");
-             });
+         console.log(e);
+         alert("Location access denied.");
+       });
       // updateUserLocMarker();
       $scope.foundLocation = true;
     });
@@ -306,20 +307,22 @@
   $scope.showDetailHeader = false;
 
 
-  $scope.$on('leafletDirectiveMarker.map.click', function(event,args){
-    if(args.modelName !== 'reportPoint'){
-      if($scope.stationClicked.lastClicked){
-        $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
-      }
-      $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
-      $scope.stationClicked = $scope.markers[args.modelName].properties;
-      $scope.stationClicked.lastClicked = args.modelName;
-      $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
-      $scope.updateClosestBBB();
-      $scope.openModal(4);
-      // $scope.showDetailHeader = true;
-    }
-  });
+  // $scope.$on('leafletDirectiveMarker.map.click', function(event,args){
+  //   if(args.modelName !== 'reportPoint'){
+  //     if($scope.stationClicked.lastClicked){
+  //       $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
+  //     }
+  //     $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
+  //     $scope.stationClicked = $scope.markers[args.modelName].properties;
+  //     $scope.stationClicked.lastClicked = args.modelName;
+  //     $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
+  //     $scope.updateClosestBBB();
+  //     $scope.openModal(4);
+  //   }
+
+  //   console.log("I CLICKED YOU");
+
+  // });
 
   $scope.hideDetailHeader = function () {
     $scope.showDetailHeader = false;
@@ -436,6 +439,19 @@
 
   // SAVE CURRENT MARKER PROPERTIES TO SCOPE
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
+
+    if(args.modelName !== 'reportPoint'){
+      if($scope.stationClicked.lastClicked){
+        $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
+      }
+      $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
+      $scope.stationClicked = $scope.markers[args.modelName].properties;
+      $scope.stationClicked.lastClicked = args.modelName;
+      $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
+      $scope.updateClosestBBB();
+      $scope.openModal(4);
+    }
+
     $scope.currentMarkerProperties = args.leafletObject.options.properties;
     if ($scope.currentMarkerProperties !== undefined){
       $scope.isFavorited = $scope.checkFavorite($scope.currentMarkerProperties);

@@ -9749,6 +9749,26 @@ a.button {
     width: 220px;
     opacity: 1; } }
 
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(4); }
+  50% {
+    -webkit-transform: scale(1.1); }
+  100% {
+    -webkit-transform: scale(1); } }
+
+@keyframes pulse {
+  0% {
+    transform: scale(4); }
+  50% {
+    transform: scale(1.1); }
+  100% {
+    transform: scale(1); } }
+
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse; }
+
 body, p {
   color: #626262;
   font-family: 'Open Sans', sans-serif;
