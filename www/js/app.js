@@ -130,16 +130,16 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
             controller: 'MapCtrl'
           }
         }
+      })
+      .state('tabs.survey', {
+        url: "/survey",
+        views: {
+          'home-tab': {
+            templateUrl: "templates/feedback/surveyForm.html",
+            controller: 'MapCtrl'
+          }
+        }
       });
-      // .state('tabs.fbForm', {
-      //   url: "/feedback",
-      //   views: {
-      //     'home-tab': {
-      //       templateUrl: "templates/feedback/fbackForm.html",
-      //       controller: 'MapCtrl'
-      //     }
-      //   }
-      // });
       // .state('feedback.mahaloFb', {
       //   url: "/mahalo",
       //   views: {
