@@ -27,9 +27,6 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
    }
  })
 .run(function($rootScope, $ionicLoading, $ionicPlatform) {
-    // $rootScope.$on('loading:show', function() {
-    //   $ionicLoading.show({template: 'Hi There!'});
-    // });
 
     $rootScope.$on('loading:hide', function() {
       $ionicLoading.hide();
