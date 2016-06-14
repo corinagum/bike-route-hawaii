@@ -1,14 +1,14 @@
 angular.module('starter.services', [])
 
 .service("PointService", ['$http', 'processENV', function($http, processENV) {
-  var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
-  var domain;
-  if(!isCordovaApp){
-    domain = 'http://localhost:4000';
-  }
-  if(isCordovaApp){
+  // var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
+  // var domain;
+  // if(!isCordovaApp){
+  //   domain = 'http://localhost:4000';
+  // }
+  // if(isCordovaApp){
     domain = '.';
-  }
+  // }
 
   this.getPoint = function() {
     return $http.get(domain + '/api/points');
