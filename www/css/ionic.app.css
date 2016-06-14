@@ -9823,9 +9823,9 @@ body, p {
   /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -webkit-animation-duration: 1s;
-  -moz-animation-duration: 1s;
-  animation-duration: 1s; }
+  -webkit-animation-duration: 0.3s;
+  -moz-animation-duration: 0.3s;
+  animation-duration: 0.3s; }
 
 .scale-in {
   transform: scale(1);
@@ -10220,13 +10220,13 @@ textarea {
     width: 85%; }
 
 .moreInfoBlockBtn {
-  animation: bounceIn 1s; }
+  animation: bounceIn 0.25s; }
 
 .mapBlockBtn img {
-  animation: bounceIn 2s; }
+  animation: bounceIn 0.3s; }
 
 .benefitsBlockBtn img {
-  animation: bounceIn 3s; }
+  animation: bounceIn 0.4s; }
 
 .wholeModalDiv {
   position: absolute;
