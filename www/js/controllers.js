@@ -250,20 +250,20 @@
   };
 
   // DEFAULT RADIUS VALUES
-  $scope.radius = 1610;
-  $scope.radiusHalf = false;
-  $scope.radiusMile = true;
-  $scope.radiusTwoMile = false;
-  $scope.radiusAll = false;
+  // $scope.radius = 1610;
+  // $scope.radiusHalf = false;
+  // $scope.radiusMile = true;
+  // $scope.radiusTwoMile = false;
+  // $scope.radiusAll = false;
 
   // RADIUS SETTER
-  $scope.setRadius = function(rad){
-    $scope.radius = rad;
-    if ( rad === 805) {  $scope.radiusHalf = true; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
-    if ( rad === 1610) {  $scope.radiusHalf = false; $scope.radiusMile = true; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
-    if ( rad === 3220) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = true; $scope.radiusAll = false; }
-    if ( rad === 50000) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = true; }
-  };
+  // $scope.setRadius = function(rad){
+  //   $scope.radius = rad;
+  //   if ( rad === 805) {  $scope.radiusHalf = true; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
+  //   if ( rad === 1610) {  $scope.radiusHalf = false; $scope.radiusMile = true; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
+  //   if ( rad === 3220) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = true; $scope.radiusAll = false; }
+  //   if ( rad === 50000) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = true; }
+  // };
 
   // LOOPS THROUGH DATA RETURNED TO CHECK ITS TYPE AND IF IT SHOULD BE ASSIGNED A MARKER
   function createMarkers(array, name){
@@ -342,7 +342,7 @@
   };
 
 
-  $scope.showDetailHeader = false;
+  // $scope.showDetailHeader = false;
 
 
   // $scope.$on('leafletDirectiveMarker.map.click', function(event,args){
@@ -362,9 +362,9 @@
 
   // });
 
-  $scope.hideDetailHeader = function () {
-    $scope.showDetailHeader = false;
-  };
+  // $scope.hideDetailHeader = function () {
+  //   $scope.showDetailHeader = false;
+  // };
 
   function setMarkersReturned(data){
     createMarkers(data, 'bikeShare');
@@ -464,11 +464,11 @@
   // };
 
   //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
-  $scope.pinTypes = [
-      { text: "Bike Share", checked: true },
-      { text: "Landmark", checked: false },
-      { text: "Bike Rack", checked: false }
-    ];
+  // $scope.pinTypes = [
+  //     { text: "Bike Share", checked: true },
+  //     { text: "Landmark", checked: false },
+  //     { text: "Bike Rack", checked: false }
+  //   ];
 
   //LOAD ANIMATION SHOW
   $scope.show = function() {
@@ -544,7 +544,7 @@
   $ionicModal.fromTemplateUrl('markerDetail.html', {
     id: '4',
     scope: $scope,
-    animation: 'slide-in-up'
+    animation: 'scale-in'
   }).then(function(modal) {
     $scope.modal4 = modal;
   });
@@ -703,13 +703,13 @@
     $ionicHistory.goBack();
   };
 
-  $scope.class = "wholeModalDiv";
-  $scope.changeClass = function(){
-    if ($scope.class === "wholeModalDiv")
-      $scope.class = "blue";
-    else
-      $scope.class = "wholeModalDiv";
-  };
+  // $scope.class = "wholeModalDiv";
+  // $scope.changeClass = function(){
+  //   if ($scope.class === "wholeModalDiv")
+  //     $scope.class = "blue";
+  //   else
+  //     $scope.class = "wholeModalDiv";
+  // };
 
 
   //>>>>>>>>>>>> POPOVER EVENT

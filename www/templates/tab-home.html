@@ -269,21 +269,23 @@
 
   <script id="markerDetail.html" type="text/ng-template">
     <div class="modal wholeModalDiv">
-      <ion-header-bar class="titleDetailBar">
+      <ion-header-bar class="titleDetailBar" ng-click="closeModal(4); hideDetailHeader();changeBackIcon();">
         <p class="d_title" >{{stationClicked.name}}</p>
-        <i class="ion-ios-arrow-down right" ng-click="closeModal(4); hideDetailHeader();changeBackIcon();"></i>
+        <i class="ion-ios-arrow-down right"></i>
       </ion-header-bar>
         <ion-content  class="detailModalBlock">
           <!-- <ion-scroll direction="y" > -->
-            <div class="d_image">
+            <div class="d_image center">
               <img class="stationPhoto" src="{{stationClicked.photolink}}" alt="">
             </div>
-            <div class="likes">
-              <i class="ion-ios-heart-outline fa-2x right">{{ numberOfLikes }}<p>Likes</p></i>
+            <div class="d_title">
+              <span>Location</span>
+              <div class="likes right valign-wrapper">
+                <i class="ion-ios-heart">{{ numberOfLikes }}<p>&nbsp&nbspLikes</p></i>
+              </div>
             </div>
-            <div class="d_title"> <span>Location</span> </div>
             <div class="d_location">{{stationClicked.street}}</div>
-            <div class="d_title">Ride time to:</div>
+            <div class="d_title"><span>Ride time to:</span></div>
             <div class="row">
               <div class="d_location col">Downtown: {{rideTime('downtown')}} min.</div>
               <div class="d_location col">Kaka'ako: {{rideTime('kakaako')}} min.</div>
@@ -296,7 +298,7 @@
               <div class="d_location col">Diamond Head: {{rideTime('diamondhead')}} min.</div>
             </div>
 
-            <div class="d_title">What's near this station</div>
+            <div class="d_title"><span>What's near this station</span></div>
             <div ng-repeat= 'item in closestBBB' style="padding-top: 13px;">
               <div class="row">
                 <div class="col">
@@ -311,11 +313,11 @@
                     </div>
                 </div>
 
-                <div class="bbbImage right col">
+                <div class="bbbImage right col l1">
                   <img src="http://boyerlawfirmblog.com/wp-content/uploads/2011/08/bbb1.jpg" alt="">
                 </div>
 
-                <div class="col biz_image">
+                <div class="col biz_image valign-wrapper">
                   <img ng-if="closestBBB" src={{item.image}} alt="">
                 </div>
               </div>
@@ -326,7 +328,7 @@
     <!-- </div> -->
   </script>
 
-  <script id="menu.html" type="text/ng-template">
+  <!-- <script id="menu.html" type="text/ng-template">
     <ion-side-menus>
 
       <ion-side-menu-content drag-content="false">
@@ -346,7 +348,7 @@
       </ion-side-menu>
     </ion-side-menus>
 
-  </script>
+  </script> -->
 
 <!--   <script id="bikeRackList.html" type="text/ng-template">
     <div class="modal">

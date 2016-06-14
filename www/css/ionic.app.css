@@ -9833,7 +9833,7 @@ body, p {
 
 .scale-in.ng-enter,
 .scale-in > .ng-enter {
-  transition: all cubic-bezier(0.1, 0.7, 0.8, 0.6) 800ms; }
+  transition: all cubic-bezier(0.1, 0.5, 0.6, 0.9) 800ms; }
 
 .scale-in.ng-enter-active,
 .scale-in > .ng-enter-active {
@@ -10246,12 +10246,31 @@ textarea {
     right: 30px; }
 
 .detailModalBlock {
-  margin: 30px 46px; }
+  padding: 34px 30px; }
+  .detailModalBlock .col {
+    padding: 0px; }
+  .detailModalBlock .likes {
+    width: 82px;
+    height: 24px;
+    border: 1px solid #626262;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    border-radius: 7px; }
+    .detailModalBlock .likes i {
+      display: flex;
+      margin: auto;
+      font-size: large; }
+  .detailModalBlock .d_image {
+    width: 100%; }
+    .detailModalBlock .d_image img {
+      width: 100%;
+      height: auto; }
   .detailModalBlock .nameAndAdd {
     line-height: 9px; }
   .detailModalBlock .stationPhoto {
     max-height: 300px; }
-  .detailModalBlock .d_title {
+  .detailModalBlock .d_title span {
     padding: 10px 0px;
     color: #76CE95;
     font-size: 14px;
@@ -10260,15 +10279,16 @@ textarea {
     font-size: 14px;
     font-weight: 200; }
   .detailModalBlock .bbbImage {
-    position: absolute;
-    left: 320px; }
+    background-color: pink; }
     .detailModalBlock .bbbImage img {
+      position: absolute;
+      right: 0px;
       height: 36.47px; }
   .detailModalBlock .biz_image {
-    position: absolute;
-    left: 347px; }
+    background-color: yellow; }
     .detailModalBlock .biz_image img {
-      max-height: 66px; }
+      max-width: 106px;
+      max-height: auto; }
 
 .displayNone {
   display: none; }

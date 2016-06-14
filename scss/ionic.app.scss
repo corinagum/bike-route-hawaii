@@ -27,13 +27,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 $medium: "only screen and (min-width:500px)";
 $large: "only screen and (min-width:600px)";
 
-@mixin borderRadius($radius) {
- -webkit-border-radius: $radius;
-    -moz-border-radius: $radius;
-     -ms-border-radius: $radius;
-         border-radius: $radius;
-}
-
 
 body, p {
   color: $typeGrey;
@@ -65,7 +58,7 @@ body, p {
 }
 .scale-in.ng-enter,
 .scale-in > .ng-enter {
-  transition: all cubic-bezier(.1, .7, .8, .6) 800ms;
+  transition: all cubic-bezier(.1, .5, .6, .9) 800ms;
 }
 
 .scale-in.ng-enter-active,
@@ -586,7 +579,30 @@ textarea {
 }
 
 .detailModalBlock {
-  margin: 30px 46px;
+  padding: 34px 30px;
+
+  .col {
+    padding: 0px;
+  }
+
+  .likes {
+     i {
+      display: flex;
+      margin: auto;
+      font-size: large;
+    }
+    width: 82px;
+    height: 24px;
+    border: 1px solid $typeGrey;
+    @include borderRadius(7px);
+
+
+  }
+
+  .d_image {
+    width: 100%;
+    img {width: 100%; height: auto;}
+  }
 
   .nameAndAdd {
     line-height: 9px;
@@ -596,7 +612,7 @@ textarea {
     max-height: 300px;
   }
 
-  .d_title {
+  .d_title span {
     padding: 10px 0px;
     color: $balanced;
     font-size: 14px;
@@ -609,16 +625,19 @@ textarea {
   }
 
   .bbbImage {
-    position: absolute;
-    left: 320px;
+    background-color: pink;
     img {
+      position: absolute;
+      right: 0px;
       height: 36.47px;
     }
   }
   .biz_image {
-    position: absolute;
-    left: 347px;
-    img {max-height: 66px;}
+    background-color: yellow;
+    img {
+      max-width: 106px;
+      max-height: auto;
+    }
   }
 }
 

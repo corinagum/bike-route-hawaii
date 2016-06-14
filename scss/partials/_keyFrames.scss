@@ -1,4 +1,12 @@
 
+
+@mixin borderRadius($radius) {
+ -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+     -ms-border-radius: $radius;
+         border-radius: $radius;
+}
+
 @-webkit-keyframes bounceIn {
   0% {-webkit-transform: scale(0.1); opacity: 0;}
   60% {-webkit-transform: scale(0.05); opacity: 1;}
