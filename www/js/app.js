@@ -52,7 +52,7 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
 
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
-
+    $ionicConfigProvider.scrolling.jsScrolling(false);
   //GLOBALLY CREATING INTERCEPTORS WHILE WINDOW LOADS
   // $httpProvider.interceptors.push(function ($rootScope) {
   //   return {
