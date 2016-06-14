@@ -9791,19 +9791,19 @@ a.button {
 
 @-webkit-keyframes fadeIn {
   from {
-    opacity: 0; }
+    opacity: 0.5; }
   to {
     opacity: 1; } }
 
 @-moz-keyframes fadeIn {
   from {
-    opacity: 0; }
+    opacity: 0.5; }
   to {
     opacity: 1; } }
 
 @keyframes fadeIn {
   from {
-    opacity: 0; }
+    opacity: 0.5; }
   to {
     opacity: 1; } }
 
@@ -9823,9 +9823,9 @@ body, p {
   /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -webkit-animation-duration: 0.3s;
-  -moz-animation-duration: 0.3s;
-  animation-duration: 0.3s; }
+  -webkit-animation-duration: 0.25s;
+  -moz-animation-duration: 0.25s;
+  animation-duration: 0.25s; }
 
 .scale-in {
   transform: scale(1);
@@ -10300,6 +10300,15 @@ textarea {
   .detailModalBlock .biz_image {
     background-color: yellow;
     width: 100px; }
+
+@media only screen and (min-width: 500px) {
+  .modal {
+    top: 0;
+    right: 100%;
+    bottom: 0;
+    left: 0;
+    min-height: 100%;
+    width: 34em; } }
 
 .displayNone {
   display: none; }
