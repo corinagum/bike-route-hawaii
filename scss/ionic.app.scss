@@ -557,7 +557,6 @@ textarea {
 
 .wholeModalDiv {
   position: absolute;
-  // bottom: -104em;
   height: 100%;
 }
 
@@ -584,6 +583,9 @@ textarea {
   .col {
     padding: 0px;
   }
+  .row {
+    margin: 0;
+  }
 
   .likes {
      i {
@@ -591,53 +593,76 @@ textarea {
       margin: auto;
       font-size: large;
     }
-    width: 82px;
-    height: 24px;
-    border: 1px solid $typeGrey;
-    @include borderRadius(7px);
+    padding-top: 2px;
+    width: 87px;
+    height: 27px;
+    border: 2px solid lighten($typeGrey, 50%);
+    @include borderRadius(10px);
+  }
 
-
+  .bbbImageLogo {
+    img{max-width: 20px; }
+    // background-color: pink;
   }
 
   .d_image {
-    width: 100%;
     img {width: 100%; height: auto;}
   }
 
-  .nameAndAdd {
-    line-height: 9px;
+  .eachBusinessBlockContent {
+    display: flex;
+  }
+
+  .titleAddDescription {
+    width: 100%;
+    padding: 0px 9px 9px 18px;
+    // background-color: yellow;
+  }
+
+  .title_address {
+    line-height: 12px;
+    margin-bottom: 12px;
+  }
+   h5 {
+    margin-bottom: 2px;
+   }
+
+   .businessDescription{
+    line-height: 14px;
+   }
+  .imageOfBusiness {
+    // background-color: rgba($typeGrey, 0.2);
+    // border: 3px solid purple;
+    max-width: 102.34px;
+    min-width: 102.34px;
+
+    img.fixedImageSize {
+      width: 100%;
+    }
   }
 
   .stationPhoto {
-    max-height: 300px;
+    max-height: auto;
   }
 
   .d_title span {
     padding: 10px 0px;
     color: $balanced;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 200;
   }
 
   .d_location {
     font-size: 14px;
-    font-weight: 200;
   }
 
-  .bbbImage {
-    background-color: pink;
-    img {
-      position: absolute;
-      right: 0px;
-      height: 36.47px;
-    }
+  div.row {
+    padding: 0;
   }
+
   .biz_image {
     background-color: yellow;
-    img {
-      max-width: 106px;
-      max-height: auto;
-    }
+      width: 100px;
   }
 }
 

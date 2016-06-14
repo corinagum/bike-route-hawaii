@@ -10249,46 +10249,57 @@ textarea {
   padding: 34px 30px; }
   .detailModalBlock .col {
     padding: 0px; }
+  .detailModalBlock .row {
+    margin: 0; }
   .detailModalBlock .likes {
-    width: 82px;
-    height: 24px;
-    border: 1px solid #626262;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    -ms-border-radius: 7px;
-    border-radius: 7px; }
+    padding-top: 2px;
+    width: 87px;
+    height: 27px;
+    border: 2px solid #e2e2e2;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px; }
     .detailModalBlock .likes i {
       display: flex;
       margin: auto;
       font-size: large; }
-  .detailModalBlock .d_image {
-    width: 100%; }
-    .detailModalBlock .d_image img {
-      width: 100%;
-      height: auto; }
-  .detailModalBlock .nameAndAdd {
-    line-height: 9px; }
+  .detailModalBlock .bbbImageLogo img {
+    max-width: 20px; }
+  .detailModalBlock .d_image img {
+    width: 100%;
+    height: auto; }
+  .detailModalBlock .eachBusinessBlockContent {
+    display: flex; }
+  .detailModalBlock .titleAddDescription {
+    width: 100%;
+    padding: 0px 9px 9px 18px; }
+  .detailModalBlock .title_address {
+    line-height: 12px;
+    margin-bottom: 12px; }
+  .detailModalBlock h5 {
+    margin-bottom: 2px; }
+  .detailModalBlock .businessDescription {
+    line-height: 14px; }
+  .detailModalBlock .imageOfBusiness {
+    max-width: 102.34px;
+    min-width: 102.34px; }
+    .detailModalBlock .imageOfBusiness img.fixedImageSize {
+      width: 100%; }
   .detailModalBlock .stationPhoto {
-    max-height: 300px; }
+    max-height: auto; }
   .detailModalBlock .d_title span {
     padding: 10px 0px;
     color: #76CE95;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 200; }
   .detailModalBlock .d_location {
-    font-size: 14px;
-    font-weight: 200; }
-  .detailModalBlock .bbbImage {
-    background-color: pink; }
-    .detailModalBlock .bbbImage img {
-      position: absolute;
-      right: 0px;
-      height: 36.47px; }
+    font-size: 14px; }
+  .detailModalBlock div.row {
+    padding: 0; }
   .detailModalBlock .biz_image {
-    background-color: yellow; }
-    .detailModalBlock .biz_image img {
-      max-width: 106px;
-      max-height: auto; }
+    background-color: yellow;
+    width: 100px; }
 
 .displayNone {
   display: none; }
