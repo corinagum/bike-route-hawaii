@@ -20,6 +20,7 @@ router.get('/:id', function(req,res){
 });
 
 router.post('/', function(req,res){
+  console.log(req.user);
   User.create()
   .then(function(data){
     res.send({
@@ -33,19 +34,17 @@ router.post('/', function(req,res){
 router.put('/:id', function(req,res){
 
   User.update({
-    type : req.body.user.type,
     name : req.body.user.name,
-    description  : req.body.user.description,
-    info :req.body.user.info,
-    fid :req.body.user.fid,
-    site_id:req.body.user.site_id,
-    street :req.body.user.street,
-    side :req.body.user.side,
-    geolink :req.body.user.geolink,
-    photolink :req.body.user.photolink,
-    upDownVote : req.body.user.upDownVote,
-    votesCounter : req.body.user.votesCounter,
-    safetyCounter : req.body.user.votesCounter
+    age : req.body.user.age,
+    gender : req.body.user.gender,
+    zipcode : req.body.user.zipcode,
+    email: req.body.user.email,
+    location: req.body.user.location,
+    paths : req.body.user.paths,
+    liked : req.body.user.liked,
+    suggested : req.body.user.suggested,
+    commentType : req.body.user.commentType,
+    comment : req.body.user.comment
   }, {
     where : {id : req.params.id}
   })

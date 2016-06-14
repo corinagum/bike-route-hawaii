@@ -5,20 +5,38 @@
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$timeout', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$timeout) {
 
+
     console.log("mapctrl in use");
     $scope.userStart = function(){
       UserService.create()
       .then(function(data){
-        $scope.user = data.data.user;
-        console.log("user", $scope.user);
+        UserService.updateUser(data.data.user);
+        console.log("user updated to ", UserService.getUser());
       });
     };
 
-    $scope.updatePath = function(){
-      UserService.edit($scope.user)
+    $scope.updatePath = function(path){
+      $scope.user = UserService.getUser();
+      console.log("updatePath user ", UserService.getUser());
+      if($scope.user.paths !== null){
+        $scope.user.paths.push(path);
+      }else{
+        $scope.user.paths = [path];
+      }
+      UserService.edit($scope.user.id)
       .then(function(data){
-
+        console.log("update data", data);
+        UserService.updateUser($scope.user);
       });
+    };
+
+    $scope.updateSurvey = function(u) {
+      $scope.user = UserService.getUser();
+      $scope.user.age = u.age;
+      $scope.user.gender = u.gender;
+      $scope.user.zipcode = u.zipcode;
+      UserService.updateUser($scope.user);
+      UserService.edit($scope.user.id);
     };
 
   angular.extend($scope, {
@@ -97,6 +115,7 @@
     if(isCordovaApp) {
       navigator.geolocation.getCurrentPosition(function(position){
       $ionicLoading.hide();
+        console.log("loc marker is cordova app");
         if(position.coords.longitude < -158.006744|| position.coords.longitude > -157.640076|| position.coords.latitude > 21.765877 || position.coords.latitude < 21.230502){
           map.panTo({
             lat : 21.3008900859581,
@@ -123,6 +142,7 @@
         .getCurrentPosition({timeout : 6000, enableHighAccuracy : true})
         .then(function (position) {
           $ionicLoading.hide();
+          console.log("loc marker is not cordova app");
           if(position.coords.longitude < -158.006744|| position.coords.longitude > -157.640076|| position.coords.latitude > 21.765877 || position.coords.latitude < 21.230502){
             map.panTo({
               lat : 21.3008900859581,
@@ -354,6 +374,7 @@
   //FIND POINTS IN RADIUS ON LOCATION FOUND
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
+    console.log("location found", event, args);
     var leafEvent = args.leafletEvent;
     $scope.center.autoDiscover = true;
 
@@ -413,28 +434,34 @@
     delete $scope.markers.reportPoint;
   };
 
-  // COMMENT SUBMIT FUNCTION
-  $scope.postComment = function(comment){
-    if($scope.showReportControl){
-      PointService.addPoint({
-        type : "ReportSuggest",
-        lat : $scope.markers.reportPoint.lat,
-        long : $scope.markers.reportPoint.lng
-      })
-      .then(function(data){
-        CommentService.addComment(comment, data.data.newId)
-        .then(function(data){
-          $scope.cancelReportPoint();
-          $scope.closeModal(6);
-        });
-      });
-    } else {
-      CommentService.addComment(comment, $scope.currentMarkerProperties.id)
-      .then(function(data){
-        $scope.closeModal(6);
-      });
-    }
+  $scope.suggestStation = function(){
+    $scope.markers.reportPoint.type = "suggest";
+    $scope.markers.reportPoint.suggestedBy = UserService.getUser().id;
+    PointService.suggestPoint($scope.markers.reportPoint);
   };
+
+  // COMMENT SUBMIT FUNCTION
+  // $scope.postComment = function(comment){
+  //   if($scope.showReportControl){
+  //     PointService.addPoint({
+  //       type : "ReportSuggest",
+  //       lat : $scope.markers.reportPoint.lat,
+  //       long : $scope.markers.reportPoint.lng
+  //     })
+  //     .then(function(data){
+  //       CommentService.addComment(comment, data.data.newId)
+  //       .then(function(data){
+  //         $scope.cancelReportPoint();
+  //         $scope.closeModal(6);
+  //       });
+  //     });
+  //   } else {
+  //     CommentService.addComment(comment, $scope.currentMarkerProperties.id)
+  //     .then(function(data){
+  //       $scope.closeModal(6);
+  //     });
+  //   }
+  // };
 
   //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
   $scope.pinTypes = [
@@ -713,4 +740,54 @@
   // });
 
 //////// end of controller
+}])
+.controller('FormCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  $scope.update = function(u) {
+    $scope.user = UserService.getUser();
+    $scope.user.name = u.name;
+    $scope.user.email = u.email;
+    if($scope.user.commentType === null || undefined){
+      $scope.user.commentType = [u.commentType];
+    }else{
+      $scope.user.commentType.push(u.commentType);
+    }
+    if($scope.user.comment !== null || undefined){
+      $scope.user.comment.push(u.comment);
+    }else{
+      $scope.user.comment = [u.comment];
+    }
+    UserService.updateUser($scope.user);
+    UserService.edit($scope.user.id);
+  };
+}])
+.controller('MahaloCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  $scope.updatePath = function(path){
+    $scope.user = UserService.getUser();
+    if($scope.user.paths !== null){
+      $scope.user.paths.push(path);
+    }else{
+      $scope.user.paths = [path];
+    }
+    UserService.edit($scope.user.id)
+    .then(function(data){
+      UserService.updateUser($scope.user);
+    });
+  };
+}])
+.controller('SurveyCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  $scope.updatePath = function(path){
+    $scope.user = UserService.getUser();
+    console.log("updatePath user ", UserService.getUser());
+    if($scope.user.paths !== null){
+      $scope.user.paths.push(path);
+    }else{
+      $scope.user.paths = [path];
+    }
+    UserService.edit($scope.user.id)
+    .then(function(data){
+      console.log("update data", data);
+      UserService.updateUser($scope.user);
+    });
+  };
 }]);
+

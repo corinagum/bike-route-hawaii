@@ -13,19 +13,19 @@
         <div class="radioSelections row">
           <div>
             <p>
-              <input name="group4" type="radio" id="test1" />
+              <input ng-model="user.age" value="18-25" name="group4" type="radio" id="test1" />
               <label for="test1">18-25</label>
             </p>
           </div>
           <div>
             <p>
-              <input name="group4" type="radio" id="test2" />
+              <input ng-model="user.age" value="26-45"name="group4" type="radio" id="test2" />
               <label for="test2">26-45</label>
             </p>
           </div>
           <div>
             <p>
-              <input name="group4" type="radio" id="test3" />
+              <input ng-model="user.age" value="46+" name="group4" type="radio" id="test3" />
               <label for="test3">46+</label>
             </p>
           </div>
@@ -39,13 +39,13 @@
         <div class="radioSelections row">
          <div>
             <p>
-             <input name="group3" type="radio" id="test5" />
+             <input ng-model="user.gender" value="male" name="group3" type="radio" id="test5" />
              <label for="test5">Male</label>
            </p>
          </div>
           <div>
             <p>
-              <input name="group3" type="radio" id="test4" />
+              <input ng-model="user.gender" value="female" name="group3" type="radio" id="test4" />
               <label for="test4">Female</label>
             </p>
           </div>
@@ -56,12 +56,12 @@
       <div class="radioBlock">
         <div class="topicDiv hide-on-small-only"><span>Zipcode</span></div>
         <div class="radioSelections">
-          <div class="zipcodeInput"><input class="zipcodeInput" type="text" placeholder="| Zipcode"></input></div>
+          <div class="zipcodeInput"><input ng-model="user.zipcode" class="zipcodeInput" type="text" placeholder="| Zipcode"></input></div>
         </div>
       </div>
 
       <div class="done" style="margin-top: 50px;">
-        <a href="#/tab/home" class="cancelBtn" ng-click="closeModal(5)">Home</a>
+        <a href="#/tab/home" class="cancelBtn" ng-click="updateSurvey(user);closeModal(5)">Home</a>
       </div>
     </div>
   </ion-content>

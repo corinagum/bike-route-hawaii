@@ -30,9 +30,15 @@ angular.module('starter.services', [])
     });
   };
 
-  this.deletePoint = function(point) {
-    return $http.delete(domain + '/api' + point.id);
+  this.suggestPoint = function(point) {
+    return $http.post(domain + '/api/points/suggest', {
+      point : point
+    });
   };
+
+  // this.deletePoint = function(point) {
+  //   return $http.delete(domain + '/api' + point.id);
+  // };
 
   this.getPointsInRadius = function(radius, lat, long) {
     return $http.get(domain + '/api/points/within/' +
@@ -88,6 +94,16 @@ angular.module('starter.services', [])
     if(isCordovaApp){
       domain = '.';
     }
+
+    var user = null;
+
+    this.updateUser = function(u){
+      user = u;
+    };
+
+    this.getUser = function(){
+      return user;
+    };
 
 // CREATES NEW USER
     this.create = function(){

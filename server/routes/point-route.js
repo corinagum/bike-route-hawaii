@@ -27,18 +27,46 @@ router.post('/', function(req,res){
   Point.create({
     type : req.body.point.type,
     name : req.body.point.name,
-    description  : req.body.point.description,
-    info :req.body.point.info,
-    fid :req.body.point.fid,
-    site_id:req.body.point.site_id,
-    street :req.body.point.street,
-    side :req.body.point.side,
+    description : req.body.point.description,
+    info : req.body.point.info,
+    fid : req.body.point.fid,
+    site_id: req.body.point.site_id,
+    street : req.body.point.street,
+    side : req.body.point.side,
     lat : req.body.point.lat,
     long : req.body.point.long,
     geolink :req.body.point.geolink,
-    photolink :req.body.point.photolink,
-    upDownVote : 0,
-    votesCounter : 0
+    suggestedBy : req.body.point.suggestedBy,
+    sitelink : req.body.point.sitelink,
+    photolink : req.body.point.photolink,
+    likedBy : req.body.point.likedBy,
+    clicks : req.body.point.clicks
+  })
+  .then(function(data){
+    res.send({
+      success : true,
+      newId : data.dataValues.id
+    });
+  });
+});
+router.post('/suggest', function(req,res){
+  Point.create({
+    type : req.body.point.type,
+    name : req.body.point.name,
+    description : req.body.point.description,
+    info : req.body.point.info,
+    fid : req.body.point.fid,
+    site_id: req.body.point.site_id,
+    street : req.body.point.street,
+    side : req.body.point.side,
+    lat : req.body.point.lat,
+    long : req.body.point.lng,
+    geolink :req.body.point.geolink,
+    suggestedBy : req.body.point.suggestedBy,
+    sitelink : req.body.point.sitelink,
+    photolink : req.body.point.photolink,
+    likedBy : req.body.point.likedBy,
+    clicks : req.body.point.clicks
   })
   .then(function(data){
     res.send({
