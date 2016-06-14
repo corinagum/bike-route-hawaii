@@ -30,6 +30,15 @@
       });
     };
 
+    $scope.updateSurvey = function(u) {
+      $scope.user = UserService.getUser();
+      $scope.user.age = u.age;
+      $scope.user.gender = u.gender;
+      $scope.user.zipcode = u.zipcode;
+      UserService.updateUser($scope.user);
+      UserService.edit($scope.user.id);
+    };
+
   angular.extend($scope, {
     honolulu: {
       lat: 21.3008900859581,
@@ -425,28 +434,34 @@
     delete $scope.markers.reportPoint;
   };
 
-  // COMMENT SUBMIT FUNCTION
-  $scope.postComment = function(comment){
-    if($scope.showReportControl){
-      PointService.addPoint({
-        type : "ReportSuggest",
-        lat : $scope.markers.reportPoint.lat,
-        long : $scope.markers.reportPoint.lng
-      })
-      .then(function(data){
-        CommentService.addComment(comment, data.data.newId)
-        .then(function(data){
-          $scope.cancelReportPoint();
-          $scope.closeModal(6);
-        });
-      });
-    } else {
-      CommentService.addComment(comment, $scope.currentMarkerProperties.id)
-      .then(function(data){
-        $scope.closeModal(6);
-      });
-    }
+  $scope.suggestStation = function(){
+    $scope.markers.reportPoint.type = "suggest";
+    $scope.markers.reportPoint.suggestedBy = UserService.getUser().id;
+    PointService.suggestPoint($scope.markers.reportPoint);
   };
+
+  // COMMENT SUBMIT FUNCTION
+  // $scope.postComment = function(comment){
+  //   if($scope.showReportControl){
+  //     PointService.addPoint({
+  //       type : "ReportSuggest",
+  //       lat : $scope.markers.reportPoint.lat,
+  //       long : $scope.markers.reportPoint.lng
+  //     })
+  //     .then(function(data){
+  //       CommentService.addComment(comment, data.data.newId)
+  //       .then(function(data){
+  //         $scope.cancelReportPoint();
+  //         $scope.closeModal(6);
+  //       });
+  //     });
+  //   } else {
+  //     CommentService.addComment(comment, $scope.currentMarkerProperties.id)
+  //     .then(function(data){
+  //       $scope.closeModal(6);
+  //     });
+  //   }
+  // };
 
   //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
   $scope.pinTypes = [
@@ -725,4 +740,54 @@
   // });
 
 //////// end of controller
+}])
+.controller('FormCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  $scope.update = function(u) {
+    $scope.user = UserService.getUser();
+    $scope.user.name = u.name;
+    $scope.user.email = u.email;
+    if($scope.user.commentType === null || undefined){
+      $scope.user.commentType = [u.commentType];
+    }else{
+      $scope.user.commentType.push(u.commentType);
+    }
+    if($scope.user.comment !== null || undefined){
+      $scope.user.comment.push(u.comment);
+    }else{
+      $scope.user.comment = [u.comment];
+    }
+    UserService.updateUser($scope.user);
+    UserService.edit($scope.user.id);
+  };
+}])
+.controller('MahaloCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  $scope.updatePath = function(path){
+    $scope.user = UserService.getUser();
+    if($scope.user.paths !== null){
+      $scope.user.paths.push(path);
+    }else{
+      $scope.user.paths = [path];
+    }
+    UserService.edit($scope.user.id)
+    .then(function(data){
+      UserService.updateUser($scope.user);
+    });
+  };
+}])
+.controller('SurveyCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  $scope.updatePath = function(path){
+    $scope.user = UserService.getUser();
+    console.log("updatePath user ", UserService.getUser());
+    if($scope.user.paths !== null){
+      $scope.user.paths.push(path);
+    }else{
+      $scope.user.paths = [path];
+    }
+    UserService.edit($scope.user.id)
+    .then(function(data){
+      console.log("update data", data);
+      UserService.updateUser($scope.user);
+    });
+  };
 }]);
+

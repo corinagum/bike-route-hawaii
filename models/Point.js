@@ -11,6 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     lat : DataTypes.FLOAT,
     long : DataTypes.FLOAT,
     geolink : DataTypes.STRING,
+    suggestedBy : DataTypes.INTEGER,
     sitelink : DataTypes.STRING,
     photolink : DataTypes.STRING,
     likedBy : DataTypes.ARRAY(DataTypes.INTEGER),
