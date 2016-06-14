@@ -1,6 +1,6 @@
 
 
-angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controllers', 'starter.services','ui.bootstrap', 'ionic-pullup'])
+angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controllers', 'starter.services','ui.bootstrap'])
   .constant('processENV', {
    "development": {
      "username": "nickcadiente",
@@ -27,9 +27,6 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
    }
  })
 .run(function($rootScope, $ionicLoading, $ionicPlatform) {
-    // $rootScope.$on('loading:show', function() {
-    //   $ionicLoading.show({template: 'Hi There!'});
-    // });
 
     $rootScope.$on('loading:hide', function() {
       $ionicLoading.hide();
@@ -52,7 +49,7 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
 
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
-
+    $ionicConfigProvider.scrolling.jsScrolling(false);
   //GLOBALLY CREATING INTERCEPTORS WHILE WINDOW LOADS
   // $httpProvider.interceptors.push(function ($rootScope) {
   //   return {
