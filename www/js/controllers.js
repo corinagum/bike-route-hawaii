@@ -68,6 +68,8 @@
       scrollWheelZoom: false,
       doubleClickZoom: true,
       touchZoom: true,
+      maxNativeZoom: 16,
+      maxZoom : 16,
       inertiaMaxSpeed: 150
     },
     center : {
