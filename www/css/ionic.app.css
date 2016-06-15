@@ -10288,6 +10288,7 @@ textarea {
     line-height: 12px;
     margin-bottom: 12px; }
   .detailModalBlock h5 {
+    margin-top: 0px;
     margin-bottom: 2px; }
   .detailModalBlock .businessDescription {
     line-height: 14px; }

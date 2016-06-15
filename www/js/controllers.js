@@ -516,8 +516,8 @@
 
   $ionicModal.fromTemplateUrl('templates/feedback/markerDetail.html', {
     id: '4',
-    scope: $scope,
-    animation: 'scale-in'
+    scope: $scope
+    // animation: 'scale-in'
   }).then(function(modal) {
     $scope.modal4 = modal;
   });
@@ -743,8 +743,6 @@
       UserService.updateUser(data.data.user);
       console.log("user updated to ", UserService.getUser());
     });
-
-
   }
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
