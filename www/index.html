@@ -3,8 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline' http://*.leafletjs.com http://*.bootstrapcdn.com/* https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css http://*.gstatic.com http://*.google.com https://maps.googleapis.com http://127.0.0.1:0 http://localhost; script-src 'self' 'unsafe-eval' 'unsafe-inline' http://*.leafletjs.com http://*.mapbox.com http://*.gstatic.com http://*.google.com  http://*.cloudflare.com http://localhost:* https://*.googleapis.com 127.0.0.1:0; ">
-    <title>Ride Hawaii</title>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
+    <title>Community Outreach</title>
     <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="css/leaflet.extra-markers.min.css">
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
@@ -34,7 +33,7 @@
       <script id="templates/home.html" type="text/ng-template">
         <ion-view view-title="Home" class="landing">
           <ion-content>
-          <div ng-controller="MapCtrl" class="alohaLandingOne">
+          <div ng-controller="LandingCtrl" class="alohaLandingOne">
             <p class="contentTitle">Aloha!</p><br>
             <p class="contentPar"> We need your help! We’re </br>planning a brand new transportation </br>program called BIKESHARE. </br>Please help us understand how </br>our program can best serve you.</p>
             <br>
@@ -48,8 +47,9 @@
       <script id="templates/alohaLanding.html" type="text/ng-template">
         <ion-view class="landing" view-title="Bikeshare Hawaii">
           <ion-content class="padding">
-            <!-- <div ng-controller="MapCtrl"> -->
-            <div ng-controller="MapCtrl" class="alohaLandingOne hide-on-med-and-up">
+            <div ng-controller="PathCtrl">
+            <!-- <div ng-controller="PathCtrl" class="alohaLandingOne hide-on-med-and-up"> -->
+            <div class="alohaLandingOne hide-on-med-and-up">
               <p class="contentPar">Help us customize your </br>experience by selecting the option </br>that fits you the best.</p>
               <div class="buttonLinks">
                 <a ng-click="updatePath('info')" href="#/tab/main"><div class="button btnDrk waves-effect waves-light">I don’t know what </br>bikeshare is and want </br>to learn more</div></a></br>
@@ -60,12 +60,13 @@
 
 
             <!-- BROWSER VIEW LANDING INTRO -->
-            <div ng-controller="MapCtrl" class="alohaLandingOne hide-on-small-only webViewLandingButton">
+            <!-- <div ng-controller="PathCtrl" class="alohaLandingOne hide-on-small-only webViewLandingButton"> -->
+            <div class="alohaLandingOne hide-on-small-only webViewLandingButton">
               <a  ng-click="updatePath('info')" class="moreInfoBlockBtn" href="#/tab/main" nav-transition="none"><img src="img/bike-assets/web-1.png" alt=""></a>
               <a ng-click="updatePath('map')" class="mapBlockBtn" href="#/tab/mapSite" nav-transition="none"><img src="img/bike-assets/web-3.png" alt=""></a>
               <a ng-click="updatePath('benefits')" class="benefitsBlockBtn" href="#/tab/benefits" nav-transition="none"><img src="img/bike-assets/web-2.png" alt=""></a>
             </div>
-            <!-- </div> -->
+            </div>
           </ion-content>
         </ion-view>
       </script>

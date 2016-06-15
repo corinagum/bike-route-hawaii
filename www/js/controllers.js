@@ -761,6 +761,17 @@
 
 //////// end of controller
 }])
+.controller('LandingCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  console.log("LandingCtrl");
+  //CREATING NEW USER IN DB
+    $scope.userStart = function(){
+      UserService.create()
+      .then(function(data){
+        UserService.updateUser(data.data.user);
+        console.log("user updated to ", UserService.getUser());
+      });
+    };
+}])
 .controller('FormCtrl', ['$scope', 'UserService', function($scope, UserService) {
   $scope.update = function(u) {
     $scope.user = UserService.getUser();
@@ -778,6 +789,23 @@
     }
     UserService.updateUser($scope.user);
     UserService.edit($scope.user.id);
+  };
+}])
+.controller('PathCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  console.log("PathCtrl");
+  $scope.updatePath = function(path){
+    $scope.user = UserService.getUser();
+    console.log("updatePath user ", UserService.getUser());
+    if($scope.user.paths !== null){
+      $scope.user.paths.push(path);
+    }else{
+      $scope.user.paths = [path];
+    }
+    UserService.edit($scope.user.id)
+    .then(function(data){
+      console.log("update data", data);
+      UserService.updateUser($scope.user);
+    });
   };
 }])
 .controller('MahaloCtrl', ['$scope', 'UserService', function($scope, UserService) {

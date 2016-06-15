@@ -8,7 +8,7 @@ onLoadGoogleApiCallback = function() {
     L.GeoSearch.Provider.Google.Geocoder = new google.maps.Geocoder();
     var scriptNode = document.getElementById('load_google_api');
     if (!!scriptNode) {
-        document.body.removeChild(scriptNode);    
+        document.body.removeChild(scriptNode);
     }
 };
 
@@ -20,16 +20,17 @@ L.GeoSearch.Provider.Google = L.Class.extend({
     initialize: function(options) {
         options = L.Util.setOptions(this, options);
         if (!window.google || !window.google.maps) {
-            this.loadMapsApi();  
+            this.loadMapsApi();
         } else {
             // if google is already loaded, make sure we initialize the Geocoder
             onLoadGoogleApiCallback();
         }
-          
+
     },
 
     loadMapsApi: function () {
-        var url = "https://maps.googleapis.com/maps/api/js?v=3&callback=onLoadGoogleApiCallback&sensor=false";
+        // var url = "https://maps.googleapis.com/maps/api/js?v=3&callback=onLoadGoogleApiCallback&sensor=false";
+        var url = "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=onLoadGoogleApiCallback&sensor=false";
         var script = document.createElement('script');
         script.id = 'load_google_api';
         script.type = "text/javascript";
