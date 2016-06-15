@@ -5,31 +5,16 @@
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$timeout', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$timeout) {
 
-    console.log("mapctrl started");
-    //CREATING NEW USER IN DB
-    $scope.userStart = function(){
+    console.log("mapctrl started", UserService.getUser());
+    if(UserService.getUser() === null){
+      console.log("no user, made one");
       UserService.create()
       .then(function(data){
         UserService.updateUser(data.data.user);
         console.log("user updated to ", UserService.getUser());
       });
-    };
+    }
 
-    // UPDATING USER PATH IN DB
-    $scope.updatePath = function(path){
-      $scope.user = UserService.getUser();
-      console.log("updatePath user ", UserService.getUser());
-      if($scope.user.paths !== null){
-        $scope.user.paths.push(path);
-      }else{
-        $scope.user.paths = [path];
-      }
-      UserService.edit($scope.user.id)
-      .then(function(data){
-        console.log("update data", data);
-        UserService.updateUser($scope.user);
-      });
-    };
 
     // UPDATE SURVEY QUESTIONS IN DB
     $scope.updateSurvey = function(u) {
@@ -288,23 +273,24 @@
   // CHECK IF STATION IS LIKED BY USER
   $scope.isLiked = function(){
     $scope.user = UserService.getUser();
-    if($scope.user.liked === null){
+    if($scope.user.liked === null || undefined){
       console.log("in null");
       return false;
-    }
-    if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
-      console.log("in indexOf -1");
-      return false;
     } else {
-      console.log("in found indexOf");
-      return true;
+      if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
+        console.log("in indexOf -1");
+        return false;
+      } else {
+        console.log("in found indexOf");
+        return true;
+      }
     }
   };
 
   // IF USER LIKED COLOR IS RED, UPDATE USER MODEL
   $scope.userLiked = function(){
     $scope.myStyle={color:'red'};
-    if($scope.user.liked === null){
+    if($scope.user.liked === null || undefined){
       $scope.user.liked = [$scope.stationClicked.id];
     }else{
       $scope.user.liked.push($scope.stationClicked.id);
@@ -356,30 +342,6 @@
     diamondhead: [21.260855, -157.817874]
   };
 
-
-  // $scope.showDetailHeader = false;
-
-
-  // $scope.$on('leafletDirectiveMarker.map.click', function(event,args){
-  //   if(args.modelName !== 'reportPoint'){
-  //     if($scope.stationClicked.lastClicked){
-  //       $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
-  //     }
-  //     $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
-  //     $scope.stationClicked = $scope.markers[args.modelName].properties;
-  //     $scope.stationClicked.lastClicked = args.modelName;
-  //     $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
-  //     $scope.updateClosestBBB();
-  //     $scope.openModal(4);
-  //   }
-
-  //   console.log("I CLICKED YOU");
-
-  // });
-
-  // $scope.hideDetailHeader = function () {
-  //   $scope.showDetailHeader = false;
-  // };
 
   function setMarkersReturned(data){
     createMarkers(data, 'bikeShare');
@@ -501,7 +463,6 @@
 
   // SAVE CURRENT MARKER PROPERTIES TO SCOPE
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
-
     if(args.modelName !== 'reportPoint'){
       if($scope.stationClicked.lastClicked){
         $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
@@ -514,20 +475,14 @@
       $scope.openModal(4);
     }
 
-    $scope.currentMarkerProperties = args.leafletObject.options.properties;
-    // if ($scope.currentMarkerProperties !== undefined){
-    //   $scope.isFavorited = $scope.checkFavorite($scope.currentMarkerProperties);
-    //   $scope.isSafetyWarn = $scope.checkSafetyWarn($scope.currentMarkerProperties);
-    // }
-
     //CHANGE BACK ICON WHEN MODAL CLOSES
     // function changeBikeIcon() {
     //   $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
     // }
 
-    $scope.changeBackIcon = function () {
-      $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
-    };
+    // $scope.changeBackIcon = function () {
+    //   $timeout(changeBikeIcon, 2000);
+    // };
   });
 
 
@@ -640,9 +595,11 @@
   };
 
   //REMOVE MODAL WHEN DESTROYED
-  // $scope.$on('$destroy', function() {
-  //   $scope.modal.remove();
-  // });
+  $scope.$on('$destroy', function() {
+    if($scope.modal){
+      $scope.modal.remove();
+    }
+  });
 
   //////// END of MODAL ////////
 
@@ -759,26 +716,106 @@
 
 //////// end of controller
 }])
-.controller('FormCtrl', ['$scope', 'UserService', function($scope, UserService) {
+.controller('LandingCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  console.log("LandingCtrl");
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+  }
+  $scope.userStart = function(){
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+  };
+}])
+.controller('FormCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
+  console.log("FormCtrl");
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+
+    $scope.myGoBack = function() {
+      $ionicHistory.goBack();
+    };
+
+  }
   $scope.update = function(u) {
     $scope.user = UserService.getUser();
-    $scope.user.name = u.name;
-    $scope.user.email = u.email;
-    if($scope.user.commentType === null || undefined){
-      $scope.user.commentType = [u.commentType];
-    }else{
-      $scope.user.commentType.push(u.commentType);
+    if(u){
+      if(u.name){
+        $scope.user.name = u.name;
+      }
+      if(u.email){
+        $scope.user.email = u.email;
+      }
+      if(u.commentType){
+        if($scope.user.commentType === null || undefined){
+          $scope.user.commentType = [u.commentType];
+        }else{
+          $scope.user.commentType.push(u.commentType);
+        }
+      }
+      if(u.comment){
+        if($scope.user.comment !== null || undefined){
+          $scope.user.comment.push(u.comment);
+        }else{
+          $scope.user.comment = [u.comment];
+        }
+      }
+      UserService.updateUser($scope.user);
+      UserService.edit($scope.user.id);
     }
-    if($scope.user.comment !== null || undefined){
-      $scope.user.comment.push(u.comment);
+  };
+}])
+.controller('PathCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
+  console.log("PathCtrl");
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+
+    $scope.myGoBack = function() {
+      $ionicHistory.goBack();
+    };
+  }
+  $scope.updatePath = function(path){
+    $scope.user = UserService.getUser();
+    console.log("updatePath user ", UserService.getUser());
+    if($scope.user.paths !== null){
+      $scope.user.paths.push(path);
     }else{
-      $scope.user.comment = [u.comment];
+      $scope.user.paths = [path];
     }
-    UserService.updateUser($scope.user);
-    UserService.edit($scope.user.id);
+    UserService.edit($scope.user.id)
+    .then(function(data){
+      console.log("update data", data);
+      UserService.updateUser($scope.user);
+    });
   };
 }])
 .controller('MahaloCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  console.log("MahaloCtrl");
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+  }
   $scope.updatePath = function(path){
     $scope.user = UserService.getUser();
     if($scope.user.paths !== null){
@@ -792,7 +829,34 @@
     });
   };
 }])
-.controller('SurveyCtrl', ['$scope', 'UserService', function($scope, UserService) {
+.controller('SurveyCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
+  console.log("SurveyCtrl");
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+
+    $scope.myGoBack = function() {
+      $ionicHistory.goBack();
+    };
+  }
+  $scope.updateSurvey = function(u) {
+      $scope.user = UserService.getUser();
+      if(u.age){
+        $scope.user.age = u.age;
+      }
+      if(u.gender){
+        $scope.user.gender = u.gender;
+      }
+      if(u.zipcode){
+        $scope.user.zipcode = u.zipcode;
+      }
+      UserService.updateUser($scope.user);
+      UserService.edit($scope.user.id);
+  };
   $scope.updatePath = function(path){
     $scope.user = UserService.getUser();
     console.log("updatePath user ", UserService.getUser());
@@ -808,4 +872,3 @@
     });
   };
 }]);
-

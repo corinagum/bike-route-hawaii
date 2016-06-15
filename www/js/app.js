@@ -124,7 +124,7 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         views: {
           'home-tab': {
             templateUrl: "templates/feedback/leave-comments.html",
-            // controller: 'MapCtrl'
+            controller: 'FormCtrl'
           }
         }
       })
@@ -133,7 +133,7 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         views: {
           'home-tab': {
             templateUrl: "templates/feedback/surveyForm.html",
-            // controller: 'MapCtrl'
+            controller: 'SurveyCtrl'
           }
         }
       })
