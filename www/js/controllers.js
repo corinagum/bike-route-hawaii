@@ -5,8 +5,8 @@
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$timeout', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$timeout) {
 
+    console.log("mapctrl started");
     //CREATING NEW USER IN DB
-    console.log("mapctrl in use");
     $scope.userStart = function(){
       UserService.create()
       .then(function(data){
@@ -260,8 +260,8 @@
     }
   }
 
+  // default values that will be changed on station click
   $scope.stationClicked = {
-    // default values that will be changed on station click
     "lastClicked": null,
     "id": 391,
     "type": "BikeShare",
@@ -282,6 +282,42 @@
     "safetyCounter": null,
     "createdAt": "2016-02-29T22:11:46.561Z",
     "updatedAt": "2016-02-29T22:11:46.561Z"
+  };
+
+  // CHECK IF STATION IS LIKED BY USER
+  $scope.isLiked = function(){
+    $scope.user = UserService.getUser();
+    if($scope.user.liked === null){
+      console.log("in null");
+      return false;
+    }
+    if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
+      console.log("in indexOf -1");
+      return false;
+    } else {
+      console.log("in found indexOf");
+      return true;
+    }
+  };
+
+  // IF USER LIKED COLOR IS RED, UPDATE USER MODEL
+  $scope.userLiked = function(){
+    $scope.myStyle={color:'red'};
+    if($scope.user.liked === null){
+      $scope.user.liked = [$scope.stationClicked.id];
+    }else{
+      $scope.user.liked.push($scope.stationClicked.id);
+    }
+    UserService.updateUser($scope.user);
+    UserService.edit($scope.user.id);
+  };
+
+  // USER UNLIKED, CHANGE ICON TO BLANK, UPDATE USER MODEL
+  $scope.userUnliked = function(){
+    $scope.myStyle={};
+    $scope.user.liked.splice($scope.user.liked.indexOf($scope.stationClicked.id),1);
+    UserService.updateUser($scope.user);
+    UserService.edit($scope.user.id);
   };
 
   function sortByClosest(array){
