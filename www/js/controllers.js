@@ -747,16 +747,24 @@
 }])
 .controller('LandingCtrl', ['$scope', 'UserService', function($scope, UserService) {
   console.log("LandingCtrl");
-  //CREATING NEW USER IN DB
-    $scope.userStart = function(){
-      UserService.create()
-      .then(function(data){
-        UserService.updateUser(data.data.user);
-        console.log("user updated to ", UserService.getUser());
-      });
-    };
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+  }
+  $scope.userStart = function(){
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+  };
 }])
 .controller('FormCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  console.log("FormCtrl");
   if(UserService.getUser() === null){
     console.log("no user, made one");
     UserService.create()
@@ -841,6 +849,14 @@
       console.log("user updated to ", UserService.getUser());
     });
   }
+  $scope.updateSurvey = function(u) {
+      $scope.user = UserService.getUser();
+      $scope.user.age = u.age;
+      $scope.user.gender = u.gender;
+      $scope.user.zipcode = u.zipcode;
+      UserService.updateUser($scope.user);
+      UserService.edit($scope.user.id);
+  };
   $scope.updatePath = function(path){
     $scope.user = UserService.getUser();
     console.log("updatePath user ", UserService.getUser());
