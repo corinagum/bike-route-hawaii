@@ -10451,35 +10451,61 @@ textarea {
 .centerBox {
   width: 100%;
   position: absolute;
-  top: 19px;
+  bottom: 0px;
   justify-content: center;
   text-align: center; }
+  @media only screen and (min-width: 600px) {
+    .centerBox {
+      width: 100%;
+      top: 19px; } }
 
 #footer-bar.row {
   margin-bottom: 0px;
-  display: flex;
-  display: -webkit-flex;
-  margin: auto;
-  width: 87%; }
+  flex-flow: row wrap;
+  margin: auto; }
+  #footer-bar.row .row {
+    margin: 0px; }
+  @media only screen and (min-width: 600px) {
+    #footer-bar.row {
+      display: flex;
+      display: -webkit-flex;
+      width: 87%; } }
   #footer-bar.row .row {
     margin-bottom: 0px; }
   #footer-bar.row .directions_wrapper {
     background-color: rgba(248, 248, 248, 0.6); }
   #footer-bar.row img {
-    max-width: 32px; }
+    max-width: 28px; }
+    @media only screen and (min-width: 600px) {
+      #footer-bar.row img {
+        max-width: 32px; } }
   #footer-bar.row p {
-    line-height: 16px;
-    font-size: 18px; }
-  #footer-bar.row .eachSuggestbtn {
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    border-radius: 10px;
-    border: 2px solid #76CE95;
-    color: #626262;
-    background-color: #f8f8f8;
-    min-width: 110.08px;
-    min-height: 53px; }
+    line-height: 14px;
+    font-size: 14px; }
+    @media only screen and (min-width: 600px) {
+      #footer-bar.row p {
+        line-height: 16px;
+        font-size: 18px; } }
+  #footer-bar.row .bothSuggestBtns {
+    justify-content: space-between;
+    background-color: #76CE95;
+    padding: 10px; }
+    #footer-bar.row .bothSuggestBtns a {
+      color: #626262; }
+    @media only screen and (min-width: 600px) {
+      #footer-bar.row .bothSuggestBtns {
+        background-color: #f8f8f8; } }
+  @media only screen and (min-width: 600px) {
+    #footer-bar.row .eachSuggestbtn {
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      border-radius: 10px;
+      border: 2px solid #76CE95;
+      color: #626262;
+      background-color: #f8f8f8;
+      min-width: 110.08px;
+      min-height: 53px; } }
   #footer-bar.row span {
     font-size: large;
     margin: auto; }
