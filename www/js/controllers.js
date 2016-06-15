@@ -463,6 +463,7 @@
 
   // SAVE CURRENT MARKER PROPERTIES TO SCOPE
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
+    $scope.user = UserService.getUser();
     if(args.modelName !== 'reportPoint'){
       if($scope.stationClicked.lastClicked){
         $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
@@ -473,6 +474,15 @@
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
       $scope.openModal(4);
+    }
+    if($scope.user.liked === null || undefined){
+      $scope.myStyle = {};
+    } else {
+      if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
+        $scope.myStyle={};
+      } else {
+        $scope.myStyle={color:'red'};
+      }
     }
 
     //CHANGE BACK ICON WHEN MODAL CLOSES
@@ -744,11 +754,11 @@
       console.log("user updated to ", UserService.getUser());
     });
 
+    $scope.myGoBack = function() {
+      $ionicHistory.goBack();
+    };
 
   }
-  $scope.myGoBack = function() {
-    $ionicHistory.goBack();
-  };
   $scope.update = function(u) {
     $scope.user = UserService.getUser();
     if(u){
@@ -787,10 +797,10 @@
       console.log("user updated to ", UserService.getUser());
     });
 
+    $scope.myGoBack = function() {
+      $ionicHistory.goBack();
+    };
   }
-  $scope.myGoBack = function() {
-    $ionicHistory.goBack();
-  };
   $scope.updatePath = function(path){
     $scope.user = UserService.getUser();
     console.log("updatePath user ", UserService.getUser());
@@ -839,11 +849,10 @@
       console.log("user updated to ", UserService.getUser());
     });
 
+    $scope.myGoBack = function() {
+      $ionicHistory.goBack();
+    };
   }
-  $scope.myGoBack = function() {
-    $ionicHistory.goBack();
-  };
-
   $scope.updateSurvey = function(u) {
       $scope.user = UserService.getUser();
       if(u.age){
