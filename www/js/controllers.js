@@ -321,7 +321,7 @@
   };
 
   $scope.updateClosestBBB = function(){
-  //   $scope.closestBBB = bbbList.slice(0,5);
+    $scope.closestBBB = bbbList.slice(0,5);
   };
 
 
@@ -342,30 +342,6 @@
     diamondhead: [21.260855, -157.817874]
   };
 
-
-  // $scope.showDetailHeader = false;
-
-
-  // $scope.$on('leafletDirectiveMarker.map.click', function(event,args){
-  //   if(args.modelName !== 'reportPoint'){
-  //     if($scope.stationClicked.lastClicked){
-  //       $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
-  //     }
-  //     $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
-  //     $scope.stationClicked = $scope.markers[args.modelName].properties;
-  //     $scope.stationClicked.lastClicked = args.modelName;
-  //     $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
-  //     $scope.updateClosestBBB();
-  //     $scope.openModal(4);
-  //   }
-
-  //   console.log("I CLICKED YOU");
-
-  // });
-
-  // $scope.hideDetailHeader = function () {
-  //   $scope.showDetailHeader = false;
-  // };
 
   function setMarkersReturned(data){
     createMarkers(data, 'bikeShare');
@@ -487,7 +463,6 @@
 
   // SAVE CURRENT MARKER PROPERTIES TO SCOPE
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
-
     if(args.modelName !== 'reportPoint'){
       if($scope.stationClicked.lastClicked){
         $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
@@ -500,20 +475,14 @@
       $scope.openModal(4);
     }
 
-    // $scope.currentMarkerProperties = args.leafletObject.options.properties;
-    // if ($scope.currentMarkerProperties !== undefined){
-    //   $scope.isFavorited = $scope.checkFavorite($scope.currentMarkerProperties);
-    //   $scope.isSafetyWarn = $scope.checkSafetyWarn($scope.currentMarkerProperties);
+    //CHANGE BACK ICON WHEN MODAL CLOSES
+    // function changeBikeIcon() {
+    //   $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
     // }
 
-    //CHANGE BACK ICON WHEN MODAL CLOSES
-    function changeBikeIcon() {
-      $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
-    }
-
-    $scope.changeBackIcon = function () {
-      $timeout(changeBikeIcon, 2000);
-    };
+    // $scope.changeBackIcon = function () {
+    //   $timeout(changeBikeIcon, 2000);
+    // };
   });
 
 
@@ -627,7 +596,9 @@
 
   //REMOVE MODAL WHEN DESTROYED
   $scope.$on('$destroy', function() {
-    $scope.modal.remove();
+    if($scope.modal){
+      $scope.modal.remove();
+    }
   });
 
   //////// END of MODAL ////////
@@ -775,20 +746,30 @@
   }
   $scope.update = function(u) {
     $scope.user = UserService.getUser();
-    $scope.user.name = u.name;
-    $scope.user.email = u.email;
-    if($scope.user.commentType === null || undefined){
-      $scope.user.commentType = [u.commentType];
-    }else{
-      $scope.user.commentType.push(u.commentType);
+    if(u){
+      if(u.name){
+        $scope.user.name = u.name;
+      }
+      if(u.email){
+        $scope.user.email = u.email;
+      }
+      if(u.commentType){
+        if($scope.user.commentType === null || undefined){
+          $scope.user.commentType = [u.commentType];
+        }else{
+          $scope.user.commentType.push(u.commentType);
+        }
+      }
+      if(u.comment){
+        if($scope.user.comment !== null || undefined){
+          $scope.user.comment.push(u.comment);
+        }else{
+          $scope.user.comment = [u.comment];
+        }
+      }
+      UserService.updateUser($scope.user);
+      UserService.edit($scope.user.id);
     }
-    if($scope.user.comment !== null || undefined){
-      $scope.user.comment.push(u.comment);
-    }else{
-      $scope.user.comment = [u.comment];
-    }
-    UserService.updateUser($scope.user);
-    UserService.edit($scope.user.id);
   };
 }])
 .controller('PathCtrl', ['$scope', 'UserService', function($scope, UserService) {
@@ -851,9 +832,15 @@
   }
   $scope.updateSurvey = function(u) {
       $scope.user = UserService.getUser();
-      $scope.user.age = u.age;
-      $scope.user.gender = u.gender;
-      $scope.user.zipcode = u.zipcode;
+      if(u.age){
+        $scope.user.age = u.age;
+      }
+      if(u.gender){
+        $scope.user.gender = u.gender;
+      }
+      if(u.zipcode){
+        $scope.user.zipcode = u.zipcode;
+      }
       UserService.updateUser($scope.user);
       UserService.edit($scope.user.id);
   };
