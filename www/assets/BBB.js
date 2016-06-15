@@ -598,7 +598,7 @@ var bbbList = [
     yelp : "https://www.yelp.com/biz/sushi-company-honolulu-3",
     bbbAcc: true,
     image : "https://s3-media3.fl.yelpcdn.com/bphoto/4qQ7o7_AhRaJe2BgnBTO5w/o.jpg",
-    description : "https://s3-media1.fl.yelpcdn.com/bphoto/TLe7foGMgY-3GTwKPTkoBg/o.jpg",
+    description : "Local sushi chef creates ono and affordable creations! Check it out!",
     lat :21.296018,
     lng : -157.829530
   }];

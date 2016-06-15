@@ -54,7 +54,8 @@
         logic : 'broadcast'
       },
       markers : {
-        enable : ['click', 'dragend', 'dragstart']
+        enable : ['click', 'dragend', 'dragstart'],
+        logic : 'emit'
       }
     },
     layers: {
@@ -513,11 +514,11 @@
       $scope.openModal(4);
     }
 
-    $scope.currentMarkerProperties = args.leafletObject.options.properties;
-    if ($scope.currentMarkerProperties !== undefined){
-      $scope.isFavorited = $scope.checkFavorite($scope.currentMarkerProperties);
-      $scope.isSafetyWarn = $scope.checkSafetyWarn($scope.currentMarkerProperties);
-    }
+    // $scope.currentMarkerProperties = args.leafletObject.options.properties;
+    // if ($scope.currentMarkerProperties !== undefined){
+    //   $scope.isFavorited = $scope.checkFavorite($scope.currentMarkerProperties);
+    //   $scope.isSafetyWarn = $scope.checkSafetyWarn($scope.currentMarkerProperties);
+    // }
 
     //CHANGE BACK ICON WHEN MODAL CLOSES
     function changeBikeIcon() {
