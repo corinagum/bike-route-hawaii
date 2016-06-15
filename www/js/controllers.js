@@ -334,7 +334,7 @@
   };
 
   $scope.updateClosestBBB = function(){
-  //   $scope.closestBBB = bbbList.slice(0,5);
+    $scope.closestBBB = bbbList.slice(0,5);
   };
 
 

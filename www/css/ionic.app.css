@@ -9955,10 +9955,12 @@ body, p {
 .stepsDiv {
   justify-content: center;
   margin: 25px auto;
-  display: flex; }
+  display: flex;
+  display: -webkit-flex; }
 
 .dots {
   display: flex;
+  display: -webkit-flex;
   margin: auto; }
 
 .stepsNum {
@@ -10008,7 +10010,8 @@ body, p {
   padding: 5px 0px 0px 20px; }
 
 .boxRow {
-  display: flex; }
+  display: flex;
+  display: -webkit-flex; }
 
 .rightIcons {
   position: absolute;
@@ -10062,7 +10065,7 @@ textarea {
 
 .addBackgroundImg {
   background: url("./../img/bike-assets/backgroundMapView.png") no-repeat;
-  background-size: fill; }
+  background-size: cover; }
 
 .addBackgroundGreen {
   background: url("./../img/bike-assets/mapDownyOverlay.png") no-repeat;
@@ -10221,6 +10224,7 @@ textarea {
 
 .webViewLandingButton {
   display: -webkit-flex;
+  display: flex;
   justify-content: center; }
   .webViewLandingButton img {
     width: 85%; }
@@ -10255,6 +10259,7 @@ textarea {
     margin: 0; }
   .detailModalBlock .likes {
     display: -webkit-flex;
+    display: flex;
     padding-top: 2px;
     width: 97px;
     height: 27px;
@@ -10265,6 +10270,7 @@ textarea {
     border-radius: 10px; }
     .detailModalBlock .likes i {
       display: -webkit-flex;
+      display: flex;
       margin: auto;
       font-size: large; }
   .detailModalBlock .bbbImageLogo img {
@@ -10273,7 +10279,8 @@ textarea {
     width: 100%;
     height: auto; }
   .detailModalBlock .eachBusinessBlockContent {
-    display: -webkit-flex; }
+    display: -webkit-flex;
+    display: flex; }
   .detailModalBlock .titleAddDescription {
     width: 100%;
     padding: 0px 9px 9px 18px; }
@@ -10394,10 +10401,10 @@ textarea {
   z-index: 1; }
 
 .addPadding {
-  padding: 0 7%; }
+  padding: 0 5%; }
   @media only screen and (min-width: 600px) {
     .addPadding {
-      padding: 0 14%; } }
+      padding: 0 7%; } }
 
 .survSmallTitle {
   margin: 14px 0; }
@@ -10441,16 +10448,6 @@ textarea {
       margin-left: 14px;
       font-size: 14px; }
 
-#map {
-  width: 100%;
-  height: 100%; }
-
-.scroll {
-  height: 100%; }
-
-.header-item {
-  padding-top: 7px; }
-
 .centerBox {
   width: 100%;
   position: absolute;
@@ -10461,6 +10458,7 @@ textarea {
 #footer-bar.row {
   margin-bottom: 0px;
   display: flex;
+  display: -webkit-flex;
   margin: auto;
   width: 87%; }
   #footer-bar.row .row {
@@ -10486,239 +10484,9 @@ textarea {
     font-size: large;
     margin: auto; }
 
-.footerIcons .ng-hide-remove {
-  animation: fading-in 1s ease; }
-
-@keyframes fading-in {
-  0% {
-    opacity: 0; }
-  50% {
-    opacity: 0.3; }
-  100% {
-    opacity: 1; } }
-
-h1.title {
-  color: #76CE95; }
-
-#locate-before-start {
-  z-index: 1000;
-  height: 100%;
+#map {
   width: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  line-height: 450px;
-  text-align: center;
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #387ef5; }
+  height: 100%; }
 
-.showBlocker {
-  display: inline; }
-
-.hideBlocker {
-  display: none; }
-
-.list-modal {
-  background-color: #181B1E; }
-
-.pinViews {
-  text-align: left; }
-
-.filter-but-img {
-  padding-right: 20px; }
-
-.leaflet-bar a {
-  background-color: #f8f8f8;
-  color: #495259; }
-
-.bottom-tab-nav-img {
-  height: 25px;
-  margin-top: 6px; }
-
-.radius-small {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/small-radius.svg") no-repeat;
-  background-position: 50% 40%; }
-
-.radius-medium {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/medium-radius.svg") center no-repeat;
-  background-position: 50% 40%; }
-
-.radius-large {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/large-radius.svg") center no-repeat;
-  background-position: 50% 40%; }
-
-.radius-all {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/all-light.png") center no-repeat;
-  background-position: 50% 50%; }
-
-.radius-small-selected {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/small-radius-dark.svg") center no-repeat;
-  background-position: 50% 40%; }
-
-.radius-medium-selected {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/medium-radius-dark.svg") center no-repeat;
-  background-position: 50% 40%; }
-
-.radius-large-selected {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/large-radius-dark.svg") center no-repeat;
-  background-position: 50% 40%; }
-
-.radius-all-selected {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/all.png") center no-repeat;
-  background-position: 50% 50%; }
-
-#radiusDiv {
-  height: 100px;
-  align: center;
-  width: 92%;
-  margin: auto;
-  box-shadow: 1px 1px 3px 1px #8f9ba6; }
-  #radiusDiv img {
-    align: center;
-    max-height: 100%;
-    display: block;
-    margin: auto; }
-  #radiusDiv button {
-    text-align: center;
-    line-height: 170px;
-    height: 100px;
-    font-size: 0.8em; }
-
-.closeModal {
-  background-color: #181B1E;
-  color: #f8f8f8; }
-
-.bshLogo {
-  float: left;
-  width: 70px;
-  height: 70px;
-  margin-right: 7px; }
-
-.navLinkDiv {
-  margin-top: 5px; }
-
-.eachItem {
-  margin: 10px 15px 10px 15px;
-  box-shadow: 1px 1px 3px 1px #d6d3d6; }
-
-.item-complex .item-content {
-  padding: 7px; }
-
-.locationMenu {
-  float: left;
-  width: 20px;
-  height: 20px;
-  margin-right: 20px; }
-
-.item {
-  background-color: #f8f8f8; }
-  .item h2 {
-    line-height: 40px;
-    padding-left: 15px; }
-  .item p {
-    padding-left: 10px; }
-
-.floatingDetail {
-  float: left;
-  display: inline; }
-
-.locationDetails {
-  margin: 15px;
-  font-size: 1em;
-  color: #181B1E; }
-
-.detailsPhoto {
-  max-width: 100vw;
-  width: 100%; }
-
-.detailsPhoto-div {
-  text-align: center; }
-  .detailsPhoto-div img {
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65); }
-
-.sendPoint {
-  text-align: center;
-  margin: 1.5em; }
-
-.leaflet-popup-content-wrapper {
-  border-radius: 5px; }
-
-#mapViewDiv {
-  padding-top: 10px; }
-
-.pinViews {
-  padding-top: 25px;
-  height: 90vh; }
-
-.btn1 {
-  background-color: #f8f8f8;
-  height: 50px; }
-
-.btn2 {
-  background-color: #76CE95;
-  height: 50px; }
-
-.item-img-div {
-  float: left;
-  line-height: 80px;
-  display: block; }
-  .item-img-div img {
-    display: inline-block; }
-
-.item-button {
-  float: right;
-  height: 100%;
-  border-left: solid 1px white;
-  background-color: #dfdfdf; }
-
-.item-button-right > .button, .item-button-right .item-content > .button, .item-button-right > .buttons, .item-button-right .item-content > .buttons {
-  top: 0;
-  right: 0;
-  border-radius: 0; }
-
-.item-desc {
-  float: left;
-  max-width: 60%; }
-
-.fill-selected {
-  fill: #76CE95; }
-
-.fill-selected2 {
-  fill: #ffc900; }
-
-.fill-selected3 {
-  fill: #181B1E; }
-
-.fill-unselected {
-  fill: #B7B7B7; }
-
-.spinner svg {
-  width: 100px;
-  height: 100px;
-  stroke: #76CE95;
-  fill: #444; }
-
-.greyOut {
-  color: #f8f8f8; }
-
-.fa-star {
-  color: #ffc900; }
-  .fa-star:hover {
-    color: #ffc900; }
-
-.fa-exclamation-circle {
-  color: #ef473a; }
-  .fa-exclamation-circle:hover {
-    color: #ef473a; }
-
-.fa-pencil-square-o:before {
-  margin-left: 2.5px; }
+.scroll {
+  height: 100%; }
