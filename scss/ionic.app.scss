@@ -869,19 +869,29 @@ textarea {
 }
 
 .centerBox {
-  width: 100%;
-  position: absolute;
-  top: 19px;
-  justify-content: center;
-  text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    justify-content: center;
+    text-align: center;
+
+  @media #{$large} {
+    width: 100%;
+    top: 19px;
+  }
 }
 
 #footer-bar.row {
+  .row {margin: 0px;}
   margin-bottom: 0px;
-  display: flex;
-  display: -webkit-flex;
+  flex-flow: row wrap;
   margin: auto;
-  width: 87%;
+
+  @media #{$large} {
+    display: flex;
+    display: -webkit-flex;
+    width: 87%;
+  }
 
   .row {
     margin-bottom: 0px;
@@ -891,21 +901,44 @@ textarea {
   }
 
   img {
-    max-width: 32px;
+    max-width: 28px;
+    @media #{$large} {
+      max-width: 32px;
+    }
+
   }
 
   p {
-    line-height: 16px;
-    font-size: 18px;
+    line-height: 14px;
+    font-size: 14px;
+
+    @media #{$large} {
+      line-height: 16px;
+      font-size: 18px;
+    }
+  }
+
+  .bothSuggestBtns {
+    justify-content: space-between;
+    background-color: $balanced;
+    padding: 10px;
+    a {color: $typeGrey;}
+
+    @media #{$large} {
+      background-color: $stable;
+    }
   }
 
   .eachSuggestbtn {
-    @include borderRadius(10px);
-    border: 2px solid $balanced;
-    color: $typeGrey;
-    background-color: $stable;
-    min-width: 110.08px;
-    min-height: 53px;
+
+    @media #{$large} {
+      @include borderRadius(10px);
+      border: 2px solid $balanced;
+      color: $typeGrey;
+      background-color: $stable;
+      min-width: 110.08px;
+      min-height: 53px;
+    }
   }
 
   span {

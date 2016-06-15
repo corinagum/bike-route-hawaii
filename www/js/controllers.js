@@ -514,19 +514,19 @@
       $scope.openModal(4);
     }
 
-    // $scope.currentMarkerProperties = args.leafletObject.options.properties;
+    $scope.currentMarkerProperties = args.leafletObject.options.properties;
     // if ($scope.currentMarkerProperties !== undefined){
     //   $scope.isFavorited = $scope.checkFavorite($scope.currentMarkerProperties);
     //   $scope.isSafetyWarn = $scope.checkSafetyWarn($scope.currentMarkerProperties);
     // }
 
     //CHANGE BACK ICON WHEN MODAL CLOSES
-    function changeBikeIcon() {
-      $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
-    }
+    // function changeBikeIcon() {
+    //   $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
+    // }
 
     $scope.changeBackIcon = function () {
-      $timeout(changeBikeIcon, 2000);
+      $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
     };
   });
 
@@ -628,8 +628,6 @@
       case 3 : $scope.modal3.hide();
                 break;
       case 4 : $scope.modal4.hide();
-                $scope.modal.remove();
-
                 break;
       case 5 : $scope.modal5.hide();
                 break;
@@ -642,9 +640,9 @@
   };
 
   //REMOVE MODAL WHEN DESTROYED
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
+  // $scope.$on('$destroy', function() {
+  //   $scope.modal.remove();
+  // });
 
   //////// END of MODAL ////////
 
