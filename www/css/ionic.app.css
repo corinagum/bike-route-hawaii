@@ -9899,7 +9899,8 @@ body, p {
 .fbLinkBtn {
   margin: 20px 0px; }
   .fbLinkBtn a {
-    color: #f8f8f8; }
+    color: #f8f8f8;
+    font-size: large; }
 
 .moreInfoMap {
   background: #78deac;
@@ -9916,7 +9917,7 @@ body, p {
 
 .secTitle {
   color: #626262;
-  font-size: 32px;
+  font-size: xx-large;
   line-height: 32px;
   text-align: center;
   margin: 5px 0px;
@@ -10060,7 +10061,12 @@ textarea {
       max-width: 50em; } }
 
 .addBackgroundImg {
-  background: url("./../img/bike-assets/backgroundMapView.png") no-repeat; }
+  background: url("./../img/bike-assets/backgroundMapView.png") no-repeat;
+  background-size: fill; }
+
+.addBackgroundGreen {
+  background: url("./../img/bike-assets/mapDownyOverlay.png") no-repeat;
+  background-size: cover; }
 
 .fdbckBtn, .button.suggestBtn, .button.surveyBtn {
   -webkit-border-radius: 7px;
@@ -10214,7 +10220,7 @@ textarea {
   background: url("./../img/bike-assets/num1_grey.png") center no-repeat; }
 
 .webViewLandingButton {
-  display: flex;
+  display: -webkit-flex;
   justify-content: center; }
   .webViewLandingButton img {
     width: 85%; }
@@ -10248,8 +10254,9 @@ textarea {
   .detailModalBlock .row {
     margin: 0; }
   .detailModalBlock .likes {
+    display: -webkit-flex;
     padding-top: 2px;
-    width: 87px;
+    width: 97px;
     height: 27px;
     border: 2px solid #e2e2e2;
     -webkit-border-radius: 10px;
@@ -10257,7 +10264,7 @@ textarea {
     -ms-border-radius: 10px;
     border-radius: 10px; }
     .detailModalBlock .likes i {
-      display: flex;
+      display: -webkit-flex;
       margin: auto;
       font-size: large; }
   .detailModalBlock .bbbImageLogo img {
@@ -10266,7 +10273,7 @@ textarea {
     width: 100%;
     height: auto; }
   .detailModalBlock .eachBusinessBlockContent {
-    display: flex; }
+    display: -webkit-flex; }
   .detailModalBlock .titleAddDescription {
     width: 100%;
     padding: 0px 9px 9px 18px; }
@@ -10303,8 +10310,8 @@ textarea {
     right: 100%;
     bottom: 0;
     left: 0;
-    min-height: 100%;
-    width: 34em; } }
+    max-height: 100%;
+    width: 50%; } }
 
 .displayNone {
   display: none; }
@@ -10387,7 +10394,10 @@ textarea {
   z-index: 1; }
 
 .addPadding {
-  padding: 0 10%; }
+  padding: 0 7%; }
+  @media only screen and (min-width: 600px) {
+    .addPadding {
+      padding: 0 14%; } }
 
 .survSmallTitle {
   margin: 14px 0; }
@@ -10397,6 +10407,7 @@ textarea {
 
 .radioBlock {
   display: flex;
+  display: -webkit-flex;
   background-color: #f8f8f8;
   max-height: 68px;
   min-height: 68px;

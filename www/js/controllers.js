@@ -66,11 +66,11 @@
     },
     defaults: {
       scrollWheelZoom: false,
-      doubleClickZoom: true,
+      doubleClickZoom: false,
       touchZoom: true,
       maxNativeZoom: 16,
       maxZoom : 16,
-      inertiaMaxSpeed: 150
+      inertiaMaxSpeed: 350
     },
     center : {
       lat: 21.3008900859581,
@@ -322,7 +322,7 @@
   };
 
   $scope.updateClosestBBB = function(){
-    $scope.closestBBB = bbbList.slice(0,5);
+  //   $scope.closestBBB = bbbList.slice(0,5);
   };
 
 
@@ -536,13 +536,13 @@
   //   $scope.modal2 = modal;
   // });
 
-  $ionicModal.fromTemplateUrl('templates/feedback/mahaloFeedback.html', {
-    id       : '3',
-    scope    : $scope,
-    animation: 'scale-in'
-  }).then(function(modal) {
-    $scope.modal3 = modal;
-  });
+  // $ionicModal.fromTemplateUrl('templates/feedback/mahaloFeedback.html', {
+  //   id       : '3',
+  //   scope    : $scope,
+  //   animation: 'scale-in'
+  // }).then(function(modal) {
+  //   $scope.modal3 = modal;
+  // });
 
   $ionicModal.fromTemplateUrl('templates/feedback/markerDetail.html', {
     id: '4',
@@ -607,22 +607,16 @@
    $scope.closeModal = function(index) {
     switch (index) {
       case 1 : $scope.modal1.hide();
-              $scope.modal1.remove();
                 break;
       case 2 : $scope.modal2.hide();
-              $scope.modal2.remove();
                 break;
       case 3 : $scope.modal3.hide();
-              $scope.modal3.remove();
                 break;
       case 4 : $scope.modal4.hide();
-              // $scope.modal4.remove();
                 break;
       case 5 : $scope.modal5.hide();
-              $scope.modal5.remove();
                 break;
       case 6 : $scope.modal6.hide();
-              $scope.modal6.remove();
                 break;
       case 7 : $scope.modal7.hide();
                 break;
@@ -631,9 +625,9 @@
   };
 
   //REMOVE MODAL WHEN DESTROYED
-  // $scope.$on('$destroy', function() {
-  //   $scope.modal.remove();
-  // });
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
 
   //////// END of MODAL ////////
 

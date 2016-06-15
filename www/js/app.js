@@ -135,15 +135,17 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
             controller: 'MapCtrl'
           }
         }
+      })
+      .state('tabs.mahaloFb', {
+        url: "/mahalo",
+        views: {
+          'home-tab': {
+            templateUrl: "templates/feedback/mahaloFeedback.html",
+            controller: 'MapCtrl'
+
+          }
+        }
       });
-      // .state('feedback.mahaloFb', {
-      //   url: "/mahalo",
-      //   views: {
-      //     'feedback-tab': {
-      //       templateUrl: "templates/feedback/mahaloFeedback.html"
-      //     }
-      //   }
-      // });
 
 
      $urlRouterProvider.otherwise("/tab/home");
