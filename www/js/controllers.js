@@ -70,7 +70,7 @@
       touchZoom: true,
       maxNativeZoom: 16,
       maxZoom : 16,
-      inertiaMaxSpeed: 350
+      inertiaMaxSpeed: 150
     },
     center : {
       lat: 21.3008900859581,
@@ -613,6 +613,8 @@
       case 3 : $scope.modal3.hide();
                 break;
       case 4 : $scope.modal4.hide();
+                $scope.modal.remove();
+
                 break;
       case 5 : $scope.modal5.hide();
                 break;
