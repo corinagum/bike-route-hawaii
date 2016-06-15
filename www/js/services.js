@@ -107,7 +107,7 @@ angular.module('starter.services', [])
 
 // CREATES NEW USER
     this.create = function(){
-      return $http.post(domain + "/user");
+      return $http.post("/user");
     };
 
 // UPDATES CURRENT USER
