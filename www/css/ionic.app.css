@@ -10228,10 +10228,6 @@ textarea {
 .benefitsBlockBtn img {
   animation: bounceIn 0.4s; }
 
-.wholeModalDiv {
-  position: absolute;
-  height: 100%; }
-
 .titleDetailBar {
   background-color: #e2e2e2;
   line-height: 48px;

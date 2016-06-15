@@ -517,22 +517,22 @@
 
 
   //////// BEGINNIG of MODAL ////////
-  $ionicModal.fromTemplateUrl('templates/feedback/fbckBtns.html', {
-      id       : '1',
-      scope    : $scope,
-      animation: 'scale-in'
-    }).then(function(modal) {
-      $scope.modal1 = modal;
-    });
+  // $ionicModal.fromTemplateUrl('templates/feedback/fbckBtns.html', {
+  //     id       : '1',
+  //     scope    : $scope,
+  //     animation: 'scale-in'
+  //   }).then(function(modal) {
+  //     $scope.modal1 = modal;
+  //   });
 
-  $ionicModal.fromTemplateUrl('templates/feedback/fbackForm.html', {
-    id       : '2',
-    scope    : $scope,
-    animation: 'scale-in',
-    focusFirstInput: true,
-  }).then(function(modal) {
-    $scope.modal2 = modal;
-  });
+  // $ionicModal.fromTemplateUrl('templates/feedback/fbackForm.html', {
+  //   id       : '2',
+  //   scope    : $scope,
+  //   animation: 'scale-in',
+  //   focusFirstInput: true,
+  // }).then(function(modal) {
+  //   $scope.modal2 = modal;
+  // });
 
   $ionicModal.fromTemplateUrl('templates/feedback/mahaloFeedback.html', {
     id       : '3',
@@ -550,13 +550,13 @@
     $scope.modal4 = modal;
   });
 
-  $ionicModal.fromTemplateUrl('templates/feedback/surveyForm.html', {
-    id: '5',
-    scope: $scope,
-    animation: 'scale-in'
-  }).then(function(modal) {
-    $scope.modal5 = modal;
-  });
+  // $ionicModal.fromTemplateUrl('templates/feedback/surveyForm.html', {
+  //   id: '5',
+  //   scope: $scope,
+  //   animation: 'scale-in'
+  // }).then(function(modal) {
+  //   $scope.modal5 = modal;
+  // });
 
   // $ionicModal.fromTemplateUrl('reportDetail.html', {
   //   id: '6',
@@ -614,7 +614,7 @@
               $scope.modal3.remove();
                 break;
       case 4 : $scope.modal4.hide();
-              $scope.modal4.remove();
+              // $scope.modal4.remove();
                 break;
       case 5 : $scope.modal5.hide();
               $scope.modal5.remove();

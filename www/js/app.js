@@ -73,7 +73,6 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         url: "/tab",
         abstract: true,
         templateUrl: "templates/tabs.html",
-
       })
       .state('tabs.home', {
         url: "/home",
