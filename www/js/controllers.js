@@ -5,31 +5,16 @@
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$timeout', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$timeout) {
 
-    console.log("mapctrl started");
-    //CREATING NEW USER IN DB
-    $scope.userStart = function(){
+    console.log("mapctrl started", UserService.getUser());
+    if(UserService.getUser() === null){
+      console.log("no user, made one");
       UserService.create()
       .then(function(data){
         UserService.updateUser(data.data.user);
         console.log("user updated to ", UserService.getUser());
       });
-    };
+    }
 
-    // UPDATING USER PATH IN DB
-    $scope.updatePath = function(path){
-      $scope.user = UserService.getUser();
-      console.log("updatePath user ", UserService.getUser());
-      if($scope.user.paths !== null){
-        $scope.user.paths.push(path);
-      }else{
-        $scope.user.paths = [path];
-      }
-      UserService.edit($scope.user.id)
-      .then(function(data){
-        console.log("update data", data);
-        UserService.updateUser($scope.user);
-      });
-    };
 
     // UPDATE SURVEY QUESTIONS IN DB
     $scope.updateSurvey = function(u) {
@@ -288,23 +273,24 @@
   // CHECK IF STATION IS LIKED BY USER
   $scope.isLiked = function(){
     $scope.user = UserService.getUser();
-    if($scope.user.liked === null){
+    if($scope.user.liked === null || undefined){
       console.log("in null");
       return false;
-    }
-    if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
-      console.log("in indexOf -1");
-      return false;
     } else {
-      console.log("in found indexOf");
-      return true;
+      if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
+        console.log("in indexOf -1");
+        return false;
+      } else {
+        console.log("in found indexOf");
+        return true;
+      }
     }
   };
 
   // IF USER LIKED COLOR IS RED, UPDATE USER MODEL
   $scope.userLiked = function(){
     $scope.myStyle={color:'red'};
-    if($scope.user.liked === null){
+    if($scope.user.liked === null || undefined){
       $scope.user.liked = [$scope.stationClicked.id];
     }else{
       $scope.user.liked.push($scope.stationClicked.id);
@@ -628,8 +614,6 @@
       case 3 : $scope.modal3.hide();
                 break;
       case 4 : $scope.modal4.hide();
-                $scope.modal.remove();
-
                 break;
       case 5 : $scope.modal5.hide();
                 break;
@@ -773,6 +757,14 @@
     };
 }])
 .controller('FormCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+  }
   $scope.update = function(u) {
     $scope.user = UserService.getUser();
     $scope.user.name = u.name;
@@ -793,6 +785,14 @@
 }])
 .controller('PathCtrl', ['$scope', 'UserService', function($scope, UserService) {
   console.log("PathCtrl");
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+  }
   $scope.updatePath = function(path){
     $scope.user = UserService.getUser();
     console.log("updatePath user ", UserService.getUser());
@@ -809,6 +809,15 @@
   };
 }])
 .controller('MahaloCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  console.log("MahaloCtrl");
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+  }
   $scope.updatePath = function(path){
     $scope.user = UserService.getUser();
     if($scope.user.paths !== null){
@@ -823,6 +832,15 @@
   };
 }])
 .controller('SurveyCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  console.log("SurveyCtrl");
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+  }
   $scope.updatePath = function(path){
     $scope.user = UserService.getUser();
     console.log("updatePath user ", UserService.getUser());
