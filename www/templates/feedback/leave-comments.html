@@ -5,31 +5,31 @@
   </ion-header-bar>
 
   <ion-content class="addBackgroundImg">
-    <div class="alohaLandingOne divSize has-header">
+    <div ng-controller="FormCtrl" class="alohaLandingOne divSize has-header">
       <p class="commentHeader">We're happy to hear from you!</p>
 
       <form action="">
-        <input type="text" name="FirstLastName" placeholder="First and Last name">
-        <input type="email" name="Email" placeholder="Email">
+        <input ng-model="user.name" type="text" name="FirstLastName" placeholder="First and Last name">
+        <input ng-model="user.email" type="email" name="Email" placeholder="Email">
 
         <p>
           <input class="with-gap" name="group10" type="radio" id="test10" />
-          <label for="test10" class="smallSizeFont">I support Bikeshare Hawaii.</label>
+          <label ng-model="user.commentType" value="support" for="test10" class="smallSizeFont">I support Bikeshare Hawaii.</label>
         </p>
         <p>
-          <input class="with-gap" name="group10" type="radio" id="test20" />
+          <input ng-model="user.commentType" value="unconvinced" class="with-gap" name="group10" type="radio" id="test20" />
           <label for="test20" class="smallSizeFont">I'm still unconvinced.</label>
         </p>
         <p>
-          <input class="with-gap" name="group10" type="radio" id="test30"  />
+          <input ng-model="user.commentType" value="undecided" class="with-gap" name="group10" type="radio" id="test30"  />
           <label for="test30" class="smallSizeFont">I'm undecided</label>
         </p>
 
-        <textarea class="" rows="5" cols="2" placeholder="Message..."></textarea>
+        <textarea ng-model="user.comment" class="" rows="5" cols="2" placeholder="Message..."></textarea>
 
       </form>
       </br>
-      <a href="#/tab/mahalo" ng-click="openModal(3)" class="submitBtn" nav-transition="none">submit</a>
+      <a href="#/tab/mahalo" ng-click="update(user); openModal(3)" class="submitBtn" nav-transition="none">submit</a>
     </div>
   </ion-content>
 
