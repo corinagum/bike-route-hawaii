@@ -5,8 +5,8 @@
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$timeout', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$timeout) {
 
-
-    console.log("mapctrl in use");
+    console.log("mapctrl started");
+    //CREATING NEW USER IN DB
     $scope.userStart = function(){
       UserService.create()
       .then(function(data){
@@ -15,6 +15,7 @@
       });
     };
 
+    // UPDATING USER PATH IN DB
     $scope.updatePath = function(path){
       $scope.user = UserService.getUser();
       console.log("updatePath user ", UserService.getUser());
@@ -30,6 +31,7 @@
       });
     };
 
+    // UPDATE SURVEY QUESTIONS IN DB
     $scope.updateSurvey = function(u) {
       $scope.user = UserService.getUser();
       $scope.user.age = u.age;
@@ -39,6 +41,7 @@
       UserService.edit($scope.user.id);
     };
 
+  // SET MAP INTIALLY
   angular.extend($scope, {
     honolulu: {
       lat: 21.3008900859581,
@@ -52,7 +55,6 @@
       },
       markers : {
         enable : ['click', 'dragend', 'dragstart']
-        // logic : 'emit'
       }
     },
     layers: {
@@ -211,8 +213,6 @@
     $scope.foundLocation = false;
   };
 
-  var routeOnMap = false;
-
   $scope.foundLocation = false;
 
   function onLocationError(e) {
@@ -237,35 +237,11 @@
 
   //  INITIALIZE FILTERS TO SHOW MARKERS
   $scope.showStations = true;
-  $scope.showLandmarks = false;
-  $scope.showBikeRacks = false;
 
   // TOGGLE FILTERS
   $scope.setShowStations = function(){
     $scope.showStations = !$scope.showStations;
   };
-  $scope.setShowLandmarks = function(){
-    $scope.showLandmarks = !$scope.showLandmarks;
-  };
-  $scope.setShowBikeRacks = function(){
-    $scope.showBikeRacks = !$scope.showBikeRacks;
-  };
-
-  // DEFAULT RADIUS VALUES
-  // $scope.radius = 1610;
-  // $scope.radiusHalf = false;
-  // $scope.radiusMile = true;
-  // $scope.radiusTwoMile = false;
-  // $scope.radiusAll = false;
-
-  // RADIUS SETTER
-  // $scope.setRadius = function(rad){
-  //   $scope.radius = rad;
-  //   if ( rad === 805) {  $scope.radiusHalf = true; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
-  //   if ( rad === 1610) {  $scope.radiusHalf = false; $scope.radiusMile = true; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
-  //   if ( rad === 3220) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = true; $scope.radiusAll = false; }
-  //   if ( rad === 50000) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = true; }
-  // };
 
   // LOOPS THROUGH DATA RETURNED TO CHECK ITS TYPE AND IF IT SHOULD BE ASSIGNED A MARKER
   function createMarkers(array, name){
@@ -284,8 +260,8 @@
     }
   }
 
+  // default values that will be changed on station click
   $scope.stationClicked = {
-    // default values that will be changed on station click
     "lastClicked": null,
     "id": 391,
     "type": "BikeShare",
@@ -300,12 +276,48 @@
     "long": -157.81827587802,
     "geolink": "https://www.google.com/maps/@21.2607781,-157.8181971,3a,75y,331.63h,59.46t/data=!3m6!1e1!3m4!1s5GecKEKkbvn9xE21RYW_tw!2e0!7i13312!8i6656",
     "sitelink": null,
-    "photolink": null,
+    "photolink": "https://s3-us-west-2.amazonaws.com/bikesharesites/stationPhotos/0985_003.jpg",
     "upDownVote": null,
     "votesCounter": null,
     "safetyCounter": null,
     "createdAt": "2016-02-29T22:11:46.561Z",
     "updatedAt": "2016-02-29T22:11:46.561Z"
+  };
+
+  // CHECK IF STATION IS LIKED BY USER
+  $scope.isLiked = function(){
+    $scope.user = UserService.getUser();
+    if($scope.user.liked === null){
+      console.log("in null");
+      return false;
+    }
+    if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
+      console.log("in indexOf -1");
+      return false;
+    } else {
+      console.log("in found indexOf");
+      return true;
+    }
+  };
+
+  // IF USER LIKED COLOR IS RED, UPDATE USER MODEL
+  $scope.userLiked = function(){
+    $scope.myStyle={color:'red'};
+    if($scope.user.liked === null){
+      $scope.user.liked = [$scope.stationClicked.id];
+    }else{
+      $scope.user.liked.push($scope.stationClicked.id);
+    }
+    UserService.updateUser($scope.user);
+    UserService.edit($scope.user.id);
+  };
+
+  // USER UNLIKED, CHANGE ICON TO BLANK, UPDATE USER MODEL
+  $scope.userUnliked = function(){
+    $scope.myStyle={};
+    $scope.user.liked.splice($scope.user.liked.indexOf($scope.stationClicked.id),1);
+    UserService.updateUser($scope.user);
+    UserService.edit($scope.user.id);
   };
 
   function sortByClosest(array){
@@ -402,7 +414,9 @@
     leafletData.getMap()
     .then(function(map){
       new L.Control.GeoSearch({
-        provider: new L.GeoSearch.Provider.Google()
+        provider: new L.GeoSearch.Provider.Google({
+          // bounds : 21.221181|-158.381653|21.725976|-157.592010
+        })
       }).addTo(map);
     });
   });

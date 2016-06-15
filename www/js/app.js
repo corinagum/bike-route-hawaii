@@ -88,6 +88,7 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         views: {
           'home-tab': {
             templateUrl: "templates/alohaLanding.html",
+            controller: 'MapCtrl'
           }
         }
       })
