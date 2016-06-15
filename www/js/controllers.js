@@ -744,11 +744,11 @@
       console.log("user updated to ", UserService.getUser());
     });
 
-    $scope.myGoBack = function() {
-      $ionicHistory.goBack();
-    };
 
   }
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
   $scope.update = function(u) {
     $scope.user = UserService.getUser();
     if(u){
@@ -787,10 +787,10 @@
       console.log("user updated to ", UserService.getUser());
     });
 
-    $scope.myGoBack = function() {
-      $ionicHistory.goBack();
-    };
   }
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
   $scope.updatePath = function(path){
     $scope.user = UserService.getUser();
     console.log("updatePath user ", UserService.getUser());
@@ -839,10 +839,11 @@
       console.log("user updated to ", UserService.getUser());
     });
 
-    $scope.myGoBack = function() {
-      $ionicHistory.goBack();
-    };
   }
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
+
   $scope.updateSurvey = function(u) {
       $scope.user = UserService.getUser();
       if(u.age){
