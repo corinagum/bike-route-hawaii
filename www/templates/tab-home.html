@@ -13,14 +13,15 @@
   </ion-header-bar>
 <!-- </ion-nav-bar> -->
 
-  <ion-content data-tap-disabled="true" class="fade-on-enter">
+  <ion-content class="fade-on-enter">
    <!--  <div class="getLocationMarker" ng-click="findCenter()">
       <img src="../img/bike-assets/sMarkerIcon.png" alt="">
     </div>
     <div ng-click="findCenter()">
     </div> -->
 
-    <leaflet layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
+      <leaflet data-tap-disabled="true" layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
+
 
     <div class="centerBox">
       <div id="footer-bar" class="row" ng-show="showReportControl">
