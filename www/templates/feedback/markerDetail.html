@@ -7,7 +7,7 @@
 
     <ion-content  class="detailModalBlock">
         <div class="d_image center">
-          <img class="stationPhoto" src="{{stationClicked.photolink}}" alt="">
+          <img class="stationPhoto" ng-src="{{stationClicked.photolink}}" alt="">
         </div>
 
         <div class="d_title streetLikesLocation">
@@ -44,7 +44,7 @@
 
           <div class="eachBusinessBlockContent">
             <div class="imageOfBusiness valign-wrapper">
-              <img class="fixedImageSize" ng-if="closestBBB" src={{item.image}} alt="">
+              <img class="fixedImageSize" ng-if="closestBBB" ng-src={{item.image}} alt="">
             </div>
 
             <div class="titleAddDescription">
