@@ -347,6 +347,10 @@
     createMarkers(data, 'bikeShare');
   }
 
+  $scope.resetMarkersAfterClosingModal= function (data) {
+    setMarkersReturned(data);
+    console.log("reset?");
+  };
 
   //FIND POINTS IN RADIUS ON LOCATION FOUND
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
@@ -484,85 +488,22 @@
         $scope.myStyle={color:'red'};
       }
     }
-
-    //CHANGE BACK ICON WHEN MODAL CLOSES
-    // function changeBikeIcon() {
-    //   $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
-    // }
-
-    // $scope.changeBackIcon = function () {
-    //   $timeout(changeBikeIcon, 2000);
-    // };
   });
 
 
 
 
   //////// BEGINNIG of MODAL ////////
-  // $ionicModal.fromTemplateUrl('templates/feedback/fbckBtns.html', {
-  //     id       : '1',
-  //     scope    : $scope,
-  //     animation: 'scale-in'
-  //   }).then(function(modal) {
-  //     $scope.modal1 = modal;
-  //   });
-
-  // $ionicModal.fromTemplateUrl('templates/feedback/fbackForm.html', {
-  //   id       : '2',
-  //   scope    : $scope,
-  //   animation: 'scale-in',
-  //   focusFirstInput: true,
-  // }).then(function(modal) {
-  //   $scope.modal2 = modal;
-  // });
-
-  // $ionicModal.fromTemplateUrl('templates/feedback/mahaloFeedback.html', {
-  //   id       : '3',
-  //   scope    : $scope,
-  //   animation: 'scale-in'
-  // }).then(function(modal) {
-  //   $scope.modal3 = modal;
-  // });
 
   $ionicModal.fromTemplateUrl('templates/feedback/markerDetail.html', {
     id: '4',
-    scope: $scope
+    scope: $scope,
+    backdropClickToClose: false,
+    hardwareBackButtonClose: false,
     // animation: 'scale-in'
   }).then(function(modal) {
     $scope.modal4 = modal;
   });
-
-  // $ionicModal.fromTemplateUrl('templates/feedback/surveyForm.html', {
-  //   id: '5',
-  //   scope: $scope,
-  //   animation: 'scale-in'
-  // }).then(function(modal) {
-  //   $scope.modal5 = modal;
-  // });
-
-  // $ionicModal.fromTemplateUrl('reportDetail.html', {
-  //   id: '6',
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.modal6 = modal;
-  // });
-
-  // $ionicModal.fromTemplateUrl('favorites.html', {
-  //   id: '7',
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.modal7 = modal;
-  // });
-
-  // $ionicModal.fromTemplateUrl('inputFeedbackForm.html', {
-  //     id       : '8',
-  //     scope    : $scope,
-  //     animation: 'slide-in-up'
-  //   }).then(function(modal) {
-  //     $scope.modal8 = modal;
-  //   });
 
   $scope.openModal = function(index) {
     switch (index) {
@@ -573,18 +514,11 @@
       case 3 : $scope.modal3.show();
                 break;
       case 4 : $scope.modal4.show();
-                break;
-      case 5 : $scope.modal5.show();
-                break;
-      case 6 : $scope.modal6.show();
-                break;
-      case 7 : $scope.modal7.show();
-                break;
-      case 8 : $scope.modal8.show();
     }
   };
 
    $scope.closeModal = function(index) {
+    // window.location.reload(true);
     switch (index) {
       case 1 : $scope.modal1.hide();
                 break;
@@ -593,14 +527,6 @@
       case 3 : $scope.modal3.hide();
                 break;
       case 4 : $scope.modal4.hide();
-                break;
-      case 5 : $scope.modal5.hide();
-                break;
-      case 6 : $scope.modal6.hide();
-                break;
-      case 7 : $scope.modal7.hide();
-                break;
-      case 8 : $scope.modal8.hide();
     }
   };
 
