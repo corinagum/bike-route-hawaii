@@ -3,36 +3,42 @@ angular.module('starter.services', [])
 .service("PointService", ['$http', 'processENV', function($http, processENV) {
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   var domain;
-  if(!isCordovaApp){
-    domain = 'http://localhost:4000';
-  }
-  if(isCordovaApp){
+  // if(!isCordovaApp){
+  //   domain = 'http://localhost:4000';
+  // }
+  // if(isCordovaApp){
     domain = '.';
-  }
+  // }
 
   this.getPoint = function() {
-    return $http.get(domain + '/api/points');
+    return $http.get('/api/points');
   };
 
   this.getBikeshareStations = function() {
-    return $http.get(domain + '/api/points/bikeshare');
+    return $http.get('/api/points/bikeshare');
   };
 
   this.addPoint = function(point) {
-    return $http.post(domain + '/api/points', {
+    return $http.post('/api/points', {
       point : point
     });
   };
 
   this.editPoint = function(point) {
-    return $http.put(domain + '/api/points/' + point.id, {
+    return $http.put('/api/points/' + point.id, {
       point : point
     });
   };
 
-  this.deletePoint = function(point) {
-    return $http.delete(domain + '/api' + point.id);
+  this.suggestPoint = function(point) {
+    return $http.post('/api/points/suggest', {
+      point : point
+    });
   };
+
+  // this.deletePoint = function(point) {
+  //   return $http.delete(domain + '/api' + point.id);
+  // };
 
   this.getPointsInRadius = function(radius, lat, long) {
     return $http.get(domain + '/api/points/within/' +
@@ -41,7 +47,7 @@ angular.module('starter.services', [])
 
   this.getPointsInView = function(NElat, NElong, SWlat, SWlong){
     // console.log(process.env);
-    console.log(processENV);
+    // console.log(processENV);
     return $http.get(domain + '/api/points/bounds/' +
       NElat + '/' + NElong + '/' + SWlat + '/' +SWlong, {processENV:processENV});
   };
@@ -55,7 +61,7 @@ angular.module('starter.services', [])
     } else {
       comment.contact = false;
     }
-    return $http.post('http://localhost:4000/api/comments', {
+    return $http.post('/api/comments', {
       comment : comment
     });
   };
@@ -79,56 +85,38 @@ angular.module('starter.services', [])
       return $http.delete('/' + id +'/delete');
     };
   }])
-  .service("UserService", ['$http', function($http){
+  .service("UserService", ['$http', 'processENV', function($http, processENV) {
+    var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
+    var domain;
+    // if(!isCordovaApp){
+    //   domain = 'http://localhost:4000';
+    // }
+    // if(isCordovaApp){
+      domain = '.';
+    // }
 
-// LOGIN
-    this.login = function(auth) {
-      return $http.post('/login', {
-        auth : auth
+    var user = null;
+
+    this.updateUser = function(u){
+      user = u;
+    };
+
+    this.getUser = function(){
+      return user;
+    };
+
+// CREATES NEW USER
+    this.create = function(){
+      return $http.post("/user");
+    };
+
+// UPDATES CURRENT USER
+    this.edit = function(id){
+      return $http.put("/user/" + id, {
+        user : user
       });
-    };
-// REGISTER
-    this.signUp = function(register) {
-      return $http.post('/register', {
-        register : register
-      });
-    };
-// LOGOUT
-    this.logout = function(){
-      return $http.get('/logout');
-    };
-
-//AUTHORIZATION STATUS
-    this.authStatus = function(){
-      return $http.get('/authStatus');
-    };
-
-}])
-
-
-.service("UserService", ['$http', function($http){
-
-// LOGIN
-    this.login = function(auth) {
-      return $http.post('/login', {
-        auth : auth
-      });
-    };
-// REGISTER
-    this.signUp = function(register) {
-      return $http.post('/register', {
-        register : register
-      });
-    };
-// LOGOUT
-    this.logout = function(){
-      return $http.get('/logout');
-    };
-
-//AUTHORIZATION STATUS
-    this.authStatus = function(){
-      return $http.get('/authStatus');
     };
 
 }]);
+
 

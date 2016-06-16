@@ -11,17 +11,11 @@ module.exports = function(sequelize, DataTypes) {
     lat : DataTypes.FLOAT,
     long : DataTypes.FLOAT,
     geolink : DataTypes.STRING,
+    suggestedBy : DataTypes.INTEGER,
     sitelink : DataTypes.STRING,
     photolink : DataTypes.STRING,
-    upDownVote : DataTypes.INTEGER,
-    votesCounter : DataTypes.INTEGER,
-    safetyCounter : DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        Point.hasMany(models.Comment);
-      }
-    }
+    likedBy : DataTypes.ARRAY(DataTypes.INTEGER),
+    clicks : DataTypes.INTEGER
   });
 
   return Point;

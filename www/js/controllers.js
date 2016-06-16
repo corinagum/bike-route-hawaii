@@ -1,8 +1,32 @@
+
+
  angular.module('starter.controllers', ['ngCordova'])
 
  .controller('MapCtrl',
-  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory) {
+  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$timeout', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$timeout) {
 
+    console.log("mapctrl started", UserService.getUser());
+    if(UserService.getUser() === null){
+      console.log("no user, made one");
+      UserService.create()
+      .then(function(data){
+        UserService.updateUser(data.data.user);
+        console.log("user updated to ", UserService.getUser());
+      });
+    }
+
+
+    // UPDATE SURVEY QUESTIONS IN DB
+    $scope.updateSurvey = function(u) {
+      $scope.user = UserService.getUser();
+      $scope.user.age = u.age;
+      $scope.user.gender = u.gender;
+      $scope.user.zipcode = u.zipcode;
+      UserService.updateUser($scope.user);
+      UserService.edit($scope.user.id);
+    };
+
+  // SET MAP INTIALLY
   angular.extend($scope, {
     honolulu: {
       lat: 21.3008900859581,
@@ -13,21 +37,27 @@
       map : {
         enable : ['click', 'locationfound', 'dragend', 'load'],
         logic : 'broadcast'
+      },
+      markers : {
+        enable : ['click', 'dragend', 'dragstart'],
+        logic : 'emit'
       }
     },
     layers: {
       baselayers: {
         osm: {
-          name: 'OpenStreetMap',
-          url: 'https://{s}.tiles.mapbox.com/v3/examples.map-i875mjb7/{z}/{x}/{y}.png',
+          name: 'Default',
+          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
           type: 'xyz'
-        }
+        },
       }
     },
     defaults: {
       scrollWheelZoom: false,
       doubleClickZoom: false,
-      touchZoom: false,
+      touchZoom: true,
+      maxNativeZoom: 16,
+      maxZoom : 16,
       inertiaMaxSpeed: 150
     },
     center : {
@@ -37,32 +67,33 @@
     },
     markers : {},
     bikeShareIcon: {
-      type: 'extraMarker',
-      icon: 'fa-bicycle',
-      markerColor: 'green-light',
-      prefix: 'fa',
-      shape: 'circle'
+      iconUrl: '../img/bike-assets/bike-icon.png',
+      iconSize:     [30, 30],
+      // shadowUrl: 'img/leaf-shadow.png',
+      shadowSize:   [50, 64],
+      iconAnchor:   [0, 0],
+      shadowAnchor: [4, 62],
+      popupAnchor:  [15, 0]
     },
-    historyIcon: {
-      type: 'extraMarker',
-      icon: 'fa-university',
-      markerColor: 'yellow',
-      shape : 'square',
-      prefix : 'fa'
-    },
-    bikeRack: {
-      type: 'extraMarker',
-      icon: 'fa-unlock-alt',
-      markerColor: 'black',
-      shape: 'circle',
-      prefix : 'fa'
+    bikeShareIconClicked: {
+      iconUrl: '../img/bike-assets/bike-icon-gray.png',
+      iconSize:     [30, 30],
+      // shadowUrl: 'img/leaf-shadow.png',
+      shadowSize:   [50, 64],
+      iconAnchor:   [0, 0],
+      shadowAnchor: [4, 62],
+      popupAnchor:  [15, 0]
     },
     reportIcon: {
-      type: 'extraMarker',
-      icon: 'fa-pencil-square-o',
-      markerColor: 'red',
-      shape: 'circle',
-      prefix : 'fa'
+      iconUrl: '../img/bike-assets/bike-icon.png',
+      iconSize:     [35, 35],
+      // shadowUrl: 'img/leaf-shadow.png',
+      shadowSize:   [50, 64],
+      iconAnchor:   [0, 0],
+      shadowAnchor: [4, 62],
+      popupAnchor:  [15, 0],
+      className: 'bikeIconSuggestion',
+      message: 'Drop the bycicle where you\'d like to see the station'
     }
   });
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
@@ -74,6 +105,7 @@
     if(isCordovaApp) {
       navigator.geolocation.getCurrentPosition(function(position){
       $ionicLoading.hide();
+        console.log("loc marker is cordova app");
         if(position.coords.longitude < -158.006744|| position.coords.longitude > -157.640076|| position.coords.latitude > 21.765877 || position.coords.latitude < 21.230502){
           map.panTo({
             lat : 21.3008900859581,
@@ -89,18 +121,18 @@
           $scope.markers.userMarker = {
             lat : position.coords.latitude,
             lng : position.coords.longitude,
-            message : 'You are here'
-          };
+            message : 'You are here'          };
         }
         }, handleErr, {
-          timeout : 10000,
+          timeout : 6000,
           enableHighAccuracy : true
         });
     } else {
       $cordovaGeolocation
-        .getCurrentPosition({timeout : 10000, enableHighAccuracy : true})
+        .getCurrentPosition({timeout : 6000, enableHighAccuracy : true})
         .then(function (position) {
           $ionicLoading.hide();
+          console.log("loc marker is not cordova app");
           if(position.coords.longitude < -158.006744|| position.coords.longitude > -157.640076|| position.coords.latitude > 21.765877 || position.coords.latitude < 21.230502){
             map.panTo({
               lat : 21.3008900859581,
@@ -167,247 +199,255 @@
     $scope.foundLocation = false;
   };
 
-  var routeOnMap = false;
-
   $scope.foundLocation = false;
+
+  function onLocationError(e) {
+      alert(e.message);
+  }
 
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
+
       $scope.show($ionicLoading);
-      map.locate();
-      updateUserLocMarker(map);
-
-      if( routeOnMap === true ) {
-        $scope.removeRouting();
-        routeOnMap = false;
-      }
-
+      map.locate({setView: true})
+      .on('onlocationerror', function(e){
+         console.log(e);
+         alert("Location access denied.");
+       });
+      // updateUserLocMarker();
       $scope.foundLocation = true;
     });
+
   };
+
 
   //  INITIALIZE FILTERS TO SHOW MARKERS
   $scope.showStations = true;
-  $scope.showLandmarks = false;
-  $scope.showBikeRacks = false;
 
   // TOGGLE FILTERS
   $scope.setShowStations = function(){
     $scope.showStations = !$scope.showStations;
   };
-  $scope.setShowLandmarks = function(){
-    $scope.showLandmarks = !$scope.showLandmarks;
-  };
-  $scope.setShowBikeRacks = function(){
-    $scope.showBikeRacks = !$scope.showBikeRacks;
-  };
-
-  // DEFAULT RADIUS VALUES
-  $scope.radius = 1610;
-  $scope.radiusHalf = false;
-  $scope.radiusMile = true;
-  $scope.radiusTwoMile = false;
-  $scope.radiusAll = false;
-
-  // RADIUS SETTER
-  $scope.setRadius = function(rad){
-    $scope.radius = rad;
-    if ( rad === 805) {  $scope.radiusHalf = true; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
-    if ( rad === 1610) {  $scope.radiusHalf = false; $scope.radiusMile = true; $scope.radiusTwoMile = false; $scope.radiusAll = false; }
-    if ( rad === 3220) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = true; $scope.radiusAll = false; }
-    if ( rad === 50000) {  $scope.radiusHalf = false; $scope.radiusMile = false; $scope.radiusTwoMile = false; $scope.radiusAll = true; }
-  };
-
- // UTILITY FUNCTION FOR SETTING MARKERS WHEN RETURNED FROM API REQUEST
-  $scope.bikesharePoints = [];
-  $scope.landmarkPoints = [];
-  $scope.bikeRackPoints = [];
 
   // LOOPS THROUGH DATA RETURNED TO CHECK ITS TYPE AND IF IT SHOULD BE ASSIGNED A MARKER
-  $scope.createMarkers = function(array, name){
+  function createMarkers(array, name){
     for(var i = 0; i < array.length; i++){
       var pointDetail;
       var showMarker;
       var pointIcon;
-      // array[i].properties.distanceToFrom = Math.round(((array[i].properties.distance_from_current_location)*0.000621371192) * 100) / 100;
-      // if(name === 'bikeShare'){
-      pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + array[i].name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-      $scope.bikesharePoints.push(array[i]);
       showMarker = $scope.showStations;
       pointIcon = $scope.bikeShareIcon;
-      // }
-      // if(name === 'landmark'){
-      //   pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + array[i].properties.name + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-      //   $scope.landmarkPoints.push(array[i].properties);
-      //   showMarker = $scope.showLandmarks;
-      //   pointIcon = $scope.historyIcon;
-      // }
-      // if(name === 'bikeRack'){
-      //   pointDetail = '<div><div class="sendPoint" id="popup" ng-click="openModal(3); checkFavorite(currentMarkerProperties);"> ' + array[i].properties.description + '&nbsp<a href="#"><i class="fa fa-chevron-right"></i></a></div></div>';
-      //   $scope.bikeRackPoints.push(array[i].properties);
-      //   showMarker = $scope.showBikeRacks;
-      //   pointIcon = $scope.bikeRack;
-      // }
-      if (showMarker){
         $scope.markers[(name + i)] = {
-          lat : array[i].lat,
-          lng : array[i].long,
-          icon: pointIcon,
-          message : pointDetail,
-          compileMessage : true,
-          getMessageScope: function(){ return $scope; },
-          properties : array[i]
+        lat : array[i].lat,
+        lng : array[i].long,
+        icon: pointIcon,
+        properties : array[i],
         };
+    }
+  }
+
+  // default values that will be changed on station click
+  $scope.stationClicked = {
+    "lastClicked": null,
+    "id": 391,
+    "type": "BikeShare",
+    "name": "Paki and Kalakaua",
+    "description": "Station located on the gravel shoulder on the west side of Paki Avenue to the north of the intersection with Kalakaua.",
+    "info": "On-Street in Place of Parking",
+    "fid": 0,
+    "site_id": "0027_011",
+    "street": "Paki Avenue",
+    "side": "W",
+    "lat": 21.2609380183713,
+    "long": -157.81827587802,
+    "geolink": "https://www.google.com/maps/@21.2607781,-157.8181971,3a,75y,331.63h,59.46t/data=!3m6!1e1!3m4!1s5GecKEKkbvn9xE21RYW_tw!2e0!7i13312!8i6656",
+    "sitelink": null,
+    "photolink": "https://s3-us-west-2.amazonaws.com/bikesharesites/stationPhotos/0985_003.jpg",
+    "upDownVote": null,
+    "votesCounter": null,
+    "safetyCounter": null,
+    "createdAt": "2016-02-29T22:11:46.561Z",
+    "updatedAt": "2016-02-29T22:11:46.561Z"
+  };
+
+  // CHECK IF STATION IS LIKED BY USER
+  $scope.isLiked = function(){
+    $scope.user = UserService.getUser();
+    if($scope.user.liked === null || undefined){
+      console.log("in null");
+      return false;
+    } else {
+      if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
+        console.log("in indexOf -1");
+        return false;
+      } else {
+        console.log("in found indexOf");
+        return true;
       }
     }
   };
 
-
-
-  $scope.setMarkersReturned = function(data){
-    $scope.createMarkers(data.data, 'bikeShare');
-    // $scope.createMarkers(data.data.geoJSONHistory.features, 'landmark');
-    // $scope.createMarkers(data.data.geoJSONBikeRack.features, 'bikeRack');
+  // IF USER LIKED COLOR IS RED, UPDATE USER MODEL
+  $scope.userLiked = function(){
+    $scope.myStyle={color:'red'};
+    if($scope.user.liked === null || undefined){
+      $scope.user.liked = [$scope.stationClicked.id];
+    }else{
+      $scope.user.liked.push($scope.stationClicked.id);
+    }
+    UserService.updateUser($scope.user);
+    UserService.edit($scope.user.id);
   };
 
-  // FIND POINTS ACCORDING TO FILTERS
-  // $scope.setPinsWithinRadius = function(){
-  //   if($scope.markers.hasOwnProperty("reportPoint")){
-  //       $scope.markers = {
-  //       userMarker : $scope.markers.userMarker,
-  //       reportPoint : $scope.markers.reportPoint
-  //       };
-  //   } else {
-  //     $scope.markers = {
-  //       userMarker : $scope.markers.userMarker
-  //     };
-  //   }
-  //   PointService.getPointsInRadius($scope.radius, $scope.markers.userMarker.lat, $scope.markers.userMarker.lng)
-  //     .then(function(data){
-  //       $scope.setMarkersReturned(data);
-  //     });
-  // };
+  // USER UNLIKED, CHANGE ICON TO BLANK, UPDATE USER MODEL
+  $scope.userUnliked = function(){
+    $scope.myStyle={};
+    $scope.user.liked.splice($scope.user.liked.indexOf($scope.stationClicked.id),1);
+    UserService.updateUser($scope.user);
+    UserService.edit($scope.user.id);
+  };
+
+  function sortByClosest(array){
+    array.sort(function(a,b){
+      return a.distance - b.distance;
+    });
+  }
+
+ $scope.updateDistanceFromMarker = function(marker, array){
+    array.forEach(function(item){
+      item.distance = L.latLng([marker.lat, marker.long]).distanceTo([item.lat, item.lng]);
+    });
+    sortByClosest(array);
+  };
+
+  $scope.updateClosestBBB = function(){
+    $scope.closestBBB = bbbList.slice(0,5);
+  };
+
+
+  $scope.stationWalkTime = function(marker, station){
+    return Math.round(L.latLng([$scope.stationClicked.lat, $scope.stationClicked.long]).distanceTo($scope.places[place]) * (60/15500));
+  };
+
+  $scope.rideTime = function(place){
+    return Math.round(L.latLng([$scope.stationClicked.lat, $scope.stationClicked.long]).distanceTo($scope.places[place]) * (60/15500));
+  };
+
+  $scope.places = {
+    kakaako : [21.296586, -157.860886],
+    alamoana : [21.290763, -157.843645],
+    university : [21.296760, -157.821071],
+    waikiki : [21.275413, -157.824987],
+    downtown : [21.309355, -157.860274],
+    diamondhead: [21.260855, -157.817874]
+  };
+
+
+  function setMarkersReturned(data){
+    createMarkers(data, 'bikeShare');
+  }
+
 
   //FIND POINTS IN RADIUS ON LOCATION FOUND
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
     $ionicLoading.hide();
+    console.log("location found", event, args);
     var leafEvent = args.leafletEvent;
     $scope.center.autoDiscover = true;
-    $scope.markers.userMarker = {
-      lat : leafEvent.latitude,
-      lng : leafEvent.longitude,
-      message : 'You are here'
-    };
-    PointService.getPointsInRadius($scope.radius, $scope.markers.userMarker.lat, $scope.markers.userMarker.lng)
-      .then(function(data){
-        $scope.setMarkersReturned(data);
+
+    leafletData.getMap().then(function(map){
+
+    var RedIcon = L.Icon.Default.extend({
+        options: {
+          iconUrl: './../img/bike-assets/userMarker.png',
+          iconSize:[24, 32],
+          shadowSize:   [42, 32]
+        }
+     });
+    var redIcon = new RedIcon();
+      L.marker([leafEvent.latitude, leafEvent.longitude], {icon: redIcon}).addTo(map)
+      .bindPopup("You are here!").openPopup();
     });
 
   });
 
-  //CHANGES CURRENT MARKER PROPERTIES BASED ON WHAT ITEM IS CLICKED IN LIST MODAL
-  // $scope.changeCurrentMarker = function(item){
-  //   $scope.currentMarkerProperties = item;
-  // };
-
-  // SWITCH FOR TURNING DRAG ON AND OFF
-  // $scope.showPointsOnDrag = true;
-  // $scope.setShowPointsOnDrag = function(){
-  //   $scope.showPointsOnDrag = !$scope.showPointsOnDrag;
-  // };
-
-  // $scope.showFavorites = false;
-
-  // $scope.setshowFavorites = function(){
-  //   $scope.showFavorites = !$scope.showFavorites;
-  // };
+  setMarkersReturned(bikesharePoints);
 
   $scope.$on('leafletDirectiveMap.map.load', function(event, args){
-    PointService.getBikeshareStations()
-      .then(function(data){
-        $scope.setMarkersReturned(data);
-      });
+    leafletData.getMap()
+    .then(function(map){
+      new L.Control.GeoSearch({
+        provider: new L.GeoSearch.Provider.Google({
+          // bounds : 21.221181|-158.381653|21.725976|-157.592010
+        })
+      }).addTo(map);
+    });
   });
-
-  // SHOW POINTS ON DRAG IF NOT ROUTING AND SHOWPOINTS ON DRAG ENABLED
-  // $scope.$on('leafletDirectiveMap.map.dragend', function(event, args){
-  //   if ($scope.showPointsOnDrag){
-  //     $ionicLoading.hide();
-  //     var leafEvent = args.leafletEvent;
-  //     $ionicLoading.hide();
-  //     if($scope.markers.hasOwnProperty("reportPoint")){
-  //       $scope.markers = {
-  //       userMarker : $scope.markers.userMarker,
-  //       reportPoint : $scope.markers.reportPoint
-  //       };
-  //     } else {
-  //       $scope.markers = {
-  //         userMarker : $scope.markers.userMarker
-  //       };
-  //     }
-  //     if( routeOnMap === false ) {
-  //       leafletData.getMap().then(function(map){
-  //         var bounds = map.getBounds();
-  //         PointService.getPointsInView(bounds._northEast.lat,bounds._southWest.lat, bounds._northEast.lng, bounds._southWest.lng)
-  //           .then(function(data){
-  //             $scope.setMarkersReturned(data);
-  //           });
-  //       });
-  //     }
-  //   }
-  // });
 
   // IF CREATING NEW REPORT/SUGGEST POINT
   $scope.showReportControl = false;
 
   // ADD REPORT/SUGGESTION POINT
   $scope.createReportPoint = function(){
-    $scope.showReportControl = true;
-    var reportPoint = {
-        lat: $scope.center.lat,
-        lng: $scope.center.lng,
-        message: "drag to report/suggest point",
-        draggable: true,
-        icon : $scope.reportIcon
+      $scope.showReportControl = true;
+      var reportPoint = {
+          lat: $scope.center.lat,
+          lng: $scope.center.lng,
+          // message: "Drop the bicycle where you'd</br> like to see a bike station",
+          focus: true,
+          draggable: true,
+          icon : $scope.reportIcon
+        };
+
+      $scope.markers ={
+        reportPoint : reportPoint
       };
-    $scope.markers.reportPoint = reportPoint;
+
+
   };
 
   // CANCEL REPORT POINT
   $scope.cancelReportPoint = function(){
     $scope.showReportControl = false;
+    setMarkersReturned(bikesharePoints);
     delete $scope.markers.reportPoint;
   };
 
-  // COMMENT SUBMIT FUNCTION
-  $scope.postComment = function(comment){
-    if($scope.showReportControl){
-      PointService.addPoint({
-        type : "ReportSuggest",
-        lat : $scope.markers.reportPoint.lat,
-        long : $scope.markers.reportPoint.lng
-      })
-      .then(function(data){
-        CommentService.addComment(comment, data.data.newId)
-        .then(function(data){
-          $scope.cancelReportPoint();
-          $scope.closeModal(5);
-        });
-      });
-    } else {
-      CommentService.addComment(comment, $scope.currentMarkerProperties.id)
-      .then(function(data){
-        $scope.closeModal(5);
-      });
-    }
+  $scope.suggestStation = function(){
+    $scope.markers.reportPoint.type = "suggest";
+    $scope.markers.reportPoint.suggestedBy = UserService.getUser().id;
+    PointService.suggestPoint($scope.markers.reportPoint);
   };
 
+  // COMMENT SUBMIT FUNCTION
+  // $scope.postComment = function(comment){
+  //   if($scope.showReportControl){
+  //     PointService.addPoint({
+  //       type : "ReportSuggest",
+  //       lat : $scope.markers.reportPoint.lat,
+  //       long : $scope.markers.reportPoint.lng
+  //     })
+  //     .then(function(data){
+  //       CommentService.addComment(comment, data.data.newId)
+  //       .then(function(data){
+  //         $scope.cancelReportPoint();
+  //         $scope.closeModal(6);
+  //       });
+  //     });
+  //   } else {
+  //     CommentService.addComment(comment, $scope.currentMarkerProperties.id)
+  //     .then(function(data){
+  //       $scope.closeModal(6);
+  //     });
+  //   }
+  // };
+
   //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
-  $scope.pinTypes = [
-      { text: "Bike Share", checked: true },
-      { text: "Landmark", checked: false },
-      { text: "Bike Rack", checked: false }
-    ];
+  // $scope.pinTypes = [
+  //     { text: "Bike Share", checked: true },
+  //     { text: "Landmark", checked: false },
+  //     { text: "Bike Rack", checked: false }
+  //   ];
 
   //LOAD ANIMATION SHOW
   $scope.show = function() {
@@ -423,57 +463,84 @@
 
   // SAVE CURRENT MARKER PROPERTIES TO SCOPE
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
-    $scope.currentMarkerProperties = args.leafletObject.options.properties;
-    if ($scope.currentMarkerProperties !== undefined){
-      $scope.isFavorited = $scope.checkFavorite($scope.currentMarkerProperties);
-      $scope.isSafetyWarn = $scope.checkSafetyWarn($scope.currentMarkerProperties);
+    $scope.user = UserService.getUser();
+    if(args.modelName !== 'reportPoint'){
+      if($scope.stationClicked.lastClicked){
+        $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
+      }
+      $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
+      $scope.stationClicked = $scope.markers[args.modelName].properties;
+      $scope.stationClicked.lastClicked = args.modelName;
+      $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
+      $scope.updateClosestBBB();
+      $scope.openModal(4);
     }
+    if($scope.user.liked === null || undefined){
+      $scope.myStyle = {};
+    } else {
+      if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
+        $scope.myStyle={};
+      } else {
+        $scope.myStyle={color:'red'};
+      }
+    }
+
+    //CHANGE BACK ICON WHEN MODAL CLOSES
+    // function changeBikeIcon() {
+    //   $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
+    // }
+
+    // $scope.changeBackIcon = function () {
+    //   $timeout(changeBikeIcon, 2000);
+    // };
   });
+
+
+
 
   //////// BEGINNIG of MODAL ////////
-  $ionicModal.fromTemplateUrl('filter-modal.html', {
-      id       : '1',
-      scope    : $scope,
-      animation: 'scale-in'
-    }).then(function(modal) {
-      $scope.modal1 = modal;
-    });
+  // $ionicModal.fromTemplateUrl('templates/feedback/fbckBtns.html', {
+  //     id       : '1',
+  //     scope    : $scope,
+  //     animation: 'scale-in'
+  //   }).then(function(modal) {
+  //     $scope.modal1 = modal;
+  //   });
 
-  $ionicModal.fromTemplateUrl('comment-modal.html', {
-    id       : '2',
-    scope    : $scope,
-    animation: 'scale-in'
-  }).then(function(modal) {
-    $scope.modal2 = modal;
-  });
+  // $ionicModal.fromTemplateUrl('templates/feedback/fbackForm.html', {
+  //   id       : '2',
+  //   scope    : $scope,
+  //   animation: 'scale-in',
+  //   focusFirstInput: true,
+  // }).then(function(modal) {
+  //   $scope.modal2 = modal;
+  // });
 
-  // // Modal for Marker Info
-  // $ionicModal.fromTemplateUrl('markerDetail.html', {
+  // $ionicModal.fromTemplateUrl('templates/feedback/mahaloFeedback.html', {
   //   id       : '3',
   //   scope    : $scope,
-  //   animation: 'slide-in-up'
+  //   animation: 'scale-in'
   // }).then(function(modal) {
   //   $scope.modal3 = modal;
   // });
 
-  // // MODAL FOR LANDMARK LISTS
-  // $ionicModal.fromTemplateUrl('landmarkList.html', {
-  //   id: '4',
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.modal4 = modal;
-  // });
+  $ionicModal.fromTemplateUrl('templates/feedback/markerDetail.html', {
+    id: '4',
+    scope: $scope
+    // animation: 'scale-in'
+  }).then(function(modal) {
+    $scope.modal4 = modal;
+  });
 
-  // $ionicModal.fromTemplateUrl('reportDetail.html', {
+  // $ionicModal.fromTemplateUrl('templates/feedback/surveyForm.html', {
   //   id: '5',
   //   scope: $scope,
-  //   animation: 'slide-in-up'
+  //   animation: 'scale-in'
   // }).then(function(modal) {
   //   $scope.modal5 = modal;
   // });
 
-  // $ionicModal.fromTemplateUrl('bikeRackList.html', {
+  // $ionicModal.fromTemplateUrl('reportDetail.html', {
   //   id: '6',
   //   scope: $scope,
   //   animation: 'slide-in-up'
@@ -538,9 +605,11 @@
   };
 
   //REMOVE MODAL WHEN DESTROYED
-  // $scope.$on('$destroy', function() {
-  //   $scope.modal.remove();
-  // });
+  $scope.$on('$destroy', function() {
+    if($scope.modal){
+      $scope.modal.remove();
+    }
+  });
 
   //////// END of MODAL ////////
 
@@ -609,18 +678,24 @@
   };
 
 
-
-
-  // BROWSER CONTROLLERS
+  //ICON CHANGE ON-CLICK
   $scope.isCollapsed = true;
   $scope.benCollapsed = true;
-
 
 ////////////////////////////////////////////////////////////
 
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };
+
+  // $scope.class = "wholeModalDiv";
+  // $scope.changeClass = function(){
+  //   if ($scope.class === "wholeModalDiv")
+  //     $scope.class = "blue";
+  //   else
+  //     $scope.class = "wholeModalDiv";
+  // };
+
 
   //>>>>>>>>>>>> POPOVER EVENT
 
@@ -650,4 +725,163 @@
   // });
 
 //////// end of controller
+}])
+.controller('LandingCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  console.log("LandingCtrl");
+  // if(UserService.getUser() === null){
+  //   console.log("no user, made one");
+  console.log("making new user");
+  UserService.create()
+  .then(function(data){
+    UserService.updateUser(data.data.user);
+    console.log("user updated to ", UserService.getUser());
+  });
+  // }
+  // $scope.userStart = function(){
+  //   UserService.create()
+  //   .then(function(data){
+  //     UserService.updateUser(data.data.user);
+  //     console.log("user updated to ", UserService.getUser());
+  //   });
+  // };
+}])
+.controller('FormCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
+  console.log("FormCtrl");
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+
+    $scope.myGoBack = function() {
+      $ionicHistory.goBack();
+    };
+
+  }
+  $scope.update = function(u) {
+    $scope.user = UserService.getUser();
+    if(u){
+      if(u.name){
+        $scope.user.name = u.name;
+      }
+      if(u.email){
+        $scope.user.email = u.email;
+      }
+      if(u.commentType){
+        if($scope.user.commentType === null || undefined){
+          $scope.user.commentType = [u.commentType];
+        }else{
+          $scope.user.commentType.push(u.commentType);
+        }
+      }
+      if(u.comment){
+        if($scope.user.comment !== null || undefined){
+          $scope.user.comment.push(u.comment);
+        }else{
+          $scope.user.comment = [u.comment];
+        }
+      }
+      UserService.updateUser($scope.user);
+      UserService.edit($scope.user.id);
+    }
+  };
+}])
+.controller('PathCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
+  console.log("PathCtrl");
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+
+    $scope.myGoBack = function() {
+      $ionicHistory.goBack();
+    };
+  }
+  $scope.updatePath = function(path){
+    $scope.user = UserService.getUser();
+    console.log("updatePath user ", UserService.getUser());
+    if($scope.user.paths !== null){
+      $scope.user.paths.push(path);
+    }else{
+      $scope.user.paths = [path];
+    }
+    UserService.edit($scope.user.id)
+    .then(function(data){
+      console.log("update data", data);
+      UserService.updateUser($scope.user);
+    });
+  };
+}])
+.controller('MahaloCtrl', ['$scope', 'UserService', function($scope, UserService) {
+  console.log("MahaloCtrl");
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+  }
+  $scope.updatePath = function(path){
+    $scope.user = UserService.getUser();
+    if($scope.user.paths !== null){
+      $scope.user.paths.push(path);
+    }else{
+      $scope.user.paths = [path];
+    }
+    UserService.edit($scope.user.id)
+    .then(function(data){
+      UserService.updateUser($scope.user);
+    });
+  };
+}])
+.controller('SurveyCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
+  console.log("SurveyCtrl");
+  if(UserService.getUser() === null){
+    console.log("no user, made one");
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user updated to ", UserService.getUser());
+    });
+
+    $scope.myGoBack = function() {
+      $ionicHistory.goBack();
+    };
+  }
+  $scope.updateSurvey = function(u) {
+    if(u){
+      $scope.user = UserService.getUser();
+      if(u.age){
+        $scope.user.age = u.age;
+      }
+      if(u.gender){
+        $scope.user.gender = u.gender;
+      }
+      if(u.zipcode){
+        $scope.user.zipcode = u.zipcode;
+      }
+      UserService.updateUser($scope.user);
+      UserService.edit($scope.user.id);
+    }
+  };
+  $scope.updatePath = function(path){
+    $scope.user = UserService.getUser();
+    console.log("updatePath user ", UserService.getUser());
+    if($scope.user.paths !== null){
+      $scope.user.paths.push(path);
+    }else{
+      $scope.user.paths = [path];
+    }
+    UserService.edit($scope.user.id)
+    .then(function(data){
+      console.log("update data", data);
+      UserService.updateUser($scope.user);
+    });
+  };
 }]);

@@ -1,6 +1,6 @@
 
 
-angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controllers', 'starter.services','ui.bootstrap', 'ionic-pullup'])
+angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controllers', 'starter.services','ui.bootstrap'])
   .constant('processENV', {
    "development": {
      "username": "nickcadiente",
@@ -27,9 +27,6 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
    }
  })
 .run(function($rootScope, $ionicLoading, $ionicPlatform) {
-    // $rootScope.$on('loading:show', function() {
-    //   $ionicLoading.show({template: 'Hi There!'});
-    // });
 
     $rootScope.$on('loading:hide', function() {
       $ionicLoading.hide();
@@ -52,7 +49,7 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
 
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
-
+    $ionicConfigProvider.scrolling.jsScrolling(false);
   //GLOBALLY CREATING INTERCEPTORS WHILE WINDOW LOADS
   // $httpProvider.interceptors.push(function ($rootScope) {
   //   return {
@@ -76,21 +73,13 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         url: "/tab",
         abstract: true,
         templateUrl: "templates/tabs.html",
-
       })
       .state('tabs.home', {
         url: "/home",
         views: {
           'home-tab': {
             templateUrl: "templates/home.html",
-          }
-        }
-      })
-      .state('tabs.facts', {
-        url: "/facts",
-        views: {
-          'home-tab': {
-            templateUrl: "templates/facts.html",
+
           }
         }
       })
@@ -99,6 +88,7 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         views: {
           'home-tab': {
             templateUrl: "templates/alohaLanding.html",
+            // controller: 'MapCtrl'
           }
         }
       })
@@ -120,28 +110,43 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
           }
         }
       })
-      .state('feedback', {
-        url: "/feedback",
-        abstract: true,
-        templateUrl: "templates/feedback/fbackForm.html",
-        controller: 'MapCtrl'
+      .state('tabs.benefits', {
+        url: "/benefits",
+        views: {
+          'home-tab': {
+            templateUrl: "templates/home-main/benefits.html",
+            controller: 'MapCtrl'
+          }
+        }
+      })
+      .state('tabs.leave-comments', {
+        url: "/leave-comments",
+        views: {
+          'home-tab': {
+            templateUrl: "templates/feedback/leave-comments.html",
+            controller: 'FormCtrl'
+          }
+        }
+      })
+      .state('tabs.survey', {
+        url: "/survey",
+        views: {
+          'home-tab': {
+            templateUrl: "templates/feedback/surveyForm.html",
+            controller: 'SurveyCtrl'
+          }
+        }
+      })
+      .state('tabs.mahaloFb', {
+        url: "/mahalo",
+        views: {
+          'home-tab': {
+            templateUrl: "templates/feedback/mahaloFeedback.html",
+            // controller: 'MapCtrl'
+
+          }
+        }
       });
-      // .state('feedback.fbForm', {
-      //   url: "/feedback",
-      //   views: {
-      //     'feedback-tab': {
-      //       templateUrl: "templates/feedback.html"
-      //     }
-      //   }
-      // })
-      // .state('feedback.mahaloFb', {
-      //   url: "/mahalo",
-      //   views: {
-      //     'feedback-tab': {
-      //       templateUrl: "templates/feedback/mahaloFeedback.html"
-      //     }
-      //   }
-      // });
 
 
      $urlRouterProvider.otherwise("/tab/home");

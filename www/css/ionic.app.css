@@ -7,7 +7,7 @@ $light:                           #fff !default;
 $stable:                          #f5f5f5 !default;
 $positive:                        #387ef5 !default;
 $calm:                            #11c1f3 !default;
-$balanced:                        #78DEAC !default;
+$balanced:                        #96E6BF !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
@@ -3758,7 +3758,7 @@ a.subdued {
   width: auto;
   z-index: 11;
   overflow: hidden; }
-  .action-sheet .button, .action-sheet .btnDrk, .action-sheet .homeBtn, .action-sheet input[type="number"] {
+  .action-sheet .button {
     display: block;
     padding: 1px;
     width: 100%;
@@ -3767,13 +3767,13 @@ a.subdued {
     background-color: transparent;
     color: #007aff;
     font-size: 21px; }
-    .action-sheet .button:hover, .action-sheet .btnDrk:hover, .action-sheet .homeBtn:hover, .action-sheet input[type="number"]:hover {
+    .action-sheet .button:hover {
       color: #007aff; }
-    .action-sheet .button.destructive, .action-sheet .destructive.btnDrk, .action-sheet .destructive.homeBtn, .action-sheet input.destructive[type="number"] {
+    .action-sheet .button.destructive {
       color: #ff3b30; }
-      .action-sheet .button.destructive:hover, .action-sheet .destructive.btnDrk:hover, .action-sheet .destructive.homeBtn:hover, .action-sheet input.destructive[type="number"]:hover {
+      .action-sheet .button.destructive:hover {
         color: #ff3b30; }
-  .action-sheet .button.active, .action-sheet .active.btnDrk, .action-sheet .active.homeBtn, .action-sheet input.active[type="number"], .action-sheet .button.activated, .action-sheet .activated.btnDrk, .action-sheet .activated.homeBtn, .action-sheet input.activated[type="number"] {
+  .action-sheet .button.active, .action-sheet .button.activated {
     box-shadow: none;
     border-color: #d1d3d6;
     color: #007aff;
@@ -3794,15 +3794,15 @@ a.subdued {
   border-radius: 4px;
   background-color: #fff;
   overflow: hidden; }
-  .action-sheet-group .button, .action-sheet-group .btnDrk, .action-sheet-group .homeBtn, .action-sheet-group input[type="number"] {
+  .action-sheet-group .button {
     border-width: 1px 0px 0px 0px; }
-  .action-sheet-group .button:first-child:last-child, .action-sheet-group .btnDrk:first-child:last-child, .action-sheet-group .homeBtn:first-child:last-child, .action-sheet-group input[type="number"]:first-child:last-child {
+  .action-sheet-group .button:first-child:last-child {
     border-width: 0; }
 
 .action-sheet-options {
   background: #f1f2f3; }
 
-.action-sheet-cancel .button, .action-sheet-cancel .btnDrk, .action-sheet-cancel .homeBtn, .action-sheet-cancel input[type="number"] {
+.action-sheet-cancel .button {
   font-weight: 500; }
 
 .action-sheet-open {
@@ -3818,10 +3818,7 @@ a.subdued {
 .platform-android .action-sheet {
   margin: 0; }
   .platform-android .action-sheet .action-sheet-title,
-  .platform-android .action-sheet .button,
-  .platform-android .action-sheet .btnDrk,
-  .platform-android .action-sheet .homeBtn,
-  .platform-android .action-sheet input[type="number"] {
+  .platform-android .action-sheet .button {
     text-align: left;
     border-color: transparent;
     font-size: 16px;
@@ -3830,11 +3827,8 @@ a.subdued {
     font-size: 14px;
     padding: 16px;
     color: #666; }
-  .platform-android .action-sheet .button.active, .platform-android .action-sheet .active.btnDrk, .platform-android .action-sheet .active.homeBtn, .platform-android .action-sheet input.active[type="number"],
-  .platform-android .action-sheet .button.activated,
-  .platform-android .action-sheet .activated.btnDrk,
-  .platform-android .action-sheet .activated.homeBtn,
-  .platform-android .action-sheet input.activated[type="number"] {
+  .platform-android .action-sheet .button.active,
+  .platform-android .action-sheet .button.activated {
     background: #e8e8e8; }
 
 .platform-android .action-sheet-group {
@@ -3845,7 +3839,7 @@ a.subdued {
 .platform-android .action-sheet-cancel {
   display: none; }
 
-.platform-android .action-sheet-has-icons .button, .platform-android .action-sheet-has-icons .btnDrk, .platform-android .action-sheet-has-icons .homeBtn, .platform-android .action-sheet-has-icons input[type="number"] {
+.platform-android .action-sheet-has-icons .button {
   padding-left: 56px; }
 
 .backdrop {
@@ -3911,7 +3905,7 @@ a.subdued {
     border: none;
     background: none;
     color: #fff; }
-    .bar.bar-clear .button, .bar.bar-clear .btnDrk, .bar.bar-clear .homeBtn, .bar.bar-clear input[type="number"] {
+    .bar.bar-clear .button {
       color: #fff; }
     .bar.bar-clear .title {
       color: #fff; }
@@ -4026,7 +4020,7 @@ a.subdued {
       text-align: right; }
   .bar .title a {
     color: inherit; }
-  .bar .button, .bar .btnDrk, .bar .homeBtn, .bar input[type="number"], .bar button {
+  .bar .button, .bar button {
     z-index: 1;
     padding: 0 8px;
     min-width: initial;
@@ -4034,50 +4028,41 @@ a.subdued {
     font-weight: 400;
     font-size: 13px;
     line-height: 32px; }
-    .bar .button.button-icon:before, .bar .button-icon.btnDrk:before, .bar .button-icon.homeBtn:before, .bar input.button-icon[type="number"]:before,
-    .bar .button .icon:before,
-    .bar .btnDrk .icon:before,
-    .bar .homeBtn .icon:before,
-    .bar input[type="number"] .icon:before, .bar .button.icon:before, .bar .icon.btnDrk:before, .bar .icon.homeBtn:before, .bar input.icon[type="number"]:before, .bar .button.icon-left:before, .bar .icon-left.btnDrk:before, .bar .icon-left.homeBtn:before, .bar input.icon-left[type="number"]:before, .bar .button.icon-right:before, .bar .icon-right.btnDrk:before, .bar .icon-right.homeBtn:before, .bar input.icon-right[type="number"]:before, .bar button.button-icon:before,
+    .bar .button.button-icon:before,
+    .bar .button .icon:before, .bar .button.icon:before, .bar .button.icon-left:before, .bar .button.icon-right:before, .bar button.button-icon:before,
     .bar button .icon:before, .bar button.icon:before, .bar button.icon-left:before, .bar button.icon-right:before {
       padding-right: 2px;
       padding-left: 2px;
       font-size: 20px;
       line-height: 32px; }
-    .bar .button.button-icon, .bar .button-icon.btnDrk, .bar .button-icon.homeBtn, .bar input.button-icon[type="number"], .bar button.button-icon {
+    .bar .button.button-icon, .bar button.button-icon {
       font-size: 17px; }
-      .bar .button.button-icon .icon:before, .bar .button-icon.btnDrk .icon:before, .bar .button-icon.homeBtn .icon:before, .bar input.button-icon[type="number"] .icon:before, .bar .button.button-icon:before, .bar .button-icon.btnDrk:before, .bar .button-icon.homeBtn:before, .bar input.button-icon[type="number"]:before, .bar .button.button-icon.icon-left:before, .bar .button-icon.icon-left.btnDrk:before, .bar .button-icon.icon-left.homeBtn:before, .bar input.button-icon.icon-left[type="number"]:before, .bar .button.button-icon.icon-right:before, .bar .button-icon.icon-right.btnDrk:before, .bar .button-icon.icon-right.homeBtn:before, .bar input.button-icon.icon-right[type="number"]:before, .bar button.button-icon .icon:before, .bar button.button-icon:before, .bar button.button-icon.icon-left:before, .bar button.button-icon.icon-right:before {
+      .bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before, .bar button.button-icon .icon:before, .bar button.button-icon:before, .bar button.button-icon.icon-left:before, .bar button.button-icon.icon-right:before {
         vertical-align: top;
         font-size: 32px;
         line-height: 32px; }
-    .bar .button.button-clear, .bar .button-clear.btnDrk, .bar .button-clear.homeBtn, .bar input.button-clear[type="number"], .bar button.button-clear {
+    .bar .button.button-clear, .bar button.button-clear {
       padding-right: 2px;
       padding-left: 2px;
       font-weight: 300;
       font-size: 17px; }
-      .bar .button.button-clear .icon:before, .bar .button-clear.btnDrk .icon:before, .bar .button-clear.homeBtn .icon:before, .bar input.button-clear[type="number"] .icon:before, .bar .button.button-clear.icon:before, .bar .button-clear.icon.btnDrk:before, .bar .button-clear.icon.homeBtn:before, .bar input.button-clear.icon[type="number"]:before, .bar .button.button-clear.icon-left:before, .bar .button-clear.icon-left.btnDrk:before, .bar .button-clear.icon-left.homeBtn:before, .bar input.button-clear.icon-left[type="number"]:before, .bar .button.button-clear.icon-right:before, .bar .button-clear.icon-right.btnDrk:before, .bar .button-clear.icon-right.homeBtn:before, .bar input.button-clear.icon-right[type="number"]:before, .bar button.button-clear .icon:before, .bar button.button-clear.icon:before, .bar button.button-clear.icon-left:before, .bar button.button-clear.icon-right:before {
+      .bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar .button.button-clear.icon-left:before, .bar .button.button-clear.icon-right:before, .bar button.button-clear .icon:before, .bar button.button-clear.icon:before, .bar button.button-clear.icon-left:before, .bar button.button-clear.icon-right:before {
         font-size: 32px;
         line-height: 32px; }
-    .bar .button.back-button, .bar .back-button.btnDrk, .bar .back-button.homeBtn, .bar input.back-button[type="number"], .bar button.back-button {
+    .bar .button.back-button, .bar button.back-button {
       display: block;
       margin-right: 5px;
       padding: 0;
       white-space: nowrap;
       font-weight: 400; }
-    .bar .button.back-button.active, .bar .back-button.active.btnDrk, .bar .back-button.active.homeBtn, .bar input.back-button.active[type="number"], .bar .button.back-button.activated, .bar .back-button.activated.btnDrk, .bar .back-button.activated.homeBtn, .bar input.back-button.activated[type="number"], .bar button.back-button.active, .bar button.back-button.activated {
+    .bar .button.back-button.active, .bar .button.back-button.activated, .bar button.back-button.active, .bar button.back-button.activated {
       opacity: 0.2; }
-  .bar .button-bar > .button, .bar .button-bar > .btnDrk, .bar .button-bar > .homeBtn, .bar .button-bar > input[type="number"],
-  .bar .buttons > .button,
-  .bar .buttons > .btnDrk,
-  .bar .buttons > .homeBtn,
-  .bar .buttons > input[type="number"] {
+  .bar .button-bar > .button,
+  .bar .buttons > .button {
     min-height: 31px;
     line-height: 32px; }
-  .bar .button-bar + .button, .bar .button-bar + .btnDrk, .bar .button-bar + .homeBtn, .bar .button-bar + input[type="number"],
-  .bar .button + .button-bar,
-  .bar .btnDrk + .button-bar,
-  .bar .homeBtn + .button-bar,
-  .bar input[type="number"] + .button-bar {
+  .bar .button-bar + .button,
+  .bar .button + .button-bar {
     margin-left: 5px; }
   .bar .buttons,
   .bar .buttons.primary-buttons,
@@ -4091,27 +4076,9 @@ a.subdued {
   .bar .buttons-right span {
     margin-left: 5px;
     display: inherit; }
-  .bar .title + .button:last-child, .bar .title + .btnDrk:last-child, .bar .title + .homeBtn:last-child, .bar .title + input[type="number"]:last-child,
+  .bar .title + .button:last-child,
   .bar > .button + .button:last-child,
-  .bar > .btnDrk + .button:last-child,
-  .bar > .homeBtn + .button:last-child,
-  .bar > input[type="number"] + .button:last-child,
-  .bar > .button + .btnDrk:last-child,
-  .bar > .btnDrk + .btnDrk:last-child,
-  .bar > .homeBtn + .btnDrk:last-child,
-  .bar > input[type="number"] + .btnDrk:last-child,
-  .bar > .button + .homeBtn:last-child,
-  .bar > .btnDrk + .homeBtn:last-child,
-  .bar > .homeBtn + .homeBtn:last-child,
-  .bar > input[type="number"] + .homeBtn:last-child,
-  .bar > .button + input[type="number"]:last-child,
-  .bar > .btnDrk + input[type="number"]:last-child,
-  .bar > .homeBtn + input[type="number"]:last-child,
-  .bar > input[type="number"] + input[type="number"]:last-child,
   .bar > .button.pull-right,
-  .bar > .pull-right.btnDrk,
-  .bar > .pull-right.homeBtn,
-  .bar > input.pull-right[type="number"],
   .bar .buttons.pull-right,
   .bar .title + .buttons {
     position: absolute;
@@ -4129,174 +4096,174 @@ a.subdued {
   font-size: 19px;
   line-height: 44px; }
 
-.bar-light .button, .bar-light .btnDrk, .bar-light .homeBtn, .bar-light input[type="number"] {
+.bar-light .button {
   border-color: transparent;
   background-color: white;
   color: #444; }
-  .bar-light .button:hover, .bar-light .btnDrk:hover, .bar-light .homeBtn:hover, .bar-light input[type="number"]:hover {
+  .bar-light .button:hover {
     color: #444;
     text-decoration: none; }
-  .bar-light .button.active, .bar-light .active.btnDrk, .bar-light .active.homeBtn, .bar-light input.active[type="number"], .bar-light .button.activated, .bar-light .activated.btnDrk, .bar-light .activated.homeBtn, .bar-light input.activated[type="number"] {
+  .bar-light .button.active, .bar-light .button.activated {
     background-color: #fafafa; }
-  .bar-light .button.button-clear, .bar-light .button-clear.btnDrk, .bar-light .button-clear.homeBtn, .bar-light input.button-clear[type="number"] {
+  .bar-light .button.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #444;
     font-size: 17px; }
-  .bar-light .button.button-icon, .bar-light .button-icon.btnDrk, .bar-light .button-icon.homeBtn, .bar-light input.button-icon[type="number"] {
+  .bar-light .button.button-icon {
     border-color: transparent;
     background: none; }
 
-.bar-stable .button, .bar-stable .btnDrk, .bar-stable .homeBtn, .bar-stable input[type="number"] {
+.bar-stable .button {
   border-color: transparent;
   background-color: #f8f8f8;
   color: #444; }
-  .bar-stable .button:hover, .bar-stable .btnDrk:hover, .bar-stable .homeBtn:hover, .bar-stable input[type="number"]:hover {
+  .bar-stable .button:hover {
     color: #444;
     text-decoration: none; }
-  .bar-stable .button.active, .bar-stable .active.btnDrk, .bar-stable .active.homeBtn, .bar-stable input.active[type="number"], .bar-stable .button.activated, .bar-stable .activated.btnDrk, .bar-stable .activated.homeBtn, .bar-stable input.activated[type="number"] {
+  .bar-stable .button.active, .bar-stable .button.activated {
     background-color: #e5e5e5; }
-  .bar-stable .button.button-clear, .bar-stable .button-clear.btnDrk, .bar-stable .button-clear.homeBtn, .bar-stable input.button-clear[type="number"] {
+  .bar-stable .button.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #444;
     font-size: 17px; }
-  .bar-stable .button.button-icon, .bar-stable .button-icon.btnDrk, .bar-stable .button-icon.homeBtn, .bar-stable input.button-icon[type="number"] {
+  .bar-stable .button.button-icon {
     border-color: transparent;
     background: none; }
 
-.bar-positive .button, .bar-positive .btnDrk, .bar-positive .homeBtn, .bar-positive input[type="number"] {
+.bar-positive .button {
   border-color: transparent;
   background-color: #387ef5;
   color: #fff; }
-  .bar-positive .button:hover, .bar-positive .btnDrk:hover, .bar-positive .homeBtn:hover, .bar-positive input[type="number"]:hover {
+  .bar-positive .button:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-positive .button.active, .bar-positive .active.btnDrk, .bar-positive .active.homeBtn, .bar-positive input.active[type="number"], .bar-positive .button.activated, .bar-positive .activated.btnDrk, .bar-positive .activated.homeBtn, .bar-positive input.activated[type="number"] {
+  .bar-positive .button.active, .bar-positive .button.activated {
     background-color: #0c60ee; }
-  .bar-positive .button.button-clear, .bar-positive .button-clear.btnDrk, .bar-positive .button-clear.homeBtn, .bar-positive input.button-clear[type="number"] {
+  .bar-positive .button.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-positive .button.button-icon, .bar-positive .button-icon.btnDrk, .bar-positive .button-icon.homeBtn, .bar-positive input.button-icon[type="number"] {
+  .bar-positive .button.button-icon {
     border-color: transparent;
     background: none; }
 
-.bar-calm .button, .bar-calm .btnDrk, .bar-calm .homeBtn, .bar-calm input[type="number"] {
+.bar-calm .button {
   border-color: transparent;
   background-color: #11c1f3;
   color: #fff; }
-  .bar-calm .button:hover, .bar-calm .btnDrk:hover, .bar-calm .homeBtn:hover, .bar-calm input[type="number"]:hover {
+  .bar-calm .button:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-calm .button.active, .bar-calm .active.btnDrk, .bar-calm .active.homeBtn, .bar-calm input.active[type="number"], .bar-calm .button.activated, .bar-calm .activated.btnDrk, .bar-calm .activated.homeBtn, .bar-calm input.activated[type="number"] {
+  .bar-calm .button.active, .bar-calm .button.activated {
     background-color: #0a9dc7; }
-  .bar-calm .button.button-clear, .bar-calm .button-clear.btnDrk, .bar-calm .button-clear.homeBtn, .bar-calm input.button-clear[type="number"] {
+  .bar-calm .button.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-calm .button.button-icon, .bar-calm .button-icon.btnDrk, .bar-calm .button-icon.homeBtn, .bar-calm input.button-icon[type="number"] {
+  .bar-calm .button.button-icon {
     border-color: transparent;
     background: none; }
 
-.bar-assertive .button, .bar-assertive .btnDrk, .bar-assertive .homeBtn, .bar-assertive input[type="number"] {
+.bar-assertive .button {
   border-color: transparent;
   background-color: #ef473a;
   color: #fff; }
-  .bar-assertive .button:hover, .bar-assertive .btnDrk:hover, .bar-assertive .homeBtn:hover, .bar-assertive input[type="number"]:hover {
+  .bar-assertive .button:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-assertive .button.active, .bar-assertive .active.btnDrk, .bar-assertive .active.homeBtn, .bar-assertive input.active[type="number"], .bar-assertive .button.activated, .bar-assertive .activated.btnDrk, .bar-assertive .activated.homeBtn, .bar-assertive input.activated[type="number"] {
+  .bar-assertive .button.active, .bar-assertive .button.activated {
     background-color: #e42112; }
-  .bar-assertive .button.button-clear, .bar-assertive .button-clear.btnDrk, .bar-assertive .button-clear.homeBtn, .bar-assertive input.button-clear[type="number"] {
+  .bar-assertive .button.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-assertive .button.button-icon, .bar-assertive .button-icon.btnDrk, .bar-assertive .button-icon.homeBtn, .bar-assertive input.button-icon[type="number"] {
+  .bar-assertive .button.button-icon {
     border-color: transparent;
     background: none; }
 
-.bar-balanced .button, .bar-balanced .btnDrk, .bar-balanced .homeBtn, .bar-balanced input[type="number"] {
+.bar-balanced .button {
   border-color: transparent;
   background-color: #76ce95;
   color: #fff; }
-  .bar-balanced .button:hover, .bar-balanced .btnDrk:hover, .bar-balanced .homeBtn:hover, .bar-balanced input[type="number"]:hover {
+  .bar-balanced .button:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-balanced .button.active, .bar-balanced .active.btnDrk, .bar-balanced .active.homeBtn, .bar-balanced input.active[type="number"], .bar-balanced .button.activated, .bar-balanced .activated.btnDrk, .bar-balanced .activated.homeBtn, .bar-balanced input.activated[type="number"] {
+  .bar-balanced .button.active, .bar-balanced .button.activated {
     background-color: #50c178; }
-  .bar-balanced .button.button-clear, .bar-balanced .button-clear.btnDrk, .bar-balanced .button-clear.homeBtn, .bar-balanced input.button-clear[type="number"] {
+  .bar-balanced .button.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-balanced .button.button-icon, .bar-balanced .button-icon.btnDrk, .bar-balanced .button-icon.homeBtn, .bar-balanced input.button-icon[type="number"] {
+  .bar-balanced .button.button-icon {
     border-color: transparent;
     background: none; }
 
-.bar-energized .button, .bar-energized .btnDrk, .bar-energized .homeBtn, .bar-energized input[type="number"] {
+.bar-energized .button {
   border-color: transparent;
   background-color: #ffc900;
   color: #fff; }
-  .bar-energized .button:hover, .bar-energized .btnDrk:hover, .bar-energized .homeBtn:hover, .bar-energized input[type="number"]:hover {
+  .bar-energized .button:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-energized .button.active, .bar-energized .active.btnDrk, .bar-energized .active.homeBtn, .bar-energized input.active[type="number"], .bar-energized .button.activated, .bar-energized .activated.btnDrk, .bar-energized .activated.homeBtn, .bar-energized input.activated[type="number"] {
+  .bar-energized .button.active, .bar-energized .button.activated {
     background-color: #e6b500; }
-  .bar-energized .button.button-clear, .bar-energized .button-clear.btnDrk, .bar-energized .button-clear.homeBtn, .bar-energized input.button-clear[type="number"] {
+  .bar-energized .button.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-energized .button.button-icon, .bar-energized .button-icon.btnDrk, .bar-energized .button-icon.homeBtn, .bar-energized input.button-icon[type="number"] {
+  .bar-energized .button.button-icon {
     border-color: transparent;
     background: none; }
 
-.bar-royal .button, .bar-royal .btnDrk, .bar-royal .homeBtn, .bar-royal input[type="number"] {
+.bar-royal .button {
   border-color: transparent;
   background-color: #495259;
   color: #fff; }
-  .bar-royal .button:hover, .bar-royal .btnDrk:hover, .bar-royal .homeBtn:hover, .bar-royal input[type="number"]:hover {
+  .bar-royal .button:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-royal .button.active, .bar-royal .active.btnDrk, .bar-royal .active.homeBtn, .bar-royal input.active[type="number"], .bar-royal .button.activated, .bar-royal .activated.btnDrk, .bar-royal .activated.homeBtn, .bar-royal input.activated[type="number"] {
+  .bar-royal .button.active, .bar-royal .button.activated {
     background-color: #373d43; }
-  .bar-royal .button.button-clear, .bar-royal .button-clear.btnDrk, .bar-royal .button-clear.homeBtn, .bar-royal input.button-clear[type="number"] {
+  .bar-royal .button.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-royal .button.button-icon, .bar-royal .button-icon.btnDrk, .bar-royal .button-icon.homeBtn, .bar-royal input.button-icon[type="number"] {
+  .bar-royal .button.button-icon {
     border-color: transparent;
     background: none; }
 
-.bar-dark .button, .bar-dark .btnDrk, .bar-dark .homeBtn, .bar-dark input[type="number"] {
+.bar-dark .button {
   border-color: transparent;
   background-color: #181b1e;
   color: #fff; }
-  .bar-dark .button:hover, .bar-dark .btnDrk:hover, .bar-dark .homeBtn:hover, .bar-dark input[type="number"]:hover {
+  .bar-dark .button:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-dark .button.active, .bar-dark .active.btnDrk, .bar-dark .active.homeBtn, .bar-dark input.active[type="number"], .bar-dark .button.activated, .bar-dark .activated.btnDrk, .bar-dark .activated.homeBtn, .bar-dark input.activated[type="number"] {
+  .bar-dark .button.active, .bar-dark .button.activated {
     background-color: #262626; }
-  .bar-dark .button.button-clear, .bar-dark .button-clear.btnDrk, .bar-dark .button-clear.homeBtn, .bar-dark input.button-clear[type="number"] {
+  .bar-dark .button.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-dark .button.button-icon, .bar-dark .button-icon.btnDrk, .bar-dark .button-icon.homeBtn, .bar-dark input.button-icon[type="number"] {
+  .bar-dark .button.button-icon {
     border-color: transparent;
     background: none; }
 
@@ -5602,7 +5569,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   flex-direction: row;
   padding: 10px;
   min-height: 65px; }
-  .popup-buttons .button, .popup-buttons .btnDrk, .popup-buttons .homeBtn, .popup-buttons input[type="number"] {
+  .popup-buttons .button {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     -moz-box-flex: 1;
@@ -5614,7 +5581,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
     border-radius: 2px;
     line-height: 20px;
     margin-right: 5px; }
-    .popup-buttons .button:last-child, .popup-buttons .btnDrk:last-child, .popup-buttons .homeBtn:last-child, .popup-buttons input[type="number"]:last-child {
+    .popup-buttons .button:last-child {
       margin-right: 0px; }
 
 .popup-open {
@@ -6196,11 +6163,8 @@ a.item-content {
 .item-button-left {
   padding-left: 72px; }
 
-.item-button-left > .button, .item-button-left > .btnDrk, .item-button-left > .homeBtn, .item-button-left > input[type="number"],
-.item-button-left .item-content > .button,
-.item-button-left .item-content > .btnDrk,
-.item-button-left .item-content > .homeBtn,
-.item-button-left .item-content > input[type="number"] {
+.item-button-left > .button,
+.item-button-left .item-content > .button {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -6219,32 +6183,14 @@ a.item-content {
   min-height: 34px;
   font-size: 18px;
   line-height: 32px; }
-  .item-button-left > .button .icon:before, .item-button-left > .btnDrk .icon:before, .item-button-left > .homeBtn .icon:before, .item-button-left > input[type="number"] .icon:before,
-  .item-button-left .item-content > .button .icon:before,
-  .item-button-left .item-content > .btnDrk .icon:before,
-  .item-button-left .item-content > .homeBtn .icon:before,
-  .item-button-left .item-content > input[type="number"] .icon:before {
+  .item-button-left > .button .icon:before,
+  .item-button-left .item-content > .button .icon:before {
     position: relative;
     left: auto;
     width: auto;
     line-height: 31px; }
-  .item-button-left > .button > .button, .item-button-left > .btnDrk > .button, .item-button-left > .homeBtn > .button, .item-button-left > input[type="number"] > .button, .item-button-left > .button > .btnDrk, .item-button-left > .btnDrk > .btnDrk, .item-button-left > .homeBtn > .btnDrk, .item-button-left > input[type="number"] > .btnDrk, .item-button-left > .button > .homeBtn, .item-button-left > .btnDrk > .homeBtn, .item-button-left > .homeBtn > .homeBtn, .item-button-left > input[type="number"] > .homeBtn, .item-button-left > .button > input[type="number"], .item-button-left > .btnDrk > input[type="number"], .item-button-left > .homeBtn > input[type="number"], .item-button-left > input[type="number"] > input[type="number"],
-  .item-button-left .item-content > .button > .button,
-  .item-button-left .item-content > .btnDrk > .button,
-  .item-button-left .item-content > .homeBtn > .button,
-  .item-button-left .item-content > input[type="number"] > .button,
-  .item-button-left .item-content > .button > .btnDrk,
-  .item-button-left .item-content > .btnDrk > .btnDrk,
-  .item-button-left .item-content > .homeBtn > .btnDrk,
-  .item-button-left .item-content > input[type="number"] > .btnDrk,
-  .item-button-left .item-content > .button > .homeBtn,
-  .item-button-left .item-content > .btnDrk > .homeBtn,
-  .item-button-left .item-content > .homeBtn > .homeBtn,
-  .item-button-left .item-content > input[type="number"] > .homeBtn,
-  .item-button-left .item-content > .button > input[type="number"],
-  .item-button-left .item-content > .btnDrk > input[type="number"],
-  .item-button-left .item-content > .homeBtn > input[type="number"],
-  .item-button-left .item-content > input[type="number"] > input[type="number"] {
+  .item-button-left > .button > .button,
+  .item-button-left .item-content > .button > .button {
     margin: 0px 2px;
     min-height: 34px;
     font-size: 18px;
@@ -6255,11 +6201,8 @@ a.item.item-button-right,
 button.item.item-button-right {
   padding-right: 80px; }
 
-.item-button-right > .button, .item-button-right > .btnDrk, .item-button-right > .homeBtn, .item-button-right > input[type="number"],
+.item-button-right > .button,
 .item-button-right .item-content > .button,
-.item-button-right .item-content > .btnDrk,
-.item-button-right .item-content > .homeBtn,
-.item-button-right .item-content > input[type="number"],
 .item-button-right > .buttons,
 .item-button-right .item-content > .buttons {
   display: -webkit-box;
@@ -6280,42 +6223,18 @@ button.item.item-button-right {
   min-height: 34px;
   font-size: 18px;
   line-height: 32px; }
-  .item-button-right > .button .icon:before, .item-button-right > .btnDrk .icon:before, .item-button-right > .homeBtn .icon:before, .item-button-right > input[type="number"] .icon:before,
+  .item-button-right > .button .icon:before,
   .item-button-right .item-content > .button .icon:before,
-  .item-button-right .item-content > .btnDrk .icon:before,
-  .item-button-right .item-content > .homeBtn .icon:before,
-  .item-button-right .item-content > input[type="number"] .icon:before,
   .item-button-right > .buttons .icon:before,
   .item-button-right .item-content > .buttons .icon:before {
     position: relative;
     left: auto;
     width: auto;
     line-height: 31px; }
-  .item-button-right > .button > .button, .item-button-right > .btnDrk > .button, .item-button-right > .homeBtn > .button, .item-button-right > input[type="number"] > .button, .item-button-right > .button > .btnDrk, .item-button-right > .btnDrk > .btnDrk, .item-button-right > .homeBtn > .btnDrk, .item-button-right > input[type="number"] > .btnDrk, .item-button-right > .button > .homeBtn, .item-button-right > .btnDrk > .homeBtn, .item-button-right > .homeBtn > .homeBtn, .item-button-right > input[type="number"] > .homeBtn, .item-button-right > .button > input[type="number"], .item-button-right > .btnDrk > input[type="number"], .item-button-right > .homeBtn > input[type="number"], .item-button-right > input[type="number"] > input[type="number"],
+  .item-button-right > .button > .button,
   .item-button-right .item-content > .button > .button,
-  .item-button-right .item-content > .btnDrk > .button,
-  .item-button-right .item-content > .homeBtn > .button,
-  .item-button-right .item-content > input[type="number"] > .button,
-  .item-button-right .item-content > .button > .btnDrk,
-  .item-button-right .item-content > .btnDrk > .btnDrk,
-  .item-button-right .item-content > .homeBtn > .btnDrk,
-  .item-button-right .item-content > input[type="number"] > .btnDrk,
-  .item-button-right .item-content > .button > .homeBtn,
-  .item-button-right .item-content > .btnDrk > .homeBtn,
-  .item-button-right .item-content > .homeBtn > .homeBtn,
-  .item-button-right .item-content > input[type="number"] > .homeBtn,
-  .item-button-right .item-content > .button > input[type="number"],
-  .item-button-right .item-content > .btnDrk > input[type="number"],
-  .item-button-right .item-content > .homeBtn > input[type="number"],
-  .item-button-right .item-content > input[type="number"] > input[type="number"],
   .item-button-right > .buttons > .button,
-  .item-button-right > .buttons > .btnDrk,
-  .item-button-right > .buttons > .homeBtn,
-  .item-button-right > .buttons > input[type="number"],
-  .item-button-right .item-content > .buttons > .button,
-  .item-button-right .item-content > .buttons > .btnDrk,
-  .item-button-right .item-content > .buttons > .homeBtn,
-  .item-button-right .item-content > .buttons > input[type="number"] {
+  .item-button-right .item-content > .buttons > .button {
     margin: 0px 2px;
     min-width: 34px;
     min-height: 34px;
@@ -6509,9 +6428,9 @@ button.item.item-button-right {
   opacity: 0;
   -webkit-transform: translate3d(-21px, 0, 0);
   transform: translate3d(-21px, 0, 0); }
-  .item-left-edit .button, .item-left-edit .btnDrk, .item-left-edit .homeBtn, .item-left-edit input[type="number"] {
+  .item-left-edit .button {
     height: 100%; }
-    .item-left-edit .button.icon, .item-left-edit .icon.btnDrk, .item-left-edit .icon.homeBtn, .item-left-edit input.icon[type="number"] {
+    .item-left-edit .button.icon {
       display: -webkit-box;
       display: -webkit-flex;
       display: -moz-box;
@@ -6537,10 +6456,10 @@ button.item.item-button-right {
   -webkit-transition-delay: 125ms;
   transition-delay: 125ms; }
 
-.item-delete .button.icon, .item-delete .icon.btnDrk, .item-delete .icon.homeBtn, .item-delete input.icon[type="number"] {
+.item-delete .button.icon {
   color: #ef473a;
   font-size: 24px; }
-  .item-delete .button.icon:hover, .item-delete .icon.btnDrk:hover, .item-delete .icon.homeBtn:hover, .item-delete input.icon[type="number"]:hover {
+  .item-delete .button.icon:hover {
     opacity: .7; }
 
 .item-right-edit {
@@ -6558,10 +6477,10 @@ button.item.item-button-right {
   opacity: 0;
   -webkit-transform: translate3d(75px, 0, 0);
   transform: translate3d(75px, 0, 0); }
-  .item-right-edit .button, .item-right-edit .btnDrk, .item-right-edit .homeBtn, .item-right-edit input[type="number"] {
+  .item-right-edit .button {
     min-width: 50px;
     height: 100%; }
-    .item-right-edit .button.icon, .item-right-edit .icon.btnDrk, .item-right-edit .icon.homeBtn, .item-right-edit input.icon[type="number"] {
+    .item-right-edit .button.icon {
       display: -webkit-box;
       display: -webkit-flex;
       display: -moz-box;
@@ -6584,7 +6503,7 @@ button.item.item-button-right {
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0); }
 
-.item-reorder .button.icon, .item-reorder .icon.btnDrk, .item-reorder .icon.homeBtn, .item-reorder input.icon[type="number"] {
+.item-reorder .button.icon {
   color: #181B1E;
   font-size: 32px; }
 
@@ -6611,7 +6530,7 @@ button.item.item-button-right {
   right: 0;
   z-index: 1;
   height: 100%; }
-  .item-options .button, .item-options .btnDrk, .item-options .homeBtn, .item-options input[type="number"] {
+  .item-options .button {
     height: 100%;
     border: none;
     border-radius: 0;
@@ -6625,7 +6544,7 @@ button.item.item-button-right {
     -webkit-align-items: center;
     -moz-align-items: center;
     align-items: center; }
-    .item-options .button:before, .item-options .btnDrk:before, .item-options .homeBtn:before, .item-options input[type="number"]:before {
+    .item-options .button:before {
       margin: 0 auto; }
 
 /**
@@ -6797,7 +6716,7 @@ button.item.item-button-right {
   background-color: #181B1E;
   color: #fff; }
 
-.button .badge, .btnDrk .badge, .homeBtn .badge, input[type="number"] .badge {
+.button .badge {
   position: relative;
   top: -1px; }
 
@@ -7605,7 +7524,7 @@ textarea {
     margin: 0;
     padding-right: 24px;
     background-color: transparent; }
-  .item-input .button .icon, .item-input .btnDrk .icon, .item-input .homeBtn .icon, .item-input input[type="number"] .icon {
+  .item-input .button .icon {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 24px;
     -moz-box-flex: 0;
@@ -7681,7 +7600,7 @@ textarea {
   background: transparent;
   line-height: 18px; }
 
-.item-input-wrapper ~ .button, .item-input-wrapper ~ .btnDrk, .item-input-wrapper ~ .homeBtn, .item-input-wrapper ~ input[type="number"] {
+.item-input-wrapper ~ .button {
   margin-left: 10.66667px; }
 
 .input-label {
@@ -8596,7 +8515,7 @@ progress {
  * Buttons
  * --------------------------------------------------
  */
-.button, .btnDrk, .homeBtn, input[type="number"] {
+.button {
   border-color: transparent;
   background-color: #f8f8f8;
   color: #444;
@@ -8615,261 +8534,261 @@ progress {
   font-size: 16px;
   line-height: 42px;
   cursor: pointer; }
-  .button:hover, .btnDrk:hover, .homeBtn:hover, input[type="number"]:hover {
+  .button:hover {
     color: #444;
     text-decoration: none; }
-  .button.active, .active.btnDrk, .active.homeBtn, input.active[type="number"], .button.activated, .activated.btnDrk, .activated.homeBtn, input.activated[type="number"] {
+  .button.active, .button.activated {
     background-color: #e5e5e5; }
-  .button:after, .btnDrk:after, .homeBtn:after, input[type="number"]:after {
+  .button:after {
     position: absolute;
     top: -6px;
     right: -6px;
     bottom: -6px;
     left: -6px;
     content: ' '; }
-  .button .icon, .btnDrk .icon, .homeBtn .icon, input[type="number"] .icon {
+  .button .icon {
     vertical-align: top;
     pointer-events: none; }
-  .button .icon:before, .btnDrk .icon:before, .homeBtn .icon:before, input[type="number"] .icon:before, .button.icon:before, .icon.btnDrk:before, .icon.homeBtn:before, input.icon[type="number"]:before, .button.icon-left:before, .icon-left.btnDrk:before, .icon-left.homeBtn:before, input.icon-left[type="number"]:before, .button.icon-right:before, .icon-right.btnDrk:before, .icon-right.homeBtn:before, input.icon-right[type="number"]:before {
+  .button .icon:before, .button.icon:before, .button.icon-left:before, .button.icon-right:before {
     display: inline-block;
     padding: 0 0 1px 0;
     vertical-align: inherit;
     font-size: 24px;
     line-height: 41px;
     pointer-events: none; }
-  .button.icon-left:before, .icon-left.btnDrk:before, .icon-left.homeBtn:before, input.icon-left[type="number"]:before {
+  .button.icon-left:before {
     float: left;
     padding-right: .2em;
     padding-left: 0; }
-  .button.icon-right:before, .icon-right.btnDrk:before, .icon-right.homeBtn:before, input.icon-right[type="number"]:before {
+  .button.icon-right:before {
     float: right;
     padding-right: 0;
     padding-left: .2em; }
-  .button.button-block, .button-block.btnDrk, .button-block.homeBtn, input.button-block[type="number"], .button.button-full, .button-full.btnDrk, .button-full.homeBtn, input.button-full[type="number"] {
+  .button.button-block, .button.button-full {
     margin-top: 10px;
     margin-bottom: 10px; }
-  .button.button-light, .button-light.btnDrk, .button-light.homeBtn, input.button-light[type="number"] {
+  .button.button-light {
     border-color: transparent;
     background-color: #fff;
     color: #444; }
-    .button.button-light:hover, .button-light.btnDrk:hover, .button-light.homeBtn:hover, input.button-light[type="number"]:hover {
+    .button.button-light:hover {
       color: #444;
       text-decoration: none; }
-    .button.button-light.active, .button-light.active.btnDrk, .button-light.active.homeBtn, input.button-light.active[type="number"], .button.button-light.activated, .button-light.activated.btnDrk, .button-light.activated.homeBtn, input.button-light.activated[type="number"] {
+    .button.button-light.active, .button.button-light.activated {
       background-color: #fafafa; }
-    .button.button-light.button-clear, .button-light.button-clear.btnDrk, .button-light.button-clear.homeBtn, input.button-light.button-clear[type="number"] {
+    .button.button-light.button-clear {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #ddd; }
-    .button.button-light.button-icon, .button-light.button-icon.btnDrk, .button-light.button-icon.homeBtn, input.button-light.button-icon[type="number"] {
+    .button.button-light.button-icon {
       border-color: transparent;
       background: none; }
-    .button.button-light.button-outline, .button-light.button-outline.btnDrk, .button-light.button-outline.homeBtn, input.button-light.button-outline[type="number"] {
+    .button.button-light.button-outline {
       border-color: #ddd;
       background: transparent;
       color: #ddd; }
-      .button.button-light.button-outline.active, .button-light.button-outline.active.btnDrk, .button-light.button-outline.active.homeBtn, input.button-light.button-outline.active[type="number"], .button.button-light.button-outline.activated, .button-light.button-outline.activated.btnDrk, .button-light.button-outline.activated.homeBtn, input.button-light.button-outline.activated[type="number"] {
+      .button.button-light.button-outline.active, .button.button-light.button-outline.activated {
         background-color: #ddd;
         box-shadow: none;
         color: #fff; }
-  .button.button-stable, .button-stable.btnDrk, .button-stable.homeBtn, input.button-stable[type="number"] {
+  .button.button-stable {
     border-color: transparent;
     background-color: #f8f8f8;
     color: #444; }
-    .button.button-stable:hover, .button-stable.btnDrk:hover, .button-stable.homeBtn:hover, input.button-stable[type="number"]:hover {
+    .button.button-stable:hover {
       color: #444;
       text-decoration: none; }
-    .button.button-stable.active, .button-stable.active.btnDrk, .button-stable.active.homeBtn, input.button-stable.active[type="number"], .button.button-stable.activated, .button-stable.activated.btnDrk, .button-stable.activated.homeBtn, input.button-stable.activated[type="number"] {
+    .button.button-stable.active, .button.button-stable.activated {
       background-color: #e5e5e5; }
-    .button.button-stable.button-clear, .button-stable.button-clear.btnDrk, .button-stable.button-clear.homeBtn, input.button-stable.button-clear[type="number"] {
+    .button.button-stable.button-clear {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #b2b2b2; }
-    .button.button-stable.button-icon, .button-stable.button-icon.btnDrk, .button-stable.button-icon.homeBtn, input.button-stable.button-icon[type="number"] {
+    .button.button-stable.button-icon {
       border-color: transparent;
       background: none; }
-    .button.button-stable.button-outline, .button-stable.button-outline.btnDrk, .button-stable.button-outline.homeBtn, input.button-stable.button-outline[type="number"] {
+    .button.button-stable.button-outline {
       border-color: #b2b2b2;
       background: transparent;
       color: #b2b2b2; }
-      .button.button-stable.button-outline.active, .button-stable.button-outline.active.btnDrk, .button-stable.button-outline.active.homeBtn, input.button-stable.button-outline.active[type="number"], .button.button-stable.button-outline.activated, .button-stable.button-outline.activated.btnDrk, .button-stable.button-outline.activated.homeBtn, input.button-stable.button-outline.activated[type="number"] {
+      .button.button-stable.button-outline.active, .button.button-stable.button-outline.activated {
         background-color: #b2b2b2;
         box-shadow: none;
         color: #fff; }
-  .button.button-positive, .button-positive.btnDrk, .button-positive.homeBtn, input.button-positive[type="number"] {
+  .button.button-positive {
     border-color: transparent;
     background-color: #387ef5;
     color: #fff; }
-    .button.button-positive:hover, .button-positive.btnDrk:hover, .button-positive.homeBtn:hover, input.button-positive[type="number"]:hover {
+    .button.button-positive:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-positive.active, .button-positive.active.btnDrk, .button-positive.active.homeBtn, input.button-positive.active[type="number"], .button.button-positive.activated, .button-positive.activated.btnDrk, .button-positive.activated.homeBtn, input.button-positive.activated[type="number"] {
+    .button.button-positive.active, .button.button-positive.activated {
       background-color: #0c60ee; }
-    .button.button-positive.button-clear, .button-positive.button-clear.btnDrk, .button-positive.button-clear.homeBtn, input.button-positive.button-clear[type="number"] {
+    .button.button-positive.button-clear {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #387ef5; }
-    .button.button-positive.button-icon, .button-positive.button-icon.btnDrk, .button-positive.button-icon.homeBtn, input.button-positive.button-icon[type="number"] {
+    .button.button-positive.button-icon {
       border-color: transparent;
       background: none; }
-    .button.button-positive.button-outline, .button-positive.button-outline.btnDrk, .button-positive.button-outline.homeBtn, input.button-positive.button-outline[type="number"] {
+    .button.button-positive.button-outline {
       border-color: #387ef5;
       background: transparent;
       color: #387ef5; }
-      .button.button-positive.button-outline.active, .button-positive.button-outline.active.btnDrk, .button-positive.button-outline.active.homeBtn, input.button-positive.button-outline.active[type="number"], .button.button-positive.button-outline.activated, .button-positive.button-outline.activated.btnDrk, .button-positive.button-outline.activated.homeBtn, input.button-positive.button-outline.activated[type="number"] {
+      .button.button-positive.button-outline.active, .button.button-positive.button-outline.activated {
         background-color: #387ef5;
         box-shadow: none;
         color: #fff; }
-  .button.button-calm, .button-calm.btnDrk, .button-calm.homeBtn, input.button-calm[type="number"] {
+  .button.button-calm {
     border-color: transparent;
     background-color: #11c1f3;
     color: #fff; }
-    .button.button-calm:hover, .button-calm.btnDrk:hover, .button-calm.homeBtn:hover, input.button-calm[type="number"]:hover {
+    .button.button-calm:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-calm.active, .button-calm.active.btnDrk, .button-calm.active.homeBtn, input.button-calm.active[type="number"], .button.button-calm.activated, .button-calm.activated.btnDrk, .button-calm.activated.homeBtn, input.button-calm.activated[type="number"] {
+    .button.button-calm.active, .button.button-calm.activated {
       background-color: #0a9dc7; }
-    .button.button-calm.button-clear, .button-calm.button-clear.btnDrk, .button-calm.button-clear.homeBtn, input.button-calm.button-clear[type="number"] {
+    .button.button-calm.button-clear {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #11c1f3; }
-    .button.button-calm.button-icon, .button-calm.button-icon.btnDrk, .button-calm.button-icon.homeBtn, input.button-calm.button-icon[type="number"] {
+    .button.button-calm.button-icon {
       border-color: transparent;
       background: none; }
-    .button.button-calm.button-outline, .button-calm.button-outline.btnDrk, .button-calm.button-outline.homeBtn, input.button-calm.button-outline[type="number"] {
+    .button.button-calm.button-outline {
       border-color: #11c1f3;
       background: transparent;
       color: #11c1f3; }
-      .button.button-calm.button-outline.active, .button-calm.button-outline.active.btnDrk, .button-calm.button-outline.active.homeBtn, input.button-calm.button-outline.active[type="number"], .button.button-calm.button-outline.activated, .button-calm.button-outline.activated.btnDrk, .button-calm.button-outline.activated.homeBtn, input.button-calm.button-outline.activated[type="number"] {
+      .button.button-calm.button-outline.active, .button.button-calm.button-outline.activated {
         background-color: #11c1f3;
         box-shadow: none;
         color: #fff; }
-  .button.button-assertive, .button-assertive.btnDrk, .button-assertive.homeBtn, input.button-assertive[type="number"] {
+  .button.button-assertive {
     border-color: transparent;
     background-color: #ef473a;
     color: #fff; }
-    .button.button-assertive:hover, .button-assertive.btnDrk:hover, .button-assertive.homeBtn:hover, input.button-assertive[type="number"]:hover {
+    .button.button-assertive:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-assertive.active, .button-assertive.active.btnDrk, .button-assertive.active.homeBtn, input.button-assertive.active[type="number"], .button.button-assertive.activated, .button-assertive.activated.btnDrk, .button-assertive.activated.homeBtn, input.button-assertive.activated[type="number"] {
+    .button.button-assertive.active, .button.button-assertive.activated {
       background-color: #e42112; }
-    .button.button-assertive.button-clear, .button-assertive.button-clear.btnDrk, .button-assertive.button-clear.homeBtn, input.button-assertive.button-clear[type="number"] {
+    .button.button-assertive.button-clear {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #ef473a; }
-    .button.button-assertive.button-icon, .button-assertive.button-icon.btnDrk, .button-assertive.button-icon.homeBtn, input.button-assertive.button-icon[type="number"] {
+    .button.button-assertive.button-icon {
       border-color: transparent;
       background: none; }
-    .button.button-assertive.button-outline, .button-assertive.button-outline.btnDrk, .button-assertive.button-outline.homeBtn, input.button-assertive.button-outline[type="number"] {
+    .button.button-assertive.button-outline {
       border-color: #ef473a;
       background: transparent;
       color: #ef473a; }
-      .button.button-assertive.button-outline.active, .button-assertive.button-outline.active.btnDrk, .button-assertive.button-outline.active.homeBtn, input.button-assertive.button-outline.active[type="number"], .button.button-assertive.button-outline.activated, .button-assertive.button-outline.activated.btnDrk, .button-assertive.button-outline.activated.homeBtn, input.button-assertive.button-outline.activated[type="number"] {
+      .button.button-assertive.button-outline.active, .button.button-assertive.button-outline.activated {
         background-color: #ef473a;
         box-shadow: none;
         color: #fff; }
-  .button.button-balanced, .button-balanced.btnDrk, .button-balanced.homeBtn, input.button-balanced[type="number"] {
+  .button.button-balanced {
     border-color: transparent;
     background-color: #76CE95;
     color: #fff; }
-    .button.button-balanced:hover, .button-balanced.btnDrk:hover, .button-balanced.homeBtn:hover, input.button-balanced[type="number"]:hover {
+    .button.button-balanced:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-balanced.active, .button-balanced.active.btnDrk, .button-balanced.active.homeBtn, input.button-balanced.active[type="number"], .button.button-balanced.activated, .button-balanced.activated.btnDrk, .button-balanced.activated.homeBtn, input.button-balanced.activated[type="number"] {
+    .button.button-balanced.active, .button.button-balanced.activated {
       background-color: #50c178; }
-    .button.button-balanced.button-clear, .button-balanced.button-clear.btnDrk, .button-balanced.button-clear.homeBtn, input.button-balanced.button-clear[type="number"] {
+    .button.button-balanced.button-clear {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #76CE95; }
-    .button.button-balanced.button-icon, .button-balanced.button-icon.btnDrk, .button-balanced.button-icon.homeBtn, input.button-balanced.button-icon[type="number"] {
+    .button.button-balanced.button-icon {
       border-color: transparent;
       background: none; }
-    .button.button-balanced.button-outline, .button-balanced.button-outline.btnDrk, .button-balanced.button-outline.homeBtn, input.button-balanced.button-outline[type="number"] {
+    .button.button-balanced.button-outline {
       border-color: #76CE95;
       background: transparent;
       color: #76CE95; }
-      .button.button-balanced.button-outline.active, .button-balanced.button-outline.active.btnDrk, .button-balanced.button-outline.active.homeBtn, input.button-balanced.button-outline.active[type="number"], .button.button-balanced.button-outline.activated, .button-balanced.button-outline.activated.btnDrk, .button-balanced.button-outline.activated.homeBtn, input.button-balanced.button-outline.activated[type="number"] {
+      .button.button-balanced.button-outline.active, .button.button-balanced.button-outline.activated {
         background-color: #76CE95;
         box-shadow: none;
         color: #fff; }
-  .button.button-energized, .button-energized.btnDrk, .button-energized.homeBtn, input.button-energized[type="number"] {
+  .button.button-energized {
     border-color: transparent;
     background-color: #ffc900;
     color: #fff; }
-    .button.button-energized:hover, .button-energized.btnDrk:hover, .button-energized.homeBtn:hover, input.button-energized[type="number"]:hover {
+    .button.button-energized:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-energized.active, .button-energized.active.btnDrk, .button-energized.active.homeBtn, input.button-energized.active[type="number"], .button.button-energized.activated, .button-energized.activated.btnDrk, .button-energized.activated.homeBtn, input.button-energized.activated[type="number"] {
+    .button.button-energized.active, .button.button-energized.activated {
       background-color: #e6b500; }
-    .button.button-energized.button-clear, .button-energized.button-clear.btnDrk, .button-energized.button-clear.homeBtn, input.button-energized.button-clear[type="number"] {
+    .button.button-energized.button-clear {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #ffc900; }
-    .button.button-energized.button-icon, .button-energized.button-icon.btnDrk, .button-energized.button-icon.homeBtn, input.button-energized.button-icon[type="number"] {
+    .button.button-energized.button-icon {
       border-color: transparent;
       background: none; }
-    .button.button-energized.button-outline, .button-energized.button-outline.btnDrk, .button-energized.button-outline.homeBtn, input.button-energized.button-outline[type="number"] {
+    .button.button-energized.button-outline {
       border-color: #ffc900;
       background: transparent;
       color: #ffc900; }
-      .button.button-energized.button-outline.active, .button-energized.button-outline.active.btnDrk, .button-energized.button-outline.active.homeBtn, input.button-energized.button-outline.active[type="number"], .button.button-energized.button-outline.activated, .button-energized.button-outline.activated.btnDrk, .button-energized.button-outline.activated.homeBtn, input.button-energized.button-outline.activated[type="number"] {
+      .button.button-energized.button-outline.active, .button.button-energized.button-outline.activated {
         background-color: #ffc900;
         box-shadow: none;
         color: #fff; }
-  .button.button-royal, .button-royal.btnDrk, .button-royal.homeBtn, input.button-royal[type="number"] {
+  .button.button-royal {
     border-color: transparent;
     background-color: #495259;
     color: #fff; }
-    .button.button-royal:hover, .button-royal.btnDrk:hover, .button-royal.homeBtn:hover, input.button-royal[type="number"]:hover {
+    .button.button-royal:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-royal.active, .button-royal.active.btnDrk, .button-royal.active.homeBtn, input.button-royal.active[type="number"], .button.button-royal.activated, .button-royal.activated.btnDrk, .button-royal.activated.homeBtn, input.button-royal.activated[type="number"] {
+    .button.button-royal.active, .button.button-royal.activated {
       background-color: #373d43; }
-    .button.button-royal.button-clear, .button-royal.button-clear.btnDrk, .button-royal.button-clear.homeBtn, input.button-royal.button-clear[type="number"] {
+    .button.button-royal.button-clear {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #495259; }
-    .button.button-royal.button-icon, .button-royal.button-icon.btnDrk, .button-royal.button-icon.homeBtn, input.button-royal.button-icon[type="number"] {
+    .button.button-royal.button-icon {
       border-color: transparent;
       background: none; }
-    .button.button-royal.button-outline, .button-royal.button-outline.btnDrk, .button-royal.button-outline.homeBtn, input.button-royal.button-outline[type="number"] {
+    .button.button-royal.button-outline {
       border-color: #495259;
       background: transparent;
       color: #495259; }
-      .button.button-royal.button-outline.active, .button-royal.button-outline.active.btnDrk, .button-royal.button-outline.active.homeBtn, input.button-royal.button-outline.active[type="number"], .button.button-royal.button-outline.activated, .button-royal.button-outline.activated.btnDrk, .button-royal.button-outline.activated.homeBtn, input.button-royal.button-outline.activated[type="number"] {
+      .button.button-royal.button-outline.active, .button.button-royal.button-outline.activated {
         background-color: #495259;
         box-shadow: none;
         color: #fff; }
-  .button.button-dark, .button-dark.btnDrk, .button-dark.homeBtn, input.button-dark[type="number"] {
+  .button.button-dark {
     border-color: transparent;
     background-color: #181B1E;
     color: #fff; }
-    .button.button-dark:hover, .button-dark.btnDrk:hover, .button-dark.homeBtn:hover, input.button-dark[type="number"]:hover {
+    .button.button-dark:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-dark.active, .button-dark.active.btnDrk, .button-dark.active.homeBtn, input.button-dark.active[type="number"], .button.button-dark.activated, .button-dark.activated.btnDrk, .button-dark.activated.homeBtn, input.button-dark.activated[type="number"] {
+    .button.button-dark.active, .button.button-dark.activated {
       background-color: #262626; }
-    .button.button-dark.button-clear, .button-dark.button-clear.btnDrk, .button-dark.button-clear.homeBtn, input.button-dark.button-clear[type="number"] {
+    .button.button-dark.button-clear {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #181B1E; }
-    .button.button-dark.button-icon, .button-dark.button-icon.btnDrk, .button-dark.button-icon.homeBtn, input.button-dark.button-icon[type="number"] {
+    .button.button-dark.button-icon {
       border-color: transparent;
       background: none; }
-    .button.button-dark.button-outline, .button-dark.button-outline.btnDrk, .button-dark.button-outline.homeBtn, input.button-dark.button-outline[type="number"] {
+    .button.button-dark.button-outline {
       border-color: #181B1E;
       background: transparent;
       color: #181B1E; }
-      .button.button-dark.button-outline.active, .button-dark.button-outline.active.btnDrk, .button-dark.button-outline.active.homeBtn, input.button-dark.button-outline.active[type="number"], .button.button-dark.button-outline.activated, .button-dark.button-outline.activated.btnDrk, .button-dark.button-outline.activated.homeBtn, input.button-dark.button-outline.activated[type="number"] {
+      .button.button-dark.button-outline.active, .button.button-dark.button-outline.activated {
         background-color: #181B1E;
         box-shadow: none;
         color: #fff; }
@@ -8903,7 +8822,7 @@ progress {
   min-width: initial;
   border-color: transparent;
   background: none; }
-  .button-icon.button.active, .button-icon.active.btnDrk, .button-icon.active.homeBtn, input.button-icon.active[type="number"], .button-icon.button.activated, .button-icon.activated.btnDrk, .button-icon.activated.homeBtn, input.button-icon.activated[type="number"] {
+  .button-icon.button.active, .button-icon.button.activated {
     border-color: transparent;
     background: none;
     box-shadow: none;
@@ -8944,7 +8863,7 @@ progress {
       box-shadow: none;
       color: #fff; }
 
-.padding > .button.button-block:first-child, .padding > .button-block.btnDrk:first-child, .padding > .button-block.homeBtn:first-child, .padding > input.button-block[type="number"]:first-child {
+.padding > .button.button-block:first-child {
   margin-top: 0; }
 
 .button-block {
@@ -8954,10 +8873,7 @@ progress {
     clear: both; }
 
 .button-full,
-.button-full > .button,
-.button-full > .btnDrk,
-.button-full > .homeBtn,
-.button-full > input[type="number"] {
+.button-full > .button {
   display: block;
   margin-right: 0;
   margin-left: 0;
@@ -8968,24 +8884,16 @@ progress {
 button.button-block,
 button.button-full,
 .button-full > button.button,
-.button-full > button.btnDrk,
-.button-full > button.homeBtn,
-input.button.button-block,
-input.button-block.btnDrk,
-input.button-block.homeBtn,
-input.button-block[type="number"] {
+input.button.button-block {
   width: 100%; }
 
-a.button, a.btnDrk, a.homeBtn {
+a.button {
   text-decoration: none; }
-  a.button .icon:before, a.btnDrk .icon:before, a.homeBtn .icon:before, a.button.icon:before, a.icon.btnDrk:before, a.icon.homeBtn:before, a.button.icon-left:before, a.icon-left.btnDrk:before, a.icon-left.homeBtn:before, a.button.icon-right:before, a.icon-right.btnDrk:before, a.icon-right.homeBtn:before {
+  a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button.icon-right:before {
     margin-top: 2px; }
 
-.button.disabled, .disabled.btnDrk, .disabled.homeBtn, input.disabled[type="number"],
-.button[disabled],
-[disabled].btnDrk,
-[disabled].homeBtn,
-input[disabled][type="number"] {
+.button.disabled,
+.button[disabled] {
   opacity: .4;
   cursor: default !important;
   pointer-events: none; }
@@ -9018,12 +8926,12 @@ input[disabled][type="number"] {
       line-height: 0; }
     .button-bar.button-bar-inline:after {
       clear: both; }
-    .button-bar.button-bar-inline > .button, .button-bar.button-bar-inline > .btnDrk, .button-bar.button-bar-inline > .homeBtn, .button-bar.button-bar-inline > input[type="number"] {
+    .button-bar.button-bar-inline > .button {
       width: auto;
       display: inline-block;
       float: left; }
 
-.button-bar > .button, .button-bar > .btnDrk, .button-bar > .homeBtn, .button-bar > input[type="number"] {
+.button-bar > .button {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -moz-box-flex: 1;
@@ -9039,18 +8947,15 @@ input[disabled][type="number"] {
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap; }
-  .button-bar > .button:before, .button-bar > .btnDrk:before, .button-bar > .homeBtn:before, .button-bar > input[type="number"]:before,
-  .button-bar > .button .icon:before,
-  .button-bar > .btnDrk .icon:before,
-  .button-bar > .homeBtn .icon:before,
-  .button-bar > input[type="number"] .icon:before {
+  .button-bar > .button:before,
+  .button-bar > .button .icon:before {
     line-height: 44px; }
-  .button-bar > .button:first-child, .button-bar > .btnDrk:first-child, .button-bar > .homeBtn:first-child, .button-bar > input[type="number"]:first-child {
+  .button-bar > .button:first-child {
     border-radius: 4px 0px 0px 4px; }
-  .button-bar > .button:last-child, .button-bar > .btnDrk:last-child, .button-bar > .homeBtn:last-child, .button-bar > input[type="number"]:last-child {
+  .button-bar > .button:last-child {
     border-right-width: 1px;
     border-radius: 0px 4px 4px 0px; }
-  .button-bar > .button:only-child, .button-bar > .btnDrk:only-child, .button-bar > .homeBtn:only-child, .button-bar > input[type="number"]:only-child {
+  .button-bar > .button:only-child {
     border-radius: 4px; }
 
 .button-bar > .button-small:before,
@@ -9824,23 +9729,116 @@ input[disabled][type="number"] {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+@-webkit-keyframes bounceIn {
+  0% {
+    -webkit-transform: scale(0.1);
+    opacity: 0; }
+  60% {
+    -webkit-transform: scale(0.05);
+    opacity: 1; }
+  100% {
+    -webkit-transform: scale(1); } }
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0; }
+  60% {
+    transform: scale(0.05);
+    opacity: 1; }
+  100% {
+    transform: scale(1); } }
+
+@keyframes moveOutLeft {
+  0% {
+    width: 30px;
+    opacity: 0; }
+  50% {
+    opacity: 0.5; }
+  100% {
+    width: 220px;
+    opacity: 1; } }
+
+@keyframes moveOutLeft {
+  0% {
+    width: 30px;
+    opacity: 0; }
+  50% {
+    opacity: 0.5; }
+  100% {
+    width: 220px;
+    opacity: 1; } }
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(4); }
+  50% {
+    -webkit-transform: scale(1.1); }
+  100% {
+    -webkit-transform: scale(1); } }
+
+@keyframes pulse {
+  0% {
+    transform: scale(4); }
+  50% {
+    transform: scale(1.1); }
+  100% {
+    transform: scale(1); } }
+
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse; }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0.5; }
+  to {
+    opacity: 1; } }
+
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0.5; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.5; }
+  to {
+    opacity: 1; } }
+
 body, p {
-  color: #fff;
+  color: #626262;
   font-family: 'Open Sans', sans-serif;
-  font-weight: 200; }
+  font-size: 12px; }
+
+.fade-on-enter {
+  opacity: 0;
+  /* make things invisible upon start */
+  -webkit-animation: fadeIn ease-in 1;
+  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation: fadeIn ease-in 1;
+  animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.25s;
+  -moz-animation-duration: 0.25s;
+  animation-duration: 0.25s; }
 
 .scale-in {
   transform: scale(1);
-  opacity: 0; }
+  opacity: 0.8; }
 
 .scale-in.ng-enter,
 .scale-in > .ng-enter {
-  transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 800ms; }
+  transition: all cubic-bezier(0.1, 0.5, 0.6, 0.9) 800ms; }
 
 .scale-in.ng-enter-active,
 .scale-in > .ng-enter-active {
   transform: scale(1);
-  opacity: 0.94; }
+  opacity: 1; }
 
 .scale-in.ng-leave,
 .scale-in > .ng-leave {
@@ -9864,28 +9862,29 @@ body, p {
   transform: translate(-50%, -50%); }
 
 .landing {
-  background-color: #89d5a4;
+  background-color: #f8f8f8;
   line-height: 24px; }
 
-.button, .btnDrk, .homeBtn, input[type="number"] {
-  color: #76CE95;
-  font-size: 14px;
-  padding: 0px 35px 0px 35px;
-  background-color: #f8f8f8; }
+.button {
+  color: #f8f8f8;
+  background-color: #76CE95;
+  padding: 0px 30px 0px 30px;
+  font-weight: 300;
+  font-size: 12px; }
 
-.btnDrk, .homeBtn, input[type="number"] {
-  color: #626262;
-  min-width: 300px;
-  min-height: 75px;
-  line-height: 74px;
-  margin-bottom: 8px;
+.btnDrk, input[type="number"] {
+  color: #f8f8f8;
+  background-color: #76CE95;
+  padding: 17px 30px 0px 30px;
+  font-weight: 500;
+  font-size: 12px;
+  min-width: 250px;
+  min-height: 90px;
+  line-height: 20px;
+  margin-bottom: 5px;
   font-size: large; }
 
-.homeBtn {
-  line-height: 20px;
-  padding-top: 17px; }
-
-.btnTitle, .commentHeader {
+.btnTitle {
   color: #76CE95;
   font-size: 14px;
   font-weight: bold; }
@@ -9896,6 +9895,12 @@ body, p {
   .bslogo img {
     height: auto;
     width: 140px; }
+
+.fbLinkBtn {
+  margin: 20px 0px; }
+  .fbLinkBtn a {
+    color: #f8f8f8;
+    font-size: large; }
 
 .moreInfoMap {
   background: #78deac;
@@ -9911,37 +9916,85 @@ body, p {
   color: #626262; }
 
 .secTitle {
-  font-size: 32px;
   color: #626262;
+  font-size: xx-large;
+  line-height: 32px;
   text-align: center;
-  margin: 20px 0px;
+  margin: 5px 0px;
   font-weight: 200; }
 
 .section {
-  background-color: #f8f8f8; }
+  background-color: #f6f6f6; }
   .section .secPar {
-    font-size: smaller;
+    color: #626262;
+    font-size: 13px;
+    line-height: 20px; }
+    @media only screen and (min-width: 600px) {
+      .section .secPar {
+        padding: 0 8%; } }
+
+.howItworksMobile p {
+  font-size: 14px; }
+
+.medUpContainer {
+  padding: 40px; }
+
+.medUpSteps {
+  padding: 4% 8%; }
+  .medUpSteps h5 {
+    text-align: center; }
+  .medUpSteps ul {
     line-height: 14px; }
+  .medUpSteps img {
+    max-width: 80%; }
 
 .sectionTwo, .section {
   padding: 40px 40px 40px 40px;
   margin: 0; }
-  .sectionTwo h4, .section h4, .sectionTwo p, .section p {
-    color: #626262; }
+
+.stepsDiv {
+  justify-content: center;
+  margin: 25px auto;
+  display: flex;
+  display: -webkit-flex; }
+
+.dots {
+  display: flex;
+  display: -webkit-flex;
+  margin: auto; }
 
 .stepsNum {
-  border: 2px solid #76CE95;
-  width: 100px;
-  height: 30px;
-  margin: auto 5px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%; }
-  .stepsNum h2 {
-    padding: 5px;
-    line-height: 15px;
-    font-size: 20px; }
+  margin: 5px; }
+  .stepsNum img {
+    max-width: 30px; }
+
+.graphicBike img {
+  max-height: 100%;
+  padding: 0px 20px 20px 20px; }
+
+.borderRight {
+  border-right: 1px solid #e2e2e2; }
+
+.marginLeft {
+  margin-left: 12px; }
+
+.benefitBlock {
+  border-bottom: 1px solid #e2e2e2; }
+  .benefitBlock p {
+    padding: 0 4%;
+    line-height: 18px; }
+  @media only screen and (min-width: 600px) {
+    .benefitBlock {
+      min-height: 440px;
+      padding: 0 8%; } }
+
+@media only screen and (min-width: 600px) {
+  .bottomRowBorder {
+    border-bottom: none;
+    min-height: 300px; } }
+
+.benGraphics img {
+  max-height: 120px; }
 
 .socialIcons {
   font-size: 20px;
@@ -9957,7 +10010,8 @@ body, p {
   padding: 5px 0px 0px 20px; }
 
 .boxRow {
-  display: flex; }
+  display: flex;
+  display: -webkit-flex; }
 
 .rightIcons {
   position: absolute;
@@ -9965,10 +10019,10 @@ body, p {
 
 .aboutPar {
   color: #626262;
-  font-size: 13px; }
+  font-size: 14px; }
 
-p .leaderName {
-  font-weight: 600; }
+.leaderName {
+  font-size: 15px; }
 
 .loriPadding {
   padding-bottom: 0px; }
@@ -9983,13 +10037,17 @@ input[type="text"], input[type="email"] {
   background-color: #dfdfdf;
   font-size: 12px;
   padding-left: 5px; }
+  @media only screen and (min-width: 600px) {
+    input[type="text"], input[type="email"] {
+      margin-bottom: 14px; } }
 
 .smallSizeFont {
   font-size: 12px;
-  color: #a2a2a2; }
+  color: #eeeeee; }
 
 [type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after {
-  border: 2px solid #f8f8f8; }
+  border: 3px solid #dfdfdf;
+  background-color: #f8f8f8; }
 
 [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
   border: 2px solid #76CE95; }
@@ -10001,27 +10059,63 @@ textarea {
 
 .divSize {
   padding: 0 5%; }
+  @media only screen and (min-width: 600px) {
+    .divSize {
+      max-width: 50em; } }
 
-.fdbckBtn {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  border-radius: 10px;
+.addBackgroundImg {
+  background: url("./../img/bike-assets/backgroundMapView.png") no-repeat;
+  background-size: cover; }
+
+.addBackgroundGreen {
+  background: url("./../img/bike-assets/mapDownyOverlay.png") no-repeat;
+  background-size: cover; }
+
+.fdbckBtn, .button.suggestBtn, .button.surveyBtn {
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  border-radius: 7px;
   position: absolute;
-  right: 20px;
-  top: 13px;
-  border: 2px solid #f8f8f8;
-  color: #f8f8f8;
-  background-color: transparent; }
+  top: 10px;
+  right: 70px;
+  color: #626262;
+  background-color: #f8f8f8; }
+  .fdbckBtn p, .button.suggestBtn p, .button.surveyBtn p {
+    font-size: 10px; }
+  @media only screen and (min-width: 500px) {
+    .fdbckBtn p, .button.suggestBtn p, .button.surveyBtn p {
+      font-size: 14px; } }
+
+.button.suggestBtn {
+  right: 190px; }
+
+.button.surveyBtn {
+  right: 15px;
+  font-size: x-large; }
+
+.backArrow {
+  font-size: 45px;
+  line-height: 45px;
+  font-weight: bold;
+  margin-left: 15px;
+  color: #f8f8f8; }
+
+.ion-ios-arrow-thin-left:before {
+  margin-top: -8px; }
 
 .submitBtn {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  border-radius: 10px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  border-radius: 7px;
+  font-size: 16px;
+  color: #f8f8f8;
+  padding: 4px 30px;
+  font-size: 15px;
+  margin-top: 15px;
   border: 2px solid #76CE95;
-  background-color: transparent;
-  color: #f8f8f8; }
+  background-color: transparent; }
 
 .suggestFdbkBtn {
   -webkit-border-radius: 12px;
@@ -10029,9 +10123,9 @@ textarea {
   -ms-border-radius: 12px;
   border-radius: 12px;
   font-size: 16px;
+  color: #f8f8f8;
   padding: 12px 30px;
   border: 2px solid #f8f8f8;
-  color: #f8f8f8;
   background-color: transparent; }
 
 .addMargin {
@@ -10041,19 +10135,21 @@ textarea {
   color: #76CE95;
   font-weight: 900; }
 
-.backArrow {
-  font-size: 50px;
-  font-weight: bold;
-  margin-left: 15px;
-  color: #f8f8f8; }
-
 .leadershipTeam {
   height: auto;
   width: 100%;
   background-color: #626262; }
 
+.leadDiv {
+  padding: 0% 8%; }
+  .leadDiv img {
+    max-height: 200px; }
+
+.mapImage img {
+  max-width: 100%; }
+
 .mapBg {
-  height: 300px;
+  height: 400px;
   background: url("./../img/bike-assets/mapScreen2.png") no-repeat;
   background-size: cover; }
 
@@ -10101,295 +10197,326 @@ textarea {
   height: initial; }
 
 .commentHeader {
-  color: #f8f8f8; }
-
-.radioBtn {
-  padding: 0;
-  margin-bottom: 15px; }
-  .radioBtn p {
-    font-size: 10px; }
+  font-size: 18px;
+  color: #f8f8f8;
+  font-weight: 600; }
 
 .viewMapBtn {
   z-index: 10;
   position: relative;
-  top: 130px; }
+  top: 170px; }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
   background: #76CE95; }
 
+.leaflet-top {
+  margin-top: 15px; }
+
+.leaflet-right .leaflet-control {
+  position: absolute;
+  right: inherit; }
+
+.leaflet-control-layers-toggle {
+  display: none; }
+
+.numOne {
+  background: url("./../img/bike-assets/num1_grey.png") center no-repeat; }
+
+.webViewLandingButton {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center; }
+  .webViewLandingButton img {
+    width: 85%; }
+
+.moreInfoBlockBtn {
+  animation: bounceIn 0.25s; }
+
+.mapBlockBtn img {
+  animation: bounceIn 0.3s; }
+
+.benefitsBlockBtn img {
+  animation: bounceIn 0.4s; }
+
+.titleDetailBar {
+  background-color: #e2e2e2;
+  line-height: 48px;
+  height: 60px; }
+  .titleDetailBar p {
+    font-size: 22px;
+    text-align: center;
+    padding-left: 30px; }
+  .titleDetailBar i {
+    font-size: 34px;
+    position: absolute;
+    right: 30px; }
+
+.detailModalBlock {
+  padding: 34px 30px; }
+  .detailModalBlock .col {
+    padding: 0px; }
+  .detailModalBlock .row {
+    margin: 0; }
+  .detailModalBlock .likes {
+    display: -webkit-flex;
+    display: flex;
+    padding-top: 2px;
+    width: 97px;
+    height: 27px;
+    border: 2px solid #e2e2e2;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px; }
+    .detailModalBlock .likes i {
+      display: -webkit-flex;
+      display: flex;
+      margin: auto;
+      font-size: large; }
+  .detailModalBlock .bbbImageLogo img {
+    max-width: 20px; }
+  .detailModalBlock .d_image img {
+    width: 100%;
+    height: auto; }
+  .detailModalBlock .eachBusinessBlockContent {
+    display: -webkit-flex;
+    display: flex; }
+  .detailModalBlock .titleAddDescription {
+    width: 100%;
+    padding: 0px 9px 9px 18px; }
+  .detailModalBlock .title_address {
+    line-height: 12px;
+    margin-bottom: 12px; }
+  .detailModalBlock h5 {
+    margin-top: 0px;
+    margin-bottom: 2px; }
+  .detailModalBlock .businessDescription {
+    line-height: 14px; }
+  .detailModalBlock .imageOfBusiness {
+    max-width: 102.34px;
+    min-width: 102.34px; }
+    .detailModalBlock .imageOfBusiness img.fixedImageSize {
+      width: 100%; }
+  .detailModalBlock .stationPhoto {
+    max-height: auto; }
+  .detailModalBlock .d_title span {
+    padding: 10px 0px;
+    color: #76CE95;
+    font-size: 12px;
+    font-weight: 200; }
+  .detailModalBlock .d_location {
+    font-size: 14px; }
+  .detailModalBlock div.row {
+    padding: 0; }
+  .detailModalBlock .biz_image {
+    background-color: yellow;
+    width: 100px; }
+
+@media only screen and (min-width: 500px) {
+  .modal {
+    top: 0;
+    right: 100%;
+    bottom: 0;
+    left: 0;
+    max-height: 100%;
+    width: 50%; } }
+
+.leaflet-marker-icon {
+  -webkit-user-select: inherit; }
+
+.displayNone {
+  display: none; }
+
+.leaflet-bar {
+  box-shadow: none;
+  border-radius: 0; }
+
+.leaflet-control-geosearch {
+  position: relative; }
+
+.leaflet-control-geosearch a {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  border-bottom: none; }
+
+.leaflet-control-geosearch a.glass {
+  float: right;
+  height: 40px;
+  width: 40px;
+  background: url("./../img/bike-assets/searchIcon.png") center no-repeat;
+  background-size: 100% 100%; }
+
+.leaflet-control-geosearch a.spinner {
+  background: url("./../img/bike-assets/searchIcon.png") center no-repeat;
+  background-position: 50% 50%; }
+
+.leaflet-control-geosearch a.alert {
+  background-size: 64% 64%; }
+
+.leaflet-control-geosearch {
+  border: none;
+  box-shadow: none;
+  height: auto;
+  width: 200%; }
+  .leaflet-control-geosearch a:hover {
+    border-bottom: none; }
+
+.leaflet-control {
+  box-shadow: none;
+  border: none; }
+
+.leaflet-control-geosearch form {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  border-radius: 20px;
+  border: 2px solid #d5d5d5;
+  position: absolute;
+  top: 1px;
+  right: 2px;
+  z-index: -1;
+  background: #FFF;
+  height: 38px; }
+
+.leaflet-touch .leaflet-control-geosearch form {
+  padding: 2px 6px 2px 8px;
+  line-height: 30px; }
+
+.leaflet-control-geosearch form input {
+  width: 220px;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 200;
+  margin-left: 12px;
+  background-color: transparent;
+  animation: moveOutLeft 0.4s ease; }
+
+.getLocationMarker img {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  z-index: 1; }
+
+.addPadding {
+  padding: 0 5%; }
+  @media only screen and (min-width: 600px) {
+    .addPadding {
+      padding: 0 7%; } }
+
+.survSmallTitle {
+  margin: 14px 0; }
+  .survSmallTitle span {
+    font-weight: 800;
+    color: #f8f8f8; }
+
+.radioBlock {
+  display: flex;
+  display: -webkit-flex;
+  background-color: #f8f8f8;
+  max-height: 68px;
+  min-height: 68px;
+  margin-bottom: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px; }
+  .radioBlock span {
+    color: #f8f8f8;
+    line-height: 65px;
+    font-weight: 800; }
+  .radioBlock [type="radio"]:not(:checked) + label:before, .radioBlock [type="radio"]:not(:checked) + label:after {
+    border: 2px solid #76CE95; }
+  .radioBlock [type="radio"]:checked + label:after, .radioBlock [type="radio"].with-gap:checked + label:before, .radioBlock [type="radio"].with-gap:checked + label:after {
+    border: 2px solid #76CE95; }
+  .radioBlock .topicDiv {
+    min-width: 90px;
+    background-color: #a2a2a2;
+    border-radius: 10px 0 0 10px; }
+  .radioBlock .radioSelections {
+    margin: 14px 10px; }
+    .radioBlock .radioSelections label {
+      min-width: 80.36px;
+      margin-right: 12px; }
+  .radioBlock .zipcodeInput {
+    background-color: transparent;
+    color: #C2C2C2; }
+    .radioBlock .zipcodeInput input {
+      min-height: 40px;
+      margin-left: 14px;
+      font-size: 14px; }
+
+.centerBox {
+  width: 100%;
+  position: absolute;
+  top: 75%;
+  justify-content: center;
+  text-align: center; }
+  @media only screen and (min-width: 600px) {
+    .centerBox {
+      width: 100%;
+      top: 19px; } }
+
+#footer-bar.row {
+  margin-bottom: 0px;
+  flex-flow: row wrap;
+  margin: auto; }
+  #footer-bar.row .row {
+    margin: 0px; }
+  @media only screen and (min-width: 600px) {
+    #footer-bar.row {
+      display: flex;
+      display: -webkit-flex;
+      width: 87%; } }
+  #footer-bar.row .row {
+    margin-bottom: 0px; }
+  #footer-bar.row .directions_wrapper {
+    background-color: rgba(248, 248, 248, 0.6); }
+  #footer-bar.row img {
+    max-width: 28px; }
+    @media only screen and (min-width: 600px) {
+      #footer-bar.row img {
+        max-width: 32px; } }
+  #footer-bar.row p {
+    line-height: 14px;
+    font-size: 14px; }
+    @media only screen and (min-width: 600px) {
+      #footer-bar.row p {
+        line-height: 16px;
+        font-size: 18px; } }
+  #footer-bar.row .bothSuggestBtns {
+    justify-content: space-between;
+    background-color: #76CE95;
+    padding: 10px; }
+    #footer-bar.row .bothSuggestBtns a {
+      color: #626262; }
+    @media only screen and (min-width: 600px) {
+      #footer-bar.row .bothSuggestBtns {
+        background-color: #f8f8f8; } }
+  @media only screen and (min-width: 600px) {
+    #footer-bar.row .eachSuggestbtn {
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      border-radius: 10px;
+      border: 2px solid #76CE95;
+      color: #626262;
+      background-color: #f8f8f8;
+      min-width: 110.08px;
+      min-height: 53px; } }
+  #footer-bar.row span {
+    font-size: large;
+    margin: auto; }
+
 #map {
   width: 100%;
-  height: 100%;
-  margin-top: 15px; }
+  height: 100%; }
 
 .scroll {
   height: 100%; }
-
-.header-item {
-  padding-top: 7px; }
-
-#footer-bar {
-  width: 100%;
-  background-color: #181B1E;
-  z-index: 1002;
-  position: fixed; }
-  #footer-bar div {
-    width: 100%;
-    text-align: center; }
-
-.footerIcons .ng-hide-remove {
-  animation: fading-in 1s ease; }
-
-@keyframes fading-in {
-  0% {
-    opacity: 0; }
-  50% {
-    opacity: 0.3; }
-  100% {
-    opacity: 1; } }
-
-h1.title {
-  color: #76CE95; }
-
-#locate-before-start {
-  z-index: 1000;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  line-height: 450px;
-  text-align: center;
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #387ef5; }
-
-.showBlocker {
-  display: inline; }
-
-.hideBlocker {
-  display: none; }
-
-.view-filter {
-  background-color: #f8f8f8;
-  height: 46px;
-  width: 46px;
-  border-radius: 23px;
-  text-align: center;
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 3;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
-  color: #495259;
-  font-size: 40px;
-  line-height: 47px;
-  text-align: center; }
-
-.list-modal {
-  background-color: #181B1E; }
-
-.pinViews {
-  text-align: left; }
-
-.filter-but-img {
-  padding-right: 20px; }
-
-.leaflet-bar a {
-  background-color: #f8f8f8;
-  color: #495259; }
-
-.bottom-tab-nav-img {
-  height: 25px;
-  margin-top: 6px; }
-
-.radius-small {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/small-radius.svg") no-repeat;
-  background-position: 50% 40%; }
-
-.radius-medium {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/medium-radius.svg") center no-repeat;
-  background-position: 50% 40%; }
-
-.radius-large {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/large-radius.svg") center no-repeat;
-  background-position: 50% 40%; }
-
-.radius-all {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/all-light.png") center no-repeat;
-  background-position: 50% 50%; }
-
-.radius-small-selected {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/small-radius-dark.svg") center no-repeat;
-  background-position: 50% 40%; }
-
-.radius-medium-selected {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/medium-radius-dark.svg") center no-repeat;
-  background-position: 50% 40%; }
-
-.radius-large-selected {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/large-radius-dark.svg") center no-repeat;
-  background-position: 50% 40%; }
-
-.radius-all-selected {
-  background-color: #f8f8f8;
-  background: url("./../img/bike-assets/all.png") center no-repeat;
-  background-position: 50% 50%; }
-
-#radiusDiv {
-  height: 100px;
-  align: center;
-  width: 92%;
-  margin: auto;
-  box-shadow: 1px 1px 3px 1px #8f9ba6; }
-  #radiusDiv img {
-    align: center;
-    max-height: 100%;
-    display: block;
-    margin: auto; }
-  #radiusDiv button {
-    text-align: center;
-    line-height: 170px;
-    height: 100px;
-    font-size: 0.8em; }
-
-.closeModal {
-  background-color: #181B1E;
-  color: #f8f8f8; }
-
-.bshLogo {
-  float: left;
-  width: 70px;
-  height: 70px;
-  margin-right: 7px; }
-
-.navLinkDiv {
-  margin-top: 5px; }
-
-.eachItem {
-  margin: 10px 15px 10px 15px;
-  box-shadow: 1px 1px 3px 1px #d6d3d6; }
-
-.item-complex .item-content {
-  padding: 7px; }
-
-.locationMenu {
-  float: left;
-  width: 20px;
-  height: 20px;
-  margin-right: 20px; }
-
-.item {
-  background-color: #f8f8f8; }
-  .item h2 {
-    line-height: 40px;
-    padding-left: 15px; }
-  .item p {
-    padding-left: 10px; }
-
-.floatingDetail {
-  float: left;
-  display: inline; }
-
-.locationDetails {
-  margin: 15px;
-  font-size: 1em;
-  color: #181B1E; }
-
-.detailsPhoto {
-  max-width: 100vw;
-  width: 100%; }
-
-.detailsPhoto-div {
-  text-align: center; }
-  .detailsPhoto-div img {
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65); }
-
-.sendPoint {
-  text-align: center;
-  margin: 1.5em; }
-
-.leaflet-popup-content-wrapper {
-  border-radius: 5px; }
-
-.buttonStyle {
-  border-left: 1px solid white;
-  text-align: center; }
-
-#mapViewDiv {
-  padding-top: 10px; }
-
-.pinViews {
-  padding-top: 25px;
-  height: 90vh; }
-
-.btn1 {
-  background-color: #f8f8f8;
-  height: 50px; }
-
-.btn2 {
-  background-color: #76CE95;
-  height: 50px; }
-
-.item-img-div {
-  float: left;
-  line-height: 80px;
-  display: block; }
-  .item-img-div img {
-    display: inline-block; }
-
-.item-button {
-  float: right;
-  height: 100%;
-  border-left: solid 1px white;
-  background-color: #dfdfdf; }
-
-.item-button-right > .button, .item-button-right > .btnDrk, .item-button-right > .homeBtn, .item-button-right > input[type="number"], .item-button-right .item-content > .button, .item-button-right .item-content > .btnDrk, .item-button-right .item-content > .homeBtn, .item-button-right .item-content > input[type="number"], .item-button-right > .buttons, .item-button-right .item-content > .buttons {
-  top: 0;
-  right: 0;
-  border-radius: 0; }
-
-.item-desc {
-  float: left;
-  max-width: 60%; }
-
-.fill-selected {
-  fill: #76CE95; }
-
-.fill-selected2 {
-  fill: #ffc900; }
-
-.fill-selected3 {
-  fill: #181B1E; }
-
-.fill-unselected {
-  fill: #B7B7B7; }
-
-.spinner svg {
-  width: 100px;
-  height: 100px;
-  stroke: #76CE95;
-  fill: #444; }
-
-.greyOut {
-  color: #f8f8f8; }
-
-.fa-star {
-  color: #ffc900; }
-  .fa-star:hover {
-    color: #ffc900; }
-
-.fa-exclamation-circle {
-  color: #ef473a; }
-  .fa-exclamation-circle:hover {
-    color: #ef473a; }
-
-.fa-pencil-square-o:before {
-  margin-left: 2.5px; }
