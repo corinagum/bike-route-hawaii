@@ -10454,11 +10454,14 @@ textarea {
   position: absolute;
   top: 75%;
   justify-content: center;
-  text-align: center; }
+  text-align: center;
+  z-index: 50000000000000000; }
   @media only screen and (min-width: 600px) {
     .centerBox {
+      z-index: 50000000000000000;
       width: 100%;
-      top: 19px; } }
+      top: 50px;
+      left: 5px; } }
 
 #footer-bar.row {
   margin-bottom: 0px;
@@ -10468,6 +10471,7 @@ textarea {
     margin: 0px; }
   @media only screen and (min-width: 600px) {
     #footer-bar.row {
+      z-index: 50000000000000000;
       display: flex;
       display: -webkit-flex;
       width: 87%; } }
@@ -10510,6 +10514,9 @@ textarea {
   #footer-bar.row span {
     font-size: large;
     margin: auto; }
+
+.suggestion_footer_bar {
+  height: 160px; }
 
 #map {
   width: 100%;

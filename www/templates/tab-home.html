@@ -10,53 +10,9 @@
     </a>
     <div class="button suggestBtn waves-effect" ng-click="createReportPoint()"><span>Suggest a Station</span></div>
     <a href="#/tab/survey"><i class="ion-clipboard button surveyBtn waves-effect" nav-transition="none"></i></a>
-  </ion-header-bar>
-<!-- </ion-nav-bar> -->
-
-  <ion-content data-tap-disabled="true" class="fade-on-enter">
-   <!--  <div class="getLocationMarker" ng-click="findCenter()">
-      <img src="../img/bike-assets/sMarkerIcon.png" alt="">
-    </div>
-    <div ng-click="findCenter()">
-    </div> -->
-
-      <leaflet data-tap-disabled="true" layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
-
-      <script id="event-menu.html" type="text/ng-template">
-            <ion-side-menus>
-
-              <ion-pane ion-side-menu-content>
-                <ion-nav-bar type="bar-positive"
-                         back-button-type="button-icon"
-                         back-button-icon="ion-ios7-arrow-back"></ion-nav-bar>
-                <ion-nav-view name="menuContent"></ion-nav-view>
-              </ion-pane>
-
-              <ion-side-menu side="left">
-                <header class="bar bar-header bar-assertive">
-                  <div class="title">Naslovnica</div>
-                </header>
-                <ion-content has-header="true">
-                  <!--ul class="list">
-                    <a href="#/event/check-in" class="item">Check-in</a>
-                    <a href="#/event/attendees" class="item">Attendees</a>
-                  </ul-->
-                  <div ng-controller="AccordionDemoCtrl">
-                  <accordion close-others="true">
-                    <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
-                    {{group.content}}
-                  </accordion-group>
-                  </accordion>
-                  </div>
-                </ion-content>
-              </ion-side-menu>
-
-            </ion-side-menus>
-          </script>
-
 
     <div class="centerBox">
-      <div id="footer-bar" class="row" ng-show="showReportControl">
+      <div id="footer-bar" class="row hide-on-small-only" ng-show="showReportControl">
 
         <div class="row directions_wrapper">
             <div class="col">
@@ -74,31 +30,62 @@
               <p>Click 'Create Point' or 'Cancel'.</p>
             </div>
 
-        <div class="col bothSuggestBtns hide-on-small-only">
+            <div class="col bothSuggestBtns hide-on-small-only">
 
-          <div class="eachSuggestbtn valign-wrapper" ng-click="cancelReportPoint()" style="margin-bottom: 4px">
-            <span>Cancel</span>
-          </div>
+              <div class="eachSuggestbtn valign-wrapper" ng-click="cancelReportPoint()" style="margin-bottom: 4px">
+                <span>Cancel</span>
+              </div>
 
-          <a ng-href="#/tab/mahalo" class="eachSuggestbtn valign-wrapper" ng-click="suggestStation();cancelReportPoint()" class="suggestButtonsDiv" nav-transition="none">
-            <span>Create Point</span>
-          </a>
+              <a ng-href="#/tab/mahalo" class="eachSuggestbtn valign-wrapper" ng-click="suggestStation();cancelReportPoint()" class="suggestButtonsDiv" nav-transition="none">
+                <span>Create Point</span>
+              </a>
 
+            </div>
         </div>
-        </div>
-
-        <div class="row bothSuggestBtns hide-on-med-and-up">
-          <div class="eachSuggestbtn valign-wrapper" ng-click="cancelReportPoint()" style="margin-bottom: 4px">
-            <span>Cancel</span>
-          </div>
-
-          <a ng-href="#/tab/mahalo" class="eachSuggestbtn valign-wrapper" ng-click="suggestStation();cancelReportPoint()" class="suggestButtonsDiv" nav-transition="none">
-            <span>Create Point</span>
-          </a>
-        </div>
-
       </div>
     </div>
+  </ion-header-bar>
+<!-- </ion-nav-bar> -->
+
+  <ion-content data-tap-disabled="true" class="fade-on-enter">
+   <!--  <div class="getLocationMarker" ng-click="findCenter()">
+      <img src="../img/bike-assets/sMarkerIcon.png" alt="">
+    </div>
+    <div ng-click="findCenter()">
+    </div> -->
+
+      <leaflet data-tap-disabled="true" layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
+
+
 
   </ion-content>
+    <ion-footer-bar id="footer-bar" class="suggestion_footer_bar hide-on-med-and-up" ng-show="showReportControl">
+      <div class="row directions_wrapper">
+        <div class="col">
+         <img src=".././img/bike-assets/numOne.png" alt="">
+         <p>Drag marker.</p>
+        </div>
+
+        <div class="col">
+          <img src=".././img/bike-assets/num2.png" alt="">
+          <p>Place bike icon where you'd like to see a station.</p>
+        </div>
+
+        <div class="col">
+          <img src=".././img/bike-assets/num3.png" alt="">
+          <p>Click 'Create Point' or 'Cancel'.</p>
+        </div>
+      </div>
+      <div class="row bothSuggestBtns hide-on-med-and-up">
+        <div class="eachSuggestbtn valign-wrapper" ng-click="cancelReportPoint()" style="margin-bottom: 4px">
+          <span>Cancel</span>
+        </div>
+
+        <a ng-href="#/tab/mahalo" class="eachSuggestbtn valign-wrapper" ng-click="suggestStation();cancelReportPoint()" class="suggestButtonsDiv" nav-transition="none">
+           <span>Create Point</span>
+        </a>
+      </div>
+
+
+    </ion-footer-bar>
 </ion-view>

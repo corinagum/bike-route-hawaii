@@ -875,10 +875,13 @@ textarea {
     top: 75%;
     justify-content: center;
     text-align: center;
+    z-index: 50000000000000000;
 
   @media #{$large} {
+    z-index: 50000000000000000;
     width: 100%;
-    top: 19px;
+    top: 50px;
+    left: 5px;
   }
 }
 
@@ -889,6 +892,8 @@ textarea {
   margin: auto;
 
   @media #{$large} {
+    z-index: 50000000000000000;
+
     display: flex;
     display: -webkit-flex;
     width: 87%;
@@ -948,6 +953,9 @@ textarea {
   }
 }
 
+.suggestion_footer_bar {
+  height: 160px;
+}
 
 
 
