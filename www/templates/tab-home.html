@@ -67,5 +67,83 @@
 
       </div>
     </div>
+
+
+    <script id="templates/markerDetail.html" type="text/ng-template">
+      <ion-view>
+      <!-- <div class="modal"> -->
+        <ion-header-bar class="titleDetailBar" ng-click="closeModal(4);">
+          <p class="d_title" >{{stationClicked.name}}</p>
+          <i class="ion-ios-arrow-down right"></i>
+        </ion-header-bar>
+
+          <ion-content  class="detailModalBlock">
+              <div class="d_image center">
+                <img class="stationPhoto" ng-src="{{stationClicked.photolink}}" alt="">
+              </div>
+
+              <div class="d_title streetLikesLocation">
+              </br>
+                <span>Location</span>
+                <div class="likes right valign-wrapper" ng-click="isLiked() ? userUnliked():userLiked()">
+                  <i class="ion-ios-heart" ng-style="myStyle">{{ numberOfLikes }}<p>&nbsp&nbspLikes</p></i>
+                </div>
+
+                <div class="d_location">{{stationClicked.street}}</div>
+              </div>
+              </br>
+
+              <div class="d_title"><span>Ride time to:</span></div>
+
+              <div class="row">
+                <div class="d_location col">Downtown: {{rideTime('downtown')}} min.</div>
+                <div class="d_location col">Kaka'ako: {{rideTime('kakaako')}} min.</div>
+                <div class="d_location col">Ala Moana: {{rideTime('alamoana')}} min.</div>
+              </div>
+
+              <div class="row">
+                <div class="d_location col">University: {{rideTime('university')}} min.</div>
+                <div class="d_location col">Waikiki: {{rideTime('waikiki')}} min.</div>
+                <div class="d_location col">Diamond Head: {{rideTime('diamondhead')}} min.</div>
+              </div>
+              </br>
+
+              <div class="d_title">
+                <span>What's near this station</span>
+              </div>
+
+              <div ng-repeat= 'item in closestBBB' style="margin-top: 13px;">
+
+                <div class="eachBusinessBlockContent">
+                  <div class="imageOfBusiness valign-wrapper">
+                    <img class="fixedImageSize" ng-if="closestBBB" ng-src={{item.image}} alt="">
+                  </div>
+
+                  <div class="titleAddDescription">
+                    <div class="title_address">
+                      <h5>{{item.name}}</h5>
+                      <div>{{item.address}}</div>
+                    </div>
+
+                    <div class="businessDescription">{{item.description}}</div>
+                  </div>
+
+
+                  <div class="bbbImageLogo">
+                    <img src="http://boyerlawfirmblog.com/wp-content/uploads/2011/08/bbb1.jpg" alt=""/>
+                  </div>
+                </div>
+
+              <div class="divider" style="margin-top: 13px;"></div>
+              </div> <!-- END OF NGREPEAT -->
+
+
+        </ion-content><!-- <ion-content  class="detailModalBlock"> -->
+      <!-- </div> -->
+      </ion-view>
+    </script>
+
+
+
   </ion-content>
 </ion-view>
