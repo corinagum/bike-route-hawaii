@@ -502,6 +502,16 @@
     $scope.modal4 = modal;
   });
 
+  $ionicModal.fromTemplateUrl('yourSuggestionSave.html', {
+    id: '3',
+    scope: $scope,
+    backdropClickToClose: false,
+    hardwareBackButtonClose: false,
+    animation: 'scale-in'
+  }).then(function(modal) {
+    $scope.modal3 = modal;
+  });
+
   $scope.openModal = function(index) {
     switch (index) {
       case 1 : $scope.modal1.show();
