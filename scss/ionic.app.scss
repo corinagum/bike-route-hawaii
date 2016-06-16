@@ -958,12 +958,13 @@ textarea {
 }
 
 .mahaloSuggestionWrapper {
-  // height: 50%;
-  background-color: rgba($typeGrey, 0.5);
+  background-color: rgba($typeGrey, 0.7);
   color: $stable;
+  h3 {color: $stable;}
 
 
   @media #{$large} {
+    h3 {color: $typeGrey; font-weight: 300;}
     position: relative;
     background-color: $stable;
     height: 50%;

@@ -9,7 +9,7 @@
       <span>Leave Feedback</span>
     </a>
     <div class="button suggestBtn waves-effect" ng-click="createReportPoint()"><span>Suggest a Station</span></div>
-    <a href="#/tab/survey"><i class="ion-clipboard button surveyBtn waves-effect" nav-transition="none"></i></a>
+    <a href="#/tab/home"><i class="ion-ios-home-outline button surveyBtn waves-effect" nav-transition="none"></i></a>
 
     <div class="centerBox">
       <div id="footer-bar" class="row hide-on-small-only" ng-show="showReportControl">
@@ -93,11 +93,13 @@
     <ion-modal-view class="mahaloSuggestionWrapper padding">
       <ion-content class="alohaLandingOne">
         <div>
-          <h5>Mahalo! Your bike station suggestion</br> has been submitted.</h5>
+          <h3>Mahalo! Your bike </br>station suggestion has been submitted.</h3>
           </br>
-            <div class="button">
-              <a style="color: #96E6BF" href="" ng-click="closeModal(3);suggestStation();">Back to Map</a>
+          <div>
+            <div>
+              <a style="color: #96E6BF;" href="" ng-click="closeModal(3);suggestStation();">Back to Map</a>
             </div>
+          </div>
         </div>
       </ion-content>
     </ion-modal-view>

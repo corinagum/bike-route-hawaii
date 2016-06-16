@@ -10519,14 +10519,19 @@ textarea {
   background-color: rgba(248, 248, 248, 0.6); }
 
 .mahaloSuggestionWrapper {
-  background-color: rgba(98, 98, 98, 0.5);
+  background-color: rgba(98, 98, 98, 0.7);
   color: #f8f8f8; }
+  .mahaloSuggestionWrapper h3 {
+    color: #f8f8f8; }
   @media only screen and (min-width: 600px) {
     .mahaloSuggestionWrapper {
       position: relative;
       background-color: #f8f8f8;
       height: 50%;
-      top: 100px; } }
+      top: 100px; }
+      .mahaloSuggestionWrapper h3 {
+        color: #626262;
+        font-weight: 300; } }
 
 #map {
   width: 100%;
