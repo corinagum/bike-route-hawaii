@@ -3,35 +3,35 @@ angular.module('starter.services', [])
 .service("PointService", ['$http', 'processENV', function($http, processENV) {
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   var domain;
-  if(!isCordovaApp){
-    domain = 'http://localhost:4000';
-  }
-  if(isCordovaApp){
+  // if(!isCordovaApp){
+  //   domain = 'http://localhost:4000';
+  // }
+  // if(isCordovaApp){
     domain = '.';
-  }
+  // }
 
   this.getPoint = function() {
-    return $http.get(domain + '/api/points');
+    return $http.get(+ '/api/points');
   };
 
   this.getBikeshareStations = function() {
-    return $http.get(domain + '/api/points/bikeshare');
+    return $http.get('/api/points/bikeshare');
   };
 
   this.addPoint = function(point) {
-    return $http.post(domain + '/api/points', {
+    return $http.post('/api/points', {
       point : point
     });
   };
 
   this.editPoint = function(point) {
-    return $http.put(domain + '/api/points/' + point.id, {
+    return $http.put('/api/points/' + point.id, {
       point : point
     });
   };
 
   this.suggestPoint = function(point) {
-    return $http.post(domain + '/api/points/suggest', {
+    return $http.post('/api/points/suggest', {
       point : point
     });
   };
@@ -61,7 +61,7 @@ angular.module('starter.services', [])
     } else {
       comment.contact = false;
     }
-    return $http.post('http://localhost:4000/api/comments', {
+    return $http.post('/api/comments', {
       comment : comment
     });
   };
@@ -88,12 +88,12 @@ angular.module('starter.services', [])
   .service("UserService", ['$http', 'processENV', function($http, processENV) {
     var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
     var domain;
-    if(!isCordovaApp){
-      domain = 'http://localhost:4000';
-    }
-    if(isCordovaApp){
+    // if(!isCordovaApp){
+    //   domain = 'http://localhost:4000';
+    // }
+    // if(isCordovaApp){
       domain = '.';
-    }
+    // }
 
     var user = null;
 
@@ -112,7 +112,7 @@ angular.module('starter.services', [])
 
 // UPDATES CURRENT USER
     this.edit = function(id){
-      return $http.put(domain + "/user/" + id, {
+      return $http.put("/user/" + id, {
         user : user
       });
     };
