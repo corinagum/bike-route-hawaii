@@ -892,12 +892,11 @@ textarea {
   margin: auto;
 
   @media #{$large} {
-    z-index: 50000000000000000;
-
     display: flex;
     display: -webkit-flex;
     width: 87%;
   }
+
 
   .row {
     margin-bottom: 0px;
@@ -952,9 +951,9 @@ textarea {
     margin: auto;
   }
 }
-
 .suggestion_footer_bar {
-  height: 160px;
+  height: 173px;
+  background-color: rgba($stable, 0.6);
 }
 
 

@@ -10471,7 +10471,6 @@ textarea {
     margin: 0px; }
   @media only screen and (min-width: 600px) {
     #footer-bar.row {
-      z-index: 50000000000000000;
       display: flex;
       display: -webkit-flex;
       width: 87%; } }
@@ -10516,7 +10515,8 @@ textarea {
     margin: auto; }
 
 .suggestion_footer_bar {
-  height: 160px; }
+  height: 173px;
+  background-color: rgba(248, 248, 248, 0.6); }
 
 #map {
   width: 100%;

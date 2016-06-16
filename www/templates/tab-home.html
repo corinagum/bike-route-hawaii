@@ -59,8 +59,8 @@
 
 
   </ion-content>
-    <ion-footer-bar id="footer-bar" class="suggestion_footer_bar hide-on-med-and-up" ng-show="showReportControl">
-      <div class="row directions_wrapper">
+    <ion-footer-bar id="footer-bar" class="row suggestion_footer_bar hide-on-med-and-up" ng-show="showReportControl">
+      <div class="row center">
         <div class="col">
          <img src=".././img/bike-assets/numOne.png" alt="">
          <p>Drag marker.</p>
@@ -78,7 +78,7 @@
       </div>
       <div class="row bothSuggestBtns hide-on-med-and-up">
         <div class="eachSuggestbtn valign-wrapper" ng-click="cancelReportPoint()" style="margin-bottom: 4px">
-          <span>Cancel</span>
+          <div>Cancel</div>
         </div>
 
         <a ng-href="#/tab/mahalo" class="eachSuggestbtn valign-wrapper" ng-click="suggestStation();cancelReportPoint()" class="suggestButtonsDiv" nav-transition="none">
