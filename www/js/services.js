@@ -19,7 +19,7 @@ angular.module('starter.services', [])
   };
 
   this.addPoint = function(point) {
-    return $http.post('./api/points', {
+    return $http.post('/api/points', {
       point : point
     });
   };
@@ -31,7 +31,7 @@ angular.module('starter.services', [])
   };
 
   this.suggestPoint = function(point) {
-    return $http.post('./api/points/suggest', {
+    return $http.post('/api/points/suggest', {
       point : point
     });
   };
@@ -112,7 +112,7 @@ angular.module('starter.services', [])
 
 // UPDATES CURRENT USER
     this.edit = function(id){
-      return $http.put("./user/" + id, {
+      return $http.put("/user/" + id, {
         user : user
       });
     };
