@@ -951,11 +951,18 @@ textarea {
     margin: auto;
   }
 }
+
 .suggestion_footer_bar {
   height: 173px;
   background-color: rgba($stable, 0.6);
 }
 
+.mahaloSuggestionWrapper {
+  background-color: $stable;
+  height: 50%;
+  position: relative;
+  top: 100px;
+}
 
 
 

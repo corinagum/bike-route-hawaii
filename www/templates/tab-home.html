@@ -36,7 +36,7 @@
                 <span>Cancel</span>
               </div>
 
-              <a ng-href="#/tab/mahalo" class="eachSuggestbtn valign-wrapper" ng-click="suggestStation();cancelReportPoint()" class="suggestButtonsDiv" nav-transition="none">
+              <a class="eachSuggestbtn valign-wrapper" ng-click="openModal(3);cancelReportPoint()" class="suggestButtonsDiv" nav-transition="none">
                 <span>Create Point</span>
               </a>
 
@@ -81,21 +81,27 @@
           <div>Cancel</div>
         </div>
 
-        <a ng-href="#/tab/mahalo" class="eachSuggestbtn valign-wrapper" ng-click="openModal(3);cancelReportPoint()" class="suggestButtonsDiv" nav-transition="none">
+        <a class="eachSuggestbtn valign-wrapper" ng-click="openModal(3);cancelReportPoint()" class="suggestButtonsDiv" nav-transition="none">
            <span>Create Point</span>
         </a>
       </div>
     </ion-footer-bar>
+</ion-view>
 
-    <script id="yourSuggestionSave.html" type="text/ng-template.html">
+<script id="yourSuggestionSave.html" type="text/ng-template">
 
-      <ion-content>
-        <h1>Mahalo! Your bikestation suggestion has</br> has been submitted.</h1>
-        </br>
-        <div class="right">
-          <a href="" ng-click="closeModal(3);suggestStation();">Back to Map</a>
+    <ion-modal-view class="mahaloSuggestionWrapper padding alohaLandingOne">
+      <ion-content class="alohaLandingOne">
+        <div>
+          <div>Mahalo! Your bikestation suggestion has</br> has been submitted.</div>
+          </br>
+          <div class="">
+            <div>
+              <a class="backToMapBtn" href="" ng-click="closeModal(3);suggestStation();">Back to Map</a>
+            </div>
+          </div>
         </div>
       </ion-content>
+    </ion-modal-view>
 
-    </script>
-</ion-view>
+</script>
