@@ -728,21 +728,22 @@
 }])
 .controller('LandingCtrl', ['$scope', 'UserService', function($scope, UserService) {
   console.log("LandingCtrl");
-  if(UserService.getUser() === null){
-    console.log("no user, made one");
-    UserService.create()
-    .then(function(data){
-      UserService.updateUser(data.data.user);
-      console.log("user updated to ", UserService.getUser());
-    });
-  }
-  $scope.userStart = function(){
-    UserService.create()
-    .then(function(data){
-      UserService.updateUser(data.data.user);
-      console.log("user updated to ", UserService.getUser());
-    });
-  };
+  // if(UserService.getUser() === null){
+  //   console.log("no user, made one");
+  console.log("making new user");
+  UserService.create()
+  .then(function(data){
+    UserService.updateUser(data.data.user);
+    console.log("user updated to ", UserService.getUser());
+  });
+  // }
+  // $scope.userStart = function(){
+  //   UserService.create()
+  //   .then(function(data){
+  //     UserService.updateUser(data.data.user);
+  //     console.log("user updated to ", UserService.getUser());
+  //   });
+  // };
 }])
 .controller('FormCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
   console.log("FormCtrl");
@@ -854,6 +855,7 @@
     };
   }
   $scope.updateSurvey = function(u) {
+    if(u){
       $scope.user = UserService.getUser();
       if(u.age){
         $scope.user.age = u.age;
@@ -866,6 +868,7 @@
       }
       UserService.updateUser($scope.user);
       UserService.edit($scope.user.id);
+    }
   };
   $scope.updatePath = function(path){
     $scope.user = UserService.getUser();
