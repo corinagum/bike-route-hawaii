@@ -565,28 +565,44 @@
   //   });
 
   $scope.openModal = function(index) {
-    // switch (index) {
-    //   case 1 : $scope.modal1.show();
-    //             break;
-    //   case 2 : $scope.modal2.show();
-    //             break;
-    //   case 3 : $scope.modal3.show();
-    //             break;
-      $scope.modal4.show();
-    //             break;
-    //   case 5 : $scope.modal5.show();
-    //             break;
-    //   case 6 : $scope.modal6.show();
-    //             break;
-    //   case 7 : $scope.modal7.show();
-    //             break;
-    //   case 8 : $scope.modal8.show();
-    // }
+    switch (index) {
+      case 1 : $scope.modal1.show();
+                break;
+      case 2 : $scope.modal2.show();
+                break;
+      case 3 : $scope.modal3.show();
+                break;
+      case 4 : $scope.modal4.show();
+                break;
+      case 5 : $scope.modal5.show();
+                break;
+      case 6 : $scope.modal6.show();
+                break;
+      case 7 : $scope.modal7.show();
+                break;
+      case 8 : $scope.modal8.show();
+    }
   };
 
    $scope.closeModal = function(index) {
-      $scope.modal4.hide();
-    };
+    switch (index) {
+      case 1 : $scope.modal1.hide();
+                break;
+      case 2 : $scope.modal2.hide();
+                break;
+      case 3 : $scope.modal3.hide();
+                break;
+      case 4 : $scope.modal4.hide();
+                break;
+      case 5 : $scope.modal5.hide();
+                break;
+      case 6 : $scope.modal6.hide();
+                break;
+      case 7 : $scope.modal7.hide();
+                break;
+      case 8 : $scope.modal8.hide();
+    }
+  };
 
   //REMOVE MODAL WHEN DESTROYED
   $scope.$on('$destroy', function() {
@@ -671,42 +687,6 @@
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };
-
-  // $scope.class = "wholeModalDiv";
-  // $scope.changeClass = function(){
-  //   if ($scope.class === "wholeModalDiv")
-  //     $scope.class = "blue";
-  //   else
-  //     $scope.class = "wholeModalDiv";
-  // };
-
-
-  //>>>>>>>>>>>> POPOVER EVENT
-
-  // $ionicPopover.fromTemplateUrl('inputFeedbackForm.html', {
-  //   scope: $scope
-  // }).then(function(popover) {
-  //   $scope.popover = popover;
-  // });
-
-  // $scope.openPopover = function($event) {
-  //   $scope.popover.show($event);
-  // };
-  // $scope.closePopover = function() {
-  //   $scope.popover.hide();
-  // };
-  // //Cleanup the popover when we're done with it!
-  // $scope.$on('$destroy', function() {
-  //   $scope.popover.remove();
-  // });
-  // // Execute action on hide popover
-  // $scope.$on('popover.hidden', function() {
-  //   // Execute action
-  // });
-  // // Execute action on remove popover
-  // $scope.$on('popover.removed', function() {
-  //   // Execute action
-  // });
 
 //////// end of controller
 }])
