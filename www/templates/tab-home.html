@@ -22,6 +22,38 @@
 
       <leaflet data-tap-disabled="true" layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' custom-controls="myCustomControls" geojson="geojson"></leaflet>
 
+      <script id="event-menu.html" type="text/ng-template">
+            <ion-side-menus>
+
+              <ion-pane ion-side-menu-content>
+                <ion-nav-bar type="bar-positive"
+                         back-button-type="button-icon"
+                         back-button-icon="ion-ios7-arrow-back"></ion-nav-bar>
+                <ion-nav-view name="menuContent"></ion-nav-view>
+              </ion-pane>
+
+              <ion-side-menu side="left">
+                <header class="bar bar-header bar-assertive">
+                  <div class="title">Naslovnica</div>
+                </header>
+                <ion-content has-header="true">
+                  <!--ul class="list">
+                    <a href="#/event/check-in" class="item">Check-in</a>
+                    <a href="#/event/attendees" class="item">Attendees</a>
+                  </ul-->
+                  <div ng-controller="AccordionDemoCtrl">
+                  <accordion close-others="true">
+                    <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+                    {{group.content}}
+                  </accordion-group>
+                  </accordion>
+                  </div>
+                </ion-content>
+              </ion-side-menu>
+
+            </ion-side-menus>
+          </script>
+
 
     <div class="centerBox">
       <div id="footer-bar" class="row" ng-show="showReportControl">
@@ -67,83 +99,6 @@
 
       </div>
     </div>
-
-
-    <script id="templates/markerDetail.html" type="text/ng-template">
-      <ion-view>
-      <!-- <div class="modal"> -->
-        <ion-header-bar class="titleDetailBar" ng-click="closeModal(4);">
-          <p class="d_title" >{{stationClicked.name}}</p>
-          <i class="ion-ios-arrow-down right"></i>
-        </ion-header-bar>
-
-          <ion-content  class="detailModalBlock">
-              <div class="d_image center">
-                <img class="stationPhoto" ng-src="{{stationClicked.photolink}}" alt="">
-              </div>
-
-              <div class="d_title streetLikesLocation">
-              </br>
-                <span>Location</span>
-                <div class="likes right valign-wrapper" ng-click="isLiked() ? userUnliked():userLiked()">
-                  <i class="ion-ios-heart" ng-style="myStyle">{{ numberOfLikes }}<p>&nbsp&nbspLikes</p></i>
-                </div>
-
-                <div class="d_location">{{stationClicked.street}}</div>
-              </div>
-              </br>
-
-              <div class="d_title"><span>Ride time to:</span></div>
-
-              <div class="row">
-                <div class="d_location col">Downtown: {{rideTime('downtown')}} min.</div>
-                <div class="d_location col">Kaka'ako: {{rideTime('kakaako')}} min.</div>
-                <div class="d_location col">Ala Moana: {{rideTime('alamoana')}} min.</div>
-              </div>
-
-              <div class="row">
-                <div class="d_location col">University: {{rideTime('university')}} min.</div>
-                <div class="d_location col">Waikiki: {{rideTime('waikiki')}} min.</div>
-                <div class="d_location col">Diamond Head: {{rideTime('diamondhead')}} min.</div>
-              </div>
-              </br>
-
-              <div class="d_title">
-                <span>What's near this station</span>
-              </div>
-
-              <div ng-repeat= 'item in closestBBB' style="margin-top: 13px;">
-
-                <div class="eachBusinessBlockContent">
-                  <div class="imageOfBusiness valign-wrapper">
-                    <img class="fixedImageSize" ng-if="closestBBB" ng-src={{item.image}} alt="">
-                  </div>
-
-                  <div class="titleAddDescription">
-                    <div class="title_address">
-                      <h5>{{item.name}}</h5>
-                      <div>{{item.address}}</div>
-                    </div>
-
-                    <div class="businessDescription">{{item.description}}</div>
-                  </div>
-
-
-                  <div class="bbbImageLogo">
-                    <img src="http://boyerlawfirmblog.com/wp-content/uploads/2011/08/bbb1.jpg" alt=""/>
-                  </div>
-                </div>
-
-              <div class="divider" style="margin-top: 13px;"></div>
-              </div> <!-- END OF NGREPEAT -->
-
-
-        </ion-content><!-- <ion-content  class="detailModalBlock"> -->
-      <!-- </div> -->
-      </ion-view>
-    </script>
-
-
 
   </ion-content>
 </ion-view>

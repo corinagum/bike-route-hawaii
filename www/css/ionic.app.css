@@ -10321,9 +10321,6 @@ textarea {
     max-height: 100%;
     width: 50%; } }
 
-.leaflet-marker-icon {
-  -webkit-user-select: inherit; }
-
 .displayNone {
   display: none; }
 

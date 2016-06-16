@@ -3,7 +3,7 @@
  angular.module('starter.controllers', ['ngCordova'])
 
  .controller('MapCtrl',
-  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$timeout', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$timeout) {
+  ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$ionicSideMenuDelegate', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$ionicSideMenuDelegate) {
 
     console.log("mapctrl started", UserService.getUser());
     if(UserService.getUser() === null){
@@ -309,6 +309,7 @@
 
   function sortByClosest(array){
     array.sort(function(a,b){
+      console.log("consoleLogging", array);
       return a.distance - b.distance;
     });
   }
@@ -346,11 +347,6 @@
   function setMarkersReturned(data){
     createMarkers(data, 'bikeShare');
   }
-
-  $scope.resetMarkersAfterClosingModal= function (data) {
-    setMarkersReturned(data);
-    console.log("reset?");
-  };
 
   //FIND POINTS IN RADIUS ON LOCATION FOUND
   $scope.$on('leafletDirectiveMap.map.locationfound', function(event, args){
@@ -478,6 +474,7 @@
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
       $scope.openModal(4);
+
     }
     if($scope.user.liked === null || undefined){
       $scope.myStyle = {};
@@ -498,7 +495,7 @@
   $ionicModal.fromTemplateUrl('templates/feedback/markerDetail.html', {
     id: '4',
     scope: $scope,
-    backdropClickToClose: false,
+    // backdropClickToClose: false,
     hardwareBackButtonClose: false,
     // animation: 'scale-in'
   }).then(function(modal) {
@@ -532,7 +529,7 @@
 
   //REMOVE MODAL WHEN DESTROYED
   $scope.$on('$destroy', function() {
-    if($scope.modal){
+    if($scope.modal4){
       $scope.modal.remove();
     }
   });
