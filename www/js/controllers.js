@@ -565,44 +565,28 @@
   //   });
 
   $scope.openModal = function(index) {
-    switch (index) {
-      case 1 : $scope.modal1.show();
-                break;
-      case 2 : $scope.modal2.show();
-                break;
-      case 3 : $scope.modal3.show();
-                break;
-      case 4 : $scope.modal4.show();
-                break;
-      case 5 : $scope.modal5.show();
-                break;
-      case 6 : $scope.modal6.show();
-                break;
-      case 7 : $scope.modal7.show();
-                break;
-      case 8 : $scope.modal8.show();
-    }
+    // switch (index) {
+    //   case 1 : $scope.modal1.show();
+    //             break;
+    //   case 2 : $scope.modal2.show();
+    //             break;
+    //   case 3 : $scope.modal3.show();
+    //             break;
+      $scope.modal4.show();
+    //             break;
+    //   case 5 : $scope.modal5.show();
+    //             break;
+    //   case 6 : $scope.modal6.show();
+    //             break;
+    //   case 7 : $scope.modal7.show();
+    //             break;
+    //   case 8 : $scope.modal8.show();
+    // }
   };
 
    $scope.closeModal = function(index) {
-    switch (index) {
-      case 1 : $scope.modal1.hide();
-                break;
-      case 2 : $scope.modal2.hide();
-                break;
-      case 3 : $scope.modal3.hide();
-                break;
-      case 4 : $scope.modal4.hide();
-                break;
-      case 5 : $scope.modal5.hide();
-                break;
-      case 6 : $scope.modal6.hide();
-                break;
-      case 7 : $scope.modal7.hide();
-                break;
-      case 8 : $scope.modal8.hide();
-    }
-  };
+      $scope.modal4.hide();
+    };
 
   //REMOVE MODAL WHEN DESTROYED
   $scope.$on('$destroy', function() {
@@ -755,11 +739,11 @@
       console.log("user updated to ", UserService.getUser());
     });
 
-    $scope.myGoBack = function() {
-      $ionicHistory.goBack();
-    };
 
   }
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
   $scope.update = function(u) {
     $scope.user = UserService.getUser();
     if(u){
@@ -798,10 +782,10 @@
       console.log("user updated to ", UserService.getUser());
     });
 
-    $scope.myGoBack = function() {
-      $ionicHistory.goBack();
-    };
   }
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
   $scope.updatePath = function(path){
     $scope.user = UserService.getUser();
     console.log("updatePath user ", UserService.getUser());
@@ -850,10 +834,10 @@
       console.log("user updated to ", UserService.getUser());
     });
 
-    $scope.myGoBack = function() {
-      $ionicHistory.goBack();
-    };
   }
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
   $scope.updateSurvey = function(u) {
     if(u){
       $scope.user = UserService.getUser();
