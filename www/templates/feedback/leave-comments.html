@@ -1,11 +1,7 @@
-<ion-view view-title="Comments" class="landingBgClr">
+<ion-view view-title="Comments" class="landingBgClr" ng-init="toggle_comment=true; toggle_survey=false; ">
 
   <ion-header-bar class="bar bar-header">
     <a href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
-  </ion-header-bar>
-
-  <ion-content class="fade-on-enter addBackgroundImg" ng-init="toggle_comment=true; toggle_survey=false; ">
-
 
     <div class="comment_demo_icons row">
         <div class="toggle_comment_icon" ng-click="toggle_comment=true;toggle_survey=false;">
@@ -15,6 +11,13 @@
           <i class="ion-clipboard surveyBtn waves-effect"></i>
         </div>
     </div>
+
+  </ion-header-bar>
+
+  <ion-content class="fade-on-enter addBackgroundImg" >
+
+
+
 
 <div class="alohaLandingOne">
   <div ng-controller="FormCtrl" class="alohaLandingOne divSize has-header" ng-show="toggle_comment">
@@ -105,7 +108,7 @@
         </div>
      </div>
 
-        <div class="done" style="margin-top: 25em;">
+        <div class="done" style="margin-top: 450px;">
           <a href="#/tab/mahalo" class="cancelBtn" ng-click="updateSurvey(user);" nav-transition="none">Submit</a>
         </div>
 </div>
