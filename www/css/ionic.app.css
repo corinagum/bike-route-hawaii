@@ -10063,6 +10063,18 @@ textarea {
     .divSize {
       max-width: 50em; } }
 
+.formCommentWrapper {
+  padding: 15px 8px; }
+
+.comment_demo_icons.row {
+  margin: 12px 0;
+  padding: 0;
+  justify-content: flex-end; }
+  .comment_demo_icons.row .toggle_survey_icon, .comment_demo_icons.row .toggle_comment_icon {
+    font-size: xx-large;
+    color: #f8f8f8;
+    margin: 15px 10px; }
+
 .addBackgroundImg {
   background: url("./../img/bike-assets/backgroundMapView.png") no-repeat;
   background-size: cover; }

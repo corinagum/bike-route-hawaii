@@ -354,6 +354,21 @@ textarea {
   }
 }
 
+.formCommentWrapper {
+  padding: 15px 8px;
+}
+
+.comment_demo_icons.row {
+  margin: 12px 0;
+  padding: 0;
+  justify-content: flex-end;
+  .toggle_survey_icon, .toggle_comment_icon {
+    font-size: xx-large;
+    color: $stable;
+    margin: 15px 10px;
+  }
+}
+
 
 .addBackgroundImg {
   background: url("./../img/bike-assets/backgroundMapView.png")no-repeat;
@@ -508,15 +523,6 @@ textarea {
   @include fontStyling(18px, $stable);
   font-weight: 600;
 }
-
-// .radioBtn {
-//   padding: 0;
-//   margin-bottom: 15px;
-
-//   p {
-//     font-size: 10px;
-//   }
-// }
 
 .viewMapBtn {
   z-index: 10;
