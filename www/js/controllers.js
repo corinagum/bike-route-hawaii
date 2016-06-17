@@ -11,10 +11,17 @@
       UserService.create()
       .then(function(data){
         UserService.updateUser(data.data.user);
-        console.log("user updated to ", UserService.getUser());
+        console.log("user created and updated to ", UserService.getUser());
       });
     }
 
+    $scope.userStart = function(){
+      UserService.create()
+      .then(function(data){
+        UserService.updateUser(data.data.user);
+        console.log("user created and updated to", UserService.getUser());
+      });
+    };
 
     // UPDATE SURVEY QUESTIONS IN DB
     $scope.updateSurvey = function(u) {
@@ -309,7 +316,7 @@
 
   function sortByClosest(array){
     array.sort(function(a,b){
-      console.log("consoleLogging", array);
+      // console.log("consoleLogging", array);
       return a.distance - b.distance;
     });
   }
@@ -627,21 +634,26 @@
 }])
 .controller('LandingCtrl', ['$scope', 'UserService', function($scope, UserService) {
   console.log("LandingCtrl");
-  // if(UserService.getUser() === null){
-  //   console.log("no user, made one");
-  console.log("making new user");
-  UserService.create()
-  .then(function(data){
-    UserService.updateUser(data.data.user);
-    console.log("user updated to ", UserService.getUser());
-  });
-  // }
+  if(UserService.getUser() !== null || undefined){
+      console.log("resetting user");
+      UserService.updateUser(null);
+    }
+    UserService.create()
+    .then(function(data){
+      UserService.updateUser(data.data.user);
+      console.log("user created ", UserService.getUser());
+    });
+
   // $scope.userStart = function(){
-  //   UserService.create()
-  //   .then(function(data){
-  //     UserService.updateUser(data.data.user);
-  //     console.log("user updated to ", UserService.getUser());
-  //   });
+  //   if(UserService.getUser() !== null || undefined){
+  //     console.log("resetting user");
+  //     UserService.updateUser(null);
+  //   }
+  //     UserService.create()
+  //     .then(function(data){
+  //       UserService.updateUser(data.data.user);
+  //       console.log("user updated to ", UserService.getUser());
+  //     });
   // };
 }])
 .controller('FormCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
