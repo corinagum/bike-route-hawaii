@@ -4,19 +4,20 @@
     <a href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
   </ion-header-bar>
 
-  <ion-content class="fade-on-enter addBackgroundImg" ng-init="toggle_comment=false; toggle_survey=true; ">
+  <ion-content class="fade-on-enter addBackgroundImg" ng-init="toggle_comment=true; toggle_survey=false; ">
 
 
     <div class="comment_demo_icons row">
-      <div class="toggle_comment_icon" ng-click="toggle_comment=true;toggle_survey=false;">
-        <i class="ion-compose surveyBtn waves-effect"></i>
-      </div>
-      <div class="toggle_survey_icon" ng-click="toggle_comment=false;toggle_survey=true;">
-        <i class="ion-clipboard surveyBtn waves-effect"></i>
-      </div>
+        <div class="toggle_comment_icon" ng-click="toggle_comment=true;toggle_survey=false;">
+          <i class="ion-compose surveyBtn waves-effect"></i>
+        </div>
+        <div class="toggle_survey_icon" ng-click="toggle_comment=false;toggle_survey=true;">
+          <i class="ion-clipboard surveyBtn waves-effect"></i>
+        </div>
     </div>
 
-    <div ng-controller="FormCtrl" class="alohaLandingOne divSize has-header" ng-show="toggle_comment">
+<div class="alohaLandingOne">
+  <div ng-controller="FormCtrl" class="alohaLandingOne divSize has-header" ng-show="toggle_comment">
       <p class="commentHeader">We're happy to hear from you!</p>
 
 
@@ -37,80 +38,77 @@
             <input ng-model="user.commentType" value="undecided" class="with-gap" name="group10" type="radio" id="test30"  />
             <label for="test30" class="smallSizeFont">I'm undecided</label>
           </p>
-
           <textarea ng-model="user.comment" class="" rows="5" cols="2" placeholder="Message..."></textarea>
-
         </form>
+
         </br>
-        <a href="#/tab/mahalo" ng-click="update(user); openModal(3)" class="submitBtn" nav-transition="none">submit</a>
+        <!-- <a href="#/tab/mahalo" ng-click="update(user); openModal(3)" class="submitBtn" nav-transition="none">submit</a> -->
+      </div>
+    </div>
+
+
+
+
+
+
+      <div ng-controller="SurveyCtrl" class="list alohaLandingOne addPadding divSize" ng-show="toggle_survey;">
+        <div class="hide-on-med-and-up survSmallTitle"><span>Age</span></div>
+          <div class="radioBlock">
+          <div class="topicDiv hide-on-small-only"><span>Age</span></div>
+            <div class="radioSelections row">
+              <div>
+                <p>
+                  <input ng-model="user.age" value="18-25" name="group4" type="radio" id="test1" />
+                  <label for="test1">18-25</label>
+                </p>
+              </div>
+              <div>
+                <p>
+                  <input ng-model="user.age" value="26-45"name="group4" type="radio" id="test2" />
+                  <label for="test2">26-45</label>
+                </p>
+              </div>
+              <div>
+                <p>
+                  <input ng-model="user.age" value="46+" name="group4" type="radio" id="test3" />
+                  <label for="test3">46+</label>
+                </p>
+              </div>
             </div>
-      </div>
-
-
-
-
-
-
-   <div ng-show="toggle_survey;">
-        <div ng-controller="SurveyCtrl" class="list alohaLandingOne addPadding divSize" >
-         <div class="hide-on-med-and-up survSmallTitle"><span>Age</span></div>
-          <div class="radioBlock">
-      <div class="topicDiv hide-on-small-only"><span>Age</span></div>
-      <div class="radioSelections row">
-        <div>
-          <p>
-            <input ng-model="user.age" value="18-25" name="group4" type="radio" id="test1" />
-            <label for="test1">18-25</label>
-          </p>
-        </div>
-        <div>
-          <p>
-            <input ng-model="user.age" value="26-45"name="group4" type="radio" id="test2" />
-            <label for="test2">26-45</label>
-          </p>
-        </div>
-        <div>
-          <p>
-            <input ng-model="user.age" value="46+" name="group4" type="radio" id="test3" />
-            <label for="test3">46+</label>
-          </p>
-        </div>
-      </div>
-
           </div>
 
-          <div class="hide-on-med-and-up survSmallTitle"><span>Gender</span></div>
-          <div class="radioBlock">
-      <div class="topicDiv hide-on-small-only"><span>Gender</span></div>
-      <div class="radioSelections row">
-       <div>
-          <p>
-           <input ng-model="user.gender" value="male" name="group3" type="radio" id="test5" />
-           <label for="test5">Male</label>
-         </p>
-       </div>
-        <div>
-          <p>
-            <input ng-model="user.gender" value="female" name="group3" type="radio" id="test4" />
-            <label for="test4">Female</label>
-          </p>
-        </div>
-      </div>
-          </div>
-
-          <div class="hide-on-med-and-up survSmallTitle"><span>Zipcode</span></div>
-          <div class="radioBlock">
-      <div class="topicDiv hide-on-small-only"><span>Zipcode</span></div>
-      <div class="radioSelections">
-        <div class="zipcodeInput"><input ng-model="user.zipcode" class="zipcodeInput" type="text" placeholder="| Zipcode"></input></div>
-      </div>
-          </div>
-
-          <div class="done" style="margin-top: 50px;">
-      <a href="#/tab/mahalo" class="cancelBtn" ng-click="updateSurvey(user);" nav-transition="none">Submit</a>
+        <div class="hide-on-med-and-up survSmallTitle"><span>Gender</span></div>
+        <div class="radioBlock">
+        <div class="topicDiv hide-on-small-only"><span>Gender</span></div>
+        <div class="radioSelections row">
+         <div>
+            <p>
+             <input ng-model="user.gender" value="male" name="group3" type="radio" id="test5" />
+             <label for="test5">Male</label>
+           </p>
+         </div>
+          <div>
+            <p>
+              <input ng-model="user.gender" value="female" name="group3" type="radio" id="test4" />
+              <label for="test4">Female</label>
+            </p>
           </div>
         </div>
-   </div>
+        </div>
+
+        <div class="hide-on-med-and-up survSmallTitle"><span>Zipcode</span></div>
+        <div class="radioBlock">
+        <div class="topicDiv hide-on-small-only"><span>Zipcode</span></div>
+        <div class="radioSelections">
+          <div class="zipcodeInput"><input ng-model="user.zipcode" class="zipcodeInput" type="text" placeholder="| Zipcode"></input></div>
+        </div>
+        </div>
+     </div>
+
+        <div class="done" style="margin-top: 25em;">
+          <a href="#/tab/mahalo" class="cancelBtn" ng-click="updateSurvey(user);" nav-transition="none">Submit</a>
+        </div>
+</div>
 
   </ion-content>
 
