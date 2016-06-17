@@ -414,9 +414,11 @@
   };
 
   $scope.suggestStation = function(){
-    $scope.markers.reportPoint.type = "suggest";
-    $scope.markers.reportPoint.suggestedBy = UserService.getUser().id;
-    PointService.suggestPoint($scope.markers.reportPoint);
+    if($scope.markers.reportPoint){
+      $scope.markers.reportPoint.type = "suggest";
+      $scope.markers.reportPoint.suggestedBy = UserService.getUser().id;
+      PointService.suggestPoint($scope.markers.reportPoint);
+    }
   };
 
   // COMMENT SUBMIT FUNCTION
@@ -539,7 +541,7 @@
 
   //REMOVE MODAL WHEN DESTROYED
   $scope.$on('$destroy', function() {
-    if($scope.modal4){
+    if($scope.modal){
       $scope.modal.remove();
     }
   });
