@@ -128,21 +128,12 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
           }
         }
       })
-      .state('tabs.survey', {
-        url: "/survey",
-        views: {
-          'home-tab': {
-            templateUrl: "templates/feedback/surveyForm.html",
-            controller: 'SurveyCtrl'
-          }
-        }
-      })
       .state('tabs.mahaloFb', {
         url: "/mahalo",
         views: {
           'home-tab': {
             templateUrl: "templates/feedback/mahaloFeedback.html",
-            // controller: 'MapCtrl'
+            controller: 'MahaloCtrl'
 
           }
         }

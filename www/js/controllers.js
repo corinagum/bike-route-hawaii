@@ -5,32 +5,56 @@
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$ionicSideMenuDelegate', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$ionicSideMenuDelegate) {
 
-    console.log("mapctrl started", UserService.getUser());
-    if(UserService.getUser() === null){
-      console.log("no user, made one");
-      UserService.create()
-      .then(function(data){
-        UserService.updateUser(data.data.user);
-        console.log("user created and updated to ", UserService.getUser());
-      });
-    }
+    // console.log("mapctrl started", UserService.getUser());
+    // if(UserService.getUser() === null){
+    //   console.log("no user, made one");
+    //   UserService.create()
+    //   .then(function(data){
+    //     UserService.updateUser(data.data.user);
+    //     console.log("user created and updated to ", UserService.getUser());
+    //   });
+    // }
 
-    $scope.userStart = function(){
-      UserService.create()
-      .then(function(data){
-        UserService.updateUser(data.data.user);
-        console.log("user created and updated to", UserService.getUser());
-      });
-    };
+    // $scope.userStart = function(){
+    //   UserService.create()
+    //   .then(function(data){
+    //     UserService.updateUser(data.data.user);
+    //     console.log("user created and updated to", UserService.getUser());
+    //   });
+    // };
 
     // UPDATE SURVEY QUESTIONS IN DB
-    $scope.updateSurvey = function(u) {
+    // $scope.updateSurvey = function(u) {
+    //   $scope.user = UserService.getUser();
+    //   $scope.user.age = u.age;
+    //   $scope.user.gender = u.gender;
+    //   $scope.user.zipcode = u.zipcode;
+    //   UserService.updateUser($scope.user);
+    //   UserService.edit($scope.user.id);
+    // };
+
+    $scope.updatePath = function(path){
+      if(UserService.getUser() === null){
+        console.log("no user, made one");
+        UserService.create()
+        .then(function(data){
+          UserService.updateUser(data.data.user);
+          console.log("user updated to ", UserService.getUser());
+        });
+
+      }
       $scope.user = UserService.getUser();
-      $scope.user.age = u.age;
-      $scope.user.gender = u.gender;
-      $scope.user.zipcode = u.zipcode;
-      UserService.updateUser($scope.user);
-      UserService.edit($scope.user.id);
+      console.log("updatePath user ", UserService.getUser());
+      if($scope.user.paths !== null){
+        $scope.user.paths.push(path);
+      }else{
+        $scope.user.paths = [path];
+      }
+      UserService.edit($scope.user.id)
+      .then(function(data){
+        console.log("update data", data);
+        UserService.updateUser($scope.user);
+      });
     };
 
   // SET MAP INTIALLY
@@ -425,6 +449,7 @@
       $scope.markers.reportPoint.type = "suggest";
       $scope.markers.reportPoint.suggestedBy = UserService.getUser().id;
       PointService.suggestPoint($scope.markers.reportPoint);
+      console.log("suggested point stored");
     }
   };
 
@@ -511,15 +536,16 @@
     $scope.modal4 = modal;
   });
 
-  $ionicModal.fromTemplateUrl('yourSuggestionSave.html', {
-    id: '3',
-    scope: $scope,
-    backdropClickToClose: false,
-    hardwareBackButtonClose: false,
-    animation: 'scale-in'
-  }).then(function(modal) {
-    $scope.modal3 = modal;
-  });
+  // RIZ, I COMMENTED OUT FOR NOW, FILE DOESN'T EXIST
+  // $ionicModal.fromTemplateUrl('yourSuggestionSave.html', {
+  //   id: '3',
+  //   scope: $scope,
+  //   backdropClickToClose: false,
+  //   hardwareBackButtonClose: false,
+  //   animation: 'scale-in'
+  // }).then(function(modal) {
+  //   $scope.modal3 = modal;
+  // });
 
   $scope.openModal = function(index) {
     switch (index) {
@@ -634,86 +660,105 @@
 }])
 .controller('LandingCtrl', ['$scope', 'UserService', function($scope, UserService) {
   console.log("LandingCtrl");
-  if(UserService.getUser() !== null || undefined){
-      console.log("resetting user");
-      UserService.updateUser(null);
-    }
-    UserService.create()
-    .then(function(data){
-      UserService.updateUser(data.data.user);
-      console.log("user created ", UserService.getUser());
-    });
 
-  // $scope.userStart = function(){
-  //   if(UserService.getUser() !== null || undefined){
-  //     console.log("resetting user");
-  //     UserService.updateUser(null);
-  //   }
-  //     UserService.create()
-  //     .then(function(data){
-  //       UserService.updateUser(data.data.user);
-  //       console.log("user updated to ", UserService.getUser());
-  //     });
-  // };
+  $scope.userStart = function(){
+    if(UserService.getUser() !== null || undefined){
+        console.log("resetting user");
+        UserService.updateUser(null);
+      }
+      UserService.create()
+      .then(function(data){
+        UserService.updateUser(data.data.user);
+        console.log("user created ", UserService.getUser());
+      });
+    // if(UserService.getUser() !== null || undefined){
+    //   console.log("resetting user");
+    //   UserService.updateUser(null);
+    // }
+      // UserService.create()
+      // .then(function(data){
+      //   UserService.updateUser(data.data.user);
+      //   console.log("user updated to ", UserService.getUser());
+      // });
+  };
 }])
 .controller('FormCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
   console.log("FormCtrl");
-  if(UserService.getUser() === null){
-    console.log("no user, made one");
-    UserService.create()
-    .then(function(data){
-      UserService.updateUser(data.data.user);
-      console.log("user updated to ", UserService.getUser());
-    });
 
-
-  }
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };
+
   $scope.update = function(u) {
+    if(UserService.getUser() === null){
+      console.log("no user, made one");
+      UserService.create()
+      .then(function(data){
+        UserService.updateUser(data.data.user);
+        console.log("created user and updated to ", UserService.getUser());
+      });
+    }
     $scope.user = UserService.getUser();
     if(u){
       if(u.name){
         $scope.user.name = u.name;
+        u.name = null;
       }
       if(u.email){
         $scope.user.email = u.email;
+        u.email = null;
       }
       if(u.commentType){
         if($scope.user.commentType === null || undefined){
           $scope.user.commentType = [u.commentType];
+          u.commentType = null;
         }else{
           $scope.user.commentType.push(u.commentType);
+          u.commentType = null;
         }
       }
       if(u.comment){
         if($scope.user.comment !== null || undefined){
           $scope.user.comment.push(u.comment);
+          u.comment = null;
         }else{
           $scope.user.comment = [u.comment];
+          u.comment = null;
         }
+      }
+      if(u.age){
+        $scope.user.age = u.age;
+        u.age = null;
+      }
+      if(u.gender){
+        $scope.user.gender = u.gender;
+        u.gender = null;
+      }
+      if(u.zipcode){
+        $scope.user.zipcode = u.zipcode;
+        u.zipcode = null;
       }
       UserService.updateUser($scope.user);
       UserService.edit($scope.user.id);
     }
   };
+
 }])
 .controller('PathCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
   console.log("PathCtrl");
-  if(UserService.getUser() === null){
-    console.log("no user, made one");
-    UserService.create()
-    .then(function(data){
-      UserService.updateUser(data.data.user);
-      console.log("user updated to ", UserService.getUser());
-    });
-
-  }
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };
   $scope.updatePath = function(path){
+    if(UserService.getUser() === null){
+      console.log("no user, made one");
+      UserService.create()
+      .then(function(data){
+        UserService.updateUser(data.data.user);
+        console.log("user updated to ", UserService.getUser());
+      });
+
+    }
     $scope.user = UserService.getUser();
     console.log("updatePath user ", UserService.getUser());
     if($scope.user.paths !== null){
@@ -730,15 +775,15 @@
 }])
 .controller('MahaloCtrl', ['$scope', 'UserService', function($scope, UserService) {
   console.log("MahaloCtrl");
-  if(UserService.getUser() === null){
-    console.log("no user, made one");
-    UserService.create()
-    .then(function(data){
-      UserService.updateUser(data.data.user);
-      console.log("user updated to ", UserService.getUser());
-    });
-  }
   $scope.updatePath = function(path){
+    if(UserService.getUser() === null){
+      console.log("no user, made one");
+      UserService.create()
+      .then(function(data){
+        UserService.updateUser(data.data.user);
+        console.log("user updated to ", UserService.getUser());
+      });
+    }
     $scope.user = UserService.getUser();
     if($scope.user.paths !== null){
       $scope.user.paths.push(path);
@@ -750,49 +795,8 @@
       UserService.updateUser($scope.user);
     });
   };
-}])
-.controller('SurveyCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
-  console.log("SurveyCtrl");
-  if(UserService.getUser() === null){
-    console.log("no user, made one");
-    UserService.create()
-    .then(function(data){
-      UserService.updateUser(data.data.user);
-      console.log("user updated to ", UserService.getUser());
-    });
 
-  }
-  $scope.myGoBack = function() {
-    $ionicHistory.goBack();
-  };
-  $scope.updateSurvey = function(u) {
-    if(u){
-      $scope.user = UserService.getUser();
-      if(u.age){
-        $scope.user.age = u.age;
-      }
-      if(u.gender){
-        $scope.user.gender = u.gender;
-      }
-      if(u.zipcode){
-        $scope.user.zipcode = u.zipcode;
-      }
-      UserService.updateUser($scope.user);
-      UserService.edit($scope.user.id);
-    }
-  };
-  $scope.updatePath = function(path){
-    $scope.user = UserService.getUser();
-    console.log("updatePath user ", UserService.getUser());
-    if($scope.user.paths !== null){
-      $scope.user.paths.push(path);
-    }else{
-      $scope.user.paths = [path];
-    }
-    UserService.edit($scope.user.id)
-    .then(function(data){
-      console.log("update data", data);
-      UserService.updateUser($scope.user);
-    });
+  $scope.clearUser = function(){
+    UserService.updateUser(null);
   };
 }]);
