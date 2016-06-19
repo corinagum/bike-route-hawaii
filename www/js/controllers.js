@@ -536,16 +536,17 @@
     $scope.modal4 = modal;
   });
 
-  // RIZ, I COMMENTED OUT FOR NOW, FILE DOESN'T EXIST
-  // $ionicModal.fromTemplateUrl('yourSuggestionSave.html', {
-  //   id: '3',
-  //   scope: $scope,
-  //   backdropClickToClose: false,
-  //   hardwareBackButtonClose: false,
-  //   animation: 'scale-in'
-  // }).then(function(modal) {
-  //   $scope.modal3 = modal;
-  // });
+if(!isCordovaApp){
+  $ionicModal.fromTemplateUrl('yourSuggestionSave.html', {
+    id: '3',
+    scope: $scope,
+    backdropClickToClose: false,
+    hardwareBackButtonClose: false,
+    animation: 'scale-in'
+  }).then(function(modal) {
+    $scope.modal3 = modal;
+  });
+}
 
   $scope.openModal = function(index) {
     switch (index) {
