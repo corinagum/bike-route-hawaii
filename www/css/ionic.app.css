@@ -10033,9 +10033,8 @@ input[type="number"] {
 
 input[type="text"], input[type="email"] {
   border-radius: 5px;
-  height: 45px;
-  width: 440px;
-  z-index: 14;
+  height: 43px;
+  width: 100%;
   text-align: left;
   margin-bottom: 5px;
   background-color: #dfdfdf;
@@ -10043,7 +10042,7 @@ input[type="text"], input[type="email"] {
   padding-left: 5px; }
   @media only screen and (min-width: 600px) {
     input[type="text"], input[type="email"] {
-      margin-bottom: 22px; } }
+      margin-bottom: 10px; } }
 
 .smallSizeFont {
   font-size: 12px;
@@ -10066,9 +10065,6 @@ textarea {
   @media only screen and (min-width: 600px) {
     .divSize {
       max-width: 40em; } }
-
-.formCommentWrapper {
-  padding: 15px 8px; }
 
 .comment_demo_icons.row {
   margin: 0;
@@ -10121,17 +10117,16 @@ textarea {
   margin-top: -8px; }
 
 .submitBtn {
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  -ms-border-radius: 7px;
-  border-radius: 7px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
   font-size: 16px;
   color: #f8f8f8;
-  padding: 4px 30px;
-  font-size: 15px;
+  padding: 8px 30px;
+  font-size: 12px;
   margin-top: 15px;
-  border: 2px solid #76CE95;
-  background-color: transparent; }
+  background-color: #76CE95; }
 
 .suggestFdbkBtn {
   -webkit-border-radius: 12px;

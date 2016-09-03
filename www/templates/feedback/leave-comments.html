@@ -18,14 +18,12 @@
 
 
 
+<!-- SURVEY/QUESTION DIV BEGINS -->
+<div class="alohaLandingOne" style="border: 2px solid pink;">
+  <div class="alohaLandingOne divSize has-header" style="border: 2px solid blue;" ng-show="toggle_comment">
+      <p class="commentHeader" style="border: 2px solid green;">We're happy to hear from you!</p>
 
-<div class="alohaLandingOne">
-  <div class="alohaLandingOne divSize has-header" ng-show="toggle_comment">
-      <p class="commentHeader">We're happy to hear from you!</p>
-
-
-      <div class="formCommentWrapper">
-        <form action="">
+        <form action="" style="border: 2px solid yellow;">
           <input ng-model="user.name" type="text" name="FirstLastName" placeholder="First and Last name">
           <input ng-model="user.email" type="email" name="Email" placeholder="Email">
 
@@ -49,8 +47,7 @@
         </form>
 
         </br>
-        <!-- <a href="#/tab/mahalo" ng-click="update(user); openModal(3)" class="submitBtn" nav-transition="none">submit</a> -->
-      </div>
+        <a href="#/tab/mahalo" ng-click="update(user); openModal(3)" class="submitBtn" nav-transition="none">Submit</a>
     </div>
 
 
@@ -113,9 +110,11 @@
      </div>
 
         <div class="done" style="margin-top: 450px;">
-          <a href="#/tab/mahalo" class="button" ng-click="update(user);" nav-transition="none">Submit</a>
+          <!-- <a href="#/tab/mahalo" class="button" ng-click="update(user);" nav-transition="none">Submit</a> -->
         </div>
-</div>
+</div> <!-- ALOHALANDINGONE ENDS -->
+
+<!-- SURVEY/QUESTION DIV ENDS -->
 
   </ion-content>
 
