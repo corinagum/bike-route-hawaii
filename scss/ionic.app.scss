@@ -29,13 +29,10 @@ $large: "only screen and (min-width:600px)";
 
 
 body, p {
+  color: $typeGrey;
   font-family: 'Open Sans', sans-serif;
   // font-weight: 200;
   font-size: 12px;
-}
-
-.scroll-content {
-  background-color: red;
 }
 
 //MODAL ANIMATION
@@ -308,6 +305,11 @@ input[type="number"] {
 }
 
 input[type="text"], input[type="email"] {
+  border-radius: 5px;
+  height: 45px;
+  width: 440px;
+  z-index: 14;
+
   text-align: left;
   margin-bottom: 5px;
   background-color: darken($stable, 10%);
@@ -315,7 +317,7 @@ input[type="text"], input[type="email"] {
   padding-left: 5px;
 
   @media #{$large} {
-    margin-bottom: 14px;
+    margin-bottom: 22px;
   }
 }
 
@@ -352,7 +354,7 @@ textarea {
     padding: 0 5%;
 
   @media #{$large} {
-    max-width: 50em;
+    max-width: 40em;
     // padding: 0 20%;
   }
 }
@@ -524,7 +526,7 @@ textarea {
 
 .commentHeader {
   @include fontStyling(18px, $stable);
-  font-weight: 600;
+  font-weight: 300;
 }
 
 .viewMapBtn {
@@ -830,11 +832,9 @@ textarea {
 .radioBlock {
   display: flex;
   display: -webkit-flex;
-  background-color: $stable;
+  // background-color: $stable;
   max-height: 68px;
   min-height: 68px;
-  margin-bottom: 10px;
-  @include borderRadius(10px);
 
   span {
     color: $stable;
@@ -851,9 +851,7 @@ textarea {
   }
 
   .topicDiv {
-    min-width: 90px;
-    background-color: lighten($typeGrey, 25%);
-    border-radius: 10px 0 0 10px;
+    // background-color: lighten($typeGrey, 25%);
   }
 
   .radioSelections {

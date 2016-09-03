@@ -9808,6 +9808,7 @@ a.button {
     opacity: 1; } }
 
 body, p {
+  color: #626262;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px; }
 
@@ -10031,6 +10032,10 @@ input[type="number"] {
   padding: 0; }
 
 input[type="text"], input[type="email"] {
+  border-radius: 5px;
+  height: 45px;
+  width: 440px;
+  z-index: 14;
   text-align: left;
   margin-bottom: 5px;
   background-color: #dfdfdf;
@@ -10038,7 +10043,7 @@ input[type="text"], input[type="email"] {
   padding-left: 5px; }
   @media only screen and (min-width: 600px) {
     input[type="text"], input[type="email"] {
-      margin-bottom: 14px; } }
+      margin-bottom: 22px; } }
 
 .smallSizeFont {
   font-size: 12px;
@@ -10060,7 +10065,7 @@ textarea {
   padding: 0 5%; }
   @media only screen and (min-width: 600px) {
     .divSize {
-      max-width: 50em; } }
+      max-width: 40em; } }
 
 .formCommentWrapper {
   padding: 15px 8px; }
@@ -10210,7 +10215,7 @@ textarea {
 .commentHeader {
   font-size: 18px;
   color: #f8f8f8;
-  font-weight: 600; }
+  font-weight: 300; }
 
 .viewMapBtn {
   z-index: 10;
@@ -10427,14 +10432,8 @@ textarea {
 .radioBlock {
   display: flex;
   display: -webkit-flex;
-  background-color: #f8f8f8;
   max-height: 68px;
-  min-height: 68px;
-  margin-bottom: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  border-radius: 10px; }
+  min-height: 68px; }
   .radioBlock span {
     color: #f8f8f8;
     line-height: 65px;
@@ -10443,10 +10442,6 @@ textarea {
     border: 2px solid #76CE95; }
   .radioBlock [type="radio"]:checked + label:after, .radioBlock [type="radio"].with-gap:checked + label:before, .radioBlock [type="radio"].with-gap:checked + label:after {
     border: 2px solid #76CE95; }
-  .radioBlock .topicDiv {
-    min-width: 90px;
-    background-color: #a2a2a2;
-    border-radius: 10px 0 0 10px; }
   .radioBlock .radioSelections {
     margin: 14px 10px; }
     .radioBlock .radioSelections label {
