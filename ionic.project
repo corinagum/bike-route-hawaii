@@ -1,0 +1,18 @@
+{
+  "name": "bike-route-hawaii",
+  "app_id": "12d231ba",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ],
+  "proxies": [
+    {
+      "path": "http://www.ridehawaii.us/api/points",
+      "proxyUrl": "http://www.ridehawaii.us/api/points"
+    }
+  ]
+}

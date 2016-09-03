@@ -29,10 +29,13 @@ $large: "only screen and (min-width:600px)";
 
 
 body, p {
-  color: $typeGrey;
   font-family: 'Open Sans', sans-serif;
   // font-weight: 200;
   font-size: 12px;
+}
+
+.scroll-content {
+  background-color: red;
 }
 
 //MODAL ANIMATION
