@@ -10100,7 +10100,7 @@ textarea {
 
 .button.surveyBtn {
   right: 15px;
-  font-size: x-large; }
+  font-size: -webkit-xxx-large; }
 
 .backArrow {
   font-size: 45px;
