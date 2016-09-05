@@ -10515,7 +10515,8 @@ textarea {
     margin: auto; }
 
 .theDivDirection {
-  margin: auto; }
+  margin: auto;
+  width: 90%; }
   .theDivDirection .daStationWrap {
     height: 53px; }
   .theDivDirection .thePdirection {
