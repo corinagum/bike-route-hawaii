@@ -10519,6 +10519,10 @@ textarea {
   width: 90%; }
   .theDivDirection .daStationWrap {
     height: 53px; }
+    .theDivDirection .daStationWrap img {
+      height: 30px;
+      width: 30px;
+      margin: auto; }
   .theDivDirection .thePdirection {
     margin: auto 10px;
     line-height: 14px;

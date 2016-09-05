@@ -116,7 +116,7 @@
       popupAnchor:  [15, 0]
     },
     reportIcon: {
-      iconUrl: '../img/bike-assets/bike-icon.png',
+      iconUrl: '../img/bike-assets/Bike Yellow copy.png',
       iconSize:     [35, 35],
       // shadowUrl: 'img/leaf-shadow.png',
       shadowSize:   [50, 64],
