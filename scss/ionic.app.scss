@@ -886,7 +886,7 @@ textarea {
   @media #{$large} {
     display: flex;
     display: -webkit-flex;
-    height: 100px;
+    height: 90px;
   }
 
   .row {
@@ -963,6 +963,13 @@ textarea {
 .yellowBikeDiv {
   margin: -6px 8px 0px 8px;
   img {height: 29px;}
+}
+
+.exitOutOfSuggestion {
+  width: 100%;
+  text-align: -webkit-right;
+  padding-right: 15px;
+  position: absolute;
 }
 
 .suggestion_footer_bar {

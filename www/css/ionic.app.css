@@ -10473,7 +10473,7 @@ textarea {
     #footer-bar.row {
       display: flex;
       display: -webkit-flex;
-      height: 100px; } }
+      height: 90px; } }
   #footer-bar.row .row {
     margin-bottom: 0px; }
   #footer-bar.row .directions_wrapper {
@@ -10528,6 +10528,12 @@ textarea {
   margin: -6px 8px 0px 8px; }
   .yellowBikeDiv img {
     height: 29px; }
+
+.exitOutOfSuggestion {
+  width: 100%;
+  text-align: -webkit-right;
+  padding-right: 15px;
+  position: absolute; }
 
 .suggestion_footer_bar {
   height: 173px;
