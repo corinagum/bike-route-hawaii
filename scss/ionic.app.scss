@@ -884,9 +884,9 @@ textarea {
   margin: auto;
 
   @media #{$large} {
-    display: flex;
+    // display: flex;
     display: -webkit-flex;
-    width: 87%;
+    height: 100px;
   }
 
 

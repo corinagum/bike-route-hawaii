@@ -10471,9 +10471,8 @@ textarea {
     margin: 0px; }
   @media only screen and (min-width: 600px) {
     #footer-bar.row {
-      display: flex;
       display: -webkit-flex;
-      width: 87%; } }
+      height: 100px; } }
   #footer-bar.row .row {
     margin-bottom: 0px; }
   #footer-bar.row .directions_wrapper {
