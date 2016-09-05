@@ -10042,7 +10042,7 @@ input[type="text"], input[type="email"] {
   padding-left: 5px; }
   @media only screen and (min-width: 600px) {
     input[type="text"], input[type="email"] {
-      margin-bottom: 10px; } }
+      margin-bottom: 15px; } }
 
 .smallSizeFont {
   font-size: 12px;
@@ -10058,7 +10058,9 @@ input[type="text"], input[type="email"] {
 textarea {
   background-color: #dfdfdf;
   font-size: 12px;
-  padding: 5px; }
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 20px; }
 
 .divSize {
   padding: 0 5%; }

@@ -79,7 +79,11 @@
           </div>
           <!-- END OF GENDER -->
 
-
+          <!-- ZIPCODE -->
+          <div class="radioSelections">
+            <div class="zipcodeInput"><input ng-model="user.zipcode" class="zipcodeInput" type="text" placeholder="| Zipcode"></input></div>
+          </div>
+          <!-- END OF ZIPCODE -->
 
           <!-- RADIO DIV ENDS -->
 
@@ -98,6 +102,7 @@
           <textarea ng-model="user.comment" class="" rows="5" cols="2" placeholder="Message..."></textarea>
         </form>
 
+        </br>
         </br>
         <a href="#/tab/mahalo" ng-click="update(user); openModal(3)" class="submitBtn" nav-transition="none">Submit</a>
     </div>
