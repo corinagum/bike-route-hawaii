@@ -884,11 +884,10 @@ textarea {
   margin: auto;
 
   @media #{$large} {
-    // display: flex;
+    display: flex;
     display: -webkit-flex;
     height: 100px;
   }
-
 
   .row {
     margin-bottom: 0px;
@@ -942,6 +941,26 @@ textarea {
     font-size: large;
     margin: auto;
   }
+}
+
+
+.theDivDirection {
+  margin: auto;
+
+ .daStationWrap {
+  height: 53px;
+ }
+
+ .thePdirection {
+  margin: auto 10px;
+  line-height: 14px;
+  vertical-align: middle;
+ }
+}
+
+.yellowBikeDiv {
+  margin: -6px 8px 0px 8px;
+  img {height: 29px;}
 }
 
 .suggestion_footer_bar {

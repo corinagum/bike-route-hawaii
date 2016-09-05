@@ -62,23 +62,49 @@
 
   <!-- SUGGEST A STATION BUTTON FOR MEDIUM UP VIEW -->
   <ion-footer-bar id="footer-bar" class="row" ng-show="showReportControl" style= "border: 1px solid purple;">
-    <div class="row center">
-      <div class="col">
-       <img src=".././img/bike-assets/numOne.png" alt="">
-       <p>Drag marker.</p>
-      </div>
 
-      <div class="col">
-        <img src=".././img/bike-assets/num2.png" alt="">
-        <p>Place bike icon where you'd like to see a station.</p>
-      </div>
 
-      <div class="col">
-        <img src=".././img/bike-assets/num3.png" alt="">
-        <p>Click 'Create Point' or 'Cancel'.</p>
-      </div>
-    </div>
-    <div class="row bothSuggestBtns hide-on-med-and-up">
+
+    <div class="theDivDirection">
+      <div class="row daStationWrap" style= "border: 1px solid blue;">
+
+        <div class="row" style= "border: 1px solid red;">
+          <img src=".././img/bike-assets/numOne.png" alt="">
+          <div class="thePdirection row" style= "border: 1px solid green;">
+            Drag
+            <div class="yellowBikeDiv">
+              <img src=".././img/bike-assets/Bike Yellow copy.png">
+            </div>
+            marker.
+          </div>
+        </div>
+
+        <div class="row" style= "border: 1px solid red;">
+          <img src=".././img/bike-assets/num2.png" alt="">
+          <div class="thePdirection" style= "border: 1px solid green;">
+           Place bike icon where you'd like to see a station.
+          </div>
+        </div>
+
+        <div class="row" style= "border: 1px solid red;">
+          <img src=".././img/bike-assets/num3.png" alt="">
+          <div class="thePdirection" style= "border: 1px solid green;">
+            Click 'Confirm location' to set your point.
+          </div>
+        </div>
+
+        <div>
+          <a class="eachSuggestbtn valign-wrapper" ng-click="openModal(3);cancelReportPoint()" class="suggestButtonsDiv" nav-transition="none">
+             <span>Create Point</span>
+          </a>
+        </div>
+
+      </div> <!-- /DASTATIONWRAP -->
+    </div> <!-- /THEDIVDIRECTION -->
+
+
+
+    <!-- <div class="row bothSuggestBtns hide-on-med-and-up">
       <div class="eachSuggestbtn valign-wrapper" ng-click="cancelReportPoint()" style="margin-bottom: 4px">
         <div>Cancel</div>
       </div>
@@ -86,7 +112,7 @@
       <a class="eachSuggestbtn valign-wrapper" ng-click="openModal(3);cancelReportPoint()" class="suggestButtonsDiv" nav-transition="none">
          <span>Create Point</span>
       </a>
-    </div>
+    </div> -->
   </ion-footer-bar>
   <!-- /SUGGEST A STATION BUTTON FOR MEDIUM UP VIEW -->
 

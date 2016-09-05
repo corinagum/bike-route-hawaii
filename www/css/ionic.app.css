@@ -10471,6 +10471,7 @@ textarea {
     margin: 0px; }
   @media only screen and (min-width: 600px) {
     #footer-bar.row {
+      display: flex;
       display: -webkit-flex;
       height: 100px; } }
   #footer-bar.row .row {
@@ -10512,6 +10513,20 @@ textarea {
   #footer-bar.row span {
     font-size: large;
     margin: auto; }
+
+.theDivDirection {
+  margin: auto; }
+  .theDivDirection .daStationWrap {
+    height: 53px; }
+  .theDivDirection .thePdirection {
+    margin: auto 10px;
+    line-height: 14px;
+    vertical-align: middle; }
+
+.yellowBikeDiv {
+  margin: -6px 8px 0px 8px; }
+  .yellowBikeDiv img {
+    height: 29px; }
 
 .suggestion_footer_bar {
   height: 173px;
