@@ -79,11 +79,7 @@
           </div>
           <!-- END OF GENDER -->
 
-          <!-- ZIPCODE -->
-          <div class="radioSelections">
-            <div class="zipcodeInput"><input ng-model="user.zipcode" class="zipcodeInput" type="text" placeholder="| Zipcode"></input></div>
-          </div>
-          <!-- END OF ZIPCODE -->
+
 
           <!-- RADIO DIV ENDS -->
 
@@ -107,64 +103,6 @@
         <a href="#/tab/mahalo" ng-click="update(user); openModal(3)" class="submitBtn" nav-transition="none">Submit</a>
     </div>
 
-
-
-
-
-
-      <div class="list alohaLandingOne addPadding divSize" ng-show="toggle_survey;">
-        <div class="hide-on-med-and-up survSmallTitle"><span>Age</span></div>
-          <div class="radioBlock">
-          <div class="topicDiv hide-on-small-only"><span>Age</span></div>
-            <div class="radioSelections row">
-              <div>
-                <p>
-                  <input ng-model="user.age" value="18-25" name="group4" type="radio" id="test1" />
-                  <label for="test1">18-25</label>
-                </p>
-              </div>
-              <div>
-                <p>
-                  <input ng-model="user.age" value="26-45" name="group4" type="radio" id="test2" />
-                  <label for="test2">26-45</label>
-                </p>
-              </div>
-              <div>
-                <p>
-                  <input ng-model="user.age" value="46+" name="group4" type="radio" id="test3" />
-                  <label for="test3">46+</label>
-                </p>
-              </div>
-            </div>
-          </div>
-
-        <div class="hide-on-med-and-up survSmallTitle"><span>Gender</span></div>
-        <div class="radioBlock">
-        <div class="topicDiv hide-on-small-only"><span>Gender</span></div>
-        <div class="radioSelections row">
-         <div>
-            <p>
-             <input ng-model="user.gender" value="male" name="group3" type="radio" id="test5" />
-             <label for="test5">Male</label>
-           </p>
-         </div>
-          <div>
-            <p>
-              <input ng-model="user.gender" value="female" name="group3" type="radio" id="test4" />
-              <label for="test4">Female</label>
-            </p>
-          </div>
-        </div>
-        </div>
-
-        <div class="hide-on-med-and-up survSmallTitle"><span>Zipcode</span></div>
-        <div class="radioBlock">
-        <div class="topicDiv hide-on-small-only"><span>Zipcode</span></div>
-        <div class="radioSelections">
-          <div class="zipcodeInput"><input ng-model="user.zipcode" class="zipcodeInput" type="text" placeholder="| Zipcode"></input></div>
-        </div>
-        </div>
-     </div>
 
         <div class="done" style="margin-top: 450px;">
           <!-- <a href="#/tab/mahalo" class="button" ng-click="update(user);" nav-transition="none">Submit</a> -->
