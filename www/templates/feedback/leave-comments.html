@@ -30,42 +30,46 @@
           <!-- RADIO DIV -->
 
           <!-- AGE -->
-          <div class="radioBlock">
-          <div class="topicDiv hide-on-small-only"><span>Age</span></div>
-            <div class="radioSelections row">
-              <div>
+          <div class="radioBlock" style="border: 2px solid red;">
+            <div class="ageGenderTitle"><p>Age</p></div>
+
+            <div class="row radioDivAgeGender">
+              <div class="selectionEachBlock">
                 <p>
                   <input ng-model="user.age" value="18-25" name="group4" type="radio" id="test1" />
                   <label for="test1">18-25</label>
                 </p>
               </div>
-              <div>
+
+              <div class="selectionEachBlock">
                 <p>
                   <input ng-model="user.age" value="26-45" name="group4" type="radio" id="test2" />
                   <label for="test2">26-45</label>
                 </p>
               </div>
-              <div>
+
+              <div class="selectionEachBlock">
                 <p>
                   <input ng-model="user.age" value="46+" name="group4" type="radio" id="test3" />
                   <label for="test3">46+</label>
                 </p>
               </div>
+
             </div>
           </div>
           <!-- END OF AGE -->
 
           <!-- GENDER -->
           <div class="radioBlock">
-            <div class="topicDiv hide-on-small-only"><span>Gender</span></div>
-            <div class="radioSelections row">
-             <div>
+            <div class="ageGenderTitle"><p>Gender</p></div>
+            <div class="row radioDivAgeGender">
+             <div class="selectionEachBlock">
                 <p>
                  <input ng-model="user.gender" value="male" name="group3" type="radio" id="test5" />
                  <label for="test5">Male</label>
                </p>
              </div>
-              <div>
+              <div class="selectionEachBlock">
                 <p>
                   <input ng-model="user.gender" value="female" name="group3" type="radio" id="test4" />
                   <label for="test4">Female</label>

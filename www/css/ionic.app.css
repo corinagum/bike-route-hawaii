@@ -10210,7 +10210,8 @@ textarea {
 .commentHeader {
   font-size: 18px;
   color: #f8f8f8;
-  font-weight: 300; }
+  font-weight: 300;
+  margin-bottom: 40px; }
 
 .viewMapBtn {
   z-index: 10;
@@ -10427,21 +10428,23 @@ textarea {
 .radioBlock {
   display: flex;
   display: -webkit-flex;
-  max-height: 68px;
-  min-height: 68px; }
-  .radioBlock span {
+  max-height: 48px;
+  margin-bottom: 15px; }
+  .radioBlock .selectionEachBlock {
+    border: 1px solid black;
+    min-width: 112.5px; }
+  .radioBlock .radioDivAgeGender {
+    margin-bottom: 0px; }
+  .radioBlock .ageGenderTitle {
+    margin: auto;
+    min-width: 67px; }
+  .radioBlock p {
     color: #f8f8f8;
-    line-height: 65px;
     font-weight: 800; }
   .radioBlock [type="radio"]:not(:checked) + label:before, .radioBlock [type="radio"]:not(:checked) + label:after {
     border: 2px solid #76CE95; }
   .radioBlock [type="radio"]:checked + label:after, .radioBlock [type="radio"].with-gap:checked + label:before, .radioBlock [type="radio"].with-gap:checked + label:after {
     border: 2px solid #76CE95; }
-  .radioBlock .radioSelections {
-    margin: 14px 10px; }
-    .radioBlock .radioSelections label {
-      min-width: 80.36px;
-      margin-right: 12px; }
   .radioBlock .zipcodeInput {
     background-color: transparent;
     color: #C2C2C2; }

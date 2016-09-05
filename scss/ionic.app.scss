@@ -520,6 +520,7 @@ textarea {
 .commentHeader {
   @include fontStyling(18px, $stable);
   font-weight: 300;
+  margin-bottom: 40px;
 }
 
 .viewMapBtn {
@@ -825,13 +826,25 @@ textarea {
 .radioBlock {
   display: flex;
   display: -webkit-flex;
-  // background-color: $stable;
-  max-height: 68px;
-  min-height: 68px;
+  max-height: 48px;
+  margin-bottom: 15px;
 
-  span {
+  .selectionEachBlock {
+    border: 1px solid black;
+    min-width: 112.5px;
+  }
+
+  .radioDivAgeGender {
+    margin-bottom: 0px;
+  }
+
+  .ageGenderTitle {
+    margin: auto;
+    min-width: 67px;
+  }
+
+  p {
     color: $stable;
-    line-height: 65px;
     font-weight: 800;
   }
 
@@ -841,20 +854,6 @@ textarea {
 
   [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
     border: 2px solid $balanced;
-  }
-
-  .topicDiv {
-    // background-color: lighten($typeGrey, 25%);
-  }
-
-  .radioSelections {
-    margin: 14px 10px;
-
-    label {
-      min-width: 80.36px;
-      margin-right: 12px;
-    }
-
   }
 
   .zipcodeInput {
