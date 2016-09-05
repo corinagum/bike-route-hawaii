@@ -10033,13 +10033,10 @@ input[type="number"] {
 
 input[type="text"], input[type="email"] {
   border-radius: 5px;
-  height: 43px;
-  width: 100%;
-  text-align: left;
   margin-bottom: 5px;
-  background-color: #dfdfdf;
+  background-color: #f8f8f8;
   font-size: 12px;
-  padding-left: 5px; }
+  padding-left: 15px; }
   @media only screen and (min-width: 600px) {
     input[type="text"], input[type="email"] {
       margin-bottom: 15px; } }
@@ -10052,13 +10049,10 @@ input[type="text"], input[type="email"] {
   border: 3px solid #dfdfdf;
   background-color: #f8f8f8; }
 
-[type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
-  border: 2px solid #76CE95; }
-
 textarea {
-  background-color: #dfdfdf;
+  background-color: #f8f8f8;
   font-size: 12px;
-  padding: 5px;
+  padding: 15px;
   border-radius: 5px;
   margin-top: 20px; }
 
@@ -10433,8 +10427,9 @@ textarea {
   max-height: 48px;
   margin-bottom: 15px; }
   .radioBlock .selectionEachBlock {
-    border: 1px solid black;
     min-width: 112.5px; }
+    .radioBlock .selectionEachBlock label {
+      color: #f8f8f8; }
   .radioBlock .radioDivAgeGender {
     margin-bottom: 0px; }
   .radioBlock .ageGenderTitle {
@@ -10443,10 +10438,6 @@ textarea {
   .radioBlock p {
     color: #f8f8f8;
     font-weight: 800; }
-  .radioBlock [type="radio"]:not(:checked) + label:before, .radioBlock [type="radio"]:not(:checked) + label:after {
-    border: 2px solid #76CE95; }
-  .radioBlock [type="radio"]:checked + label:after, .radioBlock [type="radio"].with-gap:checked + label:before, .radioBlock [type="radio"].with-gap:checked + label:after {
-    border: 2px solid #76CE95; }
   .radioBlock .zipcodeInput {
     background-color: transparent;
     color: #C2C2C2; }
@@ -10454,6 +10445,9 @@ textarea {
       min-height: 40px;
       margin-left: 14px;
       font-size: 14px; }
+
+[type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+  border: 2px solid #e2e2e2; }
 
 .centerBox {
   width: 100%;
