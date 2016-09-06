@@ -1,7 +1,7 @@
 
 <ion-view data-ng-init="init()" title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
 
-<!-- <ion-nav-bar class="mapSiteTopBar"> -->
+  <!-- <ion-nav-bar class="mapSiteTopBar"> -->
   <ion-header-bar class="bar bar-header">
     <a ng-href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
 
@@ -11,41 +11,8 @@
     <div class="button suggestBtn waves-effect" ng-click="createReportPoint()"><span>Suggest a Station</span></div>
     <a href="#/tab/home"><i class="ion-ios-home-outline button surveyBtn waves-effect" nav-transition="none"></i></a>
 
-<!--     <div class="centerBox">
-      <div id="footer-bar" class="row hide-on-small-only" ng-show="showReportControl">
-
-        <div class="row directions_wrapper">
-            <div class="col">
-              <img src=".././img/bike-assets/numOne.png" alt="">
-              <p>Drag marker.</p>
-            </div>
-
-            <div class="col">
-              <img src=".././img/bike-assets/num2.png" alt="">
-              <p>Place bike icon where you'd like to see a station.</p>
-            </div>
-
-            <div class="col">
-              <img src=".././img/bike-assets/num3.png" alt="">
-              <p>Click 'Create Point' or 'Cancel'.</p>
-            </div>
-
-            <div class="col bothSuggestBtns hide-on-small-only">
-
-              <div class="eachSuggestbtn valign-wrapper" ng-click="cancelReportPoint()" style="margin-bottom: 4px">
-                <span>Cancel</span>
-              </div>
-
-              <a class="eachSuggestbtn valign-wrapper" ng-click="openModal(3);suggestStation();cancelReportPoint()" class="suggestButtonsDiv" nav-transition="none">
-                <span>Create Point</span>
-              </a>
-
-            </div>
-        </div>
-      </div>
-    </div> -->
   </ion-header-bar>
-<!-- </ion-nav-bar> -->
+  <!-- </ion-nav-bar> -->
 
   <ion-content data-tap-disabled="true" class="fade-on-enter">
    <!--  <div class="getLocationMarker" ng-click="findCenter()">

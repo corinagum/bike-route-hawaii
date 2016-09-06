@@ -416,7 +416,7 @@
   });
 
   // IF CREATING NEW REPORT/SUGGEST POINT
-  $scope.showReportControl = false;
+  // $scope.showReportControl = false;
 
   // ADD REPORT/SUGGESTION POINT
   $scope.createReportPoint = function(){
@@ -434,7 +434,7 @@
         reportPoint : reportPoint
       };
 
-
+    setMarkersReturned(bikesharePoints);
   };
 
   // CANCEL REPORT POINT
