@@ -9933,17 +9933,14 @@ body, p {
 .howItworksMobile p {
   font-size: 14px; }
 
-.medUpContainer {
-  padding: 40px; }
+.medUpSteps h5 {
+  text-align: center; }
 
-.medUpSteps {
-  padding: 4% 8%; }
-  .medUpSteps h5 {
-    text-align: center; }
-  .medUpSteps ul {
-    line-height: 14px; }
-  .medUpSteps img {
-    max-width: 80%; }
+.medUpSteps ul {
+  line-height: 14px; }
+
+.medUpSteps img {
+  max-width: 80%; }
 
 .sectionTwo, .section {
   padding: 40px 40px 40px 40px;
@@ -9980,6 +9977,8 @@ body, p {
   .benefitBlock p {
     padding: 0 4%;
     line-height: 18px; }
+  .benefitBlock h5 {
+    text-align: center; }
   @media only screen and (min-width: 600px) {
     .benefitBlock {
       min-height: 440px;
