@@ -3487,7 +3487,7 @@ ion-infinite-scroll {
 
 .overflow-scroll {
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: visible;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   top: 0;
@@ -9807,11 +9807,6 @@ a.button {
   to {
     opacity: 1; } }
 
-body, p {
-  color: #626262;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 12px; }
-
 .fade-on-enter {
   opacity: 0;
   /* make things invisible upon start */
@@ -9843,6 +9838,11 @@ body, p {
 .scale-in.ng-leave,
 .scale-in > .ng-leave {
   transition: all ease-in-out 250ms; }
+
+body, p {
+  color: #626262;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px; }
 
 .contentTitle {
   font-size: 36px; }
@@ -10100,7 +10100,7 @@ textarea {
 
 .button.surveyBtn {
   right: 15px;
-  font-size: -webkit-xxx-large; }
+  font-size: -webkit-xx-large; }
 
 .backArrow {
   font-size: 45px;
