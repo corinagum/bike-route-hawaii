@@ -10279,8 +10279,7 @@ textarea {
     .detailModalBlock .likes i {
       display: -webkit-flex;
       display: flex;
-      margin: auto;
-      font-size: large; }
+      margin: auto; }
   .detailModalBlock .bbbImageLogo img {
     max-width: 20px; }
   .detailModalBlock .d_image img {
