@@ -3487,7 +3487,7 @@ ion-infinite-scroll {
 
 .overflow-scroll {
   overflow-x: hidden;
-  overflow-y: visible;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   top: 0;
@@ -9929,9 +9929,6 @@ body, p {
     color: #626262;
     font-size: 13px;
     line-height: 20px; }
-    @media only screen and (min-width: 600px) {
-      .section .secPar {
-        padding: 0 8%; } }
 
 .howItworksMobile p {
   font-size: 14px; }
@@ -10035,11 +10032,22 @@ input[type="text"], input[type="email"] {
   border-radius: 5px;
   margin-bottom: 5px;
   background-color: #f8f8f8;
-  font-size: 12px;
-  padding-left: 15px; }
+  font-size: 12px; }
   @media only screen and (min-width: 600px) {
     input[type="text"], input[type="email"] {
       margin-bottom: 15px; } }
+
+input[type="email"]::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  padding-left: 15px; }
+
+input[type="number"]::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  padding-left: 15px; }
+
+input[type="text"]::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  padding-left: 15px; }
 
 .smallSizeFont {
   font-size: 12px;
@@ -10057,10 +10065,10 @@ textarea {
   margin-top: 20px; }
 
 .divSize {
-  padding: 0 5%; }
+  padding: 0 7%; }
   @media only screen and (min-width: 600px) {
     .divSize {
-      max-width: 40em; } }
+      padding: 0 23%; } }
 
 .comment_demo_icons.row {
   margin: 0;
@@ -10070,6 +10078,9 @@ textarea {
     font-size: xx-large;
     color: #f8f8f8;
     margin-right: 20px; }
+
+.overflow-scroll {
+  overflow-y: visible; }
 
 .addBackgroundImg {
   background: url("./../img/bike-assets/backgroundMapView.png") no-repeat;
@@ -10147,10 +10158,11 @@ textarea {
   width: 100%;
   background-color: #626262; }
 
-.leadDiv {
-  padding: 0% 8%; }
-  .leadDiv img {
-    max-height: 200px; }
+.leadershipWrapDivMediumUp .col {
+  padding: 0px; }
+
+.leadDiv img {
+  max-height: 200px; }
 
 .mapImage img {
   max-width: 100%; }
@@ -10426,7 +10438,10 @@ textarea {
   max-height: 48px;
   margin-bottom: 15px; }
   .radioBlock .selectionEachBlock {
-    min-width: 112.5px; }
+    min-width: 102.66px; }
+    @media only screen and (min-width: 600px) {
+      .radioBlock .selectionEachBlock {
+        min-width: 112.5px; } }
     .radioBlock .selectionEachBlock label {
       color: #f8f8f8; }
   .radioBlock .radioDivAgeGender {

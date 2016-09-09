@@ -137,7 +137,7 @@ body, p {
     @include fontType($typeGrey,13px, 20px);
 
     @media #{$large} {
-      padding: 0 8%;
+      // padding: 0 8%;
     }
   }
 }
@@ -272,12 +272,26 @@ input[type="text"], input[type="email"] {
   margin-bottom: 5px;
   background-color: $stable;
   font-size: 12px;
-  padding-left: 15px;
 
   @media #{$large} {
     margin-bottom: 15px;
   }
 }
+
+
+//PLACEHOLDERS
+input[type="email"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  padding-left: 15px;
+}
+
+input[type="number"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  padding-left: 15px;
+}
+
+input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  padding-left: 15px;
+}
+//============
 
 @mixin fontStyling($size, $color) {
   font-size: $size;
@@ -306,11 +320,11 @@ textarea {
 }
 
 .divSize {
-    padding: 0 5%;
+    padding: 0 7%;
 
   @media #{$large} {
-    max-width: 40em;
-    // padding: 0 20%;
+    // max-width: ;
+    padding: 0 23%;
   }
 }
 
@@ -325,6 +339,11 @@ textarea {
   }
 }
 
+// FOR WHITE SPACE TO THE RIGHT OF SCREEN
+.overflow-scroll {
+  overflow-y : visible;
+}
+//===============
 
 .addBackgroundImg {
   background: url("./../img/bike-assets/backgroundMapView.png")no-repeat;
@@ -406,8 +425,14 @@ textarea {
   background-color: $typeGrey;
 }
 
+.leadershipWrapDivMediumUp {
+  .col {
+    padding: 0px;
+  }
+}
+
 .leadDiv {
-  padding: 0% 8%;
+  // padding: 0% 8%;
   img {
     max-height: 200px;
   }
@@ -787,7 +812,11 @@ textarea {
   margin-bottom: 15px;
 
   .selectionEachBlock {
-    min-width: 112.5px;
+    min-width: 102.66px;
+
+    @media #{$large} {
+      min-width: 112.5px;
+    }
 
     label {
       color: $stable;
