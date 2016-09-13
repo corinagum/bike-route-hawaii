@@ -134,7 +134,7 @@ body, p {
   background-color: lighten($typeGrey, 58%);
 
   .secPar {
-    @include fontType($typeGrey,13px, 20px);
+    @include fontType($typeGrey,12px, 20px);
 
     @media #{$large} {
       // padding: 0 8%;
@@ -159,7 +159,7 @@ body, p {
 }
 
 .sectionTwo {
-  padding: 40px 40px 40px 40px;
+  padding: 40px;
   margin: 0;
 }
 

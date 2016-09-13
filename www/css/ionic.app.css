@@ -9927,7 +9927,7 @@ body, p {
   background-color: #f6f6f6; }
   .section .secPar {
     color: #626262;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 20px; }
 
 .howItworksMobile p {
@@ -9943,7 +9943,7 @@ body, p {
   max-width: 80%; }
 
 .sectionTwo, .section {
-  padding: 40px 40px 40px 40px;
+  padding: 40px;
   margin: 0; }
 
 .stepsDiv {
