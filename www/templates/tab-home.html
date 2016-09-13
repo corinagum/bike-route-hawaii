@@ -28,7 +28,7 @@
 
 
   <!-- SUGGEST A STATION BUTTON FOR MEDIUM UP VIEW -->
-  <ion-footer-bar id="footer-bar" class="row" ng-show="showReportControl">
+  <ion-footer-bar id="footer-bar" class="row hide-on-med-and-down" ng-show="showReportControl">
 
     <div class="exitOutOfSuggestion" ng-click="cancelReportPoint()">
       x
@@ -90,34 +90,38 @@
 
 
 
+  <!-- SUGGEST A STATION DIRECTION FOR MOBILE VIEW -->
+  <ion-footer-bar id="footer-bar" class="row suggestion_footer_bar hide-on-med-and-up" ng-show="showReportControl">
 
-    <ion-footer-bar id="footer-bar" class="row suggestion_footer_bar hide-on-med-and-up" ng-show="showReportControl">
-      <div class="row center">
-        <div class="col">
-         <img src=".././img/bike-assets/numOne.png" alt="">
-         <p>Drag marker.</p>
-        </div>
+  <div class="exitOutOfSuggestion" ng-click="cancelReportPoint()">
+    x
+  </div>
 
-        <div class="col">
-          <img src=".././img/bike-assets/num2.png" alt="">
-          <p>Place bike icon where you'd like to see a station.</p>
-        </div>
+    <div class="row center">
+      <div class="col">
+        <img src=".././img/bike-assets/numOne.png" alt="">
+        <p>Drag
+        <img class="mobileYellowBikeIcon" src=".././img/bike-assets/Bike Yellow copy.png">
 
-        <div class="col">
-          <img src=".././img/bike-assets/num3.png" alt="">
-          <p>Click 'Create Point' or 'Cancel'.</p>
-        </div>
+        marker.</p>
       </div>
-      <div class="row bothSuggestBtns hide-on-med-and-up">
-        <div class="eachSuggestbtn valign-wrapper" ng-click="cancelReportPoint()" style="margin-bottom: 4px">
-          <div>Cancel</div>
-        </div>
 
-        <a class="eachSuggestbtn valign-wrapper" ng-click="openModal(3);cancelReportPoint()" class="suggestButtonsDiv" nav-transition="none">
-           <span>Create Point</span>
-        </a>
+      <div class="col">
+        <img src=".././img/bike-assets/num2.png" alt="">
+        <p>Place bike icon where you'd like to see a station.</p>
       </div>
-    </ion-footer-bar>
+
+      <div class="col">
+        <img src=".././img/bike-assets/num3.png" alt="">
+        <p>Click 'Confirm location' to set your point.</p>
+      </div>
+    </div>
+    <a style="background-color: rgb(234, 187, 0); margin: auto; color: black;" class="button" ng-click="openModal(3);cancelReportPoint()" nav-transition="none">
+       Confirm Location
+    </a>
+  </ion-footer-bar>
+  <!-- /SUGGEST A STATION DIRECTION FOR MOBILE VIEW -->
+
 </ion-view>
 
 <script id="yourSuggestionSave.html" type="text/ng-template">
@@ -125,7 +129,7 @@
     <ion-modal-view class="mahaloSuggestionWrapper padding">
       <ion-content class="alohaLandingOne">
         <div>
-          <h3>Mahalo! Your bike </br>station suggestion has been submitted.</h3>
+          <h3>Mahalo! Your suggestion has been submitted.</h3>
           </br>
           <div>
             <div>

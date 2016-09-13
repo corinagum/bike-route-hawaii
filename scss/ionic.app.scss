@@ -31,8 +31,15 @@ $large: "only screen and (min-width:600px)";
 body, p {
   color: $typeGrey;
   font-family: 'Open Sans', sans-serif;
-  // font-weight: 200;
   font-size: 12px;
+}
+
+img {
+  vertical-align: top;
+}
+
+.overflow-scroll {
+  overflow-y: auto;
 }
 
 .contentTitle {
@@ -56,7 +63,8 @@ body, p {
 }
 
 .landing {
-  background-color: $stable;
+  background-image: url("../img/bike-assets/concrete-texture.jpg");
+  background-size: cover;
   line-height: 24px;
 }
 
@@ -131,7 +139,8 @@ body, p {
 
 .section {
   @extend .sectionTwo;
-  background-color: lighten($typeGrey, 58%);
+  background-image: url("../img/bike-assets/concrete-texture.jpg");
+  background-size: cover;
 
   .secPar {
     @include fontType($typeGrey,12px, 20px);
@@ -340,12 +349,6 @@ textarea {
   }
 }
 
-// FOR WHITE SPACE TO THE RIGHT OF SCREEN
-.overflow-scroll {
-  overflow-y : visible;
-}
-//===============
-
 .addBackgroundImg {
   background: url("./../img/bike-assets/backgroundMapView.png")no-repeat;
   background-size: cover;
@@ -440,7 +443,7 @@ textarea {
 }
 
 .mapImage {
-  img {max-width: 100%;}
+  max-width: 100%;
 }
 
 .mapBg {
@@ -487,7 +490,8 @@ textarea {
 }
 
 .footerSec {
-  background-color: $balanced;
+  background-image: url("../img/bike-assets/leather.jpg");
+  background-size: cover;
 }
 
 .modal-backdrop {
@@ -495,8 +499,10 @@ textarea {
 }
 
 .bar-header {
-  background-color: $balanced;
+  // background-color: $balanced;
   height: initial;
+  background-image: url("../img/bike-assets/leather.jpg");
+  background-size: cover;
 }
 
 
@@ -523,6 +529,7 @@ textarea {
 .leaflet-right .leaflet-control {
   position: absolute;
   right: inherit;
+  border: none;
 }
 
 .leaflet-control-layers-toggle {
@@ -554,6 +561,7 @@ textarea {
 }
 
 .titleDetailBar {
+  background-image: none;
   background-color: lighten($typeGrey, 50%);
   line-height: 48px;
   height: 60px;
@@ -871,9 +879,12 @@ textarea {
   }
 }
 
+img.mobileYellowBikeIcon {
+  height: 20px;
+}
+
 #footer-bar.row {
-  .row {margin: 0px;}
-  margin-bottom: 0px;
+  .row {margin: auto;}
   flex-flow: row wrap;
   margin: auto;
 
@@ -974,7 +985,7 @@ textarea {
 
 .suggestion_footer_bar {
   height: 173px;
-  background-color: rgba($stable, 0.6);
+  background-color: $stable;
 }
 
 .mahaloSuggestionWrapper {
