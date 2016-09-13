@@ -9967,10 +9967,8 @@ body, p {
   padding: 0px 20px 20px 20px; }
 
 .borderRight {
-  border-right: 1px solid #e2e2e2; }
-
-.marginLeft {
-  margin-left: 12px; }
+  border-right: 1px solid #e2e2e2;
+  margin: 15px 12px; }
 
 @media only screen and (min-width: 600px) {
   .firstRowBorder {

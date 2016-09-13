@@ -193,10 +193,7 @@ body, p {
 
 .borderRight {
   border-right: 1px solid lighten($typeGrey, 50%);
-}
-
-.marginLeft {
-  margin-left: 12px;
+  margin: 15px 12px;
 }
 
 @media #{$large} {
