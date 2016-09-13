@@ -9,13 +9,12 @@
       <img class="stationPhoto" ng-src="{{stationClicked.photolink}}" src="{{stationClicked.photolink}}">
     </div>
 
-    <div class="d_title streetLikesLocation">
-    </br>
+    <div class="d_title streetLikesLocation"></br>
 
       <span>Location</span>
 
       <div class="likes right valign-wrapper" ng-click="isLiked() ? userUnliked():userLiked()">
-        <i class="ion-ios-heart" ng-style="myStyle">{{ numberOfLikes }}<p>&nbsp&nbspLike</p></i>
+        <i class="ion-ios-heart" ng-style="myStyle">{{ numberOfLikes }}&nbsp&nbspLike</i>
       </div>
 
       <div class="d_location">{{stationClicked.street}}</div>

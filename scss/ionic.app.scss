@@ -199,8 +199,13 @@ body, p {
   margin-left: 12px;
 }
 
+@media #{$large} {
+  .firstRowBorder {
+    border-bottom: 1px solid lighten($typeGrey, 50%);
+  }
+}
+
 .benefitBlock {
-  border-bottom: 1px solid lighten($typeGrey, 50%);
   p {
     padding: 0 4%;
     line-height: 18px;
@@ -209,7 +214,7 @@ body, p {
   h5 {text-align: center;}
 
   @media #{$large} {
-    min-height: 440px;
+    min-height: 400px;
     padding: 0 8%;
   }
 }
@@ -222,7 +227,7 @@ body, p {
 }
 
 .benGraphics {
-  img {max-height: 120px;}
+  img {max-height: 90px;}
 }
 
 .socialIcons {
@@ -358,27 +363,27 @@ textarea {
 }
 
 .fdbckBtn {
-  @include borderRadius(7px);
+  @include borderRadius(5px);
   position: absolute;
   top: 10px;
-  right: 70px;
+  right: 55px;
   color: $typeGrey;
   background-color: $stable;
   p {font-size: 10px;}
 
   @media #{$medium} {
-    p {font-size: 14px;}
+    p {font-size: 12px;}
   }
 }
 
 .button.suggestBtn {
   @extend .fdbckBtn;
-  right: 213px;
+  right: 186.36px;
 }
 
 .button.surveyBtn {
   @extend .fdbckBtn;
-  right: 15px;
+  right: 13px;
   font-size: -webkit-xx-large;
 }
 
@@ -386,7 +391,7 @@ textarea {
   font-size: 45px;
   line-height: 45px;
   font-weight: bold;
-  margin-left: 15px;
+  margin-left: 6px;
   color: $stable;
 }
 
@@ -584,17 +589,18 @@ textarea {
   .likes {
     display: -webkit-flex;
     display: flex;
-     i {
-      display: -webkit-flex;
-      display: flex;
-      margin: auto;
-    }
-
     padding-top: 2px;
     width: 97px;
     height: 27px;
     border: 2px solid lighten($typeGrey, 50%);
-    @include borderRadius(10px);
+    @include borderRadius(7px);
+
+     i {
+      display: -webkit-flex;
+      display: flex;
+      line-height: 15px;
+      margin: auto;
+    }
   }
 
   .bbbImageLogo {
@@ -618,7 +624,7 @@ textarea {
   }
 
   .title_address {
-    line-height: 12px;
+    line-height: 14px;
     margin-bottom: 12px;
   }
    h5 {
@@ -961,8 +967,8 @@ textarea {
 }
 
 .yellowBikeDiv {
-  margin: -6px 8px 0px 8px;
-  img {height: 29px;}
+  margin: -4px 0px 0px 0px;
+  img {height: 30px;}
 }
 
 .exitOutOfSuggestion {

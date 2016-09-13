@@ -9972,17 +9972,21 @@ body, p {
 .marginLeft {
   margin-left: 12px; }
 
-.benefitBlock {
-  border-bottom: 1px solid #e2e2e2; }
-  .benefitBlock p {
-    padding: 0 4%;
-    line-height: 18px; }
-  .benefitBlock h5 {
-    text-align: center; }
-  @media only screen and (min-width: 600px) {
-    .benefitBlock {
-      min-height: 440px;
-      padding: 0 8%; } }
+@media only screen and (min-width: 600px) {
+  .firstRowBorder {
+    border-bottom: 1px solid #e2e2e2; } }
+
+.benefitBlock p {
+  padding: 0 4%;
+  line-height: 18px; }
+
+.benefitBlock h5 {
+  text-align: center; }
+
+@media only screen and (min-width: 600px) {
+  .benefitBlock {
+    min-height: 400px;
+    padding: 0 8%; } }
 
 @media only screen and (min-width: 600px) {
   .bottomRowBorder {
@@ -9990,7 +9994,7 @@ body, p {
     min-height: 300px; } }
 
 .benGraphics img {
-  max-height: 120px; }
+  max-height: 90px; }
 
 .socialIcons {
   font-size: 20px;
@@ -10090,33 +10094,33 @@ textarea {
   background-size: cover; }
 
 .fdbckBtn, .button.suggestBtn, .button.surveyBtn {
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  -ms-border-radius: 7px;
-  border-radius: 7px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
   position: absolute;
   top: 10px;
-  right: 70px;
+  right: 55px;
   color: #626262;
   background-color: #f8f8f8; }
   .fdbckBtn p, .button.suggestBtn p, .button.surveyBtn p {
     font-size: 10px; }
   @media only screen and (min-width: 500px) {
     .fdbckBtn p, .button.suggestBtn p, .button.surveyBtn p {
-      font-size: 14px; } }
+      font-size: 12px; } }
 
 .button.suggestBtn {
-  right: 213px; }
+  right: 186.36px; }
 
 .button.surveyBtn {
-  right: 15px;
+  right: 13px;
   font-size: -webkit-xx-large; }
 
 .backArrow {
   font-size: 45px;
   line-height: 45px;
   font-weight: bold;
-  margin-left: 15px;
+  margin-left: 6px;
   color: #f8f8f8; }
 
 .ion-ios-arrow-thin-left:before {
@@ -10283,13 +10287,14 @@ textarea {
     width: 97px;
     height: 27px;
     border: 2px solid #e2e2e2;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    border-radius: 10px; }
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    border-radius: 7px; }
     .detailModalBlock .likes i {
       display: -webkit-flex;
       display: flex;
+      line-height: 15px;
       margin: auto; }
   .detailModalBlock .bbbImageLogo img {
     max-width: 20px; }
@@ -10303,7 +10308,7 @@ textarea {
     width: 100%;
     padding: 0px 9px 9px 18px; }
   .detailModalBlock .title_address {
-    line-height: 12px;
+    line-height: 14px;
     margin-bottom: 12px; }
   .detailModalBlock h5 {
     margin-top: 0px;
@@ -10542,9 +10547,9 @@ textarea {
     vertical-align: middle; }
 
 .yellowBikeDiv {
-  margin: -6px 8px 0px 8px; }
+  margin: -4px 0px 0px 0px; }
   .yellowBikeDiv img {
-    height: 29px; }
+    height: 30px; }
 
 .exitOutOfSuggestion {
   width: 100%;
