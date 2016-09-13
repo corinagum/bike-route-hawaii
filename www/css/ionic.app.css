@@ -9917,7 +9917,7 @@ body, p {
 
 .secTitle {
   color: #626262;
-  font-size: xx-large;
+  font-size: -webkit-xxx-large;
   line-height: 32px;
   text-align: center;
   margin: 5px 0px;
