@@ -26,14 +26,14 @@
         <div class="stepsDiv">
           <i class="ion-arrow-left-b" style="font-size: 24px; margin: auto; padding-right: 20px;"></i>
 
-            <img class="stepsNum" src="../../img/bike-assets/numOne.png" alt="" ng-click="one=true;two=false;three=false;four=false;">
+            <img ng-class="active" src="../../img/bike-assets/numOne.png" alt="" class="stepsNum" ng-click="one=true;two=false;three=false;four=false;">
             <div class="dots">
               <li><a href="#slide1"></a></li>
               <li><a href="#slide2"></a></li>
               <li><a href="#slide3"></a></li>
             </div>
 
-            <img src="../../img/bike-assets/num2.png" alt="" class="center stepsNum" ng-click="one=false;two=true;three=false;four=false;">
+            <img ng-class="active" src="../../img/bike-assets/num2.png" alt="" class="center stepsNum" ng-click="one=false;two=true;three=false;four=false;">
             <div class="dots">
               <li><a href="#slide1"></a></li>
               <li><a href="#slide2"></a></li>
@@ -54,7 +54,7 @@
 
           <div class="center graphicBike" style="height: 140px; width: auto;">
             <img ng-show="one" src="../../img/bike-assets/Get a bike.png" alt="">
-            <img style="margin-top: -25px" ng-show="two" src="../../img/bike-assets/ Get Going.png" alt="">
+            <img ng-show="two" src="../../img/bike-assets/ Get Going.png" alt="">
             <img ng-show="three" src="../../img/bike-assets/Check in.png" alt="">
             <img ng-show="four" src="../../img/bike-assets/Go again_.png" alt="">
           </div>
@@ -95,8 +95,7 @@
             </div>
           </div>
         </div>
-
-      </div>
+      </div><!-- / END OF MOBILE VIEWPORT HOW DOES IT WORK-->
 
       <!-- MEDIUM UP VIEWPORT HOW DOES IT WORK-->
       <div class="medUpContainer sectionTwo hide-on-small-only">
