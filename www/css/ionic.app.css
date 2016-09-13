@@ -9955,12 +9955,10 @@ body, p {
 .dots {
   display: flex;
   display: -webkit-flex;
-  margin: auto; }
+  margin: auto 0px auto 8px; }
 
 .stepsNum {
-  margin: 5px; }
-  .stepsNum img {
-    max-width: 30px; }
+  height: 30px; }
 
 .graphicBike img {
   max-height: 100%;
