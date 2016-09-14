@@ -116,7 +116,7 @@ img {
 .moreInfoMap {
   width: 50%;
   margin: auto;
-  padding: 10px 0px;
+  padding: 5px 0px;
   border-radius: 5px;
   background-color: #242925;
   -webkit-transition: background-color 500ms ease;
@@ -127,6 +127,14 @@ img {
     font-size: 22px;
   }
 }
+
+.viewMapBtn {
+  h5 {
+    color: $stable;
+    font-weight: 600;
+  }
+}
+
 
 @mixin fontType($color,$size,$line-height) {
   color: $color;

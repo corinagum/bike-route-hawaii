@@ -9914,7 +9914,7 @@ img {
 .moreInfoMap {
   width: 50%;
   margin: auto;
-  padding: 10px 0px;
+  padding: 5px 0px;
   border-radius: 5px;
   background-color: #242925;
   -webkit-transition: background-color 500ms ease;
@@ -9923,6 +9923,10 @@ img {
   .moreInfoMap h4 {
     color: #f8f8f8;
     font-size: 22px; }
+
+.viewMapBtn h5 {
+  color: #f8f8f8;
+  font-weight: 600; }
 
 .skipLink {
   color: #626262; }
