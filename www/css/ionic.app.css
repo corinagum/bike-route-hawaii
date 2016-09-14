@@ -9841,8 +9841,10 @@ a.button {
 
 body, p {
   color: #626262;
-  font-family: 'Open Sans', sans-serif;
   font-size: 12px; }
+
+h4, h5, p, li, a {
+  font-family: 'Open Sans', sans-serif; }
 
 img {
   vertical-align: top; }
@@ -9910,14 +9912,17 @@ img {
     font-size: large; }
 
 .moreInfoMap {
-  background: #78deac;
-  background: -moz-linear-gradient(-45deg, #78deac 0%, #78deac 50%, #bfe8f9 50%, #96e6bf 50%);
-  background: -webkit-linear-gradient(-45deg, #78deac 0%, #78deac 50%, #bfe8f9 50%, #96e6bf 50%);
-  background: linear-gradient(135deg, #78deac 0%, #78deac 50%, #bfe8f9 50%, #96e6bf 50%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#78deac', endColorstr='#96e6bf',GradientType=1 );
-  padding: 5px 20px; }
+  width: 50%;
+  margin: auto;
+  padding: 10px 0px;
+  border-radius: 5px;
+  background-color: #242925;
+  -webkit-transition: background-color 500ms ease;
+  transition: background-color 500ms ease;
+  text-align: center; }
   .moreInfoMap h4 {
-    color: #f8f8f8; }
+    color: #f8f8f8;
+    font-size: 22px; }
 
 .skipLink {
   color: #626262; }
@@ -10173,7 +10178,7 @@ textarea {
 
 .mapBg {
   height: 400px;
-  background: url("./../img/bike-assets/mapScreen2.png") no-repeat;
+  background: url("./../img/bike-assets/leather.jpg") no-repeat;
   background-size: cover; }
 
 #pagination {
