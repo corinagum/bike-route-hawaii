@@ -10023,6 +10023,8 @@ img {
 
 .footerBack {
   width: 75%; }
+  .footerBack p {
+    color: #f8f8f8; }
 
 .paddingLeft {
   padding: 5px 0px 0px 20px; }
@@ -10236,8 +10238,7 @@ textarea {
     border: 0px; }
 
 .footerSec {
-  background-image: url("../img/bike-assets/leather.jpg");
-  background-size: cover; }
+  background-color: #242925; }
 
 .modal-backdrop {
   background-color: transparent; }

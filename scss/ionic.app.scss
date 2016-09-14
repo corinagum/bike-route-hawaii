@@ -264,6 +264,7 @@ img {
 
 .footerBack {
   width: 75%;
+  p {color: $stable;}
 }
 
 .paddingLeft {
@@ -528,8 +529,7 @@ textarea {
 }
 
 .footerSec {
-  background-image: url("../img/bike-assets/leather.jpg");
-  background-size: cover;
+  background-color: $darkest;
 }
 
 .modal-backdrop {
