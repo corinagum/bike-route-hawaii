@@ -9923,9 +9923,14 @@ img {
   .moreInfoMap h4 {
     color: #f8f8f8;
     font-size: 22px; }
+  .moreInfoMap:hover {
+    background-color: #508f66;
+    color: #f8f8f8; }
 
-.viewMapBtn h5 {
+.viewMapBtn p {
   color: #f8f8f8;
+  font-size: 18px;
+  line-height: 18px;
   font-weight: 600; }
 
 .skipLink {
@@ -10103,28 +10108,40 @@ textarea {
   background: url("./../img/bike-assets/mapDownyOverlay.png") no-repeat;
   background-size: cover; }
 
-.fdbckBtn, .button.suggestBtn, .button.surveyBtn {
+.bar .button {
+  padding: 0px 15px; }
+
+.fdbckBtn, .button.suggestBtn {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   border-radius: 5px;
   position: absolute;
   top: 10px;
-  right: 55px;
-  color: #626262;
-  background-color: #f8f8f8; }
-  .fdbckBtn p, .button.suggestBtn p, .button.surveyBtn p {
-    font-size: 10px; }
+  right: 63.94px;
+  color: #f8f8f8;
+  background-color: #242925; }
+  .fdbckBtn span, .button.suggestBtn span {
+    color: #f8f8f8;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: 600; }
+  .fdbckBtn:hover, .button.suggestBtn:hover {
+    background-color: #508f66;
+    color: #f8f8f8; }
   @media only screen and (min-width: 500px) {
-    .fdbckBtn p, .button.suggestBtn p, .button.surveyBtn p {
+    .fdbckBtn span, .button.suggestBtn span {
       font-size: 12px; } }
 
 .button.suggestBtn {
-  right: 186.36px; }
+  right: 209.3px; }
 
 .button.surveyBtn {
-  right: 13px;
-  font-size: -webkit-xx-large; }
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: -webkit-xxx-large;
+  color: #242925; }
 
 .backArrow {
   font-size: 45px;
@@ -10226,9 +10243,8 @@ textarea {
   background-color: transparent; }
 
 .bar-header {
-  height: initial;
-  background-image: url("../img/bike-assets/leather.jpg");
-  background-size: cover; }
+  background-color: #76CE95;
+  height: initial; }
 
 .commentHeader {
   font-size: 18px;

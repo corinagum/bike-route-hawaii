@@ -14,6 +14,7 @@ $dark:                            #626262 !default;
 */
 
 $typeGrey: #626262;
+$darkest: #242925;
 
 // @import url(https://fonts.googleapis.com/css?family=Quicksand);
 
@@ -27,6 +28,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 $medium: "only screen and (min-width:500px)";
 $large: "only screen and (min-width:600px)";
 
+@mixin fontType($color,$size,$line-height) {
+  color: $color;
+  font-size: $size;
+  line-height: $line-height;
+}
 
 body, p {
   color: $typeGrey;
@@ -118,7 +124,7 @@ img {
   margin: auto;
   padding: 5px 0px;
   border-radius: 5px;
-  background-color: #242925;
+  background-color: $darkest;
   -webkit-transition: background-color 500ms ease;
   transition: background-color 500ms ease;
   text-align: center;
@@ -126,21 +132,21 @@ img {
     color: $stable;
     font-size: 22px;
   }
+
+  &:hover {
+    background-color: #508f66;
+    color: $stable;
+  }
 }
 
 .viewMapBtn {
-  h5 {
-    color: $stable;
+  p {
+    @include fontType($stable, 18px, 18px);
     font-weight: 600;
   }
 }
 
 
-@mixin fontType($color,$size,$line-height) {
-  color: $color;
-  font-size: $size;
-  line-height: $line-height;
-}
 
 .skipLink {
   color: $typeGrey;
@@ -375,29 +381,45 @@ textarea {
   background-size: cover;
 }
 
+.bar .button {
+  padding: 0px 15px;
+}
+
 .fdbckBtn {
   @include borderRadius(5px);
   position: absolute;
   top: 10px;
-  right: 55px;
-  color: $typeGrey;
-  background-color: $stable;
-  p {font-size: 10px;}
+  right: 63.94px;
+  color: $stable;
+  background-color: $darkest;
+
+  span {
+    @include fontType($stable, 10px, 10px);
+    font-weight: 600;
+  }
+
+    &:hover {
+      background-color: #508f66;
+      color: $stable;
+    }
 
   @media #{$medium} {
-    p {font-size: 12px;}
+    span {font-size: 12px;}
   }
 }
 
 .button.suggestBtn {
   @extend .fdbckBtn;
-  right: 186.36px;
+  right: 209.3px;
 }
 
 .button.surveyBtn {
-  @extend .fdbckBtn;
-  right: 13px;
-  font-size: -webkit-xx-large;
+  // @extend .fdbckBtn;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: -webkit-xxx-large;
+  color: $darkest;
 }
 
 .backArrow {
@@ -515,10 +537,8 @@ textarea {
 }
 
 .bar-header {
-  // background-color: $balanced;
+  background-color: $balanced;
   height: initial;
-  background-image: url("../img/bike-assets/leather.jpg");
-  background-size: cover;
 }
 
 
