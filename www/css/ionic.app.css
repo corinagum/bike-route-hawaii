@@ -10242,18 +10242,24 @@ textarea {
   color: #76CE95;
   font-weight: 900; }
 
-.leadershipTeam {
-  height: auto;
-  width: 100%;
-  background-color: #626262; }
-
-.leadershipWrapDivMediumUp .col {
-  padding: 0px; }
-
 @media only screen and (min-width: 479px) {
   .leadership_container {
     display: -webkit-flex;
+    padding: 0 10px; } }
+
+@media only screen and (min-width: 767px) {
+  .leadership_container {
+    display: -webkit-flex;
     padding: 0 90px; } }
+
+.bikeshare_content {
+  display: block; }
+  @media only screen and (min-width: 479px) {
+    .bikeshare_content {
+      padding: 100px 127px;
+      display: -webkit-flex; }
+      .bikeshare_content .bslogo {
+        margin: auto 30px auto 10px; } }
 
 .leadDiv {
   margin-bottom: 100px;

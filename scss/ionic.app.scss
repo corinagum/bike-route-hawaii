@@ -518,22 +518,39 @@ textarea {
 }
 
 
-.leadershipTeam {
-  height: auto;
-  width: 100%;
-  background-color: $typeGrey;
-}
+// .leadershipTeam {
+//   height: auto;
+//   width: 100%;
+//   background-color: $typeGrey;
+// }
 
-.leadershipWrapDivMediumUp {
-  .col {
-    padding: 0px;
-  }
-}
+// .leadershipWrapDivMediumUp {
+//   .col {
+//     padding: 0px;
+//   }
+// }
 
 .leadership_container {
   @media #{$medium} {
     display: -webkit-flex;
+    padding: 0 10px;
+  }
+  @media #{$large} {
+    display: -webkit-flex;
     padding: 0 90px;
+  }
+}
+
+.bikeshare_content {
+  display: block;
+
+  @media #{$medium} {
+    padding: 100px 127px;
+    display: -webkit-flex;
+
+    .bslogo {
+      margin: auto 30px auto 10px;
+    }
   }
 }
 
