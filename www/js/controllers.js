@@ -5,6 +5,11 @@
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$ionicSideMenuDelegate', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$ionicSideMenuDelegate) {
 
+
+    $scope.toggleRight = function () {
+      $ionicSideMenuDelegate.toggleRight();
+    };
+
     // console.log("mapctrl started", UserService.getUser());
     // if(UserService.getUser() === null){
     //   console.log("no user, made one");
