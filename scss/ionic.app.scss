@@ -39,7 +39,7 @@ body, p {
   font-size: 12px;
 }
 
-h4, h5, p, li, a {
+h4, h5, p, li, a, span {
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -71,9 +71,67 @@ img {
           transform: translate(-50%, -50%);
 }
 
-.landing {
+.concreteBackground {
   background-image: url("../img/bike-assets/concrete-texture.jpg");
   background-size: cover;
+  height: 378px;
+
+  .containerSection {
+    max-width: 626px;
+  }
+
+  span {
+    @include fontType($typeGrey, 56px, 56px);
+    font-weight: 600;
+  }
+
+  p {
+    @include fontType($typeGrey, 28px, 42px);
+    margin-top: 36px;
+  }
+  .paddingSection {
+    padding: 100px 0px;
+  }
+}
+
+.benefitSections {
+  height: 566px;
+
+  .sectionImageTextContents {
+    margin: auto;
+    width: 90%;
+  }
+
+  .copyInBenefitsSection {
+    margin: auto;
+  }
+
+  .imageWrapper {
+    width: 228.13px;
+    margin: auto 30px;
+    img {
+      width: 78%;
+      margin: auto;
+    }
+  }
+
+  h5 {
+    @include fontType($darkest, 22px, 28px);
+    font-weight: bold;
+  }
+
+  p {
+    @include fontType($typeGrey, 16px, 22px);
+  }
+}
+
+.benefitSection_concreteBg {
+  @extend .benefitSections;
+  background-image: url("../img/bike-assets/concrete-texture.jpg");
+  background-size: cover;
+}
+
+.landing {
   line-height: 24px;
 }
 
@@ -217,42 +275,6 @@ img {
     max-height: 100%;
     padding: 0px 20px 20px 20px;
   }
-}
-
-.borderRight {
-  border-right: 1px solid lighten($typeGrey, 50%);
-  margin: 15px 12px;
-}
-
-@media #{$large} {
-  .firstRowBorder {
-    border-bottom: 1px solid lighten($typeGrey, 50%);
-  }
-}
-
-.benefitBlock {
-  p {
-    padding: 0 4%;
-    line-height: 18px;
-  }
-
-  h5 {text-align: center;}
-
-  @media #{$large} {
-    min-height: 400px;
-    padding: 0 8%;
-  }
-}
-
-@media #{$large} {
-  .bottomRowBorder {
-    border-bottom: none;
-    min-height: 300px;
-  }
-}
-
-.benGraphics {
-  img {max-height: 90px;}
 }
 
 .socialIcons {
