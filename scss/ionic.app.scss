@@ -122,12 +122,10 @@ img {
   margin: auto;
 }
 
-.benefitSections {
-  // min-height: 596px;
+.each_section {
 
   .sectionImageTextContents {
     margin: 20px auto;
-    // width: 90%;
     display: block;
 
 
@@ -139,7 +137,7 @@ img {
     }
   }
 
-  .copyInBenefitsSection {
+  .copy_in_section {
     margin: auto;
   }
 
@@ -163,7 +161,7 @@ img {
 }
 
 .benefitSection_concreteBg {
-  @extend .benefitSections;
+  @extend .each_section;
   background-image: url("../img/bike-assets/concrete-texture.jpg");
   background-size: cover;
 }
@@ -205,7 +203,6 @@ img {
 
   img {
     height: auto;
-    width: 140px;
   }
 }
 
@@ -315,14 +312,12 @@ img {
 
 .socialIcons {
   font-size: 20px;
-  position: absolute;
-  right: 10px;
+  float: right;
    i {color: $stable;}
 }
 
 .footerBack {
-  width: 75%;
-  p {color: $stable;}
+  p {color: $stable; float: left;}
 }
 
 .paddingLeft {
@@ -535,8 +530,36 @@ textarea {
   }
 }
 
+.leadership_container {
+  @media #{$medium} {
+    display: -webkit-flex;
+    padding: 0 90px;
+  }
+}
+
 .leadDiv {
-  // padding: 0% 8%;
+  margin-bottom: 100px;
+  padding: 0 5px;
+  @media #{$medium} {
+    padding: 0 20px;
+  }
+
+
+  h5 {
+    @include fontType($darkest, 18px, 26px);
+    font-weight: 600;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+    @media #{$medium} {
+      font-size: 20px;
+    }
+  }
+
+  p {
+    @include fontType($typeGrey, 14px, 20px);
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  }
+
   img {
     max-height: 200px;
   }
