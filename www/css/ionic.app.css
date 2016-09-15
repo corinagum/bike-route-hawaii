@@ -10293,6 +10293,11 @@ textarea {
 .bar-header {
   background-color: #76CE95;
   height: 100px; }
+  .bar-header img {
+    background-color: #f8f8f8;
+    width: 120px;
+    margin-left: 8px;
+    padding: 5px; }
 
 .commentHeader {
   font-size: 18px;
