@@ -10475,7 +10475,8 @@ textarea {
   border-radius: 0; }
 
 .leaflet-control-geosearch {
-  position: relative; }
+  position: relative;
+  top: 50px; }
 
 .leaflet-control-geosearch a {
   -webkit-border-radius: 4px;
@@ -10508,7 +10509,9 @@ textarea {
 
 .leaflet-control {
   box-shadow: none;
-  border: none; }
+  border: none;
+  position: relative;
+  top: 40px; }
 
 .leaflet-control-geosearch form {
   -webkit-border-radius: 20px;
