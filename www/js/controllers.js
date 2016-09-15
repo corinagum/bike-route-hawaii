@@ -96,6 +96,7 @@
       lng: -157.8398036956787,
       zoom: 15,
     },
+    controls: {},
     markers : {},
     bikeShareIcon: {
       iconUrl: '../img/bike-assets/bike-icon.png',
@@ -399,10 +400,13 @@
       L.marker([leafEvent.latitude, leafEvent.longitude], {icon: redIcon}).addTo(map)
       .bindPopup("You are here!").openPopup();
     });
-
   });
 
   setMarkersReturned(bikesharePoints);
+
+function invokeThis() {
+  console.log("IS THIS WORKING???");
+}
 
   $scope.$on('leafletDirectiveMap.map.load', function(event, args){
     leafletData.getMap()
@@ -412,6 +416,11 @@
           // bounds : 21.221181|-158.381653|21.725976|-157.592010
         })
       }).addTo(map);
+
+      map.addControl(L.control.sidebar('sidebar', {
+          position: 'left'
+      }));
+
     });
   });
 
@@ -497,6 +506,7 @@
 
   // SAVE CURRENT MARKER PROPERTIES TO SCOPE
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
+
     $scope.user = UserService.getUser();
     if(args.modelName !== 'reportPoint'){
       if($scope.stationClicked.lastClicked){
@@ -508,6 +518,7 @@
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
       $scope.openModal(4);
+      // $scope.sidebar.show();
 
     }
     if($scope.user.liked === null || undefined){

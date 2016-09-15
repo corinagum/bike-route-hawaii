@@ -1,0 +1,89 @@
+{
+  "_args": [
+    [
+      "leaflet-sidebar",
+      "/Users/rizhiaortega/DevLeague/DevLeague/bike-route-hawaii"
+    ]
+  ],
+  "_from": "leaflet-sidebar@*",
+  "_id": "leaflet-sidebar@0.1.9",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/leaflet-sidebar",
+  "_nodeVersion": "4.1.2",
+  "_npmUser": {
+    "email": "christopher.keen@gmail.com",
+    "name": "zedd45"
+  },
+  "_npmVersion": "2.14.4",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "leaflet-sidebar",
+    "raw": "leaflet-sidebar",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/leaflet-sidebar/-/leaflet-sidebar-0.1.9.tgz",
+  "_shasum": "7eab226043119c7936af06cf006f265ce9daeb8c",
+  "_shrinkwrap": null,
+  "_spec": "leaflet-sidebar",
+  "_where": "/Users/rizhiaortega/DevLeague/DevLeague/bike-route-hawaii",
+  "author": {
+    "email": "tobias.bieniek@gmx.de",
+    "name": "Tobias Bieniek"
+  },
+  "bugs": {
+    "url": "https://github.com/turbo87/leaflet-sidebar/issues"
+  },
+  "dependencies": {},
+  "description": "A responsive sidebar plugin for Leaflet",
+  "devDependencies": {
+    "gulp": "~3.6.0",
+    "gulp-clean": "~0.2.4",
+    "gulp-concat": "~2.1.7",
+    "gulp-csslint": "~0.1.3",
+    "gulp-header": "~0.4.0",
+    "gulp-jshint": "~1.3.4",
+    "gulp-minify-css": "~0.1.0",
+    "gulp-rename": "~0.2.2",
+    "gulp-sass": "2.0.4",
+    "gulp-uglify": "~0.1.0",
+    "gulp-zip": "~0.1.2"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "7eab226043119c7936af06cf006f265ce9daeb8c",
+    "tarball": "https://registry.npmjs.org/leaflet-sidebar/-/leaflet-sidebar-0.1.9.tgz"
+  },
+  "gitHead": "70a53dcca90e9613c1ac3c914e50675c0bb3b32b",
+  "homepage": "https://github.com/turbo87/leaflet-sidebar",
+  "keywords": [
+    "gis",
+    "leaflet",
+    "map"
+  ],
+  "license": "MIT",
+  "main": "src/L.Control.Sidebar.js",
+  "maintainers": [
+    {
+      "name": "zedd45",
+      "email": "christopher.keen@gmail.com"
+    }
+  ],
+  "name": "leaflet-sidebar",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turbo87/leaflet-sidebar.git"
+  },
+  "scripts": {
+    "test": "gulp lint"
+  },
+  "version": "0.1.9"
+}
