@@ -1,10 +1,15 @@
 
-  <ion-header-bar class="bar bar-header">
+  <ion-header-bar class="bar bar-header valign-wrapper">
     <a href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
-    <a href="#/tab/leave-comments" class="button fdbckBtn waves-effect" nav-transition="none">
+
+    <img src="./img/bike-assets/bikesharelogo.png">
+
+    <a href="#/tab/leave-comments" class="button fdbckBtn waves-effect waves-light" nav-transition="none">
       <span>Leave Feedback</span>
     </a>
-  <a href="#/tab/home"><i class="ion-android-home button surveyBtn waves-effect" nav-transition="none"></i></a>
+
+    <a href="#/tab/home"><i class="ion-android-home button surveyBtn waves-effect" nav-transition="none"></i></a>
+
   </ion-header-bar>
 
   <ion-view view-title="Home" class="landingBgClr">
@@ -14,15 +19,8 @@
         <img class="mapImage" src="../../img/bike-assets/AREA Map.png" alt="">
       <!-- </div> -->
 
-
-      <div class="section">
-        <h1 class="secTitle">What is Bikeshare?</h1><br>
-        <p class="secPar">Bikeshare gives you all of the benefits of riding a bike for short trips, with none of the hassles of ownership. Our program will start in the urban core of Honolulu, and you’ll be able to pick up a bike from any one of our 150 stations and use it to ride to work, run errands, go shopping, or just enjoy a fun ride! Bikeshare is a great way to get around Honolulu, one ride at a time.</p>
-      </div>
-
-
       <!-- MOBILE VIEWPORT HOW DOES IT WORK-->
-      <div class="section hide-on-med-and-up" style="background-color: #fff" ng-init="one=true;two=false;three=false;four=false;">
+      <!-- <div class="section hide-on-med-and-up" style="background-color: #fff" ng-init="one=true;two=false;three=false;four=false;">
         <h1 class="secTitle">How does it work?</h1>
         <div class="stepsDiv">
           <i class="ion-arrow-left-b" style="font-size: 24px; margin: auto; padding-right: 20px;"></i>
@@ -96,70 +94,72 @@
             </div>
           </div>
         </div>
-      </div><!-- / END OF MOBILE VIEWPORT HOW DOES IT WORK-->
+      </div> --><!-- / END OF MOBILE VIEWPORT HOW DOES IT WORK-->
 
       <!-- MEDIUM UP VIEWPORT HOW DOES IT WORK-->
-      <div class="medUpContainer sectionTwo hide-on-small-only">
 
-        <h1 class="secTitle">How does it work?</h1>
-        <div class="row medUpSteps sectionTwo">
-          <div class="col">
-            <div class="center">
-              <img src="../../img/bike-assets/Get a bike.png" alt="">
-            </div>
-            <div class="left">
-              <h5>Get a bike</h5>
-              <ul>
-                <li>Pay with a credit card or sign up for membership.</li></br>
-                <li>Select any available bike.</li>
-              </ul>
-            </div>
+      <div class="concreteBackground valign-wrapper">
+        <div class="center paddingSection">
+          <span>What is Bikeshare?</span>
+          <p class="center">Bikeshare gives you all of the benefits of riding a bike for short trips, with none of the hassles of ownership. Our program will start in the urban core of Honolulu, and you’ll be able to pick up a bike from any one of our 150 stations and use it to ride to work, run errands, go shopping, or just enjoy a fun ride! Bikeshare is a great way to get around Honolulu, one ride at a time.</p>
+        </div>
+      </div>
+
+      <div class="center howDoesItWorkTitle">
+        <span>How does it work?</span>
+      </div>
+      <div class="valign-wrapper benefitSections">
+        <div class="sectionImageTextContents row">
+          <div class="imageWrapper center">
+            <img src="../../img/bike-assets/Get a bike.png" alt="">
           </div>
-          <div class="borderRight"></div>
+          <div class="col copyInBenefitsSection">
+            <h5>Get a bike</h5>
+            <p>Pay with a credit card or sign up for membership.</br>
+              Select any available bike.</p>
+          </div>
+        </div>
+      </div>
 
-          <div class="col">
-          <div class="center" style="margin-top: -12px;">
+
+      <div class="valign-wrapper benefitSection_concreteBg">
+        <div class="sectionImageTextContents row">
+          <div class="imageWrapper center">
             <img src="../../img/bike-assets/ Get Going.png" alt="">
           </div>
-            <div class="left">
-              <h5>Get Going</h5>
-              <ul>
-                <li>Enjoy your ride, be safe.</li></br>
-                <li>Ride for as long as you like. Short rides are the most cost effective for most plans.</li>
-              </ul>
-            </div>
+          <div class="col copyInBenefitsSection">
+            <h5>Get Going</h5>
+            <p>Enjoy your ride, be safe.</br>
+               Ride for as long as you like. Short rides are the most cost effective for most plans.</p>
           </div>
-          <div class="borderRight"></div>
+        </div>
+      </div>
 
 
-          <div class="col">
-          <div class="center">
+      <div class="valign-wrapper benefitSections">
+        <div class="sectionImageTextContents row">
+          <div class="imageWrapper center">
             <img src="../../img/bike-assets/Check in.png" alt="">
           </div>
-            <div class="left">
+          <div class="col copyInBenefitsSection">
             <h5>Check in</h5>
-              <ul>
-                <li>Return your bike to any other station in the network.</li></br>
-                <li>When you “dock” your bike, you are no longer being charged for ride time.</li>
-              </ul>
-            </div>
+            <p>Return your bike to any other station in the network.</br>
+               When you “dock” your bike, you are no longer being charged for ride time.</p>
           </div>
-          <div class="borderRight"></div>
+        </div>
+      </div>
 
 
-          <div class="col">
-            <div class="center">
-              <img src="../../img/bike-assets/Go again_.png" alt="">
-            </div>
-            <div class="left">
-              <h5>Go again</h5>
-              <ul>
-                <li>Go for another convenient and fun ride!</li></br>
-                <li>Most plans include enough time for multiple trips.</li>
-              </ul>
-            </div>
+      <div class="valign-wrapper benefitSection_concreteBg">
+        <div class="sectionImageTextContents row">
+          <div class="imageWrapper center">
+            <img src="../../img/bike-assets/Go again_.png" alt="">
           </div>
-
+          <div class="col copyInBenefitsSection">
+            <h5>Go again</h5>
+            <p>Go for another convenient and fun ride!</br>
+               Most plans include enough time for multiple trips.</p>
+          </div>
         </div>
       </div>
 
@@ -171,8 +171,8 @@
         </div>
       </div>
 
-      <div class="">
-        <h1 class="secTitle" style="padding: 25px 0px">Leadership</h1>
+      <div cldivs="">
+        <div class="howDoesItWorkTitle center"><span>Leadership</span></div>
         <img class="leadershipTeam hide-on-med-and-up" src="../../img/bike-assets/Screen Shot-Leadership.png" alt="">
       </div>
 
@@ -219,14 +219,16 @@
         </p>
       </div>
 
+      <div class="footerSec">
+        <div class="padding footerBack">
+          <p style="color: #f5f5f5; font-size: 10px;">Bikeshare &copy 2016</p>
+        </div>
+        <div class="padding socialIcons"><a href="https://www.facebook.com/bikesharehawaii/"><i class="ion-social-facebook"></i></a>&nbsp&nbsp <a href="https://www.instagram.com/bikesharehawaii/"><i class="ion-social-instagram"></i></a>&nbsp <a href="https://twitter.com/bikesharehi"><i class="ion-social-twitter"></i></a></div>
+      </div>
+
 
     </ion-content>
-    <ion-footer-bar class="footerSec">
-      <div class="padding footerBack">
-        <p style="color: #f5f5f5; font-size: 10px;">Bikeshare &copy 2016</p>
-      </div>
-      <div class="padding socialIcons"><a href="https://www.facebook.com/bikesharehawaii/"><i class="ion-social-facebook"></i></a>&nbsp&nbsp <a href="https://www.instagram.com/bikesharehawaii/"><i class="ion-social-instagram"></i></a>&nbsp <a href="https://twitter.com/bikesharehi"><i class="ion-social-twitter"></i></a></div>
-    </ion-footer-bar>
+
 
 
 

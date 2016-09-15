@@ -25,8 +25,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "partials/browser-view";
 @import "partials/keyFrames";
 
-$medium: "only screen and (min-width:500px)";
-$large: "only screen and (min-width:600px)";
+$medium: "only screen and (min-width:479px)";
+$large: "only screen and (min-width:767px)";
 
 @mixin fontType($color,$size,$line-height) {
   color: $color;
@@ -74,12 +74,6 @@ img {
 .concreteBackground {
   background-image: url("../img/bike-assets/concrete-texture.jpg");
   background-size: cover;
-  height: 378px;
-
-  .containerSection {
-    max-width: 626px;
-  }
-
   span {
     @include fontType($typeGrey, 42px, 42px);
     font-weight: 600;
@@ -97,21 +91,48 @@ img {
       @include fontType($typeGrey, 28px, 42px);
     }
   }
-  .paddingSection {
-    padding: 100px 0px;
+}
+
+.howDoesItWorkTitle {
+  padding: 50px 20px;
+  margin: auto;
+
+  @media #{$medium} {
+    padding-top: 100px;
+    @include fontType($typeGrey, 56px, 56px);
+  }
+
+  span{
+    @include fontType($typeGrey, 42px, 42px);
+    font-weight: 600;
+
+    @media #{$medium} {
+      @include fontType($typeGrey, 56px, 56px);
+    }
   }
 }
 
+.containerSection {
+  max-width: 626px;
+}
+
+.paddingSection {
+  padding: 100px 0px;
+  width: 85%;
+  margin: auto;
+}
+
 .benefitSections {
-  min-height: 596px;
+  // min-height: 596px;
 
   .sectionImageTextContents {
-    margin: 40px auto;
-    width: 90%;
+    margin: 20px auto;
+    // width: 90%;
     display: block;
 
 
     @media #{$large} {
+      margin: 100px auto;
       width: 67%;
       display: -webkit-flex;
       display: flex;
@@ -260,18 +281,6 @@ img {
 
 .howItworksMobile {
   p {font-size: 14px;}
-}
-
-.medUpContainer {
-  // padding: 40px;
-}
-
-.medUpSteps {
-  // padding: 4% 8%;
-
-  h5 {text-align: center;}
-  ul {line-height: 14px;}
-  img {max-width: 80%;}
 }
 
 .sectionTwo {
@@ -598,6 +607,7 @@ textarea {
   img {
     background-color: $stable;
     width: 120px;
+    max-height: 44px;
     margin-left: 8px;
     padding: 5px;
   }

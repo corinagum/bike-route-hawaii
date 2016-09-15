@@ -9871,16 +9871,13 @@ img {
 
 .concreteBackground {
   background-image: url("../img/bike-assets/concrete-texture.jpg");
-  background-size: cover;
-  height: 378px; }
-  .concreteBackground .containerSection {
-    max-width: 626px; }
+  background-size: cover; }
   .concreteBackground span {
     color: #626262;
     font-size: 42px;
     line-height: 42px;
     font-weight: 600; }
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: 479px) {
       .concreteBackground span {
         color: #626262;
         font-size: 56px;
@@ -9890,42 +9887,70 @@ img {
     font-size: 22px;
     line-height: 30px;
     margin-top: 36px; }
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: 479px) {
       .concreteBackground p {
         color: #626262;
         font-size: 28px;
         line-height: 42px; } }
-  .concreteBackground .paddingSection {
-    padding: 100px 0px; }
 
-.benefitSections, .benefitSection_concreteBg {
-  min-height: 596px; }
-  .benefitSections .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents {
-    margin: 40px auto;
-    width: 90%;
-    display: block; }
-    @media only screen and (min-width: 600px) {
-      .benefitSections .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents {
-        width: 67%;
-        display: -webkit-flex;
-        display: flex; } }
-  .benefitSections .copyInBenefitsSection, .benefitSection_concreteBg .copyInBenefitsSection {
-    margin: auto; }
-  .benefitSections .imageWrapper, .benefitSection_concreteBg .imageWrapper {
-    width: 228.13px;
-    margin: auto; }
-    .benefitSections .imageWrapper img, .benefitSection_concreteBg .imageWrapper img {
-      width: 78%;
-      margin: auto; }
-  .benefitSections h5, .benefitSection_concreteBg h5 {
-    color: #242925;
-    font-size: 22px;
-    line-height: 28px;
-    font-weight: bold; }
-  .benefitSections p, .benefitSection_concreteBg p {
+.howDoesItWorkTitle {
+  padding: 50px 20px;
+  margin: auto; }
+  @media only screen and (min-width: 479px) {
+    .howDoesItWorkTitle {
+      padding-top: 100px;
+      color: #626262;
+      font-size: 56px;
+      line-height: 56px; } }
+  .howDoesItWorkTitle span {
     color: #626262;
-    font-size: 16px;
-    line-height: 22px; }
+    font-size: 42px;
+    line-height: 42px;
+    font-weight: 600; }
+    @media only screen and (min-width: 479px) {
+      .howDoesItWorkTitle span {
+        color: #626262;
+        font-size: 56px;
+        line-height: 56px; } }
+
+.containerSection {
+  max-width: 626px; }
+
+.paddingSection {
+  padding: 100px 0px;
+  width: 85%;
+  margin: auto; }
+
+.benefitSections .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents {
+  margin: 20px auto;
+  display: block; }
+  @media only screen and (min-width: 767px) {
+    .benefitSections .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents {
+      margin: 100px auto;
+      width: 67%;
+      display: -webkit-flex;
+      display: flex; } }
+
+.benefitSections .copyInBenefitsSection, .benefitSection_concreteBg .copyInBenefitsSection {
+  margin: auto; }
+
+.benefitSections .imageWrapper, .benefitSection_concreteBg .imageWrapper {
+  width: 228.13px;
+  margin: auto; }
+  .benefitSections .imageWrapper img, .benefitSection_concreteBg .imageWrapper img {
+    width: 78%;
+    margin: auto; }
+
+.benefitSections h5, .benefitSection_concreteBg h5 {
+  color: #242925;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: bold; }
+
+.benefitSections p, .benefitSection_concreteBg p {
+  color: #626262;
+  font-size: 16px;
+  line-height: 22px; }
 
 .benefitSection_concreteBg {
   background-image: url("../img/bike-assets/concrete-texture.jpg");
@@ -9980,7 +10005,7 @@ img {
   .moreInfoMap h4 {
     color: #f8f8f8;
     font-size: 18px; }
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: 479px) {
       .moreInfoMap h4 {
         font-size: 22px; } }
   .moreInfoMap:hover {
@@ -9996,7 +10021,7 @@ img {
     font-weight: 600;
     width: 80%;
     margin: auto; }
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: 479px) {
       .viewMapBtn p {
         color: #f8f8f8;
         font-size: 18px;
@@ -10024,15 +10049,6 @@ img {
 
 .howItworksMobile p {
   font-size: 14px; }
-
-.medUpSteps h5 {
-  text-align: center; }
-
-.medUpSteps ul {
-  line-height: 14px; }
-
-.medUpSteps img {
-  max-width: 80%; }
 
 .sectionTwo, .section {
   padding: 40px;
@@ -10098,7 +10114,7 @@ input[type="text"], input[type="email"] {
   margin-bottom: 5px;
   background-color: #f8f8f8;
   font-size: 12px; }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 767px) {
     input[type="text"], input[type="email"] {
       margin-bottom: 15px; } }
 
@@ -10131,7 +10147,7 @@ textarea {
 
 .divSize {
   padding: 0 7%; }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 767px) {
     .divSize {
       padding: 0 23%; } }
 
@@ -10175,7 +10191,7 @@ textarea {
   .fdbckBtn:hover, .button.suggestBtn:hover {
     background-color: #508f66;
     color: #f8f8f8; }
-  @media only screen and (min-width: 500px) {
+  @media only screen and (min-width: 479px) {
     .fdbckBtn span, .button.suggestBtn span {
       font-size: 12px; } }
 
@@ -10296,6 +10312,7 @@ textarea {
   .bar-header img {
     background-color: #f8f8f8;
     width: 120px;
+    max-height: 44px;
     margin-left: 8px;
     padding: 5px; }
 
@@ -10413,7 +10430,7 @@ textarea {
     background-color: yellow;
     width: 100px; }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 479px) {
   .modal {
     top: 0;
     right: 100%;
@@ -10504,7 +10521,7 @@ textarea {
 
 .addPadding {
   padding: 0 5%; }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 767px) {
     .addPadding {
       padding: 0 7%; } }
 
@@ -10521,7 +10538,7 @@ textarea {
   margin-bottom: 15px; }
   .radioBlock .selectionEachBlock {
     min-width: 102.66px; }
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 767px) {
       .radioBlock .selectionEachBlock {
         min-width: 112.5px; } }
     .radioBlock .selectionEachBlock label {
@@ -10552,7 +10569,7 @@ textarea {
   justify-content: center;
   text-align: center;
   z-index: 50000000000000000; }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 767px) {
     .centerBox {
       z-index: 50000000000000000;
       width: 100%;
@@ -10567,7 +10584,7 @@ img.mobileYellowBikeIcon {
   margin: auto; }
   #footer-bar.row .row {
     margin: auto; }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 767px) {
     #footer-bar.row {
       display: flex;
       display: -webkit-flex;
@@ -10578,13 +10595,13 @@ img.mobileYellowBikeIcon {
     background-color: rgba(248, 248, 248, 0.6); }
   #footer-bar.row img {
     max-width: 28px; }
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 767px) {
       #footer-bar.row img {
         max-width: 32px; } }
   #footer-bar.row p {
     line-height: 14px;
     font-size: 14px; }
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 767px) {
       #footer-bar.row p {
         line-height: 16px;
         font-size: 18px; } }
@@ -10594,10 +10611,10 @@ img.mobileYellowBikeIcon {
     padding: 10px; }
     #footer-bar.row .bothSuggestBtns a {
       color: #626262; }
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 767px) {
       #footer-bar.row .bothSuggestBtns {
         background-color: #f8f8f8; } }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 767px) {
     #footer-bar.row .eachSuggestbtn {
       -webkit-border-radius: 10px;
       -moz-border-radius: 10px;
@@ -10646,7 +10663,7 @@ img.mobileYellowBikeIcon {
   color: #f8f8f8; }
   .mahaloSuggestionWrapper h3 {
     color: #f8f8f8; }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 767px) {
     .mahaloSuggestionWrapper {
       position: relative;
       background-color: #f8f8f8;
