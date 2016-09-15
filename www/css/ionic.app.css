@@ -9972,12 +9972,10 @@ img {
     font-size: large; }
 
 .moreInfoMap {
-  width: 70%;
+  width: 50%;
   padding: 5px 0px;
   border-radius: 5px;
   background-color: #242925;
-  -webkit-transition: background-color 500ms ease;
-  transition: background-color 500ms ease;
   text-align: center; }
   .moreInfoMap h4 {
     color: #f8f8f8;
@@ -10247,9 +10245,10 @@ textarea {
   max-width: 100%; }
 
 .mapBg {
-  height: 445px;
-  background: url("./../img/bike-assets/leather.jpg") no-repeat;
-  background-size: cover; }
+  padding-top: 199px;
+  padding-bottom: 199px;
+  background-image: url("../img/bike-assets/leather.jpg"), -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+  background-size: 890px auto; }
 
 #pagination {
   clear: both;
@@ -10285,14 +10284,15 @@ textarea {
     border: 0px; }
 
 .footerSec {
-  background-color: #242925; }
+  background-color: #242925;
+  height: 100px;
+  padding: 30px 0 0 10px; }
 
 .modal-backdrop {
   background-color: transparent; }
 
 .bar-header {
-  background-color: #76CE95;
-  height: initial; }
+  background-color: #76CE95; }
 
 .commentHeader {
   font-size: 18px;
