@@ -78,7 +78,7 @@
       baselayers: {
         osm: {
           name: 'Default',
-          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+          url: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
           type: 'xyz'
         },
       }
@@ -87,8 +87,8 @@
       scrollWheelZoom: false,
       doubleClickZoom: false,
       touchZoom: true,
-      maxNativeZoom: 16,
-      maxZoom : 16,
+      maxNativeZoom: 18,
+      maxZoom : 18,
       inertiaMaxSpeed: 150
     },
     center : {
