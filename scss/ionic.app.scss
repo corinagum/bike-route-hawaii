@@ -81,13 +81,21 @@ img {
   }
 
   span {
-    @include fontType($typeGrey, 56px, 56px);
+    @include fontType($typeGrey, 42px, 42px);
     font-weight: 600;
+
+    @media #{$medium} {
+      @include fontType($typeGrey, 56px, 56px);
+    }
   }
 
   p {
-    @include fontType($typeGrey, 28px, 42px);
+    @include fontType($typeGrey, 22px, 30px);
     margin-top: 36px;
+
+    @media #{$medium} {
+      @include fontType($typeGrey, 28px, 42px);
+    }
   }
   .paddingSection {
     padding: 100px 0px;
@@ -95,11 +103,19 @@ img {
 }
 
 .benefitSections {
-  height: 566px;
+  min-height: 596px;
 
   .sectionImageTextContents {
-    margin: auto;
+    margin: 40px auto;
     width: 90%;
+    display: block;
+
+
+    @media #{$large} {
+      width: 67%;
+      display: -webkit-flex;
+      display: flex;
+    }
   }
 
   .copyInBenefitsSection {
@@ -108,7 +124,7 @@ img {
 
   .imageWrapper {
     width: 228.13px;
-    margin: auto 30px;
+    margin: auto;
     img {
       width: 78%;
       margin: auto;
@@ -178,8 +194,7 @@ img {
 }
 
 .moreInfoMap {
-  width: 50%;
-  margin: auto;
+  width: 70%;
   padding: 5px 0px;
   border-radius: 5px;
   background-color: $darkest;
@@ -188,7 +203,11 @@ img {
   text-align: center;
   h4 {
     color: $stable;
-    font-size: 22px;
+    font-size: 18px;
+
+    @media #{$medium} {
+      font-size: 22px;
+    }
   }
 
   &:hover {
@@ -198,9 +217,18 @@ img {
 }
 
 .viewMapBtn {
+  margin: auto;
+
   p {
-    @include fontType($stable, 18px, 18px);
+    @include fontType($stable, 14px, 20px);
     font-weight: 600;
+    width: 80%;
+    margin: auto;
+
+    @media #{$medium} {
+      @include fontType($stable, 18px, 18px);
+      font-weight: 600;
+    }
   }
 }
 
@@ -408,6 +436,10 @@ textarea {
   padding: 0px 15px;
 }
 
+.bar {
+  border-bottom: none;
+}
+
 .fdbckBtn {
   @include borderRadius(5px);
   position: absolute;
@@ -508,7 +540,7 @@ textarea {
 }
 
 .mapBg {
-  height: 400px;
+  height: 445px;
   background: url("./../img/bike-assets/leather.jpg")no-repeat;
   background-size: cover;
 }
@@ -568,12 +600,6 @@ textarea {
   @include fontStyling(18px, $stable);
   font-weight: 300;
   margin-bottom: 40px;
-}
-
-.viewMapBtn {
-  z-index: 10;
-  position: relative;
-  top: 170px;
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
