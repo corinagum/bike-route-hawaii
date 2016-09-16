@@ -3,7 +3,7 @@
 
   <ion-side-menus class="has-header">
   <ion-side-menu-content>
-    <ion-header-bar class="bar bar-header" style="z-index: 200;">
+    <ion-header-bar class="bar bar-header">
       <a ng-href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
 
       <!-- <a ng-href="#/tab/leave-comments" class="button fdbckBtn waves-effect" nav-transition="none">
@@ -20,31 +20,27 @@
     </ion-header-bar>
 
     <ion-content data-tap-disabled="true" class="fade-on-enter">
-
         <leaflet data-tap-disabled="true" layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' controls="controls" custom-controls="myCustomControls" geojson="geojson"></leaflet>
-
-        <div id="sidebar">
-          <h1>leaflet-sidebar</h1>
-        </div>
-
-
     </ion-content>
   </ion-side-menu-content>
 
     <ion-side-menu side="right">
       <ion-list>
-        <ion-item style="background-color: purple;"><a href="#/tab/home"><i class="ion-android-home button surveyBtn waves-effect" nav-transition="none"></i></a></ion-item>
+        <ion-item><a href="#/tab/home">Home&nbsp;<i class="ion-android-home waves-effect" nav-transition="none"></i></a></ion-item>
       </ion-list>
+
       <ion-list>
-        <ion-item ><a ng-href="#/tab/leave-comments" class="button fdbckBtn waves-effect" nav-transition="none">
+        <ion-item ><a ng-href="#/tab/leave-comments" class="waves-effect" nav-transition="none">
         <span>Leave Feedback</span>
       </a></ion-item>
       </ion-list>
+
       <ion-list>
-        <ion-item ><div class="button suggestBtn waves-effect" ng-click="createReportPoint()"><span>Suggest a Station</span></div></ion-item>
+        <ion-item ><div class="waves-effect" ng-click="createReportPoint()"><span>Suggest a Station</span></div></ion-item>
       </ion-list>
+
       <ion-list>
-        <ion-item >HOME</ion-item>
+        <ion-item >Like Stations</ion-item>
       </ion-list>
     </ion-side-menu>
   </ion-side-menus>
