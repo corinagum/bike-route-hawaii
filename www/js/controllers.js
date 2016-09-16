@@ -435,7 +435,9 @@
   };
 
 
-
+  $scope.closeBulkLiking = function () {
+    $scope.showBulkLikeFooter = false;
+  };
 
   // ADD REPORT/SUGGESTION POINT
   $scope.createReportPoint = function(){
