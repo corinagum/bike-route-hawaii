@@ -29,7 +29,7 @@
       </ion-list>
 
       <ion-list>
-        <ion-item menu-close ng-click="" class="waves-effect"><span>Like Stations</span></ion-item>
+        <ion-item menu-close ng-click="likeMultiStations()" class="waves-effect"><span>Like Stations</span></ion-item>
       </ion-list>
     </ion-side-menu>
   </ion-side-menus><!-- SIDE MENU FOR MAP -->
@@ -40,7 +40,7 @@
 
 
   <!-- BULK LIKE VIEW FOR MEDIUM UP -->
-  <ion-footer-bar id="footer-bar" class="row hide-on-med-and-down" ng-show="showReportControl">
+  <ion-footer-bar id="footer-bar" class="row hide-on-med-and-down" ng-show="showBulkLikeFooter">
 
     <div class="exitOutOfSuggestion" ng-click="cancelReportPoint()">
       x
@@ -50,35 +50,14 @@
       <div class="row daStationWrap">
 
         <div class="row">
-          <img src=".././img/bike-assets/numOne.png" alt="">
-          <div class="thePdirection row">
-            <span>Drag</span>
-
-            <div class="yellowBikeDiv">
-              <img src=".././img/bike-assets/Bike Yellow copy.png">
-            </div>
-
-            <span>marker.</span>
-          </div>
-        </div>
-
-        <div class="row">
-          <img src=".././img/bike-assets/num2.png" alt="">
           <div class="thePdirection">
-           <span>Place bike icon where you'd like to see a station.</span>
-          </div>
-        </div>
-
-        <div class="row">
-          <img src=".././img/bike-assets/num3.png" alt="">
-          <div class="thePdirection">
-            Click 'Confirm location' to set your point.
+           <span>Tap station markers and like your favorite stations.</span>
           </div>
         </div>
 
         <div class="row center">
           <a style="background-color: rgb(234, 187, 0); margin: auto; color: black;" class="button" ng-click="openModal(3);cancelReportPoint()" nav-transition="none">
-             Confirm Location
+             Save Liked Stations
           </a>
         </div>
 

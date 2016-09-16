@@ -409,10 +409,6 @@
 
   setMarkersReturned(bikesharePoints);
 
-function invokeThis() {
-  console.log("IS THIS WORKING???");
-}
-
   $scope.$on('leafletDirectiveMap.map.load', function(event, args){
     leafletData.getMap()
     .then(function(map){
