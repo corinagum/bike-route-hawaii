@@ -1,11 +1,17 @@
 
 <ion-view data-ng-init="init()" title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
 
+
+
+
+
+
   <ion-side-menus><!-- SIDE MENU FOR MAP -->
     <ion-pane ion-side-menu-content>
-      <ion-header-bar class="bar bar-header">
+      <ion-header-bar class="bar bar-header map_header_bar">
         <a ng-href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
-        <div class="ion-navicon-round button surveyBtn" ng-click="toggleRight();"></div>
+
+        <div class="side_menu_button" ng-click="toggleRight();"><p>Menu</p><i class="ion-navicon-round "></i></div>
       </ion-header-bar>
 
       <ion-content data-tap-disabled="true" class="fade-on-enter">
@@ -15,7 +21,7 @@
 
     <ion-side-menu side="right">
       <ion-list>
-        <ion-item><a menu-close href="#/tab/home">Home&nbsp<i class="ion-android-home waves-effect" nav-transition="none"></i></a></ion-item>
+        <ion-item><a menu-close href="#/tab/home"><i class="ion-android-home waves-effect" nav-transition="none"></i>&nbsp&nbspHome</a></ion-item>
       </ion-list>
 
       <ion-list>

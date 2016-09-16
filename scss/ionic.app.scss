@@ -942,6 +942,23 @@ textarea {
   }
 }
 
+.side_menu_button {
+  @include fontType($darkest, 24px, 22px);
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  display: -webkit-box;
+  p {
+    @include fontType($darkest, 10px, 0);
+    font-weight: 600;
+    margin: 12px 16px 0 0;
+  }
+}
+
+.map_header_bar {
+  height: initial;
+}
+
 .menu-right {
   a, span {
     @include fontType($darkest, 12px, 12px);
@@ -960,6 +977,7 @@ textarea {
 .item {
   background-color: lighten($typeGrey, 53%);
   border: none;
+  border-bottom: 1px solid lighten($typeGrey, 33%);
 }
 ///////////////////////////////////////////
 
