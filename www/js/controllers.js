@@ -432,6 +432,15 @@ function invokeThis() {
   // IF CREATING NEW REPORT/SUGGEST POINT
   // $scope.showReportControl = false;
 
+
+  // LIKE MULITPLE STATIONS
+  $scope.likeMultiStations = function () {
+    $scope.showBulkLikeFooter = true;
+  };
+
+
+
+
   // ADD REPORT/SUGGESTION POINT
   $scope.createReportPoint = function(){
       $scope.showReportControl = true;
