@@ -10253,13 +10253,13 @@ textarea {
 @media only screen and (min-width: 767px) {
   .leadership_container {
     display: -webkit-flex;
-    padding: 0 90px; } }
+    padding: 0 5%; } }
 
 .bikeshare_content {
   display: block; }
   @media only screen and (min-width: 479px) {
     .bikeshare_content {
-      padding: 100px 127px;
+      padding: 100px 6.5%;
       display: -webkit-flex; }
       .bikeshare_content .bslogo {
         margin: auto 30px auto 10px; } }
