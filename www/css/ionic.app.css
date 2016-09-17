@@ -9921,36 +9921,37 @@ img {
   width: 85%;
   margin: auto; }
 
-.each_section .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents {
-  margin: 20px auto;
-  display: block; }
-  @media only screen and (min-width: 767px) {
-    .each_section .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents {
-      margin: 100px auto;
-      width: 67%;
-      display: -webkit-flex;
-      display: flex; } }
-
-.each_section .copy_in_section, .benefitSection_concreteBg .copy_in_section {
-  margin: auto; }
-
-.each_section .imageWrapper, .benefitSection_concreteBg .imageWrapper {
-  width: 228.13px;
-  margin: auto; }
-  .each_section .imageWrapper img, .benefitSection_concreteBg .imageWrapper img {
-    width: 78%;
+.each_section, .benefitSection_concreteBg {
+  border: 1px solid blue; }
+  .each_section .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents {
+    border: 1px solid red;
+    margin: 20px auto;
+    display: block; }
+    @media only screen and (min-width: 767px) {
+      .each_section .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents {
+        margin: 100px auto;
+        width: 80%;
+        display: -webkit-flex;
+        display: flex; } }
+  .each_section .copy_in_section, .benefitSection_concreteBg .copy_in_section {
+    border: 1px solid yellow;
+    margin: auto 20px; }
+  .each_section .imageWrapper, .benefitSection_concreteBg .imageWrapper {
+    border: 1px solid black;
+    width: 228.13px;
     margin: auto; }
-
-.each_section h5, .benefitSection_concreteBg h5 {
-  color: #242925;
-  font-size: 22px;
-  line-height: 28px;
-  font-weight: bold; }
-
-.each_section p, .benefitSection_concreteBg p {
-  color: #626262;
-  font-size: 16px;
-  line-height: 22px; }
+    .each_section .imageWrapper img, .benefitSection_concreteBg .imageWrapper img {
+      width: 78%;
+      margin: auto; }
+  .each_section h5, .benefitSection_concreteBg h5 {
+    color: #242925;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: bold; }
+  .each_section p, .benefitSection_concreteBg p {
+    color: #626262;
+    font-size: 16px;
+    line-height: 22px; }
 
 .benefitSection_concreteBg {
   background-image: url("../img/bike-assets/concrete-texture.jpg");

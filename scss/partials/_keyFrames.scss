@@ -1,11 +1,30 @@
 
-
 @mixin borderRadius($radius) {
  -webkit-border-radius: $radius;
     -moz-border-radius: $radius;
      -ms-border-radius: $radius;
          border-radius: $radius;
 }
+
+@mixin fontType($color,$size,$line-height) {
+  color: $color;
+  font-size: $size;
+  line-height: $line-height;
+}
+
+@mixin buttonStyling($color,$background-color,$padTop,$padRight,$padBottom,$padLeft,$weight,$size){
+  color: $color;
+  background-color: $background-color;
+  padding: $padTop $padRight $padBottom $padLeft;
+  font-weight: $weight;
+  font-size: $size;
+}
+
+@mixin fontStyling($size, $color) {
+  font-size: $size;
+  color: $color;
+}
+
 
 @-webkit-keyframes bounceIn {
   0% {-webkit-transform: scale(0.1); opacity: 0;}

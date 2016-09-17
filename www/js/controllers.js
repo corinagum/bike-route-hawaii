@@ -417,11 +417,6 @@
           // bounds : 21.221181|-158.381653|21.725976|-157.592010
         })
       }).addTo(map);
-
-      map.addControl(L.control.sidebar('sidebar', {
-          position: 'left'
-      }));
-
     });
   });
 
@@ -432,6 +427,7 @@
   // LIKE MULITPLE STATIONS
   $scope.likeMultiStations = function () {
     $scope.showBulkLikeFooter = true;
+    $scope.openMenu = true;
   };
 
 
@@ -497,13 +493,6 @@
   //   }
   // };
 
-  //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
-  // $scope.pinTypes = [
-  //     { text: "Bike Share", checked: true },
-  //     { text: "Landmark", checked: false },
-  //     { text: "Bike Rack", checked: false }
-  //   ];
-
   //LOAD ANIMATION SHOW
   $scope.show = function() {
     $ionicLoading.show({
@@ -530,7 +519,6 @@
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
       $scope.openModal(4);
-      // $scope.sidebar.show();
 
     }
     if($scope.user.liked === null || undefined){

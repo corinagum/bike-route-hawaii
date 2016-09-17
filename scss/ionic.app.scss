@@ -22,17 +22,10 @@ $darkest: #242925;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-@import "partials/browser-view";
 @import "partials/keyFrames";
 
 $medium: "only screen and (min-width:479px)";
 $large: "only screen and (min-width:767px)";
-
-@mixin fontType($color,$size,$line-height) {
-  color: $color;
-  font-size: $size;
-  line-height: $line-height;
-}
 
 body, p {
   color: $typeGrey;
@@ -112,6 +105,11 @@ img {
   }
 }
 
+@mixin block_section($top_bottom_pad, $left_right_pad, $margin) {
+  padding: $top_bottom_pad $left_right_pad;
+  margin: $margin;
+}
+
 .containerSection {
   max-width: 626px;
 }
@@ -123,25 +121,32 @@ img {
 }
 
 .each_section {
+  border: 1px solid blue;
 
   .sectionImageTextContents {
+  border: 1px solid red;
+
+
     margin: 20px auto;
     display: block;
 
-
     @media #{$large} {
       margin: 100px auto;
-      width: 67%;
+      width: 80%;
       display: -webkit-flex;
       display: flex;
     }
   }
 
   .copy_in_section {
-    margin: auto;
+  border: 1px solid yellow;
+
+    margin: auto 20px;
   }
 
   .imageWrapper {
+  border: 1px solid black;
+
     width: 228.13px;
     margin: auto;
     img {
@@ -168,14 +173,6 @@ img {
 
 .landing {
   line-height: 24px;
-}
-
-@mixin buttonStyling($color,$background-color,$padTop,$padRight,$padBottom,$padLeft,$weight,$size){
-  color: $color;
-  background-color: $background-color;
-  padding: $padTop $padRight $padBottom $padLeft;
-  font-weight: $weight;
-  font-size: $size;
 }
 
 .button {
@@ -378,11 +375,6 @@ input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   padding-left: 15px;
 }
 //============
-
-@mixin fontStyling($size, $color) {
-  font-size: $size;
-  color: $color;
-}
 
 .smallSizeFont {
   @include fontStyling(12px, lighten($typeGrey,55%));
