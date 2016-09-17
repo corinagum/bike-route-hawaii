@@ -121,12 +121,8 @@ img {
 }
 
 .each_section {
-  border: 1px solid blue;
 
   .sectionImageTextContents {
-  border: 1px solid red;
-
-
     margin: 20px auto;
     display: block;
 
@@ -139,14 +135,10 @@ img {
   }
 
   .copy_in_section {
-  border: 1px solid yellow;
-
     margin: auto 20px;
   }
 
   .imageWrapper {
-  border: 1px solid black;
-
     width: 228.13px;
     margin: auto;
     img {
@@ -163,6 +155,12 @@ img {
   p {
     @include fontType($typeGrey, 16px, 22px);
   }
+
+  .sectionImageTextContents_small {
+    @extend .sectionImageTextContents;
+    width: 66%;
+  }
+
 }
 
 .benefitSection_concreteBg {
@@ -384,10 +382,6 @@ input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   border: 3px solid darken($stable, 10%);
   background-color: $stable;
 }
-
-// [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
-//   border: 2px solid lighten($typeGrey,55%);
-// }
 
 textarea {
   background-color: $stable;
