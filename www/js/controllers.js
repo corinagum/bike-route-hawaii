@@ -472,12 +472,14 @@
 
   // CANCEL REPORT POINT
   $scope.cancelReportPoint = function(){
+    console.log("cancelled reportPoint");
     $scope.showReportControl = false;
     setMarkersReturned(bikesharePoints);
     delete $scope.markers.reportPoint;
   };
 
   $scope.suggestStation = function(){
+    console.log("suggested");
     if($scope.markers.reportPoint){
       $scope.markers.reportPoint.type = "suggest";
       $scope.markers.reportPoint.suggestedBy = UserService.getUser().id;
