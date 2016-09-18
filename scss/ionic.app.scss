@@ -1054,6 +1054,7 @@ img.mobileYellowBikeIcon {
   .row {margin: auto;}
   flex-flow: row wrap;
   margin: auto;
+  background-color: lighten($typeGrey, 53%);
 
   @media #{$large} {
     display: flex;
@@ -1147,7 +1148,7 @@ img.mobileYellowBikeIcon {
 .exitOutOfSuggestion {
   width: 100%;
   text-align: -webkit-right;
-  padding-right: 15px;
+  padding: 5px 20px 0 0;
   position: absolute;
 }
 
