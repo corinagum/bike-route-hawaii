@@ -131,6 +131,17 @@
       popupAnchor:  [15, 0],
       className: 'bikeIconSuggestion',
       message: 'Drop the bycicle where you\'d like to see the station'
+    },
+    heartIcon: {
+      iconUrl: '../img/bike-assets/red heart.png',
+      iconSize:     [30, 30],
+      // shadowUrl: 'img/leaf-shadow.png',
+      shadowSize:   [50, 64],
+      iconAnchor:   [0, 0],
+      shadowAnchor: [4, 62],
+      popupAnchor:  [15, 0],
+      // className: 'bikeIconSuggestion',
+      // message: 'Drop the bycicle where you\'d like to see the station'
     }
   });
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
@@ -287,7 +298,7 @@
       if( noPhotoLink === null ) {
         noPhotoLink = "HELLOOO";
       }
-      console.log("consoleLogging", noPhotoLink);
+      // console.log("consoleLogging", noPhotoLink);
     }
 
   }
@@ -440,18 +451,6 @@
   // IF CREATING NEW REPORT/SUGGEST POINT
   // $scope.showReportControl = false;
 
-
-  // LIKE MULITPLE STATIONS
-  $scope.likeMultiStations = function () {
-    $scope.showBulkLikeFooter = true;
-    $scope.openMenu = true;
-  };
-
-
-  $scope.closeBulkLiking = function () {
-    $scope.showBulkLikeFooter = false;
-  };
-
   // ADD REPORT/SUGGESTION POINT
   $scope.createReportPoint = function(){
       $scope.showReportControl = true;
@@ -522,11 +521,43 @@
     $ionicLoading.hide();
   };
 
+  // LIKE MULITPLE STATIONS
+  $scope.showBulkLikeFooter = false;
+  $scope.likedMultiStations = [];
+
+  $scope.likeMultiStations = function () {
+    $scope.showBulkLikeFooter = true;
+    $scope.openMenu = true;
+  };
+
+
+  $scope.closeBulkLiking = function () {
+    $scope.showBulkLikeFooter = false;
+  };
+
+  $scope.submitBulkLiking = function(array){
+    $scope.showBulkLikeFooter = false;
+    for(var i=0; i < array.length; i++){
+      if($scope.user.liked === null){
+        $scope.user.liked = [array[i]];
+      }
+      if($scope.user.liked.indexOf(array[i]) === -1){
+        $scope.user.liked.push(array[i]);
+      }
+      console.log("in loop");
+    }
+    console.log("past loop")
+    UserService.updateUser($scope.user);
+    UserService.edit($scope.user.id);
+    $scope.likedMultiStations = [];
+    console.log($scope.markers);
+  }
+
   // SAVE CURRENT MARKER PROPERTIES TO SCOPE
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
-
+    console.log("click");
     $scope.user = UserService.getUser();
-    if(args.modelName !== 'reportPoint'){
+    if(args.modelName !== 'reportPoint'  && $scope.showBulkLikeFooter === false){
       if($scope.stationClicked.lastClicked){
         $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
       }
@@ -536,8 +567,19 @@
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
       $scope.openModal(4);
-
     }
+    if($scope.showBulkLikeFooter === true){
+      if($scope.markers[args.modelName].icon !== $scope.heartIcon) {
+        $scope.markers[args.modelName].icon = $scope.heartIcon;
+        $scope.likedMultiStations.push(args.model.properties.id);
+        console.log($scope.likedMultiStations);
+      } else {
+        $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
+        $scope.likedMultiStations.splice($scope.likedMultiStations.indexOf(args.model.properties.id), 1);
+        console.log($scope.likedMultiStations);
+      }
+    }
+
     if($scope.user.liked === null || undefined){
       $scope.myStyle = {};
     } else {
@@ -620,6 +662,7 @@ if(!isCordovaApp){
   } else{
     $scope.favoritesList = JSON.parse(localStorage.getItem('favorites'));
   }
+
   $scope.checkFavorite = function(currentMarker) {
     if(!currentMarker) {
       currentMarker = $scope.currentMarkerProperties;
