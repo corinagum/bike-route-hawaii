@@ -566,6 +566,9 @@
       $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
       $scope.stationClicked = $scope.markers[args.modelName].properties;
       $scope.stationClicked.lastClicked = args.modelName;
+      if($scope.stationClicked.photolink === null){
+        $scope.stationClicked.photolink = "http://placehold.it/600x100?text=No+Image+Available+for+this+Location";
+      }
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
       $scope.openModal(4);
