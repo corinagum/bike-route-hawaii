@@ -7,7 +7,7 @@
       <ion-header-bar class="bar bar-header map_header_bar">
         <a ng-href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
 
-        <div class="side_menu_button" ng-click="toggleRight(); openMenu = !openMenu"><p>Menu</p><i ng-class="{'ion-close-round': openMenu, 'ion-navicon-round': !openMenu} "></i></div>
+        <div class="side_menu_button" ng-click="toggleRight(); openMenu = !openMenu"><p>Menu</p><i class="ion-navicon-round"></i></div>
       </ion-header-bar>
 
       <ion-content data-tap-disabled="true" class="fade-on-enter">
@@ -45,7 +45,7 @@
 
 
   <!-- BULK LIKE VIEW FOR MEDIUM UP -->
-  <ion-footer-bar id="footer-bar" class="row hide-on-med-and-down" ng-show="showBulkLikeFooter">
+  <ion-footer-bar id="footer-bar" class="row" ng-show="showBulkLikeFooter">
 
     <div class="exitOutOfSuggestion" ng-click="closeBulkLiking()">
       x
