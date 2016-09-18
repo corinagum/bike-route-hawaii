@@ -327,6 +327,9 @@
     "updatedAt": "2016-02-29T22:11:46.561Z"
   };
 
+  // GET USER
+  $scope.user = UserService.getUser();
+
   // CHECK IF STATION IS LIKED BY USER
   $scope.isLiked = function(){
     $scope.user = UserService.getUser();
@@ -559,41 +562,41 @@
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
     console.log("click");
     $scope.user = UserService.getUser();
-    if(args.modelName !== 'reportPoint'  && $scope.showBulkLikeFooter === false){
-      if($scope.stationClicked.lastClicked){
-        $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
+      if(args.modelName !== 'reportPoint'  && $scope.showBulkLikeFooter === false){
+        if($scope.stationClicked.lastClicked){
+          $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
+        }
+        $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
+        $scope.stationClicked = $scope.markers[args.modelName].properties;
+        $scope.stationClicked.lastClicked = args.modelName;
+        if($scope.stationClicked.photolink === null){
+          $scope.stationClicked.photolink = "http://placehold.it/600x100?text=No+Image+Available+for+this+Location";
+        }
+        $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
+        $scope.updateClosestBBB();
+        $scope.openModal(4);
       }
-      $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
-      $scope.stationClicked = $scope.markers[args.modelName].properties;
-      $scope.stationClicked.lastClicked = args.modelName;
-      if($scope.stationClicked.photolink === null){
-        $scope.stationClicked.photolink = "http://placehold.it/600x100?text=No+Image+Available+for+this+Location";
+      if($scope.showBulkLikeFooter === true){
+        if($scope.markers[args.modelName].icon !== $scope.heartIcon) {
+          $scope.markers[args.modelName].icon = $scope.heartIcon;
+          $scope.likedMultiStations.push(args.model.properties.id);
+          console.log($scope.likedMultiStations);
+        } else {
+          $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
+          $scope.likedMultiStations.splice($scope.likedMultiStations.indexOf(args.model.properties.id), 1);
+          console.log($scope.likedMultiStations);
+        }
       }
-      $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
-      $scope.updateClosestBBB();
-      $scope.openModal(4);
-    }
-    if($scope.showBulkLikeFooter === true){
-      if($scope.markers[args.modelName].icon !== $scope.heartIcon) {
-        $scope.markers[args.modelName].icon = $scope.heartIcon;
-        $scope.likedMultiStations.push(args.model.properties.id);
-        console.log($scope.likedMultiStations);
+      console.log("$scope user: ", $scope.user);
+      if($scope.user.liked === null || undefined){
+        $scope.myStyle = {};
       } else {
-        $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
-        $scope.likedMultiStations.splice($scope.likedMultiStations.indexOf(args.model.properties.id), 1);
-        console.log($scope.likedMultiStations);
+        if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
+          $scope.myStyle={};
+        } else {
+          $scope.myStyle={color:'red'};
+        }
       }
-    }
-
-    if($scope.user.liked === null || undefined){
-      $scope.myStyle = {};
-    } else {
-      if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
-        $scope.myStyle={};
-      } else {
-        $scope.myStyle={color:'red'};
-      }
-    }
 
   });
 
@@ -738,17 +741,20 @@ if(!isCordovaApp){
 }])
 .controller('LandingCtrl', ['$scope', 'UserService', function($scope, UserService) {
   console.log("LandingCtrl");
-
   $scope.userStart = function(){
-    if(UserService.getUser() !== null || undefined){
-        console.log("resetting user");
-        UserService.updateUser(null);
-      }
-      UserService.create()
-      .then(function(data){
-        UserService.updateUser(data.data.user);
-        console.log("user created ", UserService.getUser());
-      });
+    UserService.updateUser(null);
+    console.log("set user to null");
+  }
+  // $scope.userStart = function(){
+  //   if(UserService.getUser() !== null || undefined){
+  //       console.log("resetting user");
+  //       UserService.updateUser(null);
+  //     }
+  //     UserService.create()
+  //     .then(function(data){
+  //       UserService.updateUser(data.data.user);
+  //       console.log("user created ", UserService.getUser());
+  //     });
     // if(UserService.getUser() !== null || undefined){
     //   console.log("resetting user");
     //   UserService.updateUser(null);
@@ -758,7 +764,7 @@ if(!isCordovaApp){
       //   UserService.updateUser(data.data.user);
       //   console.log("user updated to ", UserService.getUser());
       // });
-  };
+  // };
 }])
 .controller('FormCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
   console.log("FormCtrl");
@@ -824,6 +830,7 @@ if(!isCordovaApp){
 }])
 .controller('PathCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
   console.log("PathCtrl");
+  UserService.getUser();
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };

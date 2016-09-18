@@ -3,35 +3,35 @@ angular.module('starter.services', [])
 .service("PointService", ['$http', 'processENV', function($http, processENV) {
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
   var domain;
-  // if(!isCordovaApp){
-  //   domain = 'http://localhost:4000';
-  // }
-  // if(isCordovaApp){
+  if(!isCordovaApp){
+    domain = 'http://localhost:4000';
+  }
+  if(isCordovaApp){
     domain = '.';
-  // }
+  }
 
   this.getPoint = function() {
-    return $http.get('/api/points');
+    return $http.get(domain + '/api/points');
   };
 
   this.getBikeshareStations = function() {
-    return $http.get('/api/points/bikeshare');
+    return $http.get(domain + '/api/points/bikeshare');
   };
 
   this.addPoint = function(point) {
-    return $http.post('/api/points', {
+    return $http.post(domain + '/api/points', {
       point : point
     });
   };
 
   this.editPoint = function(point) {
-    return $http.put('/api/points/' + point.id, {
+    return $http.put(domain + '/api/points/' + point.id, {
       point : point
     });
   };
 
   this.suggestPoint = function(point) {
-    return $http.post('/api/points/suggest', {
+    return $http.post(domain + '/api/points/suggest', {
       point : point
     });
   };
@@ -88,12 +88,12 @@ angular.module('starter.services', [])
   .service("UserService", ['$http', 'processENV', function($http, processENV) {
     var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
     var domain;
-    // if(!isCordovaApp){
-    //   domain = 'http://localhost:4000';
-    // }
-    // if(isCordovaApp){
+    if(!isCordovaApp){
+      domain = 'http://localhost:4000';
+    }
+    if(isCordovaApp){
       domain = '.';
-    // }
+    }
 
     var user = null;
 
@@ -102,17 +102,26 @@ angular.module('starter.services', [])
     };
 
     this.getUser = function(){
+      if(user === null){
+        console.log("no user to get, created one")
+        this.create()
+        .then(function(data){
+          user = data.data.user;
+          console.log("user updated to ", user);
+        });
+      }
+      console.log("got user");
       return user;
     };
 
 // CREATES NEW USER
     this.create = function(){
-      return $http.post("/user");
+      return $http.post(domain + "/user");
     };
 
 // UPDATES CURRENT USER
     this.edit = function(id){
-      return $http.put("/user/" + id, {
+      return $http.put( domain + "/user/" + id, {
         user : user
       });
     };
