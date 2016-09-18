@@ -25,7 +25,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "partials/keyFrames";
 
 $medium: "only screen and (min-width:479px)";
-$large: "only screen and (min-width:767px)";
+$large: "only screen and (min-width:799px)";
+
+@media #{$medium} {
+  body {border: 3px solid yellow;}
+}
+
+@media #{$large} {
+  body {border: 3px solid red;}
+}
 
 body, p {
   color: $typeGrey;
@@ -1050,6 +1058,81 @@ img.mobileYellowBikeIcon {
   height: 20px;
 }
 
+
+
+
+.footer_bar_mobile {
+  margin: 0;
+  padding: 0;
+  height: 180px;
+  background-color: lighten($typeGrey, 53%);
+}
+
+.yellowBikeDiv img {
+  max-height: 30px;
+  margin: 2px 0;
+}
+
+.direction_wrapper {
+  .row {
+    margin: 0;
+  }
+}
+
+.foot_image_wrap {
+  margin: 10px 0px;
+  width: 100%;
+  text-align: center;
+
+  img {
+    max-height: 30px;
+  }
+}
+
+.confirm_button_wrapper {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  padding: 5px 15px;
+
+   .button {
+      background-color: rgb(234, 187, 0);
+      color: black;
+      width: 100%;
+   }
+}
+
+
+@media #{$large} {
+  .footer_bar_mobile {
+    display: none;
+  }
+}
+
+@media #{$medium} {
+  .foot_image_wrap img {
+    float: left;
+  }
+  .footer_bar_mobile {
+    height: 148px;
+  }
+  .text_wrap_first {
+    display: -webkit-box;
+
+    .drag_marker_text {
+      margin: 6px;
+    }
+  }
+  .direction_wrapper {
+    margin-top: 20px;
+  }
+  .text_wrap {
+    margin-left: 40px;
+  }
+}
+
+
+
 #footer-bar.row {
   .row {margin: auto;}
   flex-flow: row wrap;
@@ -1138,11 +1221,6 @@ img.mobileYellowBikeIcon {
   line-height: 14px;
   vertical-align: middle;
  }
-}
-
-.yellowBikeDiv {
-  margin: -4px 0px 0px 0px;
-  img {height: 30px;}
 }
 
 .exitOutOfSuggestion {
