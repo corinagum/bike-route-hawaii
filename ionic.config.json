@@ -11,8 +11,8 @@
   ],
   "proxies": [
     {
-      "path": "http://www.ridehawaii.us/api/points",
-      "proxyUrl": "http://www.ridehawaii.us/api/points"
+      "path": "http://localhost:8100",
+      "proxyUrl": "http://localhost:4000"
     }
   ]
 }

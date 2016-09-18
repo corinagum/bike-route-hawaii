@@ -285,26 +285,26 @@
 
   // default values that will be changed on station click
   $scope.stationClicked = {
-    // "lastClicked": null,
-    // "id": 391,
-    // "type": "BikeShare",
-    // "name": "Paki and Kalakaua",
-    // "description": "Station located on the gravel shoulder on the west side of Paki Avenue to the north of the intersection with Kalakaua.",
-    // "info": "On-Street in Place of Parking",
-    // "fid": 0,
-    // "site_id": "0027_011",
-    // "street": "Paki Avenue",
-    // "side": "W",
-    // "lat": 21.2609380183713,
-    // "long": -157.81827587802,
-    // "geolink": "https://www.google.com/maps/@21.2607781,-157.8181971,3a,75y,331.63h,59.46t/data=!3m6!1e1!3m4!1s5GecKEKkbvn9xE21RYW_tw!2e0!7i13312!8i6656",
-    // "sitelink": null,
-    // "photolink": "https://s3-us-west-2.amazonaws.com/bikesharesites/stationPhotos/0985_003.jpg",
-    // "upDownVote": null,
-    // "votesCounter": null,
-    // "safetyCounter": null,
-    // "createdAt": "2016-02-29T22:11:46.561Z",
-    // "updatedAt": "2016-02-29T22:11:46.561Z"
+    "lastClicked": null,
+    "id": 391,
+    "type": "BikeShare",
+    "name": "Paki and Kalakaua",
+    "description": "Station located on the gravel shoulder on the west side of Paki Avenue to the north of the intersection with Kalakaua.",
+    "info": "On-Street in Place of Parking",
+    "fid": 0,
+    "site_id": "0027_011",
+    "street": "Paki Avenue",
+    "side": "W",
+    "lat": 21.2609380183713,
+    "long": -157.81827587802,
+    "geolink": "https://www.google.com/maps/@21.2607781,-157.8181971,3a,75y,331.63h,59.46t/data=!3m6!1e1!3m4!1s5GecKEKkbvn9xE21RYW_tw!2e0!7i13312!8i6656",
+    "sitelink": null,
+    "photolink": "https://s3-us-west-2.amazonaws.com/bikesharesites/stationPhotos/0985_003.jpg",
+    "upDownVote": null,
+    "votesCounter": null,
+    "safetyCounter": null,
+    "createdAt": "2016-02-29T22:11:46.561Z",
+    "updatedAt": "2016-02-29T22:11:46.561Z"
   };
 
   // CHECK IF STATION IS LIKED BY USER
@@ -362,6 +362,14 @@
     $scope.closestBBB = bbbList.slice(0,5);
   };
 
+  $scope.places = {
+    kakaako : [21.296586, -157.860886],
+    alamoana : [21.290763, -157.843645],
+    university : [21.296760, -157.821071],
+    waikiki : [21.275413, -157.824987],
+    downtown : [21.309355, -157.860274],
+    diamondhead: [21.260855, -157.817874]
+  };
 
   $scope.stationWalkTime = function(marker, station){
     return Math.round(L.latLng([$scope.stationClicked.lat, $scope.stationClicked.long]).distanceTo($scope.places[place]) * (60/15500));
@@ -371,14 +379,6 @@
     return Math.round(L.latLng([$scope.stationClicked.lat, $scope.stationClicked.long]).distanceTo($scope.places[place]) * (60/15500));
   };
 
-  $scope.places = {
-    kakaako : [21.296586, -157.860886],
-    alamoana : [21.290763, -157.843645],
-    university : [21.296760, -157.821071],
-    waikiki : [21.275413, -157.824987],
-    downtown : [21.309355, -157.860274],
-    diamondhead: [21.260855, -157.817874]
-  };
 
 
   function setMarkersReturned(data){

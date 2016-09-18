@@ -5,8 +5,8 @@
   "dependencies": {
     "angular-simple-logger": "^0.1.7",
     "bower": "^1.7.7",
-    "express": "^4.13.4",
-    "express-session": "^1.13.0",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
     "gulp-minify-css": "^0.3.0",
@@ -23,13 +23,15 @@
     "ui-leaflet": "^1.0.0"
   },
   "devDependencies": {
-    "bower": "^1.7.7",
+    "bower": "^1.7.9",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.3.1",
     "gulp-sass": "^2.2.0",
     "gulp-util": "^2.2.14",
     "npm": "^3.7.2",
+    "sequelize": "^3.24.3",
+    "sequelize-cli": "^2.4.0",
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [
