@@ -2,37 +2,36 @@
 <ion-view data-ng-init="init()" title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
 
 
-
-
-
-
-  <ion-side-menus><!-- SIDE MENU FOR MAP -->
-    <ion-pane ion-side-menu-content>
+  <ion-side-menus enable-menu-with-back-views="false"><!-- SIDE MENU FOR MAP -->
+    <ion-side-menu-content>
       <ion-header-bar class="bar bar-header map_header_bar">
         <a ng-href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
 
-        <div class="side_menu_button" ng-click="toggleRight();"><p>Menu</p><i class="ion-navicon-round "></i></div>
+        <div class="side_menu_button" ng-click="toggleRight(); openMenu = !openMenu"><p>Menu</p><i ng-class="{'ion-close-round': openMenu, 'ion-navicon-round': !openMenu} "></i></div>
       </ion-header-bar>
 
       <ion-content data-tap-disabled="true" class="fade-on-enter">
           <leaflet data-tap-disabled="true" layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' controls="controls" custom-controls="myCustomControls" geojson="geojson"></leaflet>
       </ion-content>
-    </ion-pane ion-side-menu-content>
+    </ion-side-menu-content>
 
     <ion-side-menu side="right">
       <ion-list>
-        <ion-item><a menu-close href="#/tab/home"><i class="ion-android-home waves-effect" nav-transition="none"></i>&nbsp&nbspHome</a></ion-item>
+        <ion-item><a href="#/tab/home"><i class="ion-android-home waves-effect" nav-transition="none"></i>&nbsp&nbspHome</a></ion-item>
       </ion-list>
+      <div class="divider"></div>
 
       <ion-list>
-        <ion-item class="waves-effect"><a ng-href="#/tab/leave-comments" nav-transition="none">
+        <ion-item class="waves-effect"><a menu-close ng-href="#/tab/leave-comments" nav-transition="none">
         <span>Leave Feedback</span>
       </a></ion-item>
       </ion-list>
+      <div class="divider"></div>
 
       <ion-list>
         <ion-item menu-close ng-click="createReportPoint()" class="waves-effect"><span>Suggest a Station</span></ion-item>
       </ion-list>
+      <div class="divider"></div>
 
       <ion-list>
         <ion-item menu-close ng-click="likeMultiStations()" class="waves-effect"><span>Like Stations</span></ion-item>
@@ -48,25 +47,19 @@
   <!-- BULK LIKE VIEW FOR MEDIUM UP -->
   <ion-footer-bar id="footer-bar" class="row hide-on-med-and-down" ng-show="showBulkLikeFooter">
 
-    <div class="exitOutOfSuggestion" ng-click="cancelReportPoint()">
+    <div class="exitOutOfSuggestion" ng-click="closeBulkLiking()">
       x
     </div>
 
     <div class="theDivDirection">
-      <div class="row daStationWrap">
-
-        <div class="row">
-          <div class="thePdirection">
-           <span>Tap station markers and like your favorite stations.</span>
-          </div>
+      <div class="row daStationWrap" style="width: 60%;">
+        <div class="thePdirection center">
+          <span>Tap station markers and like your favorite stations.</span>
         </div>
 
-        <div class="row center">
-          <a style="background-color: rgb(234, 187, 0); margin: auto; color: black;" class="button" ng-click="openModal(3);cancelReportPoint()" nav-transition="none">
-             Save Liked Stations
-          </a>
-        </div>
-
+        <a style="background-color: rgb(234, 187, 0); margin: auto; color: black;" class="button" ng-click="openModal(3);cancelReportPoint()" nav-transition="none">
+           Save Liked Stations
+        </a>
       </div> <!-- /DASTATIONWRAP -->
     </div> <!-- /THEDIVDIRECTION -->
   </ion-footer-bar><!-- BULK LIKE VIEW FOR MEDIUM UP -->

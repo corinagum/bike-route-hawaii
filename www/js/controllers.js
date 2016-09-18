@@ -268,7 +268,9 @@
 
   // LOOPS THROUGH DATA RETURNED TO CHECK ITS TYPE AND IF IT SHOULD BE ASSIGNED A MARKER
   function createMarkers(array, name){
+
     for(var i = 0; i < array.length; i++){
+      var noPhotoLink = array[i].photolink;
       var pointDetail;
       var showMarker;
       var pointIcon;
@@ -280,7 +282,14 @@
         icon: pointIcon,
         properties : array[i],
         };
+    // console.log("consoleLogging", array[i].photolink);
+
+      if( noPhotoLink === null ) {
+        noPhotoLink = "HELLOOO";
+      }
+      console.log("consoleLogging", noPhotoLink);
     }
+
   }
 
   // default values that will be changed on station click
@@ -379,6 +388,14 @@
     return Math.round(L.latLng([$scope.stationClicked.lat, $scope.stationClicked.long]).distanceTo($scope.places[place]) * (60/15500));
   };
 
+  $scope.places = {
+    kakaako    : [21.296586, -157.860886],
+    alamoana   : [21.290763, -157.843645],
+    university : [21.296760, -157.821071],
+    waikiki    : [21.275413, -157.824987],
+    downtown   : [21.309355, -157.860274],
+    diamondhead: [21.260855, -157.817874]
+  };
 
 
   function setMarkersReturned(data){
@@ -417,11 +434,6 @@
           // bounds : 21.221181|-158.381653|21.725976|-157.592010
         })
       }).addTo(map);
-
-      map.addControl(L.control.sidebar('sidebar', {
-          position: 'left'
-      }));
-
     });
   });
 
@@ -432,10 +444,13 @@
   // LIKE MULITPLE STATIONS
   $scope.likeMultiStations = function () {
     $scope.showBulkLikeFooter = true;
+    $scope.openMenu = true;
   };
 
 
-
+  $scope.closeBulkLiking = function () {
+    $scope.showBulkLikeFooter = false;
+  };
 
   // ADD REPORT/SUGGESTION POINT
   $scope.createReportPoint = function(){
@@ -495,13 +510,6 @@
   //   }
   // };
 
-  //PROPERTIES FOR CHECKBOX IN TAB-HOME.HTML
-  // $scope.pinTypes = [
-  //     { text: "Bike Share", checked: true },
-  //     { text: "Landmark", checked: false },
-  //     { text: "Bike Rack", checked: false }
-  //   ];
-
   //LOAD ANIMATION SHOW
   $scope.show = function() {
     $ionicLoading.show({
@@ -528,7 +536,6 @@
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
       $scope.openModal(4);
-      // $scope.sidebar.show();
 
     }
     if($scope.user.liked === null || undefined){
@@ -540,6 +547,7 @@
         $scope.myStyle={color:'red'};
       }
     }
+
   });
 
 

@@ -9921,18 +9921,18 @@ img {
   width: 85%;
   margin: auto; }
 
-.each_section .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents {
+.each_section .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents, .each_section .sectionImageTextContents_small, .benefitSection_concreteBg .sectionImageTextContents_small {
   margin: 20px auto;
   display: block; }
   @media only screen and (min-width: 767px) {
-    .each_section .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents {
+    .each_section .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents, .each_section .sectionImageTextContents_small, .benefitSection_concreteBg .sectionImageTextContents_small {
       margin: 100px auto;
-      width: 67%;
+      width: 80%;
       display: -webkit-flex;
       display: flex; } }
 
 .each_section .copy_in_section, .benefitSection_concreteBg .copy_in_section {
-  margin: auto; }
+  margin: auto 20px; }
 
 .each_section .imageWrapper, .benefitSection_concreteBg .imageWrapper {
   width: 228.13px;
@@ -9951,6 +9951,9 @@ img {
   color: #626262;
   font-size: 16px;
   line-height: 22px; }
+
+.each_section .sectionImageTextContents_small, .benefitSection_concreteBg .sectionImageTextContents_small {
+  width: 66%; }
 
 .benefitSection_concreteBg {
   background-image: url("../img/bike-assets/concrete-texture.jpg");
@@ -10250,13 +10253,13 @@ textarea {
 @media only screen and (min-width: 767px) {
   .leadership_container {
     display: -webkit-flex;
-    padding: 0 90px; } }
+    padding: 0 5%; } }
 
 .bikeshare_content {
   display: block; }
   @media only screen and (min-width: 479px) {
     .bikeshare_content {
-      padding: 100px 127px;
+      padding: 100px 6.5%;
       display: -webkit-flex; }
       .bikeshare_content .bslogo {
         margin: auto 30px auto 10px; } }
@@ -10582,8 +10585,7 @@ textarea {
 
 .item {
   background-color: #e9e9e9;
-  border: none;
-  border-bottom: 1px solid #b6b6b6; }
+  border: none; }
 
 .addPadding {
   padding: 0 5%; }
@@ -10647,7 +10649,8 @@ img.mobileYellowBikeIcon {
 
 #footer-bar.row {
   flex-flow: row wrap;
-  margin: auto; }
+  margin: auto;
+  background-color: #e9e9e9; }
   #footer-bar.row .row {
     margin: auto; }
   @media only screen and (min-width: 767px) {
@@ -10717,7 +10720,7 @@ img.mobileYellowBikeIcon {
 .exitOutOfSuggestion {
   width: 100%;
   text-align: -webkit-right;
-  padding-right: 15px;
+  padding: 5px 20px 0 0;
   position: absolute; }
 
 .suggestion_footer_bar {
