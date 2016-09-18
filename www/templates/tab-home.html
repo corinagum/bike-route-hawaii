@@ -70,8 +70,10 @@
 
 
 
+
+
   <!-- SUGGEST A STATION BUTTON FOR MEDIUM UP VIEW -->
-  <ion-footer-bar id="footer-bar" class="row hide-on-med-and-down" ng-show="showReportControl">
+  <ion-footer-bar id="footer-bar" class="row" ng-show="showReportControl">
 
     <div class="exitOutOfSuggestion" ng-click="cancelReportPoint()">
       x
@@ -120,37 +122,65 @@
 
 
 
+
+
+
   <!-- SUGGEST A STATION DIRECTION FOR MOBILE VIEW -->
-  <ion-footer-bar id="footer-bar" class="row suggestion_footer_bar hide-on-med-and-up" ng-show="showReportControl">
+  <ion-footer-bar class="footer_bar_mobile row" ng-show="showReportControl">
+        <div class="direction_wrapper">
+          <div class="col s4">
+            <div class="foot_image_wrap">
+              <img class="" src=".././img/bike-assets/numOne.png" alt="">
+            </div>
+            <div class="text_wrap_first center">
+              <div class="drag_marker_text">
+                <span>Drag</span>
+              </div>
 
-    <div class="exitOutOfSuggestion" ng-click="cancelReportPoint()">
-      x
-    </div>
+              <div class="yellowBikeDiv">
+                <img src=".././img/bike-assets/Bike Yellow copy.png">
+              </div>
 
-    <div class="row center">
-      <div class="col">
-        <img src=".././img/bike-assets/numOne.png" alt="">
-        <p>Drag
-        <img class="mobileYellowBikeIcon" src=".././img/bike-assets/Bike Yellow copy.png">
+              <div class="drag_marker_text">
+                <span>marker.</span>
+              </div>
+            </div>
+          </div>
 
-        marker.</p>
-      </div>
 
-      <div class="col">
-        <img src=".././img/bike-assets/num2.png" alt="">
-        <p>Place bike icon where you'd like to see a station.</p>
-      </div>
+          <div class="col s4">
+            <div class="foot_image_wrap">
+              <img src=".././img/bike-assets/num2.png" alt="">
+            </div>
+            <div class="text_wrap">
+              <span>Place bike icon where you'd like to see a station.</span>
+            </div>
+          </div>
 
-      <div class="col">
-        <img src=".././img/bike-assets/num3.png" alt="">
-        <p>Click 'Confirm location' to set your point.</p>
-      </div>
-    </div>
-    <a style="background-color: rgb(234, 187, 0); margin: auto; color: black;" class="button"  ng-click="openModal(3);suggestStation();cancelReportPoint()" nav-transition="none">
-       Confirm Location
-    </a>
-  </ion-footer-bar>
-  <!-- /SUGGEST A STATION DIRECTION FOR MOBILE VIEW -->
+
+          <div class="col s4">
+            <div class="foot_image_wrap">
+              <img src=".././img/bike-assets/num3.png" alt="">
+            </div>
+            <div class="text_wrap">
+              <span>Click 'Confirm location' to set your point.</span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="confirm_button_wrapper">
+          <a class="button" ng-click="openModal(3);cancelReportPoint()" nav-transition="none">
+             Confirm Location
+          </a>
+        </div>
+
+
+        <div class="exitOutOfSuggestion" ng-click="cancelReportPoint()">
+          x
+        </div>
+
+  </ion-footer-bar><!-- /SUGGEST A STATION DIRECTION FOR MOBILE VIEW -->
 
 <script id="yourSuggestionSave.html" type="text/ng-template">
 

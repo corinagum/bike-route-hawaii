@@ -9839,6 +9839,14 @@ a.button {
 .scale-in > .ng-leave {
   transition: all ease-in-out 250ms; }
 
+@media only screen and (min-width: 479px) {
+  body {
+    border: 3px solid yellow; } }
+
+@media only screen and (min-width: 799px) {
+  body {
+    border: 3px solid red; } }
+
 body, p {
   color: #626262;
   font-size: 12px; }
@@ -9924,7 +9932,7 @@ img {
 .each_section .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents, .each_section .sectionImageTextContents_small, .benefitSection_concreteBg .sectionImageTextContents_small {
   margin: 20px auto;
   display: block; }
-  @media only screen and (min-width: 767px) {
+  @media only screen and (min-width: 799px) {
     .each_section .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents, .each_section .sectionImageTextContents_small, .benefitSection_concreteBg .sectionImageTextContents_small {
       margin: 100px auto;
       width: 80%;
@@ -10114,7 +10122,7 @@ input[type="text"], input[type="email"] {
   margin-bottom: 5px;
   background-color: #f8f8f8;
   font-size: 12px; }
-  @media only screen and (min-width: 767px) {
+  @media only screen and (min-width: 799px) {
     input[type="text"], input[type="email"] {
       margin-bottom: 15px; } }
 
@@ -10147,7 +10155,7 @@ textarea {
 
 .divSize {
   padding: 0 7%; }
-  @media only screen and (min-width: 767px) {
+  @media only screen and (min-width: 799px) {
     .divSize {
       padding: 0 23%; } }
 
@@ -10250,7 +10258,7 @@ textarea {
     display: -webkit-flex;
     padding: 0 10px; } }
 
-@media only screen and (min-width: 767px) {
+@media only screen and (min-width: 799px) {
   .leadership_container {
     display: -webkit-flex;
     padding: 0 5%; } }
@@ -10589,7 +10597,7 @@ textarea {
 
 .addPadding {
   padding: 0 5%; }
-  @media only screen and (min-width: 767px) {
+  @media only screen and (min-width: 799px) {
     .addPadding {
       padding: 0 7%; } }
 
@@ -10606,7 +10614,7 @@ textarea {
   margin-bottom: 15px; }
   .radioBlock .selectionEachBlock {
     min-width: 102.66px; }
-    @media only screen and (min-width: 767px) {
+    @media only screen and (min-width: 799px) {
       .radioBlock .selectionEachBlock {
         min-width: 112.5px; } }
     .radioBlock .selectionEachBlock label {
@@ -10637,7 +10645,7 @@ textarea {
   justify-content: center;
   text-align: center;
   z-index: 50000000000000000; }
-  @media only screen and (min-width: 767px) {
+  @media only screen and (min-width: 799px) {
     .centerBox {
       z-index: 50000000000000000;
       width: 100%;
@@ -10647,13 +10655,61 @@ textarea {
 img.mobileYellowBikeIcon {
   height: 20px; }
 
+.footer_bar_mobile {
+  margin: 0;
+  padding: 0;
+  height: 180px;
+  background-color: #e9e9e9; }
+
+.yellowBikeDiv img {
+  max-height: 30px;
+  margin: 2px 0; }
+
+.direction_wrapper .row {
+  margin: 0; }
+
+.foot_image_wrap {
+  margin: 10px 0px;
+  width: 100%;
+  text-align: center; }
+  .foot_image_wrap img {
+    max-height: 30px; }
+
+.confirm_button_wrapper {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  padding: 5px 15px; }
+  .confirm_button_wrapper .button {
+    background-color: #eabb00;
+    color: black;
+    width: 100%; }
+
+@media only screen and (min-width: 799px) {
+  .footer_bar_mobile {
+    display: none; } }
+
+@media only screen and (min-width: 479px) {
+  .foot_image_wrap img {
+    float: left; }
+  .footer_bar_mobile {
+    height: 148px; }
+  .text_wrap_first {
+    display: -webkit-box; }
+    .text_wrap_first .drag_marker_text {
+      margin: 6px; }
+  .direction_wrapper {
+    margin-top: 20px; }
+  .text_wrap {
+    margin-left: 40px; } }
+
 #footer-bar.row {
   flex-flow: row wrap;
   margin: auto;
   background-color: #e9e9e9; }
   #footer-bar.row .row {
     margin: auto; }
-  @media only screen and (min-width: 767px) {
+  @media only screen and (min-width: 799px) {
     #footer-bar.row {
       display: flex;
       display: -webkit-flex;
@@ -10664,13 +10720,13 @@ img.mobileYellowBikeIcon {
     background-color: rgba(248, 248, 248, 0.6); }
   #footer-bar.row img {
     max-width: 28px; }
-    @media only screen and (min-width: 767px) {
+    @media only screen and (min-width: 799px) {
       #footer-bar.row img {
         max-width: 32px; } }
   #footer-bar.row p {
     line-height: 14px;
     font-size: 14px; }
-    @media only screen and (min-width: 767px) {
+    @media only screen and (min-width: 799px) {
       #footer-bar.row p {
         line-height: 16px;
         font-size: 18px; } }
@@ -10680,10 +10736,10 @@ img.mobileYellowBikeIcon {
     padding: 10px; }
     #footer-bar.row .bothSuggestBtns a {
       color: #626262; }
-    @media only screen and (min-width: 767px) {
+    @media only screen and (min-width: 799px) {
       #footer-bar.row .bothSuggestBtns {
         background-color: #f8f8f8; } }
-  @media only screen and (min-width: 767px) {
+  @media only screen and (min-width: 799px) {
     #footer-bar.row .eachSuggestbtn {
       -webkit-border-radius: 10px;
       -moz-border-radius: 10px;
@@ -10712,11 +10768,6 @@ img.mobileYellowBikeIcon {
     line-height: 14px;
     vertical-align: middle; }
 
-.yellowBikeDiv {
-  margin: -4px 0px 0px 0px; }
-  .yellowBikeDiv img {
-    height: 30px; }
-
 .exitOutOfSuggestion {
   width: 100%;
   text-align: -webkit-right;
@@ -10732,7 +10783,7 @@ img.mobileYellowBikeIcon {
   color: #f8f8f8; }
   .mahaloSuggestionWrapper h3 {
     color: #f8f8f8; }
-  @media only screen and (min-width: 767px) {
+  @media only screen and (min-width: 799px) {
     .mahaloSuggestionWrapper {
       position: relative;
       background-color: #f8f8f8;
