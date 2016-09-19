@@ -54,6 +54,7 @@
         $scope.user.paths.push(path);
       }else{
         $scope.user.paths = [path];
+        console.log("consoleLogging", $scope.user.paths);
       }
       UserService.edit($scope.user.id)
       .then(function(data){
@@ -763,6 +764,7 @@ if(!isCordovaApp){
 }])
 .controller('LandingCtrl', ['$scope', 'UserService', function($scope, UserService) {
   console.log("LandingCtrl");
+
   $scope.userStart = function(){
     if(UserService.getUser() !== null || undefined){
         console.log("resetting user");
@@ -775,6 +777,7 @@ if(!isCordovaApp){
       });
   };
 }])
+
 .controller('FormCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
   console.log("FormCtrl");
 
