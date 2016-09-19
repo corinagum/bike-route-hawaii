@@ -27,13 +27,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 $medium: "only screen and (min-width:479px)";
 $large: "only screen and (min-width:799px)";
 
-@media #{$medium} {
-  body {border: 3px solid yellow;}
-}
+// @media #{$medium} {
+//   body {border: 3px solid yellow;}
+// }
 
-@media #{$large} {
-  body {border: 3px solid red;}
-}
+// @media #{$large} {
+//   body {border: 3px solid red;}
+// }
 
 body, p {
   color: $typeGrey;
@@ -833,7 +833,6 @@ textarea {
 
 .leaflet-control-geosearch {
   position: relative;
-  top: 50px;
 }
 
 .leaflet-control-geosearch a {
@@ -874,7 +873,6 @@ textarea {
   box-shadow: none;
   border: none;
   position: relative;
-  top: 40px;
 }
 
 .leaflet-control-geosearch form {
@@ -1264,5 +1262,6 @@ img.mobileYellowBikeIcon {
 
 .scroll {
   height: 100%;
+  width: 100%;
 }
 
