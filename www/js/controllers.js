@@ -54,6 +54,7 @@
         $scope.user.paths.push(path);
       }else{
         $scope.user.paths = [path];
+        console.log("consoleLogging", $scope.user.paths);
       }
       UserService.edit($scope.user.id)
       .then(function(data){
@@ -744,27 +745,27 @@ if(!isCordovaApp){
   $scope.userStart = function(){
     UserService.updateUser(null);
     console.log("set user to null");
-  }
-  // $scope.userStart = function(){
-  //   if(UserService.getUser() !== null || undefined){
-  //       console.log("resetting user");
-  //       UserService.updateUser(null);
-  //     }
-  //     UserService.create()
-  //     .then(function(data){
-  //       UserService.updateUser(data.data.user);
-  //       console.log("user created ", UserService.getUser());
-  //     });
-    // if(UserService.getUser() !== null || undefined){
-    //   console.log("resetting user");
-    //   UserService.updateUser(null);
-    // }
-      // UserService.create()
-      // .then(function(data){
-      //   UserService.updateUser(data.data.user);
-      //   console.log("user updated to ", UserService.getUser());
-      // });
-  // };
+  };
+  $scope.userStart = function(){
+    if(UserService.getUser() !== null || undefined){
+        console.log("resetting user");
+        UserService.updateUser(null);
+      }
+      UserService.create()
+      .then(function(data){
+        UserService.updateUser(data.data.user);
+        console.log("user created ", UserService.getUser());
+      });
+    if(UserService.getUser() !== null || undefined){
+      console.log("resetting user");
+      UserService.updateUser(null);
+    }
+      UserService.create()
+      .then(function(data){
+        UserService.updateUser(data.data.user);
+        console.log("user updated to ", UserService.getUser());
+      });
+  };
 }])
 .controller('FormCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
   console.log("FormCtrl");
