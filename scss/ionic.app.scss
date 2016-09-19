@@ -27,13 +27,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 $medium: "only screen and (min-width:479px)";
 $large: "only screen and (min-width:799px)";
 
-@media #{$medium} {
-  body {border: 3px solid yellow;}
-}
+// @media #{$medium} {
+//   body {border: 3px solid yellow;}
+// }
 
-@media #{$large} {
-  body {border: 3px solid red;}
-}
+// @media #{$large} {
+//   body {border: 3px solid red;}
+// }
 
 body, p {
   color: $typeGrey;
