@@ -796,11 +796,14 @@ textarea {
   padding: 5px;
 }
 
+.feedback_headBar {
+  height: initial;
+}
 
 .commentHeader {
   @include fontStyling(18px, $stable);
   font-weight: 300;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
@@ -1315,9 +1318,6 @@ img.mobileYellowBikeIcon {
   right: 6px;
 }
 
-
-
-
 @media #{$medium} {
   .bulk_content_wrapper {
     display: flex;
@@ -1339,72 +1339,78 @@ img.mobileYellowBikeIcon {
 
 
 
-// #footer-bar.row {
-//   .row {margin: auto;}
-//   flex-flow: row wrap;
-//   margin: auto;
-//   background-color: lighten($typeGrey, 53%);
 
-//   @media #{$large} {
-//     display: flex;
-//     display: -webkit-flex;
-//     height: 90px;
 
-//   }
 
-//   .row {
-//     margin-bottom: 0px;
-//   }
-//   .directions_wrapper {
-//     background-color: rgba($stable, 0.6);
-//   }
 
-//   img {
-//     max-width: 28px;
-//     @media #{$large} {
-//       max-width: 32px;
-//     }
 
-//   }
 
-//   p {
-//     line-height: 14px;
-//     font-size: 14px;
+#footer-bar.row {
+  .row {margin: auto;}
+  flex-flow: row wrap;
+  margin: auto;
+  background-color: lighten($typeGrey, 53%);
 
-//     @media #{$large} {
-//       line-height: 16px;
-//       font-size: 18px;
-//     }
-//   }
+  @media #{$large} {
+    display: flex;
+    display: -webkit-flex;
+    height: 90px;
 
-//   .bothSuggestBtns {
-//     justify-content: space-between;
-//     background-color: $balanced;
-//     padding: 10px;
-//     a {color: $typeGrey;}
+  }
 
-//     @media #{$large} {
-//       background-color: $stable;
-//     }
-//   }
+  .row {
+    margin-bottom: 0px;
+  }
+  .directions_wrapper {
+    background-color: rgba($stable, 0.6);
+  }
 
-//   .eachSuggestbtn {
+  img {
+    max-width: 28px;
+    @media #{$large} {
+      max-width: 32px;
+    }
 
-//     @media #{$large} {
-//       @include borderRadius(10px);
-//       border: 2px solid $balanced;
-//       color: $typeGrey;
-//       background-color: $stable;
-//       min-width: 110.08px;
-//       min-height: 53px;
-//     }
-//   }
+  }
 
-//   span {
-//     font-size: large;
-//     margin: auto;
-//   }
-// }
+  p {
+    line-height: 14px;
+    font-size: 14px;
+
+    @media #{$large} {
+      line-height: 16px;
+      font-size: 18px;
+    }
+  }
+
+  .bothSuggestBtns {
+    justify-content: space-between;
+    background-color: $balanced;
+    padding: 10px;
+    a {color: $typeGrey;}
+
+    @media #{$large} {
+      background-color: $stable;
+    }
+  }
+
+  .eachSuggestbtn {
+
+    @media #{$large} {
+      @include borderRadius(10px);
+      border: 2px solid $balanced;
+      color: $typeGrey;
+      background-color: $stable;
+      min-width: 110.08px;
+      min-height: 53px;
+    }
+  }
+
+  span {
+    font-size: large;
+    margin: auto;
+  }
+}
 
 
 .theDivDirection {
