@@ -87,7 +87,9 @@ angular.module('starter.services', [])
   }])
   .service("UserService", ['$http', 'processENV', function($http, processENV) {
     var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
+
     var domain;
+
     if(!isCordovaApp){
       domain = 'http://localhost:4000';
     }
@@ -102,15 +104,19 @@ angular.module('starter.services', [])
     };
 
     this.getUser = function(){
-      if(user === null){
-        console.log("no user to get, created one")
-        this.create()
-        .then(function(data){
-          user = data.data.user;
-          console.log("user updated to ", user);
-        });
-      }
-      console.log("got user");
+      console.log("in get user");
+      // if(user === null || user === undefined){
+      //   console.log("no user to get, created one")
+      //   this.create()
+      //   .then(function(data){
+      //     user = data.data.user;
+      //     console.log("user updated to ", user);
+      //     return data.data.user;
+      //   });
+      // } else {
+      //   console.log("got user");
+      //   return user;
+      // }
       return user;
     };
 

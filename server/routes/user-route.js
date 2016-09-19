@@ -20,7 +20,7 @@ router.get('/:id', function(req,res){
 });
 
 router.post('/', function(req,res){
-  console.log(req.user);
+  // console.log(req.user);
   User.create()
   .then(function(data){
     res.send({

@@ -741,30 +741,30 @@ if(!isCordovaApp){
 }])
 .controller('LandingCtrl', ['$scope', 'UserService', function($scope, UserService) {
   console.log("LandingCtrl");
-  $scope.userStart = function(){
-    UserService.updateUser(null);
-    console.log("set user to null");
-  }
   // $scope.userStart = function(){
-  //   if(UserService.getUser() !== null || undefined){
-  //       console.log("resetting user");
-  //       UserService.updateUser(null);
-  //     }
-  //     UserService.create()
-  //     .then(function(data){
-  //       UserService.updateUser(data.data.user);
-  //       console.log("user created ", UserService.getUser());
-  //     });
-    // if(UserService.getUser() !== null || undefined){
-    //   console.log("resetting user");
-    //   UserService.updateUser(null);
-    // }
-      // UserService.create()
-      // .then(function(data){
-      //   UserService.updateUser(data.data.user);
-      //   console.log("user updated to ", UserService.getUser());
-      // });
-  // };
+  //   UserService.updateUser(null);
+  //   console.log("set user to null");
+  // }
+  $scope.userStart = function(){
+    if(UserService.getUser() !== null || undefined){
+        console.log("resetting user");
+        UserService.updateUser(null);
+      }
+      UserService.create()
+      .then(function(data){
+        UserService.updateUser(data.data.user);
+        console.log("user created ", UserService.getUser());
+      });
+    if(UserService.getUser() !== null || undefined){
+      console.log("resetting user");
+      UserService.updateUser(null);
+    }
+      UserService.create()
+      .then(function(data){
+        UserService.updateUser(data.data.user);
+        console.log("user updated to ", UserService.getUser());
+      });
+  };
 }])
 .controller('FormCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
   console.log("FormCtrl");
@@ -830,33 +830,47 @@ if(!isCordovaApp){
 }])
 .controller('PathCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
   console.log("PathCtrl");
-  UserService.getUser();
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };
   $scope.updatePath = function(path){
     if(UserService.getUser() === null){
-      console.log("no user, made one");
-      UserService.create()
-      .then(function(data){
-        UserService.updateUser(data.data.user);
-        console.log("user updated to ", UserService.getUser());
-      });
-
+      UserService.createUser()
+      .then
     }
-    $scope.user = UserService.getUser();
-    console.log("updatePath user ", UserService.getUser());
-    if($scope.user.paths !== null){
-      $scope.user.paths.push(path);
-    }else{
-      $scope.user.paths = [path];
-    }
-    UserService.edit($scope.user.id)
-    .then(function(data){
-      console.log("update data", data);
-      UserService.updateUser($scope.user);
-    });
-  };
+  }
+  // $scope.updatePath = function(path){
+  //   console.log("updatePath user ", UserService.getUser());
+  //   if(UserService.getUser() === null){
+  //     UserService.create()
+  //     .then(function(data){
+  //       $scope.user = data.data.user;
+  //       $scope.user.paths = [path];
+  //       UserService.edit($scope.user.id)
+  //       .then(function(data){
+  //         console.log("update data", data);
+  //         UserService.updateUser($scope.user);
+  //       });
+  //     });
+  //   } else {
+  //     $scope.user = UserService.getUser()
+  //     if($scope.user.paths === null){
+  //       $scope.user.paths = [path];
+  //       UserService.edit($scope.user.id)
+  //       .then(function(data){
+  //         console.log("update data", data);
+  //         UserService.updateUser($scope.user);
+  //       });
+  //     } else {
+  //       $scope.user.paths.push(path);
+  //       UserService.edit($scope.user.id)
+  //       .then(function(data){
+  //         console.log("update data", data);
+  //         UserService.updateUser($scope.user);
+  //       });
+  //     }
+  //   }
+  // };
 }])
 .controller('MahaloCtrl', ['$scope', 'UserService', function($scope, UserService) {
   console.log("MahaloCtrl");
