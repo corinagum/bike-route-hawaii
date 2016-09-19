@@ -9839,6 +9839,14 @@ a.button {
 .scale-in > .ng-leave {
   transition: all ease-in-out 250ms; }
 
+@media only screen and (min-width: 479px) {
+  body {
+    border: 3px solid yellow; } }
+
+@media only screen and (min-width: 799px) {
+  body {
+    border: 3px solid red; } }
+
 body, p {
   color: #626262;
   font-size: 12px; }
@@ -9874,27 +9882,39 @@ a:hover {
 
 .concreteBackground {
   background-image: url("../img/bike-assets/concrete-texture.jpg");
-  background-size: cover; }
-  .concreteBackground span {
-    color: #626262;
-    font-size: 42px;
-    line-height: 42px;
-    font-weight: 600; }
-    @media only screen and (min-width: 479px) {
-      .concreteBackground span {
-        color: #626262;
-        font-size: 56px;
-        line-height: 56px; } }
-  .concreteBackground p {
-    color: #626262;
-    font-size: 22px;
-    line-height: 30px;
-    margin-top: 36px; }
-    @media only screen and (min-width: 479px) {
-      .concreteBackground p {
-        color: #626262;
-        font-size: 28px;
-        line-height: 42px; } }
+  background-size: cover;
+  padding: 30px; }
+  @media only screen and (min-width: 479px) {
+    .concreteBackground {
+      padding: 40px; } }
+  @media only screen and (min-width: 799px) {
+    .concreteBackground {
+      padding: 60px 100px; } }
+
+.content_title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 42px; }
+  @media only screen and (min-width: 479px) {
+    .content_title {
+      font-size: 42px; } }
+  @media only screen and (min-width: 799px) {
+    .content_title {
+      font-size: 56px; } }
+
+.content_texts {
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: 30px; }
+  @media only screen and (min-width: 479px) {
+    .content_texts {
+      font-size: 22px; } }
+  @media only screen and (min-width: 799px) {
+    .content_texts {
+      font-size: 24px; } }
+  .content_texts span {
+    color: #96E6BF; }
 
 .howDoesItWorkTitle {
   padding: 50px 20px;
@@ -10171,12 +10191,6 @@ textarea {
   background: url("./../img/bike-assets/mapDownyOverlay.png") no-repeat;
   background-size: cover; }
 
-.bar .button {
-  padding: 0px 15px; }
-
-.bar {
-  border-bottom: none; }
-
 .fdbckBtn, .button.suggestBtn {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -10199,7 +10213,6 @@ textarea {
       font-size: 12px; } }
 
 .header_button_wrapper {
-  border: 1px solid red;
   position: absolute;
   right: 30px; }
 
@@ -10218,9 +10231,9 @@ textarea {
     color: #f8f8f8; }
 
 .home_button {
-  font-size: -webkit-xxx-large;
+  font-size: 24px;
   color: #242925;
-  padding: 9px 15px; }
+  padding: 6.5px 15px; }
 
 .button.suggestBtn {
   right: 209.3px; }
@@ -10315,6 +10328,7 @@ textarea {
     max-height: 200px; }
 
 .mapImage {
+  margin-top: 50px;
   max-width: 100%; }
 
 .mapBg {
@@ -10366,13 +10380,14 @@ textarea {
 
 .bar-header {
   background-color: #76CE95;
-  height: 100px; }
+  height: 100px;
+  background-image: none; }
 
 #bs_logo_header {
   background-color: #f8f8f8;
   width: 120px;
-  max-height: 44px;
-  margin-left: 50px;
+  max-height: 47px;
+  margin-left: 30px;
   padding: 5px; }
 
 .commentHeader {

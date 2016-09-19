@@ -27,13 +27,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 $medium: "only screen and (min-width:479px)";
 $large: "only screen and (min-width:799px)";
 
-// @media #{$medium} {
-//   body {border: 3px solid yellow;}
-// }
+@media #{$medium} {
+  body {border: 3px solid yellow;}
+}
 
-// @media #{$large} {
-//   body {border: 3px solid red;}
-// }
+@media #{$large} {
+  body {border: 3px solid red;}
+}
 
 body, p {
   color: $typeGrey;
@@ -79,24 +79,64 @@ a:hover {
 .concreteBackground {
   background-image: url("../img/bike-assets/concrete-texture.jpg");
   background-size: cover;
-  span {
-    @include fontType($typeGrey, 42px, 42px);
-    font-weight: 600;
+  padding: 30px;
 
-    @media #{$medium} {
-      @include fontType($typeGrey, 56px, 56px);
-    }
+  @media #{$medium} {
+    padding: 40px;
   }
+  @media #{$large} {
+    padding: 60px 100px;
+  }
+  // span {
+  //   @include fontType($typeGrey, 42px, 42px);
+  //   font-weight: 600;
 
-  p {
-    @include fontType($typeGrey, 22px, 30px);
-    margin-top: 36px;
+  //   @media #{$medium} {
+  //     @include fontType($typeGrey, 56px, 56px);
+  //   }
+  // }
 
-    @media #{$medium} {
-      @include fontType($typeGrey, 28px, 42px);
-    }
+  // p {
+  //   @include fontType($typeGrey, 22px, 30px);
+  //   margin-top: 36px;
+
+  //   @media #{$medium} {
+  //     @include fontType($typeGrey, 28px, 42px);
+  //   }
+  // }
+}
+
+.content_title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 42px;
+
+  @media #{$medium} {
+    font-size: 42px;
+  }
+  @media #{$large} {
+    font-size: 56px;
   }
 }
+
+.content_texts {
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: 30px;
+
+  @media #{$medium} {
+    font-size: 22px;
+  }
+  @media #{$large} {
+    font-size: 24px;
+  }
+
+  span {
+    color: #96E6BF;
+  }
+}
+
 
 .howDoesItWorkTitle {
   padding: 50px 20px;
@@ -433,13 +473,13 @@ textarea {
   background-size: cover;
 }
 
-.bar .button {
-  padding: 0px 15px;
-}
+// .bar .button {
+//   padding: 0px 15px;
+// }
 
-.bar {
-  border-bottom: none;
-}
+// .bar {
+//   border-bottom: none;
+// }
 
 .fdbckBtn {
   @include borderRadius(5px);
@@ -467,7 +507,6 @@ textarea {
 
 // ========= BUTTONS
 .header_button_wrapper {
-  border: 1px solid red;
   position: absolute;
   right: 30px;
 }
@@ -486,9 +525,9 @@ textarea {
 }
 
 .home_button {
-  font-size: -webkit-xxx-large;
+  font-size: 24px;
   color: $darkest;
-  padding: 9px 15px;
+  padding: 6.5px 15px;
 }
 // ========= BUTTONS
 
@@ -615,6 +654,7 @@ textarea {
 }
 
 .mapImage {
+  margin-top: 50px;
   max-width: 100%;
 }
 
@@ -675,13 +715,14 @@ textarea {
 .bar-header {
   background-color: $balanced;
   height: 100px;
+  background-image: none;
 }
 
 #bs_logo_header {
   background-color: $stable;
   width: 120px;
-  max-height: 44px;
-  margin-left: 50px;
+  max-height: 47px;
+  margin-left: 30px;
   padding: 5px;
 }
 
