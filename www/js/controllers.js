@@ -334,16 +334,27 @@
   // CHECK IF STATION IS LIKED BY USER
   $scope.isLiked = function(){
     $scope.user = UserService.getUser();
-    if($scope.user.liked === null || undefined){
-      console.log("in null");
-      return false;
+    if($scope.user === null){
+      UserService.create()
+      .then(function(data){
+        console.log(data);
+        $scope.user = data.data.user;
+        UserService.updateUser($scope.user);
+        UserService.edit($scope.user.id);
+        return false;
+      })
     } else {
-      if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
-        console.log("in indexOf -1");
+      if($scope.user.liked === null || undefined){
+        console.log("in null");
         return false;
       } else {
-        console.log("in found indexOf");
-        return true;
+        if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
+          console.log("in indexOf -1");
+          return false;
+        } else {
+          console.log("in found indexOf");
+          return true;
+        }
       }
     }
   };
@@ -563,6 +574,16 @@
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
     console.log("click");
     $scope.user = UserService.getUser();
+    if($scope.user === null){
+      UserService.create()
+      .then(function(data){
+        console.log(data);
+        $scope.user = data.data.user;
+        UserService.updateUser($scope.user);
+        UserService.edit($scope.user.id);
+        return;
+      })
+    } else {
       if(args.modelName !== 'reportPoint'  && $scope.showBulkLikeFooter === false){
         if($scope.stationClicked.lastClicked){
           $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
@@ -598,6 +619,7 @@
           $scope.myStyle={color:'red'};
         }
       }
+    }
 
   });
 
@@ -742,10 +764,7 @@ if(!isCordovaApp){
 }])
 .controller('LandingCtrl', ['$scope', 'UserService', function($scope, UserService) {
   console.log("LandingCtrl");
-  $scope.userStart = function(){
-    UserService.updateUser(null);
-    console.log("set user to null");
-  };
+
   $scope.userStart = function(){
     if(UserService.getUser() !== null || undefined){
         console.log("resetting user");
@@ -756,17 +775,9 @@ if(!isCordovaApp){
         UserService.updateUser(data.data.user);
         console.log("user created ", UserService.getUser());
       });
-    if(UserService.getUser() !== null || undefined){
-      console.log("resetting user");
-      UserService.updateUser(null);
-    }
-      UserService.create()
-      .then(function(data){
-        UserService.updateUser(data.data.user);
-        console.log("user updated to ", UserService.getUser());
-      });
   };
 }])
+
 .controller('FormCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
   console.log("FormCtrl");
 
@@ -831,33 +842,27 @@ if(!isCordovaApp){
 }])
 .controller('PathCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
   console.log("PathCtrl");
-  UserService.getUser();
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };
   $scope.updatePath = function(path){
-    if(UserService.getUser() === null){
-      console.log("no user, made one");
+    var u = UserService.getUser();
+    console.log(u);
+    if(u === null){
       UserService.create()
       .then(function(data){
-        UserService.updateUser(data.data.user);
-        console.log("user updated to ", UserService.getUser());
-      });
-
+        console.log(data);
+        u = data.data.user;
+        u.paths = [path];
+        UserService.updateUser(u);
+        UserService.edit(u.id);
+      })
+    } else {
+      u.paths === null ? u.paths = [path] : u.paths.push(path);
+      UserService.updateUser(u);
+      UserService.edit(u.id);
     }
-    $scope.user = UserService.getUser();
-    console.log("updatePath user ", UserService.getUser());
-    if($scope.user.paths !== null){
-      $scope.user.paths.push(path);
-    }else{
-      $scope.user.paths = [path];
-    }
-    UserService.edit($scope.user.id)
-    .then(function(data){
-      console.log("update data", data);
-      UserService.updateUser($scope.user);
-    });
-  };
+  }
 }])
 .controller('MahaloCtrl', ['$scope', 'UserService', function($scope, UserService) {
   console.log("MahaloCtrl");
