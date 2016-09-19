@@ -9959,6 +9959,14 @@ a:hover {
       .section_b_text_wrap p {
         line-height: 18px; } }
 
+@media only screen and (min-width: 479px) {
+  .container_image_text {
+    align-items: center;
+    display: flex; } }
+
+.set_image_size {
+  min-width: 200px; }
+
 .containerSection {
   max-width: 626px; }
 
@@ -10286,8 +10294,8 @@ textarea {
   max-width: 100%; }
 
 .mapBg {
-  padding-top: 199px;
-  padding-bottom: 199px;
+  padding-top: 150px;
+  padding-bottom: 150px;
   background-image: url("../img/bike-assets/leather.jpg"), -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
   background-size: 890px auto; }
 
