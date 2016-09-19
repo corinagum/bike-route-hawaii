@@ -45,23 +45,24 @@
 
 
   <!-- BULK LIKE VIEW FOR MEDIUM UP -->
-  <ion-footer-bar id="footer-bar" class="row" ng-show="showBulkLikeFooter">
+  <ion-footer-bar id="footer_bulkLike" class="" ng-show="showBulkLikeFooter">
 
-    <div class="exitOutOfSuggestion" ng-click="closeBulkLiking()">
-      x
-    </div>
-
-    <div class="theDivDirection">
-      <div class="row daStationWrap" style="width: 60%;">
-        <div class="thePdirection center">
+    <div class="bulk_content_wrapper">
+        <div class="bulk_text_wrapper">
           <span>Tap station markers and like your favorite stations.</span>
         </div>
 
-        <a style="background-color: rgb(234, 187, 0); margin: auto; color: black;" class="button" ng-click="openModal(3);submitBulkLiking(likedMultiStations);cancelReportPoint()" nav-transition="none">
-           Save Liked Stations
-        </a>
-      </div> <!-- /DASTATIONWRAP -->
+        <div class="bulk_confirm_wrapper">
+          <a ng-click="openModal(3);submitBulkLiking(likedMultiStations);cancelReportPoint()" nav-transition="none">
+             Save Liked Stations
+          </a>
+        </div>
     </div> <!-- /THEDIVDIRECTION -->
+
+    <div class="close_footer_bar" ng-click="closeBulkLiking()">
+      x
+    </div>
+
   </ion-footer-bar><!-- BULK LIKE VIEW FOR MEDIUM UP -->
 
 

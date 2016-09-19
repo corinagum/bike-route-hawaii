@@ -1280,72 +1280,131 @@ img.mobileYellowBikeIcon {
 
 
 
-#footer-bar.row {
-  .row {margin: auto;}
-  flex-flow: row wrap;
-  margin: auto;
+
+
+
+#footer_bulkLike {
+  height: 100px;
   background-color: lighten($typeGrey, 53%);
+}
 
-  @media #{$large} {
-    display: flex;
-    display: -webkit-flex;
-    height: 90px;
+.bulk_content_wrapper {
+  // border: 1px solid blue;
+  text-align: center;
+  width: inherit;
+}
 
-  }
+.bulk_text_wrapper {
+  // border: 1px solid purple;
+  line-height: 14px;
+  padding: 10px;
+}
 
-  .row {
-    margin-bottom: 0px;
-  }
-  .directions_wrapper {
-    background-color: rgba($stable, 0.6);
-  }
-
-  img {
-    max-width: 28px;
-    @media #{$large} {
-      max-width: 32px;
-    }
-
-  }
-
-  p {
-    line-height: 14px;
-    font-size: 14px;
-
-    @media #{$large} {
-      line-height: 16px;
-      font-size: 18px;
-    }
-  }
-
-  .bothSuggestBtns {
-    justify-content: space-between;
-    background-color: $balanced;
-    padding: 10px;
-    a {color: $typeGrey;}
-
-    @media #{$large} {
-      background-color: $stable;
-    }
-  }
-
-  .eachSuggestbtn {
-
-    @media #{$large} {
-      @include borderRadius(10px);
-      border: 2px solid $balanced;
-      color: $typeGrey;
-      background-color: $stable;
-      min-width: 110.08px;
-      min-height: 53px;
-    }
-  }
-
-  span {
-    font-size: large;
-    margin: auto;
+.bulk_confirm_wrapper {
+  background-color: rgb(234, 187, 0);
+  padding: 9px 15px;
+  @include borderRadius(5px);
+  a {
+    color: black;
   }
 }
+
+.close_footer_bar {
+  padding: 6px;
+  position: absolute;
+  right: 6px;
+}
+
+
+
+
+@media #{$medium} {
+  .bulk_content_wrapper {
+    display: flex;
+    height: 40px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  #footer_bulkLike {
+    height: 80px;
+  }
+}
+
+@media #{$large} {
+  .bulk_text_wrapper {
+    margin-right: 20px;
+  }
+}
+
+
+
+// #footer-bar.row {
+//   .row {margin: auto;}
+//   flex-flow: row wrap;
+//   margin: auto;
+//   background-color: lighten($typeGrey, 53%);
+
+//   @media #{$large} {
+//     display: flex;
+//     display: -webkit-flex;
+//     height: 90px;
+
+//   }
+
+//   .row {
+//     margin-bottom: 0px;
+//   }
+//   .directions_wrapper {
+//     background-color: rgba($stable, 0.6);
+//   }
+
+//   img {
+//     max-width: 28px;
+//     @media #{$large} {
+//       max-width: 32px;
+//     }
+
+//   }
+
+//   p {
+//     line-height: 14px;
+//     font-size: 14px;
+
+//     @media #{$large} {
+//       line-height: 16px;
+//       font-size: 18px;
+//     }
+//   }
+
+//   .bothSuggestBtns {
+//     justify-content: space-between;
+//     background-color: $balanced;
+//     padding: 10px;
+//     a {color: $typeGrey;}
+
+//     @media #{$large} {
+//       background-color: $stable;
+//     }
+//   }
+
+//   .eachSuggestbtn {
+
+//     @media #{$large} {
+//       @include borderRadius(10px);
+//       border: 2px solid $balanced;
+//       color: $typeGrey;
+//       background-color: $stable;
+//       min-width: 110.08px;
+//       min-height: 53px;
+//     }
+//   }
+
+//   span {
+//     font-size: large;
+//     margin: auto;
+//   }
+// }
 
 
 .theDivDirection {

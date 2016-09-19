@@ -10698,56 +10698,45 @@ img.mobileYellowBikeIcon {
   .text_wrap {
     margin-left: 40px; } }
 
-#footer-bar.row {
-  flex-flow: row wrap;
-  margin: auto;
+#footer_bulkLike {
+  height: 100px;
   background-color: #e9e9e9; }
-  #footer-bar.row .row {
-    margin: auto; }
-  @media only screen and (min-width: 799px) {
-    #footer-bar.row {
-      display: flex;
-      display: -webkit-flex;
-      height: 90px; } }
-  #footer-bar.row .row {
-    margin-bottom: 0px; }
-  #footer-bar.row .directions_wrapper {
-    background-color: rgba(248, 248, 248, 0.6); }
-  #footer-bar.row img {
-    max-width: 28px; }
-    @media only screen and (min-width: 799px) {
-      #footer-bar.row img {
-        max-width: 32px; } }
-  #footer-bar.row p {
-    line-height: 14px;
-    font-size: 14px; }
-    @media only screen and (min-width: 799px) {
-      #footer-bar.row p {
-        line-height: 16px;
-        font-size: 18px; } }
-  #footer-bar.row .bothSuggestBtns {
-    justify-content: space-between;
-    background-color: #76CE95;
-    padding: 10px; }
-    #footer-bar.row .bothSuggestBtns a {
-      color: #626262; }
-    @media only screen and (min-width: 799px) {
-      #footer-bar.row .bothSuggestBtns {
-        background-color: #f8f8f8; } }
-  @media only screen and (min-width: 799px) {
-    #footer-bar.row .eachSuggestbtn {
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      -ms-border-radius: 10px;
-      border-radius: 10px;
-      border: 2px solid #76CE95;
-      color: #626262;
-      background-color: #f8f8f8;
-      min-width: 110.08px;
-      min-height: 53px; } }
-  #footer-bar.row span {
-    font-size: large;
-    margin: auto; }
+
+.bulk_content_wrapper {
+  text-align: center;
+  width: inherit; }
+
+.bulk_text_wrapper {
+  line-height: 14px;
+  padding: 10px; }
+
+.bulk_confirm_wrapper {
+  background-color: #eabb00;
+  padding: 9px 15px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px; }
+  .bulk_confirm_wrapper a {
+    color: black; }
+
+.close_footer_bar {
+  padding: 6px;
+  position: absolute;
+  right: 6px; }
+
+@media only screen and (min-width: 479px) {
+  .bulk_content_wrapper {
+    display: flex;
+    height: 40px;
+    margin-top: 20px;
+    justify-content: center; }
+  #footer_bulkLike {
+    height: 80px; } }
+
+@media only screen and (min-width: 799px) {
+  .bulk_text_wrapper {
+    margin-right: 20px; } }
 
 .theDivDirection {
   margin: auto;
