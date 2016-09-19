@@ -9839,14 +9839,6 @@ a.button {
 .scale-in > .ng-leave {
   transition: all ease-in-out 250ms; }
 
-@media only screen and (min-width: 479px) {
-  body {
-    border: 3px solid yellow; } }
-
-@media only screen and (min-width: 799px) {
-  body {
-    border: 3px solid red; } }
-
 body, p {
   color: #626262;
   font-size: 12px; }
