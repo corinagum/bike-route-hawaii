@@ -9849,6 +9849,9 @@ h4, h5, p, li, a, span {
 img {
   vertical-align: top; }
 
+a:hover {
+  text-decoration: none; }
+
 .overflow-scroll {
   overflow-y: auto; }
 
@@ -10174,7 +10177,7 @@ textarea {
 .bar {
   border-bottom: none; }
 
-.fdbckBtn, .button.suggestBtn, .button.surveyBtn {
+.fdbckBtn, .button.suggestBtn {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -10183,24 +10186,47 @@ textarea {
   right: 63.94px;
   color: #f8f8f8;
   background-color: #242925; }
-  .fdbckBtn span, .button.suggestBtn span, .button.surveyBtn span {
+  .fdbckBtn span, .button.suggestBtn span {
     color: #f8f8f8;
     font-size: 10px;
     line-height: 10px;
     font-weight: 600; }
-  .fdbckBtn:hover, .button.suggestBtn:hover, .button.surveyBtn:hover {
+  .fdbckBtn:hover, .button.suggestBtn:hover {
     background-color: #508f66;
     color: #f8f8f8; }
   @media only screen and (min-width: 479px) {
-    .fdbckBtn span, .button.suggestBtn span, .button.surveyBtn span {
+    .fdbckBtn span, .button.suggestBtn span {
       font-size: 12px; } }
+
+.header_button_wrapper {
+  border: 1px solid red;
+  position: absolute;
+  right: 30px; }
+
+.leaveFeedback_button {
+  background-color: #242925;
+  padding: 9px 15px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #f8f8f8;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px; }
+  .leaveFeedback_button:hover {
+    background-color: #508f66;
+    color: #f8f8f8; }
+
+.home_button {
+  font-size: -webkit-xxx-large;
+  color: #242925;
+  padding: 9px 15px; }
 
 .button.suggestBtn {
   right: 209.3px; }
 
 .button.surveyBtn {
   position: absolute;
-  border: 1px solid black;
   top: 32px;
   right: 10px;
   font-size: -webkit-xxx-large;
@@ -10341,12 +10367,13 @@ textarea {
 .bar-header {
   background-color: #76CE95;
   height: 100px; }
-  .bar-header img {
-    background-color: #f8f8f8;
-    width: 120px;
-    max-height: 44px;
-    margin-left: 8px;
-    padding: 5px; }
+
+#bs_logo_header {
+  background-color: #f8f8f8;
+  width: 120px;
+  max-height: 44px;
+  margin-left: 50px;
+  padding: 5px; }
 
 .commentHeader {
   font-size: 18px;

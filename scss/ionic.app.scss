@@ -48,6 +48,10 @@ img {
   vertical-align: top;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .overflow-scroll {
   overflow-y: auto;
 }
@@ -459,15 +463,48 @@ textarea {
   }
 }
 
+
+
+// ========= BUTTONS
+.header_button_wrapper {
+  border: 1px solid red;
+  position: absolute;
+  right: 30px;
+}
+
+.leaveFeedback_button {
+  background-color: $darkest;
+  padding: 9px 15px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $stable;
+  @include borderRadius(5px);
+    &:hover {
+    background-color: #508f66;
+    color: $stable;
+  }
+}
+
+.home_button {
+  font-size: -webkit-xxx-large;
+  color: $darkest;
+  padding: 9px 15px;
+}
+// ========= BUTTONS
+
+
+
+
+
+
 .button.suggestBtn {
   @extend .fdbckBtn;
   right: 209.3px;
 }
 
 .button.surveyBtn {
-  @extend .fdbckBtn;
+  // @extend .fdbckBtn;
   position: absolute;
-  border: 1px solid black;
   top: 32px;
   right: 10px;
   font-size: -webkit-xxx-large;
@@ -638,14 +675,14 @@ textarea {
 .bar-header {
   background-color: $balanced;
   height: 100px;
+}
 
-  img {
-    background-color: $stable;
-    width: 120px;
-    max-height: 44px;
-    margin-left: 8px;
-    padding: 5px;
-  }
+#bs_logo_header {
+  background-color: $stable;
+  width: 120px;
+  max-height: 44px;
+  margin-left: 50px;
+  padding: 5px;
 }
 
 
