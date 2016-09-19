@@ -76,7 +76,7 @@ a:hover {
           transform: translate(-50%, -50%);
 }
 
-.concreteBackground {
+.block_section_a {
   background-image: url("../img/bike-assets/concrete-texture.jpg");
   background-size: cover;
   padding: 30px;
@@ -87,23 +87,6 @@ a:hover {
   @media #{$large} {
     padding: 60px 100px;
   }
-  // span {
-  //   @include fontType($typeGrey, 42px, 42px);
-  //   font-weight: 600;
-
-  //   @media #{$medium} {
-  //     @include fontType($typeGrey, 56px, 56px);
-  //   }
-  // }
-
-  // p {
-  //   @include fontType($typeGrey, 22px, 30px);
-  //   margin-top: 36px;
-
-  //   @media #{$medium} {
-  //     @include fontType($typeGrey, 28px, 42px);
-  //   }
-  // }
 }
 
 .content_title {
@@ -127,9 +110,13 @@ a:hover {
 
   @media #{$medium} {
     font-size: 22px;
+    margin-top: 40px;
+
   }
   @media #{$large} {
     font-size: 24px;
+    margin-top: 60px;
+
   }
 
   span {
@@ -137,25 +124,81 @@ a:hover {
   }
 }
 
+.block_section_b {
+  @extend .block_section_a;
+  background-image: none;
+}
 
-.howDoesItWorkTitle {
-  padding: 50px 20px;
-  margin: auto;
+.section_b_imageText_wrap {
+  margin: 30px auto auto auto;
 
   @media #{$medium} {
-    padding-top: 100px;
-    @include fontType($typeGrey, 56px, 56px);
+    margin-top: 60px;
+    padding-bottom: 40px;
+    width: 481.33px;
   }
+  @media #{$large} {
+    width: 580px;
+  }
+}
 
-  span{
-    @include fontType($typeGrey, 42px, 42px);
+.section_b_image_wrap img {
+
+  @media #{$medium} {
+    float: left;
+    padding: 10px;
+    margin-right: 20px;
+    width: 183px;
+
+  }
+  @media #{$large} {
+    font-size: 24px;
+    margin-top: 6px;
+  }
+}
+
+
+.section_b_text_wrap {
+  text-align: left;
+  h5 {
+    font-size: 22px;
     font-weight: 600;
-
     @media #{$medium} {
-      @include fontType($typeGrey, 56px, 56px);
+      font-size: 20px;
+    }
+  }
+  p {
+    font-size: 16px;
+    line-height: 22px;
+    @media #{$medium} {
+      line-height: 18px;
     }
   }
 }
+
+
+
+
+
+
+// .howDoesItWorkTitle {
+//   padding: 50px 20px;
+//   margin: auto;
+
+//   @media #{$medium} {
+//     padding-top: 100px;
+//     @include fontType($typeGrey, 56px, 56px);
+//   }
+
+//   span{
+//     @include fontType($typeGrey, 42px, 42px);
+//     font-weight: 600;
+
+//     @media #{$medium} {
+//       @include fontType($typeGrey, 56px, 56px);
+//     }
+//   }
+// }
 
 @mixin block_section($top_bottom_pad, $left_right_pad, $margin) {
   padding: $top_bottom_pad $left_right_pad;
@@ -172,54 +215,54 @@ a:hover {
   margin: auto;
 }
 
-.each_section {
+// .each_section {
 
-  .sectionImageTextContents {
-    margin: 20px auto;
-    display: block;
+//   .sectionImageTextContents {
+//     margin: 20px auto;
+//     display: block;
 
-    @media #{$large} {
-      margin: 100px auto;
-      width: 80%;
-      display: -webkit-flex;
-      display: flex;
-    }
-  }
+//     @media #{$large} {
+//       margin: 100px auto;
+//       width: 80%;
+//       display: -webkit-flex;
+//       display: flex;
+//     }
+//   }
 
-  .copy_in_section {
-    margin: auto 20px;
-  }
+//   .copy_in_section {
+//     margin: auto 10px;
+//   }
 
-  .imageWrapper {
-    width: 228.13px;
-    margin: auto;
-    img {
-      width: 78%;
-      margin: auto;
-    }
-  }
+//   .imageWrapper {
+//     width: 228.13px;
+//     margin: auto;
+//     img {
+//       width: 78%;
+//       margin: auto;
+//     }
+//   }
 
-  h5 {
-    @include fontType($darkest, 22px, 28px);
-    font-weight: bold;
-  }
+//   h5 {
+//     @include fontType($darkest, 22px, 28px);
+//     font-weight: bold;
+//   }
 
-  p {
-    @include fontType($typeGrey, 16px, 22px);
-  }
+//   p {
+//     @include fontType($typeGrey, 16px, 22px);
+//   }
 
-  .sectionImageTextContents_small {
-    @extend .sectionImageTextContents;
-    width: 66%;
-  }
+//   .sectionImageTextContents_small {
+//     @extend .sectionImageTextContents;
+//     width: 66%;
+//   }
 
-}
+// }
 
-.benefitSection_concreteBg {
-  @extend .each_section;
-  background-image: url("../img/bike-assets/concrete-texture.jpg");
-  background-size: cover;
-}
+// .benefitSection_concreteBg {
+//   @extend .each_section;
+//   background-image: url("../img/bike-assets/concrete-texture.jpg");
+//   background-size: cover;
+// }
 
 .landing {
   line-height: 24px;
@@ -246,10 +289,11 @@ a:hover {
 
 .bslogo {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 
-  img {
-    height: auto;
+  @media #{$large} {
+    margin: auto;
+    margin-right: 40px;
   }
 }
 
@@ -296,49 +340,53 @@ a:hover {
   }
 }
 
-
-
 .skipLink {
   color: $typeGrey;
 }
 
-.secTitle {
-  @include fontType($typeGrey,-webkit-xxx-large, 32px);
-  text-align: center;
-  margin: 5px 0px;
-  font-weight: 200;
-}
+// .secTitle {
+//   @include fontType($typeGrey,-webkit-xxx-large, 32px);
+//   text-align: center;
+//   margin: 5px 0px;
+//   font-weight: 200;
+// }
 
-.section {
-  @extend .sectionTwo;
-  background-image: url("../img/bike-assets/concrete-texture.jpg");
-  background-size: cover;
+// .section {
+//   @extend .sectionTwo;
+//   background-image: url("../img/bike-assets/concrete-texture.jpg");
+//   background-size: cover;
+// }
 
-  .secPar {
-    @include fontType($typeGrey,12px, 20px);
-
-    @media #{$large} {
-      // padding: 0 8%;
-    }
+.bottom_section {
+  @media #{$large} {
+    display: flex;
   }
 }
 
-.howItworksMobile {
-  p {font-size: 14px;}
+.secPar {
+  // padding: 0 20px;
+  @media #{$medium} {
+    padding: 0px;
+  }
+  // @include fontType($typeGrey,12px, 20px);
 }
 
-.sectionTwo {
-  padding: 40px;
-  margin: 0;
-}
+// .howItworksMobile {
+//   p {font-size: 14px;}
+// }
 
-.stepsDiv {
-  justify-content: center;
-  margin: 25px auto;
-  display: flex;
-  display: -webkit-flex;
-  // max-width: 250px;
-}
+// .sectionTwo {
+//   padding: 40px;
+//   margin: 0;
+// }
+
+// .stepsDiv {
+//   justify-content: center;
+//   margin: 25px auto;
+//   display: flex;
+//   display: -webkit-flex;
+//   // max-width: 250px;
+// }
 
 .dots {
   display: flex;
@@ -601,37 +649,44 @@ textarea {
 //   }
 // }
 
-.leadership_container {
+// .leadership_container {
+//   @media #{$medium} {
+//     display: -webkit-flex;
+//     padding: 0 10px;
+//   }
+//   @media #{$large} {
+//     display: -webkit-flex;
+//     padding: 0 5%;
+//   }
+// }
+
+// .bikeshare_content {
+//   display: block;
+
+//   @media #{$medium} {
+//     padding: 100px 6.5%;
+//     display: -webkit-flex;
+
+//     .bslogo {
+//       margin: auto 30px auto 10px;
+//     }
+//   }
+// }
+
+.leadership_block_wrap {
+  padding: 0 10px;
   @media #{$medium} {
-    display: -webkit-flex;
-    padding: 0 10px;
+    display: -webkit-box;
+    padding: 0 20px;
   }
   @media #{$large} {
-    display: -webkit-flex;
-    padding: 0 5%;
-  }
-}
-
-.bikeshare_content {
-  display: block;
-
-  @media #{$medium} {
-    padding: 100px 6.5%;
-    display: -webkit-flex;
-
-    .bslogo {
-      margin: auto 30px auto 10px;
-    }
+    display: -webkit-box;
+    padding: 0px 80px 40px 80px;
   }
 }
 
 .leadDiv {
-  margin-bottom: 100px;
-  padding: 0 5px;
-  @media #{$medium} {
-    padding: 0 20px;
-  }
-
+  padding: 40px 20px 20px 20px;
 
   h5 {
     @include fontType($darkest, 18px, 26px);

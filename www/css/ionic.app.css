@@ -9880,15 +9880,15 @@ a:hover {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
 
-.concreteBackground {
+.block_section_a, .block_section_b {
   background-image: url("../img/bike-assets/concrete-texture.jpg");
   background-size: cover;
   padding: 30px; }
   @media only screen and (min-width: 479px) {
-    .concreteBackground {
+    .block_section_a, .block_section_b {
       padding: 40px; } }
   @media only screen and (min-width: 799px) {
-    .concreteBackground {
+    .block_section_a, .block_section_b {
       padding: 60px 100px; } }
 
 .content_title {
@@ -9909,32 +9909,55 @@ a:hover {
   margin-top: 30px; }
   @media only screen and (min-width: 479px) {
     .content_texts {
-      font-size: 22px; } }
+      font-size: 22px;
+      margin-top: 40px; } }
   @media only screen and (min-width: 799px) {
     .content_texts {
-      font-size: 24px; } }
+      font-size: 24px;
+      margin-top: 60px; } }
   .content_texts span {
     color: #96E6BF; }
 
-.howDoesItWorkTitle {
-  padding: 50px 20px;
-  margin: auto; }
+.block_section_b {
+  background-image: none; }
+
+.section_b_imageText_wrap {
+  margin: 30px auto auto auto; }
   @media only screen and (min-width: 479px) {
-    .howDoesItWorkTitle {
-      padding-top: 100px;
-      color: #626262;
-      font-size: 56px;
-      line-height: 56px; } }
-  .howDoesItWorkTitle span {
-    color: #626262;
-    font-size: 42px;
-    line-height: 42px;
+    .section_b_imageText_wrap {
+      margin-top: 60px;
+      padding-bottom: 40px;
+      width: 481.33px; } }
+  @media only screen and (min-width: 799px) {
+    .section_b_imageText_wrap {
+      width: 580px; } }
+
+@media only screen and (min-width: 479px) {
+  .section_b_image_wrap img {
+    float: left;
+    padding: 10px;
+    margin-right: 20px;
+    width: 183px; } }
+
+@media only screen and (min-width: 799px) {
+  .section_b_image_wrap img {
+    font-size: 24px;
+    margin-top: 6px; } }
+
+.section_b_text_wrap {
+  text-align: left; }
+  .section_b_text_wrap h5 {
+    font-size: 22px;
     font-weight: 600; }
     @media only screen and (min-width: 479px) {
-      .howDoesItWorkTitle span {
-        color: #626262;
-        font-size: 56px;
-        line-height: 56px; } }
+      .section_b_text_wrap h5 {
+        font-size: 20px; } }
+  .section_b_text_wrap p {
+    font-size: 16px;
+    line-height: 22px; }
+    @media only screen and (min-width: 479px) {
+      .section_b_text_wrap p {
+        line-height: 18px; } }
 
 .containerSection {
   max-width: 626px; }
@@ -9943,44 +9966,6 @@ a:hover {
   padding: 100px 0px;
   width: 85%;
   margin: auto; }
-
-.each_section .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents, .each_section .sectionImageTextContents_small, .benefitSection_concreteBg .sectionImageTextContents_small {
-  margin: 20px auto;
-  display: block; }
-  @media only screen and (min-width: 799px) {
-    .each_section .sectionImageTextContents, .benefitSection_concreteBg .sectionImageTextContents, .each_section .sectionImageTextContents_small, .benefitSection_concreteBg .sectionImageTextContents_small {
-      margin: 100px auto;
-      width: 80%;
-      display: -webkit-flex;
-      display: flex; } }
-
-.each_section .copy_in_section, .benefitSection_concreteBg .copy_in_section {
-  margin: auto 20px; }
-
-.each_section .imageWrapper, .benefitSection_concreteBg .imageWrapper {
-  width: 228.13px;
-  margin: auto; }
-  .each_section .imageWrapper img, .benefitSection_concreteBg .imageWrapper img {
-    width: 78%;
-    margin: auto; }
-
-.each_section h5, .benefitSection_concreteBg h5 {
-  color: #242925;
-  font-size: 22px;
-  line-height: 28px;
-  font-weight: bold; }
-
-.each_section p, .benefitSection_concreteBg p {
-  color: #626262;
-  font-size: 16px;
-  line-height: 22px; }
-
-.each_section .sectionImageTextContents_small, .benefitSection_concreteBg .sectionImageTextContents_small {
-  width: 66%; }
-
-.benefitSection_concreteBg {
-  background-image: url("../img/bike-assets/concrete-texture.jpg");
-  background-size: cover; }
 
 .landing {
   line-height: 24px; }
@@ -10011,9 +9996,11 @@ a:hover {
 
 .bslogo {
   text-align: center;
-  margin-bottom: 10px; }
-  .bslogo img {
-    height: auto; }
+  margin-bottom: 30px; }
+  @media only screen and (min-width: 799px) {
+    .bslogo {
+      margin: auto;
+      margin-right: 40px; } }
 
 .fbLinkBtn {
   margin: 20px 0px; }
@@ -10056,34 +10043,13 @@ a:hover {
 .skipLink {
   color: #626262; }
 
-.secTitle {
-  color: #626262;
-  font-size: -webkit-xxx-large;
-  line-height: 32px;
-  text-align: center;
-  margin: 5px 0px;
-  font-weight: 200; }
+@media only screen and (min-width: 799px) {
+  .bottom_section {
+    display: flex; } }
 
-.section {
-  background-image: url("../img/bike-assets/concrete-texture.jpg");
-  background-size: cover; }
-  .section .secPar {
-    color: #626262;
-    font-size: 12px;
-    line-height: 20px; }
-
-.howItworksMobile p {
-  font-size: 14px; }
-
-.sectionTwo, .section {
-  padding: 40px;
-  margin: 0; }
-
-.stepsDiv {
-  justify-content: center;
-  margin: 25px auto;
-  display: flex;
-  display: -webkit-flex; }
+@media only screen and (min-width: 479px) {
+  .secPar {
+    padding: 0px; } }
 
 .dots {
   display: flex;
@@ -10285,31 +10251,19 @@ textarea {
   color: #76CE95;
   font-weight: 900; }
 
-@media only screen and (min-width: 479px) {
-  .leadership_container {
-    display: -webkit-flex;
-    padding: 0 10px; } }
-
-@media only screen and (min-width: 799px) {
-  .leadership_container {
-    display: -webkit-flex;
-    padding: 0 5%; } }
-
-.bikeshare_content {
-  display: block; }
+.leadership_block_wrap {
+  padding: 0 10px; }
   @media only screen and (min-width: 479px) {
-    .bikeshare_content {
-      padding: 100px 6.5%;
-      display: -webkit-flex; }
-      .bikeshare_content .bslogo {
-        margin: auto 30px auto 10px; } }
+    .leadership_block_wrap {
+      display: -webkit-box;
+      padding: 0 20px; } }
+  @media only screen and (min-width: 799px) {
+    .leadership_block_wrap {
+      display: -webkit-box;
+      padding: 0px 80px 40px 80px; } }
 
 .leadDiv {
-  margin-bottom: 100px;
-  padding: 0 5px; }
-  @media only screen and (min-width: 479px) {
-    .leadDiv {
-      padding: 0 20px; } }
+  padding: 40px 20px 20px 20px; }
   .leadDiv h5 {
     color: #242925;
     font-size: 18px;
