@@ -465,8 +465,9 @@ textarea {
 }
 
 .button.surveyBtn {
-  // @extend .fdbckBtn;
+  @extend .fdbckBtn;
   position: absolute;
+  border: 1px solid black;
   top: 32px;
   right: 10px;
   font-size: -webkit-xxx-large;

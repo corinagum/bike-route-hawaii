@@ -10174,7 +10174,7 @@ textarea {
 .bar {
   border-bottom: none; }
 
-.fdbckBtn, .button.suggestBtn {
+.fdbckBtn, .button.suggestBtn, .button.surveyBtn {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -10183,16 +10183,16 @@ textarea {
   right: 63.94px;
   color: #f8f8f8;
   background-color: #242925; }
-  .fdbckBtn span, .button.suggestBtn span {
+  .fdbckBtn span, .button.suggestBtn span, .button.surveyBtn span {
     color: #f8f8f8;
     font-size: 10px;
     line-height: 10px;
     font-weight: 600; }
-  .fdbckBtn:hover, .button.suggestBtn:hover {
+  .fdbckBtn:hover, .button.suggestBtn:hover, .button.surveyBtn:hover {
     background-color: #508f66;
     color: #f8f8f8; }
   @media only screen and (min-width: 479px) {
-    .fdbckBtn span, .button.suggestBtn span {
+    .fdbckBtn span, .button.suggestBtn span, .button.surveyBtn span {
       font-size: 12px; } }
 
 .button.suggestBtn {
@@ -10200,6 +10200,7 @@ textarea {
 
 .button.surveyBtn {
   position: absolute;
+  border: 1px solid black;
   top: 32px;
   right: 10px;
   font-size: -webkit-xxx-large;
