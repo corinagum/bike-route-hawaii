@@ -53,13 +53,13 @@
         </div>
 
         <div class="bulk_confirm_wrapper">
-          <a ng-click="openModal(3);submitBulkLiking(likedMultiStations);cancelReportPoint()" nav-transition="none">
+          <a ng-click="openModal(3);submitBulkLiking(); cancelReportPoint()" nav-transition="none">
              Save Liked Stations
           </a>
         </div>
     </div> <!-- /THEDIVDIRECTION -->
 
-    <div class="close_footer_bar" ng-click="closeBulkLiking()">
+    <div class="close_footer_bar" ng-click="closeBulkLiking(); cancelReportPoint()">
       x
     </div>
 

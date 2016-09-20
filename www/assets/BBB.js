@@ -471,7 +471,7 @@ var bbbList = [
     website : "flowerfairhawaii.com",
     yelp : "https://www.yelp.com/biz/flower-fair-honolulu-2",
     bbbAcc: true,
-    image : "http://www.flowerfairhawaii.com/wp-content/uploads/2010/10/DSC_6456.jpg",
+    image : "http://placehold.it/200x190?text=No+Image+Available",
     description : " Local, family-owned florist that can create beautiful custom arrangements",
     lat : 21.311268,
     lng : -157.859616

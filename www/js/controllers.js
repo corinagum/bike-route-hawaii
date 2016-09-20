@@ -280,14 +280,18 @@
 
   // LOOPS THROUGH DATA RETURNED TO CHECK ITS TYPE AND IF IT SHOULD BE ASSIGNED A MARKER
   function createMarkers(array, name){
-
+    
     for(var i = 0; i < array.length; i++){
       var noPhotoLink = array[i].photolink;
       var pointDetail;
       var showMarker;
       var pointIcon;
       showMarker = $scope.showStations;
-      pointIcon = $scope.bikeShareIcon;
+      if($scope.user && $scope.user.liked !== null && $scope.user.liked.indexOf(array[i].id) !== -1){
+        pointIcon = $scope.heartIcon;
+      } else {
+        pointIcon = $scope.bikeShareIcon;
+      }
         $scope.markers[(name + i)] = {
         lat : array[i].lat,
         lng : array[i].long,
@@ -367,6 +371,7 @@
     }else{
       $scope.user.liked.push($scope.stationClicked.id);
     }
+    $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.heartIcon;
     UserService.updateUser($scope.user);
     UserService.edit($scope.user.id);
   };
@@ -375,6 +380,7 @@
   $scope.userUnliked = function(){
     $scope.myStyle={};
     $scope.user.liked.splice($scope.user.liked.indexOf($scope.stationClicked.id),1);
+    $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIconClicked;
     UserService.updateUser($scope.user);
     UserService.edit($scope.user.id);
   };
@@ -541,6 +547,7 @@
   // LIKE MULITPLE STATIONS
   $scope.showBulkLikeFooter = false;
   $scope.likedMultiStations = [];
+  $scope.unlikedMultiStations = [];
 
   $scope.likeMultiStations = function () {
     $scope.showBulkLikeFooter = true;
@@ -550,24 +557,36 @@
 
   $scope.closeBulkLiking = function () {
     $scope.showBulkLikeFooter = false;
+    $scope.likedMultiStations = [];
+    $scope.unlikedMultiStations = [];
   };
 
-  $scope.submitBulkLiking = function(array){
+  $scope.submitBulkLiking = function(){
     $scope.showBulkLikeFooter = false;
-    for(var i=0; i < array.length; i++){
+    for(var i=0; i < $scope.likedMultiStations.length; i++){
       if($scope.user.liked === null){
-        $scope.user.liked = [array[i]];
+        $scope.user.liked = [$scope.likedMultiStations[i]];
       }
-      if($scope.user.liked.indexOf(array[i]) === -1){
-        $scope.user.liked.push(array[i]);
+      if($scope.user.liked.indexOf($scope.likedMultiStations[i]) === -1){
+        $scope.user.liked.push($scope.likedMultiStations[i]);
       }
       console.log("in loop");
     }
-    console.log("past loop")
+    for(var i=0; i < $scope.unlikedMultiStations.length; i++){
+      if($scope.user.liked.indexOf($scope.unlikedMultiStations[i]) !== -1){
+        $scope.user.liked.splice($scope.user.liked.indexOf($scope.unlikedMultiStations[i]),1);
+        console.log("spliced", $scope.user.liked)
+      }
+      console.log("in loop", $scope.user.liked.indexOf($scope.unlikedMultiStations[i]), $scope.user.liked);
+    }
+    console.log("passed loop");
     UserService.updateUser($scope.user);
-    UserService.edit($scope.user.id);
-    $scope.likedMultiStations = [];
-    console.log($scope.markers);
+    UserService.edit($scope.user.id)
+    .then(function(data){
+      $scope.likedMultiStations = [];
+      $scope.unlikedMultiStations = [];
+      console.log($scope.markers);
+    })
   }
 
   // SAVE CURRENT MARKER PROPERTIES TO SCOPE
@@ -581,14 +600,68 @@
         $scope.user = data.data.user;
         UserService.updateUser($scope.user);
         UserService.edit($scope.user.id);
-        return;
+      })
+      .then(function(data){
+          if(args.modelName !== 'reportPoint'  && $scope.showBulkLikeFooter === false){
+            if($scope.stationClicked.lastClicked && $scope.markers[$scope.stationClicked.lastClicked].icon !== $scope.heartIcon){
+              // if($scope.markers[$scope.stationClicked.lastClicked].icon !== $scope.heartIcon){
+
+              // }
+              $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
+            }
+            if($scope.markers[args.modelName].icon !== $scope.heartIcon){
+              $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
+            }
+            $scope.stationClicked = $scope.markers[args.modelName].properties;
+            $scope.stationClicked.lastClicked = args.modelName;
+            if($scope.stationClicked.photolink === null){
+              $scope.stationClicked.photolink = "http://placehold.it/600x100?text=No+Image+Available+for+this+Location";
+            }
+            $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
+            $scope.updateClosestBBB();
+            $scope.openModal(4);
+          }
+          if($scope.showBulkLikeFooter === true){
+           if($scope.markers[args.modelName].icon !== $scope.heartIcon) {
+              $scope.markers[args.modelName].icon = $scope.heartIcon;
+              $scope.likedMultiStations.push(args.model.properties.id);
+              if($scope.unlikedMultiStations.indexOf(args.model.properties.id) !== -1){
+                $scope.unlikedMultiStations.splice($scope.unlikedMultiStations.indexOf(args.model.properties.id), 1);
+              }
+              console.log("to like: ", $scope.likedMultiStations);
+              console.log("to unlike: ", $scope.unlikedMultiStations);
+            } else {
+              $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
+              $scope.unlikedMultiStations.push(args.model.properties.id);
+              if($scope.likedMultiStations.indexOf(args.model.properties.id) !== -1){
+                $scope.likedMultiStations.splice($scope.likedMultiStations.indexOf(args.model.properties.id), 1);
+              }
+              console.log("to like: ", $scope.likedMultiStations);
+              console.log("to unlike: ", $scope.unlikedMultiStations);
+            }
+          }
+          console.log("$scope user: ", $scope.user);
+          if($scope.user.liked === null || undefined){
+            $scope.myStyle = {};
+          } else {
+            if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
+              $scope.myStyle={};
+            } else {
+              $scope.myStyle={color:'red'};
+            }
+          }
       })
     } else {
       if(args.modelName !== 'reportPoint'  && $scope.showBulkLikeFooter === false){
-        if($scope.stationClicked.lastClicked){
+        if($scope.stationClicked.lastClicked && $scope.markers[$scope.stationClicked.lastClicked].icon !== $scope.heartIcon){
+          // if($scope.markers[$scope.stationClicked.lastClicked].icon !== $scope.heartIcon){
+
+          // }
           $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
         }
-        $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
+        if($scope.markers[args.modelName].icon !== $scope.heartIcon){
+          $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
+        }
         $scope.stationClicked = $scope.markers[args.modelName].properties;
         $scope.stationClicked.lastClicked = args.modelName;
         if($scope.stationClicked.photolink === null){
@@ -602,11 +675,19 @@
         if($scope.markers[args.modelName].icon !== $scope.heartIcon) {
           $scope.markers[args.modelName].icon = $scope.heartIcon;
           $scope.likedMultiStations.push(args.model.properties.id);
-          console.log($scope.likedMultiStations);
+          if($scope.unlikedMultiStations.indexOf(args.model.properties.id) !== -1){
+            $scope.unlikedMultiStations.splice($scope.unlikedMultiStations.indexOf(args.model.properties.id), 1);
+          }
+          console.log("to like: ", $scope.likedMultiStations);
+          console.log("to unlike: ", $scope.unlikedMultiStations);
         } else {
           $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
-          $scope.likedMultiStations.splice($scope.likedMultiStations.indexOf(args.model.properties.id), 1);
-          console.log($scope.likedMultiStations);
+          $scope.unlikedMultiStations.push(args.model.properties.id);
+          if($scope.likedMultiStations.indexOf(args.model.properties.id) !== -1){
+            $scope.likedMultiStations.splice($scope.likedMultiStations.indexOf(args.model.properties.id), 1);
+          }
+          console.log("to like: ", $scope.likedMultiStations);
+          console.log("to unlike: ", $scope.unlikedMultiStations);
         }
       }
       console.log("$scope user: ", $scope.user);
