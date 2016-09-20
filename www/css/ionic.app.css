@@ -10285,7 +10285,6 @@ textarea {
     max-height: 200px; }
 
 .mapImage {
-  margin-top: 50px;
   max-width: 100%; }
 
 .mapBg {
@@ -10337,7 +10336,6 @@ textarea {
 
 .bar-header {
   background-color: #76CE95;
-  height: 100px;
   background-image: none; }
 
 #bs_logo_header {
