@@ -95,7 +95,8 @@
       touchZoom: true,
       maxNativeZoom: 18,
       maxZoom : 18,
-      inertiaMaxSpeed: 150
+      inertiaMaxSpeed: 150,
+      tap :false
     },
     center : {
       lat: 21.3008900859581,
