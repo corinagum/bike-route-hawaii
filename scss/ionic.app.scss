@@ -27,6 +27,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 $medium: "only screen and (min-width:479px)";
 $large: "only screen and (min-width:799px)";
 
+i, a {
+  cursor: pointer;
+}
 // @media #{$medium} {
 //   body {border: 3px solid yellow;}
 // }
@@ -1316,6 +1319,7 @@ img.mobileYellowBikeIcon {
   padding: 6px;
   position: absolute;
   right: 6px;
+  cursor: pointer;
 }
 
 @media #{$medium} {

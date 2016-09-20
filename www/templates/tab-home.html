@@ -34,7 +34,7 @@
       <div class="divider"></div>
 
       <ion-list>
-        <ion-item menu-close ng-click="likeMultiStations()" class="waves-effect"><span>Like Stations</span></ion-item>
+        <ion-item menu-close ng-click="likeMultiStations()" class="waves-effect"><span>Pick your favorite Stations</span></ion-item>
       </ion-list>
     </ion-side-menu>
   </ion-side-menus><!-- SIDE MENU FOR MAP -->
@@ -53,13 +53,13 @@
         </div>
 
         <div class="bulk_confirm_wrapper">
-          <a ng-click="openModal(3);submitBulkLiking(likedMultiStations);cancelReportPoint()" nav-transition="none">
+          <a ng-click="openModal(3);submitBulkLiking(likedMultiStations);" nav-transition="none">
              Save Liked Stations
           </a>
         </div>
     </div> <!-- /THEDIVDIRECTION -->
 
-    <div class="close_footer_bar" ng-click="closeBulkLiking()">
+    <div class="close_footer_bar" ng-click="closeBulkLiking();cancelReportPoint()">
       x
     </div>
 
@@ -108,7 +108,7 @@
         </div>
 
         <div class="row center">
-          <a style="background-color: rgb(234, 187, 0); margin: auto; color: black;" class="button" ng-click="openModal(3);suggestStation();cancelReportPoint()" nav-transition="none">
+          <a style="background-color: rgb(234, 187, 0); margin: auto; color: black;" class="button" ng-click="suggestStation();openModal(3);" nav-transition="none">
              Confirm Location
           </a>
         </div>
@@ -116,7 +116,7 @@
       </div> <!-- /DASTATIONWRAP -->
     </div> <!-- /THEDIVDIRECTION -->
 
-    <div class="exitOutOfSuggestion" ng-click="cancelReportPoint()">
+    <div class="close_footer_bar" ng-click="cancelReportPoint()">
       x
     </div>
 
@@ -173,13 +173,13 @@
 
 
         <div class="confirm_button_wrapper">
-          <a class="button" ng-click="openModal(3);suggestStation();cancelReportPoint()" nav-transition="none">
+          <a class="button" ng-click="openModal(3);suggestStation();" nav-transition="none">
              Confirm Location
           </a>
         </div>
 
 
-        <div class="exitOutOfSuggestion" ng-click="cancelReportPoint()">
+        <div class="close_footer_bar" ng-click="cancelReportPoint()">
           x
         </div>
 
@@ -202,7 +202,7 @@
           </br>
           <div>
             <div>
-              <a style="color: #96E6BF;" href="" ng-click="closeModal(3);">Back to Map</a>
+              <a style="color: #96E6BF;" href="" ng-click="cancelReportPoint();closeModal(3);">Back to Map</a>
             </div>
           </div>
         </div>

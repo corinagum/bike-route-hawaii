@@ -9839,6 +9839,9 @@ a.button {
 .scale-in > .ng-leave {
   transition: all ease-in-out 250ms; }
 
+i, a {
+  cursor: pointer; }
+
 body, p {
   color: #626262;
   font-size: 12px; }
@@ -10718,7 +10721,8 @@ img.mobileYellowBikeIcon {
 .close_footer_bar {
   padding: 6px;
   position: absolute;
-  right: 6px; }
+  right: 6px;
+  cursor: pointer; }
 
 @media only screen and (min-width: 479px) {
   .bulk_content_wrapper {
