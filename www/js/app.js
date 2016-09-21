@@ -115,6 +115,7 @@ angular.module('starter', ['nemLogging','ui-leaflet','ionic', 'starter.controlle
         views: {
           'home-tab': {
             templateUrl: "templates/home-main/benefits.html"
+            // controller: 'MapCtrl'
           }
         }
       })

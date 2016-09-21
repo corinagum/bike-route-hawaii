@@ -6,9 +6,6 @@
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$ionicSideMenuDelegate', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$ionicSideMenuDelegate) {
 
 
-    $scope.toggleRight = function () {
-      $ionicSideMenuDelegate.toggleRight();
-    };
 
     // console.log("mapctrl started", UserService.getUser());
     // if(UserService.getUser() === null){
@@ -102,7 +99,6 @@
       lng: -157.8398036956787,
       zoom: 15,
     },
-    controls: {},
     markers : {},
     bikeShareIcon: {
       iconUrl: '../img/bike-assets/bike-icon.png',
@@ -244,6 +240,10 @@
     }
   }
 
+  $scope.toggleRight = function () {
+    $ionicSideMenuDelegate.toggleRight();
+  };
+
   $scope.setShowBlocker = function(){
     $scope.foundLocation = false;
   };
@@ -280,7 +280,7 @@
 
   // LOOPS THROUGH DATA RETURNED TO CHECK ITS TYPE AND IF IT SHOULD BE ASSIGNED A MARKER
   function createMarkers(array, name){
-    
+
     for(var i = 0; i < array.length; i++){
       var noPhotoLink = array[i].photolink;
       var pointDetail;
@@ -470,7 +470,7 @@
   });
 
   // IF CREATING NEW REPORT/SUGGEST POINT
-  // $scope.showReportControl = false;
+  $scope.showReportControl = false;
 
   // ADD REPORT/SUGGESTION POINT
   $scope.createReportPoint = function(){
@@ -494,6 +494,7 @@
   // CANCEL REPORT POINT
   $scope.cancelReportPoint = function(){
     console.log("cancelled reportPoint");
+    $scope.showPopUp = false;
     $scope.showReportControl = false;
     setMarkersReturned(bikesharePoints);
     delete $scope.markers.reportPoint;
@@ -501,6 +502,9 @@
 
   $scope.suggestStation = function(){
     console.log("suggested");
+    $scope.showPopUp = true;
+    $scope.showReportControl = false;
+
     if($scope.markers.reportPoint){
       $scope.markers.reportPoint.type = "suggest";
       $scope.markers.reportPoint.suggestedBy = UserService.getUser().id;
@@ -561,7 +565,8 @@
     $scope.unlikedMultiStations = [];
   };
 
-  $scope.submitBulkLiking = function(){
+  $scope.submitBulkLiking = function(array){
+    $scope.showPopUp = true;
     $scope.showBulkLikeFooter = false;
     for(var i=0; i < $scope.likedMultiStations.length; i++){
       if($scope.user.liked === null){
@@ -834,6 +839,12 @@ if(!isCordovaApp){
   //ICON CHANGE ON-CLICK
   $scope.isCollapsed = true;
   $scope.benCollapsed = true;
+
+  $scope.showPopUp = false;
+
+  $scope.openPopUpMessage = function () {
+    $scope.showPopUp = true;
+  };
 
 ////////////////////////////////////////////////////////////
 

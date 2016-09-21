@@ -2,18 +2,36 @@
 <ion-view data-ng-init="init()" title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
 
 
-  <ion-side-menus enable-menu-with-back-views="false"><!-- SIDE MENU FOR MAP -->
-    <ion-side-menu-content>
-      <ion-header-bar class="bar bar-header map_header_bar">
-        <a ng-href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
 
-        <div class="side_menu_button" ng-click="toggleRight(); openMenu = !openMenu; closeBulkLiking(); cancelReportPoint()"><p>Menu</p><i class="ion-navicon-round"></i></div>
-      </ion-header-bar>
+  <!-- SIDE MENU FOR MAP -->
+  <ion-side-menus data-tap-disabled="true" enable-menu-with-back-views="false">
+      <ion-side-menu-content data-tap-disabled="true">
+        <ion-header-bar class="bar bar-header map_header_bar">
+          <a ng-href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
 
-      <ion-content data-tap-disabled="true" class="fade-on-enter">
-          <leaflet data-tap-disabled="true" layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' controls="controls" custom-controls="myCustomControls" geojson="geojson"></leaflet>
-      </ion-content>
-    </ion-side-menu-content>
+          <div class="side_menu_button" ng-click="toggleRight(); openMenu = !openMenu; closeBulkLiking(); cancelReportPoint()"><p>Menu</p><i class="ion-navicon-round"></i></div>
+        </ion-header-bar>
+
+        <ion-content data-tap-disabled="true" class="fade-on-enter">
+            <leaflet data-tap-disabled="true" layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' controls="controls" custom-controls="myCustomControls" geojson="geojson"></leaflet>
+
+            <div class="container_confirmed" ng-show="showPopUp">
+              <div class="message_popup">
+                <div class="popup_p_a">
+                  <p>Mahalo! Your suggestion has been submitted.</p>
+                  <div class="closeModal3">
+                    <a href="" ng-click="cancelReportPoint();">x</a>
+                  </div>
+                </div>
+
+                <a href="#/tab/leave-comments" class="leaveFeedback_button waves-effect waves-light" nav-transition="none">
+                  <span>Leave Feedback</span>
+                </a>
+              </div>
+            </div>
+
+        </ion-content>
+      </ion-side-menu-content>
 
     <ion-side-menu side="right">
       <ion-list>
@@ -34,7 +52,7 @@
       <div class="divider"></div>
 
       <ion-list>
-        <ion-item menu-close ng-click="likeMultiStations()" class="waves-effect"><span>Like Stations</span></ion-item>
+        <ion-item menu-close ng-click="likeMultiStations()" class="waves-effect"><span>Pick your favorite Stations</span></ion-item>
       </ion-list>
     </ion-side-menu>
   </ion-side-menus><!-- SIDE MENU FOR MAP -->
@@ -53,13 +71,13 @@
         </div>
 
         <div class="bulk_confirm_wrapper">
-          <a ng-click="openModal(3);submitBulkLiking(); cancelReportPoint()" nav-transition="none">
+          <a ng-click="submitBulkLiking(likedMultiStations);" nav-transition="none">
              Save Liked Stations
           </a>
         </div>
     </div> <!-- /THEDIVDIRECTION -->
 
-    <div class="close_footer_bar" ng-click="closeBulkLiking(); cancelReportPoint()">
+    <div class="close_footer_bar" ng-click="closeBulkLiking();cancelReportPoint();">
       x
     </div>
 
@@ -108,7 +126,7 @@
         </div>
 
         <div class="row center">
-          <a style="background-color: rgb(234, 187, 0); margin: auto; color: black;" class="button" ng-click="openModal(3);suggestStation();cancelReportPoint()" nav-transition="none">
+          <a style="background-color: rgb(234, 187, 0); margin: auto; color: black;" class="button" ng-click="suggestStation();" nav-transition="none">
              Confirm Location
           </a>
         </div>
@@ -116,7 +134,7 @@
       </div> <!-- /DASTATIONWRAP -->
     </div> <!-- /THEDIVDIRECTION -->
 
-    <div class="exitOutOfSuggestion" ng-click="cancelReportPoint()">
+    <div class="close_footer_bar" ng-click="cancelReportPoint()">
       x
     </div>
 
@@ -173,13 +191,13 @@
 
 
         <div class="confirm_button_wrapper">
-          <a class="button" ng-click="openModal(3);suggestStation();cancelReportPoint()" nav-transition="none">
+          <a class="button" ng-click="suggestStation();" nav-transition="none">
              Confirm Location
           </a>
         </div>
 
 
-        <div class="exitOutOfSuggestion" ng-click="cancelReportPoint()">
+        <div class="close_footer_bar" ng-click="cancelReportPoint()">
           x
         </div>
 
@@ -193,21 +211,27 @@
 
 
 
-<script id="yourSuggestionSave.html" type="text/ng-template">
+<!-- <script id="yourSuggestionSave.html" type="text/ng-template">
 
     <ion-modal-view class="mahaloSuggestionWrapper padding">
-      <ion-content class="alohaLandingOne">
-        <div>
-          <h3>Mahalo! Your suggestion has been submitted.</h3>
-          </br>
-          <div>
-            <div>
-              <a style="color: #96E6BF;" href="" ng-click="closeModal(3);">Back to Map</a>
+      <ion-content class="ion_content center" style="background: none; box-shadow: none;">
+        <div class="modal_Mahalo">
+            <div class="mahalo_feedback_wrapper">
+              <h3>Mahalo! Your suggestion has been submitted.</h3>
+              </br>
+
+              <a ng-click="closeModal(3);closeModal(4)" href="#/tab/leave-comments" class="leaveFeedback_button waves-effect waves-light" nav-transition="none">
+                <span>Leave Feedback</span>
+              </a>
             </div>
-          </div>
+
+            <div class="closeModal3">
+              <a href="" ng-click="cancelReportPoint();closeModal(3);">x</a>
+            </div>
         </div>
+
       </ion-content>
     </ion-modal-view>
 
-</script>
+</script> -->
 </ion-view>
