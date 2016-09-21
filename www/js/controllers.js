@@ -487,6 +487,7 @@
       };
 
     setMarkersReturned(bikesharePoints);
+
   };
 
   // CANCEL REPORT POINT
