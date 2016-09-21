@@ -5,35 +5,6 @@
  .controller('MapCtrl',
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$ionicSideMenuDelegate', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$ionicSideMenuDelegate) {
 
-
-
-    // console.log("mapctrl started", UserService.getUser());
-    // if(UserService.getUser() === null){
-    //   console.log("no user, made one");
-    //   UserService.create()
-    //   .then(function(data){
-    //     UserService.updateUser(data.data.user);
-    //     console.log("user created and updated to ", UserService.getUser());
-    //   });
-    // }
-
-    // $scope.userStart = function(){
-    //   UserService.create()
-    //   .then(function(data){
-    //     UserService.updateUser(data.data.user);
-    //     console.log("user created and updated to", UserService.getUser());
-    //   });
-    // };
-
-    // UPDATE SURVEY QUESTIONS IN DB
-    // $scope.updateSurvey = function(u) {
-    //   $scope.user = UserService.getUser();
-    //   $scope.user.age = u.age;
-    //   $scope.user.gender = u.gender;
-    //   $scope.user.zipcode = u.zipcode;
-    //   UserService.updateUser($scope.user);
-    //   UserService.edit($scope.user.id);
-    // };
     $scope.createUserIfNone = function(){
       if(UserService.getUser() === null){
         UserService.create()
