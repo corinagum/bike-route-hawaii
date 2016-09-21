@@ -10827,6 +10827,7 @@ img.mobileYellowBikeIcon {
   background-color: #f8f8f8; }
 
 .container_confirmed {
+  z-index: 2000000;
   position: absolute;
   top: 100px;
   left: 50%; }
