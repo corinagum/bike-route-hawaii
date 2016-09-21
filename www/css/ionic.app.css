@@ -9855,9 +9855,6 @@ img {
 a:hover {
   text-decoration: none; }
 
-.overflow-scroll {
-  overflow-y: auto; }
-
 .contentTitle {
   font-size: 36px; }
 
@@ -10846,8 +10843,9 @@ img.mobileYellowBikeIcon {
     min-width: 175px;
     padding: 10px 20px; }
     .container_confirmed .message_popup a {
-      margin-top: 20px;
-      color: #626262; }
+      margin-top: 20px; }
+      .container_confirmed .message_popup a span {
+        color: #f8f8f8; }
     @media only screen and (min-width: 479px) {
       .container_confirmed .message_popup {
         padding: 40px 40px; } }
