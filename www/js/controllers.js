@@ -14,11 +14,11 @@
         })
         .then(function(data){
           return;
-        })
+        });
       } else {
         $scope.user = UserService.getUser();
       }
-    }
+    };
 
     $scope.createUserIfNone();
 
@@ -90,7 +90,6 @@
     bikeShareIcon: {
       iconUrl: '../img/bike-assets/bike-icon.png',
       iconSize:     [30, 30],
-      // shadowUrl: 'img/leaf-shadow.png',
       shadowSize:   [50, 64],
       iconAnchor:   [0, 0],
       shadowAnchor: [4, 62],
@@ -99,7 +98,6 @@
     bikeShareIconClicked: {
       iconUrl: '../img/bike-assets/bike-icon-gray.png',
       iconSize:     [30, 30],
-      // shadowUrl: 'img/leaf-shadow.png',
       shadowSize:   [50, 64],
       iconAnchor:   [0, 0],
       shadowAnchor: [4, 62],
@@ -108,7 +106,6 @@
     reportIcon: {
       iconUrl: '../img/bike-assets/Bike Yellow copy.png',
       iconSize:     [35, 35],
-      // shadowUrl: 'img/leaf-shadow.png',
       shadowSize:   [50, 64],
       iconAnchor:   [0, 0],
       shadowAnchor: [4, 62],
@@ -119,13 +116,11 @@
     heartIcon: {
       iconUrl: '../img/bike-assets/red heart.png',
       iconSize:     [30, 30],
-      // shadowUrl: 'img/leaf-shadow.png',
       shadowSize:   [50, 64],
       iconAnchor:   [0, 0],
       shadowAnchor: [4, 62],
       popupAnchor:  [15, 0],
       // className: 'bikeIconSuggestion',
-      // message: 'Drop the bycicle where you\'d like to see the station'
     }
   });
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
@@ -227,6 +222,10 @@
     }
   }
 
+  function onLocationError(e) {
+      alert(e.message);
+  }
+
   $scope.toggleRight = function () {
     $ionicSideMenuDelegate.toggleRight();
   };
@@ -241,9 +240,6 @@
 
   $scope.foundLocation = false;
 
-  function onLocationError(e) {
-      alert(e.message);
-  }
 
   $scope.findCenter = function(){
     leafletData.getMap().then(function(map){
@@ -356,7 +352,6 @@
 
   function sortByClosest(array){
     array.sort(function(a,b){
-      // console.log("consoleLogging", array);
       return a.distance - b.distance;
     });
   }
@@ -388,16 +383,6 @@
   $scope.rideTime = function(place){
     return Math.round(L.latLng([$scope.stationClicked.lat, $scope.stationClicked.long]).distanceTo($scope.places[place]) * (60/15500));
   };
-
-  $scope.places = {
-    kakaako    : [21.296586, -157.860886],
-    alamoana   : [21.290763, -157.843645],
-    university : [21.296760, -157.821071],
-    waikiki    : [21.275413, -157.824987],
-    downtown   : [21.309355, -157.860274],
-    diamondhead: [21.260855, -157.817874]
-  };
-
 
   function setMarkersReturned(data){
     createMarkers(data, 'bikeShare');
@@ -447,7 +432,6 @@
       var reportPoint = {
           lat: $scope.center.lat,
           lng: $scope.center.lng,
-          // message: "Drop the bicycle where you'd</br> like to see a bike station",
           focus: true,
           draggable: true,
           icon : $scope.reportIcon
@@ -458,6 +442,7 @@
       };
 
     setMarkersReturned(bikesharePoints);
+
   };
 
   $scope.$on('leafletDirectiveMarker.map.dragend', function(event, args){
@@ -486,29 +471,6 @@
       console.log("suggested point stored");
     }
   };
-
-  // COMMENT SUBMIT FUNCTION
-  // $scope.postComment = function(comment){
-  //   if($scope.showReportControl){
-  //     PointService.addPoint({
-  //       type : "ReportSuggest",
-  //       lat : $scope.markers.reportPoint.lat,
-  //       long : $scope.markers.reportPoint.lng
-  //     })
-  //     .then(function(data){
-  //       CommentService.addComment(comment, data.data.newId)
-  //       .then(function(data){
-  //         $scope.cancelReportPoint();
-  //         $scope.closeModal(6);
-  //       });
-  //     });
-  //   } else {
-  //     CommentService.addComment(comment, $scope.currentMarkerProperties.id)
-  //     .then(function(data){
-  //       $scope.closeModal(6);
-  //     });
-  //   }
-  // };
 
   //LOAD ANIMATION SHOW
   $scope.show = function() {
@@ -586,7 +548,6 @@
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
       $scope.toggleLeft();
-      // $scope.openModal(4);
     }
     if($scope.showBulkLikeFooter === true){
       if($scope.markers[args.modelName].icon !== $scope.heartIcon) {
@@ -619,136 +580,7 @@
   });
 
 
-
-
-  //////// BEGINNIG of MODAL ////////
-
-  $ionicModal.fromTemplateUrl('templates/feedback/markerDetail.html', {
-    id: '4',
-    scope: $scope,
-    // backdropClickToClose: false,
-    hardwareBackButtonClose: false,
-    // animation: 'scale-in'
-  }).then(function(modal) {
-    $scope.modal4 = modal;
-  });
-
-// if(!isCordovaApp){
-//   $ionicModal.fromTemplateUrl('yourSuggestionSave.html', {
-//     id: '3',
-//     scope: $scope,
-//     backdropClickToClose: false,
-//     hardwareBackButtonClose: false,
-//     animation: 'scale-in'
-//   }).then(function(modal) {
-//     $scope.modal3 = modal;
-//   });
-// }
-
-  $scope.openModal = function(index) {
-    switch (index) {
-      case 1 : $scope.modal1.show();
-                break;
-      case 2 : $scope.modal2.show();
-                break;
-      case 3 : $scope.modal3.show();
-                break;
-      case 4 : $scope.modal4.show();
-    }
-  };
-
-   $scope.closeModal = function(index) {
-    // window.location.reload(true);
-    switch (index) {
-      case 1 : $scope.modal1.hide();
-                break;
-      case 2 : $scope.modal2.hide();
-                break;
-      case 3 : $scope.modal3.hide();
-                break;
-      case 4 : $scope.modal4.hide();
-    }
-  };
-
-  //REMOVE MODAL WHEN DESTROYED
-  $scope.$on('$destroy', function() {
-    if($scope.modal){
-      $scope.modal.remove();
-    }
-  });
-
-  //////// END of MODAL ////////
-
-  // Logic for Location Details Modal
-
-  $scope.favoritesList = null;
-
-  if( !JSON.parse(localStorage.getItem('favorites')) ) {
-    $scope.favoritesList = [];
-  } else{
-    $scope.favoritesList = JSON.parse(localStorage.getItem('favorites'));
-  }
-
-  $scope.checkFavorite = function(currentMarker) {
-    if(!currentMarker) {
-      currentMarker = $scope.currentMarkerProperties;
-    }
-
-    var faveMarker = $scope.favoritesList.findIndex(function(item){
-      return item.id === currentMarker.id;
-    });
-    return faveMarker > -1;
-  };
-
-  $scope.addFavorite = function(){
-    var faveMarker = $scope.favoritesList.findIndex(function(item){
-      return item.id === $scope.currentMarkerProperties.id;
-    });
-
-      if(faveMarker > -1) {
-          $scope.favoritesList.splice(faveMarker, 1);
-          localStorage.setItem('favorites', JSON.stringify($scope.favoritesList));
-          $scope.isFavorited = false;
-      } else {
-        $scope.favoritesList.push($scope.currentMarkerProperties);
-        localStorage.setItem('favorites', JSON.stringify($scope.favoritesList));
-        $scope.isFavorited = true;
-      }
-  };
-
-  var safetyList = null;
-  if(!JSON.parse(localStorage.getItem('safetyWarnings'))) {
-    safetyList = [];
-  } else {
-    safetyList = JSON.parse(localStorage.getItem('safetyWarnings'));
-  }
-
-  $scope.checkSafetyWarn = function(currentMarker) {
-    if(!currentMarker) {
-      currentMarker = $scope.currentMarkerProperties;
-    }
-    return (safetyList.indexOf(currentMarker.id) !== -1);
-  };
-
-  $scope.addSafetyWarn = function(){
-    if(safetyList.indexOf($scope.currentMarkerProperties.id) !== -1) {
-      safetyList.splice(safetyList.indexOf($scope.currentMarkerProperties.id),1);
-      localStorage.setItem('safetyWarnings', JSON.stringify(safetyList));
-      $scope.isSafetyWarn = false;
-      $scope.currentMarkerProperties.safetyCounter--;
-    } else {
-      safetyList.push($scope.currentMarkerProperties.id);
-      localStorage.setItem('safetyWarnings', JSON.stringify(safetyList));
-      $scope.isSafetyWarn = true;
-      $scope.currentMarkerProperties.safetyCounter++;
-    }
-  };
-
-
   //ICON CHANGE ON-CLICK
-  $scope.isCollapsed = true;
-  $scope.benCollapsed = true;
-
   $scope.showPopUp = false;
 
   $scope.openPopUpMessage = function () {

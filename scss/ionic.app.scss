@@ -55,9 +55,9 @@ a:hover {
   text-decoration: none;
 }
 
-// .overflow-scroll {
-//   overflow-y: auto;
-// }
+.overflow-scroll {
+  overflow-y: auto;
+}
 
 .contentTitle {
   font-size: 36px;
@@ -1194,6 +1194,7 @@ textarea {
 }
 
 .radioBlock {
+  border: 1px solid red;
   display: flex;
   display: -webkit-flex;
   max-height: 48px;
