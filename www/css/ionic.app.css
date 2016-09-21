@@ -9875,16 +9875,16 @@ a:hover {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
 
-.block_section_a, .block_section_b {
+.block_section_a, .block_section_b, .block_section_c {
   background-image: url("../img/bike-assets/concrete-texture.jpg");
   background-size: cover;
-  padding: 30px; }
+  padding: 100px 20px; }
   @media only screen and (min-width: 479px) {
-    .block_section_a, .block_section_b {
-      padding: 40px; } }
+    .block_section_a, .block_section_b, .block_section_c {
+      padding: 100px 40px; } }
   @media only screen and (min-width: 799px) {
-    .block_section_a, .block_section_b {
-      padding: 60px 100px; } }
+    .block_section_a, .block_section_b, .block_section_c {
+      padding: 100px; } }
 
 .content_title {
   text-align: center;
@@ -9893,23 +9893,30 @@ a:hover {
   line-height: 42px; }
   @media only screen and (min-width: 479px) {
     .content_title {
-      font-size: 42px; } }
+      font-size: 42px;
+      margin-bottom: 30px; } }
   @media only screen and (min-width: 799px) {
     .content_title {
-      font-size: 56px; } }
+      font-size: 56px;
+      margin-bottom: 100px; } }
 
 .content_texts {
   font-size: 20px;
-  line-height: 30px;
-  margin-top: 30px; }
+  line-height: 22px;
+  margin-top: 20px;
+  padding: 0 51px; }
   @media only screen and (min-width: 479px) {
     .content_texts {
-      font-size: 22px;
-      margin-top: 40px; } }
+      font-size: 28px;
+      line-height: 42px;
+      margin-top: 30px;
+      padding: 0 51px; } }
   @media only screen and (min-width: 799px) {
     .content_texts {
-      font-size: 24px;
-      margin-top: 60px; } }
+      margin-top: 35px;
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 728px; } }
   .content_texts span {
     color: #96E6BF; }
 
@@ -9917,27 +9924,29 @@ a:hover {
   background-image: none; }
 
 .section_b_imageText_wrap {
-  margin: 30px auto auto auto; }
+  margin: auto; }
   @media only screen and (min-width: 479px) {
     .section_b_imageText_wrap {
-      margin-top: 60px;
-      padding-bottom: 40px;
-      width: 481.33px; } }
+      align-items: center; } }
   @media only screen and (min-width: 799px) {
     .section_b_imageText_wrap {
-      width: 580px; } }
+      display: flex;
+      max-width: 728px; } }
 
-@media only screen and (min-width: 479px) {
-  .section_b_image_wrap img {
-    float: left;
-    padding: 10px;
-    margin-right: 20px;
-    width: 183px; } }
+.block_section_c {
+  background-image: none;
+  background-color: #eeeeee; }
 
-@media only screen and (min-width: 799px) {
-  .section_b_image_wrap img {
-    font-size: 24px;
-    margin-top: 6px; } }
+.section_b_image_wrap img {
+  max-width: 100%; }
+  @media only screen and (min-width: 479px) {
+    .section_b_image_wrap img {
+      margin-right: 30px;
+      max-width: 283px; } }
+  @media only screen and (min-width: 799px) {
+    .section_b_image_wrap img {
+      font-size: 24px;
+      max-width: 250px; } }
 
 .section_b_text_wrap {
   text-align: left; }
@@ -9948,19 +9957,25 @@ a:hover {
       .section_b_text_wrap h5 {
         font-size: 20px; } }
   .section_b_text_wrap p {
-    font-size: 16px;
-    line-height: 22px; }
+    font-size: 14px;
+    line-height: 20px; }
     @media only screen and (min-width: 479px) {
       .section_b_text_wrap p {
-        line-height: 18px; } }
+        font-size: 16px;
+        line-height: 22px; } }
+    @media only screen and (min-width: 799px) {
+      .section_b_text_wrap p {
+        font-size: 18px;
+        line-height: 26px; } }
 
 @media only screen and (min-width: 479px) {
   .container_image_text {
     align-items: center;
     display: flex; } }
 
-.set_image_size {
-  min-width: 200px; }
+@media only screen and (min-width: 479px) {
+  .set_image_size {
+    min-width: 300px; } }
 
 .containerSection {
   max-width: 626px; }
@@ -10160,6 +10175,9 @@ textarea {
   background: url("./../img/bike-assets/mapDownyOverlay.png") no-repeat;
   background-size: cover; }
 
+.bar {
+  border-bottom: none; }
+
 .fdbckBtn, .button.suggestBtn {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -10187,7 +10205,7 @@ textarea {
 
 .leaveFeedback_button {
   background-color: #242925;
-  padding: 9px 15px;
+  padding: 6px 10px;
   font-size: 12px;
   font-weight: 600;
   color: #f8f8f8;
@@ -10282,6 +10300,7 @@ textarea {
     line-height: 20px;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; }
   .leadDiv img {
+    max-width: 100%;
     max-height: 200px; }
 
 .mapImage {
