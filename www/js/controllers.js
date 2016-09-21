@@ -260,6 +260,10 @@
     $ionicSideMenuDelegate.toggleRight();
   };
 
+  $scope.toggleLeft = function () {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+
   $scope.setShowBlocker = function(){
     $scope.foundLocation = false;
   };
@@ -605,7 +609,8 @@
       }
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
-      $scope.openModal(4);
+      $scope.toggleLeft();
+      // $scope.openModal(4);
     }
     if($scope.showBulkLikeFooter === true){
       if($scope.markers[args.modelName].icon !== $scope.heartIcon) {
