@@ -10107,6 +10107,10 @@ a:hover {
 .loriPadding {
   padding-bottom: 0px; }
 
+input[type=text]:focus:not([readonly]) {
+  border-bottom: none;
+  box-shadow: none; }
+
 input[type="number"] {
   width: 180px;
   padding: 0; }
@@ -10393,6 +10397,9 @@ textarea {
   .webViewLandingButton img {
     width: 85%; }
 
+.menu-content .pane .menu-animated {
+  transform: translate3d(475px, 0px, 0px); }
+
 .moreInfoBlockBtn {
   animation: bounceIn 0.25s; }
 
@@ -10406,7 +10413,7 @@ textarea {
   background-image: none;
   background-color: #e2e2e2;
   line-height: 48px;
-  height: 60px; }
+  height: 55px; }
   .titleDetailBar p {
     font-size: 22px;
     text-align: center;
@@ -10484,7 +10491,7 @@ textarea {
     bottom: 0;
     left: 0;
     max-height: 100%;
-    width: 50%; } }
+    width: 100%; } }
 
 .displayNone {
   display: none; }
@@ -10583,7 +10590,7 @@ textarea {
     margin: 12px 16px 0 0; }
 
 .map_header_bar {
-  height: initial; }
+  height: 55px; }
 
 .menu-right a, .menu-right span {
   color: #242925;
@@ -10826,7 +10833,8 @@ img.mobileYellowBikeIcon {
   .container_confirmed .popup_p_a {
     display: flex; }
     .container_confirmed .popup_p_a p {
-      width: inherit; }
+      width: inherit;
+      margin-bottom: 60px; }
       @media only screen and (min-width: 479px) {
         .container_confirmed .popup_p_a p {
           font-size: 20px;
@@ -10842,10 +10850,6 @@ img.mobileYellowBikeIcon {
     left: -50%;
     min-width: 175px;
     padding: 10px 20px; }
-    .container_confirmed .message_popup a {
-      margin-top: 20px; }
-      .container_confirmed .message_popup a span {
-        color: #f8f8f8; }
     @media only screen and (min-width: 479px) {
       .container_confirmed .message_popup {
         padding: 40px 40px; } }
@@ -10853,6 +10857,8 @@ img.mobileYellowBikeIcon {
     position: absolute;
     right: 10px;
     top: 5px; }
+    .container_confirmed .closeModal3 a {
+      color: #626262; }
 
 #map {
   width: 100%;

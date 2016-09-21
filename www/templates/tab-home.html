@@ -7,7 +7,7 @@
   <ion-side-menus data-tap-disabled="true" enable-menu-with-back-views="false">
       <ion-side-menu-content data-tap-disabled="true">
         <ion-header-bar class="bar bar-header map_header_bar">
-          <a ng-href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
+          <!-- <a ng-href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a> -->
 
           <div class="side_menu_button" ng-click="toggleRight(); openMenu = !openMenu; closeBulkLiking(); cancelReportPoint()"><p>Menu</p><i class="ion-navicon-round"></i></div>
         </ion-header-bar>
@@ -20,11 +20,11 @@
                 <div class="popup_p_a">
                   <p>Mahalo! Your suggestion has been submitted.</p>
                   <div class="closeModal3">
-                    <a href="" ng-click="cancelReportPoint();">x</a>
+                    <a href="" ng-click="closeBulkLiking();cancelReportPoint();">x</a>
                   </div>
                 </div>
 
-                <a href="#/tab/leave-comments" class="leaveFeedback_button waves-effect waves-light" nav-transition="none">
+                <a href="#/tab/leave-comments" ng-click="closeBulkLiking();cancelReportPoint();" class="leaveFeedback_button waves-effect waves-light" nav-transition="none">
                   <span>Leave Feedback</span>
                 </a>
               </div>
@@ -40,7 +40,7 @@
       <div class="divider"></div>
 
       <ion-list>
-        <ion-item menu-close class="waves-effect"><a menu-close ng-href="#/tab/leave-comments" nav-transition="none">
+        <ion-item menu-close class="waves-effect"><a ng-href="#/tab/leave-comments" nav-transition="none">
         <span>Leave Feedback</span>
       </a></ion-item>
       </ion-list>
@@ -55,7 +55,89 @@
         <ion-item menu-close ng-click="likeMultiStations()" class="waves-effect"><span>Pick your favorite Stations</span></ion-item>
       </ion-list>
     </ion-side-menu>
-  </ion-side-menus><!-- SIDE MENU FOR MAP -->
+
+
+
+
+
+
+
+
+
+
+    <ion-side-menu side="left" width="275 + 100">
+    <!-- <ion-modal-view> -->
+      <ion-header-bar class="titleDetailBar" ng-click="toggleLeft();resetMarkersAfterClosingModal()">
+        <p class="d_title" >{{stationClicked.name}}</p>
+        <i class="ion-ios-close-empty right"></i>
+      </ion-header-bar>
+
+      <ion-content  class="detailModalBlock">
+        <div class="d_image center">
+          <img class="stationPhoto" ng-src="{{stationClicked.photolink}}" alt="http://placehold.it/600x100?text=No+Image+Available+for+this+Location">
+        </div>
+
+        <div class="d_title streetLikesLocation"></br>
+
+          <span>Location</span>
+
+          <div class="likes right valign-wrapper" ng-click="isLiked() ? userUnliked():userLiked();">
+            <i class="ion-ios-heart" ng-style="myStyle">{{ numberOfLikes }}&nbsp&nbspLike</i>
+          </div>
+
+          <div class="d_location">{{stationClicked.street}}</div>
+        </div>
+        </br>
+
+        <div class="d_title"><span>Ride time to:</span></div>
+
+        <div class="row">
+          <div class="d_location col">Downtown: </br>{{rideTime('downtown')}} min.</div>
+          <div class="d_location col">Kaka'ako: </br>{{rideTime('kakaako')}} min.</div>
+          <div class="d_location col">Ala Moana: </br>{{rideTime('alamoana')}} min.</div>
+        </div>
+
+        <div class="row">
+          <div class="d_location col">University: </br>{{rideTime('university')}} min.</div>
+          <div class="d_location col">Waikiki: </br>{{rideTime('waikiki')}} min.</div>
+          <div class="d_location col">Diamond Head: </br>{{rideTime('diamondhead')}} min.</div>
+        </div>
+        </br>
+
+        <div class="d_title">
+          <span>What's near this station</span>
+        </div>
+
+        <div ng-repeat= 'item in closestBBB' style="margin-top: 13px;">
+
+          <div class="eachBusinessBlockContent">
+            <div class="imageOfBusiness valign-wrapper">
+              <img class="fixedImageSize" ng-if="closestBBB" ng-src={{item.image}} alt="http://placehold.it/200x190?text=No+Image+Available">
+            </div>
+
+            <div class="titleAddDescription">
+              <div class="title_address">
+                <h5>{{item.name}}</h5>
+                <div>{{item.address}}</div>
+              </div>
+
+              <div class="businessDescription">{{item.description}}</div>
+            </div>
+
+
+            <div class="bbbImageLogo">
+              <img src="http://boyerlawfirmblog.com/wp-content/uploads/2011/08/bbb1.jpg" alt="http://placehold.it/200x190?text=No+Image+Available"/>
+            </div>
+          </div>
+
+          <div class="divider" style="margin-top: 13px;"></div>
+        </div>
+
+      </ion-content>
+    <!-- </ion-modal-view> -->
+    </ion-side-menu>
+  </ion-side-menus>
+  <!-- SIDE MENU FOR MAP -->
 
 
 
