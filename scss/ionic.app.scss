@@ -498,6 +498,11 @@ a:hover {
   padding-bottom: 0px;
 }
 
+input[type=text]:focus:not([readonly]) {
+  border-bottom: none;
+  box-shadow: none;
+}
+
 input[type="number"] {
   width: 180px;
   padding: 0;
@@ -878,6 +883,12 @@ textarea {
 
 }
 
+
+.menu-content .pane .menu-animated {
+  transform: translate3d(475px, 0px, 0px);
+}
+
+
 .moreInfoBlockBtn {
   animation: bounceIn 0.25s;
 }
@@ -894,7 +905,7 @@ textarea {
   background-image: none;
   background-color: lighten($typeGrey, 50%);
   line-height: 48px;
-  height: 60px;
+  height: 55px;
   p {
     font-size: 22px;
     text-align: center;
@@ -1010,7 +1021,7 @@ textarea {
     bottom: 0;
     left: 0;
     max-height: 100%;
-    width: 50%;
+    width: 100%;
   }
 }
 
@@ -1142,7 +1153,7 @@ textarea {
 }
 
 .map_header_bar {
-  height: initial;
+  height: 55px;
 }
 
 .menu-right {
@@ -1493,6 +1504,7 @@ img.mobileYellowBikeIcon {
 
 
 .container_confirmed {
+  z-index: 2000000;
   position: absolute;
   top: 100px;
   left: 50%;
@@ -1502,6 +1514,7 @@ img.mobileYellowBikeIcon {
 
     p {
       width: inherit;
+      margin-bottom: 60px;
       @media #{$medium}{
         font-size: 20px;
         line-height: 26px;
@@ -1522,11 +1535,6 @@ img.mobileYellowBikeIcon {
     // max-width: 100%;
     padding: 10px 20px;
 
-    a {
-      margin-top: 20px;
-      span {color: $stable;}
-    }
-
     @media #{$medium}{
       padding: 40px 40px;
     }
@@ -1536,6 +1544,10 @@ img.mobileYellowBikeIcon {
     position: absolute;
     right: 10px;
     top: 5px;
+
+    a {
+      color: $typeGrey;
+    }
   }
 
 }

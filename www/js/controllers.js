@@ -231,6 +231,10 @@
     $ionicSideMenuDelegate.toggleRight();
   };
 
+  $scope.toggleLeft = function () {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+
   $scope.setShowBlocker = function(){
     $scope.foundLocation = false;
   };
@@ -581,7 +585,8 @@
       }
       $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
       $scope.updateClosestBBB();
-      $scope.openModal(4);
+      $scope.toggleLeft();
+      // $scope.openModal(4);
     }
     if($scope.showBulkLikeFooter === true){
       if($scope.markers[args.modelName].icon !== $scope.heartIcon) {
@@ -748,6 +753,12 @@
 
   $scope.openPopUpMessage = function () {
     $scope.showPopUp = true;
+  };
+
+  $scope.closePopUpMessage = function () {
+    $scope.showPopUp = false;
+    $scope.showReportControl = false;
+
   };
 
 ////////////////////////////////////////////////////////////
