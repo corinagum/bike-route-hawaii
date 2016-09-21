@@ -577,9 +577,6 @@
 
 
   //ICON CHANGE ON-CLICK
-  $scope.isCollapsed = true;
-  $scope.benCollapsed = true;
-
   $scope.showPopUp = false;
 
   $scope.openPopUpMessage = function () {
