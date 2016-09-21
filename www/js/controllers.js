@@ -779,6 +779,12 @@ if(!isCordovaApp){
     $scope.showPopUp = true;
   };
 
+  $scope.closePopUpMessage = function () {
+    $scope.showPopUp = false;
+    $scope.showReportControl = false;
+
+  };
+
 ////////////////////////////////////////////////////////////
 
   $scope.myGoBack = function() {

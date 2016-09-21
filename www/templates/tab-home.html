@@ -9,7 +9,7 @@
         <ion-header-bar class="bar bar-header map_header_bar">
           <!-- <a ng-href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a> -->
 
-          <div class="side_menu_button" ng-click="toggleRight(); openMenu = !openMenu; closeBulkLiking(); cancelReportPoint()"><p>Menu</p><i class="ion-navicon-round"></i></div>
+          <div class="side_menu_button" ng-click="toggleRight(); openMenu = !openMenu; closeBulkLiking();closePopUpMessage()"><p>Menu</p><i class="ion-navicon-round"></i></div>
         </ion-header-bar>
 
         <ion-content data-tap-disabled="true" class="fade-on-enter">
@@ -20,11 +20,11 @@
                 <div class="popup_p_a">
                   <p>Mahalo! Your suggestion has been submitted.</p>
                   <div class="closeModal3">
-                    <a href="" ng-click="closeBulkLiking();cancelReportPoint();">x</a>
+                    <a href="" ng-click="closeBulkLiking();closePopUpMessage()">x</a>
                   </div>
                 </div>
 
-                <a href="#/tab/leave-comments" ng-click="closeBulkLiking();cancelReportPoint();" class="leaveFeedback_button waves-effect waves-light" nav-transition="none">
+                <a href="#/tab/leave-comments" ng-click="closePopUpMessage();closeBulkLiking();" class="leaveFeedback_button waves-effect waves-light" nav-transition="none">
                   <span>Leave Feedback</span>
                 </a>
               </div>
