@@ -488,6 +488,7 @@
   // CANCEL REPORT POINT
   $scope.cancelReportPoint = function(){
     console.log("cancelled reportPoint");
+    $scope.showPopUp = false;
     $scope.showReportControl = false;
     setMarkersReturned(bikesharePoints);
     delete $scope.markers.reportPoint;
@@ -495,6 +496,9 @@
 
   $scope.suggestStation = function(){
     console.log("suggested");
+    $scope.showPopUp = true;
+    $scope.showReportControl = false;
+
     if($scope.markers.reportPoint){
       $scope.markers.reportPoint.type = "suggest";
       $scope.markers.reportPoint.suggestedBy = UserService.getUser().id;
@@ -553,6 +557,7 @@
   };
 
   $scope.submitBulkLiking = function(array){
+    $scope.showPopUp = true;
     $scope.showBulkLikeFooter = false;
     for(var i=0; i < array.length; i++){
       if($scope.user.liked === null){
@@ -753,6 +758,12 @@ if(!isCordovaApp){
   //ICON CHANGE ON-CLICK
   $scope.isCollapsed = true;
   $scope.benCollapsed = true;
+
+  $scope.showPopUp = false;
+
+  $scope.openPopUpMessage = function () {
+    $scope.showPopUp = true;
+  };
 
 ////////////////////////////////////////////////////////////
 
