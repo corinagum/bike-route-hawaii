@@ -55,9 +55,9 @@ a:hover {
   text-decoration: none;
 }
 
-.overflow-scroll {
-  overflow-y: auto;
-}
+// .overflow-scroll {
+//   overflow-y: auto;
+// }
 
 .contentTitle {
   font-size: 36px;
@@ -1546,8 +1546,6 @@ img.mobileYellowBikeIcon {
 #map {
   width: 100%;
   height: 100%;
-  position: absolute;
-  z-index: 10000;
 }
 
 .scroll {

@@ -1,5 +1,5 @@
 {
-  "name": "HelloIonic",
+  "name": "hello-ionic",
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.2.4",
@@ -10,7 +10,6 @@
     "ngCordova": "^0.1.24-alpha",
     "ui-leaflet": "^1.0.0",
     "angular-simple-logger": "^0.1.7",
-    // "ionic-pullup": "^1.0.3"
     "ionic-pullup": "^1.1.0"
   }
 }

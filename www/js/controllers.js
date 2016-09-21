@@ -6,9 +6,6 @@
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$ionicSideMenuDelegate', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$ionicSideMenuDelegate) {
 
 
-    $scope.toggleRight = function () {
-      $ionicSideMenuDelegate.toggleRight();
-    };
 
     // console.log("mapctrl started", UserService.getUser());
     // if(UserService.getUser() === null){
@@ -102,7 +99,6 @@
       lng: -157.8398036956787,
       zoom: 15,
     },
-    controls: {},
     markers : {},
     bikeShareIcon: {
       iconUrl: '../img/bike-assets/bike-icon.png',
@@ -243,6 +239,10 @@
         break;
     }
   }
+
+  $scope.toggleRight = function () {
+    $ionicSideMenuDelegate.toggleRight();
+  };
 
   $scope.setShowBlocker = function(){
     $scope.foundLocation = false;

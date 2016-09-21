@@ -2,34 +2,36 @@
 <ion-view data-ng-init="init()" title="{{navTitle}}" left-buttons="leftButtons" right-buttons="rightButtons" hide-back-button="true" class="bubble-background title-style">
 
 
-  <ion-side-menus enable-menu-with-back-views="false"><!-- SIDE MENU FOR MAP -->
-    <ion-side-menu-content>
-      <ion-header-bar class="bar bar-header map_header_bar">
-        <a ng-href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
 
-        <div class="side_menu_button" ng-click="toggleRight(); openMenu = !openMenu; closeBulkLiking(); cancelReportPoint()"><p>Menu</p><i class="ion-navicon-round"></i></div>
-      </ion-header-bar>
+  <!-- SIDE MENU FOR MAP -->
+  <ion-side-menus data-tap-disabled="true" enable-menu-with-back-views="false">
+      <ion-side-menu-content data-tap-disabled="true">
+        <ion-header-bar class="bar bar-header map_header_bar">
+          <a ng-href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a>
 
-      <ion-content data-tap-disabled="true" class="fade-on-enter">
-          <leaflet data-tap-disabled="true" layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' controls="controls" custom-controls="myCustomControls" geojson="geojson"></leaflet>
+          <div class="side_menu_button" ng-click="toggleRight(); openMenu = !openMenu; closeBulkLiking(); cancelReportPoint()"><p>Menu</p><i class="ion-navicon-round"></i></div>
+        </ion-header-bar>
 
-          <div class="container_confirmed" ng-show="showPopUp">
-            <div class="message_popup">
-              <div class="popup_p_a">
-                <p>Mahalo! Your suggestion has been submitted.</p>
-                <div class="closeModal3">
-                  <a href="" ng-click="cancelReportPoint();">x</a>
+        <ion-content data-tap-disabled="true" class="fade-on-enter">
+            <leaflet data-tap-disabled="true" layers="layers" lf-center="center" center="center" paths="paths" markers="markers" event-broadcast="events" defaults="defaults" id='map' controls="controls" custom-controls="myCustomControls" geojson="geojson"></leaflet>
+
+            <div class="container_confirmed" ng-show="showPopUp">
+              <div class="message_popup">
+                <div class="popup_p_a">
+                  <p>Mahalo! Your suggestion has been submitted.</p>
+                  <div class="closeModal3">
+                    <a href="" ng-click="cancelReportPoint();">x</a>
+                  </div>
                 </div>
+
+                <a href="#/tab/leave-comments" class="leaveFeedback_button waves-effect waves-light" nav-transition="none">
+                  <span>Leave Feedback</span>
+                </a>
               </div>
-
-              <a href="#/tab/leave-comments" class="leaveFeedback_button waves-effect waves-light" nav-transition="none">
-                <span>Leave Feedback</span>
-              </a>
             </div>
-          </div>
 
-      </ion-content>
-    </ion-side-menu-content>
+        </ion-content>
+      </ion-side-menu-content>
 
     <ion-side-menu side="right">
       <ion-list>
