@@ -576,48 +576,6 @@
   });
 
 
-
-
-  //////// BEGINNIG of MODAL ////////
-
-  $ionicModal.fromTemplateUrl('templates/feedback/markerDetail.html', {
-    id: '4',
-    scope: $scope,
-    hardwareBackButtonClose: false,
-  }).then(function(modal) {
-    $scope.modal4 = modal;
-  });
-
-
-  $scope.openModal = function(index) {
-    switch (index) {
-      case 1 : $scope.modal1.show();
-                break;
-      case 2 : $scope.modal2.show();
-                break;
-    }
-  };
-
-   $scope.closeModal = function(index) {
-    // window.location.reload(true);
-    switch (index) {
-      case 1 : $scope.modal1.hide();
-                break;
-      case 2 : $scope.modal2.hide();
-                break;
-    }
-  };
-
-  //REMOVE MODAL WHEN DESTROYED
-  $scope.$on('$destroy', function() {
-    if($scope.modal){
-      $scope.modal.remove();
-    }
-  });
-
-  //////// END of MODAL ////////
-
-
   //ICON CHANGE ON-CLICK
   $scope.isCollapsed = true;
   $scope.benCollapsed = true;
