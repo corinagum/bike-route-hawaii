@@ -65,9 +65,9 @@
 
 
 
-    <ion-side-menu side="left" width="275 + 150">
-    <ion-modal-view>
-      <ion-header-bar class="titleDetailBar" ng-click="toggleLeft();closeModal(4);resetMarkersAfterClosingModal()">
+    <ion-side-menu side="left" width="275 + 100">
+    <!-- <ion-modal-view> -->
+      <ion-header-bar class="titleDetailBar" ng-click="toggleLeft();resetMarkersAfterClosingModal()">
         <p class="d_title" >{{stationClicked.name}}</p>
         <i class="ion-ios-close-empty right"></i>
       </ion-header-bar>
@@ -92,15 +92,15 @@
         <div class="d_title"><span>Ride time to:</span></div>
 
         <div class="row">
-          <div class="d_location col">Downtown: {{rideTime('downtown')}} min.</div>
-          <div class="d_location col">Kaka'ako: {{rideTime('kakaako')}} min.</div>
-          <div class="d_location col">Ala Moana: {{rideTime('alamoana')}} min.</div>
+          <div class="d_location col">Downtown: </br>{{rideTime('downtown')}} min.</div>
+          <div class="d_location col">Kaka'ako: </br>{{rideTime('kakaako')}} min.</div>
+          <div class="d_location col">Ala Moana: </br>{{rideTime('alamoana')}} min.</div>
         </div>
 
         <div class="row">
-          <div class="d_location col">University: {{rideTime('university')}} min.</div>
-          <div class="d_location col">Waikiki: {{rideTime('waikiki')}} min.</div>
-          <div class="d_location col">Diamond Head: {{rideTime('diamondhead')}} min.</div>
+          <div class="d_location col">University: </br>{{rideTime('university')}} min.</div>
+          <div class="d_location col">Waikiki: </br>{{rideTime('waikiki')}} min.</div>
+          <div class="d_location col">Diamond Head: </br>{{rideTime('diamondhead')}} min.</div>
         </div>
         </br>
 
@@ -134,7 +134,7 @@
         </div>
 
       </ion-content>
-    </ion-modal-view>
+    <!-- </ion-modal-view> -->
     </ion-side-menu>
   </ion-side-menus>
   <!-- SIDE MENU FOR MAP -->
