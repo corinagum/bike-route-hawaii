@@ -485,6 +485,11 @@
     setMarkersReturned(bikesharePoints);
   };
 
+  $scope.$on('leafletDirectiveMarker.map.dragend', function(event, args){
+    $scope.markers[args.modelName].lat = args.leafletEvent.target.getLatLng().lat;
+    $scope.markers[args.modelName].lng = args.leafletEvent.target.getLatLng().lng;
+  });
+
   // CANCEL REPORT POINT
   $scope.cancelReportPoint = function(){
     console.log("cancelled reportPoint");
@@ -652,17 +657,17 @@
     $scope.modal4 = modal;
   });
 
-if(!isCordovaApp){
-  $ionicModal.fromTemplateUrl('yourSuggestionSave.html', {
-    id: '3',
-    scope: $scope,
-    backdropClickToClose: false,
-    hardwareBackButtonClose: false,
-    animation: 'scale-in'
-  }).then(function(modal) {
-    $scope.modal3 = modal;
-  });
-}
+// if(!isCordovaApp){
+//   $ionicModal.fromTemplateUrl('yourSuggestionSave.html', {
+//     id: '3',
+//     scope: $scope,
+//     backdropClickToClose: false,
+//     hardwareBackButtonClose: false,
+//     animation: 'scale-in'
+//   }).then(function(modal) {
+//     $scope.modal3 = modal;
+//   });
+// }
 
   $scope.openModal = function(index) {
     switch (index) {
