@@ -37,6 +37,22 @@
     //   UserService.updateUser($scope.user);
     //   UserService.edit($scope.user.id);
     // };
+    $scope.createUserIfNone = function(){
+      if(UserService.getUser() === null){
+        UserService.create()
+        .then(function(data){
+          $scope.user = data.data.user;
+          UserService.updateUser(data.data.user);
+        })
+        .then(function(data){
+          return;
+        })
+      } else {
+        $scope.user = UserService.getUser();
+      }
+    }
+
+    $scope.createUserIfNone();
 
     $scope.updatePath = function(path){
       if(UserService.getUser() === null){
@@ -96,7 +112,6 @@
       maxNativeZoom: 18,
       maxZoom : 18,
       inertiaMaxSpeed: 150,
-      tap :false
     },
     center : {
       lat: 21.3008900859581,
@@ -283,7 +298,6 @@
   function createMarkers(array, name){
     
     for(var i = 0; i < array.length; i++){
-      var noPhotoLink = array[i].photolink;
       var pointDetail;
       var showMarker;
       var pointIcon;
@@ -299,12 +313,6 @@
         icon: pointIcon,
         properties : array[i],
         };
-    // console.log("consoleLogging", array[i].photolink);
-
-      if( noPhotoLink === null ) {
-        noPhotoLink = "HELLOOO";
-      }
-      // console.log("consoleLogging", noPhotoLink);
     }
 
   }
@@ -333,33 +341,18 @@
     "updatedAt": "2016-02-29T22:11:46.561Z"
   };
 
-  // GET USER
-  $scope.user = UserService.getUser();
-
   // CHECK IF STATION IS LIKED BY USER
   $scope.isLiked = function(){
-    $scope.user = UserService.getUser();
-    if($scope.user === null){
-      UserService.create()
-      .then(function(data){
-        console.log(data);
-        $scope.user = data.data.user;
-        UserService.updateUser($scope.user);
-        UserService.edit($scope.user.id);
-        return false;
-      })
+    if($scope.user.liked === null || undefined){
+      console.log("in null");
+      return false;
     } else {
-      if($scope.user.liked === null || undefined){
-        console.log("in null");
+      if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
+        console.log("in indexOf -1");
         return false;
       } else {
-        if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
-          console.log("in indexOf -1");
-          return false;
-        } else {
-          console.log("in found indexOf");
-          return true;
-        }
+        console.log("in found indexOf");
+        return true;
       }
     }
   };
@@ -593,116 +586,50 @@
   // SAVE CURRENT MARKER PROPERTIES TO SCOPE
   $scope.$on('leafletDirectiveMarker.map.click', function(event, args){
     console.log("click");
-    $scope.user = UserService.getUser();
-    if($scope.user === null){
-      UserService.create()
-      .then(function(data){
-        console.log(data);
-        $scope.user = data.data.user;
-        UserService.updateUser($scope.user);
-        UserService.edit($scope.user.id);
-      })
-      .then(function(data){
-          if(args.modelName !== 'reportPoint'  && $scope.showBulkLikeFooter === false){
-            if($scope.stationClicked.lastClicked && $scope.markers[$scope.stationClicked.lastClicked].icon !== $scope.heartIcon){
-              // if($scope.markers[$scope.stationClicked.lastClicked].icon !== $scope.heartIcon){
-
-              // }
-              $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
-            }
-            if($scope.markers[args.modelName].icon !== $scope.heartIcon){
-              $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
-            }
-            $scope.stationClicked = $scope.markers[args.modelName].properties;
-            $scope.stationClicked.lastClicked = args.modelName;
-            if($scope.stationClicked.photolink === null){
-              $scope.stationClicked.photolink = "http://placehold.it/600x100?text=No+Image+Available+for+this+Location";
-            }
-            $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
-            $scope.updateClosestBBB();
-            $scope.openModal(4);
-          }
-          if($scope.showBulkLikeFooter === true){
-           if($scope.markers[args.modelName].icon !== $scope.heartIcon) {
-              $scope.markers[args.modelName].icon = $scope.heartIcon;
-              $scope.likedMultiStations.push(args.model.properties.id);
-              if($scope.unlikedMultiStations.indexOf(args.model.properties.id) !== -1){
-                $scope.unlikedMultiStations.splice($scope.unlikedMultiStations.indexOf(args.model.properties.id), 1);
-              }
-              console.log("to like: ", $scope.likedMultiStations);
-              console.log("to unlike: ", $scope.unlikedMultiStations);
-            } else {
-              $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
-              $scope.unlikedMultiStations.push(args.model.properties.id);
-              if($scope.likedMultiStations.indexOf(args.model.properties.id) !== -1){
-                $scope.likedMultiStations.splice($scope.likedMultiStations.indexOf(args.model.properties.id), 1);
-              }
-              console.log("to like: ", $scope.likedMultiStations);
-              console.log("to unlike: ", $scope.unlikedMultiStations);
-            }
-          }
-          console.log("$scope user: ", $scope.user);
-          if($scope.user.liked === null || undefined){
-            $scope.myStyle = {};
-          } else {
-            if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
-              $scope.myStyle={};
-            } else {
-              $scope.myStyle={color:'red'};
-            }
-          }
-      })
-    } else {
-      if(args.modelName !== 'reportPoint'  && $scope.showBulkLikeFooter === false){
-        if($scope.stationClicked.lastClicked && $scope.markers[$scope.stationClicked.lastClicked].icon !== $scope.heartIcon){
-          // if($scope.markers[$scope.stationClicked.lastClicked].icon !== $scope.heartIcon){
-
-          // }
-          $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
-        }
-        if($scope.markers[args.modelName].icon !== $scope.heartIcon){
-          $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
-        }
-        $scope.stationClicked = $scope.markers[args.modelName].properties;
-        $scope.stationClicked.lastClicked = args.modelName;
-        if($scope.stationClicked.photolink === null){
-          $scope.stationClicked.photolink = "http://placehold.it/600x100?text=No+Image+Available+for+this+Location";
-        }
-        $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
-        $scope.updateClosestBBB();
-        $scope.openModal(4);
+    if(args.modelName !== 'reportPoint'  && $scope.showBulkLikeFooter === false){
+      if($scope.stationClicked.lastClicked && $scope.markers[$scope.stationClicked.lastClicked].icon !== $scope.heartIcon){
+        $scope.markers[$scope.stationClicked.lastClicked].icon = $scope.bikeShareIcon;
       }
-      if($scope.showBulkLikeFooter === true){
-        if($scope.markers[args.modelName].icon !== $scope.heartIcon) {
-          $scope.markers[args.modelName].icon = $scope.heartIcon;
-          $scope.likedMultiStations.push(args.model.properties.id);
-          if($scope.unlikedMultiStations.indexOf(args.model.properties.id) !== -1){
-            $scope.unlikedMultiStations.splice($scope.unlikedMultiStations.indexOf(args.model.properties.id), 1);
-          }
-          console.log("to like: ", $scope.likedMultiStations);
-          console.log("to unlike: ", $scope.unlikedMultiStations);
-        } else {
-          $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
-          $scope.unlikedMultiStations.push(args.model.properties.id);
-          if($scope.likedMultiStations.indexOf(args.model.properties.id) !== -1){
-            $scope.likedMultiStations.splice($scope.likedMultiStations.indexOf(args.model.properties.id), 1);
-          }
-          console.log("to like: ", $scope.likedMultiStations);
-          console.log("to unlike: ", $scope.unlikedMultiStations);
-        }
+      if($scope.markers[args.modelName].icon !== $scope.heartIcon){
+        $scope.markers[args.modelName].icon = $scope.bikeShareIconClicked;
       }
-      console.log("$scope user: ", $scope.user);
-      if($scope.user.liked === null || undefined){
-        $scope.myStyle = {};
+      $scope.stationClicked = $scope.markers[args.modelName].properties;
+      $scope.stationClicked.lastClicked = args.modelName;
+      if($scope.stationClicked.photolink === null){
+        $scope.stationClicked.photolink = "http://placehold.it/600x100?text=No+Image+Available+for+this+Location";
+      }
+      $scope.updateDistanceFromMarker($scope.stationClicked, bbbList);
+      $scope.updateClosestBBB();
+      $scope.openModal(4);
+    }
+    if($scope.showBulkLikeFooter === true){
+      if($scope.markers[args.modelName].icon !== $scope.heartIcon) {
+        $scope.markers[args.modelName].icon = $scope.heartIcon;
+        $scope.likedMultiStations.push(args.model.properties.id);
+        if($scope.unlikedMultiStations.indexOf(args.model.properties.id) !== -1){
+          $scope.unlikedMultiStations.splice($scope.unlikedMultiStations.indexOf(args.model.properties.id), 1);
+        }
+        console.log("to like: ", $scope.likedMultiStations);
+        console.log("to unlike: ", $scope.unlikedMultiStations);
       } else {
-        if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
-          $scope.myStyle={};
-        } else {
-          $scope.myStyle={color:'red'};
+        $scope.markers[args.modelName].icon = $scope.bikeShareIcon;
+        $scope.unlikedMultiStations.push(args.model.properties.id);
+        if($scope.likedMultiStations.indexOf(args.model.properties.id) !== -1){
+          $scope.likedMultiStations.splice($scope.likedMultiStations.indexOf(args.model.properties.id), 1);
         }
+        console.log("to like: ", $scope.likedMultiStations);
+        console.log("to unlike: ", $scope.unlikedMultiStations);
       }
     }
-
+    if($scope.user.liked === null || undefined){
+      $scope.myStyle = {};
+    } else {
+      if($scope.user.liked.indexOf($scope.stationClicked.id) === -1){
+        $scope.myStyle={};
+      } else {
+        $scope.myStyle={color:'red'};
+      }
+    }
   });
 
 
