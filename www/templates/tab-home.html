@@ -5,7 +5,7 @@
 
   <!-- SIDE MENU FOR MAP -->
   <ion-side-menus enable-menu-with-back-views="false">
-      <ion-side-menu-content >
+      <ion-side-menu-content drag-content="false">
         <ion-header-bar class="bar bar-header map_header_bar">
           <!-- <a ng-href="#" ng-click="myGoBack()"><i class="ion-ios-arrow-thin-left backArrow"></i></a> -->
 
@@ -63,9 +63,9 @@
 
 
 
+<!-- LEFT MARKER DETAIL VIEW -->
 
-
-    <ion-side-menu side="left" width="275 + 100">
+    <ion-side-menu side="left" width="275 + 120">
     <!-- <ion-modal-view> -->
       <ion-header-bar class="titleDetailBar" ng-click="toggleLeft();resetMarkersAfterClosingModal()">
         <p class="d_title" >{{stationClicked.name}}</p>
@@ -138,6 +138,9 @@
     </ion-side-menu>
   </ion-side-menus>
   <!-- SIDE MENU FOR MAP -->
+
+
+<!-- LEFT MARKER DETAIL VIEW -->
 
 
 
