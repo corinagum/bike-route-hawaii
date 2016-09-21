@@ -6,34 +6,6 @@
   ['$http','$ionicModal','RouteService', 'UserService', 'PointService', '$scope', '$ionicLoading', '$compile', 'leafletData', '$cordovaGeolocation', 'CommentService', '$location', '$ionicHistory', '$ionicSideMenuDelegate', function($http, $ionicModal, RouteService, UserService, PointService, $scope, $ionicLoading, $compile, leafletData, $cordovaGeolocation, CommentService, $location, $ionicHistory,$ionicSideMenuDelegate) {
 
 
-
-    // console.log("mapctrl started", UserService.getUser());
-    // if(UserService.getUser() === null){
-    //   console.log("no user, made one");
-    //   UserService.create()
-    //   .then(function(data){
-    //     UserService.updateUser(data.data.user);
-    //     console.log("user created and updated to ", UserService.getUser());
-    //   });
-    // }
-
-    // $scope.userStart = function(){
-    //   UserService.create()
-    //   .then(function(data){
-    //     UserService.updateUser(data.data.user);
-    //     console.log("user created and updated to", UserService.getUser());
-    //   });
-    // };
-
-    // UPDATE SURVEY QUESTIONS IN DB
-    // $scope.updateSurvey = function(u) {
-    //   $scope.user = UserService.getUser();
-    //   $scope.user.age = u.age;
-    //   $scope.user.gender = u.gender;
-    //   $scope.user.zipcode = u.zipcode;
-    //   UserService.updateUser($scope.user);
-    //   UserService.edit($scope.user.id);
-    // };
     $scope.createUserIfNone = function(){
       if(UserService.getUser() === null){
         UserService.create()
@@ -119,7 +91,6 @@
     bikeShareIcon: {
       iconUrl: '../img/bike-assets/bike-icon.png',
       iconSize:     [30, 30],
-      // shadowUrl: 'img/leaf-shadow.png',
       shadowSize:   [50, 64],
       iconAnchor:   [0, 0],
       shadowAnchor: [4, 62],
@@ -128,7 +99,6 @@
     bikeShareIconClicked: {
       iconUrl: '../img/bike-assets/bike-icon-gray.png',
       iconSize:     [30, 30],
-      // shadowUrl: 'img/leaf-shadow.png',
       shadowSize:   [50, 64],
       iconAnchor:   [0, 0],
       shadowAnchor: [4, 62],
@@ -137,7 +107,6 @@
     reportIcon: {
       iconUrl: '../img/bike-assets/Bike Yellow copy.png',
       iconSize:     [35, 35],
-      // shadowUrl: 'img/leaf-shadow.png',
       shadowSize:   [50, 64],
       iconAnchor:   [0, 0],
       shadowAnchor: [4, 62],
@@ -148,13 +117,11 @@
     heartIcon: {
       iconUrl: '../img/bike-assets/red heart.png',
       iconSize:     [30, 30],
-      // shadowUrl: 'img/leaf-shadow.png',
       shadowSize:   [50, 64],
       iconAnchor:   [0, 0],
       shadowAnchor: [4, 62],
       popupAnchor:  [15, 0],
       // className: 'bikeIconSuggestion',
-      // message: 'Drop the bycicle where you\'d like to see the station'
     }
   });
   var isCordovaApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
@@ -401,14 +368,14 @@
     $scope.closestBBB = bbbList.slice(0,5);
   };
 
-  // $scope.places = {
-  //   kakaako : [21.296586, -157.860886],
-  //   alamoana : [21.290763, -157.843645],
-  //   university : [21.296760, -157.821071],
-  //   waikiki : [21.275413, -157.824987],
-  //   downtown : [21.309355, -157.860274],
-  //   diamondhead: [21.260855, -157.817874]
-  // };
+  $scope.places = {
+    kakaako : [21.296586, -157.860886],
+    alamoana : [21.290763, -157.843645],
+    university : [21.296760, -157.821071],
+    waikiki : [21.275413, -157.824987],
+    downtown : [21.309355, -157.860274],
+    diamondhead: [21.260855, -157.817874]
+  };
 
   $scope.stationWalkTime = function(marker, station){
     return Math.round(L.latLng([$scope.stationClicked.lat, $scope.stationClicked.long]).distanceTo($scope.places[place]) * (60/15500));
@@ -417,16 +384,6 @@
   $scope.rideTime = function(place){
     return Math.round(L.latLng([$scope.stationClicked.lat, $scope.stationClicked.long]).distanceTo($scope.places[place]) * (60/15500));
   };
-
-  $scope.places = {
-    kakaako    : [21.296586, -157.860886],
-    alamoana   : [21.290763, -157.843645],
-    university : [21.296760, -157.821071],
-    waikiki    : [21.275413, -157.824987],
-    downtown   : [21.309355, -157.860274],
-    diamondhead: [21.260855, -157.817874]
-  };
-
 
   function setMarkersReturned(data){
     createMarkers(data, 'bikeShare');
@@ -510,29 +467,6 @@
       console.log("suggested point stored");
     }
   };
-
-  // COMMENT SUBMIT FUNCTION
-  // $scope.postComment = function(comment){
-  //   if($scope.showReportControl){
-  //     PointService.addPoint({
-  //       type : "ReportSuggest",
-  //       lat : $scope.markers.reportPoint.lat,
-  //       long : $scope.markers.reportPoint.lng
-  //     })
-  //     .then(function(data){
-  //       CommentService.addComment(comment, data.data.newId)
-  //       .then(function(data){
-  //         $scope.cancelReportPoint();
-  //         $scope.closeModal(6);
-  //       });
-  //     });
-  //   } else {
-  //     CommentService.addComment(comment, $scope.currentMarkerProperties.id)
-  //     .then(function(data){
-  //       $scope.closeModal(6);
-  //     });
-  //   }
-  // };
 
   //LOAD ANIMATION SHOW
   $scope.show = function() {
