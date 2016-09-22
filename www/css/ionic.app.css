@@ -9759,15 +9759,15 @@ a.button {
     width: 220px;
     opacity: 1; } }
 
-@keyframes moveOutLeft {
-  0% {
-    width: 30px;
-    opacity: 0; }
-  50% {
-    opacity: 0.5; }
+@keyframes slideBackIn {
   100% {
     width: 220px;
-    opacity: 1; } }
+    opacity: 1; }
+  50% {
+    opacity: 0.5; }
+  0% {
+    width: 30px;
+    opacity: 0; } }
 
 @-webkit-keyframes pulse {
   0% {
@@ -9842,9 +9842,8 @@ a.button {
 i, a {
   cursor: pointer; }
 
-body, p {
-  color: #626262;
-  font-size: 12px; }
+body {
+  color: #626262; }
 
 h4, h5, p, li, a, span {
   font-family: 'Open Sans', sans-serif; }
@@ -9859,7 +9858,8 @@ a:hover {
   overflow-y: auto; }
 
 .contentTitle {
-  font-size: 36px; }
+  font-size: 36px;
+  line-height: 36px; }
 
 .contentPar {
   font-size: 20px;
@@ -9887,10 +9887,10 @@ a:hover {
       padding: 100px; } }
 
 .content_title {
-  text-align: center;
   font-size: 36px;
-  font-weight: 600;
-  line-height: 42px; }
+  line-height: 42px;
+  text-align: center;
+  font-weight: 600; }
   @media only screen and (min-width: 479px) {
     .content_title {
       font-size: 42px;
@@ -10067,11 +10067,6 @@ a:hover {
   .secPar {
     padding: 0px; } }
 
-.dots {
-  display: flex;
-  display: -webkit-flex;
-  margin: auto 0px auto 8px; }
-
 .stepsNum {
   height: 30px; }
 
@@ -10160,15 +10155,6 @@ textarea {
     .divSize {
       padding: 0 23%; } }
 
-.comment_demo_icons.row {
-  margin: 0;
-  padding: 0;
-  justify-content: flex-end; }
-  .comment_demo_icons.row .toggle_survey_icon, .comment_demo_icons.row .toggle_comment_icon {
-    font-size: xx-large;
-    color: #f8f8f8;
-    margin-right: 20px; }
-
 .addBackgroundImg {
   background: url("./../img/bike-assets/backgroundMapView.png") no-repeat;
   background-size: cover; }
@@ -10179,27 +10165,6 @@ textarea {
 
 .bar {
   border-bottom: none; }
-
-.fdbckBtn, .button.suggestBtn {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
-  position: absolute;
-  right: 63.94px;
-  color: #f8f8f8;
-  background-color: #242925; }
-  .fdbckBtn span, .button.suggestBtn span {
-    color: #f8f8f8;
-    font-size: 10px;
-    line-height: 10px;
-    font-weight: 600; }
-  .fdbckBtn:hover, .button.suggestBtn:hover {
-    background-color: #508f66;
-    color: #f8f8f8; }
-  @media only screen and (min-width: 479px) {
-    .fdbckBtn span, .button.suggestBtn span {
-      font-size: 12px; } }
 
 .header_button_wrapper {
   position: absolute;
@@ -10223,9 +10188,6 @@ textarea {
   font-size: 24px;
   color: #242925;
   padding: 6.5px 15px; }
-
-.button.suggestBtn {
-  right: 209.3px; }
 
 .button.surveyBtn {
   position: absolute;
@@ -10252,7 +10214,6 @@ textarea {
   font-size: 16px;
   color: #f8f8f8;
   padding: 8px 30px;
-  font-size: 12px;
   margin-top: 15px;
   background-color: #76CE95; }
 
@@ -10314,31 +10275,6 @@ textarea {
   background-image: url("../img/bike-assets/leather.jpg"), -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
   background-size: 890px auto; }
 
-#pagination {
-  clear: both;
-  width: 45px;
-  margin: 25px auto 0;
-  padding: 0; }
-
-#pagination li {
-  list-style: none;
-  float: left;
-  margin: 0 2px; }
-
-#pagination li a {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  border-radius: 10px;
-  display: block;
-  width: 10px;
-  height: 10px;
-  text-indent: -10000px;
-  background: #f8f8f8; }
-
-#pagination li a.active {
-  background: #626262; }
-
 .filter-modal {
   border: 0px;
   height: 70%;
@@ -10399,9 +10335,6 @@ textarea {
   justify-content: center; }
   .webViewLandingButton img {
     width: 85%; }
-
-.menu-content .pane .menu-animated {
-  transform: translate3d(475px, 0px, 0px); }
 
 .moreInfoBlockBtn {
   animation: bounceIn 0.25s; }
@@ -10567,7 +10500,7 @@ textarea {
   font-weight: 200;
   margin-left: 12px;
   background-color: transparent;
-  animation: moveOutLeft 0.4s ease; }
+  animation: moveOutLeft 0.4s ease-out; }
 
 .getLocationMarker img {
   height: 40px;
@@ -10654,20 +10587,6 @@ textarea {
 
 [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
   border: 2px solid #e2e2e2; }
-
-.centerBox {
-  width: 100%;
-  position: absolute;
-  top: 75%;
-  justify-content: center;
-  text-align: center;
-  z-index: 50000000000000000; }
-  @media only screen and (min-width: 799px) {
-    .centerBox {
-      z-index: 50000000000000000;
-      width: 100%;
-      top: 50px;
-      left: 5px; } }
 
 img.mobileYellowBikeIcon {
   height: 20px; }
@@ -10782,12 +10701,12 @@ img.mobileYellowBikeIcon {
       #footer-bar.row img {
         max-width: 32px; } }
   #footer-bar.row p {
-    line-height: 14px;
-    font-size: 14px; }
+    font-size: 14px;
+    line-height: 14px; }
     @media only screen and (min-width: 799px) {
       #footer-bar.row p {
-        line-height: 16px;
-        font-size: 18px; } }
+        font-size: 16px;
+        line-height: 18px; } }
   #footer-bar.row .bothSuggestBtns {
     justify-content: space-between;
     background-color: #76CE95;
