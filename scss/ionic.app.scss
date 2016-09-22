@@ -29,6 +29,7 @@ $large: "only screen and (min-width:799px)";
 
 i, a {
   cursor: pointer;
+  color: $stable;
 }
 // @media #{$medium} {
 //   body {border: 3px solid yellow;}
@@ -82,8 +83,16 @@ a:hover {
           transform: translate(-50%, -50%);
 }
 
+.introPage {
+  max-width: 275px;
+  padding: 0 20px;
+
+  @media #{$medium} {
+    padding: 0 10px;
+  }
+}
+
 .block_section_a {
-  // border: 2px solid blue;
 
   background-image: url("../img/bike-assets/concrete-texture.jpg");
   background-size: cover;
@@ -219,13 +228,17 @@ a:hover {
   @include buttonStyling($stable,$balanced,0px,30px,0px,30px,300,12px);
 }
 
+.buttonLinks {
+  max-width: 275px;
+  margin: 0 auto;
+  display: block;
+}
+
 .btnDrk {
-  @include buttonStyling($stable,$balanced,17px,30px,0px,30px,500,12px);
-  min-width: 250px;
-  min-height: 90px;
+  @include borderRadius(5px);
+  @include buttonStyling($stable,$balanced,26px,30px,26px,30px,500,12px);
   line-height: 20px;
-  margin-bottom: 5px;
-  font-size: large;
+  margin-bottom: 15px;
 }
 
 .btnTitle {

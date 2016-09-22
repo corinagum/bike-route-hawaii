@@ -9840,7 +9840,8 @@ a.button {
   transition: all ease-in-out 250ms; }
 
 i, a {
-  cursor: pointer; }
+  cursor: pointer;
+  color: #f8f8f8; }
 
 body {
   color: #626262; }
@@ -9874,6 +9875,13 @@ a:hover {
   width: 100%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
+
+.introPage {
+  max-width: 275px;
+  padding: 0 20px; }
+  @media only screen and (min-width: 479px) {
+    .introPage {
+      padding: 0 10px; } }
 
 .block_section_a, .block_section_b, .block_section_c {
   background-image: url("../img/bike-assets/concrete-texture.jpg");
@@ -9993,17 +10001,23 @@ a:hover {
   font-weight: 300;
   font-size: 12px; }
 
+.buttonLinks {
+  max-width: 275px;
+  margin: 0 auto;
+  display: block; }
+
 .btnDrk, input[type="number"] {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
   color: #f8f8f8;
   background-color: #76CE95;
-  padding: 17px 30px 0px 30px;
+  padding: 26px 30px 26px 30px;
   font-weight: 500;
   font-size: 12px;
-  min-width: 250px;
-  min-height: 90px;
   line-height: 20px;
-  margin-bottom: 5px;
-  font-size: large; }
+  margin-bottom: 15px; }
 
 .btnTitle {
   color: #76CE95;
