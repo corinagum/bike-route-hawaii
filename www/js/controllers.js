@@ -50,17 +50,17 @@
   // SET MAP INTIALLY
   angular.extend($scope, {
     honolulu: {
-      lat: 21.3008900859581,
-      lng: -157.8398036956787,
+      lat : 21.3008900859581,
+      lng : -157.8398036956787,
       zoom: 15
     },
     events: {
       map : {
-        enable : ['click', 'locationfound', 'dragend', 'load'],
+        enable: ['click', 'locationfound', 'dragend', 'load'],
         logic : 'broadcast'
       },
       markers : {
-        enable : ['click', 'dragend', 'dragstart'],
+        enable: ['click', 'dragend', 'dragstart'],
         logic : 'emit'
       }
     },
@@ -68,7 +68,7 @@
       baselayers: {
         osm: {
           name: 'Default',
-          url: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+          url : 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
           type: 'xyz'
         },
       }
@@ -76,50 +76,50 @@
     defaults: {
       scrollWheelZoom: false,
       doubleClickZoom: false,
-      touchZoom: true,
-      maxNativeZoom: 18,
-      maxZoom : 18,
+      touchZoom      : true,
+      maxNativeZoom  : 18,
+      maxZoom        : 18,
       inertiaMaxSpeed: 150,
     },
     center : {
-      lat: 21.3008900859581,
-      lng: -157.8398036956787,
+      lat : 21.3008900859581,
+      lng : -157.8398036956787,
       zoom: 15,
     },
     markers : {},
     bikeShareIcon: {
-      iconUrl: '../img/bike-assets/bike-icon.png',
-      iconSize:     [30, 30],
-      shadowSize:   [50, 64],
-      iconAnchor:   [0, 0],
+      iconUrl     : '../img/bike-assets/bike-icon.png',
+      iconSize    : [30, 30],
+      shadowSize  : [50, 64],
+      iconAnchor  : [0, 0],
       shadowAnchor: [4, 62],
-      popupAnchor:  [15, 0]
+      popupAnchor : [15, 0]
     },
     bikeShareIconClicked: {
-      iconUrl: '../img/bike-assets/bike-icon-gray.png',
-      iconSize:     [30, 30],
-      shadowSize:   [50, 64],
-      iconAnchor:   [0, 0],
+      iconUrl     : '../img/bike-assets/bike-icon-gray.png',
+      iconSize    : [30, 30],
+      shadowSize  : [50, 64],
+      iconAnchor  : [0, 0],
       shadowAnchor: [4, 62],
-      popupAnchor:  [15, 0]
+      popupAnchor : [15, 0]
     },
     reportIcon: {
-      iconUrl: '../img/bike-assets/Bike Yellow copy.png',
-      iconSize:     [35, 35],
-      shadowSize:   [50, 64],
-      iconAnchor:   [0, 0],
+      iconUrl     : '../img/bike-assets/Bike Yellow copy.png',
+      iconSize    : [35, 35],
+      shadowSize  : [50, 64],
+      iconAnchor  : [0, 0],
       shadowAnchor: [4, 62],
-      popupAnchor:  [15, 0],
-      className: 'bikeIconSuggestion',
-      message: 'Drop the bycicle where you\'d like to see the station'
+      popupAnchor : [15, 0],
+      className   : 'bikeIconSuggestion',
+      message     : 'Drop the bycicle where you\'d like to see the station'
     },
     heartIcon: {
-      iconUrl: '../img/bike-assets/red heart.png',
-      iconSize:     [30, 30],
-      shadowSize:   [50, 64],
-      iconAnchor:   [0, 0],
+      iconUrl     : '../img/bike-assets/red heart.png',
+      iconSize    : [30, 30],
+      shadowSize  : [50, 64],
+      iconAnchor  : [0, 0],
       shadowAnchor: [4, 62],
-      popupAnchor:  [15, 0],
+      popupAnchor : [15, 0],
       // className: 'bikeIconSuggestion',
     }
   });
@@ -279,10 +279,10 @@
         pointIcon = $scope.bikeShareIcon;
       }
         $scope.markers[(name + i)] = {
-        lat : array[i].lat,
-        lng : array[i].long,
-        icon: pointIcon,
-        properties : array[i],
+        lat       : array[i].lat,
+        lng       : array[i].long,
+        icon      : pointIcon,
+        properties: array[i],
         };
     }
 
@@ -290,26 +290,26 @@
 
   // default values that will be changed on station click
   $scope.stationClicked = {
-    "lastClicked": null,
-    "id": 391,
-    "type": "BikeShare",
-    "name": "Paki and Kalakaua",
-    "description": "Station located on the gravel shoulder on the west side of Paki Avenue to the north of the intersection with Kalakaua.",
-    "info": "On-Street in Place of Parking",
-    "fid": 0,
-    "site_id": "0027_011",
-    "street": "Paki Avenue",
-    "side": "W",
-    "lat": 21.2609380183713,
-    "long": -157.81827587802,
-    "geolink": "https://www.google.com/maps/@21.2607781,-157.8181971,3a,75y,331.63h,59.46t/data=!3m6!1e1!3m4!1s5GecKEKkbvn9xE21RYW_tw!2e0!7i13312!8i6656",
-    "sitelink": null,
-    "photolink": "https://s3-us-west-2.amazonaws.com/bikesharesites/stationPhotos/0985_003.jpg",
-    "upDownVote": null,
-    "votesCounter": null,
+    "lastClicked"  : null,
+    "id"           : 391,
+    "type"         : "BikeShare",
+    "name"         : "Paki and Kalakaua",
+    "description"  : "Station located on the gravel shoulder on the west side of Paki Avenue to the north of the intersection with Kalakaua.",
+    "info"         : "On-Street in Place of Parking",
+    "fid"          : 0,
+    "site_id"      : "0027_011",
+    "street"       : "Paki Avenue",
+    "side"         : "W",
+    "lat"          : 21.2609380183713,
+    "long"         : -157.81827587802,
+    "geolink"      : "https://www.google.com/maps/@21.2607781,-157.8181971,3a,75y,331.63h,59.46t/data=!3m6!1e1!3m4!1s5GecKEKkbvn9xE21RYW_tw!2e0!7i13312!8i6656",
+    "sitelink"     : null,
+    "photolink"    : "https://s3-us-west-2.amazonaws.com/bikesharesites/stationPhotos/0985_003.jpg",
+    "upDownVote"   : null,
+    "votesCounter" : null,
     "safetyCounter": null,
-    "createdAt": "2016-02-29T22:11:46.561Z",
-    "updatedAt": "2016-02-29T22:11:46.561Z"
+    "createdAt"    : "2016-02-29T22:11:46.561Z",
+    "updatedAt"    : "2016-02-29T22:11:46.561Z"
   };
 
   // CHECK IF STATION IS LIKED BY USER
@@ -368,11 +368,11 @@
   };
 
   $scope.places = {
-    kakaako : [21.296586, -157.860886],
-    alamoana : [21.290763, -157.843645],
+    kakaako    : [21.296586, -157.860886],
+    alamoana   : [21.290763, -157.843645],
     university : [21.296760, -157.821071],
-    waikiki : [21.275413, -157.824987],
-    downtown : [21.309355, -157.860274],
+    waikiki    : [21.275413, -157.824987],
+    downtown   : [21.309355, -157.860274],
     diamondhead: [21.260855, -157.817874]
   };
 
@@ -430,11 +430,11 @@
   $scope.createReportPoint = function(){
       $scope.showReportControl = true;
       var reportPoint = {
-          lat: $scope.center.lat,
-          lng: $scope.center.lng,
-          focus: true,
+          lat      : $scope.center.lat,
+          lng      : $scope.center.lng,
+          focus    : true,
           draggable: true,
-          icon : $scope.reportIcon
+          icon     : $scope.reportIcon
         };
 
       $scope.markers ={
