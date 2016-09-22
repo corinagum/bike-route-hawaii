@@ -29,7 +29,6 @@ $large: "only screen and (min-width:799px)";
 
 i, a {
   cursor: pointer;
-  color: $stable;
 }
 // @media #{$medium} {
 //   body {border: 3px solid yellow;}
@@ -236,8 +235,8 @@ a:hover {
 
 .btnDrk {
   @include borderRadius(5px);
-  @include buttonStyling($stable,$balanced,26px,30px,26px,30px,500,12px);
-  line-height: 20px;
+  @include buttonStyling($stable,$balanced,20px,30px,20px,30px,500,12px);
+  line-height: 16px;
   margin-bottom: 15px;
 }
 
@@ -471,11 +470,7 @@ textarea {
 }
 
 .leaveFeedback_button {
-  background-color: $darkest;
-  padding: 6px 10px;
-  font-size: 12px;
-  font-weight: 600;
-  color: $stable;
+  @include buttonStyling($stable,$darkest,6px,10px,6px,10px,600,12px);
   @include borderRadius(5px);
     &:hover {
     background-color: #508f66;
@@ -484,9 +479,7 @@ textarea {
 }
 
 .home_button {
-  font-size: 24px;
-  color: $darkest;
-  padding: 6.5px 15px;
+  @include buttonStyling($darkest,none,6.5px,15px,6.5px,15px,100,24px);
 }
 // ========= BUTTONS
 
@@ -520,28 +513,13 @@ textarea {
 }
 
 .submitBtn {
+  @include buttonStyling($stable,$balanced,8px,30px,8px,30px,200,16px);
   @include borderRadius(5px);
-  @include fontStyling(16px, $stable);
-  padding: 8px 30px;
   margin-top: 15px;
-  background-color: $balanced;
-}
-
-.suggestFdbkBtn {
-  @include borderRadius(12px);
-  @include fontStyling(16px, $stable);
-  padding: 12px 30px;
-  border: 2px solid $stable;
-  background-color: transparent;
 }
 
 .addMargin {
   margin-bottom: 40px;
-}
-
-.cancelBtn {
-  color: $balanced;
-  font-weight: 900;
 }
 
 .leadership_block_wrap {

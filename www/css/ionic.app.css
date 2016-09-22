@@ -9840,8 +9840,7 @@ a.button {
   transition: all ease-in-out 250ms; }
 
 i, a {
-  cursor: pointer;
-  color: #f8f8f8; }
+  cursor: pointer; }
 
 body {
   color: #626262; }
@@ -10013,10 +10012,10 @@ a:hover {
   border-radius: 5px;
   color: #f8f8f8;
   background-color: #76CE95;
-  padding: 26px 30px 26px 30px;
+  padding: 20px 30px 20px 30px;
   font-weight: 500;
   font-size: 12px;
-  line-height: 20px;
+  line-height: 16px;
   margin-bottom: 15px; }
 
 .btnTitle {
@@ -10185,11 +10184,11 @@ textarea {
   right: 30px; }
 
 .leaveFeedback_button {
-  background-color: #242925;
-  padding: 6px 10px;
-  font-size: 12px;
-  font-weight: 600;
   color: #f8f8f8;
+  background-color: #242925;
+  padding: 6px 10px 6px 10px;
+  font-weight: 600;
+  font-size: 12px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -10199,9 +10198,11 @@ textarea {
     color: #f8f8f8; }
 
 .home_button {
-  font-size: 24px;
   color: #242925;
-  padding: 6.5px 15px; }
+  background-color: none;
+  padding: 6.5px 15px 6.5px 15px;
+  font-weight: 100;
+  font-size: 24px; }
 
 .button.surveyBtn {
   position: absolute;
@@ -10221,33 +10222,19 @@ textarea {
   margin-top: -8px; }
 
 .submitBtn {
+  color: #f8f8f8;
+  background-color: #76CE95;
+  padding: 8px 30px 8px 30px;
+  font-weight: 200;
+  font-size: 16px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   border-radius: 5px;
-  font-size: 16px;
-  color: #f8f8f8;
-  padding: 8px 30px;
-  margin-top: 15px;
-  background-color: #76CE95; }
-
-.suggestFdbkBtn {
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
-  border-radius: 12px;
-  font-size: 16px;
-  color: #f8f8f8;
-  padding: 12px 30px;
-  border: 2px solid #f8f8f8;
-  background-color: transparent; }
+  margin-top: 15px; }
 
 .addMargin {
   margin-bottom: 40px; }
-
-.cancelBtn {
-  color: #76CE95;
-  font-weight: 900; }
 
 .leadership_block_wrap {
   padding: 0 10px; }
