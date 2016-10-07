@@ -27,45 +27,19 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 $medium: "only screen and (min-width:479px)";
 $large: "only screen and (min-width:799px)";
 
-i, a {
-  cursor: pointer;
-}
-// @media #{$medium} {
-//   body {border: 3px solid yellow;}
-// }
+i, a { cursor: pointer; }
 
-// @media #{$large} {
-//   body {border: 3px solid red;}
-// }
+body { color: $typeGrey; }
 
-@mixin fontStyle($font-size, $line-height){
-  font-size: $font-size;
-  line-height: $line-height;
-}
+h4, h5, p, li, a, span { font-family: 'Open Sans', sans-serif; }
 
-body {
-  color: $typeGrey;
-}
+img { vertical-align: top; }
 
-h4, h5, p, li, a, span {
-  font-family: 'Open Sans', sans-serif;
-}
+a:hover { text-decoration: none; }
 
-img {
-  vertical-align: top;
-}
+.overflow-scroll { overflow-y: auto; }
 
-a:hover {
-  text-decoration: none;
-}
-
-.overflow-scroll {
-  overflow-y: auto;
-}
-
-.contentTitle {
-  @include fontStyle(36px, 36px);
-}
+.contentTitle { @include fontStyle(36px, 36px); }
 
 .contentPar {
   @include fontStyle(20px, 20px);
@@ -85,58 +59,24 @@ a:hover {
 .introPage {
   max-width: 275px;
   padding: 0 20px;
-
-  @media #{$medium} {
-    padding: 0 10px;
-  }
 }
 
 .block_section_a {
-
-  background-image: url("../img/bike-assets/concrete-texture.jpg");
-  background-size: cover;
+  background-image: url("../img/bike-assets/concrete-texture.jpg") cover;
   padding: 100px 20px;
-
-  @media #{$medium} {
-    padding: 100px 40px;
-  }
-  @media #{$large} {
-    padding: 100px;
-  }
 }
 
 .content_title {
   @include fontStyle(36px, 42px);
   text-align: center;
   font-weight: 600;
-
-  @media #{$medium} {
-    font-size: 42px;
-    margin-bottom: 30px;
-  }
-  @media #{$large} {
-    font-size: 56px;
-    margin-bottom: 100px;
-  }
 }
 
 .content_texts {
   @include fontStyle(20px, 22px);
   margin-top: 20px;
 
-  @media #{$medium} {
-    @include fontStyle(28px, 42px);
-    margin-top: 30px;
-  }
-  @media #{$large} {
-    margin-top: 35px;
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 728px;
-  }
-  span {
-    color: #96E6BF;
-  }
+  span { color: #96E6BF; }
 }
 
 .block_section_b {
@@ -146,14 +86,6 @@ a:hover {
 
 .section_b_imageText_wrap {
   margin: auto;
-
-  @media #{$medium} {
-    align-items: center;
-  }
-  @media #{$large} {
-    display: flex;
-    max-width: 728px;
-  }
 }
 
 .block_section_c {
@@ -164,15 +96,6 @@ a:hover {
 
 .section_b_image_wrap img {
   max-width: 100%;
-
-  @media #{$medium} {
-    margin-right: 30px;
-    max-width: 283px;
-  }
-  @media #{$large} {
-    font-size: 24px;
-    max-width: 250px;
-  }
 }
 
 
@@ -194,18 +117,6 @@ a:hover {
     @media #{$large} {
       @include fontStyle(18px, 26px);
     }
-  }
-}
-
-.container_image_text {
-  @media #{$medium} {
-    align-items: center;
-    display: flex;
-  }
-}
-.set_image_size {
-  @media #{$medium} {
-    min-width: 300px;
   }
 }
 
@@ -249,11 +160,6 @@ a:hover {
 .bslogo {
   text-align: center;
   margin-bottom: 30px;
-
-  @media #{$large} {
-    margin: auto;
-    margin-right: 40px;
-  }
 }
 
 .fbLinkBtn {
@@ -262,20 +168,9 @@ a:hover {
 }
 
 .moreInfoMap {
-  width: 50%;
-  padding: 5px 0px;
+  @include buttonStyling($stable, $darkest, 15px, 40px, 15px, 40px, 600, 16px);
   border-radius: 5px;
-  background-color: $darkest;
   text-align: center;
-
-  h4 {
-    color: $stable;
-    font-size: 18px;
-
-    @media #{$medium} {
-      font-size: 22px;
-    }
-  }
 
   &:hover {
     background-color: #508f66;
@@ -289,30 +184,18 @@ a:hover {
   p {
     @include fontType($stable, 14px, 20px);
     font-weight: 600;
-    width: 80%;
+    max-width: 80%;
     margin: auto;
 
     @media #{$medium} {
       @include fontType($stable, 18px, 18px);
-      font-weight: 600;
+      padding-top: 20px;
     }
   }
 }
 
 .skipLink {
   color: $typeGrey;
-}
-
-.bottom_section {
-  @media #{$large} {
-    display: flex;
-  }
-}
-
-.secPar {
-  @media #{$medium} {
-    padding: 0px;
-  }
 }
 
 .stepsNum {
@@ -401,7 +284,7 @@ input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 //============
 
 .smallSizeFont {
-  @include fontStyling(12px, lighten($typeGrey,55%));
+  @include fontType(lighten($typeGrey,55%), 12px, 12px);
 }
 
 [type="radio"]:not(:checked)+label:before, [type="radio"]:not(:checked)+label:after {
@@ -419,10 +302,6 @@ textarea {
 
 .divSize {
     padding: 0 7%;
-
-  @media #{$large} {
-    padding: 0 23%;
-  }
 }
 
 .addBackgroundImg {
@@ -439,31 +318,7 @@ textarea {
   border-bottom: none;
 }
 
-// .fdbckBtn {
-//   @include borderRadius(5px);
-//   position: absolute;
-//   right: 63.94px;
-//   color: $stable;
-//   background-color: $darkest;
 
-//   span {
-//     @include fontType($stable, 10px, 10px);
-//     font-weight: 600;
-//   }
-
-//     &:hover {
-//       background-color: #508f66;
-//       color: $stable;
-//     }
-
-//   @media #{$medium} {
-//     span {font-size: 12px;}
-//   }
-// }
-
-
-
-// ========= BUTTONS
 .header_button_wrapper {
   position: absolute;
   right: 30px;
@@ -481,17 +336,6 @@ textarea {
 .home_button {
   @include buttonStyling($darkest,none,6.5px,15px,6.5px,15px,100,24px);
 }
-// ========= BUTTONS
-
-
-
-
-
-
-// .button.suggestBtn {
-//   @extend .fdbckBtn;
-//   right: 209.3px;
-// }
 
 .button.surveyBtn {
   position: absolute;
@@ -524,14 +368,6 @@ textarea {
 
 .leadership_block_wrap {
   padding: 0 10px;
-  @media #{$medium} {
-    display: -webkit-box;
-    padding: 0 20px;
-  }
-  @media #{$large} {
-    display: -webkit-box;
-    padding: 0px 80px 40px 80px;
-  }
 }
 
 .leadDiv {
@@ -609,7 +445,7 @@ textarea {
 }
 
 .commentHeader {
-  @include fontStyling(18px, $stable);
+  @include fontType($stable, 18px, 16px);
   font-weight: 300;
   margin-bottom: 20px;
 }
@@ -703,7 +539,6 @@ textarea {
 
   .bbbImageLogo {
     img{max-width: 20px; }
-    // background-color: pink;
   }
 
   .d_image {
@@ -718,7 +553,6 @@ textarea {
   .titleAddDescription {
     width: 100%;
     padding: 0px 9px 9px 18px;
-    // background-color: yellow;
   }
 
   .title_address {
@@ -766,19 +600,6 @@ textarea {
       width: 100px;
   }
 }
-
-@media #{$medium} {
-  .modal {
-    top: 0;
-    right: 100%;
-    bottom: 0;
-    left: 0;
-    max-height: 100%;
-    width: 100%;
-  }
-}
-
-////////// GEOSEARCH MODIFICATION /////////////
 
 .displayNone {
   display: none;
@@ -911,14 +732,9 @@ textarea {
   background-color: lighten($typeGrey, 53%);
   border: none;
 }
-///////////////////////////////////////////
 
 .addPadding {
   padding: 0 5%;
-
-  @media #{$large} {
-    padding: 0 7%;
-  }
 }
 
 .survSmallTitle {
@@ -938,10 +754,6 @@ textarea {
 
   .selectionEachBlock {
     min-width: 102.66px;
-
-    @media #{$large} {
-      min-width: 112.5px;
-    }
 
     label {
       color: $stable;
@@ -978,28 +790,9 @@ textarea {
   border: 2px solid lighten($typeGrey, 50%);
 }
 
-// .centerBox {
-//     width: 100%;
-//     position: absolute;
-//     top: 75%;
-//     justify-content: center;
-//     text-align: center;
-//     z-index: 50000000000000000;
-
-//   @media #{$large} {
-//     z-index: 50000000000000000;
-//     width: 100%;
-//     top: 50px;
-//     left: 5px;
-//   }
-// }
-
 img.mobileYellowBikeIcon {
   height: 20px;
 }
-
-
-
 
 .footer_bar_mobile {
   margin: 0;
@@ -1043,35 +836,6 @@ img.mobileYellowBikeIcon {
 }
 
 
-@media #{$large} {
-  .footer_bar_mobile {
-    display: none;
-  }
-}
-
-@media #{$medium} {
-  .foot_image_wrap img {
-    float: left;
-  }
-  .footer_bar_mobile {
-    height: 148px;
-  }
-  .text_wrap_first {
-    display: -webkit-box;
-
-    .drag_marker_text {
-      margin: 6px;
-    }
-  }
-  .direction_wrapper {
-    margin-top: 20px;
-  }
-  .text_wrap {
-    margin-left: 40px;
-  }
-}
-
-
 #footer_bulkLike {
   height: 100px;
   background-color: lighten($typeGrey, 53%);
@@ -1103,37 +867,11 @@ img.mobileYellowBikeIcon {
   cursor: pointer;
 }
 
-@media #{$medium} {
-  .bulk_content_wrapper {
-    display: flex;
-    height: 40px;
-    margin-top: 20px;
-    justify-content: center;
-  }
-
-  #footer_bulkLike {
-    height: 80px;
-  }
-}
-
-@media #{$large} {
-  .bulk_text_wrapper {
-    margin-right: 20px;
-  }
-}
-
 #footer-bar.row {
   .row {margin: auto;}
   flex-flow: row wrap;
   margin: auto;
   background-color: lighten($typeGrey, 53%);
-
-  @media #{$large} {
-    display: flex;
-    display: -webkit-flex;
-    height: 90px;
-
-  }
 
   .row {
     margin-bottom: 0px;
@@ -1152,32 +890,8 @@ img.mobileYellowBikeIcon {
 
   p {
     @include fontStyle(14px, 14px);
-
     @media #{$large} {
       @include fontStyle(16px, 18px);
-    }
-  }
-
-  .bothSuggestBtns {
-    justify-content: space-between;
-    background-color: $balanced;
-    padding: 10px;
-    a {color: $typeGrey;}
-
-    @media #{$large} {
-      background-color: $stable;
-    }
-  }
-
-  .eachSuggestbtn {
-
-    @media #{$large} {
-      @include borderRadius(10px);
-      border: 2px solid $balanced;
-      color: $typeGrey;
-      background-color: $stable;
-      min-width: 110.08px;
-      min-height: 53px;
     }
   }
 
@@ -1187,6 +901,12 @@ img.mobileYellowBikeIcon {
   }
 }
 
+.bothSuggestBtns {
+  justify-content: space-between;
+  background-color: $balanced;
+  padding: 10px;
+  a {color: $typeGrey;}
+}
 
 .theDivDirection {
   margin: auto;
@@ -1265,9 +985,6 @@ img.mobileYellowBikeIcon {
 
 }
 
-
-
-//=========================================
 #map {
   width: 100%;
   height: 100%;
@@ -1278,3 +995,44 @@ img.mobileYellowBikeIcon {
   width: 100%;
 }
 
+@media #{ $medium } {
+  .introPage { padding: 0 10px;}
+  .block_section_a { padding: 100px 40px; }
+  .content_title { font-size: 42px; margin-bottom: 30px; }
+  .content_texts { @include fontStyle(28px, 42px); margin-top: 30px; }
+  .section_b_imageText_wrap { align-items: center; }
+  .section_b_image_wrap img { margin-right: 30px; max-width: 283px; }
+  .container_image_text { align-items: center; display: flex; }
+  .set_image_size { min-width: 300px; }
+  .moreInfoMap { font-size: 18px; padding: 20px 100px;}
+  .secPar { padding: 0px; }
+  .leadership_block_wrap { display: -webkit-box; padding: 0 20px; }
+  .modal { top: 0; right: 100%; bottom: 0; left: 0; max-height: 100%; width: 100%; }
+  .foot_image_wrap img { float: left; }
+  .footer_bar_mobile { height: 148px; }
+  .text_wrap_first { display: -webkit-box;
+    .drag_marker_text { margin: 6px; } }
+  .direction_wrapper { margin-top: 20px; }
+  .text_wrap { margin-left: 40px; }
+  .bulk_content_wrapper { display: flex; height: 40px; margin-top: 20px; justify-content: center; }
+  #footer_bulkLike { height: 80px; }
+}
+
+@media #{ $large } {
+  .block_section_a { padding: 100px; }
+  .content_title { font-size: 56px; margin-bottom: 100px; }
+  .content_texts { margin-top: 35px; margin-right: auto; margin-left: auto; max-width: 728px; }
+  .section_b_imageText_wrap { display: flex; max-width: 728px; }
+  .section_b_image_wrap img { font-size: 24px; max-width: 250px; }
+  .bslogo { margin: auto; margin-right: 40px; }
+  .bottom_section { display: flex; }
+  .divSize { padding: 0 23%; }
+  .leadership_block_wrap { display: -webkit-box; padding: 0px 80px 40px 80px; }
+  .addPadding { padding: 0 7%; }
+  .selectionEachBlock { min-width: 112.5px; }
+  .footer_bar_mobile { display: none; }
+  .bulk_text_wrapper { margin-right: 20px; }
+  #footer-bar.row { display: flex; display: -webkit-flex; height: 90px; }
+  .bothSuggestBtns { background-color: $stable; }
+  .eachSuggestbtn { @include borderRadius(10px); border: 2px solid $balanced; color: $typeGrey; background-color: $stable; min-width: 110.08px; min-height: 53px; }
+}

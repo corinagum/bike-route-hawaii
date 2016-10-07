@@ -6,6 +6,11 @@
          border-radius: $radius;
 }
 
+@mixin fontStyle($font-size, $line-height){
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
 @mixin fontType($color,$size,$line-height) {
   color: $color;
   font-size: $size;

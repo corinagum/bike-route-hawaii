@@ -9878,50 +9878,21 @@ a:hover {
 .introPage {
   max-width: 275px;
   padding: 0 20px; }
-  @media only screen and (min-width: 479px) {
-    .introPage {
-      padding: 0 10px; } }
 
 .block_section_a, .block_section_b, .block_section_c {
-  background-image: url("../img/bike-assets/concrete-texture.jpg");
-  background-size: cover;
+  background-image: url("../img/bike-assets/concrete-texture.jpg") cover;
   padding: 100px 20px; }
-  @media only screen and (min-width: 479px) {
-    .block_section_a, .block_section_b, .block_section_c {
-      padding: 100px 40px; } }
-  @media only screen and (min-width: 799px) {
-    .block_section_a, .block_section_b, .block_section_c {
-      padding: 100px; } }
 
 .content_title {
   font-size: 36px;
   line-height: 42px;
   text-align: center;
   font-weight: 600; }
-  @media only screen and (min-width: 479px) {
-    .content_title {
-      font-size: 42px;
-      margin-bottom: 30px; } }
-  @media only screen and (min-width: 799px) {
-    .content_title {
-      font-size: 56px;
-      margin-bottom: 100px; } }
 
 .content_texts {
   font-size: 20px;
   line-height: 22px;
   margin-top: 20px; }
-  @media only screen and (min-width: 479px) {
-    .content_texts {
-      font-size: 28px;
-      line-height: 42px;
-      margin-top: 30px; } }
-  @media only screen and (min-width: 799px) {
-    .content_texts {
-      margin-top: 35px;
-      margin-right: auto;
-      margin-left: auto;
-      max-width: 728px; } }
   .content_texts span {
     color: #96E6BF; }
 
@@ -9930,13 +9901,6 @@ a:hover {
 
 .section_b_imageText_wrap {
   margin: auto; }
-  @media only screen and (min-width: 479px) {
-    .section_b_imageText_wrap {
-      align-items: center; } }
-  @media only screen and (min-width: 799px) {
-    .section_b_imageText_wrap {
-      display: flex;
-      max-width: 728px; } }
 
 .block_section_c {
   background-image: none;
@@ -9944,14 +9908,6 @@ a:hover {
 
 .section_b_image_wrap img {
   max-width: 100%; }
-  @media only screen and (min-width: 479px) {
-    .section_b_image_wrap img {
-      margin-right: 30px;
-      max-width: 283px; } }
-  @media only screen and (min-width: 799px) {
-    .section_b_image_wrap img {
-      font-size: 24px;
-      max-width: 250px; } }
 
 .section_b_text_wrap {
   text-align: left; }
@@ -9972,15 +9928,6 @@ a:hover {
       .section_b_text_wrap p {
         font-size: 18px;
         line-height: 26px; } }
-
-@media only screen and (min-width: 479px) {
-  .container_image_text {
-    align-items: center;
-    display: flex; } }
-
-@media only screen and (min-width: 479px) {
-  .set_image_size {
-    min-width: 300px; } }
 
 .containerSection {
   max-width: 626px; }
@@ -10026,10 +9973,6 @@ a:hover {
 .bslogo {
   text-align: center;
   margin-bottom: 30px; }
-  @media only screen and (min-width: 799px) {
-    .bslogo {
-      margin: auto;
-      margin-right: 40px; } }
 
 .fbLinkBtn {
   margin: 20px 0px; }
@@ -10038,17 +9981,13 @@ a:hover {
     font-size: large; }
 
 .moreInfoMap {
-  width: 50%;
-  padding: 5px 0px;
-  border-radius: 5px;
+  color: #f8f8f8;
   background-color: #242925;
+  padding: 15px 40px 15px 40px;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 5px;
   text-align: center; }
-  .moreInfoMap h4 {
-    color: #f8f8f8;
-    font-size: 18px; }
-    @media only screen and (min-width: 479px) {
-      .moreInfoMap h4 {
-        font-size: 22px; } }
   .moreInfoMap:hover {
     background-color: #508f66;
     color: #f8f8f8; }
@@ -10060,25 +9999,17 @@ a:hover {
     font-size: 14px;
     line-height: 20px;
     font-weight: 600;
-    width: 80%;
+    max-width: 80%;
     margin: auto; }
     @media only screen and (min-width: 479px) {
       .viewMapBtn p {
         color: #f8f8f8;
         font-size: 18px;
         line-height: 18px;
-        font-weight: 600; } }
+        padding-top: 20px; } }
 
 .skipLink {
   color: #626262; }
-
-@media only screen and (min-width: 799px) {
-  .bottom_section {
-    display: flex; } }
-
-@media only screen and (min-width: 479px) {
-  .secPar {
-    padding: 0px; } }
 
 .stepsNum {
   height: 30px; }
@@ -10148,8 +10079,9 @@ input[type="text"]::-webkit-input-placeholder {
   padding-left: 15px; }
 
 .smallSizeFont {
+  color: #eeeeee;
   font-size: 12px;
-  color: #eeeeee; }
+  line-height: 12px; }
 
 [type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after {
   border: 3px solid #dfdfdf;
@@ -10164,9 +10096,6 @@ textarea {
 
 .divSize {
   padding: 0 7%; }
-  @media only screen and (min-width: 799px) {
-    .divSize {
-      padding: 0 23%; } }
 
 .addBackgroundImg {
   background: url("./../img/bike-assets/backgroundMapView.png") no-repeat;
@@ -10238,14 +10167,6 @@ textarea {
 
 .leadership_block_wrap {
   padding: 0 10px; }
-  @media only screen and (min-width: 479px) {
-    .leadership_block_wrap {
-      display: -webkit-box;
-      padding: 0 20px; } }
-  @media only screen and (min-width: 799px) {
-    .leadership_block_wrap {
-      display: -webkit-box;
-      padding: 0px 80px 40px 80px; } }
 
 .leadDiv {
   padding: 40px 20px 20px 20px; }
@@ -10308,8 +10229,9 @@ textarea {
   height: initial; }
 
 .commentHeader {
-  font-size: 18px;
   color: #f8f8f8;
+  font-size: 18px;
+  line-height: 16px;
   font-weight: 300;
   margin-bottom: 20px; }
 
@@ -10420,15 +10342,6 @@ textarea {
   .detailModalBlock .biz_image {
     background-color: yellow;
     width: 100px; }
-
-@media only screen and (min-width: 479px) {
-  .modal {
-    top: 0;
-    right: 100%;
-    bottom: 0;
-    left: 0;
-    max-height: 100%;
-    width: 100%; } }
 
 .displayNone {
   display: none; }
@@ -10547,9 +10460,6 @@ textarea {
 
 .addPadding {
   padding: 0 5%; }
-  @media only screen and (min-width: 799px) {
-    .addPadding {
-      padding: 0 7%; } }
 
 .survSmallTitle {
   margin: 14px 0; }
@@ -10565,9 +10475,6 @@ textarea {
   margin-bottom: 15px; }
   .radioBlock .selectionEachBlock {
     min-width: 102.66px; }
-    @media only screen and (min-width: 799px) {
-      .radioBlock .selectionEachBlock {
-        min-width: 112.5px; } }
     .radioBlock .selectionEachBlock label {
       color: #f8f8f8; }
   .radioBlock .radioDivAgeGender {
@@ -10622,24 +10529,6 @@ img.mobileYellowBikeIcon {
     color: black;
     width: 100%; }
 
-@media only screen and (min-width: 799px) {
-  .footer_bar_mobile {
-    display: none; } }
-
-@media only screen and (min-width: 479px) {
-  .foot_image_wrap img {
-    float: left; }
-  .footer_bar_mobile {
-    height: 148px; }
-  .text_wrap_first {
-    display: -webkit-box; }
-    .text_wrap_first .drag_marker_text {
-      margin: 6px; }
-  .direction_wrapper {
-    margin-top: 20px; }
-  .text_wrap {
-    margin-left: 40px; } }
-
 #footer_bulkLike {
   height: 100px;
   background-color: #e9e9e9; }
@@ -10668,30 +10557,12 @@ img.mobileYellowBikeIcon {
   right: 6px;
   cursor: pointer; }
 
-@media only screen and (min-width: 479px) {
-  .bulk_content_wrapper {
-    display: flex;
-    height: 40px;
-    margin-top: 20px;
-    justify-content: center; }
-  #footer_bulkLike {
-    height: 80px; } }
-
-@media only screen and (min-width: 799px) {
-  .bulk_text_wrapper {
-    margin-right: 20px; } }
-
 #footer-bar.row {
   flex-flow: row wrap;
   margin: auto;
   background-color: #e9e9e9; }
   #footer-bar.row .row {
     margin: auto; }
-  @media only screen and (min-width: 799px) {
-    #footer-bar.row {
-      display: flex;
-      display: -webkit-flex;
-      height: 90px; } }
   #footer-bar.row .row {
     margin-bottom: 0px; }
   #footer-bar.row .directions_wrapper {
@@ -10708,29 +10579,16 @@ img.mobileYellowBikeIcon {
       #footer-bar.row p {
         font-size: 16px;
         line-height: 18px; } }
-  #footer-bar.row .bothSuggestBtns {
-    justify-content: space-between;
-    background-color: #76CE95;
-    padding: 10px; }
-    #footer-bar.row .bothSuggestBtns a {
-      color: #626262; }
-    @media only screen and (min-width: 799px) {
-      #footer-bar.row .bothSuggestBtns {
-        background-color: #f8f8f8; } }
-  @media only screen and (min-width: 799px) {
-    #footer-bar.row .eachSuggestbtn {
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      -ms-border-radius: 10px;
-      border-radius: 10px;
-      border: 2px solid #76CE95;
-      color: #626262;
-      background-color: #f8f8f8;
-      min-width: 110.08px;
-      min-height: 53px; } }
   #footer-bar.row span {
     font-size: large;
     margin: auto; }
+
+.bothSuggestBtns {
+  justify-content: space-between;
+  background-color: #76CE95;
+  padding: 10px; }
+  .bothSuggestBtns a {
+    color: #626262; }
 
 .theDivDirection {
   margin: auto;
@@ -10792,3 +10650,112 @@ img.mobileYellowBikeIcon {
 .scroll {
   height: 100%;
   width: 100%; }
+
+@media only screen and (min-width: 479px) {
+  .introPage {
+    padding: 0 10px; }
+  .block_section_a, .block_section_b, .block_section_c {
+    padding: 100px 40px; }
+  .content_title {
+    font-size: 42px;
+    margin-bottom: 30px; }
+  .content_texts {
+    font-size: 28px;
+    line-height: 42px;
+    margin-top: 30px; }
+  .section_b_imageText_wrap {
+    align-items: center; }
+  .section_b_image_wrap img {
+    margin-right: 30px;
+    max-width: 283px; }
+  .container_image_text {
+    align-items: center;
+    display: flex; }
+  .set_image_size {
+    min-width: 300px; }
+  .moreInfoMap {
+    font-size: 18px;
+    padding: 20px 100px; }
+  .secPar {
+    padding: 0px; }
+  .leadership_block_wrap {
+    display: -webkit-box;
+    padding: 0 20px; }
+  .modal {
+    top: 0;
+    right: 100%;
+    bottom: 0;
+    left: 0;
+    max-height: 100%;
+    width: 100%; }
+  .foot_image_wrap img {
+    float: left; }
+  .footer_bar_mobile {
+    height: 148px; }
+  .text_wrap_first {
+    display: -webkit-box; }
+    .text_wrap_first .drag_marker_text {
+      margin: 6px; }
+  .direction_wrapper {
+    margin-top: 20px; }
+  .text_wrap {
+    margin-left: 40px; }
+  .bulk_content_wrapper {
+    display: flex;
+    height: 40px;
+    margin-top: 20px;
+    justify-content: center; }
+  #footer_bulkLike {
+    height: 80px; } }
+
+@media only screen and (min-width: 799px) {
+  .block_section_a, .block_section_b, .block_section_c {
+    padding: 100px; }
+  .content_title {
+    font-size: 56px;
+    margin-bottom: 100px; }
+  .content_texts {
+    margin-top: 35px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 728px; }
+  .section_b_imageText_wrap {
+    display: flex;
+    max-width: 728px; }
+  .section_b_image_wrap img {
+    font-size: 24px;
+    max-width: 250px; }
+  .bslogo {
+    margin: auto;
+    margin-right: 40px; }
+  .bottom_section {
+    display: flex; }
+  .divSize {
+    padding: 0 23%; }
+  .leadership_block_wrap {
+    display: -webkit-box;
+    padding: 0px 80px 40px 80px; }
+  .addPadding {
+    padding: 0 7%; }
+  .selectionEachBlock {
+    min-width: 112.5px; }
+  .footer_bar_mobile {
+    display: none; }
+  .bulk_text_wrapper {
+    margin-right: 20px; }
+  #footer-bar.row {
+    display: flex;
+    display: -webkit-flex;
+    height: 90px; }
+  .bothSuggestBtns {
+    background-color: #f8f8f8; }
+  .eachSuggestbtn {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    border: 2px solid #76CE95;
+    color: #626262;
+    background-color: #f8f8f8;
+    min-width: 110.08px;
+    min-height: 53px; } }
