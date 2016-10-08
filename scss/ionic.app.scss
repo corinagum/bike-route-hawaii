@@ -60,7 +60,8 @@ a:hover { text-decoration: none; }
 }
 
 .block_section_a {
-  background-image: url("../img/bike-assets/concrete-texture.jpg") cover;
+  background-image: url("../img/bike-assets/concrete-texture.jpg");
+  background-size: cover;
   padding: 100px 20px;
 }
 
