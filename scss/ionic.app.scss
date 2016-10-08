@@ -3,23 +3,23 @@ To customize the look and feel of Ionic, you can override the variables
 in ionic's _variables.scss file.
 For example, you might change some of the default colors:
 $light:                           #fff !default;
-$stable:                          #f5f5f5 !default;
 $positive:                        #387ef5 !default;
 $calm:                            #11c1f3 !default;
-$balanced:                        #96E6BF !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #626262 !default;
 */
 
-$typeGrey: #626262;
-$darkest: #242925;
+$stable:                          #f5f5f5 !default;
+$balanced:                        #96E6BF !default;
+$typeGrey:                        #626262 !default;
+$darkest:                         #242925 !default;
 
-// @import url(https://fonts.googleapis.com/css?family=Quicksand);
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 @import "partials/keyFrames";
@@ -27,17 +27,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 $medium: "only screen and (min-width:479px)";
 $large: "only screen and (min-width:799px)";
 
+// Global style
 i, a { cursor: pointer; }
-
 body { color: $typeGrey; }
-
 h4, h5, p, li, a, span { font-family: 'Open Sans', sans-serif; }
-
 img { vertical-align: top; }
-
 a:hover { text-decoration: none; }
-
 .overflow-scroll { overflow-y: auto; }
+// Global style end
+
 
 .contentTitle { @include fontStyle(36px, 36px); }
 
@@ -169,7 +167,7 @@ a:hover { text-decoration: none; }
 
 .moreInfoMap {
   @include buttonStyling($stable, $darkest, 15px, 40px, 15px, 40px, 600, 16px);
-  border-radius: 5px;
+  @include borderRadius( 5px );
   text-align: center;
 
   &:hover {
@@ -258,7 +256,7 @@ input[type="number"] {
 }
 
 input[type="text"], input[type="email"] {
-  border-radius: 5px;
+  @include borderRadius(5px);
   margin-bottom: 5px;
   background-color: $stable;
   font-size: 12px;
@@ -268,24 +266,12 @@ input[type="text"], input[type="email"] {
   }
 }
 
-
 //PLACEHOLDERS
-input[type="email"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  padding-left: 15px;
-}
-
-input[type="number"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  padding-left: 15px;
-}
-
-input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  padding-left: 15px;
-}
+input[type="email"]::-webkit-input-placeholder { padding-left: 15px; }
+input[type="number"]::-webkit-input-placeholder { padding-left: 15px; }
+input[type="text"]::-webkit-input-placeholder { padding-left: 15px; }
 //============
 
-.smallSizeFont {
-  @include fontType(lighten($typeGrey,55%), 12px, 12px);
-}
 
 [type="radio"]:not(:checked)+label:before, [type="radio"]:not(:checked)+label:after {
   border: 3px solid darken($stable, 10%);
@@ -293,19 +279,23 @@ input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 }
 
 textarea {
+  @include borderRadius( 5px );
   background-color: $stable;
   font-size: 12px;
   padding: 15px;
-  border-radius: 5px;
   margin-top: 20px;
 }
 
+.smallSizeFont {
+  @include fontType(lighten($typeGrey,55%), 12px, 12px);
+}
+
 .divSize {
-    padding: 0 7%;
+  padding: 0 7%;
 }
 
 .addBackgroundImg {
-  background: url("./../img/bike-assets/backgroundMapView.png")no-repeat;
+  background: url("./../img/bike-assets/backgroundMapView.png") no-repeat;
   background-size: cover;
 }
 
@@ -606,8 +596,8 @@ textarea {
 }
 
 .leaflet-bar {
+  @include borderRadius( 0 );
   box-shadow: none;
-  border-radius: 0;
 }
 
 .leaflet-control-geosearch {
@@ -659,11 +649,9 @@ textarea {
   position: absolute;
   top: 1px;
   right: 2px;
-  // box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
   z-index: -1;
   background: #FFF;
   height: 38px;
-  // padding: 0 6px 0 6px;
 }
 
 .leaflet-touch .leaflet-control-geosearch form {
@@ -746,7 +734,6 @@ textarea {
 }
 
 .radioBlock {
-  border: 1px solid red;
   display: flex;
   display: -webkit-flex;
   max-height: 48px;
@@ -965,7 +952,6 @@ img.mobileYellowBikeIcon {
     position: relative;
     left: -50%;
     min-width: 175px;
-    // max-width: 100%;
     padding: 10px 20px;
 
     @media #{$medium}{
