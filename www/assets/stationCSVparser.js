@@ -1,11 +1,12 @@
 var fs = require('fs');
 
 var stations = require('./stationInitial.js');
+var assignedIds = require('./spring17Ids.js');
 
 for(var i=0; i<stations.length; i++){
 	stations[i].type = "BikeShare";
 	stations[i].photolink = "https://s3-us-west-2.amazonaws.com/bikesharesites/stationPhotosSpring17/" + stations[i].site_id + '.jpg'
-	// stations[i].fid = null;
+	stations[i].id = assignedIds[stations[i].site_id];
 	// stations[i].geolink = null;
 	// sitelink[i].sitelink = null;
 	// stations[i].photolink = null;
