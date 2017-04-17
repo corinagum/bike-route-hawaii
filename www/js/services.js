@@ -31,7 +31,7 @@ angular.module('starter.services', [])
   };
 
   this.suggestPoint = function(point) {
-    return $http.post(domain + '/api/points/suggest', {
+    return $http.post('/api/points/suggest', {
       point : point
     });
   };
@@ -41,14 +41,14 @@ angular.module('starter.services', [])
   // };
 
   this.getPointsInRadius = function(radius, lat, long) {
-    return $http.get(domain + '/api/points/within/' +
+    return $http.get('/api/points/within/' +
       radius + '/' + lat + '/' + long);
   };
 
   this.getPointsInView = function(NElat, NElong, SWlat, SWlong){
     // console.log(process.env);
     // console.log(processENV);
-    return $http.get(domain + '/api/points/bounds/' +
+    return $http.get('/api/points/bounds/' +
       NElat + '/' + NElong + '/' + SWlat + '/' +SWlong, {processENV:processENV});
   };
 }])
@@ -122,12 +122,12 @@ angular.module('starter.services', [])
 
 // CREATES NEW USER
     this.create = function(){
-      return $http.post(domain + "/user");
+      return $http.post("/user");
     };
 
 // UPDATES CURRENT USER
     this.edit = function(id){
-      return $http.put( domain + "/user/" + id, {
+      return $http.put("/user/" + id, {
         user : user
       });
     };
