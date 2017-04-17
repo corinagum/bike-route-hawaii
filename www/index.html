@@ -37,9 +37,9 @@
     <script id="templates/home.html" type="text/ng-template">
       <ion-view view-title="Home" class="landing">
         <ion-content>
-        <div ng-controller="LandingCtrl" class="alohaLandingOne">
+        <div ng-controller="LandingCtrl" class="introPage alohaLandingOne">
           <p class="contentTitle">Aloha!</p><br>
-          <p class="contentPar"> We need your help! We’re </br>planning a brand new transportation </br>program called BIKESHARE. </br>Please help us understand how </br>our program can best serve you.</p>
+          <p class="contentPar"> We need your help! We’re planning a brand new transportation program called BIKESHARE. Please help us understand how our program can best serve you.</p>
           <br>
           <a ng-click="userStart()" class="button waves-effect waves-light" href="#/tab/aloha" nav-transition="none">Let's Go!</a>
         </div>
@@ -54,11 +54,11 @@
           <div ng-controller="PathCtrl">
           <!-- <div ng-controller="PathCtrl" class="alohaLandingOne hide-on-med-and-up"> -->
           <div class="alohaLandingOne hide-on-med-and-up">
-            <p class="contentPar">Help us customize your </br>experience by selecting the option </br>that fits you the best.</p>
             <div class="buttonLinks">
-              <a ng-click="updatePath('info')" href="#/tab/main"><div class="button btnDrk waves-effect waves-light">I don’t know what </br>bikeshare is and want </br>to learn more</div></a></br>
-              <a ng-click="updatePath('map')" href="#/tab/mapSite"><div class="button btnDrk waves-effect waves-light">I’m excited about </br>bikeshare and want to </br>know how I can use it</div></a></br>
-              <a ng-click="updatePath('benefits')" href="#/tab/benefits"><div class="button btnDrk waves-effect waves-light">I'm not sure my </br>community needs </br>Bikeshare Hawaii.</div></a></br>
+              <p class="contentPar">Help us customize your experience by selecting the option that fits you the best.</p>
+              <a ng-click="updatePath('info')" href="#/tab/main"><div class="btnDrk">I don’t know what bikeshare is and want to learn more.</div></a>
+              <a ng-click="updatePath('map')" href="#/tab/mapSite"><div class="btnDrk">I’m excited about bikeshare and want to know how I can use it.</div></a>
+              <a ng-click="updatePath('benefits')" href="#/tab/benefits"><div class="btnDrk">I'm not sure my community needs Bikeshare Hawaii.</div></a>
             </div>
           </div>
 
